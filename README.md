@@ -10,8 +10,8 @@ Petrel es un sistema implementado por la generación 2021 del curso de "Programa
 - Permitir a los usuarios (Alumnos y/o ex-Alumnos) acceder a la certificación de Programas de las Materias aprobadas para las carreras dictadas en la Universidad.
 - Optimización de los tiempos administrativos y conformación de expedientes referentes a la aprobación de dichas certificaciones.
 - Recopilar los PDF en servidores en la nube, y escanear los programas de cada materia
-- Drag and drop markdown and HTML files into Dillinger
-- Export documents as Markdown, HTML and PDF
+- Lorem Ipsum
+- Lorem Ipsum x2
 
 
 ## Tech
