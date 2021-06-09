@@ -1,7 +1,7 @@
-<img src="https://i.postimg.cc/VL2DtKJB/index.png">
+# PETREL
 ### *Certificaciones de Programas Aprobados mas faciles y mas Rapidos*
 
-
+<img src="https://i.postimg.cc/VL2DtKJB/index.png">
 
 
 > Petrel es un sistema implementado por la generación 2021 del curso de "Programación Web Avanzada" de la Carrera Tecnicatura Universitaria de Desarrollo Web. 
