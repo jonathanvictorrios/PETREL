@@ -34,7 +34,16 @@ Petrel hace uso en su implementacin de las siguientes tecnologias:
 
 ## Installation
 
-TBA
+Algunas concideraciones (Luego pasare el limpio)
+> Para copiar el repositorio en sus maquinas el commando:
+git clone https://github.com/PETREL-PWAUNCO2021/PETREL.git (Aca depende el link segun el branch calculo)
+funcion perfectamente
+
+>Como por defecto el .gitignore no permite pasar la carpeta Vendor ni el .ENV:
+Usar el comando -> composer update, para restablecer la carpeta Vendor a partir del composer.json
+Crear una copia del archivo .env.example y guardarlo como .env
+
+>Ejecutar el comando php artisan key:generate de ser necesario
 
 ## Plugins
 
