@@ -15,7 +15,6 @@ class CreateTablePrograma extends Migration
     {
         Schema::create('programa', function (Blueprint $table) {
             $table->id('id_programa');
-            $table->unsignedBigInteger('hoja_resumen'); //?????
             $table->string('nombre_materia');
             $table->integer('numero_materia');
             $table->string('carrera');
