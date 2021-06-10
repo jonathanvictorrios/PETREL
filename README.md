@@ -1,5 +1,5 @@
 # PETREL
-### *Certificaciones de Programas Aprobados mas faciles y mas Rapidos*
+### *Certificaciones de Programas Aprobados más fáciles y más Rápidos*
 
 <img src="https://i.postimg.cc/VL2DtKJB/index.png">
 
