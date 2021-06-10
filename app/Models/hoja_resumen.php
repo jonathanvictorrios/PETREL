@@ -12,10 +12,6 @@ class hoja_resumen extends Model
     protected $table = 'hoja_resumen';
     protected $primaryKey = 'id_hoja_resumen';
     protected $fillable = array(
-        'url_pdf_rendimiento_acad',
-        'url_pdf_plan_estudio',
-        'url_pdf_programas',
-        'url_pdf_nota_dpto_alum',
         'firma_dig_dpto_alum',
         'firma_dig_sec_acad_ua',
         'id_solicitud',

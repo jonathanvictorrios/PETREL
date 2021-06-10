@@ -11,7 +11,7 @@ class nota_dpto_alum extends Model
 
     protected $table = 'nota_dpto_alum';
     protected $primaryKey = 'id_nota_dpto';
-    protected $fillable = array('descripcion_dto_alum');
+    protected $fillable = array('descripcion_dto_alum', 'url_pdf_nota_dpto_alum');
 
     protected $hidden = ['created_at', 'updated_at'];
 }

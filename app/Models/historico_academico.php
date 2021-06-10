@@ -11,7 +11,7 @@ class historico_academico extends Model
 
     protected $table = 'historico_academico';
     protected $primaryKey = 'id_historico';
-    protected $fillable = array('archivo');
+    protected $fillable = array('archivo', 'url_pdf_rendimiento_acad');
 
     protected $hidden = ['created_at', 'updated_at'];
 }
