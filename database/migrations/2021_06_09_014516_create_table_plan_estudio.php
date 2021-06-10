@@ -18,6 +18,7 @@ class CreateTablePlanEstudio extends Migration
             $table->year('anio');
             $table->integer('nro_ordenanza');
             $table->integer('nro_libro');
+            $table->string('url_pdf_plan_estudio');
             $table->timestamps();
         });
     }
