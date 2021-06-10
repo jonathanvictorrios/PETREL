@@ -41,7 +41,8 @@ Algunas consideraciones (Luego pasaré el limpio)
 
 >Ejecutar el comando php artisan key:generate de ser necesario
 
-
+Si el mysql no inicia
+> cambiar en .env los valores 'DB_USERNAME=sail' y 'DB_PASSWORD=password'. Y reiniciar el contenedor.
 
 
 
