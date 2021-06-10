@@ -22,4 +22,29 @@ class hoja_resumen extends Model
     );
 
     protected $hidden = ['created_at', 'updated_at'];
+
+    public function solicitud_cert_prof()
+    {
+        return $this->belongsTo(solicitud_cert_prog::class);
+    }
+
+    public function historico_academico()
+    {
+        return $this->belongsTo(historico_academico::class);
+    }
+
+    public function plan_estudio()
+    {
+        return $this->belongsTo(plan_estudio::class);
+    }
+
+    public function nota_dpto_alum()
+    {
+        return $this->belongsTo(nota_dpto_alum::class);
+    }
+
+    public function programas()
+    {
+        return $this->hasMany(programa::class);
+    }
 }

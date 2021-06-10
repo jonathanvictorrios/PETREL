@@ -22,4 +22,9 @@ class programa extends Model
     );
 
     protected $hidden = ['created_at', 'updated_at'];
+
+    public function hoja_resumen()
+    {
+        return $this->belongsTo(hoja_resumen::class);
+    }
 }

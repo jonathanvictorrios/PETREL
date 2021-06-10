@@ -14,4 +14,14 @@ class rol extends Model
     protected $fillable = array('descripcion');
 
     protected $hidden = ['created_at', 'updated_at'];
+
+    public function usuarios()
+    {
+        return $this->belongsToMany(usuario::class);
+    }
+
+    public function permisos()
+    {
+        return $this->belongsToMany(permiso::class);
+    }
 }

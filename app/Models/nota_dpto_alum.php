@@ -14,4 +14,9 @@ class nota_dpto_alum extends Model
     protected $fillable = array('descripcion_dto_alum', 'url_pdf_nota_dpto_alum');
 
     protected $hidden = ['created_at', 'updated_at'];
+
+    public function hoja_resumen()
+    {
+        return $this->hasOne(hoja_resumen::class);
+    }
 }

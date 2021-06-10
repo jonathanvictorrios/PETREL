@@ -14,4 +14,14 @@ class hoja_resumen_final extends Model
     protected $fillable = array('url_pdf_hoja_unida_sinfirmar', 'url_pdf_hoja_unida_final', 'id_hoja_resumen_final', 'id_firma', 'id_nota_central');
 
     protected $hidden = ['created_at', 'updated_at'];
+
+    public function nota_admin_central()
+    {
+        return $this->belongsTo(nota_admin_central::class);
+    }
+
+    public function firma()
+    {
+        return $this->belongsTo(firma::class);
+    }
 }

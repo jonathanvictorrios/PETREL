@@ -14,4 +14,9 @@ class permiso extends Model
     protected $fillable = array('descripcion');
 
     protected $hidden = ['created_at', 'updated_at'];
+
+    public function roles()
+    {
+        return $this->belongsToMany(rol::class);
+    }
 }

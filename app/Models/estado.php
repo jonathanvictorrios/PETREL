@@ -14,4 +14,9 @@ class estado extends Model
     protected $fillable = array('descripcion', 'id_solicitud');
 
     protected $hidden = ['created_at', 'updated_at'];
+
+    public function solicitud_cert_prog()
+    {
+        return $this->belongsTo(solicitud_cert_prog::class);
+    }
 }

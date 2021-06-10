@@ -14,4 +14,19 @@ class usuario extends Model
     protected $fillable = array('nombre', 'apellido', 'legajo', 'email');
 
     protected $hidden = ['created_at', 'updated_at'];
+
+    public function solicitudes_cert_prog()
+    {
+        return $this->hasMany(solicitud_cert_prog::class);
+    }
+
+    public function comentarios()
+    {
+        return $this->hasMany(comentario::class);
+    }
+
+    public function roles()
+    {
+        return $this->belongsToMany(rol::class);
+    }
 }

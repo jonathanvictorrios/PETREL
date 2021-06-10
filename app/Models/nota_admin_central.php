@@ -14,4 +14,9 @@ class nota_admin_central extends Model
     protected $fillable = array('descripcion_central', 'url_pdf_nota_admin_central');
 
     protected $hidden = ['created_at', 'updated_at'];
+
+    public function hoja_resumen_final()
+    {
+        return $this->hasOne(hoja_resumen_final::class);
+    }
 }

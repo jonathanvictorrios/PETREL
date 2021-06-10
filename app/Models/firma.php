@@ -14,4 +14,9 @@ class firma extends Model
     protected $fillable = array('descripcion');
 
     protected $hidden = ['created_at', 'updated_at'];
+
+    public function hoja_resumen_final()
+    {
+        return $this->hasOne(hoja_resumen_final::class);
+    }
 }
