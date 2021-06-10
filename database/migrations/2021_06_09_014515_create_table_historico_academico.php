@@ -16,6 +16,7 @@ class CreateTableHistoricoAcademico extends Migration
         Schema::create('historico_academico', function (Blueprint $table) {
             $table->id('id_historico');
             $table->string('archivo');
+            $table->string('url_pdf_rendimiento_acad');
             $table->timestamps();
         });
     }
