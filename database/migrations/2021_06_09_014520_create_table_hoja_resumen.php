@@ -15,10 +15,6 @@ class CreateTableHojaResumen extends Migration
     {
         Schema::create('hoja_resumen', function (Blueprint $table) {
             $table->id('id_hoja_resumen');
-            $table->string('url_pdf_rendimiento_acad');
-            $table->string('url_pdf_plan_estudio');
-            $table->string('url_pdf_programas');
-            $table->string('url_pdf_nota_dpto_alum');
             $table->string('firma_dig_dpto_alum');
             $table->string('firma_dig_sec_acad_ua');
             $table->timestamps();
