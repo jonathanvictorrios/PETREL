@@ -20,6 +20,7 @@ class CreateTableNotificacionMigration extends Migration
             $table->text('mensaje');
             $table->boolean('leida');
             $table->timestamps();
+            //Prueba commit
         });
     }
 
