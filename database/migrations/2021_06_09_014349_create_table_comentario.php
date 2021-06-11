@@ -15,7 +15,7 @@ class CreateTableComentario extends Migration
     {
         Schema::create('comentario', function (Blueprint $table) {
             $table->id('id_comentario');
-            $table->string('descripcion');
+            $table->text('descripcion');
             $table->unsignedBigInteger('id_solicitud');
             $table->unsignedBigInteger('id_usuario');
 

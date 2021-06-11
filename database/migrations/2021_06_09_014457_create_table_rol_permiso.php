@@ -17,6 +17,8 @@ class CreateTableRolPermiso extends Migration
             $table->unsignedBigInteger('id_rol');
             $table->unsignedBigInteger('id_permiso');
 
+            $table->primary('id_rol', 'id_permiso');
+
             $table->foreign('id_rol')->references('id_rol')->on('rol');
             $table->foreign('id_permiso')->references('id_permiso')->on('permiso');
             $table->timestamps();

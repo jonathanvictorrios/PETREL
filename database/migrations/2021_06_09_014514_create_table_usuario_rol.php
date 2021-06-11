@@ -14,8 +14,11 @@ class CreateTableUsuarioRol extends Migration
     public function up()
     {
         Schema::create('usuario_rol', function (Blueprint $table) {
+
             $table->unsignedBigInteger('id_usuario');
             $table->unsignedBigInteger('id_rol');
+
+            $table->primary(['id_usuario', 'id_rol']);
 
             $table->foreign('id_usuario')->references('id_usuario')->on('usuario');
             $table->foreign('id_rol')->references('id_rol')->on('rol');
