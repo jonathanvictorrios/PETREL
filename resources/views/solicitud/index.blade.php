@@ -10,6 +10,7 @@
       <th scope="col">Legajo</th>
       <th scope="col">Carrera</th>
       <th scope="col">Unidad Academica</th>
+      <th scope="col">Acciones</th>
     </tr>
   </thead>
   <tbody>
@@ -20,6 +21,7 @@
       <td>{{$solicitud->legajo}}</td>
       <td>{{$solicitud->carrera->carrera}}</td>
       <td>{{$solicitud->unidadAcademica->unidad_academica}}</td>
+      <td><a href="{{route('solicitud.show',$solicitud->id_solicitud)}}">Ver</a></td>
     </tr>
     @endforeach
   </tbody>

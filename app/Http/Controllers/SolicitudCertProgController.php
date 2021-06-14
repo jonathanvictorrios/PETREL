@@ -70,7 +70,7 @@ class SolicitudCertProgController extends Controller
         print($solicitud);
         $solicitud->save();
         
-        return view('solicitud.index')->with('mensaje','Se ingreso la Solicitud {{$solicitud->id_solicitud}}');
+        return Redirect('solicitud.index')->with('mensaje','Se ingreso la Solicitud {{$solicitud->id_solicitud}}');
     }
 
     /**
@@ -81,7 +81,13 @@ class SolicitudCertProgController extends Controller
      */
     public function show($id)
     {
-        //
+        $solicitud = SolicitudCertProg::findOrFail($id);
+        $solicitud->usuarioEstudiante=Usuario::find($solicitud->id_usuario_estudiante);
+        $solicitud->carrera= Carrera::find($solicitud->id_carrera);
+        $solicitud->unidadAcademica=UnidadAcademica::find($solicitud->carrera->id_unidad_academica);
+
+        return view('solicitud.show',compact('solicitud'));
+
     }
 
     /**
