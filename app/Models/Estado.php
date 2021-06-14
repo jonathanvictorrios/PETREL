@@ -5,7 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class estado extends Model
+class Estado extends Model
 {
     use HasFactory;
 
@@ -15,8 +15,8 @@ class estado extends Model
 
     protected $hidden = ['created_at', 'updated_at'];
 
-    public function solicitud_cert_prog()
+    public function solicitudCertProg()
     {
-        return $this->belongsTo(solicitud_cert_prog::class);
+        return $this->belongsTo(SolicitudCertProg::class);
     }
 }

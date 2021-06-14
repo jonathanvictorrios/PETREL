@@ -5,7 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class rol extends Model
+class Rol extends Model
 {
     use HasFactory;
 
@@ -17,11 +17,11 @@ class rol extends Model
 
     public function usuarios()
     {
-        return $this->belongsToMany(usuario::class);
+        return $this->belongsToMany(Usuario::class);
     }
 
     public function permisos()
     {
-        return $this->belongsToMany(permiso::class);
+        return $this->belongsToMany(Permiso::class);
     }
 }

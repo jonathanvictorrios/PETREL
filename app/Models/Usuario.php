@@ -5,7 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class usuario extends Model
+class Usuario extends Model
 {
     use HasFactory;
 
@@ -15,18 +15,18 @@ class usuario extends Model
 
     protected $hidden = ['created_at', 'updated_at'];
 
-    public function solicitudes_cert_prog()
+    public function solicitudesCertProg()
     {
-        return $this->hasMany(solicitud_cert_prog::class);
+        return $this->hasMany(SolicitudCertProg::class);
     }
 
     public function comentarios()
     {
-        return $this->hasMany(comentario::class);
+        return $this->hasMany(Comentario::class);
     }
 
     public function roles()
     {
-        return $this->belongsToMany(rol::class);
+        return $this->belongsToMany(Rol::class);
     }
 }

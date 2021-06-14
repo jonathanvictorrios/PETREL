@@ -5,7 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class comentario extends Model
+class Comentario extends Model
 {
     use HasFactory;
 
@@ -15,13 +15,13 @@ class comentario extends Model
 
     protected $hidden = ['created_at', 'updated_at'];
 
-    public function solicitud_cert_prog()
+    public function solicitudCertProg()
     {
-        return $this->belongsTo(solicitud_cert_prog::class);
+        return $this->belongsTo(SolicitudCertProg::class);
     }
 
     public function usuario()
     {
-        return $this->belongsTo(usuario::class);
+        return $this->belongsTo(Usuario::class);
     }
 }

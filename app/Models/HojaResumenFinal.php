@@ -5,7 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class hoja_resumen_final extends Model
+class HojaResumenFinal extends Model
 {
     use HasFactory;
 
@@ -15,13 +15,13 @@ class hoja_resumen_final extends Model
 
     protected $hidden = ['created_at', 'updated_at'];
 
-    public function nota_admin_central()
+    public function notaAdminCentral()
     {
-        return $this->belongsTo(nota_admin_central::class);
+        return $this->belongsTo(NotaAdminCentral::class);
     }
 
     public function firma()
     {
-        return $this->belongsTo(firma::class);
+        return $this->belongsTo(Firma::class);
     }
 }

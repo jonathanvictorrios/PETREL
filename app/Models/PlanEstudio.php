@@ -5,7 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class plan_estudio extends Model
+class PlanEstudio extends Model
 {
     use HasFactory;
 
@@ -15,8 +15,8 @@ class plan_estudio extends Model
 
     protected $hidden = ['created_at', 'updated_at'];
 
-    public function hoja_resumen()
+    public function hojaResumen()
     {
-        return $this->hasOne(hoja_resumen::class);
+        return $this->hasOne(HojaResumen::class);
     }
 }
