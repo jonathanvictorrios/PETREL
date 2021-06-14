@@ -10,7 +10,7 @@
     </div>
     <div class="col col-4">
     <label class="form-label" for="">Legajo</label>
-    <input type="text" class='form-control'>
+    <input type="text" class='form-control' name='legajo'>
     </div>
 </div>
 

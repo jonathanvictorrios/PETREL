@@ -16,7 +16,7 @@ class CreateTableSolicitudCertProg extends Migration
         Schema::create('solicitud_cert_prog', function (Blueprint $table) {
             $table->id('id_solicitud');
             $table->unsignedBigInteger('id_usuario_estudiante');
-            $table->unsignedBigInteger('id_user_u');
+            $table->unsignedBigInteger('id_user_u')->nullable();
             $table->unsignedBigInteger('id_carrera');
             $table->foreign('id_usuario_estudiante')->references('id_usuario')->on('usuario');
             $table->foreign('id_user_u')->references('id_usuario')->on('usuario');
