@@ -18,6 +18,7 @@ use App\Http\Controllers\SolicitudCertProgController;
 Route::redirect('/', '/home');
 Route::view('/home', 'home');
 
+
 /* Otras rutas:
 Route::view('/registro', 'registro');
 Route::view('/login', 'login');
