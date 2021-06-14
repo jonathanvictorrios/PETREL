@@ -6,6 +6,9 @@ use Illuminate\Http\Request;
 use App\Models\SolicitudCertProg;
 use App\Models\UnidadAcademica;
 use App\Models\Usuario;
+use App\Models\Carrera;
+
+
 
 class SolicitudCertProgController extends Controller
 {
@@ -17,7 +20,13 @@ class SolicitudCertProgController extends Controller
     public function index()
     {
         $solicitudes = SolicitudCertProg::all();
-        return view('solicitud.index');
+        foreach($solicitudes as $solicitud)
+        {
+            $solicitud->usuarioEstudiante=Usuario::find($solicitud->id_usuario_estudiante);
+            $solicitud->carrera=Carrera::find($solicitud->id_carrera);
+            $solicitud->unidadAcademica=UnidadAcademica::find($solicitud->carrera->id_unidad_academica);
+        }
+        return view('solicitud.index',compact('solicitudes'));
     }
 
     /**
@@ -57,8 +66,11 @@ class SolicitudCertProgController extends Controller
 
      ///   $solicitud->usuarioEstudiante=$usuarioEstudiante; //asignamos el usuario a la solicitud
 
+        $solicitud->updated_at=null;
         print($solicitud);
         $solicitud->save();
+        
+        return view('solicitud.index')->with('mensaje','Se ingreso la Solicitud {{$solicitud->id_solicitud}}');
     }
 
     /**
