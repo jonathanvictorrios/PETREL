@@ -43,16 +43,17 @@ class SolicitudCertProgController extends Controller
         $solicitud = new SolicitudCertProg;
         $usuarioEstudiante = Usuario::find(1);
         // $usuarioEstudiante->id_usuario=1;
-        $usuarioAdministrativo= null;
+        // $usuarioAdministrativo= null;
         
 
         $solicitud->id_usuario_estudiante=$usuarioEstudiante->id_usuario;
         //$usuarioEstudiante = null;// $request->idUsuario;// Ver como viene esto desde la vista
-         $solicitud->id_user_u=$usuarioAdministrativo;
+        //  $solicitud->id_user_u=$usuarioAdministrativo;
         
         $solicitud->legajo=$request->legajo;
         $solicitud->universidad_destino=$request->universidadDestino;
-        $solicitud->id_user_u=$usuarioAdministrativo;
+        $solicitud->id_carrera=1;
+        // $solicitud->id_user_u=$usuarioAdministrativo;
 
      ///   $solicitud->usuarioEstudiante=$usuarioEstudiante; //asignamos el usuario a la solicitud
 
