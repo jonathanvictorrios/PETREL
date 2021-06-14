@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateTableEstadoDescripcionMigration extends Migration
+class CreateTableCarrera extends Migration
 {
     /**
      * Run the migrations.
@@ -13,9 +13,11 @@ class CreateTableEstadoDescripcionMigration extends Migration
      */
     public function up()
     {
-        Schema::create('estado_descripcion', function (Blueprint $table) {
-            $table->id('id_estado_descripcion');
-            $table->text('descripcion');
+        Schema::create('carrera', function (Blueprint $table) {
+            $table->id('id_carrera');
+            $table->string('carrera');
+            $table->unsignedBigInteger('id_unidad_academica');
+            $table->foreign('id_unidad_academica')->references('id_unidad_academica')->on('unidad_academica');
             $table->timestamps();
         });
     }
@@ -27,6 +29,6 @@ class CreateTableEstadoDescripcionMigration extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('estadoDescripcion');
+        Schema::dropIfExists('table_carrera');
     }
 }
