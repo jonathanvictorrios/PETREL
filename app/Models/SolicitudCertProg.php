@@ -25,10 +25,15 @@ class SolicitudCertProg extends Model
         return $this->hasMany(Estado::class);
     }
 
-    public function usuario()
+    public function usuarioEstudiante()
     {
         return $this->belongsTo(Usuario::class);
     }
+    public function usuarioAdministrativo()
+    {
+        return $this->belongsTo(Usuario::class);
+    }
+
 
     public function comentario()
     {
