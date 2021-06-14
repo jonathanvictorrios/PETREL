@@ -5,7 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class programa extends Model
+class Programa extends Model
 {
     use HasFactory;
 
@@ -23,8 +23,8 @@ class programa extends Model
 
     protected $hidden = ['created_at', 'updated_at'];
 
-    public function hoja_resumen()
+    public function hojaResumen()
     {
-        return $this->belongsTo(hoja_resumen::class);
+        return $this->belongsTo(HojaResumen::class);
     }
 }

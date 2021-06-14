@@ -5,18 +5,18 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class permiso extends Model
+class Firma extends Model
 {
     use HasFactory;
 
-    protected $table = 'permiso';
-    protected $primaryKey = 'id_permiso';
+    protected $table = 'firma';
+    protected $primaryKey = 'id_firma';
     protected $fillable = array('descripcion');
 
     protected $hidden = ['created_at', 'updated_at'];
 
-    public function roles()
+    public function hojaResumenFinal()
     {
-        return $this->belongsToMany(rol::class);
+        return $this->hasOne(HojaResumenFinal::class);
     }
 }

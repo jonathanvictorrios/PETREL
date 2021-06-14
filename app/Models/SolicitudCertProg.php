@@ -5,7 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class solicitud_cert_prog extends Model
+class SolicitudCertProg extends Model
 {
     use HasFactory;
 
@@ -15,23 +15,23 @@ class solicitud_cert_prog extends Model
 
     protected $hidden = ['created_at', 'updated_at'];
 
-    public function hoja_resumen()
+    public function hojaResumen()
     {
-        return $this->hasOne(hoja_resumen::class);
+        return $this->hasOne(HojaResumen::class);
     }
 
     public function estados()
     {
-        return $this->hasMany(estado::class);
+        return $this->hasMany(Estado::class);
     }
 
     public function usuario()
     {
-        return $this->belongsTo(usuario::class);
+        return $this->belongsTo(Usuario::class);
     }
 
     public function comentario()
     {
-        return $this->hasMany(comentario::class);
+        return $this->hasMany(Comentario::class);
     }
 }

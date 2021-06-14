@@ -17,8 +17,10 @@ class CreateTableEstadoMigration extends Migration
             $table->id('idEstado');
             $table->unsignedBigInteger('idSolicitud');
             $table->unsignedBigInteger('idEstadoDescripcion');
+            $table->unsignedBigInteger('idUsuario');
             $table->foreign('idSolicitud')->references('id_solicitud')->on('solicitud_cert_prog');
             $table->foreign('idEstadoDescripcion')->references('idEstadoDescripcion')->on('estadoDescripcion');
+            $table->foreign('idUsuario')->references('id_usuario')->on('usuario');
             $table->timestamps();
         });
     }

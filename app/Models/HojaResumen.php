@@ -5,7 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class hoja_resumen extends Model
+class HojaResumen extends Model
 {
     use HasFactory;
 
@@ -23,28 +23,28 @@ class hoja_resumen extends Model
 
     protected $hidden = ['created_at', 'updated_at'];
 
-    public function solicitud_cert_prof()
+    public function solicitudCertProf()
     {
-        return $this->belongsTo(solicitud_cert_prog::class);
+        return $this->belongsTo(SolicitudCertProf::class);
     }
 
-    public function historico_academico()
+    public function historicoAcademico()
     {
-        return $this->belongsTo(historico_academico::class);
+        return $this->belongsTo(HistoricoAcademico::class);
     }
 
-    public function plan_estudio()
+    public function planEstudio()
     {
-        return $this->belongsTo(plan_estudio::class);
+        return $this->belongsTo(PlanEstudio::class);
     }
 
-    public function nota_dpto_alum()
+    public function notaDptoAlum()
     {
-        return $this->belongsTo(nota_dpto_alum::class);
+        return $this->belongsTo(NotaDptoAlum::class);
     }
 
     public function programas()
     {
-        return $this->hasMany(programa::class);
+        return $this->hasMany(Programa::class);
     }
 }

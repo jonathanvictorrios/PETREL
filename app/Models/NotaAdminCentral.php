@@ -5,7 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class nota_admin_central extends Model
+class NotaAdminCentral extends Model
 {
     use HasFactory;
 
@@ -15,8 +15,8 @@ class nota_admin_central extends Model
 
     protected $hidden = ['created_at', 'updated_at'];
 
-    public function hoja_resumen_final()
+    public function hojaResumenFinal()
     {
-        return $this->hasOne(hoja_resumen_final::class);
+        return $this->hasOne(HojaResumenFinal::class);
     }
 }
