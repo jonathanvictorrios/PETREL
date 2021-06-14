@@ -11,7 +11,7 @@ class SolicitudCertProg extends Model
 
     protected $table = 'solicitud_cert_prog';
     protected $primaryKey = 'id_solicitud';
-    protected $fillable = array('id_usuario_estudiante', 'id_user_u');
+    protected $fillable = array('id_usuario_estudiante', 'id_user_u', 'legajo');
 
     protected $hidden = ['created_at', 'updated_at'];
 

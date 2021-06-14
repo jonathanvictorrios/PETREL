@@ -21,6 +21,7 @@ class CreateTableSolicitudCertProg extends Migration
             $table->foreign('id_usuario_estudiante')->references('id_usuario')->on('usuario');
             $table->foreign('id_user_u')->references('id_usuario')->on('usuario');
             $table->foreign('id_carrera')->references('id_carrera')->on('carrera');
+            $table->text('legajo');
             $table->timestamps();
         });
     }
