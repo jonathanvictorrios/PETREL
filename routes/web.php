@@ -5,6 +5,7 @@ use App\Http\Controllers\CarpetaCarreraController;
 use App\Http\Controllers\ProgramaDriveController;
 use App\Http\Controllers\ProgramaLocalController;
 use App\Http\Controllers\RendimientoAcademicoController;
+use App\Http\Controllers\Archivo;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\SolicitudCertProgController;
 use App\Models\CarpetaAnio;
@@ -57,3 +58,9 @@ Route::post('convertirExcel', [RendimientoAcademicoController::class, 'convertir
 Route::resource('programaLocal', ProgramaLocalController::class);
 Route::get('buscarProgramas/{idRendimientoAcademico}', [ProgramaDriveController::class, 'buscarProgramas'])->name('buscarProgramas');
 Route::post('descargarProgramas', [ProgramaLocalController::class, 'descargarProgramas'])->name('descargarProgramas');
+Route::post('descargarProgramas', [ProgramaLocalController::class, 'descargarProgramas'])->name('descargarProgramas');
+Route::resource('solicitud', SolicitudCertProgController::class);
+
+// Pruebas de carga de archivos de la solicitud
+Route::get('archivos/{id}/download', [Archivo::class, 'download'])->name('archivos.download');
+Route::resource('archivos', Archivo::class);
