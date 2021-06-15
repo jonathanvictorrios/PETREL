@@ -14,22 +14,22 @@ class Estado extends Model
 
     protected $table = 'estado';
     protected $primaryKey = 'id_estado';
-    protected $fillable = array('descripcion', 'id_solicitud', 'id_estado_descripcion', 'id_usuario');
+    protected $fillable = array('id_solicitud', 'id_estado_descripcion', 'id_usuario','created_at', 'updated_at');
 
-    protected $hidden = ['created_at', 'updated_at'];
+   // protected $hidden = ['created_at', 'updated_at'];
 
     public function solicitudCertProg()
     {
-        return $this->belongsTo(SolicitudCertProg::class);
+        return $this->belongsTo(SolicitudCertProg::class,'id_solicitud');
     }
 
     public function estado_descripcion()
     {
-        return $this->hasOne(EstadoDescripcion::class);
+        return $this->hasOne(EstadoDescripcion::class,'id_estado_descripcion');
     }
 
     public function usuario()
     {
-        return $this->hasOne(Usuario::class);
+        return $this->hasOne(Usuario::class,'id_usuario');
     }
 }

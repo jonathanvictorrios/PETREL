@@ -1,4 +1,5 @@
-@extends('layout/main')
+@extends('estructura/layout')
+
 
 @section('contenido')
 <form action="{{route('solicitud.store')}}" method='POST' >

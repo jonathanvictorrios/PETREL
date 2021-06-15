@@ -22,16 +22,24 @@ class SolicitudCertProg extends Model
 
     public function estados()
     {
-        return $this->hasMany(Estado::class);
+        return $this->hasMany(Estado::class,'id_estado');
+    }
+    public function ultimoEstado()
+    {
+        return $this->hasOne(Estado::class,'id_estado')->latest();
+    }
+    public function carrera()
+    {
+        return $this->hasOne(Carrera::class,'id_carrera');
     }
 
     public function usuarioEstudiante()
     {
-        return $this->belongsTo(Usuario::class);
+        return $this->belongsTo(Usuario::class,'id_usuario_estudiante');
     }
     public function usuarioAdministrativo()
     {
-        return $this->belongsTo(Usuario::class);
+        return $this->belongsTo(Usuario::class,'id_user_a');
     }
 
 

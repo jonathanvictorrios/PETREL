@@ -25,9 +25,9 @@
 </head><!-- Fin cabecera -->
 
 <body class="container my-3">
-
+@extends('estructura/header')
     <main class="container p-2 shadow-lg" id=cuerpo> <!-- Inicio main cuerpo-->
-        @yield('cuerpo')
+        @yield('contenido')
     </main> <!-- Fin main cuerpo -->
 
 

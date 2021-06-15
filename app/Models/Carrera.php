@@ -16,8 +16,8 @@ class Carrera extends Model
 
     protected $hidden = ['created_at', 'updated_at'];
 
-    public function unidadAcademica()
+    public function unidad_academica()
     {
-        return $this->belongsTo(unidadAcademica::class);
+        return $this->belongsTo(UnidadAcademica::class,'id_unidad_academica');
     }
 }
