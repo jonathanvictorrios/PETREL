@@ -13,8 +13,8 @@ class CreateTableEstadoDescripcionMigration extends Migration
      */
     public function up()
     {
-        Schema::create('estado_descripcion', function (Blueprint $table) {
-            $table->id('id_estado_descripcion');
+        Schema::create('estadoDescripcion', function (Blueprint $table) {
+            $table->id('idEstadoDescripcion');
             $table->text('descripcion');
             $table->timestamps();
         });
