@@ -13,6 +13,14 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+// Vistas configuradas:
+Route::redirect('/', '/home');
+Route::view('/home', 'home');
+
+/* Otras rutas:
+Route::view('/registro', 'registro');
+Route::view('/login', 'login');
+*/
+
+// CRUD:
+Route::resource('solicitud',SolicitudCertProgController::class);
