@@ -16,6 +16,8 @@ use Illuminate\Support\Facades\Route;
 // Vistas configuradas:
 Route::redirect('/', '/home');
 Route::view('/home', 'home');
+Route::view('/registro', 'formregistro');
+Route::view('/solicitudnueva', 'nuevasolicitud');
 
 /* Otras rutas:
 Route::view('/registro', 'registro');

@@ -18,6 +18,7 @@
     <link rel="stylesheet" href="{{ asset('css/bootstrap/bootstrap.min.css') }}">
     <!-- Estilos propios: -->
     <link rel="stylesheet" href="{{ asset('css/general.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/forms.css') }}">
     <!-- Iconos de Font Awesome -->
     <script src="{{ asset('js/FontAwesome.js') }}" crossorigin="anonymous"></script>
     <!-- Jquery -->

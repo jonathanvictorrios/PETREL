@@ -1,0 +1,21 @@
+.card {
+    padding: 30px 50px;
+    margin-top: 60px;
+    margin-bottom: 60px;
+    border: none !important;
+    box-shadow: 0 6px 6px 0 rgba(0, 0, 0, 0.2)
+}
+.cell {
+    border-bottom: 1px solid #2a9d8f !important;
+   
+}
+input::placeholder {
+    color: #ccc;
+    font-size: 12px;
+}
+button{
+    border: none !important;
+    background-color: #2b5769;
+    color: white;
+    font-weight: 300;
+}
