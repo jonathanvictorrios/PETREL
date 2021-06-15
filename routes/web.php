@@ -21,3 +21,6 @@ Route::view('/home', 'home');
 Route::view('/registro', 'registro');
 Route::view('/login', 'login');
 */
+
+// CRUD:
+Route::resource('solicitud',SolicitudCertProgController::class);

@@ -5,6 +5,7 @@
 body {
     background: #E5E5E5;
     font-family: 'Roboto', sans-serif;
+    padding-top: 5rem; /* Para que el navbar no se superponga sobre el contenido */
 }
 
 #cuerpo {

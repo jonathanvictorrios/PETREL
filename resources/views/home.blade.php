@@ -131,4 +131,5 @@
         Puedes realizar tu solicitud de certificado para presentar en otras instituciones, de manera sencilla e intuitiva.
     </p>
 </div> <!-- Fin div placeholder -->
+
 @endsection
