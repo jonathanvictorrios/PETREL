@@ -1,5 +1,8 @@
 @extends('estructura/layout')
 @section('cuerpo')
+@php($titulo = 'Petrel - Inicio')
+
+@include('estructura/header')
 
 <div class="card bg-light p-2"> <!-- Comienzo div placeholder -->
     <h1 class="display"><i class="fas fa-briefcase mx-2"></i>Petrel</h1>

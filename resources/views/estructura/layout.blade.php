@@ -22,8 +22,6 @@
     <script src="{{ asset('js/FontAwesome.js') }}" crossorigin="anonymous"></script>
     <!-- Jquery -->
     <script src="{{ asset('js/jquery/jquery.min.js') }}"></script>
-    <!-- Script para "Buscar en esta página" -->
-    <script src="{{ asset('js/Buscador.js') }}"></script>
 </head><!-- Fin cabecera -->
 
 <body class="container my-3">

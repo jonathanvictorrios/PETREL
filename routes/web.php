@@ -13,6 +13,11 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('home');
-});
+// Vistas configuradas:
+Route::redirect('/', '/home');
+Route::view('/home', 'home');
+
+/* Otras rutas:
+Route::view('/registro', 'registro');
+Route::view('/login', 'login');
+*/
