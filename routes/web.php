@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\SolicitudCertProgController;
 
 /*
 |--------------------------------------------------------------------------
@@ -17,10 +18,15 @@ use Illuminate\Support\Facades\Route;
 Route::redirect('/', '/home');
 Route::view('/home', 'home');
 
+
 /* Otras rutas:
 Route::view('/registro', 'registro');
 Route::view('/login', 'login');
 */
 
 // CRUD:
-Route::resource('solicitud',SolicitudCertProgController::class);
+Route::get('/', function () {
+    return view('welcome');
+});
+
+Route::resource('solicitud', SolicitudCertProgController::class);
