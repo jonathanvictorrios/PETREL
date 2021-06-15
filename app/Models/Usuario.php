@@ -13,7 +13,7 @@ class Usuario extends Model
 
     protected $table = 'usuario';
     protected $primaryKey = 'id_usuario';
-    protected $fillable = array('nombre', 'apellido', 'legajo', 'email');
+    protected $fillable = array('nombre', 'apellido', 'dni', 'email');
 
     protected $hidden = ['created_at', 'updated_at'];
 

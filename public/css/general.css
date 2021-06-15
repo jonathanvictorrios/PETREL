@@ -1,0 +1,45 @@
+/* --- Estilo aplicado a todas las páginas del proyecto --- */
+
+/*      Fuentes de Google:      */
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,400;0,700;1,400;1,700&display=swap');
+body {
+    background: #E5E5E5;
+    font-family: 'Roboto', sans-serif;
+    padding-top: 5rem; /* Para que el navbar no se superponga sobre el contenido */
+}
+
+#cuerpo {
+    background: #FFF;
+}
+#pie {
+    background: #6C757D;
+    text-shadow: 2px 2px 8px #000;
+}
+
+/* Estilo para hacer funcionar botón, ver volverArriba.js */
+#volverArriba {
+    display: none; /* Oculto por defecto */
+    cursor: default; /* Evita que se marque con manito */
+    border: none; /* Sin bordes, reemplaza estilo de bootstrap */
+    /* Ajustes para fijar en esquina inferior derecha, encima del contenido: */
+    position: fixed;
+    bottom: 20px;
+    right: 30px;
+    z-index: 99;
+}
+#volverArriba:hover {
+    background-color: #2A9D8F; /* Pone "verde hover" al pasar el cursor */
+}
+
+/*
+--- Paleta de colores del proyecto ---
+(luego compilar en Bootstrap)
+
+#BBBBBB - Gris
+#2B5769 - Azul Primario
+#40768C - Azul Hover
+#2A7977 - Verde Secundario
+#2A9D8F - Verde Hover
+#E9C46A - Amarillo Advertencia
+#EE5551 - Naranja Peligro
+*/
