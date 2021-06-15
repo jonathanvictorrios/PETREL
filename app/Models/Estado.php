@@ -13,8 +13,8 @@ class Estado extends Model
     use HasFactory;
 
     protected $table = 'estado';
-    protected $primaryKey = 'id_estado';
-    protected $fillable = array('descripcion', 'id_solicitud', 'id_estado_descripcion', 'id_usuario');
+    protected $primaryKey = 'idEstado';
+    protected $fillable = array('descripcion', 'idSolicitud', 'idEstadoDescripcion', 'idUsuario');
 
     protected $hidden = ['created_at', 'updated_at'];
 

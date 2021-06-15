@@ -10,8 +10,8 @@ class EstadoDescripcion extends Model
 {
     use HasFactory;
     
-    protected $table='estado_descripcion';
-    protected $primaryKey = 'id_estado_descripcion';
+    protected $table='estadoDescripcion';
+    protected $primaryKey = 'idEstadoDescripcion';
     protected $fillable = array('descripcion');
     protected $hidden = ['created_at','updated_at'];
 

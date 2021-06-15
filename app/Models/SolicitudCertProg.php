@@ -11,7 +11,7 @@ class SolicitudCertProg extends Model
 
     protected $table = 'solicitud_cert_prog';
     protected $primaryKey = 'id_solicitud';
-    protected $fillable = array('id_usuario_estudiante', 'id_user_u', 'legajo', 'universidad_destino');
+    protected $fillable = array('id_usuario_estudiante', 'id_user_u');
 
     protected $hidden = ['created_at', 'updated_at'];
 
@@ -25,15 +25,10 @@ class SolicitudCertProg extends Model
         return $this->hasMany(Estado::class);
     }
 
-    public function usuarioEstudiante()
+    public function usuario()
     {
         return $this->belongsTo(Usuario::class);
     }
-    public function usuarioAdministrativo()
-    {
-        return $this->belongsTo(Usuario::class);
-    }
-
 
     public function comentario()
     {

@@ -17,7 +17,7 @@ class CreateTableUsuario extends Migration
             $table->id('id_usuario');
             $table->string('nombre');
             $table->string('apellido');
-            $table->string('dni');
+            $table->string('legajo');
             $table->string('email');
             $table->timestamps();
         });
