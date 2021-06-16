@@ -24,14 +24,9 @@
     <script src="{{ asset('js/jquery/jquery.min.js') }}"></script>
 </head><!-- Fin cabecera -->
 
-<body class="container my-3">
+<body>
 
-    <main class="container p-2 shadow-lg" id=cuerpo> <!-- Inicio main cuerpo-->
-        @yield('cuerpo')
-    </main> <!-- Fin main cuerpo -->
-
-
-@include('estructura/footer')
+    @yield('cuerpo')
 
 <!-- Carga en orden JQuery (en header), Bootstrap+Popper -->
 <script src="{{ asset('js/bootstrap/bootstrap.bundle.min.js') }}"></script>

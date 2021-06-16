@@ -1,9 +1,7 @@
 @extends('estructura/layout')
 
-@section('cuerpo')
+@section('contenido')
 @php($titulo = 'Petrel - Listado solicitudes')
-
-@include('estructura/header')
 
 <a href="{{route('solicitud.create')}}" class='btn btn-primary'>+</a>
 <table class="table table-hover">

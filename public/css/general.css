@@ -5,15 +5,17 @@
 body {
     background: #E5E5E5;
     font-family: 'Roboto', sans-serif;
-    padding-top: 5rem; /* Para que el navbar no se superponga sobre el contenido */
 }
 
 #cuerpo {
     background: #FFF;
+    padding-top: 5rem; /* Para que el navbar no se superponga sobre el contenido */
 }
 #pie {
     background: #6C757D;
-    text-shadow: 2px 2px 8px #000;
+}
+#portada {
+    height: 100vh;
 }
 
 /* Estilo para hacer funcionar botón, ver volverArriba.js */

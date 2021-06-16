@@ -1,9 +1,7 @@
 @extends('estructura/layout')
 
-@section('cuerpo')
+@section('contenido')
 @php($titulo = 'Petrel - Ver detalles solicitud')
-
-@include('estructura/header')
 
 <div class="row">
     <div class="col col-8">
