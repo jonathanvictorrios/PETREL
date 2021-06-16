@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\SolicitudCertProgController;
+use App\Http\Controllers\UnidadAcademicaController;
 
 /*
 |--------------------------------------------------------------------------
@@ -30,3 +31,4 @@ Route::get('/', function () {
 });
 
 Route::resource('solicitud', SolicitudCertProgController::class);
+Route::get('/carreras',[UnidadAcademicaController::class, 'carreras']);

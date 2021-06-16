@@ -7,6 +7,8 @@ use App\Models\SolicitudCertProg;
 use App\Models\UnidadAcademica;
 use App\Models\Usuario;
 use App\Models\Carrera;
+use App\Models\Estado;
+use App\Models\EstadoDescripcion;
 
 
 
@@ -20,12 +22,31 @@ class SolicitudCertProgController extends Controller
     public function index()
     {
         $solicitudes = SolicitudCertProg::all();
+        $Mostrar = new SolicitudCertProg;
+        $Lista = array();
         foreach($solicitudes as $solicitud)
         {
-            $solicitud->usuarioEstudiante=Usuario::find($solicitud->id_usuario_estudiante);
-            $solicitud->carrera=Carrera::find($solicitud->id_carrera);
-            $solicitud->unidadAcademica=UnidadAcademica::find($solicitud->carrera->id_unidad_academica);
+
+           // printf($solicitud);
+            $Mostrar->idSolicitud=$solicitud->id_solicitud;
+            $Mostrar->Legajo=$solicitud->legajo;
+            $Mostrar->Fecha=$solicitud->ultimoEstado;//->created_at;
+            $Mostrar->Carrera=$solicitud->carrera;
+            
+          //  $Mostrar->UnidadAcademica=$solicitud->carrera->unidad_academica;
+            $Mostrar->UsuarioEstudiante=$solicitud->usuarioEstudiante->nombre;
+            array_push($Lista,$Mostrar);
+            //print($Mostrar);
+            
+            // $solicitud->usuarioEstudiante=Usuario::find($solicitud->id_usuario_estudiante);
+            // $solicitud->carrera=Carrera::find($solicitud->id_carrera);
+            // $solicitud->unidadAcademica=UnidadAcademica::find($solicitud->carrera->id_unidad_academica);
+            // $solicitud->Estado=Estado::get()->where('id_solicitud',$solicitud->id_solicitud)->where('updated_at',null)->last();
+            // $solicitud->Estado->descripcion=EstadoDescripcion::find($solicitud->Estado->id_estado_descripcion);
+            //$solicitud->Estado->created_at=date_format($solicitud->Estado->created_at,'d/m/Y');
+
         }
+        print_r($Lista);
         return view('solicitud.index',compact('solicitudes'));
     }
 
@@ -67,10 +88,19 @@ class SolicitudCertProgController extends Controller
      ///   $solicitud->usuarioEstudiante=$usuarioEstudiante; //asignamos el usuario a la solicitud
 
         $solicitud->updated_at=null;
-        print($solicitud);
         $solicitud->save();
         
-        return Redirect('solicitud.index')->with('mensaje','Se ingreso la Solicitud {{$solicitud->id_solicitud}}');
+        $estado = new Estado;
+        $estadoDescripcion = EstadoDescripcion::find(1);
+
+        $estado->id_solicitud=$solicitud->id_solicitud;
+        $estado->id_estado_descripcion=$estadoDescripcion->id_estado_descripcion;
+        $estado->id_usuario=null;
+        $estado->updated_at=null;
+        $estado->save();
+
+
+        return Redirect('/')->with('mensaje','Se ingreso la Solicitud {{$solicitud->id_solicitud}}');
     }
 
     /**
@@ -85,6 +115,7 @@ class SolicitudCertProgController extends Controller
         $solicitud->usuarioEstudiante=Usuario::find($solicitud->id_usuario_estudiante);
         $solicitud->carrera= Carrera::find($solicitud->id_carrera);
         $solicitud->unidadAcademica=UnidadAcademica::find($solicitud->carrera->id_unidad_academica);
+        
 
         return view('solicitud.show',compact('solicitud'));
 
@@ -122,5 +153,14 @@ class SolicitudCertProgController extends Controller
     public function destroy($id)
     {
         //
+    }
+
+    public function ObtenerDatosSolicitud($solicitud)
+    {
+            $solicitud->usuarioEstudiante=Usuario::find($solicitud->id_solicitud);
+            $solicitud->carrera=Carrera::find($solicitud->id_carrera);
+            $solicitud->unidadAcademica=UnidadAcademica::find($solicitud->carrera->id_unidad_academica);
+            $solicitud->Estado=Estado::get()->where('id_solicitud',$solicitud->id_solicitud)->where('updated_at',null)->last();
+            $solicitud->Estado->descripcion=EstadoDescripcion::find($solicitud->Estado->id_estado_descripcion);
     }
 }
