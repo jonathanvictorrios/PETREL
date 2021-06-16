@@ -22,32 +22,39 @@ class SolicitudCertProgController extends Controller
     public function index()
     {
         $solicitudes = SolicitudCertProg::all();
-        $Mostrar = new SolicitudCertProg;
         $Lista = array();
+        //$i = 1;
         foreach($solicitudes as $solicitud)
         {
-
-           // printf($solicitud);
+            // printf($solicitud->usuarioEstudiante->apellido);
+            //print("Vuelta: ".$i." ☺ ");
+            //$i++;
+            $Mostrar = new SolicitudCertProg;
             $Mostrar->idSolicitud=$solicitud->id_solicitud;
+            print($Mostrar->idSolicitud." ► ");
             $Mostrar->Legajo=$solicitud->legajo;
-            $Mostrar->Fecha=$solicitud->ultimoEstado;//->created_at;
-            $Mostrar->Carrera=$solicitud->carrera;
-            
-          //  $Mostrar->UnidadAcademica=$solicitud->carrera->unidad_academica;
-            $Mostrar->UsuarioEstudiante=$solicitud->usuarioEstudiante->nombre;
-            array_push($Lista,$Mostrar);
+            print($Mostrar->Legajo." ► ");
+            $Mostrar->Fecha=$solicitud->ultimoEstado->created_at;
+            print($Mostrar->Fecha." ► ");
+            $Mostrar->Carrera=$solicitud->carrera->carrera;
+            print($Mostrar->Carrera." ☺ ");
+
+            $Mostrar->UnidadAcademica=$solicitud->carrera->unidad_academica->unidad_academica;
+            $ApellidoNombreUsuarioEst = $solicitud->usuarioEstudiante->apellido." ".$solicitud->usuarioEstudiante->nombre;
+            $Mostrar->UsuarioEstudiante=$ApellidoNombreUsuarioEst;
             //print($Mostrar);
+            array_push($Lista,$Mostrar);
             
             // $solicitud->usuarioEstudiante=Usuario::find($solicitud->id_usuario_estudiante);
             // $solicitud->carrera=Carrera::find($solicitud->id_carrera);
             // $solicitud->unidadAcademica=UnidadAcademica::find($solicitud->carrera->id_unidad_academica);
             // $solicitud->Estado=Estado::get()->where('id_solicitud',$solicitud->id_solicitud)->where('updated_at',null)->last();
             // $solicitud->Estado->descripcion=EstadoDescripcion::find($solicitud->Estado->id_estado_descripcion);
-            //$solicitud->Estado->created_at=date_format($solicitud->Estado->created_at,'d/m/Y');
+            // $solicitud->Estado->created_at=date_format($solicitud->Estado->created_at,'d/m/Y');
 
         }
-        print_r($Lista);
-        return view('solicitud.index',compact('solicitudes'));
+        //print_r($Lista);
+        return view('solicitud.index',compact('Lista'));
     }
 
     /**
