@@ -17,6 +17,6 @@ class Firma extends Model
 
     public function hojaResumenFinal()
     {
-        return $this->hasOne(HojaResumenFinal::class);
+        return $this->hasOne(HojaResumenFinal::class, 'id_firma', 'id_firma');
     }
 }

@@ -20,16 +20,16 @@ class Estado extends Model
 
     public function solicitudCertProg()
     {
-        return $this->belongsTo(SolicitudCertProg::class);
+        return $this->belongsTo(SolicitudCertProg::class, 'id_solicitud', 'id_solicitud');
     }
 
     public function estado_descripcion()
     {
-        return $this->hasOne(EstadoDescripcion::class);
+        return $this->hasOne(EstadoDescripcion::class, 'id_estado_descripcion', 'id_estado_descripcion');
     }
 
     public function usuario()
     {
-        return $this->hasOne(Usuario::class);
+        return $this->hasOne(Usuario::class, 'id_usuario', 'id_usuario');
     }
 }

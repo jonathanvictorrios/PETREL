@@ -9,7 +9,7 @@ use App\Models\UnidadAcademica;
 class Carrera extends Model
 {
     use HasFactory;
-    
+
     protected $table = 'carrera';
     protected $primaryKey = 'id_carrera';
     protected $fillable = array('carrera', 'id_unidad_academica');
@@ -18,6 +18,6 @@ class Carrera extends Model
 
     public function unidadAcademica()
     {
-        return $this->belongsTo(unidadAcademica::class);
+        return $this->belongsTo(UnidadAcademica::class, 'id_unidad_academica', 'id_unidad_academica');
     }
 }
