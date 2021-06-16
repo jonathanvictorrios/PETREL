@@ -45,4 +45,7 @@
 
 <button type='submit' class='btn btn-primary mt-2'>Enviar</button>
 </form>
+
+<a href="{{route('solicitud.index')}}" class='btn btn-primary'>Volver</a>
+
 @endsection
