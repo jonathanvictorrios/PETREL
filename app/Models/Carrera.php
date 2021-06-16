@@ -20,4 +20,8 @@ class Carrera extends Model
     {
         return $this->belongsTo(UnidadAcademica::class,'id_unidad_academica');
     }
+    public function solicitud_cert_prog()
+    {
+        return $this->hasOne(SolicitudCertProg::class,'id_carrera');
+    }
 }
