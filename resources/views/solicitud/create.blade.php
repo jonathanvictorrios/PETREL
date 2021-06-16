@@ -25,7 +25,7 @@
 <div class="row">
 <div class="col-col-12">
         <label class="form-label" for="">Unidad Academica</label>
-        <select class='form-control' name="unidadAcademica" id="">
+        <select class='form-control' name="unidadAcademica" id="unidadAcademica">
         @foreach($unidadesAcademicas as $unidad)
             <option value="{{$unidad->id_unidad_academica}}">{{$unidad->unidad_academica}}</option>
         @endforeach
@@ -36,10 +36,8 @@
 <div class="row">
 <div class="col-col-12">
         <label class="form-label" for="">Carrera</label>
-        <select class='form-control' name="carrera" id="">
-        <!-- @foreach($unidadesAcademicas as $unidad)
-            <option value="{{$unidad->id_unidad_academica}}">{{$unidad->unidad_academica}}</option>
-        @endforeach -->
+        <select class='form-control' name="carrera" id="carrera">
+
         </select>
     </div>
 </div>

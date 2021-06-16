@@ -23,18 +23,19 @@ class SolicitudCertProgController extends Controller
     {
         $solicitudes = SolicitudCertProg::all();
         $Mostrar = new SolicitudCertProg;
-        $Lista = array;
+        $Lista = array();
         foreach($solicitudes as $solicitud)
         {
 
            // printf($solicitud);
             $Mostrar->idSolicitud=$solicitud->id_solicitud;
             $Mostrar->Legajo=$solicitud->legajo;
-            $Mostrar->Fecha=$solicitud->ultimoEstado->created_at;
-            $Mostrar->Carrera=$solicitud->carrera->carrera;
-            $Mostrar->UnidadAcademica=$solicitud->carrera->unidad_academica->unidad_academica;
-
-            $Lista.add($Mostrar);
+            $Mostrar->Fecha=$solicitud->ultimoEstado;//->created_at;
+            $Mostrar->Carrera=$solicitud->carrera;
+            
+          //  $Mostrar->UnidadAcademica=$solicitud->carrera->unidad_academica;
+            $Mostrar->UsuarioEstudiante=$solicitud->usuarioEstudiante->nombre;
+            array_push($Lista,$Mostrar);
             //print($Mostrar);
             
             // $solicitud->usuarioEstudiante=Usuario::find($solicitud->id_usuario_estudiante);
@@ -45,7 +46,7 @@ class SolicitudCertProgController extends Controller
             //$solicitud->Estado->created_at=date_format($solicitud->Estado->created_at,'d/m/Y');
 
         }
-        print($Lista);
+        print_r($Lista);
         return view('solicitud.index',compact('solicitudes'));
     }
 
