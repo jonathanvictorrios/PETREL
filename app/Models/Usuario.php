@@ -15,18 +15,27 @@ class Usuario extends Model
 
     protected $hidden = ['created_at', 'updated_at'];
 
-    public function solicitudesCertProg()
+    public function solicitudesCertProgEstudiante()
     {
-        return $this->hasMany(SolicitudCertProg::class);
+        return $this->hasMany(SolicitudCertProg::class, 'id_usuario_estudiante', 'id_usuario');
+    }
+    public function solicitudesCertProgAdministrativo()
+    {
+        return $this->hasMany(SolicitudCertProg::class, 'id_user_u', 'id_usuario');
     }
 
     public function comentarios()
     {
-        return $this->hasMany(Comentario::class);
+        return $this->hasMany(Comentario::class, 'id_usuario', 'id_usuario');
     }
 
     public function roles()
     {
-        return $this->belongsToMany(Rol::class);
+        return $this->belongsToMany(Rol::class, 'usuario_rol', 'id_usuario', 'id_rol');
+    }
+
+    public function estado()
+    {
+        return $this->belongsTo(Estado::class, 'id_usuario', 'id_usuario');
     }
 }
