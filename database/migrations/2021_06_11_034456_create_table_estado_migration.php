@@ -14,13 +14,13 @@ class CreateTableEstadoMigration extends Migration
     public function up()
     {
         Schema::create('estado', function (Blueprint $table) {
-            $table->id('idEstado');
-            $table->unsignedBigInteger('idSolicitud');
-            $table->unsignedBigInteger('idEstadoDescripcion');
-            $table->unsignedBigInteger('idUsuario');
-            $table->foreign('idSolicitud')->references('id_solicitud')->on('solicitud_cert_prog');
-            $table->foreign('idEstadoDescripcion')->references('idEstadoDescripcion')->on('estadoDescripcion');
-            $table->foreign('idUsuario')->references('id_usuario')->on('usuario');
+            $table->id('id_estado');
+            $table->unsignedBigInteger('id_solicitud');
+            $table->unsignedBigInteger('id_estado_descripcion');
+            $table->unsignedBigInteger('id_usuario');
+            $table->foreign('id_solicitud')->references('id_solicitud')->on('solicitud_cert_prog');
+            $table->foreign('id_estado_descripcion')->references('id_estado_descripcion')->on('estado_descripcion');
+            $table->foreign('id_usuario')->references('id_usuario')->on('usuario');
             $table->timestamps();
         });
     }
