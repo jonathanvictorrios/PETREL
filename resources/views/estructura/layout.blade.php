@@ -18,6 +18,9 @@
     <link rel="stylesheet" href="{{ asset('css/bootstrap/bootstrap.min.css') }}">
     <!-- Estilos propios: -->
     <link rel="stylesheet" href="{{ asset('css/general.css') }}">
+    {{-- font-family tìtulo home --}}
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Rancho&display=swap" rel="stylesheet">
     <!-- Iconos de Font Awesome -->
     <script src="{{ asset('js/FontAwesome.js') }}" crossorigin="anonymous"></script>
     <!-- Jquery -->
@@ -26,7 +29,7 @@
 
 <body class="container my-3">
 
-    <main class="container p-2 shadow-lg" id=cuerpo> <!-- Inicio main cuerpo-->
+    <main class="container " id=cuerpo> <!-- Inicio main cuerpo-->
         @yield('cuerpo')
     </main> <!-- Fin main cuerpo -->
 

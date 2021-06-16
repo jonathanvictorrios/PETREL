@@ -3,14 +3,27 @@
 /*      Fuentes de Google:      */
 @import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,400;0,700;1,400;1,700&display=swap');
 body {
-    background: #E5E5E5;
+    background: rgb(247,247,248);
+    background: linear-gradient(198deg, rgba(247,247,248,1) 9%, rgba(43,87,105,1) 64%);
     font-family: 'Roboto', sans-serif;
     padding-top: 5rem; /* Para que el navbar no se superponga sobre el contenido */
 }
-
-#cuerpo {
-    background: #FFF;
+.titulohome{
+    font-family: 'Rancho', cursive;
+    font-size: 64px;
 }
+/* #cuerpo {
+    background: #FFF;
+} */
+ /* .pregfrecuentes{
+   visibility: hidden; 
+
+}*/
+.vermas{
+    text-decoration: none;
+    color:black;
+}
+
 #pie {
     background: #6C757D;
     text-shadow: 2px 2px 8px #000;
