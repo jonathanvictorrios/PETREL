@@ -22,32 +22,15 @@ class SolicitudCertProgController extends Controller
     public function index()
     {
         $solicitudes = SolicitudCertProg::all();
-        $Mostrar = new SolicitudCertProg;
         $Lista = array();
         foreach($solicitudes as $solicitud)
         {
-
-           // printf($solicitud);
-            $Mostrar->idSolicitud=$solicitud->id_solicitud;
-            $Mostrar->Legajo=$solicitud->legajo;
-            $Mostrar->Fecha=$solicitud->ultimoEstado;//->created_at;
-            $Mostrar->Carrera=$solicitud->carrera;
-            
-          //  $Mostrar->UnidadAcademica=$solicitud->carrera->unidad_academica;
-            $Mostrar->UsuarioEstudiante=$solicitud->usuarioEstudiante->nombre;
+            $Mostrar = $this->ObtenerDatosSolicitud($solicitud);
+  
             array_push($Lista,$Mostrar);
-            //print($Mostrar);
-            
-            // $solicitud->usuarioEstudiante=Usuario::find($solicitud->id_usuario_estudiante);
-            // $solicitud->carrera=Carrera::find($solicitud->id_carrera);
-            // $solicitud->unidadAcademica=UnidadAcademica::find($solicitud->carrera->id_unidad_academica);
-            // $solicitud->Estado=Estado::get()->where('id_solicitud',$solicitud->id_solicitud)->where('updated_at',null)->last();
-            // $solicitud->Estado->descripcion=EstadoDescripcion::find($solicitud->Estado->id_estado_descripcion);
-            //$solicitud->Estado->created_at=date_format($solicitud->Estado->created_at,'d/m/Y');
 
         }
-        print_r($Lista);
-        return view('solicitud.index',compact('solicitudes'));
+        return view('solicitud.index',compact('Lista'));
     }
 
     /**
@@ -71,7 +54,7 @@ class SolicitudCertProgController extends Controller
     public function store(Request $request)
     {
         $solicitud = new SolicitudCertProg;
-        $usuarioEstudiante = Usuario::find(1);
+        $usuarioEstudiante = Usuario::find(1); //ACA TENGO QUE PASAR EL ID DEL USUARIO LOGUEADO
         // $usuarioEstudiante->id_usuario=1;
         // $usuarioAdministrativo= null;
         
@@ -82,8 +65,8 @@ class SolicitudCertProgController extends Controller
         
         $solicitud->legajo=$request->legajo;
         $solicitud->universidad_destino=$request->universidadDestino;
-        $solicitud->id_carrera=1;
-        // $solicitud->id_user_u=$usuarioAdministrativo;
+        $solicitud->id_carrera=1; //CAMBIAR POR SELECT DE DEL FORM
+        
 
      ///   $solicitud->usuarioEstudiante=$usuarioEstudiante; //asignamos el usuario a la solicitud
 
@@ -111,11 +94,14 @@ class SolicitudCertProgController extends Controller
      */
     public function show($id)
     {
+        $solicitud= SolicitudCertProg::findOrFail($id);
+        $solicitud=$this->ObtenerDatosSolicitud($solicitud);
+        /*
         $solicitud = SolicitudCertProg::findOrFail($id);
         $solicitud->usuarioEstudiante=Usuario::find($solicitud->id_usuario_estudiante);
         $solicitud->carrera= Carrera::find($solicitud->id_carrera);
         $solicitud->unidadAcademica=UnidadAcademica::find($solicitud->carrera->id_unidad_academica);
-        
+        */
 
         return view('solicitud.show',compact('solicitud'));
 
@@ -157,10 +143,21 @@ class SolicitudCertProgController extends Controller
 
     public function ObtenerDatosSolicitud($solicitud)
     {
-            $solicitud->usuarioEstudiante=Usuario::find($solicitud->id_solicitud);
-            $solicitud->carrera=Carrera::find($solicitud->id_carrera);
-            $solicitud->unidadAcademica=UnidadAcademica::find($solicitud->carrera->id_unidad_academica);
-            $solicitud->Estado=Estado::get()->where('id_solicitud',$solicitud->id_solicitud)->where('updated_at',null)->last();
-            $solicitud->Estado->descripcion=EstadoDescripcion::find($solicitud->Estado->id_estado_descripcion);
+        $Mostrar = new SolicitudCertProg;
+        $Mostrar->idSolicitud=$solicitud->id_solicitud;
+
+        $Mostrar->Legajo=$solicitud->legajo;
+
+        $Mostrar->Fecha=$solicitud->ultimoEstado->created_at;
+
+        $Mostrar->Carrera=$solicitud->carrera->carrera;
+        $Mostrar->UniversidadDestino=$solicitud->universidad_destino;
+        $Mostrar->UnidadAcademica=$solicitud->carrera->unidad_academica->unidad_academica;
+        $ApellidoNombreUsuarioEst = $solicitud->usuarioEstudiante->apellido." ".$solicitud->usuarioEstudiante->nombre;
+        $Mostrar->UsuarioEstudiante=$ApellidoNombreUsuarioEst;
+        $Mostrar->UltimoEstado=$solicitud->UltimoEstado->estado_descripcion->descripcion;
+        $Mostrar->Estados=$solicitud->estados;
+        print($Mostrar);
+        return $Mostrar;
     }
 }
