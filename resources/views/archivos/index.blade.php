@@ -1,3 +1,8 @@
+@extends('estructura/layout')
+@section('cuerpo')
+@php($titulo = 'Petrel')
+
+@include('estructura/header')
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-8">
@@ -7,14 +12,19 @@
                     <br> <br>
                     <table class="table">
                         <tr>
-                            <th>LINK</th>
+                            <h4> Listado de archivos pendientes para firmar</h4>
                         </tr>
                         @forelse ($archivos as $archivo)
                         <tr>
-                            <td><a
-                                    href="{{ route('archivos.download', $archivo->id_usuario) }}">{{ $archivo->id_usuario }}</a>
+                            <td>
+                                <div>
+                                </div>
+                                <b>{{ $archivo->id_usuario }}</b>
                             </td>
-                            <td><a href="{{ route('archivos.show', $archivo->id_usuario) }}"><button
+                            <td class="d-flex align-items-center justify-content-center">
+                                <a href="{{ route('archivos.download', $archivo->id_usuario) }}"><button
+                                        class="btn btn-primary" target="_blank">DESCARGAR</button></a>
+                                <a href="{{ route('archivos.show', $archivo->id_usuario) }}"><button
                                         class="btn btn-primary" target="_blank">VER ONLINE</button></a>
                             </td>
                         </tr>
@@ -29,3 +39,4 @@
         </div>
     </div>
 </div>
+@endsection

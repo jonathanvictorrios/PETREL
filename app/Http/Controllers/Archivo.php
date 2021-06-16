@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\usuario;
+use App\Models\Usuario;
 use Illuminate\Http\Request;
 
 class Archivo extends Controller
@@ -14,7 +14,7 @@ class Archivo extends Controller
      */
     public function index()
     {
-        $archivos = usuario::all();
+        $archivos = Usuario::all();
         return view('archivos.index', compact('archivos'));
     }
 
@@ -45,7 +45,7 @@ class Archivo extends Controller
             $archivo['email'] = $request->file('archivo')->store('archivos', 'public');
         }
 
-        usuario::create($archivo);
+        Usuario::create($archivo);
         return redirect()->route('archivos.index');
     }
 
@@ -57,7 +57,7 @@ class Archivo extends Controller
      */
     public function show($id)
     {
-        $archivo = usuario::where('id_usuario', $id)->firstOrFail();
+        $archivo = Usuario::where('id_usuario', $id)->firstOrFail();
         $pathFile = storage_path('app/public/' . $archivo->email);
         $headers = ['Content-Type: application/pdf'];
         return response()->file($pathFile, $headers);
@@ -65,7 +65,7 @@ class Archivo extends Controller
 
     public function download($id)
     {
-        $archivo = usuario::where('id_usuario', $id)->firstOrFail();
+        $archivo = Usuario::where('id_usuario', $id)->firstOrFail();
         $pathFile = storage_path('app/public/' . $archivo->email);
         return response()->download($pathFile);
     }
