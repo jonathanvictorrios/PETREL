@@ -9,16 +9,15 @@ use App\Models\Estado;
 class EstadoDescripcion extends Model
 {
     use HasFactory;
-    
-    protected $table='estado_descripcion';
+
+    protected $table = 'estado_descripcion';
     protected $primaryKey = 'id_estado_descripcion';
     protected $fillable = array('descripcion');
-    protected $hidden = ['created_at','updated_at'];
+    protected $hidden = ['created_at', 'updated_at'];
 
-    
+
     public function solicitudEstado()
     {
-        return $this->belongsTo(Estado::class);
+        return $this->belongsTo(Estado::class, 'id_estado_descripcion', 'id_estado_descripcion');
     }
-    
 }
