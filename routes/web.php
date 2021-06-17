@@ -7,10 +7,6 @@ use App\Http\Controllers\ProgramaLocalController;
 use App\Http\Controllers\RendimientoAcademicoController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\SolicitudCertProgController;
-use App\Models\CarpetaAnio;
-use App\Models\ProgramaDrive;
-use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Storage;
 
 /*
 |--------------------------------------------------------------------------
