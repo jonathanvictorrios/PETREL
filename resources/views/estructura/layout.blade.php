@@ -1,8 +1,8 @@
 <!doctype html>
 <!--
     Aplicación Petrel
-    @author
-    @link https://github.com/sebamon/BestoGroupLaravel
+    @author Programación Web Dinámica 2021 - UNCo
+    @link https://github.com/PETREL-PWAUNCO2021/PETREL
 -->
 
 <html lang="es_AR">
@@ -24,9 +24,13 @@
     <script src="{{ asset('js/jquery/jquery.min.js') }}"></script>
 </head><!-- Fin cabecera -->
 
-<body>
+<body class="container my-3">
 
-    @yield('cuerpo')
+    <main class="container p-2 shadow-lg" id=cuerpo> <!-- Inicio main cuerpo-->
+        @yield('cuerpo')
+    </main> <!-- Fin main cuerpo -->
+
+@include('estructura/footer')
 
 <!-- Carga en orden JQuery (en header), Bootstrap+Popper -->
 <script src="{{ asset('js/bootstrap/bootstrap.bundle.min.js') }}"></script>

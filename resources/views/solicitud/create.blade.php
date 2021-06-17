@@ -1,7 +1,9 @@
 @extends('estructura/layout')
 
-@section('contenido')
+@section('cuerpo')
 @php($titulo = 'Petrel - Crear solicitud')
+
+@include('estructura/header')
 
 <form action="{{route('solicitud.store')}}" method='POST' >
 @csrf
