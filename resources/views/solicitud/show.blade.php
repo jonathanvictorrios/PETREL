@@ -70,11 +70,7 @@
                             {{-- <input type="text" id="destino" class="destino border-0" name='universidadDestino' value="{{$solicitud->universidad_destino}}" disabled> --}}
                         </div>
                     </div>                    
-                    <div class="row justify-content-center text-center py-4">
-                        <div class="form-group col-sm-6">
-                            <button id="boton" name="boton" type="submit" class="btn-block w-100 p-1 rounded-2">Enviar</button>
-                        </div>
-                    </div>
+                  
             </div>                   
         </div>
     </div>
