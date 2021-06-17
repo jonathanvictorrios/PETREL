@@ -1,6 +1,6 @@
-@extends('layout/main')
+@extends('estructura.layout')
 
-@section('contenido')
+@section('cuerpo')
 <form action="{{route('solicitud.store')}}" method='POST' >
 @csrf
 <div class="row">

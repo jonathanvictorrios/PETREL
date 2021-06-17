@@ -1,6 +1,6 @@
-@extends('layout/main')
+@extends('estructura.layout')
 
-@section('contenido')
+@section('cuerpo')
 <a href="{{route('solicitud.create')}}" class='btn btn-primary'>+</a>
 <table class="table table-hover">
   <thead>

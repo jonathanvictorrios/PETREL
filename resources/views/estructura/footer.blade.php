@@ -1,3 +1,4 @@
+@if ($message = Session::get('success'))
 <footer class=container> <!-- Inicio pie -->
     <div class="d-flex align-items-md-center row border badge-info p-2 text-light" id=pie>
         <div class="col text-md-start">
@@ -20,4 +21,5 @@
             </p>
         </div>
     </div>
-</footer> <!-- Fin pie -->
+</footer> 
+@endif<!-- Fin pie -->

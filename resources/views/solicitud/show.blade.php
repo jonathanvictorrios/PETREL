@@ -1,6 +1,6 @@
-@extends('layout/main')
+@extends('estructura.layout')
 
-@section('contenido')
+@section('cuerpo')
 
 <div class="row">
     <div class="col col-8">

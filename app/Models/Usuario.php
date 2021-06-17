@@ -2,18 +2,21 @@
 
 namespace App\Models;
 
+use App\Http\Middleware\Authenticate;
+use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Foundation\Auth\User as Authenticatable;
+use Illuminate\Notifications\Notifiable;
 use Spatie\Permission\Traits\HasRoles;
 
-class Usuario extends Model
+class Usuario extends Authenticatable
 {
     use HasFactory, HasRoles;
 
     protected $table = 'usuario';
     protected $primaryKey = 'id_usuario';
-    protected $fillable = array('nombre', 'apellido', 'dni', 'email');
+    protected $fillable = array('nombre', 'apellido', 'dni', 'email', 'password');
 
     protected $hidden = ['created_at', 'updated_at'];
 

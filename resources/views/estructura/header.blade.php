@@ -9,7 +9,9 @@
 
         <div class="collapse navbar-collapse" id="MenuSuperior"> <!-- Comienzo contenido menú -->
             <div class="d-flex align-items-end"> <!-- Comienzo contenido a la derecha -->
+                
                 <ul class="navbar-nav me-auto mb-2 mb-md-0">
+                @if ($message = Session::get('success'))
                     <li class="nav-item">
                     <a class="nav-link" href="#">Mi cuenta</a>
                     </li>
@@ -18,7 +20,15 @@
                     </li>
                     <li class="nav-item">
                     <a class="nav-link" href="#">Cerrar sesión</a>
+                    </li>              
+                @else
+                <li class="nav-item">
+                    <a class="nav-link" href="\login#faq">Iniciar Sesion</a>
                     </li>
+                    <li class="nav-item">
+                    <a class="nav-link" href="\register#faq">Registrarse</a>
+                    </li>
+                @endif
                 </ul>
             </div> <!-- Fin contenido a la derecha -->
         </div> <!-- Fin contenido desplegable en pantallas chicas -->
