@@ -1,6 +1,10 @@
-@extends('layout/main')
+@extends('estructura/layout')
 
-@section('contenido')
+@section('cuerpo')
+@php($titulo = 'Petrel - Crear solicitud')
+
+@include('estructura/header')
+
 <form action="{{route('solicitud.store')}}" method='POST' >
 @csrf
 <div class="row">
@@ -45,4 +49,5 @@
 
 <button type='submit' class='btn btn-primary mt-2'>Enviar</button>
 </form>
+
 @endsection

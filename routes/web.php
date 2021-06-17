@@ -18,15 +18,10 @@ use App\Http\Controllers\SolicitudCertProgController;
 Route::redirect('/', '/home');
 Route::view('/home', 'home');
 
-
 /* Otras rutas:
 Route::view('/registro', 'registro');
 Route::view('/login', 'login');
 */
 
 // CRUD:
-Route::get('/', function () {
-    return view('welcome');
-});
-
-Route::resource('solicitud', SolicitudCertProgController::class);
+Route::resource('solicitud',SolicitudCertProgController::class);
