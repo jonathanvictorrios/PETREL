@@ -25,26 +25,26 @@ class HojaResumen extends Model
 
     public function solicitudCertProf()
     {
-        return $this->belongsTo(SolicitudCertProf::class);
+        return $this->belongsTo(SolicitudCertProf::class, 'id_solicitud', 'id_solicitud');
     }
 
     public function historicoAcademico()
     {
-        return $this->belongsTo(HistoricoAcademico::class);
+        return $this->belongsTo(HistoricoAcademico::class, 'id_historico', 'id_historico');
     }
 
     public function planEstudio()
     {
-        return $this->belongsTo(PlanEstudio::class);
+        return $this->belongsTo(PlanEstudio::class, 'id_plan_estudio', 'id_plan_estudio');
     }
 
     public function notaDptoAlum()
     {
-        return $this->belongsTo(NotaDptoAlum::class);
+        return $this->belongsTo(NotaDptoAlum::class, 'id_nota_dpto', 'id_nota_dpto');
     }
 
     public function programas()
     {
-        return $this->hasMany(Programa::class);
+        return $this->hasMany(Programa::class, 'id_hoja_resumen', 'id_hoja_resumen');
     }
 }
