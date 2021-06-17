@@ -14,7 +14,9 @@
 
                         <div class="collapse navbar-collapse justify-content-end" id="MenuSuperior">
                             <!-- Comienzo contenido menú -->
-                            <div class="d-flex align-items-end">
+
+                            <div class="d-flex align-items-end p-3">
+
                                 <!-- Comienzo contenido a la derecha -->
                                 <ul class="navbar-nav me-auto mb-2 mb-md-0">
                                     <li class="nav-item">
@@ -26,7 +28,9 @@
                                             data-bs-target="#exampleModal">Acceder</a>
                                     </li>
                                     <li class="nav-item">
-                                        <a class="nav-link" href="#">Registrarse</a>
+
+                                        <a class="nav-link" href="{{'registro'}}">Registrarse</a>
+
                                     </li>
                                 </ul>
                             </div> <!-- Fin contenido a la derecha -->
@@ -41,10 +45,12 @@
                     <div class="col-6 ">
                         <img src="{{ asset('img/icono_petrel.ico') }}" alt="Icono Petrel" style="min-height: 400px">
                     </div>
-                    <div class="col-2  mt-5">
+
+                    <div class="col-6  mt-5">
                         <h1 class="titulohome">Petrel</h1>
+                        <p class="p_home">El sistema de certificación de materias <br> de la Universidad Nacional del Comahue</p>
                     </div>
-                    <div class="col-4">
+
                         <!-- Modal -->
                         <div class="modal fade " id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel"
                             aria-hidden="true">
@@ -56,9 +62,11 @@
                                             aria-label="Close"></button>
                                     </div>
                                     <div class="modal-body">
+
                                         <div class="container-fluid px-1 py-5 mx-auto">
                                             <div class="row d-flex justify-content-center">
                                                 <div class="col-xl-7 col-lg-8 col-md-9 col-11">
+
                                                     <div class="card card-form">
                                                         <form class="">
                                                             <div class="row justify-content-between text-left">
@@ -90,7 +98,6 @@
                                    
                                 </div>
                             </div>
-                        </div>
                         {{-- fin modal --}}
                     </div>
                 </div> <!-- Fin primera fila -->
