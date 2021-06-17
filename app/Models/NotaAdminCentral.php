@@ -17,6 +17,6 @@ class NotaAdminCentral extends Model
 
     public function hojaResumenFinal()
     {
-        return $this->hasOne(HojaResumenFinal::class, 'id_nota_central', 'id_nota_central');
+        return $this->hasOne(HojaResumenFinal::class);
     }
 }

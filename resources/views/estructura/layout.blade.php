@@ -19,28 +19,17 @@
     <link rel="stylesheet" href="{{ asset('css/bootstrap/bootstrap.min.css') }}">
     <!-- Estilos propios: -->
     <link rel="stylesheet" href="{{ asset('css/general.css') }}">
-    {{-- font-family tìtulo home --}}
-    <link rel="preconnect" href="https://fonts.gstatic.com">
-    <link href="https://fonts.googleapis.com/css2?family=Rancho&display=swap" rel="stylesheet">
     <!-- Iconos de Font Awesome -->
     <script src="{{ asset('js/FontAwesome.js') }}" crossorigin="anonymous"></script>
     <!-- Jquery -->
     <script src="{{ asset('js/jquery/jquery.min.js') }}"></script>
 </head><!-- Fin cabecera -->
 
-<<<<<<< HEAD
 <body class="container my-3">
 @extends('estructura/header')
     <main class="container p-2 shadow-lg" id=cuerpo> <!-- Inicio main cuerpo-->
         @yield('contenido')
     </main> <!-- Fin main cuerpo -->
-=======
-<body>
-
-   
-        @yield('cuerpo')
-   
->>>>>>> 0e93fd442ac3c2eba9a5755f6f1b8f7cb951e251
 
 
 @include('estructura/footer')

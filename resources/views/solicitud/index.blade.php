@@ -1,13 +1,6 @@
 @extends('estructura/layout')
-<<<<<<< HEAD
-=======
 
-@section('cuerpo')
-@php($titulo = 'Petrel - Listado solicitudes')
-
-@include('estructura/header')
->>>>>>> 0e93fd442ac3c2eba9a5755f6f1b8f7cb951e251
-
+@section('contenido')
 <a href="{{route('solicitud.create')}}" class='btn btn-primary'>+</a>
 <table class="table table-hover">
   <thead>
@@ -37,9 +30,4 @@
     @endforeach 
   </tbody>
 </table>
-<<<<<<< HEAD
 @endsection 
-=======
-
-@endsection
->>>>>>> 0e93fd442ac3c2eba9a5755f6f1b8f7cb951e251

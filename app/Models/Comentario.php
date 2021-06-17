@@ -17,11 +17,11 @@ class Comentario extends Model
 
     public function solicitudCertProg()
     {
-        return $this->belongsTo(SolicitudCertProg::class, 'id_solicitud', 'id_solicitud');
+        return $this->belongsTo(SolicitudCertProg::class);
     }
 
     public function usuario()
     {
-        return $this->belongsTo(Usuario::class, 'id_usuario', 'id_usuario');
+        return $this->belongsTo(Usuario::class);
     }
 }

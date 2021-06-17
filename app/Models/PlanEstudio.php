@@ -17,6 +17,6 @@ class PlanEstudio extends Model
 
     public function hojaResumen()
     {
-        return $this->hasOne(HojaResumen::class, 'id_plan_estudio', 'id_plan_estudio');
+        return $this->hasOne(HojaResumen::class);
     }
 }

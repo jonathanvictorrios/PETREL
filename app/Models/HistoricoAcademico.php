@@ -17,6 +17,6 @@ class HistoricoAcademico extends Model
 
     public function hojaResumen()
     {
-        return $this->hasOne(HojaResumen::class, 'id_historico', 'id_historico');
+        return $this->hasOne(HojaResumen::class);
     }
 }

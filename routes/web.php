@@ -19,19 +19,16 @@ use App\Http\Controllers\UnidadAcademicaController;
 Route::redirect('/', '/home');
 Route::view('/home', 'home');
 
+
 /* Otras rutas:
 Route::view('/registro', 'registro');
 Route::view('/login', 'login');
 */
 
 // CRUD:
-<<<<<<< HEAD
 Route::get('/', function () {
     return view('welcome');
 });
 
 Route::resource('solicitud', SolicitudCertProgController::class);
 Route::get('/carreras',[UnidadAcademicaController::class, 'carreras']);
-=======
-Route::resource('solicitud',SolicitudCertProgController::class);
->>>>>>> 0e93fd442ac3c2eba9a5755f6f1b8f7cb951e251
