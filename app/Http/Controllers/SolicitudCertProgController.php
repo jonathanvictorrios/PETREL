@@ -158,7 +158,7 @@ class SolicitudCertProgController extends Controller
         $Mostrar->UsuarioEstudiante=$ApellidoNombreUsuarioEst;
         $Mostrar->UltimoEstado=$solicitud->UltimoEstado->estado_descripcion->descripcion;
         $Mostrar->Estados=$solicitud->estados;
-        print($Mostrar);
+       // print($Mostrar);
         return $Mostrar;
     }
 }
