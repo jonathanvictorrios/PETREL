@@ -17,11 +17,11 @@ class CreateTableEstadoMigration extends Migration
             $table->id('id_estado');
             $table->unsignedBigInteger('id_solicitud');
             $table->unsignedBigInteger('id_estado_descripcion');
-            $table->unsignedBigInteger('id_usuario');
+            $table->unsignedBigInteger('id_usuario')->nullable();
             $table->foreign('id_solicitud')->references('id_solicitud')->on('solicitud_cert_prog');
             $table->foreign('id_estado_descripcion')->references('id_estado_descripcion')->on('estado_descripcion');
             $table->foreign('id_usuario')->references('id_usuario')->on('usuario');
-            $table->timestamps();
+            $table->timestampsTz();
         });
     }
 
