@@ -27,11 +27,11 @@
     <script src="{{ asset('js/jquery/jquery.min.js') }}"></script>
 </head><!-- Fin cabecera -->
 
-<body class="container my-3">
+<body>
 
-    <main class="container " id=cuerpo> <!-- Inicio main cuerpo-->
+   
         @yield('cuerpo')
-    </main> <!-- Fin main cuerpo -->
+   
 
 
 @include('estructura/footer')
