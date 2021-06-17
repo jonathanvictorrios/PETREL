@@ -15,6 +15,7 @@
 
 /*      Fuentes de Google:      */
 @import url("https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,400;0,700;1,400;1,700&display=swap");
+@import url('https://fonts.googleapis.com/css2?family=Rancho&display=swap');
 body {
     background: #e5e5e5;
     font-family: "Roboto", sans-serif;
@@ -56,6 +57,10 @@ body {
 .titulohome{
     font-family: 'Rancho', cursive;
     font-size: 64px;
+}
+.p_home{
+    font-family: 'Rancho', cursive;
+    font-size: 25px;
 }
 /*Icono preguntas frecuentes*/
 .vermas{
