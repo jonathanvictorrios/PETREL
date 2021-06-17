@@ -9,13 +9,15 @@ body {
 
 #cuerpo {
     background: #FFF;
-    padding-top: 5rem; /* Para que el navbar no se superponga sobre el contenido */
 }
 #pie {
     background: #6C757D;
 }
 #portada {
     height: 100vh;
+}
+#logoHeader {
+    background: #2B5769;
 }
 
 /* Estilo para hacer funcionar botón, ver volverArriba.js */
@@ -46,7 +48,7 @@ body {
 }
 .cell {
     border-bottom: 1px solid #2a9d8f !important;
-   
+
 }
 input::placeholder {
     color: #ccc;

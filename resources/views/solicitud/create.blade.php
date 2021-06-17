@@ -4,6 +4,7 @@
 @php($titulo = 'Petrel - Crear solicitud')
 
 @include('estructura/header')
+<main id=cuerpo> <!-- Inicio main cuerpo -->
 
 {{-- inicio formulario nueva solicitud --}}
 <div class="container-fluid px-1 py-5 mx-auto">
@@ -12,25 +13,25 @@
             <div class="tittle">
                 <h2 class="text-center fw-bold">Nueva Solicitud</h2>
             </div>
-            <div class="card-form">                
+            <div class="card-form">
                 <form class="form-card" action="{{route('solicitud.store')}}" method='POST'>
                     @csrf
                     {{-- ingrese nombre y apellido --}}
                     <div class="row justify-content-between text-left">
-                        <div class="form-group col-sm-6 flex-column d-flex py-3"> 
-                            <label class="form-control-label px-3 py-2">Nombres</label> 
-                            <input class="border-0 cell" type="text" id="nombre" name="nombre" placeholder="Ingrese todos sus nombres"> 
+                        <div class="form-group col-sm-6 flex-column d-flex py-3">
+                            <label class="form-control-label px-3 py-2">Nombres</label>
+                            <input class="border-0 cell" type="text" id="nombre" name="nombre" placeholder="Ingrese todos sus nombres">
                         </div>
-                        <div class="form-group col-sm-6 flex-column d-flex py-3"> 
-                            <label class="form-control-label px-3 py-2">Apellidos</label> 
-                            <input class="border-0 cell" type="text" id="apellido" name="apellido" placeholder="Ingrese todos sus apellidos"> 
+                        <div class="form-group col-sm-6 flex-column d-flex py-3">
+                            <label class="form-control-label px-3 py-2">Apellidos</label>
+                            <input class="border-0 cell" type="text" id="apellido" name="apellido" placeholder="Ingrese todos sus apellidos">
                         </div>
                     </div>
                     {{-- ingrese el legajo --}}
                     <div class="row justify-content-between text-left">
                         <div class="form-group col-sm-6 flex-column d-flex py-3">
                             <label class="form-control-label px-3 py-2">Legajo</label>
-                            <input class="border-0 cell" type="text" id="legajo" name="legajo" placeholder="Ingrese su legajo sin guion"> 
+                            <input class="border-0 cell" type="text" id="legajo" name="legajo" placeholder="Ingrese su legajo sin guion">
                         </div>
                     </div>
                     {{-- elija unidad académica --}}
@@ -43,7 +44,7 @@
                                 @endforeach --}}
                               </select>
                         </div>
-                    </div>  
+                    </div>
                     {{-- elija la carrera --}}
                     <div class="row justify-content-between text-left">
                         <div class="form-group col-12 flex-column d-flex py-3">
@@ -54,15 +55,15 @@
                                 @endforeach --}}
                               </select>
                         </div>
-                    </div>   
+                    </div>
                     {{-- ingrese universidad de destino --}}
                     <div class="row justify-content-between text-left ">
                         <div class="form-group col-12 flex-column d-flex py-3 ">
                             <label class="form-control-label px-3 py-2">Universidad de Destino</label>
-                            <input class="border-0 cell" type="text" id='universidadDestino' name='universidadDestino' placeholder="Ingrese la universidad de destino"> 
+                            <input class="border-0 cell" type="text" id='universidadDestino' name='universidadDestino' placeholder="Ingrese la universidad de destino">
                         </div>
-                    </div>                    
-                    
+                    </div>
+
                     <div class="row justify-content-center text-center py-4">
                         <div class="form-group col-sm-6">
                             <button id="boton" name="boton" type="submit" class="btn-block w-100 p-1 rounded-2">Enviar</button>
@@ -118,4 +119,7 @@
 
 <button type='submit' class='btn btn-primary mt-2'>Enviar</button>
 </form> --}}
+
+</main> <!-- Fin main cuerpo -->
+
 @endsection

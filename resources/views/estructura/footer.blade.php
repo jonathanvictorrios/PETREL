@@ -1,4 +1,4 @@
-<footer> <!-- Inicio pie -->
+<footer class=mt-auto> <!-- Inicio pie -->
     <div class="d-flex align-items-md-center row p-2 text-light" id=pie>
         <div class="col text-md-start">
             <h5>Contactanos</h5>

@@ -4,7 +4,7 @@
 @php($titulo = 'Petrel - Ver detalles solicitud')
 
 @include('estructura/header')
-
+<main id=cuerpo> <!-- Inicio main cuerpo -->
 
 {{-- inicion mostrar solicitud --}}
 <div class="container-fluid px-1 py-5 mx-auto">
@@ -16,24 +16,24 @@
             <div class="card card-form">
                 {{-- fecha y estado --}}
                 <div class="row justify-content-between text-left cell">
-                    <div class="form-group col-sm-6 flex-column d-flex py-3"> 
-                            <label class="form-control-label px-3 py-2">Fecha de Inicio</label> 
+                    <div class="form-group col-sm-6 flex-column d-flex py-3">
+                            <label class="form-control-label px-3 py-2">Fecha de Inicio</label>
                             <input type="text" id="fecha" class="fecha border-0" disabled>
                     </div>
-                    <div class="form-group col-sm-6 flex-column d-flex py-3"> 
-                            <label class="form-control-label px-3 py-2">Estado</label> 
+                    <div class="form-group col-sm-6 flex-column d-flex py-3">
+                            <label class="form-control-label px-3 py-2">Estado</label>
                             <input type="text" id="estado" class="estado border-0" disabled>
                     </div>
                 </div>
                 {{-- nombres y apellidos --}}
                     <div class="row justify-content-between text-left cell">
-                        <div class="form-group col-sm-6 flex-column d-flex py-3"> 
-                            <label class="form-control-label px-3 py-2">Nombres</label> 
+                        <div class="form-group col-sm-6 flex-column d-flex py-3">
+                            <label class="form-control-label px-3 py-2">Nombres</label>
                             <input type="text" id="nombre " class="nombre border-0" name="nombre" disabled>
                             {{-- <input type="text" id="nombre " class="nombre border-0" name="nombre" value='{{$solicitud->usuarioEstudiante->nombre}}' disabled> --}}
                         </div>
-                        <div class="form-group col-sm-6 flex-column d-flex py-3"> 
-                            <label class="form-control-label px-3 py-2">Apellidos</label> 
+                        <div class="form-group col-sm-6 flex-column d-flex py-3">
+                            <label class="form-control-label px-3 py-2">Apellidos</label>
                             <input type="text" id="apellido" class="apellido border-0" name="apellido" disabled>
                             {{-- <input type="text" id="apellido" class="apellido border-0" name="apellido" value='{{$solicitud->usuarioEstudiante->apellido}}' disabled> --}}
                         </div>
@@ -53,7 +53,7 @@
                             <input type="text" id="unidad" class="unidad border-0" name="unidadAcademica" disabled>
                             {{-- <input type="text" id="unidad" class="unidad border-0" name="unidadAcademica" value='{{$solicitud->unidadAcademica->unidad_academica}}' disabled> --}}
                         </div>
-                    </div> 
+                    </div>
                     {{-- carrera --}}
                     <div class="row justify-content-between text-left cell">
                         <div class="form-group col-12 flex-column d-flex py-3">
@@ -61,7 +61,7 @@
                             <input type="text" id="carrera" class="carrera border-0" name='carrera' disabled>
                             {{-- <input type="text" id="carrera" class="carrera border-0" name='carrera' value='{{$solicitud->carrera->carrera}}' disabled> --}}
                         </div>
-                    </div> 
+                    </div>
                     {{-- universidad de destino --}}
                     <div class="row justify-content-between text-left">
                         <div class="form-group col-12 flex-column d-flex py-3">
@@ -69,9 +69,9 @@
                             <input type="text" id="destino" class="destino border-0" name='universidadDestino' disabled>
                             {{-- <input type="text" id="destino" class="destino border-0" name='universidadDestino' value="{{$solicitud->universidad_destino}}" disabled> --}}
                         </div>
-                    </div>                    
-                  
-            </div>                   
+                    </div>
+
+            </div>
         </div>
     </div>
 </div>
@@ -110,5 +110,7 @@
 </div>
 
 <a href="{{route('solicitud.index')}}" class='btn btn-primary'>Volver</a> --}}
+
+</main> <!-- Fin main cuerpo -->
 
 @endsection
