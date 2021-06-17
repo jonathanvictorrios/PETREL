@@ -26,7 +26,7 @@
                                             data-bs-target="#exampleModal">Acceder</a>
                                     </li>
                                     <li class="nav-item">
-                                        <a class="nav-link" href="#">Registrarse</a>
+                                        <a class="nav-link" href="{{'registro'}}">Registrarse</a>
                                     </li>
                                 </ul>
                             </div> <!-- Fin contenido a la derecha -->
