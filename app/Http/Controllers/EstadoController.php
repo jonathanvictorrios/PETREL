@@ -6,8 +6,8 @@ use Illuminate\Http\Request;
 use App\Models\Estado;
 use App\Models\EstadoDescripcion;
 use App\Models\Notificacion;
-use App\Models\usuario;
-use App\Models\solicitud_cert_prog;
+use App\Models\Usuario;
+use App\Models\SolicitudCertProg;
 use DateTime;
 use Facade\IgnitionContracts\Solution;
 
@@ -101,7 +101,7 @@ class EstadoController extends Controller
 
     public function iniciarTramite($idSolicitud) {
         // Crea el primer Estado (iniciado) para la solicitud dada
-        $solicitud_cert_prog = solicitud_cert_prog::get()->where('id_solicitud', $idSolicitud);
+        $solicitud_cert_prog = SolicitudCertProg::get()->where('id_solicitud', $idSolicitud);
 
         if ($solicitud_cert_prog != null) { 
         
@@ -130,7 +130,7 @@ class EstadoController extends Controller
     public function asignarTramite($idSolicitud, $idNuevoUsuario) {
         
         // Se asigna la solicitud a un usuario administrativo
-        $solicitud_cert_prog = solicitud_cert_prog::get()->where('id_solicitud', $idSolicitud);
+        $solicitud_cert_prog = SolicitudCertProg::get()->where('id_solicitud', $idSolicitud);
 
         // verificamos que existe la solicitud
         if ($solicitud_cert_prog != null) { 
@@ -173,7 +173,7 @@ class EstadoController extends Controller
     }
 
     public function finalizarTramite($idSolicitud) {
-        $solicitud = solicitud_cert_prog::find($idSolicitud);
+        $solicitud = SolicitudCertProg::find($idSolicitud);
     }
 
 // PRIVADA

@@ -32,3 +32,8 @@ Route::get('/', function () {
 
 Route::resource('solicitud', SolicitudCertProgController::class);
 Route::get('/carreras',[UnidadAcademicaController::class, 'carreras']);
+
+
+/* Mailing
+Route::view('/emails', 'emergency_call');
+Route::view('/emails', 'index');*/
