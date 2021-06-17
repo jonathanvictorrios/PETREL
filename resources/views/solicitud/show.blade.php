@@ -21,11 +21,11 @@
                 <div class="row justify-content-between text-left cell">
                     <div class="form-group col-sm-6 flex-column d-flex py-3">
                             <label class="form-control-label px-3 py-2">Fecha de Inicio</label>
-                            <input type="text" id="fecha" class="fecha border-0" disabled>
+                            <input type="text" id="fecha" class="fecha border-0" value="{{$solicitud->Fecha}" disabled>
                     </div>
                     <div class="form-group col-sm-6 flex-column d-flex py-3">
                             <label class="form-control-label px-3 py-2">Estado</label>
-                            <input type="text" id="estado" class="estado border-0" disabled>
+                            <input type="text" id="estado" class="estado border-0" value='{{$solicitud->UltimoEstado}}'disabled>
                     </div>
                 </div>
                 {{-- nombres y apellidos --}}
@@ -33,12 +33,12 @@
                         <div class="form-group col-sm-6 flex-column d-flex py-3">
                             <label class="form-control-label px-3 py-2">Nombres</label>
                             <input type="text" id="nombre " class="nombre border-0" name="nombre" disabled>
-                            {{-- <input type="text" id="nombre " class="nombre border-0" name="nombre" value='{{$solicitud->usuarioEstudiante->nombre}}' disabled> --}}
+                            {{-- <input type="text" id="nombre " class="nombre border-0" name="nombre" value='{{$solicitud->UsuarioEstudiante}}' disabled> --}}
                         </div>
                         <div class="form-group col-sm-6 flex-column d-flex py-3">
                             <label class="form-control-label px-3 py-2">Apellidos</label>
                             <input type="text" id="apellido" class="apellido border-0" name="apellido" disabled>
-                            {{-- <input type="text" id="apellido" class="apellido border-0" name="apellido" value='{{$solicitud->usuarioEstudiante->apellido}}' disabled> --}}
+                            {{-- <input type="text" id="apellido" class="apellido border-0" name="apellido" value='{{$solicitud->UsuarioEstudiante}}' disabled> --}}
                         </div>
                     </div>
                     {{-- legajo --}}
@@ -46,7 +46,7 @@
                         <div class="form-group col-sm-6 flex-column d-flex py-3">
                             <label class="form-control-label px-3 py-2">Legajo</label>
                             <input type="text" id="legajo" class="legajo border-0" name='legajo' disabled>
-                            {{-- <input type="text" id="legajo" class="legajo border-0" name='legajo' value='{{$solicitud->legajo}}' disabled> --}}
+                            {{-- <input type="text" id="legajo" class="legajo border-0" name='legajo' value='{{$solicitud->Legajo}}' disabled> --}}
                         </div>
                     </div>
                    {{-- unidad academica --}}
@@ -54,7 +54,7 @@
                         <div class="form-group col-12 flex-column d-flex py-3">
                             <label class="form-control-label px-3 py-2">Unidad Académica</label>
                             <input type="text" id="unidad" class="unidad border-0" name="unidadAcademica" disabled>
-                            {{-- <input type="text" id="unidad" class="unidad border-0" name="unidadAcademica" value='{{$solicitud->unidadAcademica->unidad_academica}}' disabled> --}}
+                            {{-- <input type="text" id="unidad" class="unidad border-0" name="unidadAcademica" value='{{$solicitud->UnidadAcademica}}' disabled> --}}
                         </div>
                     </div>
                     {{-- carrera --}}
