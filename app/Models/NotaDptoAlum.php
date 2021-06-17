@@ -17,6 +17,6 @@ class NotaDptoAlum extends Model
 
     public function hojaResumen()
     {
-        return $this->hasOne(HojaResumen::class);
+        return $this->hasOne(HojaResumen::class, 'id_nota_dpto', 'id_nota_dpto');
     }
 }

@@ -9,7 +9,7 @@ use App\Models\UnidadAcademica;
 class Carrera extends Model
 {
     use HasFactory;
-    
+
     protected $table = 'carrera';
     protected $primaryKey = 'id_carrera';
     protected $fillable = array('carrera', 'id_unidad_academica');
@@ -18,10 +18,14 @@ class Carrera extends Model
 
     public function unidad_academica()
     {
+<<<<<<< HEAD
         return $this->belongsTo(UnidadAcademica::class,'id_unidad_academica');
     }
     public function solicitud_cert_prog()
     {
         return $this->hasOne(SolicitudCertProg::class,'id_carrera');
+=======
+        return $this->belongsTo(UnidadAcademica::class, 'id_unidad_academica', 'id_unidad_academica');
+>>>>>>> 0e93fd442ac3c2eba9a5755f6f1b8f7cb951e251
     }
 }

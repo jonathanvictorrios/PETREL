@@ -25,6 +25,6 @@ class Programa extends Model
 
     public function hojaResumen()
     {
-        return $this->belongsTo(HojaResumen::class);
+        return $this->belongsTo(HojaResumen::class, 'id_hoja_resumen', 'id_hoja_resumen');
     }
 }

@@ -1,6 +1,9 @@
 @extends('estructura/layout')
 
-@section('contenido')
+@section('cuerpo')
+@php($titulo = 'Petrel - Ver detalles solicitud')
+
+@include('estructura/header')
 
 <div class="row">
     <div class="col col-8">
@@ -47,5 +50,8 @@
 <a href="{{route('solicitud.index')}}" class='btn btn-primary'>Volver</a>
 
 @endsection
+<<<<<<< HEAD
 
 
+=======
+>>>>>>> 0e93fd442ac3c2eba9a5755f6f1b8f7cb951e251

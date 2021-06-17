@@ -1,7 +1,13 @@
 @extends('estructura/layout')
 
+<<<<<<< HEAD
+=======
+@section('cuerpo')
+@php($titulo = 'Petrel - Crear solicitud')
 
-@section('contenido')
+@include('estructura/header')
+>>>>>>> 0e93fd442ac3c2eba9a5755f6f1b8f7cb951e251
+
 <form action="{{route('solicitud.store')}}" method='POST' >
 @csrf
 <div class="row">
@@ -45,6 +51,9 @@
 <button type='submit' class='btn btn-primary mt-2'>Enviar</button>
 </form>
 
+<<<<<<< HEAD
 <a href="{{route('solicitud.index')}}" class='btn btn-primary'>Volver</a>
 
+=======
+>>>>>>> 0e93fd442ac3c2eba9a5755f6f1b8f7cb951e251
 @endsection
