@@ -4,7 +4,10 @@
 @php($titulo = 'Petrel - Ver detalles solicitud')
 
 @include('estructura/header')
-<main id=cuerpo> <!-- Inicio main cuerpo -->
+<main class="p-5" id=cuerpo> <!-- Inicio main cuerpo -->
+    <div class="container p-5">
+        <a href="{{url()->previous()}}" class="lead"><i class="fas fa-chevron-left me-2"></i>Atrás</a>
+    </div>
 
 {{-- inicion mostrar solicitud --}}
 <div class="container-fluid px-1 py-5 mx-auto">

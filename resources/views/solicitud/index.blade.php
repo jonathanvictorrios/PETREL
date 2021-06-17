@@ -4,7 +4,7 @@
 @php($titulo = 'Petrel - Listado solicitudes')
 
 @include('estructura/header')
-<main id=cuerpo> <!-- Inicio main cuerpo -->
+<main class="p-5" id=cuerpo> <!-- Inicio main cuerpo -->
 
     <a href="{{route('solicitud.create')}}" class='btn btn-primary'>+</a>
     <table class="table table-hover">
