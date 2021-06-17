@@ -19,7 +19,7 @@
                             <td>
                                 <div>
                                 </div>
-                                Solicitud N°<b>{{ $solicitud->id_solicitud }}</b>
+                                Solicitud N°<b>{{ $solicitud->nombre }}</b>
                             </td>
                             <td class="d-flex align-items-center justify-content-center">
                                 <a href="{{ route('archivos.download', $solicitud->id_solicitud) }}"><button

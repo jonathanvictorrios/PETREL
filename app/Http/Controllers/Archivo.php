@@ -20,14 +20,20 @@ class Archivo extends Controller
     public function index()
     {
         /* $solicitudes = Estado::find(1)->solicitudCertProg; */
-        $lista = array();
+        /* $lista = array();
         $estadosFaltaFirma = DB::table('estado')->where('idEstadoDescripcion', '1')->get();
         foreach ($estadosFaltaFirma as $estado) {
             $solicitud = SolicitudCertProg::find($estado->idSolicitud);
             array_push($lista, $solicitud);
         }
-        $datos['lista'] = $lista;
-        /* ddd($lista); */
+        $datos['lista'] = $lista; */
+        $estadosSolicitud = DB::table('estado')
+            ->join('solicitud_cert_prog', 'estado.idSolicitud', '=', 'solicitud_cert_prog.id_solicitud')
+            ->join('usuario', 'solicitud_cert_prog.id_usuario_estudiante', '=', 'usuario.id_usuario')
+            ->where('idEstadoDescripcion', '1')->get();
+
+        $datos['lista'] = $estadosSolicitud;
+        /* ddd($estadosSolicitud); */
         return view('archivos.index', $datos);
     }
 
