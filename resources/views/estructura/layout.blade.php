@@ -1,8 +1,8 @@
 <!doctype html>
 <!--
     Aplicación Petrel
-    @author
-    @link https://github.com/sebamon/BestoGroupLaravel
+    @author Programación Web Dinámica 2021 - UNCo
+    @link https://github.com/PETREL-PWAUNCO2021/PETREL
 -->
 
 <html lang="es_AR">
@@ -30,7 +30,6 @@
     <main class="container p-2 shadow-lg" id=cuerpo> <!-- Inicio main cuerpo-->
         @yield('cuerpo')
     </main> <!-- Fin main cuerpo -->
-
 
 @include('estructura/footer')
 
