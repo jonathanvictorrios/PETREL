@@ -12,19 +12,19 @@
                     <br> <br>
                     <table class="table">
                         <tr>
-                            <h4> Listado de archivos pendientes para firmar</h4>
+                            <h4> Listado de solicitudes pendientes para firmar</h4>
                         </tr>
-                        @forelse ($archivos as $archivo)
+                        @forelse ($lista as $solicitud)
                         <tr>
                             <td>
                                 <div>
                                 </div>
-                                <b>{{ $archivo->id_usuario }}</b>
+                                Solicitud N°<b>{{ $solicitud->id_solicitud }}</b>
                             </td>
                             <td class="d-flex align-items-center justify-content-center">
-                                <a href="{{ route('archivos.download', $archivo->id_usuario) }}"><button
+                                <a href="{{ route('archivos.download', $solicitud->id_solicitud) }}"><button
                                         class="btn btn-primary" target="_blank">DESCARGAR</button></a>
-                                <a href="{{ route('archivos.show', $archivo->id_usuario) }}"><button
+                                <a href="{{ route('archivos.show', $solicitud->id_solicitud) }}"><button
                                         class="btn btn-primary" target="_blank">VER ONLINE</button></a>
                             </td>
                         </tr>

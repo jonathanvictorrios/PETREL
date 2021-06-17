@@ -1,3 +1,8 @@
+@extends('estructura/layout')
+@section('cuerpo')
+@php($titulo = 'Petrel')
+
+@include('estructura/header')
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-8">
@@ -10,7 +15,7 @@
                         <br>
                         <input type="file" name="archivo" id="">
                         <br><br>
-
+                        <input type="hidden" value="3" name="idSolicitud">
                         <input type="submit" value="Guardar archivo" class="btn btn-success">
                     </form>
                 </div>
@@ -18,3 +23,4 @@
         </div>
     </div>
 </div>
+@endsection

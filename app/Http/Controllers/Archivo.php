@@ -2,8 +2,13 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Estado;
+use App\Models\HojaResumen;
+use App\Models\HojaResumenFinal;
+use App\Models\SolicitudCertProg;
 use App\Models\Usuario;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class Archivo extends Controller
 {
@@ -14,8 +19,16 @@ class Archivo extends Controller
      */
     public function index()
     {
-        $archivos = Usuario::all();
-        return view('archivos.index', compact('archivos'));
+        /* $solicitudes = Estado::find(1)->solicitudCertProg; */
+        $lista = array();
+        $estadosFaltaFirma = DB::table('estado')->where('idEstadoDescripcion', '1')->get();
+        foreach ($estadosFaltaFirma as $estado) {
+            $solicitud = SolicitudCertProg::find($estado->idSolicitud);
+            array_push($lista, $solicitud);
+        }
+        $datos['lista'] = $lista;
+        /* ddd($lista); */
+        return view('archivos.index', $datos);
     }
 
     /**
@@ -36,16 +49,20 @@ class Archivo extends Controller
      */
     public function store(Request $request)
     {
+        /* Aca habria que agregar al if que no cargue el archivo si no se pudo hacer la consulta por algun motivo */
         $archivo = $request->all();
-        $archivo['nombre'] = 'Prueba';
-        $archivo['apellido'] = 'Prueba';
-        $archivo['legajo'] = 'Prueba';
+        $idHojaResumen = HojaResumen::where('id_solicitud', $archivo['idSolicitud'])->get()[0]->id_hoja_resumen;
+        $hojaResumenFinal = HojaResumenFinal::where('id_hoja_resumen_final', $idHojaResumen)->get()[0];
 
         if ($request->hasFile('archivo')) {
-            $archivo['email'] = $request->file('archivo')->store('archivos', 'public');
+            $hojaResumenFinal->url_pdf_hoja_unida_final = $request->file('archivo')->store('archivos', 'public');
         }
+        $hojaResumenFinal->id_hoja_resumen_final = 1;
+        $hojaResumenFinal->id_firma = 1;
+        $hojaResumenFinal->id_nota_central = 1;
 
-        Usuario::create($archivo);
+        $hojaResumenFinal->save();
+
         return redirect()->route('archivos.index');
     }
 
@@ -57,16 +74,26 @@ class Archivo extends Controller
      */
     public function show($id)
     {
-        $archivo = Usuario::where('id_usuario', $id)->firstOrFail();
-        $pathFile = storage_path('app/public/' . $archivo->email);
+        $idHojaResumen = HojaResumen::where('id_solicitud', $id)->get()[0]->id_hoja_resumen;
+        $path = HojaResumenFinal::where('id_hoja_resumen_final', $idHojaResumen)->get()[0]->url_pdf_hoja_unida_final;
+        if ($path == null) {
+            $path = HojaResumenFinal::where('id_hoja_resumen_final', $idHojaResumen)->get()[0]->url_pdf_hoja_unida_sinfirmar;
+        }
+
+        /* ddd($path); */
+        $pathFile = storage_path('app/public/' . $path);
         $headers = ['Content-Type: application/pdf'];
         return response()->file($pathFile, $headers);
     }
 
     public function download($id)
     {
-        $archivo = Usuario::where('id_usuario', $id)->firstOrFail();
-        $pathFile = storage_path('app/public/' . $archivo->email);
+        $idHojaResumen = HojaResumen::where('id_solicitud', $id)->get()[0]->id_hoja_resumen;
+        $path = HojaResumenFinal::where('id_hoja_resumen_final', $idHojaResumen)->get()[0]->url_pdf_hoja_unida_final;
+        if ($path == null) {
+            $path = HojaResumenFinal::where('id_hoja_resumen_final', $idHojaResumen)->get()[0]->url_pdf_hoja_unida_sinfirmar;
+        }
+        $pathFile = storage_path('app/public/' . $path);
         return response()->download($pathFile);
     }
 
