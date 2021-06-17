@@ -1,14 +1,17 @@
 @extends('estructura/layout')
 @section('cuerpo')
-@php($titulo = 'Petrel - Inicio')
+@php($titulo = 'Petrel - Registro de usuario')
 
 @include('estructura/header')
+{{-- inicio de registro de usuario --}}
     <div class="container-fluid px-1 py-5 mx-auto">
         <div class="row d-flex justify-content-center">
             <div class="col-xl-7 col-lg-8 col-md-9 col-11">
-                <div class="card">
-                    {{-- <h5 class="text-center mb-1">Registro de Usuario</h5> --}}
-                    <form class="form-card">
+                <div class="tittle">
+                    <h2 class="text-center fw-bold">Registro de Usuario</h2>
+                </div>
+                <div class="card card-form">
+                    <form class="">
                         <div class="row justify-content-between text-left">
                             <div class="form-group col-sm-6 flex-column d-flex py-3"> 
                                 <label class="form-control-label px-3 py-2">Nombres</label> 
@@ -50,13 +53,13 @@
             </div>
         </div>
     </div>
-
+{{-- inicio de registro de usuario --}}
+{{-- formulario de login
     <div class="container-fluid px-1 py-5 mx-auto">
         <div class="row d-flex justify-content-center">
             <div class="col-xl-7 col-lg-8 col-md-9 col-11">
-                <div class="card">
-                    {{-- <h5 class="text-center mb-1">Registro de Usuario</h5> --}}
-                    <form class="form-card">
+                <div class="card card-form">
+                    <form class="">
                         <div class="row justify-content-between text-left">
                             <div class="form-group col-12 flex-column d-flex py-3"> 
                                 <label class="form-control-label px-3 py-2">Email</label> 
@@ -81,6 +84,5 @@
                 </div>
             </div>
         </div>
-    </div>
-    
+    </div> --}}
     @endsection

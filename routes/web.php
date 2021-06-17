@@ -17,8 +17,11 @@ use App\Http\Controllers\SolicitudCertProgController;
 // Vistas configuradas:
 Route::redirect('/', '/home');
 Route::view('/home', 'home');
-Route::view('/registro', 'formregistro');
-Route::view('/solicitudnueva', 'nuevasolicitud');
+//usuario
+Route::view('/registro', '/usuario/create');
+//solicitudes
+Route::view('/crearsolicitud', '/solicitud/create');
+Route::view('/versolicitud', '/solicitud/show');
 
 /* Otras rutas:
 Route::view('/registro', 'registro');
