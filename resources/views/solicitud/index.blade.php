@@ -6,7 +6,7 @@
 @include('estructura/header')
 
 <div id="nav-solicitud" class="container shadow-lg mt-5 pb-3 bg-light rounded">
-  <!-- Navbar -->
+  {{-- <!-- Navbar -->
   <nav class="navbar navbar-expand-lg navbar-light bg-white rounded-top">
     <!-- Container wrapper -->
     <div class="container-fluid pe-4">
@@ -38,7 +38,7 @@
       </div>
     </div>
     <!-- Container wrapper -->
-  </nav>
+  </nav> --}}
   <!-- Solicitudes -->
   <div class="container my-5 px-5">
     <h3>Mis solicitudes</h3>
