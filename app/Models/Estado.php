@@ -20,12 +20,12 @@ class Estado extends Model
 
     public function solicitudCertProg()
     {
-        return $this->belongsTo(SolicitudCertProg::class,'id_solicitud');
+        return $this->belongsTo(SolicitudCertProg::class,'id_solicitud','id_estado');
     }
 
     public function estado_descripcion()
     {
-        return $this->hasOne(EstadoDescripcion::class,'id_estado_descripcion');
+        return $this->hasOne(EstadoDescripcion::class,'id_estado_descripcion','id_estado_descripcion');
     }
 
     public function usuario()

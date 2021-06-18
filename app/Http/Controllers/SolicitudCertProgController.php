@@ -43,7 +43,7 @@ class SolicitudCertProgController extends Controller
     {
         $unidadesAcademicas = UnidadAcademica::all();
         return view ('solicitud.create',compact('unidadesAcademicas'));
-       //return view ('solicitud.create');
+        
     }
 
     /**
@@ -97,12 +97,6 @@ class SolicitudCertProgController extends Controller
     {
         $solicitud= SolicitudCertProg::findOrFail($id);
         $solicitud=$this->ObtenerDatosSolicitud($solicitud);
-        /*
-        $solicitud = SolicitudCertProg::findOrFail($id);
-        $solicitud->usuarioEstudiante=Usuario::find($solicitud->id_usuario_estudiante);
-        $solicitud->carrera= Carrera::find($solicitud->id_carrera);
-        $solicitud->unidadAcademica=UnidadAcademica::find($solicitud->carrera->id_unidad_academica);
-        */
 
         return view('solicitud.show',compact('solicitud'));
 
@@ -144,21 +138,30 @@ class SolicitudCertProgController extends Controller
 
     public function ObtenerDatosSolicitud($solicitud)
     {
+       
         $Mostrar = new SolicitudCertProg;
         $Mostrar->idSolicitud=$solicitud->id_solicitud;
 
         $Mostrar->Legajo=$solicitud->legajo;
-
-        $Mostrar->Fecha=$solicitud->ultimoEstado->created_at;
-
+        
+        $Mostrar->Estados=$solicitud->estados;
+        
         $Mostrar->Carrera=$solicitud->carrera->carrera;
+
         $Mostrar->UniversidadDestino=$solicitud->universidad_destino;
+
         $Mostrar->UnidadAcademica=$solicitud->carrera->unidad_academica->unidad_academica;
+
         $ApellidoNombreUsuarioEst = $solicitud->usuarioEstudiante->apellido." ".$solicitud->usuarioEstudiante->nombre;
         $Mostrar->UsuarioEstudiante=$ApellidoNombreUsuarioEst;
-        $Mostrar->UltimoEstado=$solicitud->UltimoEstado->estado_descripcion->descripcion;
-        $Mostrar->Estados=$solicitud->estados;
-       // print($Mostrar);
+        $Mostrar->NombreEstudiante=$solicitud->usuarioEstudiante->nombre;
+        $Mostrar->ApellidoEstudiante=$solicitud->usuarioEstudiante->apellido;
+
+
+        $Mostrar->UltimoEstado=($solicitud->estados)->last()->estado_descripcion->descripcion;
+        $Mostrar->FechaUltimoEstado=($solicitud->estados)->last()->created_at;
+        print($Mostrar);
+        
         return $Mostrar;
     }
 }

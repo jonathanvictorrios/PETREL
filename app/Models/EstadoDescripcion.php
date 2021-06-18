@@ -16,9 +16,14 @@ class EstadoDescripcion extends Model
     protected $hidden = ['created_at','updated_at'];
 
     
-    public function solicitudEstado()
+  /*  public function solicitudEstado()
     {
-        return $this->belongsTo(Estado::class);
+        return $this->belongsTo(Estado::class,'id_estado');
+    }
+*/
+    public function estado()
+    {
+        return $this->belongTo(Estado::class,'id_estado_descripcion');
     }
     
 }

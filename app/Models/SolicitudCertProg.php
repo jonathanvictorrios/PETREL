@@ -22,12 +22,9 @@ class SolicitudCertProg extends Model
 
     public function estados()
     {
-        return $this->hasMany(Estado::class,'id_estado');
+        return $this->hasMany(Estado::class,'id_solicitud');
     }
-    public function ultimoEstado()
-    {
-        return $this->hasOne(Estado::class,'id_estado')->latest();
-    }
+
     public function carrera()
     {
         return $this->hasOne(Carrera::class,'id_carrera','id_carrera');

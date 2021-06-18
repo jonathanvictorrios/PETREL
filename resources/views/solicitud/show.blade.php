@@ -20,7 +20,7 @@
                 <div class="row justify-content-between text-left cell">
                     <div class="form-group col-sm-6 flex-column d-flex py-3">
                             <label class="form-control-label px-3 py-2">Fecha de Inicio</label>
-                            <input type="text" id="fecha" class="fecha border-0" value="{{$solicitud->Fecha}}" disabled>
+                            <input type="text" id="fecha" class="fecha border-0" value="{{$solicitud->FechaUltimoEstado}}" disabled>
                     </div>
                     <div class="form-group col-sm-6 flex-column d-flex py-3">
                             <label class="form-control-label px-3 py-2">Estado</label>
