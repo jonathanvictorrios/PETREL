@@ -32,6 +32,10 @@
                     </div>
                     {{-- elija unidad academica e ingrese el legajo --}}
                     <div class="row justify-content-between text-left">
+                        <div class="form-group col-sm-6 flex-column d-flex py-3">
+                            <label class="form-control-label px-3 py-2">Legajo</label>
+                            <input class="border-0 cell" type="text" id="legajo" name="legajo" placeholder="Ingrese su legajo sin guion">
+                        </div>
                         <div class="form-group col-6 flex-column d-flex py-3">
                             <label class="form-control-label px-3 py-2">Unidad Académica</label>
                             <select class="form-select border-0 rounded-0 cell" aria-label="Default select example" name="unidadAcademica">
@@ -39,10 +43,6 @@
                                 <option value="{{$unidad->id_unidad_academica}}">{{$unidad->unidad_academica}}</option>
                                 @endforeach --}}
                               </select>
-                        </div>
-                        <div class="form-group col-sm-6 flex-column d-flex py-3">
-                            <label class="form-control-label px-3 py-2">Legajo</label>
-                            <input class="border-0 cell" type="text" id="legajo" name="legajo" placeholder="Ingrese su legajo sin guion">
                         </div>
                     </div>
                     

@@ -11,7 +11,7 @@
 
 {{-- inicio de registro de usuario --}}
     <div class="container-fluid p-1 mx-auto">
-        <div class="row d-flex justify-content-center">
+        <div class="col d-flex justify-content-center">
             <div class="col-xl-7 col-lg-8 col-md-9 col-11">
                 <div class="card card-form bg-light">
                     <div class="tittle card-header p-2 bg-light">
