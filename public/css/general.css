@@ -147,7 +147,7 @@ body {
 }
 .card-form {
     padding: 30px 50px;
-    margin-top: 20px;
+    /* margin-top: 10px; */
     margin-bottom: 60px;
     border: none !important;
     box-shadow: 0 6px 6px 0 rgba(0, 0, 0, 0.2);
@@ -171,6 +171,9 @@ a {
     color: #2a9d8f;
 }
 
+.form-select {
+    height: 25px;
+}
 /* SOLICITUDES */
 
 /** CONTAINER **/
