@@ -2,8 +2,6 @@
 
 /*
 --- Paleta de colores del proyecto ---
-(luego compilar en Bootstrap)
-
 #BBBBBB - Gris
 #2B5769 - Azul Primario
 #40768C - Azul Hover
@@ -13,6 +11,16 @@
 #EE5551 - Naranja Peligro
 */
 
+/*Variables de paleta del documento*/
+:root{
+--color-azulPrimario: #2B5769;
+--color-azulHover: #40768C;
+--color-verdeSecundario: #2A7977;
+--color-verdeHover: #2A9D8F;
+--color-amarilloAdvertencia: #E9C46A;
+--color-naranjaPeligro: #EE5551;
+--color-gris: #BBBBBB;
+}
 /*      Fuentes de Google:      */
 @import url("https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,400;0,700;1,400;1,700&display=swap");
 @import url('https://fonts.googleapis.com/css2?family=Rancho&display=swap');
@@ -31,7 +39,7 @@ body {
     height: 100vh;
 }
 #logoHeader {
-    background: #2b5769;
+    background: var(--color-azulPrimario);
 }
 
 /* Estilo para hacer funcionar botón, ver volverArriba.js */
@@ -46,58 +54,57 @@ body {
     z-index: 99;
 }
 #volverArriba:hover {
-    background-color: #2a9d8f; /* Pone "verde hover" al pasar el cursor */
+    background-color: var(--color-verdeHover); /* Pone "verde hover" al pasar el cursor */
 }
 /*--------------estilos del home----------------------- */
 .home{
     background: rgb(247,247,248);
-    background: linear-gradient(198deg, rgba(247,247,248,1) 9%, rgba(43,87,105,1) 64%);
+    background: linear-gradient(198deg, rgba(247,247,248,1) 8%, rgba(236,238,240,1) 18%, rgba(200,210,215,1) 28%, rgba(169,185,193,1) 36%, rgba(102,133,146,1) 53%, rgba(98,130,143,1) 54%, rgba(69,107,123,1) 65%, rgba(43,87,105,1) 82%, rgba(43,87,105,1) 91%);
     height: 100 vh;
 }
+
 .titulohome{
     font-family: 'Rancho', cursive;
     font-size: 64px;
 }
 .p_home{
-    font-family: 'Rancho', cursive;
-    font-size: 25px;
+    font-size: 20px;
+}
+/*titulo preguntas frecuentes*/
+.tituloPregFrec{
+    color:white;
+    
 }
 /*Icono preguntas frecuentes*/
-.vermas{
-    
-    color:black;
-    font-size: 30px;
-    font-weight: 900;
-    margin: 0%;
-}
 .vermasicono{
     text-decoration: none;
-    color:black;
+    color:white;
     font-size: 50px;
     font-weight: 900;
 }
 .vermasicono:hover{
     text-decoration: none;
-    color:#2A9D8F;
+    color: var(--color-verdeHover);
     font-size: 50px;
     font-weight: 900;
 }
 .botonacordeon{
     border:0;
-    font-size: 20px;
     background:white;
+    color: var(--color-azulPrimario);
 }
  .ver{
-    color: #2B5769;
+    color: var(--color-azulPrimario);
     font-size: 25px;
+    border:0;
+    background:white;
     }
-
 
 
 /*-------------FIN ESTILOS HOME-----------------------------*/
 /*estilos de formularios*/
 .tittle {
-    color: #2b5769;
+    color: var(--color-azulPrimario)
 }
 .card-form {
     padding: 30px 50px;
@@ -107,7 +114,7 @@ body {
     box-shadow: 0 6px 6px 0 rgba(0, 0, 0, 0.2);
 }
 .cell {
-    border-bottom: 1px solid #2a9d8f !important;
+    border-bottom: 1px solid var(--color-verdeHover) !important;
 }
 input::placeholder {
     color: #ccc;
@@ -115,14 +122,14 @@ input::placeholder {
 }
 button {
     border: none !important;
-    background-color: #2b5769;
+    background-color: var(--color-azulPrimario);
     color: white;
     font-weight: 300;
 }
 
 a {
     text-decoration: none;
-    color: #2a9d8f;
+    color: var(--color-verdeHover);
 }
 
 /* SOLICITUDES */
@@ -141,15 +148,15 @@ a {
 
 /** NAVBAR */
 #nav-solicitud a.color-user {
-    color: #2b5769;
+    color: var(--color-azulPrimario);
 }
 
 #nav-solicitud a.color-user:hover {
-    color: #2a9d8f;
+    color: var(--color-verdeHover);
 }
 
 #nav-solicitud .bg-brand {
-    background-color: #2b5769;
+    background-color: var(--color-azulPrimario);
 }
 
 #nav-solicitud .navbar {
@@ -175,7 +182,7 @@ a {
 
 .nav-tabs a {
     text-decoration: none;
-    color: #2b5769;
+    color: var(--color-azulPrimario);
 }
 
 .nav-tabs .nav-link {
@@ -187,27 +194,27 @@ a {
 
 .nav-tabs .nav-link:hover {
     color: #fff;
-    background-color: #2a9d8f;
-    border-color: #2a9d8f;
+    background-color: var(--color-verdeHover);
+    border-color: var(--color-verdeHover);
 }
 
 .nav-tabs .nav-link.active {
     color: #fff;
-    background-color: #2b5769;
-    border-color: #2b5769;
+    background-color: var(--color-azulPrimario);
+    border-color: var(--color-azulPrimario);
 }
 
 /* BOTON DE CREAR SOLICITUD */
 .btn-round {
     border-radius: 50%;
     padding: 0.375rem 0.375rem;
-    background-color: #2b5769;
-    border-color: #2b5769;
+    background-color: var(--color-azulPrimario);
+    border-color: var(--color-azulPrimario);
 }
 
 .btn-round:hover {
-    background-color: #2a9d8f;
-    border-color: #2a9d8f;
+    background-color: var(--color-verdeHover);
+    border-color: var(--color-verdeHover);
 }
 
 .bi {

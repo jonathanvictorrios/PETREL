@@ -5,7 +5,7 @@
             <header>
                 <nav class="navbar navbar-expand-md navbar-light ">
                     <!-- Inicio encabezado -->
-                    <div class="container-fluid pb-5">
+                    <div class="container-fluid">
                         <!-- Comienzo contenedor -->
                         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#MenuSuperior"
                             aria-controls="MenuSuperior" aria-expanded="false" aria-label="Menú superior">
@@ -16,7 +16,7 @@
                             <!-- Comienzo contenido menú -->
                             <div class="d-flex align-items-end p-3">
                                 <!-- Comienzo contenido a la derecha -->
-                                <ul class="navbar-nav me-auto mb-2 mb-md-0">
+                                <ul class="navbar-nav me-auto ">
                                     <li class="nav-item">
                                         <a class="nav-link" href="#pregfrecuentes">Preguntas frecuentes</a>
                                     </li>
@@ -37,13 +37,13 @@
             </header>
             <main>
                 {{-- comienzo 1era.fila con tres columnas --}}
-                <div id="home" class="row mt-5">
-                    <div class="col-6 ">
-                        <img src="{{ asset('img/icono_petrel.ico') }}" alt="Icono Petrel" style="min-height: 400px">
+                <div id="home" class="row">
+                    <div class="col-4 p-5">
+                        <img src="{{ asset('img/icono_petrel.ico') }}" alt="Icono Petrel" style="min-height: 400px"> 
                     </div>
-                    <div class="col-6  mt-5">
-                        <h1 class="titulohome">Petrel</h1>
-                        <p class="p_home">El sistema de certificación de materias <br> de la Universidad Nacional del Comahue</p>
+                    <div class="col-8  mt-5 ps-5">
+                        <h1 class="titulohome p-3">Petrel</h1>
+                        <p class="p_home ps-3">El sistema de certificación de materias <br> de la Universidad Nacional del Comahue</p>
                     </div>
                     
                         <!-- Modal -->
@@ -97,7 +97,7 @@
                 </div> <!-- Fin primera fila -->
                 {{-- segunda fila titulo preguntas --}}
                 <div class="row">
-                    <h2 class=" text-center">Preguntas Frecuentes</h2>
+                    <h4 class="tituloPregFrec text-center">Preguntas Frecuentes</h4>
                 </div>
                 {{-- tercera fila icono a preguntas frecuentes --}}
                 <div class="row">
@@ -111,8 +111,11 @@
                 <div class="accordion accordion-flush px-3" id="accordionFlushExample">
                     <div class="accordion-item row border-bottom border-top-0 border-3 border-success mb-5">
                         <div class="col-10 pt-3">
-                            <h2 class="accordion-header botonacordeon ps-3" id="flush-headingOne">
-                                ¿Qué necesito para iniciar una solicitud? </h2>
+                            <button class="botonacordeon" type="button" data-bs-toggle="collapse"
+                            data-bs-target="#flush-collapseOne" aria-expanded="false" aria-controls="flush-collapseOne">
+                            <h6 class="accordion-header ps-3">
+                                ¿Qué necesito para iniciar una solicitud? </h6>
+                            </button> 
                         </div>
                         <div class="col-2 pt-3 ps-3">
                             <button class="botonacordeon ver" type="button" data-bs-toggle="collapse"
@@ -134,8 +137,11 @@
                     </div>
                     <div class="accordion-item row border-bottom border-top-0 border-3 border-success mb-5">
                         <div class="col-10 pt-3">
-                            <h2 class="accordion-header botonacordeon ps-3" id="flush-headingTwo">
-                                Recibí el mail. ¿Cómo descargo mi certificado? </h2>
+                            <button class="botonacordeon " type="button" data-bs-toggle="collapse"
+                            data-bs-target="#flush-collapseTwo" aria-expanded="false" aria-controls="#flush-collapseTwo">
+                            <h6 class="accordion-header ps-3" id="flush-headingTwo">
+                                Recibí el mail. ¿Cómo descargo mi certificado? </h6>
+                            </button>
                         </div>
                         <div class="col-2 pt-3 ps-3">
                             <button class="botonacordeon ver" type="button" data-bs-toggle="collapse"
@@ -160,9 +166,13 @@
                     <div class="col-6  p-4 ">
                         <div class="accordion accordion-flush px-3" id="accordionFlushExample">
                             <div class="accordion-item row border-bottom border-top-0 border-3 border-success mb-5">
-                                <div class="col-10 ">
-                                    <h2 class="accordion-header botonacordeon ps-3" id="flush-headingThree">
-                                        ¿Cómo puedo consultar el estado de mi solicitud? </h2>
+                                <div class="col-10 p-3">
+                                    <button class="botonacordeon " type="button" data-bs-toggle="collapse"
+                                    data-bs-target="#flush-collapseThree" aria-expanded="false"
+                                    aria-controls="flush-collapseOne">
+                                    <h6 class="accordion-header ps-3" id="flush-headingThree">
+                                        ¿Cómo puedo consultar el estado de mi solicitud? </h6>
+                                    </button>
                                 </div>
                                 <div class="col-2 pt-3 ps-3">
                                     <button class="botonacordeon ver" type="button" data-bs-toggle="collapse"
@@ -185,15 +195,19 @@
                             </div>
                             <div class="accordion-item row border-bottom border-top-0 border-3 border-success mb-5">
                                 <div class="col-10 p-3">
-                                    <h2 class="accordion-header botonacordeon ps-3" id="flush-headingFour">
-                                        ¿Cuánto se demora en finalizar mi solicitud? </h2>
-                                </div>
+                                    <button class="botonacordeon" type="button" data-bs-toggle="collapse"
+                                    data-bs-target="#flush-collapseFour" aria-expanded="false"
+                                    aria-controls="flush-collapseFour">
+                                    <h6 class="accordion-header ps-3" id="flush-headingFour">
+                                        ¿Cuánto se demora en finalizar mi solicitud? </h6>
+                                 </button>
+                                    </div>
                                 <div class="col-2 pt-3 ps-3">
-                                    <button class="botonacordeon ver" type="button" data-bs-toggle="collapse"
+                                    <button class="ver" type="button" data-bs-toggle="collapse"
                                         data-bs-target="#flush-collapseFour" aria-expanded="false"
                                         aria-controls="flush-collapseFour">
                                         <i class="fas fa-plus-square "></i>
-                                    
+                                    </button>
                                     {{-- <button class="botonacordeon cerrar" type="button" data-bs-toggle="collapse"
                                         data-bs-target="#flush-collapseFour" aria-expanded="false"
                                         aria-controls="flush-collapseFour">
@@ -207,8 +221,6 @@
                                         ratione voluptatem illo rem eius ipsam? Fuga dolore quia ducimus.</div>
                                 </div>
                             </div>
-
-
                         </div>
                     </div>
                 </div>
