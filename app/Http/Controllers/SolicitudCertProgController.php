@@ -160,8 +160,31 @@ class SolicitudCertProgController extends Controller
 
         $Mostrar->UltimoEstado=($solicitud->estados)->last()->estado_descripcion->descripcion;
         $Mostrar->FechaUltimoEstado=($solicitud->estados)->last()->created_at;
-        print($Mostrar);
+     //   print($Mostrar);
         
         return $Mostrar;
+    }
+
+      /**
+     * Asigna una solicitud
+     *
+     * @param  int  $idSolicitud
+     * @param  int  $idUsuarioAdministrativo
+     * @return \Illuminate\Http\Response
+     */
+    public function asignar($idSolicitud,$idUsuarioAdministrativo)
+    {
+       
+
+        //return view('solicitud.asignar');
+        $solicitud = SolicitudCertProg::findOrFail($idSolicitud);
+        $usuarioAdministrativo = Usuario::findOrFail($idUsuarioAdministrativo);
+
+        $nuevoEstado = new Estado;
+        $nuevoEstado->id_solicitud=$solicitud->id_solicitud;
+        print($solicitud);
+        print($usuarioAdministrativo);
+
+
     }
 }
