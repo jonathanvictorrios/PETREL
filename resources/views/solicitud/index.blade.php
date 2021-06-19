@@ -5,44 +5,11 @@
 
 @include('estructura/header')
 
-<div id="nav-solicitud" class="container shadow-lg mt-5 pb-3 bg-light rounded">
-  <!-- Navbar -->
-  <nav class="navbar navbar-expand-lg navbar-light bg-white rounded-top">
-    <!-- Container wrapper -->
-    <div class="container-fluid pe-4">
-      <!-- Navbar brand -->
-      <a class="navbar-brand bg-brand py-2 px-5 rounded-top rounded-end" href="/">
-        <img src={{ asset('img/logo_petrel-02.png') }} alt="Logo Petrel" width="60">
-      </a>
-      <!-- Toggle button -->
-      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-      <!-- User -->
-      <div class="collapse navbar-collapse justify-content-end" id="navbarSupportedContent">
-        <ul class="navbar-nav">
-          <!-- Icon usuario -->
-          <li class="dropdown">
-            <a href="#" class="dropdown-toggle color-user fs-3" data-toggle="dropdown">
-              <span class="fas fa-user fa-fw" aria-hidden="true" title="User"></span> Lara Galaz
-            </a>
-            <div id="login-dp" class="dropdown-menu">
-              <a class="dropdown-item" href="../index/perfil.php">
-                <span class="fas fa-user fa-fw" aria-hidden="true" title="Perfil"></span> Perfil </a>
-              <a class="dropdown-item" href="../index/configuracion.php"><span class="fas fa-cog fa-fw " aria-hidden="true" title="Configuración"></span> Configuración</a>
-              <div class="dropdown-divider"></div>
-              <a class="dropdown-item logout" href="#"><span class="fas fa-sign-out-alt fa-fw" aria-hidden="true" title="Cerrar sesión"></span> Cerrar sesión</a>
-            </div>
-          </li>
-        </ul>
-      </div>
-    </div>
-    <!-- Container wrapper -->
-  </nav>
+<div id="nav-solicitud" class="container shadow-lg my-5 bg-light rounded">
   <!-- Solicitudes -->
-  <div class="container my-5 px-5">
+  <div class="container px-md-5 px-3 py-5">
     <h3>Mis solicitudes</h3>
-    <div class="justify-content-between d-flex align-items-center">
+    <div class="pt-2 justify-content-between d-flex align-items-center">
       <div class="nav nav-tabs col-9" id="v-tabs-tab" role="tablist">
         <a class=" nav-link py-3 px-4 active" id="v-tabs-actuales-tab" data-bs-toggle="tab" href="#v-tabs-actuales" role="tab" aria-controls="v-tabs-actuales" aria-selected="true">Actuales</a>
         <a class="nav-link ms-2 py-3 px-4" id="v-tabs-completas-tab" data-bs-toggle="tab" href="#v-tabs-completas" role="tab" aria-controls="v-tabs-completas" aria-selected="false">Completadas</a>
@@ -65,7 +32,7 @@
                 <thead>
                   <tr>
                     <th scope="col">Nro Solicitud</th>
-                    <th scope="col">Nombre y Apellido</th>
+                    <th scope="col">Solicitante</th>
                     <th scope="col">Legajo</th>
                     <th scope="col">Carrera</th>
                     <th scope="col">Unidad Académica</th>
@@ -98,7 +65,7 @@
                 <thead>
                   <tr>
                     <th scope="col">Nro Solicitud</th>
-                    <th scope="col">Nombre y Apellido</th>
+                    <th scope="col">Solicitante</th>
                     <th scope="col">Legajo</th>
                     <th scope="col">Carrera</th>
                     <th scope="col">Unidad Academica</th>
@@ -123,13 +90,6 @@
         </div>
       </div>
     </div>
-  </div>
-</div>
-
-
-<div class="container my-5">
-  <div class="px-5">
-
   </div>
 </div>
 

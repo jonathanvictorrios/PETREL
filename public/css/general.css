@@ -23,15 +23,60 @@
 }
 /*      Fuentes de Google:      */
 @import url("https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,400;0,700;1,400;1,700&display=swap");
-@import url('https://fonts.googleapis.com/css2?family=Rancho&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Rancho&display=swap");
 body {
-    background: #e5e5e5;
+    background: #efefef;
     font-family: "Roboto", sans-serif;
 }
 
 #cuerpo {
-    background: #fff;
+    background: #efefef;
+    font-family: "Roboto", sans-serif;
 }
+/*--------------estilos del home----------------------- */
+.home {
+    background: rgb(247, 247, 248);
+    background: linear-gradient(
+        198deg,
+        rgba(247, 247, 248, 1) 9%,
+        rgba(43, 87, 105, 1) 64%
+    );
+    height: 100 vh;
+}
+.titulohome {
+    font-family: "Rancho", cursive;
+    font-size: 64px;
+}
+/*Icono preguntas frecuentes*/
+.vermas {
+    color: black;
+    font-size: 30px;
+    font-weight: 900;
+    margin: 0%;
+}
+.vermasicono {
+    text-decoration: none;
+    color: black;
+    font-size: 50px;
+    font-weight: 900;
+}
+.vermasicono:hover {
+    text-decoration: none;
+    color: #2a9d8f;
+    font-size: 50px;
+    font-weight: 900;
+}
+.botonacordeon {
+    border: 0;
+    font-size: 20px;
+    background: white;
+}
+.ver {
+    color: #2b5769;
+    font-size: 25px;
+}
+
+/*-------------FIN ESTILOS HOME-----------------------------*/
 #pie {
     background: #6c757d;
 }
@@ -82,7 +127,7 @@ body {
     font-size: 50px;
     font-weight: 900;
 }
-.vermasicono:hover{
+.vermasicono:hover {
     text-decoration: none;
     color: var(--color-verdeHover);
     font-size: 50px;
@@ -176,23 +221,24 @@ a {
 }
 
 /** NAV-TABS **/
-.nav-tabs {
+#nav-solicitud .nav-tabs {
     border-bottom: 0;
 }
 
-.nav-tabs a {
+#nav-solicitud .nav-tabs a {
     text-decoration: none;
     color: var(--color-azulPrimario);
 }
 
-.nav-tabs .nav-link {
-    background-color: #fff;
+#nav-solicitud .nav-tabs .nav-link {
+    background-color: #2b5769;
+    color: #fff;
     border-top-left-radius: 0.55rem;
     border-top-right-radius: 0.55rem;
     border-bottom: 0;
 }
 
-.nav-tabs .nav-link:hover {
+#nav-solicitud .nav-tabs .nav-link:hover {
     color: #fff;
     background-color: var(--color-verdeHover);
     border-color: var(--color-verdeHover);
@@ -202,6 +248,11 @@ a {
     color: #fff;
     background-color: var(--color-azulPrimario);
     border-color: var(--color-azulPrimario);
+}
+
+/* Borde tabla */
+#v-tabs-tabContent.tab-content {
+    border: 1px solid #2b5769;
 }
 
 /* BOTON DE CREAR SOLICITUD */
