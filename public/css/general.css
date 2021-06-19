@@ -23,7 +23,18 @@ body {
 
 #cuerpo {
     background: #efefef;
-    font-family: "Roboto", sans-serif;
+}
+#pie {
+    background: #6c757d;
+}
+#portada {
+    height: 100vh;
+}
+#logoHeader {
+    background: #2b5769;
+}
+.navbar-brand > img {
+    max-height: 24px;
 }
 /*--------------estilos del home----------------------- */
 .home {
@@ -69,15 +80,6 @@ body {
 }
 
 /*-------------FIN ESTILOS HOME-----------------------------*/
-#pie {
-    background: #6c757d;
-}
-#portada {
-    height: 100vh;
-}
-#logoHeader {
-    background: #2b5769;
-}
 
 /* Estilo para hacer funcionar botón, ver volverArriba.js */
 #volverArriba {

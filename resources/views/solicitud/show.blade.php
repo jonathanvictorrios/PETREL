@@ -4,8 +4,8 @@
 @php($titulo = 'Petrel - Ver detalles solicitud')
 
 @include('estructura/header')
-<main class="p-5" id=cuerpo> <!-- Inicio main cuerpo -->
-    <div class="d-inline">
+<main class=p-2 id=cuerpo> <!-- Inicio main cuerpo -->
+    <div class=container>
         <a href="{{url()->previous()}}" class="lead"><i class="fas fa-chevron-left me-2"></i>Atrás</a>
     </div>
 
@@ -13,7 +13,7 @@
 <div class="container-fluid p-1 mx-auto">
     <div class="row d-flex justify-content-center">
         <div class="col-xl-7 col-lg-8 col-md-9 col-11">
-           
+
             <div class="card card-form bg-light">
                 <div class="tittle card-header p-2 bg-light">
                     <h2 class="text-center fw-bold">Detalles de Solicitud</h2>
@@ -36,7 +36,7 @@
                             <input type="text" id="nombre " class="nombre border-0" name="nombre" disabled>
                             {{-- <input type="text" id="nombre " class="nombre border-0" name="nombre" value='{{$solicitud->usuarioEstudiante->nombre}}' disabled> --}}
                         </div>
-                       
+
                     </div>
                     {{-- legajo --}}
                     <div class="row justify-content-between text-left cell">
@@ -50,7 +50,7 @@
                             <input type="text" id="legajo" class="legajo border-0" name='legajo' disabled>
                             {{-- <input type="text" id="legajo" class="legajo border-0" name='legajo' value='{{$solicitud->legajo}}' disabled> --}}
                         </div>
-                      
+
                     </div>
                     {{-- carrera --}}
                     <div class="row justify-content-between text-left cell">
