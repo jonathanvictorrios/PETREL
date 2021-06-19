@@ -4,19 +4,19 @@
 @php($titulo = 'Petrel - Registro de usuario')
 
 @include('estructura/header')
-<main class="p-5" id=cuerpo> <!-- Inicio main cuerpo -->
-    <div class="container p-5">
+<main class="p-5" id="cuerpo"> <!-- Inicio main cuerpo -->
+    <div class="d-inline">
         <a href="{{url()->previous()}}" class="lead"><i class="fas fa-chevron-left me-2"></i>Atrás</a>
     </div>
 
 {{-- inicio de registro de usuario --}}
-    <div class="container-fluid px-1 py-5 mx-auto">
-        <div class="row d-flex justify-content-center">
+    <div class="container-fluid p-1 mx-auto">
+        <div class="col d-flex justify-content-center">
             <div class="col-xl-7 col-lg-8 col-md-9 col-11">
-                <div class="tittle">
-                    <h2 class="text-center fw-bold">Registro de Usuario</h2>
-                </div>
-                <div class="card card-form">
+                <div class="card card-form bg-light">
+                    <div class="tittle card-header p-2 bg-light">
+                        <h2 class="text-center fw-bold">Registro de Usuario</h2>
+                    </div>
                     <form class="">
                         <div class="row justify-content-between text-left">
                             <div class="form-group col-sm-6 flex-column d-flex py-3">
