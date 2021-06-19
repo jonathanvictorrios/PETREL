@@ -3,20 +3,20 @@
 /*
 --- Paleta de colores del proyecto ---
 #BBBBBB - Gris
-#2B5769 - Azul Primario
+#2b5769 - Azul Primario
 #40768C - Azul Hover
 #2A7977 - Verde Secundario
-#2A9D8F - Verde Hover
+#2a9d8f - Verde Hover
 #E9C46A - Amarillo Advertencia
 #EE5551 - Naranja Peligro
 */
 
 /*Variables de paleta del documento*/
 :root{
---color-azulPrimario: #2B5769;
+--color-azulPrimario: #2b5769;
 --color-azulHover: #40768C;
 --color-verdeSecundario: #2A7977;
---color-verdeHover: #2A9D8F;
+--color-verdeHover: #2a9d8f;
 --color-amarilloAdvertencia: #E9C46A;
 --color-naranjaPeligro: #EE5551;
 --color-gris: #BBBBBB;
@@ -33,50 +33,7 @@ body {
     background: #efefef;
     font-family: "Roboto", sans-serif;
 }
-/*--------------estilos del home----------------------- */
-.home {
-    background: rgb(247, 247, 248);
-    background: linear-gradient(
-        198deg,
-        rgba(247, 247, 248, 1) 9%,
-        rgba(43, 87, 105, 1) 64%
-    );
-    height: 100 vh;
-}
-.titulohome {
-    font-family: "Rancho", cursive;
-    font-size: 64px;
-}
-/*Icono preguntas frecuentes*/
-.vermas {
-    color: black;
-    font-size: 30px;
-    font-weight: 900;
-    margin: 0%;
-}
-.vermasicono {
-    text-decoration: none;
-    color: black;
-    font-size: 50px;
-    font-weight: 900;
-}
-.vermasicono:hover {
-    text-decoration: none;
-    color: #2a9d8f;
-    font-size: 50px;
-    font-weight: 900;
-}
-.botonacordeon {
-    border: 0;
-    font-size: 20px;
-    background: white;
-}
-.ver {
-    color: #2b5769;
-    font-size: 25px;
-}
 
-/*-------------FIN ESTILOS HOME-----------------------------*/
 #pie {
     background: #6c757d;
 }
@@ -180,50 +137,11 @@ a {
 .form-select {
     height: 25px;
 }
-/* SOLICITUDES */
 
-/** CONTAINER **/
-#nav-solicitud.container,
-#nav-solicitud.container-fluid,
-#nav-solicitud.container-lg,
-#nav-solicitud.container-md,
-#nav-solicitud.container-sm,
-#nav-solicitud.container-xl,
-#nav-solicitud.container-xxl {
-    padding-right: 0;
-    padding-left: 0;
-}
 
-/** NAVBAR */
-#nav-solicitud a.color-user {
-    color: var(--color-azulPrimario);
-}
 
-#nav-solicitud a.color-user:hover {
-    color: var(--color-verdeHover);
-}
 
-#nav-solicitud .bg-brand {
-    background-color: var(--color-azulPrimario);
-}
-
-#nav-solicitud .navbar {
-    padding-top: 0;
-    padding-bottom: 0;
-}
-
-#nav-solicitud .container,
-#nav-solicitud .container-fluid,
-#nav-solicitud .container-lg,
-#nav-solicitud .container-md,
-#nav-solicitud .container-sm,
-#nav-solicitud .container-xl,
-#nav-solicitud .container-xxl {
-    padding-right: 0;
-    padding-left: 0;
-}
-
-/** NAV-TABS **/
+/*NAV-TABS */
 #nav-solicitud .nav-tabs {
     border-bottom: 0;
 }
@@ -234,7 +152,7 @@ a {
 }
 
 #nav-solicitud .nav-tabs .nav-link {
-    background-color: #2b5769;
+    background-color: var(--color-azulPrimario);
     color: #fff;
     border-top-left-radius: 0.55rem;
     border-top-right-radius: 0.55rem;
@@ -247,15 +165,15 @@ a {
     border-color: var(--color-verdeHover);
 }
 
-.nav-tabs .nav-link.active {
-    color: #fff;
-    background-color: var(--color-azulPrimario);
+#nav-solicitud .nav-tabs .nav-link.active {
+    color: var(--color-azulPrimario);
+    font-weight: bold;
+    background-color: #fff;
     border-color: var(--color-azulPrimario);
 }
-
 /* Borde tabla */
 #v-tabs-tabContent.tab-content {
-    border: 1px solid #2b5769;
+    border: 1px solid var(--color-azulPrimario);
 }
 
 /* BOTON DE CREAR SOLICITUD */
