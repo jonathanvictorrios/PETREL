@@ -1,11 +1,6 @@
-<<<<<<< HEAD
 @if ($message = Session::get('success'))
 <footer class=container> <!-- Inicio pie -->
     <div class="d-flex align-items-md-center row border badge-info p-2 text-light" id=pie>
-=======
-<footer class=mt-auto> <!-- Inicio pie -->
-    <div class="d-flex align-items-md-center row p-2 text-light" id=pie>
->>>>>>> f09a10bbe7623fa4eeb328d77ee2242ebcd87d94
         <div class="col text-md-start">
             <h5>Contactanos</h5>
             <p>

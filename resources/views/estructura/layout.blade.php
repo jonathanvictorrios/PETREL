@@ -29,18 +29,12 @@
     <script src="{{ asset('js/jquery/jquery.min.js') }}"></script>
 </head><!-- Fin cabecera -->
 
-<<<<<<< HEAD
+
 <body class="container my-3">
 @include('estructura/header')
     <main class="container p-2 shadow-lg" id=cuerpo> <!-- Inicio main cuerpo-->
         @yield('cuerpo')
-    </main> <!-- Fin main cuerpo -->
-=======
-
-<body class="d-flex flex-column min-vh-100">
->>>>>>> f09a10bbe7623fa4eeb328d77ee2242ebcd87d94
-
-    @yield('cuerpo')
+    </main> <!-- Fin main cuerpo -->   
 
 @include('estructura/footer')
 

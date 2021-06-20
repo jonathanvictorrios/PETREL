@@ -24,7 +24,7 @@ use App\Http\Controllers\UserController;
 Route::redirect('/', '/home');
 Route::view('/home', 'home');
 //usuario
-Route::view('/registro', '/usuario/create');
+
 //solicitudes
 Route::view('/crearsolicitud', '/solicitud/create');
 Route::view('/versolicitud', '/solicitud/show');
@@ -35,7 +35,7 @@ Route::view('/login', 'login');
 */
 
 // CRUD:
-<<<<<<< HEAD
+
 Route::get('/', function () {
     return view('welcome');
 });
@@ -51,6 +51,5 @@ Route::group(['middleware' => ['auth']], function() {
 
     Route::resource('user', UserController::class);
 });
-=======
+
 Route::resource('solicitud',SolicitudCertProgController::class);
->>>>>>> f09a10bbe7623fa4eeb328d77ee2242ebcd87d94
