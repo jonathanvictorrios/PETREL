@@ -12,6 +12,7 @@ use App\Models\EstadoDescripcion;
 
 
 
+
 class SolicitudCertProgController extends Controller
 {
     /**
@@ -82,9 +83,12 @@ class SolicitudCertProgController extends Controller
         $estado->id_usuario=null;
         $estado->updated_at=null;
         $estado->save();
+        
+        $solicitudes=SolicitudCertProg::all();//NECESITO RECUPERAR TODAS LAS SOLICITUDES PORQUE VUELVO EL RETORNO A LA VISTA.
+                                              // SI EL RETORNO NO ES HACIA solicitud.index puede sacarse
+        
 
-
-        return Redirect('/')->with('mensaje','Se ingreso la Solicitud {{$solicitud->id_solicitud}}');
+        return view('solicitud.index',compact('solicitudes'))->with('mensaje','Se ingreso la Solicitud');
     }
 
     /**
@@ -180,10 +184,19 @@ class SolicitudCertProgController extends Controller
         $solicitud = SolicitudCertProg::findOrFail($idSolicitud);
         $usuarioAdministrativo = Usuario::findOrFail($idUsuarioAdministrativo);
 
-        $nuevoEstado = new Estado;
-        $nuevoEstado->id_solicitud=$solicitud->id_solicitud;
-        print($solicitud);
-        print($usuarioAdministrativo);
+        //$nuevoEstado = new Estado;
+        $estadoController= new EstadoController;
+        $estadoController->asignarTramite($solicitud,$usuarioAdministrativo);
+        
+        print('--');
+        print($idSolicitud);
+        print($idUsuarioAdministrativo);
+         $solicitud->id_user_a->$idUsuarioAdministrativo->id_usuario;
+         $solicitud->save();
+        //$nuevoEstado->id_solicitud=$solicitud->id_solicitud;
+
+        // print($solicitud);
+        // print($usuarioAdministrativo);
 
 
     }

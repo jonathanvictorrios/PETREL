@@ -1,3 +1,17 @@
+version: '3'
+
+services:
+  web:
+    build:
+        context: .
+        dockerfile: ./Dockerfile
+    environment:
+        XDEBUG_CONFIG: remote_host=host.docker.internal remote_port=9000 remote_enable=1
+    ports:
+        - '80:80'
+    volumes:
+        - './web:/var/www/html'
+
 # For more information: https://laravel.com/docs/sail
 version: "3"
 services:
@@ -50,3 +64,4 @@ networks:
 volumes:
   sailmysql:
     driver: local
+    
