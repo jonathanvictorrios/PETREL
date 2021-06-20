@@ -104,14 +104,16 @@
                 </thead>
                 <tbody>
                   @foreach($solicitudes as $solicitud)
+                  @if($solicitud->UltimoEstado!='Terminado')
                   <tr>
-                    <th scope="row">{{$solicitud->id_solicitud}}</th>
-                    <td>{{$solicitud->usuarioEstudiante->apellido}} {{$solicitud->usuarioEstudiante->nombre}}</td>
-                    <td>{{$solicitud->legajo}}</td>
-                    <td>{{$solicitud->carrera->carrera}}</td>
-                    <td>{{$solicitud->unidadAcademica->unidad_academica}}</td>
-                    <td><a href="{{route('solicitud.show',$solicitud->id_solicitud)}}">Ver</a></td>
+                    <th scope="row">{{$solicitud->idSolicitud}}</th>
+                    <td>{{$solicitud->UsuarioEstudiante}}</td>
+                    <td>{{$solicitud->Legajo}}</td>
+                    <td>{{$solicitud->Carrera}}</td>
+                    <td>{{$solicitud->UnidadAcademica}}</td>
+                    <td><a href="{{route('solicitud.show',$solicitud->idSolicitud)}}">Ver</a></td>
                   </tr>
+                  @endif
                   @endforeach
                 </tbody>
               </table>
@@ -137,14 +139,16 @@
                 </thead>
                 <tbody>
                   @foreach($solicitudes as $solicitud)
+                  @if($solicitud->UltimoEstado=='Terminado')
                   <tr>
-                    <th scope="row">{{$solicitud->id_solicitud}}</th>
-                    <td>{{$solicitud->usuarioEstudiante->apellido}} {{$solicitud->usuarioEstudiante->nombre}}</td>
-                    <td>{{$solicitud->legajo}}</td>
-                    <td>{{$solicitud->carrera->carrera}}</td>
-                    <td>{{$solicitud->unidadAcademica->unidad_academica}}</td>
-                    <td><a href="{{route('solicitud.show',$solicitud->id_solicitud)}}">Ver</a></td>
+                    <th scope="row">{{$solicitud->idSolicitud}}</th>
+                    <td>{{$solicitud->UsuarioEstudiante}} </td>
+                    <td>{{$solicitud->Legajo}}</td>
+                    <td>{{$solicitud->Carrera}}</td>
+                    <td>{{$solicitud->UnidadAcademica}}</td>
+                    <td><a href="{{route('solicitud.show',$solicitud->idSolicitud)}}">Ver</a></td>
                   </tr>
+                  @endif
                   @endforeach
                 </tbody>
               </table>

@@ -10,13 +10,13 @@ class Notificacion extends Model
 {
     use HasFactory;
 
-    protected $table = 'notificaciones';
+    protected $table='notificaciones';
     protected $primaryKey = 'idNotificacion';
     protected $fillable = array('idEstado', 'mensaje', 'leida', 'descripcion');
-    protected $hidden = ['created_at', 'updated_at'];
+    protected $hidden = ['created_at','updated_at'];
 
     public function solicitudEstado()
     {
-        return $this->belongsTo(Estado::class, 'id_estado', 'idEstado');
+        return $this->belongsTo(Estado::class);
     }
 }
