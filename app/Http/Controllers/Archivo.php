@@ -56,9 +56,6 @@ class Archivo extends Controller
             $nombreArchivo = 'hoja_unida_final_firmada' . $archivo['idSolicitud'] . '.pdf';
             $hojaResumenFinal->url_hoja_unida_final = $request->file('archivo')->storeAs($ubicacion, $nombreArchivo, 'local');
         }
-        $hojaResumenFinal->id_hoja_resumen_final = 1;
-        $hojaResumenFinal->id_firma = 1;
-        $hojaResumenFinal->id_nota_central = 1;
 
         $hojaResumenFinal->save();
 
