@@ -67,7 +67,7 @@ class SolicitudCertProgController extends Controller
         
         $solicitud->legajo=$request->legajo;
         $solicitud->universidad_destino=$request->universidadDestino;
-        $solicitud->id_carrera=1; //CAMBIAR POR SELECT DE DEL FORM
+        $solicitud->id_carrera=$request->carrera; //CAMBIAR POR SELECT DE DEL FORM
         
 
      ///   $solicitud->usuarioEstudiante=$usuarioEstudiante; //asignamos el usuario a la solicitud
@@ -179,7 +179,6 @@ class SolicitudCertProgController extends Controller
     public function asignar($idSolicitud,$idUsuarioAdministrativo)
     {
        
-
         //return view('solicitud.asignar');
         $solicitud = SolicitudCertProg::findOrFail($idSolicitud);
         $usuarioAdministrativo = Usuario::findOrFail($idUsuarioAdministrativo);
@@ -187,11 +186,10 @@ class SolicitudCertProgController extends Controller
         //$nuevoEstado = new Estado;
         $estadoController= new EstadoController;
         $estadoController->asignarTramite($solicitud,$usuarioAdministrativo);
+
+        print($usuarioAdministrativo->id_usuario);
+        $solicitud->id_user_u=$usuarioAdministrativo->id_usuario;
         
-        print('--');
-        print($idSolicitud);
-        print($idUsuarioAdministrativo);
-         $solicitud->id_user_a->$idUsuarioAdministrativo->id_usuario;
          $solicitud->save();
         //$nuevoEstado->id_solicitud=$solicitud->id_solicitud;
 
