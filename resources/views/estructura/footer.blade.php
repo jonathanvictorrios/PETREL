@@ -1,7 +1,7 @@
 <footer class=mt-auto> {{-- Inicio pie --}}
     <div class="d-flex justify-content-md-center p-2 text-light" id=pie>
-        <div class="container row">
-            <div class="col text-sm-start">
+        <div class="container row pt-3">
+            <div class="col  text-sm-start">
                 <h5>Contactanos</h5>
                 <p>
                     Email: ejemplo@example.com<br>
