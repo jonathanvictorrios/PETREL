@@ -37,7 +37,7 @@ Route::view('/login', 'login');
 // CRUD:
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('home');
 });
 
 Route::resource('solicitud', SolicitudCertProgController::class);
