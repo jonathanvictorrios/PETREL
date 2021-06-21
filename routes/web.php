@@ -8,6 +8,9 @@ use App\Http\Controllers\ProgramaLocalController;
 use App\Http\Controllers\RendimientoAcademicoController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\SolicitudCertProgController;
+use App\Mail\MailEstudiante;
+use App\Http\Controllers\MailEstudianteController;
+use Illuminate\Support\Facades\Mail;
 
 /*
 |--------------------------------------------------------------------------
@@ -56,3 +59,14 @@ Route::get('buscarProgramas/{idSolicitud}',[ProgramaDriveController::class,'busc
 Route::post('descargarProgramas',[ProgramaLocalController::class,'descargarProgramas'])->name('descargarProgramas');
 
 Route::resource('hojaResumen',HojaResumenController::class);
+// Email registro solicitud
+Route::get('solicitud_iniciada', function(){
+    // $correo debe inicializarse con el $idSolicitud como variable
+    $idSolicitud = 3;
+    $correo = new MailEstudiante($idSolicitud);
+    $datosMail = $correo->datosMail;
+    //print_r($datosMail);
+    Mail::to($datosMail->correoUsuario)->send($correo);
+    //return ('Correo enviado');
+    return view('/home');
+});

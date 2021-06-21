@@ -1,0 +1,1 @@
+<a href="{{route('email_send')}}" class='btn btn-primary'>Enviar</a>
