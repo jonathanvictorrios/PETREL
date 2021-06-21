@@ -46,6 +46,6 @@
 <script src="{{ asset('js/volverArriba.js') }}"></script>
 <script src="{{ asset('js/selectUnidadAcademica.js') }}"></script>
 
-<button class="btn btn-secondary shadow-sm" onclick="irArriba()" id="volverArriba" title="Volver arriba"><i class="fas fa-chevron-up"></i></button>
+<button class="btn shadow-sm" onclick="irArriba()" id="volverArriba" title="Volver arriba"><i class="fas fa-chevron-up"></i></button>
 </body>
 </html>
