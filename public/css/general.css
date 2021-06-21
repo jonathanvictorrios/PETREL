@@ -101,7 +101,10 @@ body {
     border:0;
     background:white;
     }
-
+    .accordion-item{
+        border-bottom: solid 3px var(--color-verdeSecundario) !important;
+    
+    }
 
 /*-------------FIN ESTILOS HOME-----------------------------*/
 /*estilos de formularios*/
