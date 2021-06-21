@@ -31,7 +31,18 @@ body {
 
 #cuerpo {
     background: #efefef;
-    font-family: "Roboto", sans-serif;
+}
+#pie {
+    background: #6c757d;
+}
+#portada {
+    height: 100vh;
+}
+#logoHeader {
+    background: #2b5769;
+}
+.navbar-brand > img {
+    max-height: 24px;
 }
 
 #pie {
@@ -75,7 +86,7 @@ body {
 /*titulo preguntas frecuentes*/
 .tituloPregFrec{
     color:white;
-    
+
 }
 /*Icono preguntas frecuentes*/
 .vermasicono{

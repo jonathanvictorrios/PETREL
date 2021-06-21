@@ -4,8 +4,8 @@
 @php($titulo = 'Petrel - Registro de usuario')
 
 @include('estructura/header')
-<main class="p-5" id="cuerpo"> <!-- Inicio main cuerpo -->
-    <div class="d-inline">
+<main class=p-2 id=cuerpo> {{-- Inicio main cuerpo --}}
+    <div class="container">
         <a href="{{url()->previous()}}" class="lead"><i class="fas fa-chevron-left me-2"></i>Atrás</a>
     </div>
 
