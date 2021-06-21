@@ -7,7 +7,11 @@ use App\Models\HojaResumen;
 use App\Models\HojaResumenFinal;
 use App\Models\SolicitudCertProg;
 use App\Models\Usuario;
+use App\Http\Controllers\Helpers;
+use App\Models\Comentario;
+use Helpers as GlobalHelpers;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Artisan;
 use Illuminate\Support\Facades\DB;
 
 class Archivo extends Controller
@@ -28,12 +32,24 @@ class Archivo extends Controller
         }
         $datos['lista'] = $lista; */
         $estadosSolicitud = DB::table('estado')
-            ->join('solicitud_cert_prog', 'estado.idSolicitud', '=', 'solicitud_cert_prog.id_solicitud')
+            ->join('solicitud_cert_prog', 'estado.id_solicitud', '=', 'solicitud_cert_prog.id_solicitud')
             ->join('usuario', 'solicitud_cert_prog.id_usuario_estudiante', '=', 'usuario.id_usuario')
-            ->where('idEstadoDescripcion', '1')->get();
+            ->where('id_estado_descripcion', '1')->get();
 
         $datos['lista'] = $estadosSolicitud;
         /* ddd($estadosSolicitud); */
+        /*  +"id_estado": 1
+            +"id_solicitud": 3
+            +"id_estado_descripcion": 1
+            +"created_at": null
+            +"updated_at": null
+            +"id_usuario_estudiante": 1
+            +"id_user_u": 2
+            +"id_usuario": 1
+            +"nombre": "Maximiliano"
+            +"apellido": "Villalba"
+            +"legajo": "FAI-460"
+            +"email": "maxi@gmail.com" */
         return view('archivos.index', $datos);
     }
 
@@ -63,9 +79,6 @@ class Archivo extends Controller
         if ($request->hasFile('archivo')) {
             $hojaResumenFinal->url_pdf_hoja_unida_final = $request->file('archivo')->store('archivos', 'public');
         }
-        $hojaResumenFinal->id_hoja_resumen_final = 1;
-        $hojaResumenFinal->id_firma = 1;
-        $hojaResumenFinal->id_nota_central = 1;
 
         $hojaResumenFinal->save();
 
@@ -80,16 +93,20 @@ class Archivo extends Controller
      */
     public function show($id)
     {
-        $idHojaResumen = HojaResumen::where('id_solicitud', $id)->get()[0]->id_hoja_resumen;
-        $path = HojaResumenFinal::where('id_hoja_resumen_final', $idHojaResumen)->get()[0]->url_pdf_hoja_unida_final;
-        if ($path == null) {
-            $path = HojaResumenFinal::where('id_hoja_resumen_final', $idHojaResumen)->get()[0]->url_pdf_hoja_unida_sinfirmar;
+        $hojaResumen = DB::table('hoja_resumen')
+            ->join('hoja_resumen_final', 'hoja_resumen.id_hoja_resumen', '=', 'hoja_resumen_final.id_hoja_resumen_final')
+            ->where('id_solicitud', $id)
+            ->get()['0'];
+
+        if ($hojaResumen->url_pdf_hoja_unida_final == null) {
+            $path = $hojaResumen->url_pdf_hoja_unida_sinfirmar;
+        } else {
+            $path = $hojaResumen->url_pdf_hoja_unida_final;
         }
 
-        /* ddd($path); */
         $pathFile = storage_path('app/public/' . $path);
-        $headers = ['Content-Type: application/pdf'];
-        return response()->file($pathFile, $headers);
+        header("Cache-Control: no-cache, must-revalidate");
+        return response()->file($pathFile);
     }
 
     public function download($id)
@@ -101,6 +118,20 @@ class Archivo extends Controller
         }
         $pathFile = storage_path('app/public/' . $path);
         return response()->download($pathFile);
+    }
+
+    public function cargarComentario(Request $request, $idSolicitud)
+    {
+        $archivo = $request->all();
+        $nuevoComentario = $archivo['comentarioSolicitud'];
+        $comentario = new Comentario();
+        $comentario->descripcion = $nuevoComentario;
+        $comentario->id_solicitud = $idSolicitud;
+        $comentario->id_usuario = 2;
+
+        $comentario->save();
+
+        return redirect()->route('archivos.index');
     }
 
     /**

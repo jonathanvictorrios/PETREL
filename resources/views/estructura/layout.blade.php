@@ -6,6 +6,7 @@
 -->
 
 <html lang="es_AR">
+
 <head>
     <title>{{$titulo ?? 'Petrel'}}</title>
     <!-- Etiquetas meta requeridas -->
@@ -20,7 +21,7 @@
     <link rel="stylesheet" href="{{ asset('css/bootstrap/bootstrap.min.css') }}">
     <!-- Estilos propios: -->
     <link rel="stylesheet" href="{{ asset('css/general.css') }}">
-<meta name="csrf-token" content="{{ csrf_token() }}">
+    <meta name="csrf-token" content="{{ csrf_token() }}">
     {{-- font-family tìtulo home --}}
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=Rancho&display=swap" rel="stylesheet">
@@ -36,16 +37,19 @@
 
     @yield('cuerpo')
 
-@include('estructura/footer')
+    @include('estructura/footer')
 
-<!-- Carga en orden JQuery (en header), Bootstrap+Popper -->
-<script src="{{ asset('js/bootstrap/bootstrap.bundle.min.js') }}"></script>
+    <!-- Carga en orden JQuery (en header), Bootstrap+Popper -->
+    <script src="{{ asset('js/bootstrap/bootstrap.bundle.min.js') }}"></script>
 
-<!-- Carga scripts propios -->
-<script src="{{ asset('js/confirmarSalir.js') }}"></script>
-<script src="{{ asset('js/volverArriba.js') }}"></script>
-<script src="{{ asset('js/selectUnidadAcademica.js') }}"></script>
+    <!-- Carga scripts propios -->
+    <script src="{{ asset('js/confirmarSalir.js') }}"></script>
+    <script src="{{ asset('js/volverArriba.js') }}"></script>
+    <script src="{{ asset('js/selectUnidadAcademica.js') }}"></script>
+    <script src="{{ asset('js/archivos.js') }}"></script>
 
-<button class="btn btn-secondary shadow-sm" onclick="irArriba()" id="volverArriba" title="Volver arriba"><i class="fas fa-chevron-up"></i></button>
+    <button class="btn btn-secondary shadow-sm" onclick="irArriba()" id="volverArriba" title="Volver arriba"><i
+            class="fas fa-chevron-up"></i></button>
 </body>
+
 </html>

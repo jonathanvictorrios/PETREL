@@ -15,7 +15,7 @@
                         <br>
                         <input type="file" name="archivo" id="">
                         <br><br>
-                        <input type="hidden" value="3" name="idSolicitud">
+                        <input type="hidden" value="{{ Request::get('dato')}} " name=" idSolicitud">
                         <input type="submit" value="Guardar archivo" class="btn btn-success">
                     </form>
                 </div>

@@ -63,4 +63,5 @@ Route::resource('solicitud', SolicitudCertProgController::class);
 
 // Pruebas de carga de archivos de la solicitud
 Route::get('archivos/{id}/download', [Archivo::class, 'download'])->name('archivos.download');
+Route::get('archivos/{id}/comment', [Archivo::class, 'cargarComentario'])->name('archivos.cargarComentario');
 Route::resource('archivos', Archivo::class);
