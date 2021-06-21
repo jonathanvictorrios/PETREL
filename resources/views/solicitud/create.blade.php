@@ -4,19 +4,19 @@
 @php($titulo = 'Petrel - Crear solicitud')
 
 @include('estructura/header')
-<main class="p-5" id=cuerpo> <!-- Inicio main cuerpo -->
-    <div class="container p-5">
+<main class=p-2 id=cuerpo> {{-- Inicio main cuerpo --}}
+    <div class=container>
         <a href="{{url()->previous()}}" class="lead"><i class="fas fa-chevron-left me-2"></i>Atrás</a>
     </div>
 
 {{-- inicio formulario nueva solicitud --}}
-<div class="container-fluid px-1 py-5 mx-auto">
+<div class="container-fluid p-1 mx-auto">
     <div class="row d-flex justify-content-center">
         <div class="col-xl-7 col-lg-8 col-md-9 col-11">
-            <div class="tittle">
-                <h2 class="text-center fw-bold">Nueva Solicitud</h2>
-            </div>
-            <div class="card-form">
+            <div class="card-form bg-light">
+                <div class="tittle card-header p-2 bg-light">
+                    <h2 class="text-center fw-bold">Nueva Solicitud</h2>
+                </div>
                 <form class="form-card" action="{{route('solicitud.store')}}" method='POST'>
                     @csrf
                     {{-- ingrese nombre y apellido --}}
@@ -30,16 +30,13 @@
                             <input class="border-0 cell" type="text" id="apellido" name="apellido" placeholder="Ingrese todos sus apellidos">
                         </div>
                     </div>
-                    {{-- ingrese el legajo --}}
+                    {{-- elija unidad academica e ingrese el legajo --}}
                     <div class="row justify-content-between text-left">
                         <div class="form-group col-sm-6 flex-column d-flex py-3">
                             <label class="form-control-label px-3 py-2">Legajo</label>
                             <input class="border-0 cell" type="text" id="legajo" name="legajo" placeholder="Ingrese su legajo sin guion">
                         </div>
-                    </div>
-                    {{-- elija unidad académica --}}
-                    <div class="row justify-content-between text-left">
-                        <div class="form-group col-12 flex-column d-flex py-3">
+                        <div class="form-group col-6 flex-column d-flex py-3">
                             <label class="form-control-label px-3 py-2">Unidad Académica</label>
                             <select class="form-select border-0 rounded-0 cell" aria-label="Default select example" name="unidadAcademica">
                                 @foreach($unidadesAcademicas as $unidad)
@@ -48,6 +45,7 @@
                               </select>
                         </div>
                     </div>
+
                     {{-- elija la carrera --}}
                     <div class="row justify-content-between text-left">
                         <div class="form-group col-12 flex-column d-flex py-3">
@@ -62,8 +60,23 @@
                     {{-- ingrese universidad de destino --}}
                     <div class="row justify-content-between text-left ">
                         <div class="form-group col-12 flex-column d-flex py-3 ">
-                            <label class="form-control-label px-3 py-2">Universidad de Destino</label>
-                            <input class="border-0 cell" type="text" id='universidadDestino' name='universidadDestino' placeholder="Ingrese la universidad de destino">
+                            <label class="form-control-label px-3 py-2">Institución Educativa de Destino</label>
+                            <input class="border-0 cell" type="text" id='universidadDestino' name='universidadDestino' placeholder="Ingrese la Institución Educativa de destino">
+                        </div>
+                    </div>
+                    {{-- opcion extranjero --}}
+                    <div class="row justify-content-between text-left ">
+                        <div class="form-group col-12  ">
+                            <label class="form-control-label px-3 py-2">¿La Institución Educativa es extranjera?</label>
+                            {{-- <input class="border-0 cell" type="text" id='extranjero' name='extranjero' placeholder="Ingrese la Institución Educativa de destino"> --}}
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="radio" id="extrajero" value="si">
+                                <label class="form-check-label" for="extrajero">Si</label>
+                            </div>
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="radio" id="extrajero" value="no">
+                                <label class="form-check-label" for="extrajero">No</label>
+                            </div>
                         </div>
                     </div>
 

@@ -1,14 +1,15 @@
-<nav class="navbar sticky-md-top navbar-expand-md navbar-light bg-light"> <!-- Inicio encabezado -->
-    <div class=container-fluid> <!-- Comienzo contenedor -->
+<nav class="navbar navbar-expand-md navbar-light bg-light"> {{-- Inicio encabezado --}}
+    <div class="container-fluid user-select-none"> {{-- Comienzo contenedor --}}
 
-        <a href="/" class="navbar-brand">
-            <div class="border rounded-3 p-3" id=logoHeader>
-                <img src="{{ asset('img/icono_petrel.ico') }}" alt="Icono Petrel" style="max-height: 30px"><span class="text-light">Petrel</span>
+        <a href="/home">
+            <div class="navbar-brand bg-brand rounded-3 p-2 h-100" id=logoHeader title="Volver al inicio">
+                <img src="{{ asset('img/logo_petrel-02.png') }}" alt="Icono Petrel" class=img-fluid>
+                <span class="text-light">Petrel</span>
             </div>
         </a>
 
-        <div class="d-flex"> <!-- Comienzo contenido a la derecha -->
-            <ul class="navbar-nav me-auto mb-2 mb-md-0">
+        <div class="d-flex"> {{-- Comienzo contenido a la derecha --}}
+            <ul class="navbar-nav me-auto mb-2 mb-md-0"> {{-- Con el manejo de sesiones, se hará un if de Blade y se mostrará o no el menú del usuario (con su nombre en pantalla) --}}
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="#" id="MenuTest" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                         <i class="fas fa-tools mx-2"></i> Menú test
@@ -32,7 +33,7 @@
                     </ul>
                 </li>
             </ul>
-        </div> <!-- Fin contenido a la derecha -->
+        </div> {{-- Fin contenido a la derecha --}}
 
-    </div> <!-- Fin contenedor -->
-</nav> <!-- Fin encabezado -->
+    </div> {{-- Fin contenedor --}}
+</nav> {{-- Fin encabezado --}}
