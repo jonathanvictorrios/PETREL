@@ -41,7 +41,7 @@ body {
 }
 
 button,
-#botonPrimario {
+a.botonFormulario {
     border: none !important;
     background-color: var(--color-azulPrimario);
     color: white;
