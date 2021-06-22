@@ -40,7 +40,8 @@ Route::view('/modificaranio', '/carpetaAnio/edit');
 Route::view('/crearcarrera', '/carpetaCarrera/create');
 Route::view('/modificarcarrera', '/carpetaCarrera/edit');
 //programa
-
+Route::view('/crearprograma', '/programaDrive/create');
+Route::view('/modificarprograma', '/programaDrive/edit');
 Route::get('solicitud/{idSolicitud}/asignar/{idAdministrativo}', [SolicitudCertProgController::class, 'asignar'])->name('solicitud.asignar');
 
 // CRUD:
