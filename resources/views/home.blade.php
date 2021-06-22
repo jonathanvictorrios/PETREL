@@ -1,4 +1,4 @@
-@extends('estructura/layout')
+@extends('estructura.layout')
 @section('cuerpo')
 @php($titulo = 'Petrel - Inicio')
 <section class=" home">

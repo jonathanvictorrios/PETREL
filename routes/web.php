@@ -54,11 +54,9 @@ Route::resource('solicitud', SolicitudCertProgController::class);
 
 Auth::routes();
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::get('/home', [HomeController::class, 'index'])->name('home');
 Route::group(['middleware' => ['auth']], function() {
-
     Route::resource('roles', RoleController::class);
-
     Route::resource('user', UserController::class);
 });
 
