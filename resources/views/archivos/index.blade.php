@@ -8,13 +8,14 @@
         <div class="col-md-8">
             <div class="card">
                 <div class="card-body">
-                    <a class="btn btn-primary disabled" href="{{ route('archivos.show',0) }}" id="href-show">Ver mas</a>
+                    <!-- <a class="btn btn-primary disabled" href="{{ route('archivos.show',0) }}" id="href-show">Ver mas</a> -->
+                    <a class="btn btn-primary disabled" href="{{ route('archivos.download',0) }}"
+                        id="href-show">Descargar</a>
                     <a class="btn btn-primary disabled" href="{{ route('archivos.create', 'dato=0') }}"
-                        id="href-carga-archivo">Cargar
-                        archivo</a>
+                        id="href-carga-archivo">Adjuntar firmado</a>
                     <a class="btn btn-primary disabled" data-bs-toggle="modal" data-bs-target="#exampleModal"
                         id="href-comentar">
-                        Comentar
+                        Devolver a Dpto. Alumnos
                     </a>
                     <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel"
                         aria-hidden="true">
@@ -22,7 +23,7 @@
                             <form action="{{ route('archivos.cargarComentario',0) }}" method="get" id="formComentario">
                                 <div class="modal-content">
                                     <div class="modal-header">
-                                        <h5 class="modal-title" id="exampleModalLabel">Agregar un comentario</h5>
+                                        <h5 class="modal-title" id="exampleModalLabel">Agregue un comentario</h5>
                                         <button type="button" class="btn-close" data-bs-dismiss="modal"
                                             aria-label="Close"></button>
                                     </div>
