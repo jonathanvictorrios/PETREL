@@ -11,26 +11,26 @@
 {{-- inicion mostrar solicitud --}}
 <div class="container-fluid p-1 mx-auto">
     <div class="row d-flex justify-content-center">
-        <div class="col-xl-7 col-lg-8 col-md-9 col-11">
+        <div class="col-xl-6 col-lg-6 col-md-12 col-12">
 
             <div class="card card-form bg-light">
-                <div class="tittle card-header p-2 bg-light">
-                    <h2 class="text-center fw-bold">Detalles de Solicitud</h2>
+                <div class="row tittle card-header p-2 bg-light">
+                    <h2 class="col text-center fw-bold">Detalles de Solicitud</h2>
                 </div>
                 {{-- fecha y estado --}}
                 <div class="row justify-content-between text-left cell">
-                    <div class="form-group col-sm-6 flex-column d-flex py-3">
+                    <div class="form-group col col-sm-6 flex-column d-flex py-3">
                             <label class="form-control-label px-3 py-2">Fecha de Inicio</label>
                             <input type="text" id="fecha" class="fecha border-0" value="{{$solicitud->FechaUltimoEstado}}" disabled>
                     </div>
-                    <div class="form-group col-sm-6 flex-column d-flex py-3">
+                    <div class="form-group col col-sm-6 flex-column d-flex py-3">
                             <label class="form-control-label px-3 py-2">Estado</label>
                             <input type="text" id="estado" class="estado border-0" value='{{$solicitud->UltimoEstado}}'disabled>
                     </div>
                 </div>
                 {{-- nombres y apellidos --}}
                     <div class="row justify-content-between text-left cell">
-                        <div class="form-group col-sm-12 flex-column d-flex py-3">
+                        <div class="form-group col col-sm-12 flex-column d-flex py-3">
                             <label class="form-control-label px-3 py-2">Solicitante</label>
                             <input type="text" id="nombre " class="nombre border-0" name="nombre" disabled>
                              <input type="text" id="nombre " class="nombre border-0" name="nombre" value='{{$solicitud->UsuarioEstudiante}}' disabled> 
@@ -38,8 +38,8 @@
                     </div>
                     {{-- apellido --}}
                     <div class="row justify-content-between text-left cell">
-                        <div class="form-group col-6 flex-column d-flex py-3">
-                        <div class="form-group col-sm-6 flex-column d-flex py-3">
+                        <div class="form-group col col-6 flex-column d-flex py-3">
+                        <div class="form-group col col-sm-6 flex-column d-flex py-3">
                             <label class="form-control-label px-3 py-2">Apellidos</label>
                             <input type="text" id="apellido" class="apellido border-0" name="apellido" disabled>
                              <input type="text" id="apellido" class="apellido border-0" name="apellido" value='{{$solicitud->UsuarioEstudiante}}' disabled> 
@@ -47,7 +47,7 @@
                     </div>
                     {{-- legajo --}}
                     <div class="row justify-content-between text-left cell">
-                        <div class="form-group col-sm-6 flex-column d-flex py-3">
+                        <div class="form-group col col-sm-6 flex-column d-flex py-3">
                             <label class="form-control-label px-3 py-2">Legajo</label>
                             <input type="text" id="legajo" class="legajo border-0" name='legajo' disabled>
                             <input type="text" id="legajo" class="legajo border-0" name='legajo' value='{{$solicitud->Legajo}}' disabled>
@@ -55,12 +55,12 @@
                     </div>
                    {{-- unidad academica --}}
                     <div class="row justify-content-between text-left cell">
-                        <div class="form-group col-12 flex-column d-flex py-3">
+                        <div class="form-group col col-12 flex-column d-flex py-3">
                             <label class="form-control-label px-3 py-2">Unidad Académica</label>
                             <input type="text" id="unidad" class="unidad border-0" name="unidadAcademica" disabled>
                              <input type="text" id="unidad" class="unidad border-0" name="unidadAcademica" value='{{$solicitud->UnidadAcademica}}' disabled> 
                         </div>
-                        <div class="form-group col-6 flex-column d-flex py-3">
+                        <div class="form-group col col-6 flex-column d-flex py-3">
                             <label class="form-control-label px-3 py-2">Legajo</label>
                             <input type="text" id="legajo" class="legajo border-0" name='legajo' disabled>
                             {{-- <input type="text" id="legajo" class="legajo border-0" name='legajo' value='{{$solicitud->legajo}}' disabled> --}}
@@ -69,7 +69,7 @@
                     </div>
                     {{-- carrera --}}
                     <div class="row justify-content-between text-left cell">
-                        <div class="form-group col-12 flex-column d-flex py-3">
+                        <div class="form-group col col-12 flex-column d-flex py-3">
                             <label class="form-control-label px-3 py-2">Carrera</label>
                             <input type="text" id="carrera" class="carrera border-0" name='carrera' disabled>
                              <input type="text" id="carrera" class="carrera border-0" name='carrera' value='{{$solicitud->Carrera}}' disabled> 
@@ -77,7 +77,7 @@
                     </div>
                     {{-- universidad de destino --}}
                     <div class="row justify-content-between text-left">
-                        <div class="form-group col-12 flex-column d-flex py-3">
+                        <div class="form-group col col-12 flex-column d-flex py-3">
                             <label class="form-control-label px-3 py-2">Institución Educativa de Destino</label>
                             <input type="text" id="destino" class="destino border-0" name='universidadDestino' disabled>
                              <input type="text" id="destino" class="destino border-0" name='universidadDestino' value="{{$solicitud->UniversidadDestino}}" disabled>
