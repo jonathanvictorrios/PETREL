@@ -145,13 +145,12 @@
         <div class="row justify-content-center ">
             <div class="col-6 p-2 m-2">
                 {{-- ESTE FORM/BOTÒN DEBERIA SER VISIBLE SÒLO SI EL USUARIO ASIGNADO ES EL USUARIO LOGUEADO --}}
-                <form action="{{ route('hojaResumen.store') }}" method="POST" autocomplete="off" enctype="multipart/form-data">
+                <form action={{--"{{ route('hojaResumen.store') }}" --}}method="POST" autocomplete="off" enctype="multipart/form-data">
                     @csrf
                     {{--aca voy a recibir el $idSolicitud , por ahora utilizo un input , luego este $idSolicitud estara en un campo oculto --}}
                     <input type="hidden" id="idSolicitud" name="idSolicitud" value= "{{ $solicitud->idSolicitud}}">
-                    <input type="submit" value="enviar">
-                </form>
-                <button id= "" class="botonFormulario">comenzar trámite</button>
+                    <input type="submit" class="botonFormulario" value="comenzar trámite">
+            </form>
             </div>
         </div>
     </div>
