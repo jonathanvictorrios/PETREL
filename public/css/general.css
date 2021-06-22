@@ -140,6 +140,14 @@ a:hover {
     border-bottom: solid 3px var(--color-verdeSecundario) !important;
 }
 
+#p-frecuentes button {
+    background-color: white;
+}
+
+#p-frecuentes h6 {
+    line-height: inherit;
+}
+
 /*---------- FORMULARIOS ----------*/
 
 .tittle {
@@ -148,8 +156,8 @@ a:hover {
 
 .card-form {
     padding: 30px 50px;
-    /* margin-top: 10px; */
-    margin-bottom: 60px;
+    /* margin-top: 10px;
+    margin-bottom: 60px; */
     border: none !important;
     box-shadow: 0 6px 6px 0 rgba(0, 0, 0, 0.2);
 }
@@ -266,6 +274,7 @@ input::placeholder {
 #nav-solicitud .navbar-toggler {
     padding: 0;
     border: 0;
+    background-color: transparent;
     color: var(--color-azulPrimario);
 }
 

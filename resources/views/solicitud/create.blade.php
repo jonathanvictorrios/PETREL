@@ -5,12 +5,12 @@
 
 @include('estructura/header')
 <main class="p-2" id="cuerpo"> {{-- Inicio main cuerpo --}}
-    <div class="container">
+    <div class="container mt-3">
         <a href="{{url()->previous()}}" class="lead"><i class="fas fa-chevron-left me-2"></i>Atrás</a>
     </div>
 
     {{-- inicio formulario nueva solicitud --}}
-    <div class="container-fluid p-1 mx-auto">
+    <div class="container-fluid mb-5 p-1 mx-auto">
         <div class="row d-flex justify-content-center">
             <div class="col-xl-7 col-lg-8 col-md-9 col-11">
                 <div class="card card-form">
@@ -38,13 +38,13 @@
                             </div>
                             <div class="form-group col-sm-6 flex-column d-flex py-3">
                                 <label class="form-control-label px-3 py-2">Unidad Académica</label>
-                            </div>
-                            <select class="form-select border-0 rounded-0 cell" aria-label="Default select example" name="unidadAcademica" id="unidadAcademica">
-                                {{-- @foreach($unidadesAcademicas as $unidad)
+                                <select class="form-select border-0 rounded-0 cell" aria-label="Default select example" id="unidadAcademica" name="unidadAcademica">
+                                    {{-- @foreach($unidadesAcademicas as $unidad)
                                 <option value="{{$unidad->id_unidad_academica}}">{{$unidad->unidad_academica}}</option>
-                                @endforeach
-                                --}}
-                            </select>
+                                    @endforeach
+                                    --}}
+                                </select>
+                            </div>
                         </div>
 
                         {{-- elija la carrera --}}
@@ -60,14 +60,14 @@
                             </div>
                         </div>
                         {{-- ingrese universidad de destino --}}
-                        <div class="row justify-content-between text-left ">
+                        <div class="row justify-content-between text-left">
                             <div class="form-group col-12 flex-column d-flex py-3">
                                 <label class="form-control-label px-3 py-2">Institución Educativa de Destino</label>
                                 <input class="border-0 cell" type="text" id='universidadDestino' name='universidadDestino' placeholder="Ingrese la Institución Educativa de destino">
                             </div>
                         </div>
                         {{-- opcion extranjero --}}
-                        <div class="row justify-content-between text-left ">
+                        <div class="row justify-content-between text-left">
                             <div class="form-group col-12 py-3">
                                 <label class="form-control-label px-3 py-2">¿La Institución Educativa es extranjera?</label>
                                 {{-- <input class="border-0 cell" type="text" id='extranjero' name='extranjero' placeholder="Ingrese la Institución Educativa de destino"> --}}
@@ -93,6 +93,8 @@
         </div>
     </div>
     {{-- fin formulario nueva solicitud --}}
+
+
     {{-- <form action="{{route('solicitud.store')}}" method='POST' >
     @csrf
     -----------------formulario anterior-----------
