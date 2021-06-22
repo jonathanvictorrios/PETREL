@@ -40,22 +40,22 @@
                         {{-- ingrese nombre y apellido --}}
                         <div class="row justify-content-between text-left">
                             <div class="form-group col col-sm-6 flex-column d-flex py-3">
-                                <label class="form-control-label px-3 py-2">Nombres</label>
+                                <label class="form-control-label py-2">Nombres</label>
                                 <input class="border-0 cell" type="text" id="nombre" name="nombre" placeholder="Ingrese todos sus nombres">
                             </div>
                             <div class="form-group col col-sm-6 flex-column d-flex py-3">
-                                <label class="form-control-label px-3 py-2">Apellidos</label>
+                                <label class="form-control-label py-2">Apellidos</label>
                                 <input class="border-0 cell" type="text" id="apellido" name="apellido" placeholder="Ingrese todos sus apellidos">
                             </div>
                         </div>
                         {{-- elija unidad academica e ingrese el legajo --}}
                         <div class="row justify-content-between text-left">
                             <div class="form-group col col-sm-6 flex-column d-flex py-3">
-                                <label class="form-control-label px-3 py-2">Legajo</label>
+                                <label class="form-control-label py-2">Legajo</label>
                                 <input class="border-0 cell" type="text" id="legajo" name="legajo" placeholder="Ingrese su legajo sin guion">
                             </div>
                             <div class="form-group col col-sm-6 flex-column d-flex py-3">
-                                <label class="form-control-label px-3 py-2">Unidad Académica</label>
+                                <label class="form-control-label py-2">Unidad Académica</label>
                                 <select class="form-select border-0 rounded-0 cell" aria-label="Seleccionar unidad académica en el menú desplegable" id="unidadAcademica" name="unidadAcademica">
                                     {{-- @foreach($unidadesAcademicas as $unidad)
                                 <option value="{{$unidad->id_unidad_academica}}">{{$unidad->unidad_academica}}</option>
@@ -68,7 +68,7 @@
                         {{-- elija la carrera --}}
                         <div class="row justify-content-between text-left">
                             <div class="form-group col col-12 flex-column d-flex py-3">
-                                <label class="form-control-label px-3 py-2">Carrera</label>
+                                <label class="form-control-label py-2">Carrera</label>
                                 <select class="form-select border-0 rounded-0 cell" aria-label="Seleccionar carrera en el menú desplegable" id="carrera" name="carrera">
                                     {{-- @foreach($unidadesAcademicas as $unidad)
                                 <option value="{{$unidad->id_unidad_academica}}">{{$unidad->unidad_academica}}</option>
@@ -80,14 +80,14 @@
                         {{-- ingrese universidad de destino --}}
                         <div class="row justify-content-between text-left">
                             <div class="form-group col col-12 flex-column d-flex py-3">
-                                <label class="form-control-label px-3 py-2">Institución Educativa de Destino</label>
+                                <label class="form-control-label py-2">Institución Educativa de Destino</label>
                                 <input class="border-0 cell" type="text" id='universidadDestino' name='universidadDestino' placeholder="Ingrese la Institución Educativa de destino">
                             </div>
                         </div>
                         {{-- opcion extranjero --}}
                         <div class="row justify-content-between text-left">
                             <div class="form-group col col-12 py-3">
-                                <label class="form-control-label px-3 py-2">¿La Institución Educativa es extranjera?</label>
+                                <label class="form-control-label py-2">¿La Institución Educativa es extranjera?</label>
                                 {{-- <input class="border-0 cell" type="text" id='extranjero' name='extranjero' placeholder="Ingrese la Institución Educativa de destino"> --}}
                                 <div class="form-check form-check-inline">
                                     <input class="form-check-input" type="radio" id="extrajero" value="si">
@@ -102,7 +102,7 @@
 
                         <div class="row justify-content-center text-center py-4">
                             <div class="form-group col col-sm-6">
-                                <button id="boton" name="boton" type="submit" class="btn-block w-100 p-1 rounded-2">Enviar</button>
+                                <button id="boton" name="boton" type="submit" class="botonFormulario">Enviar</button>
                             </div>
                         </div>
                     </form>

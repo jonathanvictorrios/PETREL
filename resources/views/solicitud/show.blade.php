@@ -65,7 +65,7 @@
 {{-- inicion mostrar solicitud --}}
 <div class="container-fluid p-1 mx-auto">
 <div class="row d-flex justify-content-center">
-    <div class="col-xl-7 col-lg-8 col-md-9 col-12">
+    <div class="col-xl-6 col-lg-6 col-md-12 col-12">
 
 
         <div class="card card-form bg-light">

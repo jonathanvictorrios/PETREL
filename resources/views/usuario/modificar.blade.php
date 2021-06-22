@@ -20,21 +20,21 @@
                     <form class="">
                         <div class="row justify-content-between text-left">
                             <div class="form-group col col col-sm-6 flex-column d-flex py-3">
-                                <label class="form-control-label px-3 py-2">Nombres</label>
+                                <label class="form-control-label py-2">Nombres</label>
                                 <input class="border-0 cell" type="text" id="nombre" name="nombre" placeholder="Ingrese todos los nombres">
                             </div>
                             <div class="form-group col col-sm-6 flex-column d-flex py-3">
-                                <label class="form-control-label px-3 py-2">Apellidos</label>
+                                <label class="form-control-label py-2">Apellidos</label>
                                 <input class="border-0 cell" type="text" id="apellido" name="apellido" placeholder="Ingrese todos los apellidos">
                             </div>
                         </div>
                         <div class="row justify-content-between text-left">
                             <div class="form-group col col-sm-6 flex-column d-flex py-3">
-                                <label class="form-control-label px-3 py-2">Número de Documento</label>
+                                <label class="form-control-label py-2">Número de Documento</label>
                                 <input class="border-0 cell" type="number" id="dni" name="dni" placeholder="Ingrese el numero de DNI">
                             </div>
                             <div class="form-group col col-sm-6 flex-column d-flex py-3">
-                                <label class="form-control-label px-3 py-2">Rol</label>
+                                <label class="form-control-label py-2">Rol</label>
                                 <select class="form-select border-0 rounded-0 cell" aria-label="Default select example" id="rol" name="rol">
                                     {{-- @foreach($roles as $rol)
                                 <option value="{{$rol->id_rol}}">{{$rol->rol}}</option>
@@ -45,7 +45,7 @@
                         </div>
                         <div class="row justify-content-between text-left">
                             <div class="form-group col col-12 flex-column d-flex py-3">
-                                <label class="form-control-label px-3 py-2">Email</label>
+                                <label class="form-control-label py-2">Email</label>
                                 <input class="border-0 cell" type="text" id="email" name="email" placeholder="Ingrese el dirección de email">
                             </div>
                             
@@ -53,7 +53,7 @@
 
                         <div class="row justify-content-center text-center py-4">
                             <div class="form-group col col-sm-6">
-                                <button id="boton" name="boton" type="submit" class="btn-block w-100 p-1 rounded-2">Modificar</button>
+                                <button id="boton" name="boton" type="submit" class="botonFormulario">Modificar</button>
                             </div>
                         </div>
                     </form>

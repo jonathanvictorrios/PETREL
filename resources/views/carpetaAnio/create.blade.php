@@ -20,13 +20,13 @@
                         {{-- ingrese año --}}
                         <div class="row justify-content-between text-left">
                             <div class="form-group col col-12 flex-column d-flex py-3">
-                                <label class="form-control-label px-3 py-2">Año</label>
+                                <label class="form-control-label py-2">Año</label>
                                 <input class="border-0 cell" type="number" id="anio" name="anio" value="{{ old('anio') }}" placeholder="Ingrese año válido">
                             </div>
                         </div>
                         <div class="row justify-content-center text-center py-4">
                             <div class="form-group col col-sm-6">
-                                <button id="boton" name="boton" type="submit" class="btn-block w-100 p-1 rounded-2">Crear</button>
+                                <button id="boton" name="boton" type="submit" class="botonFormulario">Crear</button>
                             </div>
                         </div>
                     </form>
