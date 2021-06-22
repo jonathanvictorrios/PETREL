@@ -43,9 +43,14 @@
                         <p class=" "><span class="text-secondary fs-5">Carrera: </span> {{$solicitud->Carrera}}</p>      
                     </div>
                     {{-- universidad de destino --}}
-                    <div class="row justify-content-between text-left">
+                    <div class="row justify-content-center text-left">
                         <p class=" "><span class="text-secondary fs-5">Institución Educativa de Destino: </span> {{$solicitud->UniversidadDestino}}</p>      
                     </div>
+            </div>
+            <div class="row justify-content-center ">
+                <div class="col-6 p-2 m-2">
+                    <button id= "" class="botonFormulario">comenzar trámite</button>
+                </div>
             </div>
         </div>
     </div>

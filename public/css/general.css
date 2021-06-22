@@ -45,6 +45,12 @@ button {
     background-color: var(--color-azulPrimario);
     color: white;
     font-weight: 300;
+   
+}
+.botonFormulario{
+    border-radius:.25rem!important;
+    padding:.25rem !important;
+    width: 100% !important;
 }
 
 button:hover {
