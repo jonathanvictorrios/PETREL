@@ -32,6 +32,7 @@ Route::view('/perfil', '/usuario/perfil');
 //solicitudes
 Route::view('/crearsolicitud', '/solicitud/create');
 Route::view('/versolicitud', '/solicitud/show');
+Route::get('solicitud/{idSolicitud}/estudiante',[SolicitudCertProgController::class,'showEstudiante']);
 Route::get('solicitud/{idSolicitud}/asignar/{idAdministrativo}', [SolicitudCertProgController::class, 'asignar'])->name('solicitud.asignar');
 
 // CRUD:

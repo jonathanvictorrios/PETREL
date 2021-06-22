@@ -198,4 +198,15 @@ class SolicitudCertProgController extends Controller
 
 
     }
+    public function showEstudiante($id)
+    {
+        $solicitud= SolicitudCertProg::findOrFail($id);
+        $solicitud=$this->ObtenerDatosSolicitud($solicitud);
+        if(($solicitud->UltimoEstado!='Iniciado') && ($solicitud->UltimoEstado!='Terminado'))
+        {
+             $solicitud->UltimoEstado='en Tramite';
+        }
+        return view('solicitud.show',compact('solicitud'));
+
+    }
 }
