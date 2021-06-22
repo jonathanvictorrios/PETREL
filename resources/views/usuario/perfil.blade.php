@@ -1,7 +1,7 @@
 @extends('estructura/layout')
 
 @section('cuerpo')
-@php($titulo = 'Petrel - Mi cuenta')
+@php($titulo = 'Petrel - Mi cuenta')@endphp
 
 @include('estructura/header')
 <main class=p-2 id=cuerpo> {{-- Inicio main cuerpo --}}

@@ -26,6 +26,10 @@ Route::view('/home', 'home');
 //usuario
 Route::view('/registro', '/usuario/registro');
 Route::view('/perfil', '/usuario/perfil');
+Route::view('/crearusuario', '/usuario/create');
+Route::view('/verusuario', '/usuario/show');
+Route::view('/modificarusuario', '/usuario/modificar');
+Route::view('/borrarusuario', '/usuario/borrar');
 //solicitudes
 Route::view('/crearsolicitud', '/solicitud/create');
 Route::view('/versolicitud', '/solicitud/show');
