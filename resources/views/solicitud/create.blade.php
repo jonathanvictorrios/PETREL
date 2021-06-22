@@ -7,6 +7,13 @@
 <main class="p-2" id="cuerpo"> {{-- Inicio main cuerpo --}}
     <div class="container mt-3">
         <a href="{{url()->previous()}}" class="lead"><i class="fas fa-chevron-left me-2"></i>Atrás</a>
+
+        @if (session('mensaje') ) {{-- Mensaje final luego de submit --}}
+        <div class="alert alert-success alert-dismissible fade show d-flex align-items-center m-3 p-3">
+            <i class='fas fa-check-circle mx-2'></i>{{ session('mensaje') }}
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+        @endif
     </div>
 
     {{-- inicio formulario nueva solicitud --}}
@@ -19,6 +26,17 @@
                     </div>
                     <form class="form-card" action="{{route('solicitud.store')}}" method='POST'>
                         @csrf
+                        @if ($errors->any()) {{-- Valida en servidor y regresa mostrando los siguientes errores --}}
+                        <div class="alert alert-danger alert-dismissible fade show d-flex align-items-center m-3 p-3">
+                            <i class='fas fa-times-circle mx-2'></i><h5>Revisa los siguientes datos e inténtalo nuevamente</h5>
+                            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                            <ul>
+                                @foreach ($errors->all() as $error)
+                                    <li>{{ $error }}</li>
+                                @endforeach
+                            </ul>
+                        </div>
+                        @endif
                         {{-- ingrese nombre y apellido --}}
                         <div class="row justify-content-between text-left">
                             <div class="form-group col-sm-6 flex-column d-flex py-3">
@@ -38,7 +56,7 @@
                             </div>
                             <div class="form-group col-sm-6 flex-column d-flex py-3">
                                 <label class="form-control-label px-3 py-2">Unidad Académica</label>
-                                <select class="form-select border-0 rounded-0 cell" aria-label="Default select example" id="unidadAcademica" name="unidadAcademica">
+                                <select class="form-select border-0 rounded-0 cell" aria-label="Seleccionar unidad académica en el menú desplegable" id="unidadAcademica" name="unidadAcademica">
                                     {{-- @foreach($unidadesAcademicas as $unidad)
                                 <option value="{{$unidad->id_unidad_academica}}">{{$unidad->unidad_academica}}</option>
                                     @endforeach
@@ -47,12 +65,12 @@
                             </div>
                         </div>
 
-                    {{-- elija la carrera --}}
-                    <div class="row justify-content-between text-left">
-                        <div class="form-group col-12 flex-column d-flex py-3">
-                            <label class="form-control-label px-3 py-2">Carrera</label>
-                            <select class="form-select border-0 rounded-0 cell" aria-label="Default select example" id="carrera" name="carrera">
-                               {{-- @foreach($unidadesAcademicas as $unidad)
+                        {{-- elija la carrera --}}
+                        <div class="row justify-content-between text-left">
+                            <div class="form-group col-12 flex-column d-flex py-3">
+                                <label class="form-control-label px-3 py-2">Carrera</label>
+                                <select class="form-select border-0 rounded-0 cell" aria-label="Seleccionar carrera en el menú desplegable" id="carrera" name="carrera">
+                                    {{-- @foreach($unidadesAcademicas as $unidad)
                                 <option value="{{$unidad->id_unidad_academica}}">{{$unidad->unidad_academica}}</option>
                                 @endforeach
                                 --}}
