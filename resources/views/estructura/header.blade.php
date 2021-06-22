@@ -17,13 +17,11 @@
                         <i class="fas fa-tools mx-2"></i> Menú test
                     </a>
                     <ul class="dropdown-menu" aria-labelledby="MenuTest">
-                        <li><a class="dropdown-item" href="\solicitud">Listado solicitudes</a></li>
-                        <li><a class="dropdown-item" href="\solicitud\create">Nueva solicitud</a></li>
-                        <li>
-                            <hr class="dropdown-divider">
-                        </li>
-                        <li><a class="dropdown-item" href="\registro">Registrarse</a></li>
-                        <li><a class="dropdown-item disabled" href="\usuario">Listado usuarios</a></li>
+                        <li><a class="dropdown-item" href="/solicitud">Listado solicitudes</a></li>
+                        <li><a class="dropdown-item" href="/solicitud/create">Nueva solicitud</a></li>
+                        <li><hr class="dropdown-divider"></li>
+                        <li><a class="dropdown-item" href="/registro">Registrarse</a></li>
+                        <li><a class="dropdown-item disabled" href="/usuario">Listado usuarios</a></li>
                     </ul>
                 </li>
                 <li class="nav-item dropdown">
@@ -31,8 +29,8 @@
                         <i class="fas fa-user mx-2"></i> {{ $usuarioActivo ?? 'Menú usuario' }}
                     </a>
                     <ul class="dropdown-menu" aria-labelledby="MenuUsuario">
-                        <li><a class="dropdown-item" href="#">Mi cuenta</a></li>
-                        <li><a class="dropdown-item" href="\index#faq">Ayuda</a></li>
+                        <li><a class="dropdown-item" href="/perfil">Mi perfil</a></li>
+                        <li><a class="dropdown-item" href="/home#pregfrecuentes">Ayuda</a></li>
                         <li><a class="dropdown-item" href="#">Cerrar sesión</a></li>
                     </ul>
                 </li>

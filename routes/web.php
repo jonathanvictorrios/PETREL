@@ -25,7 +25,8 @@ Route::get('solicitud/{idSolicitud}/asignar/{idAdministrativo}', [SolicitudCertP
 Route::redirect('/', '/home');
 Route::view('/home', 'home');
 //usuario
-Route::view('/registro', '/usuario/create');
+Route::view('/registro', '/usuario/registro');
+Route::view('/perfil', '/usuario/perfil');
 //solicitudes
 Route::view('/crearsolicitud', '/solicitud/create');
 Route::view('/versolicitud', '/solicitud/show');
