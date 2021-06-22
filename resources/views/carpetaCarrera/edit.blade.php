@@ -15,14 +15,14 @@
                     <div class="row tittle border-bottom p-2">
                         <h2 class="col text-center fw-bold">Modificar Carpeta Carrera</h2>
                     </div>
-                    <form class="form-card" >
+                    <form class="form-card" action="{{ route('carrera.update', $carpetaCarrera->id_carpeta_carrera) }}" method="POST" autocomplete="off" enctype="multipart/form-data">
                         @csrf
                         {{-- ingrese carrera --}}
                         @method('put')
                         <div class="row justify-content-between text-left">
                             <div class="form-group col col-12 flex-column d-flex py-3">
                                 <label class="form-control-label px-3 py-2">Carrera</label>
-                                <input class="border-0 cell" type="text" id="idCarpetaCarrera" name="idCarpetaCarrera">
+                                <input class="border-0 cell" type="text" id="idCarpetaCarrera" name="idCarpetaCarrera" value="{{ old('idCarpetaCarrera', $carpetaCarrera->carrera->carrera) }}">
                             </div>
                         </div>
                         <div class="row justify-content-center text-center py-4">
