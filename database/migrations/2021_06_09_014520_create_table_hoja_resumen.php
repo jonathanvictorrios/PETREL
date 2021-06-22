@@ -15,21 +15,30 @@ class CreateTableHojaResumen extends Migration
     {
         Schema::create('hoja_resumen', function (Blueprint $table) {
             $table->id('id_hoja_resumen');
-            $table->string('firma_dig_dpto_alum');
-            $table->string('firma_dig_sec_acad_ua');
+            $table->string('url_hoja_unida');
+            // $table->string('firma_dig_dpto_alum');
+            // $table->string('firma_dig_sec_acad_ua');
             $table->timestamps();
 
+            $table->unsignedBigInteger('id_rendimiento_academico')->nullable();
+            $table->unsignedBigInteger('id_programa_local')->nullable();
+            $table->unsignedBigInteger('id_plan_estudio')->nullable();
+            $table->unsignedBigInteger('id_nota_dto_alumno')->nullable();
             $table->unsignedBigInteger('id_solicitud');
-            $table->unsignedBigInteger('id_historico');
-            $table->unsignedBigInteger('id_plan_estudio');
-            $table->unsignedBigInteger('id_nota_dpto');
-            $table->unsignedBigInteger('id_nota_central');
-
-            $table->foreign('id_solicitud')->references('id_solicitud')->on('solicitud_cert_prog');
-            $table->foreign('id_historico')->references('id_historico')->on('historico_academico');
+            
+            
+            
+            
+            $table->foreign('id_rendimiento_academico')->references('id_rendimiento_academico')->on('rendimiento_academico');
+            $table->foreign('id_programa_local')->references('id_programa_local')->on('programa_local');
             $table->foreign('id_plan_estudio')->references('id_plan_estudio')->on('plan_estudio');
-            $table->foreign('id_nota_dpto')->references('id_nota_dpto')->on('nota_dpto_alum');
-            $table->foreign('id_nota_central')->references('id_nota_central')->on('nota_admin_central');
+            $table->foreign('id_nota_dto_alumno')->references('id_nota_dto_alumno')->on('nota_dpto_alum');
+            $table->foreign('id_solicitud')->references('id_solicitud')->on('solicitud_cert_prog');
+            
+            
+
+            
+            //$table->foreign('id_nota_central')->references('id_nota_central')->on('nota_admin_central');
         });
     }
 

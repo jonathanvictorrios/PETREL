@@ -24,4 +24,8 @@ class Carrera extends Model
     {
         return $this->hasOne(SolicitudCertProg::class,'id_carrera');
     }*/
+    public function carpeta_carrera()
+    {
+        return $this->hasMany(CarpetaCarrera::class,'id_carrera','id_carrera');
+    }
 }
