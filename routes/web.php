@@ -23,6 +23,7 @@ use Illuminate\Support\Facades\Storage;
 |
 */
 
+Route::get('solicitud/{idSolicitud}/asignar/{idAdministrativo}', [SolicitudCertProgController::class, 'asignar'])->name('solicitud.asignar');
 // Vistas configuradas:
 Route::redirect('/', '/home');
 Route::view('/home', 'home');
@@ -38,21 +39,21 @@ Route::view('/login', 'login');
 */
 
 // CRUD:
-Route::resource('solicitud',SolicitudCertProgController::class);
+Route::resource('solicitud', SolicitudCertProgController::class);
 
-Route::resource('carpeta/anio',CarpetaAnioController::class);
-Route::get('buscarCarreras/{anio}',[CarpetaAnioController::class,'buscarCarreras'])->name('buscarCarreras');
-Route::get('crearCarpetaCarrera/{idCarpetaAnio}',[CarpetaAnioController::class,'crearCarpetaCarrera'])->name('crearCarpetaCarrera');
+Route::resource('carpeta/anio', CarpetaAnioController::class);
+Route::get('buscarCarreras/{anio}', [CarpetaAnioController::class, 'buscarCarreras'])->name('buscarCarreras');
+Route::get('crearCarpetaCarrera/{idCarpetaAnio}', [CarpetaAnioController::class, 'crearCarpetaCarrera'])->name('crearCarpetaCarrera');
 
-Route::resource('carpeta/carrera',CarpetaCarreraController::class);
-Route::get('verProgramas/{carrera}',[CarpetaCarreraController::class,'verProgramas'])->name('verProgramas');
-Route::get('agregarPrograma/{idCarpetaCarrera}',[CarpetaCarreraController::class,'agregarPrograma'])->name('agregarPrograma');
+Route::resource('carpeta/carrera', CarpetaCarreraController::class);
+Route::get('verProgramas/{carrera}', [CarpetaCarreraController::class, 'verProgramas'])->name('verProgramas');
+Route::get('agregarPrograma/{idCarpetaCarrera}', [CarpetaCarreraController::class, 'agregarPrograma'])->name('agregarPrograma');
 
-Route::resource('programaDrive',ProgramaDriveController::class);
+Route::resource('programaDrive', ProgramaDriveController::class);
 
-Route::resource('rendimientoAcademico',RendimientoAcademicoController::class);
-Route::post('convertirExcel',[RendimientoAcademicoController::class,'convertirExcel'])->name('convertirExcel');
-    
-Route::resource('programaLocal',ProgramaLocalController::class);
-Route::get('buscarProgramas/{idRendimientoAcademico}',[ProgramaDriveController::class,'buscarProgramas'])->name('buscarProgramas');
-Route::post('descargarProgramas',[ProgramaLocalController::class,'descargarProgramas'])->name('descargarProgramas');
+Route::resource('rendimientoAcademico', RendimientoAcademicoController::class);
+Route::post('convertirExcel', [RendimientoAcademicoController::class, 'convertirExcel'])->name('convertirExcel');
+
+Route::resource('programaLocal', ProgramaLocalController::class);
+Route::get('buscarProgramas/{idRendimientoAcademico}', [ProgramaDriveController::class, 'buscarProgramas'])->name('buscarProgramas');
+Route::post('descargarProgramas', [ProgramaLocalController::class, 'descargarProgramas'])->name('descargarProgramas');

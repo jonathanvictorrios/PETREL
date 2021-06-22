@@ -67,7 +67,7 @@ return [
     |
     */
 
-    'timezone' => 'UTC',
+    'timezone' => 'America/Argentina/Buenos_Aires', //Esto te pone la hora bien en la Base de Datos
 
     /*
     |--------------------------------------------------------------------------
