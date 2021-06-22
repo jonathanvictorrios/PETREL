@@ -1,7 +1,7 @@
 @extends('estructura/layout')
 @section('cuerpo')
 @php($titulo = 'Petrel - Inicio')
-<section id="home">
+<section id="home" class="min-vh-100">
     <header>
         <nav class="navbar navbar-expand-md navbar-light">
             <!-- Inicio encabezado -->
@@ -127,76 +127,60 @@
     </div>
 </section>
 {{-- 4ta fila acordeon preguntas frecuentes dividida en 2 columnas --}}
-<div class="row pregfrecuentes p-2 bg-light">
-    <a name="pregfrecuentes"></a>
-    <div class="col-6 ">
-        <div class="accordion accordion-flush p-5" id="accordionFlushExample">
-            <div class="accordion-item row mb-1">
-                <div class="col-10">
-                    <button class="botonacordeon" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseOne" aria-expanded="false" aria-controls="flush-collapseOne">
-                        <h6 class="accordion-header pt-2 ps-3">
-                            ¿Qué necesito para iniciar una solicitud? </h6>
-                    </button>
-                </div>
-        </section>
-        {{-- 4ta fila acordeon preguntas frecuentes dividida en 2 columnas --}}
-               <div class="row pregfrecuentes  p-2 bg-light">
-                <a name="pregfrecuentes"></a>
-                   <div class="col-6">
-                    <div class="accordion accordion-flush p-5" id="acordeon1">
-                        <div class="accordion-item row mb-1">
-                        <div class="col-10 ">
-                            <button class="botonacordeon" type="button" data-bs-toggle="collapse"
-                            data-bs-target="#flush-collapseOne" aria-expanded="false" aria-controls="flush-collapseOne">
+<section id="p-frecuentes">
+    <div class="row p-2 bg-light">
+        <a name="pregfrecuentes"></a>
+        <div class="col-6 ">
+            <div class="accordion accordion-flush p-5" id="acordeon1">
+                <div class="accordion-item row mb-1">
+                    <div class="col-10">
+                        <button class="botonacordeon" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseOne" aria-expanded="false" aria-controls="flush-collapseOne">
                             <h6 class="accordion-header pt-2 ps-3">
                                 ¿Qué necesito para iniciar una solicitud? </h6>
-                            </button>
-                        </div>
-                        <div class="col-2">
-                            <button class="botonacordeon ver" type="button" data-bs-toggle="collapse"
-                            data-bs-target="#flush-collapseOne" aria-expanded="false" aria-controls="flush-collapseOne">
-                            <i class="fas fa-plus-square "></i>
-                            </button>
-                            {{-- <button class="botonacordeon cerrar" type="button" data-bs-toggle="collapse"
+                        </button>
+                    </div>
+                    <div class="col-2">
+                        <button class="botonacordeon ver" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseOne" aria-expanded="false" aria-controls="flush-collapseOne">
+                            <i class="fas fa-plus-square"></i>
+                        </button>
+                        {{-- <button class="botonacordeon cerrar" type="button" data-bs-toggle="collapse"
                                 data-bs-target="#flush-collapseOne" aria-expanded="false" aria-controls="flush-collapseOne">
                                 <i class="fas fa-minus-square "></i>
                             </button> --}}
+                    </div>
+                    <div id="flush-collapseOne" class="accordion-collapse collapse" aria-labelledby="flush-headingOne" data-bs-parent="#acordeon1">
+                        <div class="accordion-body">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Architecto
+                            error labore, delectus iste culpa iusto neque sequi aliquam nobis, aspernatur ratione voluptatem
+                            illo rem eius ipsam? Fuga dolore quia ducimus.
                         </div>
-                        <div id="flush-collapseOne" class="accordion-collapse collapse" aria-labelledby="flush-headingOne"
-                            data-bs-parent="#acordeon1">
-                            <div class="accordion-body">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Architecto
-                                error labore, delectus iste culpa iusto neque sequi aliquam nobis, aspernatur ratione voluptatem
-                                illo rem eius ipsam? Fuga dolore quia ducimus.
-                            </div>
-                        </div>
-                   </div>
+                    </div>
                 </div>
             </div>
+        </div>
 
-            <div class="col-6">
-                <div class="accordion accordion-flush p-5" id="acordeon2">
-                    <div class="accordion-item row mb-1">
+        <div class="col-6">
+            <div class="accordion accordion-flush p-5" id="acordeon2">
+                <div class="accordion-item row mb-1">
                     <div class="col-10 ">
-                        <button class="botonacordeon" type="button" data-bs-toggle="collapse"
-                        data-bs-target="#flush-collapseTwo" aria-expanded="false" aria-controls="flush-collapseTwo">
-                        <h6 class="accordion-header pt-2 ps-3">
-                            Recibí el mail. ¿Cómo descargo mi certificado? </h6>
+                        <button class="botonacordeon" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseTwo" aria-expanded="false" aria-controls="flush-collapseTwo">
+                            <h6 class="accordion-header pt-2 ps-3">
+                                Recibí el mail. ¿Cómo descargo mi certificado? </h6>
                         </button>
                     </div>
                     <div class="col-2 ">
-                        <button class="botonacordeon ver" type="button" data-bs-toggle="collapse"
-                        data-bs-target="#flush-collapseTwo" aria-expanded="false" aria-controls="flush-collapseTwo">
-                        <i class="fas fa-plus-square "></i>
+                        <button class="botonacordeon ver" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseTwo" aria-expanded="false" aria-controls="flush-collapseTwo">
+                            <i class="fas fa-plus-square"></i>
                         </button>
-                                    {{-- <button class="botonacordeon cerrar" type="button" data-bs-toggle="collapse"
+                        {{-- <button class="botonacordeon cerrar" type="button" data-bs-toggle="collapse"
                                 data-bs-target="#flush-collapseTwo" aria-expanded="false" aria-controls="flush-collapseTwo">
                                 <i class="fas fa-minus-square "></i>
                             </button> --}}
-                </div>
-                <div id="flush-collapseTwo" class="accordion-collapse collapse" aria-labelledby="flush-headingTwo" data-bs-parent="#accordionFlushExample">
-                    <div class="accordion-body">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Architecto
-                        error labore, delectus iste culpa iusto neque sequi aliquam nobis, aspernatur ratione voluptatem
-                        illo rem eius ipsam? Fuga dolore quia ducimus.
+                    </div>
+                    <div id="flush-collapseTwo" class="accordion-collapse collapse" aria-labelledby="flush-headingTwo" data-bs-parent="#acordeon2">
+                        <div class="accordion-body">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Architecto
+                            error labore, delectus iste culpa iusto neque sequi aliquam nobis, aspernatur ratione voluptatem
+                            illo rem eius ipsam? Fuga dolore quia ducimus.
+                        </div>
                     </div>
                     <div id="flush-collapseTwo" class="accordion-collapse collapse" aria-labelledby="flush-headingTwo"
                         data-bs-parent="#acordeon1">
@@ -208,67 +192,62 @@
                </div>
             </div>
         </div>
-        </div>
-                <div class="row pregfrecuentes p-2 bg-light">
-                    <div class="col-6">
-                        <div class="accordion accordion-flush p-5" id="acordeon2">
-                            <div class="accordion-item row mb-1">
-                            <div class="col-10">
-                                <button class="botonacordeon" type="button" data-bs-toggle="collapse"
-                                data-bs-target="#flush-collapseThree" aria-expanded="false" aria-controls="flush-collapseThree">
-                                <h6 class="accordion-header pt-2 ps-3">
-                                    ¿Cómo puedo consultar el estado de mi solicitud?</h6>
-                                </button>
-                            </div>
-                            <div class="col-2 ">
-                                <button class="botonacordeon ver" type="button" data-bs-toggle="collapse"
-                                data-bs-target="#flush-collapseThree" aria-expanded="false" aria-controls="flush-collapseThree">
-                                <i class="fas fa-plus-square"></i>
-                                </button>
-                                            {{-- <button class="botonacordeon cerrar" type="button" data-bs-toggle="collapse"
+    </div>
+    <div class="row p-2 bg-light">
+        <div class="col-6">
+            <div class="accordion accordion-flush p-5" id="acordeon3">
+                <div class="accordion-item row mb-1">
+                    <div class="col-10">
+                        <button class="botonacordeon" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseThree" aria-expanded="false" aria-controls="flush-collapseThree">
+                            <h6 class="accordion-header pt-2 ps-3">
+                                ¿Cómo puedo consultar el estado de mi solicitud?</h6>
+                        </button>
+                    </div>
+                    <div class="col-2 ">
+                        <button class="botonacordeon ver" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseThree" aria-expanded="false" aria-controls="flush-collapseThree">
+                            <i class="fas fa-plus-square "></i>
+                        </button>
+                        {{-- <button class="botonacordeon cerrar" type="button" data-bs-toggle="collapse"
                                 data-bs-target="#flush-collapseThree" aria-expanded="false" aria-controls="flush-collapseThree">
                                 <i class="fas fa-minus-square "></i>
                             </button> --}}
-                            </div>
-                            <div id="flush-collapseThree" class="accordion-collapse collapse" aria-labelledby="flush-headingThree"
-                                data-bs-parent="#acordeon3">
-                                <div class="accordion-body">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Architecto
-                                    error labore, delectus iste culpa iusto neque sequi aliquam nobis, aspernatur ratione voluptatem
-                                    illo rem eius ipsam? Fuga dolore quia ducimus.
-                                </div>
-                            </div>
-                       </div>
+                    </div>
+                    <div id="flush-collapseThree" class="accordion-collapse collapse" aria-labelledby="flush-headingThree" data-bs-parent="#acordeon3">
+                        <div class="accordion-body">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Architecto
+                            error labore, delectus iste culpa iusto neque sequi aliquam nobis, aspernatur ratione voluptatem
+                            illo rem eius ipsam? Fuga dolore quia ducimus.
+                        </div>
                     </div>
                 </div>
-                <div class="col-6">
-                    <div class="accordion accordion-flush p-5" id="acordeon4">
-                        <div class="accordion-item row mb-1">
-                        <div class="col-10">
-                            <button class="botonacordeon" type="button" data-bs-toggle="collapse"
-                            data-bs-target="#flush-collapseFour" aria-expanded="false" aria-controls="flush-collapseFour">
+            </div>
+        </div>
+        <div class="col-6">
+            <div class="accordion accordion-flush p-5" id="acordeon4">
+                <div class="accordion-item row mb-1">
+                    <div class="col-10">
+                        <button class="botonacordeon" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseFour" aria-expanded="false" aria-controls="flush-collapseFour">
                             <h6 class="accordion-header pt-2 ps-3">
-                                ¿Cuánto se demora en finalizar mi solicitud?  </h6>
-                            </button>
-                        </div>
-                        <div class="col-2">
-                            <button class="botonacordeon ver" type="button" data-bs-toggle="collapse"
-                            data-bs-target="#flush-collapseFour" aria-expanded="false" aria-controls="flush-collapseFour">
-                            <i class="fas fa-plus-square"></i>
-                            </button>
-                                        {{-- <button class="botonacordeon cerrar" type="button" data-bs-toggle="collapse"
+                                ¿Cuánto se demora en finalizar mi solicitud? </h6>
+                        </button>
+                    </div>
+                    <div class="col-2">
+                        <button class="botonacordeon ver" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseFour" aria-expanded="false" aria-controls="flush-collapseFour">
+                            <i class="fas fa-plus-square "></i>
+                        </button>
+                        {{-- <button class="botonacordeon cerrar" type="button" data-bs-toggle="collapse"
                                 data-bs-target="#flush-collapseFour" aria-expanded="false" aria-controls="flush-collapseFour">
                                 <i class="fas fa-minus-square "></i>
                             </button> --}}
+                    </div>
+                    <div id="flush-collapseFour" class="accordion-collapse collapse" aria-labelledby="flush-headingFour" data-bs-parent="#acordeon4">
+                        <div class="accordion-body">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Architecto
+                            error labore, delectus iste culpa iusto neque sequi aliquam nobis, aspernatur ratione voluptatem
+                            illo rem eius ipsam? Fuga dolore quia ducimus.
                         </div>
-                        <div id="flush-collapseFour" class="accordion-collapse collapse" aria-labelledby="flush-headingFour"
-                            data-bs-parent="#acordeon4">
-                            <div class="accordion-body">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Architecto
-                                error labore, delectus iste culpa iusto neque sequi aliquam nobis, aspernatur ratione voluptatem
-                                illo rem eius ipsam? Fuga dolore quia ducimus.
-                            </div>
-                        </div>
-                   </div>
+                    </div>
                 </div>
             </div>
-                </div>
-            @endsection
+        </div>
+    </div>
+</section>
+@endsection
