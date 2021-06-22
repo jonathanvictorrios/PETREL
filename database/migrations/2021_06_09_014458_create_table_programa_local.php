@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateTableHistoricoAcademico extends Migration
+class CreateTableProgramaLocal extends Migration
 {
     /**
      * Run the migrations.
@@ -13,10 +13,9 @@ class CreateTableHistoricoAcademico extends Migration
      */
     public function up()
     {
-        Schema::create('historico_academico', function (Blueprint $table) {
-            $table->id('id_historico');
-            $table->string('archivo');
-            $table->string('url_pdf_rendimiento_acad');
+        Schema::create('programa_local', function (Blueprint $table) {
+            $table->id('id_programa_local');
+            $table->string('url_programas');
             $table->timestamps();
         });
     }
@@ -28,6 +27,6 @@ class CreateTableHistoricoAcademico extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('historico_academico');
+        Schema::dropIfExists('programa_local');
     }
 }

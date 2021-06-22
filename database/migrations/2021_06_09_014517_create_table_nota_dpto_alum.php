@@ -14,9 +14,8 @@ class CreateTableNotaDptoAlum extends Migration
     public function up()
     {
         Schema::create('nota_dpto_alum', function (Blueprint $table) {
-            $table->id('id_nota_dpto');
-            $table->text('descripcion_dto_alum');
-            $table->string('url_pdf_nota_dpto_alum');
+            $table->id('id_nota_dto_alumno');
+            $table->string('url_nota_dpto_alum');
             $table->timestamps();
         });
     }
