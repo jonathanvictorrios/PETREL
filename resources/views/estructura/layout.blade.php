@@ -1,11 +1,12 @@
 <!doctype html>
 <!--
     Aplicación Petrel
-    @author Programación Web Dinámica 2021 - UNCo
+    @author Programación Web Avanzada 2021 - UNCo
     @link https://github.com/PETREL-PWAUNCO2021/PETREL
 -->
 
 <html lang="es_AR">
+
 <head>
     <title>{{$titulo ?? 'Petrel'}}</title>
     <!-- Etiquetas meta requeridas -->
@@ -18,7 +19,7 @@
     <link rel="shortcut icon" href="{{ asset('img/icono_petrel.ico') }}">
     <!-- CSS de Bootstrap -->
     <link rel="stylesheet" href="{{ asset('css/bootstrap/bootstrap.min.css') }}">
-    <!-- Estilos propios: -->
+    <!-- Estilos propios -->
     <link rel="stylesheet" href="{{ asset('css/general.css') }}">
 <meta name="csrf-token" content="{{ csrf_token() }}">
     {{-- font-family tìtulo home --}}
@@ -32,20 +33,21 @@
 </head><!-- Fin cabecera -->
 
 
-<body class="d-flex flex-column min-vh-100">
+<body class="d-flex flex-column">
 
     @yield('cuerpo')
 
-@include('estructura/footer')
+    @include('estructura/footer')
 
-<!-- Carga en orden JQuery (en header), Bootstrap+Popper -->
-<script src="{{ asset('js/bootstrap/bootstrap.bundle.min.js') }}"></script>
+    <!-- Carga en orden JQuery (en header), Bootstrap+Popper -->
+    <script src="{{ asset('js/bootstrap/bootstrap.bundle.min.js') }}"></script>
 
 <!-- Carga scripts propios -->
 <script src="{{ asset('js/confirmarSalir.js') }}"></script>
 <script src="{{ asset('js/volverArriba.js') }}"></script>
 <script src="{{ asset('js/selectUnidadAcademica.js') }}"></script>
 
-<button class="btn shadow-sm" onclick="irArriba()" id="volverArriba" title="Volver arriba"><i class="fas fa-chevron-up"></i></button>
+    <button class="btn btn-secondary shadow-sm" onclick="irArriba()" id="volverArriba" title="Volver arriba"><i class="fas fa-chevron-up"></i></button>
 </body>
+
 </html>

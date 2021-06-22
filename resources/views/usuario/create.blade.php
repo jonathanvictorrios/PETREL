@@ -9,12 +9,12 @@
         <a href="{{url()->previous()}}" class="lead"><i class="fas fa-chevron-left me-2"></i>Atrás</a>
     </div>
 
-{{-- inicio de registro de usuario --}}
+    {{-- inicio de registro de usuario --}}
     <div class="container-fluid p-1 mx-auto">
         <div class="col d-flex justify-content-center">
             <div class="col-xl-7 col-lg-8 col-md-9 col-11">
-                <div class="card card-form bg-light">
-                    <div class="tittle card-header p-2 bg-light">
+                <div class="card card-form">
+                    <div class="tittle border-bottom p-2">
                         <h2 class="text-center fw-bold">Registro de Usuario</h2>
                     </div>
                     <form class="">
@@ -34,8 +34,8 @@
                                 <input class="border-0 cell" type="text" id="email" name="email" placeholder="Ingrese su dirección de email">
                             </div>
                             <div class="form-group col-sm-6 flex-column d-flex py-3">
-                                <label class="form-control-label px-3 py-2">Numero de Documento</label>
-                                <input class="border-0 cell" type="text" id="dni" name="dni" placeholder="Ingrese su numero de DNI" >
+                                <label class="form-control-label px-3 py-2">Número de Documento</label>
+                                <input class="border-0 cell" type="text" id="dni" name="dni" placeholder="Ingrese su numero de DNI">
                             </div>
                         </div>
                         <div class="row justify-content-between text-left">
@@ -45,7 +45,7 @@
                             </div>
                             <div class="form-group col-sm-6 flex-column d-flex py-3">
                                 <label class="form-control-label px-3 py-2">Verificar Contraseña</label>
-                                <input class="border-0 cell" type="text" id="dni" name="dni" placeholder="Ingrese su numero de DNI" >
+                                <input class="border-0 cell" type="text" id="dni" name="dni" placeholder="Ingrese su numero de DNI">
                             </div>
                         </div>
 
@@ -59,8 +59,8 @@
             </div>
         </div>
     </div>
-{{-- inicio de registro de usuario --}}
-{{-- formulario de login
+    {{-- inicio de registro de usuario --}}
+    {{-- formulario de login
     <div class="container-fluid px-1 py-5 mx-auto">
         <div class="row d-flex justify-content-center">
             <div class="col-xl-7 col-lg-8 col-md-9 col-11">
