@@ -40,7 +40,8 @@ body {
     background: #efefef;
 }
 
-button {
+button,
+a.botonFormulario {
     border: none !important;
     background-color: var(--color-azulPrimario);
     color: white;
