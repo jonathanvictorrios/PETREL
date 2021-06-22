@@ -47,6 +47,9 @@
                         <p class=" "><span class="text-secondary fs-5">Institución Educativa de Destino: </span> {{$solicitud->UniversidadDestino}}</p>      
                     </div>
             </div>
+            <div class="container-fluid">
+                
+            </div>
             <div class="row justify-content-center ">
                 <div class="col-6 p-2 m-2">
                     <button id= "" class="botonFormulario">comenzar trámite</button>
