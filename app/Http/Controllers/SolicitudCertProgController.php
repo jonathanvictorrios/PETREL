@@ -12,6 +12,7 @@ use App\Models\EstadoDescripcion;
 
 
 
+
 class SolicitudCertProgController extends Controller
 {
     /**
@@ -66,7 +67,7 @@ class SolicitudCertProgController extends Controller
         
         $solicitud->legajo=$request->legajo;
         $solicitud->universidad_destino=$request->universidadDestino;
-        $solicitud->id_carrera=1; //CAMBIAR POR SELECT DE DEL FORM
+        $solicitud->id_carrera=$request->carrera; //CAMBIAR POR SELECT DE DEL FORM
         
 
      ///   $solicitud->usuarioEstudiante=$usuarioEstudiante; //asignamos el usuario a la solicitud
@@ -82,9 +83,12 @@ class SolicitudCertProgController extends Controller
         $estado->id_usuario=null;
         $estado->updated_at=null;
         $estado->save();
+        
+        $solicitudes=SolicitudCertProg::all();//NECESITO RECUPERAR TODAS LAS SOLICITUDES PORQUE VUELVO EL RETORNO A LA VISTA.
+                                              // SI EL RETORNO NO ES HACIA solicitud.index puede sacarse
+        
 
-
-        return Redirect('/')->with('mensaje','Se ingreso la Solicitud {{$solicitud->id_solicitud}}');
+        return view('solicitud.index',compact('solicitudes'))->with('mensaje','Se ingreso la Solicitud');
     }
 
     /**
@@ -160,8 +164,38 @@ class SolicitudCertProgController extends Controller
 
         $Mostrar->UltimoEstado=($solicitud->estados)->last()->estado_descripcion->descripcion;
         $Mostrar->FechaUltimoEstado=($solicitud->estados)->last()->created_at;
-        print($Mostrar);
+     //   print($Mostrar);
         
         return $Mostrar;
+    }
+
+      /**
+     * Asigna una solicitud
+     *
+     * @param  int  $idSolicitud
+     * @param  int  $idUsuarioAdministrativo
+     * @return \Illuminate\Http\Response
+     */
+    public function asignar($idSolicitud,$idUsuarioAdministrativo)
+    {
+       
+        //return view('solicitud.asignar');
+        $solicitud = SolicitudCertProg::findOrFail($idSolicitud);
+        $usuarioAdministrativo = Usuario::findOrFail($idUsuarioAdministrativo);
+
+        //$nuevoEstado = new Estado;
+        $estadoController= new EstadoController;
+        $estadoController->asignarTramite($solicitud,$usuarioAdministrativo);
+
+        print($usuarioAdministrativo->id_usuario);
+        $solicitud->id_user_u=$usuarioAdministrativo->id_usuario;
+        
+         $solicitud->save();
+        //$nuevoEstado->id_solicitud=$solicitud->id_solicitud;
+
+        // print($solicitud);
+        // print($usuarioAdministrativo);
+
+
     }
 }

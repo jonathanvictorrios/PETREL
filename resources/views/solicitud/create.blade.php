@@ -38,12 +38,13 @@
                             </div>
                             <div class="form-group col-sm-6 flex-column d-flex py-3">
                                 <label class="form-control-label px-3 py-2">Unidad Académica</label>
-                                <select class="form-select border-0 rounded-0 cell" aria-label="Default select example" name="unidadAcademica">
-                                    @foreach($unidadesAcademicas as $unidad)
-                                    <option value="{{$unidad->id_unidad_academica}}">{{$unidad->unidad_academica}}</option>
-                                    @endforeach
-                                </select>
                             </div>
+                            <select class="form-select border-0 rounded-0 cell" aria-label="Default select example" name="unidadAcademica" id="unidadAcademica">
+                                {{-- @foreach($unidadesAcademicas as $unidad)
+                                <option value="{{$unidad->id_unidad_academica}}">{{$unidad->unidad_academica}}</option>
+                                @endforeach
+                                --}}
+                            </select>
                         </div>
 
                         {{-- elija la carrera --}}
@@ -51,9 +52,10 @@
                             <div class="form-group col-12 flex-column d-flex py-3">
                                 <label class="form-control-label px-3 py-2">Carrera</label>
                                 <select class="form-select border-0 rounded-0 cell" aria-label="Default select example" id="carrera" name="carrera">
-                                    @foreach($unidadesAcademicas as $unidad)
-                                    <option value="{{$unidad->id_unidad_academica}}">{{$unidad->unidad_academica}}</option>
+                                    {{-- @foreach($unidadesAcademicas as $unidad)
+                                <option value="{{$unidad->id_unidad_academica}}">{{$unidad->unidad_academica}}</option>
                                     @endforeach
+                                    --}}
                                 </select>
                             </div>
                         </div>

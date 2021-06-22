@@ -49,6 +49,9 @@
                     <td>{{$solicitud->Carrera}}</td>
                     <td>{{$solicitud->UnidadAcademica}}</td>
                     <td><a href="{{route('solicitud.show',$solicitud->idSolicitud)}}">Ver</a></td>
+                    <td><a href="{{route('solicitud.asignar',[$solicitud->idSolicitud,2])}}">Asignar</a></td> {{--El parametro 2 corresponde al idUsuarioAdministrativo que este logueado--}} 
+
+                   
                   </tr>
                   @endif
                   @endforeach

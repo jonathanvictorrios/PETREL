@@ -20,6 +20,12 @@ class UnidadAcademicaController extends Controller
 
     }
 
+    public function selectUnidadAcademica()
+    {
+        return $unidadesAcademicas = UnidadAcademica::all();
+        
+    }
+
     public function carreras(Request $request){
         print($request->texto);
         if(isset($request->texto)){

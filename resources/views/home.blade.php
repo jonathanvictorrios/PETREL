@@ -17,23 +17,22 @@
                     <div class="d-flex align-items-end p-3">
 
                         <!-- Comienzo contenido a la derecha -->
-                        <ul class="navbar-nav me-auto ">
+                        <ul class="navbar-nav me-auto">
                             <li class="nav-item">
                                 <a class="nav-link" href="#pregfrecuentes">Preguntas frecuentes</a>
                             </li>
                             <li class="nav-item">
                                 <!-- trigger modal -->
-                                <a class="nav-link" href="#" data-bs-toggle="modal" data-bs-target="#exampleModal">Acceder</a>
+                                <a class="nav-link" href="#" data-bs-toggle="modal" data-bs-target="#modalLogin">Acceder</a>
                             </li>
                             <li class="nav-item">
 
-                                <a class="nav-link" href="{{'registro'}}">Registrarse</a>
+                                <a class="nav-link" href="registro">Registrarse</a>
 
                             </li>
                         </ul>
                     </div> <!-- Fin contenido a la derecha -->
                 </div> <!-- Fin contenido desplegable en pantallas chicas -->
-
             </div> <!-- Fin contenedor -->
         </nav> <!-- Fin encabezado -->
     </header>
@@ -47,21 +46,18 @@
             <h1 class="p-3">Petrel</h1>
             <p class="p_home ps-3">El sistema de certificación de materias <br> de la Universidad Nacional del Comahue</p>
         </div>
-
         <!-- Modal -->
-        <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal fade" id="modalLogin" tabindex="-1" aria-labelledby="modalLoginLabel" aria-hidden="true">
             <div class="modal-dialog">
                 <div class="modal-content">
                     <div class="modal-header">
-                        <h5 class="modal-title" id="exampleModalLabel">Accedé a tu cuenta</h5>
+                        <h5 class="modal-title" id="modalLoginLabel">Accedé a tu cuenta</h5>
                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
                     <div class="modal-body">
-
                         <div class="container-fluid px-1 py-5 mx-auto">
                             <div class="row d-flex justify-content-center">
                                 <div class="col">
-
                                     <div class="card card-form">
                                         <form class="">
                                             <div class="row justify-content-between text-left">
@@ -77,7 +73,7 @@
                                                 </div>
                                             </div>
                                             <div class="row justify-content-between text-left py-3">
-                                                <p><a href="">¿Olvido su contraseña?</a></p>
+                                                <p><a href="">¿Olvidó su contraseña?</a></p>
                                             </div>
                                             <div class="row justify-content-center text-center py-4">
                                                 <div class="form-group col-sm-6">
@@ -109,7 +105,7 @@
 <div class="row pregfrecuentes p-2 bg-light">
     <a name="pregfrecuentes"></a>
     <div class="col-6 ">
-        <div class="accordion accordion-flush p-5" id="accordionFlushExample">
+        <div class="accordion accordion-flush p-5" id="acordeon1">
             <div class="accordion-item row mb-1">
                 <div class="col-10">
                     <button class="botonacordeon" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseOne" aria-expanded="false" aria-controls="flush-collapseOne">
@@ -117,7 +113,7 @@
                             ¿Qué necesito para iniciar una solicitud? </h6>
                     </button>
                 </div>
-                <div class="col-2 ">
+                <div class="col-2">
                     <button class="botonacordeon ver" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseOne" aria-expanded="false" aria-controls="flush-collapseOne">
                         <i class="fas fa-plus-square"></i>
                     </button>
@@ -126,7 +122,7 @@
                                 <i class="fas fa-minus-square "></i>
                             </button> --}}
                 </div>
-                <div id="flush-collapseOne" class="accordion-collapse collapse" aria-labelledby="flush-headingOne" data-bs-parent="#accordionFlushExample">
+                <div id="flush-collapseOne" class="accordion-collapse collapse" aria-labelledby="flush-headingOne" data-bs-parent="#acordeon1">
                     <div class="accordion-body">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Architecto
                         error labore, delectus iste culpa iusto neque sequi aliquam nobis, aspernatur ratione voluptatem
                         illo rem eius ipsam? Fuga dolore quia ducimus.
@@ -137,7 +133,7 @@
     </div>
 
     <div class="col-6">
-        <div class="accordion accordion-flush p-5" id="accordionFlushExample">
+        <div class="accordion accordion-flush p-5" id="acordeon2">
             <div class="accordion-item row mb-1">
                 <div class="col-10 ">
                     <button class="botonacordeon" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseTwo" aria-expanded="false" aria-controls="flush-collapseTwo">
@@ -154,7 +150,7 @@
                                 <i class="fas fa-minus-square "></i>
                             </button> --}}
                 </div>
-                <div id="flush-collapseTwo" class="accordion-collapse collapse" aria-labelledby="flush-headingTwo" data-bs-parent="#accordionFlushExample">
+                <div id="flush-collapseTwo" class="accordion-collapse collapse" aria-labelledby="flush-headingTwo" data-bs-parent="#acordeon2">
                     <div class="accordion-body">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Architecto
                         error labore, delectus iste culpa iusto neque sequi aliquam nobis, aspernatur ratione voluptatem
                         illo rem eius ipsam? Fuga dolore quia ducimus.
@@ -166,7 +162,7 @@
 </div>
 <div class="row pregfrecuentes p-2 bg-light">
     <div class="col-6">
-        <div class="accordion accordion-flush p-5" id="accordionFlushExample">
+        <div class="accordion accordion-flush p-5" id="acordeon3">
             <div class="accordion-item row mb-1">
                 <div class="col-10">
                     <button class="botonacordeon" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseThree" aria-expanded="false" aria-controls="flush-collapseThree">
@@ -183,7 +179,7 @@
                                 <i class="fas fa-minus-square "></i>
                             </button> --}}
                 </div>
-                <div id="flush-collapseThree" class="accordion-collapse collapse" aria-labelledby="flush-headingThree" data-bs-parent="#accordionFlushExample">
+                <div id="flush-collapseThree" class="accordion-collapse collapse" aria-labelledby="flush-headingThree" data-bs-parent="#acordeon3">
                     <div class="accordion-body">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Architecto
                         error labore, delectus iste culpa iusto neque sequi aliquam nobis, aspernatur ratione voluptatem
                         illo rem eius ipsam? Fuga dolore quia ducimus.
@@ -193,7 +189,7 @@
         </div>
     </div>
     <div class="col-6">
-        <div class="accordion accordion-flush p-5" id="accordionFlushExample">
+        <div class="accordion accordion-flush p-5" id="acordeon4">
             <div class="accordion-item row mb-1">
                 <div class="col-10">
                     <button class="botonacordeon" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseFour" aria-expanded="false" aria-controls="flush-collapseFour">
@@ -210,7 +206,7 @@
                                 <i class="fas fa-minus-square "></i>
                             </button> --}}
                 </div>
-                <div id="flush-collapseFour" class="accordion-collapse collapse" aria-labelledby="flush-headingFour" data-bs-parent="#accordionFlushExample">
+                <div id="flush-collapseFour" class="accordion-collapse collapse" aria-labelledby="flush-headingFour" data-bs-parent="#acordeon4">
                     <div class="accordion-body">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Architecto
                         error labore, delectus iste culpa iusto neque sequi aliquam nobis, aspernatur ratione voluptatem
                         illo rem eius ipsam? Fuga dolore quia ducimus.

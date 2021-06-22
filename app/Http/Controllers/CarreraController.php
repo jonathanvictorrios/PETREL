@@ -18,6 +18,12 @@ class CarreraController extends Controller
     }
 
 
+    public function selectCarrera($idUnidadAcademica)
+    {
+        $carreras = Carrera::where('id_unidad_academica',$idUnidadAcademica)->get();
+        return $carreras;
+
+    }
     /**
      * Show the form for creating a new resource.
      *

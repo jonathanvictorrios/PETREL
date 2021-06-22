@@ -7,7 +7,7 @@ use App\Models\Estado;
 use App\Models\EstadoDescripcion;
 use App\Models\Notificacion;
 use App\Models\usuario;
-use App\Models\solicitud_cert_prog;
+use App\Models\SolicitudCertProg;
 use DateTime;
 use Facade\IgnitionContracts\Solution;
 
@@ -101,10 +101,11 @@ class EstadoController extends Controller
 
     public function iniciarTramite($idSolicitud) {
         // Crea el primer Estado (iniciado) para la solicitud dada
-        $solicitud_cert_prog = solicitud_cert_prog::get()->where('id_solicitud', $idSolicitud);
+        $solicitud_cert_prog = SolicitudCertProg::findOrFail($idSolicitud);
 
         if ($solicitud_cert_prog != null) { 
         
+            
             $EstadoDescripcion = new EstadoDescripcion;
             $EstadoDescripcion->idEstadoDescripcion = 1;
             
@@ -127,36 +128,44 @@ class EstadoController extends Controller
         }
     }
     
-    public function asignarTramite($idSolicitud, $idNuevoUsuario) {
+    public function asignarTramite($Solicitud, $NuevoUsuario) {
         
-        // Se asigna la solicitud a un usuario administrativo
-        $solicitud_cert_prog = solicitud_cert_prog::get()->where('id_solicitud', $idSolicitud);
+        //$Solicitud :: SolcititudCertProg --Recibo la Solicitud
+        //$NuevoUsuario :: Usuario  -- Recibo el Usuario Administrativo al que se le asigna el Trámite
 
+       // $solicitud_cert_prog = SolicitudCertProg::findOrFail($idSolicitud);
+        print( $Solicitud );
         // verificamos que existe la solicitud
-        if ($solicitud_cert_prog != null) { 
+        if ($Solicitud != null) { 
         
+         //   print('hola');
             // creamos la descripción del estado a asignar
             $EstadoDescripcion = new EstadoDescripcion;
             $EstadoDescripcion->idEstadoDescripcion = 2;
 
+            //print($EstadoDescripcion);
             // recuperamos el último estado para modificar la fecha
-            $ultimoEstado = Estado::get()->where('idSolicitud', $idSolicitud)->where('updated_at', null);
-            $ultimoEstado->update_at = date("Y-m-d");
+            $ultimoEstado = Estado::get()->where('id_solicitud', $Solicitud->id_solicitud)->last();
+            $ultimoEstado->updated_at = date("Y-m-d");
             $ultimoEstado->save();
+         //   print($ultimoEstado);
             
             // tomamos la notificacion correspondiente al último estado y la marcamos como leída
-            $ultimaNotificacion = Notificacion::get()->where('idEstado', $ultimoEstado->idEstado);
-            $ultimaNotificacion->leido = true;
-            $ultimaNotificacion->save();
+            // $ultimaNotificacion = Notificacion::get()->where('idEstado', $ultimoEstado->idEstado);
+            // $ultimaNotificacion->leido = true;
+           // $ultimaNotificacion->save();
             
             // recuperamos los datos del usuario al que se asigna la solicitud, y
             // generamos un nuevo estado al que asignamos el usuario recuperado
-            $usuario = usuario::find($idNuevoUsuario);
+            // $usuario = usuario::find($idNuevoUsuario);
             $nuevoEstado = new Estado;
-            $nuevoEstado->solicitud_cert_prog = $solicitud_cert_prog;
-            $nuevoEstado->usuario = $usuario;
-            $nuevoEstado->estado_descripcion = $EstadoDescripcion;
+            $nuevoEstado->id_solicitud = $Solicitud->id_solicitud;
+            $nuevoEstado->id_usuario = $NuevoUsuario->id_usuario;
+            $nuevoEstado->id_estado_descripcion = $EstadoDescripcion->idEstadoDescripcion;
+            $nuevoEstado->updated_at=null;
             $nuevoEstado->save();
+           
+            // print($nuevoEstado);
             
             // generamos una nueva notificación para el estado creado y editamos las notas
             // con el apellido y nombre del usuario
@@ -164,8 +173,8 @@ class EstadoController extends Controller
             $nuevaNotificacion->estado = $nuevoEstado;
             $nuevaNotificacion->mensaje = 'La solicitud ha sido asignada al usuario {{$usuario->apellido}} {{$usuario->nombre}}.';
             $nuevaNotificacion->leida = false;
-            $nuevaNotificacion->save();
-            return view('index'); //definir vista de retorno
+          //  $nuevaNotificacion->save();
+            return view('solicitud.index'); //definir vista de retorno
         }
         else {
             return back()->with('Error: no se encuentra la solicitud indicada.');

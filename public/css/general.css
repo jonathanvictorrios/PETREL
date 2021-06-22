@@ -40,7 +40,8 @@ body {
     background: #efefef;
 }
 
-button {
+button,
+#botonPrimario {
     border: none !important;
     background-color: var(--color-azulPrimario);
     color: white;
