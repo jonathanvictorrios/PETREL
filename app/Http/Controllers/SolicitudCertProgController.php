@@ -198,6 +198,20 @@ class SolicitudCertProgController extends Controller
 
 
     }
+    public function indexEstudiante($id)
+    {
+        $solicitudes = SolicitudCertProg::where('id_usuario_estudiante',$id)->get();
+        $Lista = array();
+        foreach($solicitudes as $solicitud)
+        {
+            $Mostrar = $this->ObtenerDatosSolicitud($solicitud);
+
+            array_push($Lista,$Mostrar);
+
+        }
+        $solicitudes=$Lista;
+        return view('solicitud.index',compact('solicitudes'));
+    }
     public function showEstudiante($id)
     {
         $solicitud= SolicitudCertProg::findOrFail($id);
