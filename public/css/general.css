@@ -116,7 +116,7 @@ body {
     }
     .accordion-item{
         border-bottom: solid 3px var(--color-verdeSecundario) !important;
-    
+
     }
 
 /*-------------FIN ESTILOS HOME-----------------------------*/
@@ -138,7 +138,7 @@ input::placeholder {
     color: #ccc;
     font-size: 12px;
 }
-button {
+button, #botonPrimario {
     border: none !important;
     background-color: var(--color-azulPrimario);
     color: white;
