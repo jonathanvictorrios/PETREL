@@ -23,7 +23,6 @@ use Illuminate\Support\Facades\Storage;
 |
 */
 
-Route::get('solicitud/{idSolicitud}/asignar/{idAdministrativo}', [SolicitudCertProgController::class, 'asignar'])->name('solicitud.asignar');
 // Vistas configuradas:
 Route::redirect('/', '/home');
 Route::view('/home', 'home');
@@ -33,11 +32,7 @@ Route::view('/perfil', '/usuario/perfil');
 //solicitudes
 Route::view('/crearsolicitud', '/solicitud/create');
 Route::view('/versolicitud', '/solicitud/show');
-
-/* Otras rutas:
-Route::view('/registro', 'registro');
-Route::view('/login', 'login');
-*/
+Route::get('solicitud/{idSolicitud}/asignar/{idAdministrativo}', [SolicitudCertProgController::class, 'asignar'])->name('solicitud.asignar');
 
 // CRUD:
 Route::resource('solicitud', SolicitudCertProgController::class);
