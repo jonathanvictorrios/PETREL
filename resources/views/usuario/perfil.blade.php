@@ -33,7 +33,7 @@
                     {{-- dni --}}
                     <div class="form-group col-sm-6 flex-column d-flex py-3">
                         <label class="form-control-label px-3 py-2">DNI</label>
-                        <input type="text" name='dni' id="dni" class="form-control-plaintext border-0" value="{{ $usuario->dni ?? '11222333' }}" readonly>
+                        <input type="number" name='dni' id="dni" class="form-control-plaintext border-0" value="{{ $usuario->dni ?? '11222333' }}" readonly>
                     </div>
                     {{-- email --}}
                     <div class="form-group col-sm-6 flex-column d-flex py-3">

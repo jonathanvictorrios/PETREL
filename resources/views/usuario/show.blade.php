@@ -43,7 +43,7 @@
                 <div class="row justify-content-between text-left cell">
                     <div class="form-group col col-sm-6 flex-column d-flex py-3">
                             <label class="form-control-label px-3 py-2">Documento de identidad</label>
-                            <input type="text" id="dni" class="border-0" value="" disabled>
+                            <input type="number" id="dni" class="border-0" value="" disabled>
                     </div>
                     <div class="form-group col col-sm-6 flex-column d-flex py-3">
                             <label class="form-control-label px-3 py-2">Rol</label>
