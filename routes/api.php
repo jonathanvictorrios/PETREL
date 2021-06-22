@@ -2,6 +2,8 @@
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\CarreraController;
+use App\Http\Controllers\UnidadAcademicaController;
 
 /*
 |--------------------------------------------------------------------------
@@ -14,6 +16,8 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::middleware('auth:api')->get('/user', function (Request $request) {
-    return $request->user();
-});
+Route::get('/unidadAcademica',[UnidadAcademicaController::class,'selectUnidadAcademica']);
+Route::get('/unidadAcademica/{idUnidadAcademica}/carreras',[CarreraController::class,'selectCarrera']);
+// Route::middleware('auth:api')->get('/user', function (Request $request) {
+//     return $request->user();
+// });

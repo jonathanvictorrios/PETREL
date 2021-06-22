@@ -14,8 +14,7 @@ class CreateTableNotaAdminCentral extends Migration
     public function up()
     {
         Schema::create('nota_admin_central', function (Blueprint $table) {
-            $table->id('id_nota_central');
-            $table->text('descripcion_central');
+            $table->id('id_nota_admin_central');
             $table->string('url_pdf_nota_admin_central');
             $table->timestamps();
         });

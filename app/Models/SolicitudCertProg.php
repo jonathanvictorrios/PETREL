@@ -17,7 +17,7 @@ class SolicitudCertProg extends Model
 
     public function hojaResumen()
     {
-        return $this->hasOne(HojaResumen::class);
+        return $this->hasOne(HojaResumen::class,'id_hoja_resumen');
     }
 
     public function estados()

@@ -11,6 +11,8 @@
     <!-- Etiquetas meta requeridas -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <meta name="csrf-token" content="{{ csrf_token() }}">
     <meta name="author" content="PWA 2021">
     <!-- Icono web -->
     <link rel="shortcut icon" href="{{ asset('img/icono_petrel.ico') }}">
@@ -18,7 +20,7 @@
     <link rel="stylesheet" href="{{ asset('css/bootstrap/bootstrap.min.css') }}">
     <!-- Estilos propios: -->
     <link rel="stylesheet" href="{{ asset('css/general.css') }}">
-
+<meta name="csrf-token" content="{{ csrf_token() }}">
     {{-- font-family tìtulo home --}}
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=Rancho&display=swap" rel="stylesheet">
@@ -44,6 +46,7 @@
 <!-- Carga scripts propios -->
 <script src="{{ asset('js/confirmarSalir.js') }}"></script>
 <script src="{{ asset('js/volverArriba.js') }}"></script>
+<script src="{{ asset('js/selectUnidadAcademica.js') }}"></script>
 
 <button class="btn btn-secondary shadow-sm" onclick="irArriba()" id="volverArriba" title="Volver arriba"><i class="fas fa-chevron-up"></i></button>
 </body>
