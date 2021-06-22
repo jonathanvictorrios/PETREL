@@ -36,6 +36,14 @@ Route::view('/borrarusuario', '/usuario/borrar');
 //solicitudes
 Route::view('/crearsolicitud', '/solicitud/create');
 Route::view('/versolicitud', '/solicitud/show');
+//anio
+Route::view('/crearanio', '/carpetaAnio/create');
+Route::view('/modificaranio', '/carpetaAnio/edit');
+//carrera
+Route::view('/crearcarrera', '/carpetaCarrera/create');
+Route::view('/modificarcarrera', '/carpetaCarrera/edit');
+//programa
+
 Route::get('solicitud/{idSolicitud}/asignar/{idAdministrativo}', [SolicitudCertProgController::class, 'asignar'])->name('solicitud.asignar');
 
 // CRUD:

@@ -35,7 +35,7 @@
                             </div>
                             <div class="form-group col col-sm-6 flex-column d-flex py-3">
                                 <label class="form-control-label px-3 py-2">Número de Documento</label>
-                                <input class="border-0 cell" type="text" id="dni" name="dni" placeholder="Ingrese su numero de DNI">
+                                <input class="border-0 cell" type="number" id="dni" name="dni" placeholder="Ingrese su numero de DNI">
                             </div>
                         </div>
                         <div class="row justify-content-between text-left">
