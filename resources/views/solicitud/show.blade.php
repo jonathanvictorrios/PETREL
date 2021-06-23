@@ -1,7 +1,9 @@
 @extends('estructura/layout')
 
+
 @section('cuerpo')
 @php($titulo = 'Petrel - Ver detalles solicitud')
+
 
 @include('estructura/header')
 <main class=p-2 id=cuerpo> <!-- Inicio main cuerpo -->
@@ -13,6 +15,7 @@
 <div class="container-fluid p-1 mx-auto">
     <div class="row d-flex justify-content-center">
         <div class="col-xl-7 col-lg-8 col-md-9 col-12">
+
 
             <div class="card card-form bg-light">
                 <div class="tittle card-header p-1 bg-light cell mb-3">
@@ -53,6 +56,11 @@
 </div>
 
 
+<<<<<<< HEAD
+
+
+=======
+>>>>>>> cded599616b8d91a4e29a47569e79421fd995119
 {{------------------ ESTE ES EL SHOW DE ADMINISTRATIVO DEPTO ALUMNOS ----------------------------------------}}
 <div class=container>
     <a href="{{url()->previous()}}" class="lead"><i class="fas fa-chevron-left me-2"></i>Atrás</a>
@@ -60,8 +68,7 @@
 {{-- inicion mostrar solicitud --}}
 <div class="container-fluid p-1 mx-auto">
 <div class="row d-flex justify-content-center">
-    <div class="col-xl-7 col-lg-8 col-md-9 col-12">
-
+    <div class="col-xl-6 col-lg-6 col-md-12 col-12">
         <div class="card card-form bg-light">
             <div class="tittle card-header p-1 bg-light cell mb-3">
                 <h2 class="text-center fw-bold">Detalles de Solicitud {{$solicitud->idSolicitud}}</h2>
@@ -153,10 +160,57 @@
             </form>
             </div>
         </div>
+</div>
+
+    <div class="tittle cp-1 cell my-3">
+        <h2 class="text-center fw-bold">Actividad </h2>
+    </div>
+    <table class="table table-borderless">
+
+
+        <thead class= "border-bottom">
+          <tr>
+            
+            <th scope="col">Fecha</th>
+            <th scope="col">Usuario</th>
+            <th scope="col">Detalle</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+           
+            <td>12/05/2021</td>
+            <td>Viviana Pedrero</td>
+            <td>asignado a Raquel</td>
+          </tr>
+          <tr>
+            
+            <td>12/05/2021</td>
+            <td>Viviana Pedrero</td>
+            <td>comentario 2 blablablablablalbalba</td>
+          </tr>
+          <tr>
+            
+            <td>12/05/2021</td>
+            <td>Viviana Pedrero</td>
+            <td>asignado a Raquel</td>
+          </tr>
+          </tr>
+        </tbody>
+      </table>
+</div>
+<div class="row justify-content-center ">
+    <div class="col-6 p-2 m-2">
+        <button id= "" class="botonFormulario">comenzar trámite</button>
     </div>
 </div>
 </div>
+</div>
+</div>
+</div>
+
 
 </main> <!-- Fin main cuerpo -->
+
 
 @endsection

@@ -1,7 +1,7 @@
 @extends('estructura/layout')
 
 @section('cuerpo')
-@php($titulo = 'Petrel - Mi cuenta')
+@php($titulo = 'Petrel - Mi cuenta')@endphp
 
 @include('estructura/header')
 <main class=p-2 id=cuerpo> {{-- Inicio main cuerpo --}}
@@ -21,23 +21,23 @@
                 {{-- nombres y apellidos --}}
                 <div class="row justify-content-between text-left cell">
                     <div class="form-group col-sm-6 flex-column d-flex py-3">
-                        <label class="form-control-label px-3 py-2">Nombres</label>
+                        <label class="form-control-label py-2">Nombres</label>
                         <input type="text" name="nombre" id="nombre" class="form-control-plaintext border-0" value="{{ $usuario->nombre ?? 'Nombre' }}" readonly>
                     </div>
                     <div class="form-group col-sm-6 flex-column d-flex py-3">
-                        <label class="form-control-label px-3 py-2">Apellidos</label>
+                        <label class="form-control-label py-2">Apellidos</label>
                         <input type="text" name="apellido" id="apellido" class="form-control-plaintext border-0" value="{{ $usuario->apellido ?? 'Apellido' }}" readonly>
                     </div>
                 </div>
                 <div class="row justify-content-between text-left cell">
                     {{-- dni --}}
                     <div class="form-group col-sm-6 flex-column d-flex py-3">
-                        <label class="form-control-label px-3 py-2">DNI</label>
-                        <input type="text" name='dni' id="dni" class="form-control-plaintext border-0" value="{{ $usuario->dni ?? '11222333' }}" readonly>
+                        <label class="form-control-label py-2">DNI</label>
+                        <input type="number" name='dni' id="dni" class="form-control-plaintext border-0" value="{{ $usuario->dni ?? '11222333' }}" readonly>
                     </div>
                     {{-- email --}}
                     <div class="form-group col-sm-6 flex-column d-flex py-3">
-                        <label class="form-control-label px-3 py-2">Correo electrónico</label>
+                        <label class="form-control-label py-2">Correo electrónico</label>
                         <input type="text" name='email' id="email" class="form-control-plaintext border-0" value="{{ $usuario->email ?? 'ejemplo@example.com' }}" readonly>
                     </div>
                 </div>
