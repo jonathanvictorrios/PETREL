@@ -72,16 +72,10 @@
                                 <select class="form-select border-0 rounded-0 cell" aria-label="Seleccionar carrera en el menú desplegable" id="carrera" name="carrera">
                                     {{-- @foreach($unidadesAcademicas as $unidad)
                                 <option value="{{$unidad->id_unidad_academica}}">{{$unidad->unidad_academica}}</option>
-                                @endforeach
-                                --}}
-                              </select>
-                        </div>
-                    </div>
-                    {{-- ingrese universidad de destino --}}
-                    <div class="row justify-content-between text-left ">
-                        <div class="form-group col-12 flex-column d-flex py-3 ">
-                            <label class="form-control-label px-3 py-2">Institución Educativa de Destino</label>
-                            <input class="border-0 cell" type="text" id='universidadDestino' name='universidadDestino' placeholder="Ingrese la Institución Educativa de destino">
+                                    @endforeach
+                                    --}}
+                                </select>
+                            </div>
                         </div>
                         {{-- ingrese universidad de destino --}}
                         <div class="row justify-content-between text-left">

@@ -16,79 +16,54 @@
 
                     <div class="d-flex align-items-end p-3">
 
-                                <!-- Comienzo contenido a la derecha -->
-                                <ul class="navbar-nav me-auto ">
-                                    <li class="nav-item">
-                                        <a class="nav-link" href="#pregfrecuentes">Preguntas frecuentes</a>
-                                    </li>
-                                    <li class="nav-item">
-                                        <!-- trigger modal -->
-                                        <a class="nav-link" href="#" data-bs-toggle="modal"
-                                            data-bs-target="#modalLogin">Acceder</a>
-                                    </li>
-                                    <li class="nav-item">
+                        <!-- Comienzo contenido a la derecha -->
+                        <ul class="navbar-nav me-auto">
+                            <li class="nav-item">
+                                <a class="nav-link" href="#pregfrecuentes">Preguntas frecuentes</a>
+                            </li>
+                            <li class="nav-item">
+                                <!-- trigger modal -->
+                                <a class="nav-link" href="#" data-bs-toggle="modal" data-bs-target="#modalLogin">Acceder</a>
+                            </li>
+                            <li class="nav-item">
 
-                                        <a class="nav-link" href="registro">Registrarse</a>
+                                <a class="nav-link" href="registro">Registrarse</a>
 
                             </li>
                         </ul>
                     </div> <!-- Fin contenido a la derecha -->
                 </div> <!-- Fin contenido desplegable en pantallas chicas -->
+            </div> <!-- Fin contenedor -->
+        </nav> <!-- Fin encabezado -->
+    </header>
 
-                    </div> <!-- Fin contenedor -->
-                </nav> <!-- Fin encabezado -->
-            </header>
-
-                {{-- comienzo 1era.fila con tres columnas --}}
-                <div id="home" class="row">
-                    <div class="col-4 p-5">
-                        <img src="{{ asset('img/icono_petrel.ico') }}" alt="Icono Petrel" style="min-height: 400px">
+    {{-- comienzo 1era.fila con tres columnas --}}
+    <div class="row">
+        <div class="col-4 p-5">
+            <img src="{{ asset('img/icono_petrel.ico') }}" alt="Icono Petrel" style="min-height: 400px">
+        </div>
+        <div class="col-8  mt-5 ps-5">
+            <h1 class="p-3">Petrel</h1>
+            <p class="p_home ps-3">El sistema de certificación de materias <br> de la Universidad Nacional del Comahue</p>
+        </div>
+        <!-- Modal -->
+        <div class="modal fade" id="modalLogin" tabindex="-1" aria-labelledby="modalLoginLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="modalLoginLabel">Accedé a tu cuenta</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
-                    <div class="col-8 mt-5 ps-5">
-                        <h1 class="titulohome p-3">Petrel</h1>
-                        <p class="p_home ps-3">El sistema de certificación de materias <br> de la Universidad Nacional del Comahue</p>
-                    </div>
-
-                        <!-- Modal -->
-                        <div class="modal fade" id="modalLogin" tabindex="-1" aria-labelledby="modalLoginLabel"
-                            aria-hidden="true">
-                            <div class="modal-dialog">
-                                <div class="modal-content">
-                                    <div class="modal-header">
-                                        <h5 class="modal-title" id="modalLoginLabel">Accedé a tu cuenta</h5>
-                                        <button type="button" class="btn-close" data-bs-dismiss="modal"
-                                            aria-label="Close"></button>
-                                    </div>
-                                    <div class="modal-body">
-
+                    <div class="modal-body">
                         <div class="container-fluid px-1 py-5 mx-auto">
                             <div class="row d-flex justify-content-center">
                                 <div class="col">
-
-                                                    <div class="card card-form">
-                                                        <form class="">
-                                                            <div class="row justify-content-between text-left">
-                                                                <div class="form-group col-12 flex-column d-flex py-3">
-                                                                    <label class="form-control-label px-3 py-2">Email</label>
-                                                                    <input class="border-0 cell" type="text" id="email" name="email" placeholder="Ingrese su email">
-                                                                </div>
-                                                            </div>
-                                                            <div class="row justify-content-between text-left">
-                                                                <div class="form-group col-12 flex-column d-flex py-3">
-                                                                    <label class="form-control-label px-3 py-2">Contraseña</label>
-                                                                    <input class="border-0 cell" type="text" id="password" name="password" placeholder="Ingrese su contraseña">
-                                                                </div>
-                                                            </div>
-                                                            <div class="row justify-content-between text-left py-3">
-                                                                <p><a href="">¿Olvidó su contraseña?</a></p>
-                                                            </div>
-                                                            <div class="row justify-content-center text-center py-4">
-                                                                <div class="form-group col-sm-6">
-                                                                    <button id="boton" name="boton" type="submit" class="btn-block w-100 p-1 rounded-2">Ingresar</button>
-                                                                </div>
-                                                            </div>
-                                                        </form>
-                                                    </div>
+                                    <div class="card card-form">
+                                        <form class="">
+                                            <div class="row justify-content-between text-left">
+                                                <div class="form-group col-12 flex-column d-flex py-3">
+                                                    <label class="form-control-label px-3 py-2">Email</label>
+                                                    <input class="border-0 cell" type="text" id="email" name="email" placeholder="Ingrese su email">
                                                 </div>
                                             </div>
                                             <div class="row justify-content-between text-left">
@@ -98,7 +73,7 @@
                                                 </div>
                                             </div>
                                             <div class="row justify-content-between text-left py-3">
-                                                <p><a href="">¿Olvido su contraseña?</a></p>
+                                                <p><a href="">¿Olvidó su contraseña?</a></p>
                                             </div>
                                             <div class="row justify-content-center text-center py-4">
                                                 <div class="form-group col-sm-6">
@@ -182,14 +157,7 @@
                             illo rem eius ipsam? Fuga dolore quia ducimus.
                         </div>
                     </div>
-                    <div id="flush-collapseTwo" class="accordion-collapse collapse" aria-labelledby="flush-headingTwo"
-                        data-bs-parent="#acordeon1">
-                        <div class="accordion-body">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Architecto
-                            error labore, delectus iste culpa iusto neque sequi aliquam nobis, aspernatur ratione voluptatem
-                            illo rem eius ipsam? Fuga dolore quia ducimus.
-                        </div>
-                    </div>
-               </div>
+                </div>
             </div>
         </div>
     </div>

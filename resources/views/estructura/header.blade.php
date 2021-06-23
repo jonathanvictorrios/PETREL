@@ -19,7 +19,9 @@
                     <ul class="dropdown-menu" aria-labelledby="MenuTest">
                         <li><a class="dropdown-item" href="/solicitud">Listado solicitudes</a></li>
                         <li><a class="dropdown-item" href="/solicitud/create">Nueva solicitud</a></li>
-                        <li><hr class="dropdown-divider"></li>
+                        <li>
+                            <hr class="dropdown-divider">
+                        </li>
                         <li><a class="dropdown-item" href="/registro">Registrarse</a></li>
                         <li><a class="dropdown-item disabled" href="/usuario">Listado usuarios</a></li>
                     </ul>

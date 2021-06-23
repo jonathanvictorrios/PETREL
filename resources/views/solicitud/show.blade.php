@@ -1,5 +1,6 @@
 @extends('estructura/layout')
 
+
 @section('cuerpo')
     @php($titulo = 'Petrel - Ver detalles solicitud')
 

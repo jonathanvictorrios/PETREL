@@ -9,5 +9,4 @@
     <input type="file" id="excel" name="excel" value="{{ old('excel') }}">
     <input type="submit" value="enviar">
 </form>
-
 @endsection

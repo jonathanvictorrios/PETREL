@@ -134,13 +134,14 @@ a:hover {
 .ver {
     color: var(--color-azulPrimario);
     font-size: 25px;
-    border:0;
-    background:white;
-    }
-    .accordion-item{
-        border-bottom: solid 3px var(--color-verdeSecundario) !important;
+    border: 0;
+    background: white;
+}
 
-    }
+.accordion-item {
+    border-bottom: solid 3px var(--color-verdeSecundario) !important;
+}
+
 #p-frecuentes button {
     background-color: white;
 }
@@ -151,8 +152,6 @@ a:hover {
 
 /*---------- FORMULARIOS ----------*/
 
-/*-------------FIN ESTILOS HOME-----------------------------*/
-/*estilos de formularios*/
 .tittle {
     color: var(--color-azulPrimario);
 }
@@ -172,17 +171,6 @@ a:hover {
 input::placeholder {
     color: #ccc;
     font-size: 12px;
-}
-button, #botonPrimario {
-    border: none !important;
-    background-color: var(--color-azulPrimario);
-    color: white;
-    font-weight: 300;
-}
-
-a {
-    text-decoration: none;
-    color: var(--color-verdeHover);
 }
 
 .form-select {
