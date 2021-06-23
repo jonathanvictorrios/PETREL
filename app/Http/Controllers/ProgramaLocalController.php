@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\ProgramaLocal;
+use App\Models\HojaResumen;
 use Illuminate\Support\Facades\Storage;
 use Karriere\PdfMerge\PdfMerge;
 
@@ -50,6 +51,14 @@ class ProgramaLocalController extends Controller
         $unPrograma=new ProgramaLocal();
         $unPrograma->url_programas=$rutaArchivoUnico;
         $unPrograma->save();
+
+        //Se agrega id_programa_local a la hoja resumen
+        $unaHojaResumen=new HojaResumen();
+        $hojaResumenEncontrada=$unaHojaResumen::where('id_solicitud',$request->idSolicitud)->get()[0];
+        $hojaResumenEncontrada->id_programa_local=$unPrograma->id_programa_local;
+        $hojaResumenEncontrada->save();
+        //----------------------------------------//
+
         return view('programaLocal.show',['idSolicitud'=>$request->idSolicitud])->with('programaLocal',$unPrograma);
         //return redirect('programaLocal/',$unPrograma->id_programa_local);
     }

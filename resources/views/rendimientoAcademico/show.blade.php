@@ -107,6 +107,7 @@
                     <input type="hidden" id="rutaArchivo" name="rutaArchivo" value="{{$rutaArchivo}}">
                     <input type="submit" value="Crear PDF">
             </form>
+            <a href="{{route('buscarProgramas',$idSolicitud)}}" >Siguiente</a>
         </div>
     </body>
 </html>

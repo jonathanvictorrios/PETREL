@@ -15,7 +15,7 @@ class CreateTableHojaResumen extends Migration
     {
         Schema::create('hoja_resumen', function (Blueprint $table) {
             $table->id('id_hoja_resumen');
-            $table->string('url_hoja_unida');
+            $table->string('url_hoja_unida')->nullable();
             // $table->string('firma_dig_dpto_alum');
             // $table->string('firma_dig_sec_acad_ua');
             $table->timestamps();

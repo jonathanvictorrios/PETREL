@@ -2,24 +2,20 @@
 
 namespace Database\Seeders;
 
-use App\Models\SolicitudCertProg;
+use App\Models\Carrera;
 use Illuminate\Database\Seeder;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Storage;
 
-class DatabaseSeeder extends Seeder
+class ProgramaDriveSeeder extends Seeder
 {
     /**
-     * Seed the application's database.
+     * Run the database seeds.
      *
      * @return void
      */
     public function run()
     {
-        // \App\Models\User::factory(10)->create();
-        $this->call(RoleSeeder::class);
-        $this->call(PermissionTableSeeder::class);
-        $this->call(CreateAdminUserSeeder::class);
-
-        
         $colCarreras = Carrera::get();
         $colUrlAnio = Storage::disk('google')->directories(); //leemos todas las carpetas desde RAIZ
         $idCarpetaAnio = 0;
@@ -52,21 +48,20 @@ class DatabaseSeeder extends Seeder
                     $urlPrograma = substr(strrchr($urlPrograma,'/'),1);
                     $programa = Storage::disk('google')->getMetadata($urlPrograma)['name'];
                     $nro_nombre = explode("-",$programa);
+                    if(count($nro_nombre)==2){
+                        $nombrePrograma = $nro_nombre[1];
+                    }else{
+                        //como aveces tiene sigla de la carrera, la omitimos y agregamos el pdf
+                        $nombrePrograma = $nro_nombre[1].'.pdf';
+                    }
                     DB::table('programa_drive')->insert([
                         'numero_programa'=>$nro_nombre[0],
-                        'nombre_programa'=>$nro_nombre[1],
+                        'nombre_programa'=>$nombrePrograma,
                         'id_carpeta_carrera'=>$idCarpetaCarrera,
                         'url_programa'=>$urlPrograma
                     ]);
                 }
             }
         }
-        $this->call([
-            UnidadAcademicaSeeder::class,
-            CarreraSeeder::class,
-            ProgramaDriveSeeder::class,
-            UsuarioSeeder::class,
-            SolicitudCertProgSeeder::class
-        ]);
     }
 }
