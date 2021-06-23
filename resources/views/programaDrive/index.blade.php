@@ -17,7 +17,6 @@
                 <td>{{ $programa->numero_programa }}</td>
                 <td>{{ $programa->nombre_programa }}</td>
                 <td><a href='https://drive.google.com/uc?id={{ $programa->url_programa }}&export=download'> Descargar </a></td>
-                <td><a href='https://drive.google.com/file/d/{{ $programa->url_programa }}/view?usp=sharing' target="_blank"> Ver en drive</a></td>
                 <td><a href="{{ route('programa.show', $programa->id_programa) }}">Ver</a></td>
                 <td><a href=" {{ route('programa.create') }} ">Crear</a></td>
             </tr>

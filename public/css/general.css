@@ -40,21 +40,17 @@ body {
     background: #efefef;
 }
 
-button,
-#botonPrimario {
+.botonFormulario {
+    border-radius: 0.25rem !important;
+    padding: 0.25rem !important;
+    width: 100% !important;
     border: none !important;
     background-color: var(--color-azulPrimario);
     color: white;
-    font-weight: 300;
-   
-}
-.botonFormulario{
-    border-radius:.25rem!important;
-    padding:.25rem !important;
-    width: 100% !important;
+    /* font-weight: 300; */
 }
 
-button:hover {
+.botonFormulario:hover {
     background-color: var(--color-verdeHover);
 }
 
@@ -231,22 +227,37 @@ input::placeholder {
 }
 
 /* Boton Crear Solicitud */
-.btn-round {
+.btn-create {
     border-radius: 50%;
-    padding: 0.375rem 0.375rem;
+    padding: 0.275rem 0.275rem;
     background-color: var(--color-azulPrimario);
     border-color: var(--color-azulPrimario);
+    color: white;
 }
 
-.btn-round:hover {
+.btn-create:hover {
     background-color: var(--color-verdeHover);
     border-color: var(--color-verdeHover);
+    color: #212529;
 }
 
 .bi {
     width: 1em;
     height: 1em;
     font-size: 2em;
+}
+
+/* Boton Búsqueda */
+.btn-busqueda {
+    border-radius: 0.25rem;
+    border: none;
+    background-color: var(--color-azulPrimario);
+    color: white;
+}
+
+.btn-busqueda:hover {
+    background-color: var(--color-verdeHover);
+    color: #212529;
 }
 
 /*---------- HEADER ----------*/
