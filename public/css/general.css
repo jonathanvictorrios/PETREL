@@ -40,15 +40,9 @@ body {
     background: #efefef;
 }
 
-<<<<<<< HEAD
-.botonFormulario{
-    border-radius:.25rem!important;
-    padding:.25rem !important;
-=======
 .botonFormulario {
     border-radius: 0.25rem !important;
     padding: 0.25rem !important;
->>>>>>> e0c8425880d727f18d8d559eca1b6d0a9d8a2dcb
     width: 100% !important;
     border: none !important;
     background-color: var(--color-azulPrimario);
