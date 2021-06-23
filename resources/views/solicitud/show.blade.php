@@ -79,8 +79,8 @@
                             </div>
                             {{-- estado --}}
                             <div class="row justify-content-between text-left ">
-                                <p class=" "><span class="text-secondary fs-5">Estado: </span> en depto
-                                    alumnos{{-- ACÀ DEBE IR ESTADO DE SOLICITUD NO ASIGNACIÒN{{$solicitud->UltimoEstado}}</p> --}}
+                                <p class=" "><span class="text-secondary fs-5">Estado: </span> Iniciado
+                                    {{-- ACÀ DEBE IR ESTADO DE SOLICITUD NO ASIGNACIÒN{{$solicitud->UltimoEstado}}</p> --}}
                             </div>
 
                             {{-- nombres y apellidos --}}
@@ -153,7 +153,7 @@
             <div class="row justify-content-center ">
                 <div class="col-6 p-2 m-2">
                     {{-- ESTE FORM/BOTÒN DEBERIA SER VISIBLE SÒLO SI EL USUARIO ASIGNADO ES EL USUARIO LOGUEADO --}}
-                    <form action={{-- "{{ route('hojaResumen.store') }}" --}}method="POST" autocomplete="off" enctype="multipart/form-data">
+                    <form action= "{{ route('hojaResumen.store') }}" method="POST" autocomplete="off" enctype="multipart/form-data">
                         @csrf
                         {{-- aca voy a recibir el $idSolicitud , por ahora utilizo un input , luego este $idSolicitud estara en un campo oculto --}}
                         <input type="hidden" id="idSolicitud" name="idSolicitud" value="{{ $solicitud->idSolicitud }}">
