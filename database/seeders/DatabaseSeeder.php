@@ -2,6 +2,7 @@
 
 namespace Database\Seeders;
 
+use App\Models\SolicitudCertProg;
 use Illuminate\Database\Seeder;
 
 class DatabaseSeeder extends Seeder
@@ -18,6 +19,8 @@ class DatabaseSeeder extends Seeder
             UnidadAcademicaSeeder::class,
             CarreraSeeder::class,
             ProgramaDriveSeeder::class,
+            UsuarioSeeder::class,
+            SolicitudCertProg::class
         ]);
     }
 }
