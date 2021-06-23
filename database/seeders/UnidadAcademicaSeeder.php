@@ -3,6 +3,7 @@
 namespace Database\Seeders;
 
 use Illuminate\Database\Seeder;
+use Illuminate\Support\Facades\DB;
 
 class UnidadAcademicaSeeder extends Seeder
 {
@@ -16,6 +17,5 @@ class UnidadAcademicaSeeder extends Seeder
         DB::table('unidad_academica')->insert([
             'unidad_academica'=>'Facultad de Informática',
         ]);
-
     }
 }
