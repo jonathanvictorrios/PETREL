@@ -40,18 +40,22 @@ body {
     background: #efefef;
 }
 
-button,
-#botonPrimario {
+/* button,
+a.botonFormulario {
     border: none !important;
     background-color: var(--color-azulPrimario);
     color: white;
     font-weight: 300;
    
-}
+} */
 .botonFormulario{
     border-radius:.25rem!important;
     padding:.25rem !important;
     width: 100% !important;
+    border: none !important;
+    background-color: var(--color-azulPrimario);
+    color: white;
+    font-weight: 300;
 }
 
 button:hover {
