@@ -8,6 +8,13 @@
 
 {{-- Tabla Solicitudes - Estudiante --}}
 <div id="nav-solicitud" class="container shadow-lg my-5 bg-light rounded">
+
+    @if (session('mensaje') ) {{-- Mensaje final luego de submit --}}
+    <div class="alert alert-success alert-dismissible fade show d-flex align-items-center m-3 p-3">
+        <i class='fas fa-check-circle mx-2'></i>{{ session('mensaje') }}
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    </div>
+    @endif
   <!-- Solicitudes -->
   <div class="container px-md-5 px-3 py-5">
     <h3>Mis solicitudes</h3>

@@ -7,13 +7,6 @@
 <main class="p-2" id="cuerpo"> {{-- Inicio main cuerpo --}}
     <div class="container mt-3">
         <a href="{{url()->previous()}}" class="lead"><i class="fas fa-chevron-left me-2"></i>Atrás</a>
-
-        @if (session('mensaje') ) {{-- Mensaje final luego de submit --}}
-        <div class="alert alert-success alert-dismissible fade show d-flex align-items-center m-3 p-3">
-            <i class='fas fa-check-circle mx-2'></i>{{ session('mensaje') }}
-            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-        </div>
-        @endif
     </div>
 
     {{-- inicio formulario nueva solicitud --}}
