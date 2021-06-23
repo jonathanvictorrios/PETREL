@@ -48,9 +48,15 @@ class ProgramaDriveSeeder extends Seeder
                     $urlPrograma = substr(strrchr($urlPrograma,'/'),1);
                     $programa = Storage::disk('google')->getMetadata($urlPrograma)['name'];
                     $nro_nombre = explode("-",$programa);
+                    if(count($nro_nombre)==2){
+                        $nombrePrograma = $nro_nombre[1];
+                    }else{
+                        //como aveces tiene sigla de la carrera, la omitimos y agregamos el pdf
+                        $nombrePrograma = $nro_nombre[1].'.pdf';
+                    }
                     DB::table('programa_drive')->insert([
                         'numero_programa'=>$nro_nombre[0],
-                        'nombre_programa'=>$nro_nombre[1],
+                        'nombre_programa'=>$nombrePrograma,
                         'id_carpeta_carrera'=>$idCarpetaCarrera,
                         'url_programa'=>$urlPrograma
                     ]);
