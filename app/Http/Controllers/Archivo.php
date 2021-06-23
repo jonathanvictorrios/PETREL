@@ -23,33 +23,13 @@ class Archivo extends Controller
      */
     public function index()
     {
-        /* $solicitudes = Estado::find(1)->solicitudCertProg; */
-        /* $lista = array();
-        $estadosFaltaFirma = DB::table('estado')->where('idEstadoDescripcion', '1')->get();
-        foreach ($estadosFaltaFirma as $estado) {
-            $solicitud = SolicitudCertProg::find($estado->idSolicitud);
-            array_push($lista, $solicitud);
-        }
-        $datos['lista'] = $lista; */
         $estadosSolicitud = DB::table('estado')
             ->join('solicitud_cert_prog', 'estado.id_solicitud', '=', 'solicitud_cert_prog.id_solicitud')
             ->join('usuario', 'solicitud_cert_prog.id_usuario_estudiante', '=', 'usuario.id_usuario')
-            ->where('id_estado_descripcion', '1')->get();
+            ->join('estado_descripcion', 'estado.id_estado_descripcion', '=', 'estado_descripcion.id_estado_descripcion')
+            ->where('estado.id_estado_descripcion', '1')->get();
 
         $datos['lista'] = $estadosSolicitud;
-        /* ddd($estadosSolicitud); */
-        /*  +"id_estado": 1
-            +"id_solicitud": 3
-            +"id_estado_descripcion": 1
-            +"created_at": null
-            +"updated_at": null
-            +"id_usuario_estudiante": 1
-            +"id_user_u": 2
-            +"id_usuario": 1
-            +"nombre": "Maximiliano"
-            +"apellido": "Villalba"
-            +"legajo": "FAI-460"
-            +"email": "maxi@gmail.com" */
         return view('archivos.index', $datos);
     }
 
@@ -77,12 +57,17 @@ class Archivo extends Controller
         $hojaResumenFinal = HojaResumenFinal::where('id_hoja_resumen', $idHojaResumen)->get()[0];
 
         if ($request->hasFile('archivo')) {
-            $hojaResumenFinal->url_hoja_unida_final = $request->file('archivo')->store('archivos', 'public');
+            $ubicacion = 'id-solicitud-' . $archivo['idSolicitud'];
+            $nombreArchivo = 'hoja_unida_final_firmada' . $archivo['idSolicitud'] . '.pdf';
+            $hojaResumenFinal->url_hoja_unida_final = $request->file('archivo')->storeAs($ubicacion, $nombreArchivo, 'local');
         }
 
-        $hojaResumenFinal->save();
-
-        return redirect()->route('archivos.index');
+        if ($hojaResumenFinal->save()) {
+            $mensaje = 'Archivo cargado';
+        } else {
+            $mensaje = 'Ha ocurrido un error';
+        }
+        return redirect()->route('archivos.index')->with('mensaje', $mensaje);
     }
 
     /**
@@ -119,23 +104,40 @@ class Archivo extends Controller
             $path = $hojaResumen->url_hoja_unida_final;
         }
 
-        $pathFile = storage_path('app/public/' . $path);
+        $pathFile = storage_path('app/' . $path);
         header("Cache-Control: no-cache, must-revalidate");
         return response()->download($pathFile);
     }
 
     public function cargarComentario(Request $request, $idSolicitud)
     {
-        $archivo = $request->all();
-        $nuevoComentario = $archivo['comentarioSolicitud'];
+
+        $estado = DB::table('estado')
+            ->join('solicitud_cert_prog', 'estado.id_solicitud', '=', 'solicitud_cert_prog.id_solicitud')
+            ->where('estado.id_solicitud', $idSolicitud)
+            ->get()['0'];
+
+
+        $estadoDescripcionNuevo = $estado->id_estado_descripcion + 1; /* Estp debe cambiarse a -1 ya que se retrocede el estado */
+
+        $estadoNuevo = DB::table('estado')
+            ->where('id_solicitud', $idSolicitud)
+            ->update(['id_estado_descripcion' => $estadoDescripcionNuevo]);
+
+        $modalComentario = $request->all();
+        $nuevoComentario = $modalComentario['comentarioSolicitud'];
         $comentario = new Comentario();
         $comentario->descripcion = $nuevoComentario;
         $comentario->id_solicitud = $idSolicitud;
         $comentario->id_usuario = 2;
 
-        $comentario->save();
+        if ($comentario->save() && $estadoNuevo) {
+            $mensaje = 'Solicitud retornada';
+        } else {
+            $mensaje = 'ha ocurrido un error';
+        }
 
-        return redirect()->route('archivos.index');
+        return redirect()->route('archivos.index')->with('mensaje', $mensaje);
     }
 
     /**

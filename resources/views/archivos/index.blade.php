@@ -61,7 +61,7 @@
                                 {{ "falta firma Santiago" }}
                             </td>
                             <td>
-                                03/03/2021
+                                {{ $solicitud->descripcion }}
                             </td>
                             <td>
                                 {{ $solicitud->updated_at }}
@@ -76,6 +76,12 @@
                         </tr>
                         @endforelse
                     </table>
+                    @if (session('mensaje') )
+                    <div class="alert alert-success alert-dismissible fade show d-flex align-items-center m-3 p-3">
+                        <i class='fas fa-check-circle mx-2'></i>{{ session('mensaje') }}
+                        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                    </div>
+                    @endif
                 </div>
             </div>
         </div>

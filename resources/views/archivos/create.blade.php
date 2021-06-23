@@ -13,7 +13,7 @@
                         @csrf
                         Image/File:
                         <br>
-                        <input type="file" name="archivo" id="">
+                        <input type="file" name="archivo" id="" required>
                         <br><br>
                         <input type="hidden" value="{{ Request::get('dato')}} " name=" idSolicitud">
                         <input type="submit" value="Guardar archivo" class="btn btn-success">
