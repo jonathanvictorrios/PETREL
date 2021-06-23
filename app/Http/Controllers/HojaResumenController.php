@@ -9,7 +9,7 @@ use Karriere\PdfMerge\PdfMerge;
 class HojaResumenController extends Controller
 {
     public function index(){
-        //return view('hojaResumen.create');
+        return view('hojaResumen.create');
         // $colHojasResumen=HojaResumen::get();
         // return view('hojaResumen.show')->with('colHojasResumen',$colHojasResumen);
     }

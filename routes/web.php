@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\CarpetaAnioController;
 use App\Http\Controllers\CarpetaCarreraController;
+use App\Http\Controllers\HojaResumenController;
 use App\Http\Controllers\ProgramaDriveController;
 use App\Http\Controllers\ProgramaLocalController;
 use App\Http\Controllers\RendimientoAcademicoController;
