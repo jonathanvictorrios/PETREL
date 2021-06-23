@@ -74,10 +74,10 @@ class Archivo extends Controller
         /* Aca habria que agregar al if que no cargue el archivo si no se pudo hacer la consulta por algun motivo */
         $archivo = $request->all();
         $idHojaResumen = HojaResumen::where('id_solicitud', $archivo['idSolicitud'])->get()[0]->id_hoja_resumen;
-        $hojaResumenFinal = HojaResumenFinal::where('id_hoja_resumen_final', $idHojaResumen)->get()[0];
+        $hojaResumenFinal = HojaResumenFinal::where('id_hoja_resumen', $idHojaResumen)->get()[0];
 
         if ($request->hasFile('archivo')) {
-            $hojaResumenFinal->url_pdf_hoja_unida_final = $request->file('archivo')->store('archivos', 'public');
+            $hojaResumenFinal->url_hoja_unida_final = $request->file('archivo')->store('archivos', 'public');
         }
 
         $hojaResumenFinal->save();
@@ -86,10 +86,7 @@ class Archivo extends Controller
     }
 
     /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
+     * DEPRECADO POR NO TENER LOS ASUNTOS DE SEGURIDAD IMPLEMENTADOS
      */
     public function show($id)
     {
@@ -111,12 +108,19 @@ class Archivo extends Controller
 
     public function download($id)
     {
-        $idHojaResumen = HojaResumen::where('id_solicitud', $id)->get()[0]->id_hoja_resumen;
-        $path = HojaResumenFinal::where('id_hoja_resumen_final', $idHojaResumen)->get()[0]->url_pdf_hoja_unida_final;
-        if ($path == null) {
-            $path = HojaResumenFinal::where('id_hoja_resumen_final', $idHojaResumen)->get()[0]->url_pdf_hoja_unida_sinfirmar;
+        $hojaResumen = DB::table('hoja_resumen')
+            ->join('hoja_resumen_final', 'hoja_resumen.id_hoja_resumen', '=', 'hoja_resumen_final.id_hoja_resumen')
+            ->where('id_solicitud', $id)
+            ->get()['0'];
+
+        if ($hojaResumen->url_hoja_unida_final == null) {
+            $path = $hojaResumen->url_hoja_unida_final_sin_firma;
+        } else {
+            $path = $hojaResumen->url_hoja_unida_final;
         }
+
         $pathFile = storage_path('app/public/' . $path);
+        header("Cache-Control: no-cache, must-revalidate");
         return response()->download($pathFile);
     }
 

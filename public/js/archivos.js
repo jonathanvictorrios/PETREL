@@ -1,15 +1,15 @@
 $('input[name=seleccion]').click(function () {
-    $('#href-show').removeClass('disabled');
+    $('#href-download').removeClass('disabled');
     $('#href-carga-archivo').removeClass('disabled');
     $('#href-comentar').removeClass('disabled');
 
     id = $(this).val();
 
     /* Esto es para cambiar la url del ver mas */
-    url = $('#href-show').attr('href');
+    url = $('#href-download').attr('href');
     cadenaNueva = url.slice(0, 26);
-    cadenaFinal = cadenaNueva + id;
-    $('#href-show').attr('href', cadenaFinal);
+    cadenaFinal = cadenaNueva + id + '/download';
+    $('#href-download').attr('href', cadenaFinal);
 
     /* Esto es para cambiar la url del cargar archivo */
     urlCargaArchivo = $('#href-carga-archivo').attr('href');

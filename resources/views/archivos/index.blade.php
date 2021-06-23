@@ -8,9 +8,8 @@
         <div class="col-md-8">
             <div class="card">
                 <div class="card-body">
-                    <!-- <a class="btn btn-primary disabled" href="{{ route('archivos.show',0) }}" id="href-show">Ver mas</a> -->
                     <a class="btn btn-primary disabled" href="{{ route('archivos.download',0) }}"
-                        id="href-show">Descargar</a>
+                        id="href-download">Descargar</a>
                     <a class="btn btn-primary disabled" href="{{ route('archivos.create', 'dato=0') }}"
                         id="href-carga-archivo">Adjuntar firmado</a>
                     <a class="btn btn-primary disabled" data-bs-toggle="modal" data-bs-target="#exampleModal"
@@ -59,7 +58,7 @@
                                 {{ $solicitud->id_solicitud}}
                             </td>
                             <td>
-                                {{ obtenerDescripcionEstado($solicitud->id_estado_descripcion) }}
+                                {{ "falta firma Santiago" }}
                             </td>
                             <td>
                                 03/03/2021
