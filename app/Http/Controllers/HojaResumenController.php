@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\HojaResumen;
+use Karriere\PdfMerge\PdfMerge;
 
 class HojaResumenController extends Controller
 {
@@ -44,7 +45,7 @@ class HojaResumenController extends Controller
         }
         $nombre = 'hojaUnida'.$idSolicitud.'.pdf';
         $pdf->merge(storage_path().'/app/id-solicitud-'.$idSolicitud.'/'.$nombre);
-        return 'id-solicitud-'.$nroSolicitud.'/'.$nombre;
+        return 'id-solicitud-'.$idSolicitud.'/'.$nombre;
     }
     
 
