@@ -47,9 +47,11 @@ Route::get('agregarPrograma/{idCarpetaCarrera}', [CarpetaCarreraController::clas
 
 Route::resource('programaDrive', ProgramaDriveController::class);
 
-Route::resource('rendimientoAcademico', RendimientoAcademicoController::class);
-Route::post('convertirExcel', [RendimientoAcademicoController::class, 'convertirExcel'])->name('convertirExcel');
+Route::resource('rendimientoAcademico',RendimientoAcademicoController::class);
+Route::post('convertirExcel',[RendimientoAcademicoController::class,'convertirExcel'])->name('convertirExcel');
+    
+Route::resource('programaLocal',ProgramaLocalController::class);
+Route::get('buscarProgramas/{idSolicitud}',[ProgramaDriveController::class,'buscarProgramas'])->name('buscarProgramas');
+Route::post('descargarProgramas',[ProgramaLocalController::class,'descargarProgramas'])->name('descargarProgramas');
 
-Route::resource('programaLocal', ProgramaLocalController::class);
-Route::get('buscarProgramas/{idRendimientoAcademico}', [ProgramaDriveController::class, 'buscarProgramas'])->name('buscarProgramas');
-Route::post('descargarProgramas', [ProgramaLocalController::class, 'descargarProgramas'])->name('descargarProgramas');
+Route::resource('hojaResumen',HojaResumenController::class);
