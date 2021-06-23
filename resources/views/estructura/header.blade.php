@@ -1,13 +1,13 @@
 <nav class="navbar navbar-expand-md navbar-light bg-light"> {{-- Inicio encabezado --}}
     <div class="container-fluid user-select-none"> {{-- Comienzo contenedor --}}
-        @if()
+        @if ($message = Session::get('success'))
         <a href="/home">
             <div class="navbar-brand bg-brand rounded-3 p-2 h-100" id=logoHeader title="Volver al inicio">
                 <img src="{{ asset('img/logo_petrel-02.png') }}" alt="Icono Petrel" class=img-fluid>
                 <span class="text-light">Petrel</span>
             </div>
         </a>
-        @if ($message = Session::get('success'))
+        
         <div class="d-flex"> {{-- Comienzo contenido a la derecha --}}
             <ul class="navbar-nav me-auto mb-2 mb-md-0"> {{-- Con el manejo de sesiones, se hará un if de Blade y se mostrará o no el menú del usuario (con su nombre en pantalla) --}}
                 <li class="nav-item dropdown">

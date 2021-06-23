@@ -24,10 +24,10 @@ class ProgramaLocalController extends Controller
      * Show the form for creating a new resource.
      * @return \Illuminate\Http\Response
      */
-    // public function create()
-    // {
-    //     return view('programaLocal.create');
-    // }
+    public function create()
+    {
+        return view('programaLocal.create');
+    }
 
     /**
      * Recibimos las url's de la seleccion de programas que desea dto_alumno y

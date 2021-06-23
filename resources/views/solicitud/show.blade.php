@@ -1,14 +1,7 @@
-<<<<<<< HEAD
 @extends('estructura.layout')
 
 @section('cuerpo')
-=======
-@extends('estructura/layout')
-
-@section('cuerpo')
 @php($titulo = 'Petrel - Ver detalles solicitud')
->>>>>>> f09a10bbe7623fa4eeb328d77ee2242ebcd87d94
-
 @include('estructura/header')
 <main class=p-2 id=cuerpo> <!-- Inicio main cuerpo -->
     <div class=container>

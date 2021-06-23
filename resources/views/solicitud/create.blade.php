@@ -1,15 +1,7 @@
-<<<<<<< HEAD
-@extends('estructura.layout')
-
-@section('cuerpo')
-<form action="{{route('solicitud.store')}}" method='POST' >
-=======
 @extends('estructura/layout')
 
 @section('cuerpo')
-@php($titulo = 'Petrel - Crear solicitud')
 
-@include('estructura/header')
 <main class=p-2 id=cuerpo> {{-- Inicio main cuerpo --}}
     <div class=container>
         <a href="{{url()->previous()}}" class="lead"><i class="fas fa-chevron-left me-2"></i>Atrás</a>
@@ -99,52 +91,4 @@
     </div>
 </div>
 {{-- fin formulario nueva solicitud --}}
-{{-- <form action="{{route('solicitud.store')}}" method='POST' >
->>>>>>> f09a10bbe7623fa4eeb328d77ee2242ebcd87d94
-@csrf
------------------formulario anterior-----------
-<div class="row">
-    <div class="col col-8">
-    <label class="form-label" for="">Nombre:</label>
-    <input type="text"  class='form-control' value='Nombre del Usuario Logueado' disabled>
-    </div>
-    <div class="col col-4">
-    <label class="form-label" for="">Legajo</label>
-    <input type="text" class='form-control' name='legajo'>
-    </div>
-</div>
-
-<div class="row">
-    <div class="col-col-12">
-        <label class="form-label" for="">Universidad Destino</label>
-        <input class='form-control' type="text" name='universidadDestino'>
-    </div>
-</div>
-
-<div class="row">
-<div class="col-col-12">
-        <label class="form-label" for="">Unidad Academica</label>
-        <select class='form-control' name="unidadAcademica" id="">
-        @foreach($unidadesAcademicas as $unidad)
-            <option value="{{$unidad->id_unidad_academica}}">{{$unidad->unidad_academica}}</option>
-        @endforeach
-        </select>
-    </div>
-</div>
-<div class="row">
-<div class="col-col-12">
-        <label class="form-label" for="">Carrera</label>
-        <select class='form-control' name="carrera" id="">
-        <!-- @foreach($unidadesAcademicas as $unidad)
-            <option value="{{$unidad->id_unidad_academica}}">{{$unidad->unidad_academica}}</option>
-        @endforeach -->
-        </select>
-    </div>
-</div>
-
-<button type='submit' class='btn btn-primary mt-2'>Enviar</button>
-</form> --}}
-
-</main> <!-- Fin main cuerpo -->
-
 @endsection
