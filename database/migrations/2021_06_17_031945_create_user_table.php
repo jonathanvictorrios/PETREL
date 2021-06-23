@@ -18,8 +18,8 @@ class CreateUserTable extends Migration
             $table->string("name");
             $table->string("email");
             $table->string("password");
-            $table->string("remember_token");
-            $table->date("email_verified_at");
+            $table->string("remember_token")->default("_")->nullable($value = true);
+            $table->date("email_verified_at")->default(today())->nullable($value = true);
             $table->timestamps();
         });
     }
