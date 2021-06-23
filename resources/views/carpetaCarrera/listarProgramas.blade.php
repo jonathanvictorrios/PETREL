@@ -19,7 +19,6 @@
                 <td>{{ $programa->numero_programa }}</td>
                 <td>{{ $programa->nombre_programa }}</td>
                 <td><a href='https://drive.google.com/uc?id={{ $programa->url_programa }}&export=download'>@</a></td>
-                <td><a href='https://drive.google.com/file/d/{{ $programa->url_programa }}/view?usp=sharing'>@</a></td>
                 <td></td>
             </tr>
         @endforeach

@@ -6,6 +6,7 @@ use PhpOffice\PhpSpreadsheet\Writer\Csv;
 use PhpOffice\PhpSpreadsheet\IOFactory;
 use Illuminate\Support\Facades\Storage;
 use App\Models\RendimientoAcademico;
+use App\Models\HojaResumen;
 use Illuminate\Http\Request;
 use PDF;
 
@@ -33,8 +34,16 @@ class RendimientoAcademicoController extends Controller
         $unRendAcadem=new RendimientoAcademico();
         $unRendAcadem->url_rendimiento_academico='id-solicitud-'.$request->idSolicitud.'/'.$nombreRendimiendoPdf;
         $unRendAcadem->save();
-        return redirect('buscarProgramas/'.$request->idSolicitud);
-        //return $pdf->download($nombreRendimiendoPdf);
+        
+        //Se agrega el id_rendimiento_academico a la hoja resumen
+        $unaHojaResumen=new HojaResumen();
+        $hojaResumenEncontrada=$unaHojaResumen::where('id_solicitud',$request->idSolicitud)->get()[0];
+        $hojaResumenEncontrada->id_rendimiento_academico=$unRendAcadem->id_rendimiento_academico;
+        $hojaResumenEncontrada->save();
+        //
+
+        //return redirect('buscarProgramas/'.$request->idSolicitud);
+        return $pdf->download($nombreRendimiendoPdf);
     }
 
     /**

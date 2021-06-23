@@ -2,15 +2,12 @@
 
 use App\Http\Controllers\CarpetaAnioController;
 use App\Http\Controllers\CarpetaCarreraController;
+use App\Http\Controllers\HojaResumenController;
 use App\Http\Controllers\ProgramaDriveController;
 use App\Http\Controllers\ProgramaLocalController;
 use App\Http\Controllers\RendimientoAcademicoController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\SolicitudCertProgController;
-use App\Models\CarpetaAnio;
-use App\Models\ProgramaDrive;
-use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Storage;
 
 /*
 |--------------------------------------------------------------------------
@@ -51,9 +48,11 @@ Route::get('agregarPrograma/{idCarpetaCarrera}', [CarpetaCarreraController::clas
 
 Route::resource('programaDrive', ProgramaDriveController::class);
 
-Route::resource('rendimientoAcademico', RendimientoAcademicoController::class);
-Route::post('convertirExcel', [RendimientoAcademicoController::class, 'convertirExcel'])->name('convertirExcel');
+Route::resource('rendimientoAcademico',RendimientoAcademicoController::class);
+Route::post('convertirExcel',[RendimientoAcademicoController::class,'convertirExcel'])->name('convertirExcel');
+    
+Route::resource('programaLocal',ProgramaLocalController::class);
+Route::get('buscarProgramas/{idSolicitud}',[ProgramaDriveController::class,'buscarProgramas'])->name('buscarProgramas');
+Route::post('descargarProgramas',[ProgramaLocalController::class,'descargarProgramas'])->name('descargarProgramas');
 
-Route::resource('programaLocal', ProgramaLocalController::class);
-Route::get('buscarProgramas/{idRendimientoAcademico}', [ProgramaDriveController::class, 'buscarProgramas'])->name('buscarProgramas');
-Route::post('descargarProgramas', [ProgramaLocalController::class, 'descargarProgramas'])->name('descargarProgramas');
+Route::resource('hojaResumen',HojaResumenController::class);
