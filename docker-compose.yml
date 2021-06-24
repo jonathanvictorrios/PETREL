@@ -1,20 +1,11 @@
-version: '3'
+version: "3.4"
 
 services:
-  web:
+  petrel:
+    image: petrel
     build:
-        context: .
-        dockerfile: ./Dockerfile
-    environment:
-        XDEBUG_CONFIG: remote_host=host.docker.internal remote_port=9000 remote_enable=1
-    ports:
-        - '80:80'
-    volumes:
-        - './web:/var/www/html'
-
-# For more information: https://laravel.com/docs/sail
-version: "3"
-services:
+      context: .
+      dockerfile: ./Dockerfile
   laravel.test:
     build:
       context: ./vendor/laravel/sail/runtimes/8.0
@@ -42,7 +33,7 @@ services:
       MYSQL_DATABASE: "${DB_DATABASE}"
       MYSQL_USER: "${DB_USERNAME}"
       MYSQL_PASSWORD: "${DB_PASSWORD}"
-      MYSQL_ALLOW_EMPTY_PASSWORD: "yes"
+      MYSQL_ALLOW_EMPTY_PASSWORD: "no"
     volumes:
       - "sailmysql:/var/lib/mysql"
     networks:
@@ -64,4 +55,3 @@ networks:
 volumes:
   sailmysql:
     driver: local
-    

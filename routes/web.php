@@ -56,3 +56,7 @@ Route::get('buscarProgramas/{idSolicitud}',[ProgramaDriveController::class,'busc
 Route::post('descargarProgramas',[ProgramaLocalController::class,'descargarProgramas'])->name('descargarProgramas');
 
 Route::resource('hojaResumen',HojaResumenController::class);
+
+Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
+    return view('dashboard');
+})->name('dashboard');
