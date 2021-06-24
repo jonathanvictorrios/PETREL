@@ -56,7 +56,7 @@ class NotaDptoAlumController extends Controller
             'url_nota_dpto_alum' => $directorioPDF.$nombrePDF
         ]);
 
-        // Guardar en hojaResumen->id_notaDptoAlum ???
+        # Actualizar tabla HojaResumen
         $hojaResumen = HojaResumen::where('id_solicitud', '=', $request->id_solicitud)->firstOrFail();
         $hojaResumen->id_nota_dto_alumno = $idNota->id_nota_dto_alumno;
         $hojaResumen->save();

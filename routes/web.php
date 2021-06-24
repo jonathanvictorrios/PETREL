@@ -4,6 +4,7 @@ use App\Http\Controllers\CarpetaAnioController;
 use App\Http\Controllers\CarpetaCarreraController;
 use App\Http\Controllers\HojaResumenController;
 use App\Http\Controllers\NotaDptoAlumController;
+use App\Http\Controllers\PlanEstudioController;
 use App\Http\Controllers\ProgramaDriveController;
 use App\Http\Controllers\ProgramaLocalController;
 use App\Http\Controllers\RendimientoAcademicoController;
@@ -62,3 +63,6 @@ Route::resource('hojaResumen',HojaResumenController::class);
 Route::resource('notaDA', NotaDptoAlumController::class);
 Route::post('notaDA/auth', [NotaDptoAlumController::class, 'autorizar'])->name('notada.auth');
 Route::get('notaDA/descargar/{id}', [NotaDptoAlumController::class, 'descargar']);
+
+
+Route::resource('planEstudio',PlanEstudioController::class);
