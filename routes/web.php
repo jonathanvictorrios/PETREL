@@ -76,11 +76,7 @@ Route::resource('programaLocal',ProgramaLocalController::class);
 Route::get('buscarProgramas/{idSolicitud}',[ProgramaDriveController::class,'buscarProgramas'])->name('buscarProgramas');
 Route::post('descargarProgramas',[ProgramaLocalController::class,'descargarProgramas'])->name('descargarProgramas');
 
-<<<<<<< HEAD
-Route::resource('hojaResumen',HojaResumenController::class);
-=======
-Route::resource('programaLocal', ProgramaLocalController::class);
-Route::get('buscarProgramas/{idRendimientoAcademico}', [ProgramaDriveController::class, 'buscarProgramas'])->name('buscarProgramas');
+//Route::get('buscarProgramas/{idRendimientoAcademico}', [ProgramaDriveController::class, 'buscarProgramas'])->name('buscarProgramas');
 Route::post('descargarProgramas', [ProgramaLocalController::class, 'descargarProgramas'])->name('descargarProgramas');
 Route::post('descargarProgramas', [ProgramaLocalController::class, 'descargarProgramas'])->name('descargarProgramas');
 Route::resource('solicitud', SolicitudCertProgController::class);
@@ -89,4 +85,3 @@ Route::resource('solicitud', SolicitudCertProgController::class);
 Route::get('archivos/{id}/download', [Archivo::class, 'download'])->name('archivos.download');
 Route::get('archivos/{id}/comment', [Archivo::class, 'cargarComentario'])->name('archivos.cargarComentario');
 Route::resource('archivos', Archivo::class);
->>>>>>> 86f5bbbadcf9c3413fce8237503b66b789349d69
