@@ -67,7 +67,3 @@ Route::get('notaDA/descargar/{id}', [NotaDptoAlumController::class, 'descargar']
 
 Route::resource('planEstudio',PlanEstudioController::class);
 Route::get('crearPlanEstudio/{id_solicitud}', [PlanEstudioController::class, 'crearPlan'])->name('crearPlanEstudio');
-
-Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
-    return view('dashboard');
-})->name('dashboard');

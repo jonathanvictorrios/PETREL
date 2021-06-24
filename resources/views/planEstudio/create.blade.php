@@ -41,6 +41,7 @@
         <input type="button" value="Limpiar" onclick="document.getElementById('url_ranquel').value = ''" class="btn btn-secondary w-25 mx-2">
         <input type="submit" value="Confirmar y continuar" class="w-100 btn btn-primary">
     </div>
+
 </form>
 
 @endsection
