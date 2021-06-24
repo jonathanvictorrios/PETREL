@@ -131,7 +131,7 @@ class ProgramaDriveController extends Controller
             //datos para comparar
             $nombreMateria = $programa['Materia'].'.pdf';
             $nombreMateria = ucwords(mb_strtolower($nombreMateria));
-            $anioMateriaAprobada = (int) ('20'.$programa['AnioMateria']);
+            $anioMateriaAprobada = (int) ($programa['AnioMateria']);
             $objProgramas = ProgramaDrive::where('nombre_programa','like',$nombreMateria)->get();
             if(count($objProgramas)>0){
                 //al menos encontro 1 programa

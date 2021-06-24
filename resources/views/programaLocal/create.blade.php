@@ -15,7 +15,7 @@
     <br>
     <h3>sugerencias</h3>
     @foreach ($colProgramasSugerencias as $colPrograma)
-    <input type="checkbox" name="urls[]" id="{{($colPrograma[0])->nombre_programa}}" value="">
+    <input type="checkbox" name="urls[]" id="{{($colPrograma[0])->nombre_programa}}" value="" onclick="return false">
     <label>{{($colPrograma[0])->nombre_programa}}</label><br>
         @foreach ($colPrograma as $programa)
         {{-- cuando elige el radio, se carga la url en el checkbox, myfuncion(nombreprograma,urlDelPdfElegido) --}}
@@ -31,8 +31,9 @@
         <br>
     @endforeach
     <input type="submit" value="enviar">
+
 </form>
-    
+    <a href="{{route('crearPlanEstudio',$idSolicitud)}}" >Siguiente</a>
 <script>
     function myFuncion(cbox,urlRadio) {
         alert('cbox'+cbox + '  radio: ' + urlRadio);
