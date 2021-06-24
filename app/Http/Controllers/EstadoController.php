@@ -115,11 +115,11 @@ class EstadoController extends Controller
             $Estado->estado_descripcion = $EstadoDescripcion;
             $Estado->save();
 
-            $Notificacion = new Notificacion;
-            $Notificacion->estado = $Estado;
-            $Notificacion->mensaje = 'Hay una nueva solicitud. Aguardando asignación.';
-            $Notificacion->leida = false;
-            $Notificacion->save();
+            //$Notificacion = new Notificacion;
+            //$Notificacion->estado = $Estado;
+            //$Notificacion->mensaje = 'Hay una nueva solicitud. Aguardando asignación.';
+            //$Notificacion->leida = false;
+            //$Notificacion->save();
 
             return view('index'); //definir vista de retorno
         }
@@ -169,11 +169,11 @@ class EstadoController extends Controller
             
             // generamos una nueva notificación para el estado creado y editamos las notas
             // con el apellido y nombre del usuario
-            $nuevaNotificacion = new Notificacion;
-            $nuevaNotificacion->estado = $nuevoEstado;
-            $nuevaNotificacion->mensaje = 'La solicitud ha sido asignada al usuario {{$usuario->apellido}} {{$usuario->nombre}}.';
-            $nuevaNotificacion->leida = false;
-          //  $nuevaNotificacion->save();
+            //$nuevaNotificacion = new Notificacion;
+            //$nuevaNotificacion->estado = $nuevoEstado;
+            //$nuevaNotificacion->mensaje = 'La solicitud ha sido asignada al usuario {{$usuario->apellido}} {{$usuario->nombre}}.';
+            //$nuevaNotificacion->leida = false;
+            //$nuevaNotificacion->save();
             return view('solicitud.index'); //definir vista de retorno
         }
         else {
@@ -187,7 +187,5 @@ class EstadoController extends Controller
 
 // PRIVADA
 
-    private function cambioEstado($idSolicitud, $idEstadoDescripcion, $idUsuario = null) {
-
-    }
+   // private function cambioEstado($idSolicitud, $idEstadoDescripcion, $idUsuario = null) {}
 }

@@ -156,7 +156,7 @@ class SolicitudCertProgController extends Controller
 
         $Mostrar->UnidadAcademica=$solicitud->carrera->unidad_academica->unidad_academica;
 
-        $ApellidoNombreUsuarioEst = $solicitud->usuarioEstudiante->apellido." ".$solicitud->usuarioEstudiante->nombre;
+        $ApellidoNombreUsuarioEst = $solicitud->usuarioEstudiante->apellido.", ".$solicitud->usuarioEstudiante->nombre;
         $Mostrar->UsuarioEstudiante=$ApellidoNombreUsuarioEst;
         $Mostrar->NombreEstudiante=$solicitud->usuarioEstudiante->nombre;
         $Mostrar->ApellidoEstudiante=$solicitud->usuarioEstudiante->apellido;
