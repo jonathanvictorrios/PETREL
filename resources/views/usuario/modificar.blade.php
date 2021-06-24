@@ -1,7 +1,7 @@
 @extends('estructura/layout')
 
 @section('cuerpo')
-@php($titulo = 'Petrel - Modificar usuario')@endphp
+@php($titulo = 'Modificar usuario - Petrel')@endphp
 
 @include('estructura/header')
 <main class="p-2" id="cuerpo"> {{-- Inicio main cuerpo --}}
@@ -48,7 +48,7 @@
                                 <label class="form-control-label py-2">Email</label>
                                 <input class="border-0 cell" type="text" id="email" name="email" placeholder="Ingrese el dirección de email">
                             </div>
-                            
+
                         </div>
 
                         <div class="row justify-content-center text-center py-4">

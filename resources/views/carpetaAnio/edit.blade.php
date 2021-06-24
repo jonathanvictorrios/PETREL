@@ -1,6 +1,6 @@
 @extends('estructura/layout')
 @section('cuerpo')
-@php($titulo = 'Petrel - Modificar Año')@endphp
+@php($titulo = 'Modificar Año - Petrel')@endphp
 
 @include('estructura/header')
 <main class="p-2" id="cuerpo"> {{-- Inicio main cuerpo --}}
