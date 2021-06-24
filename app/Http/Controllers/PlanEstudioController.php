@@ -71,7 +71,6 @@ class PlanEstudioController extends Controller
         //Storage::disk('local')->put('id-solicitud-'.$request->idSolicitud.'/temp/temp'.$i.'.pdf',$archivo);
         # Siguiente paso
         return redirect("notaDA/create?id_solicitud=$request->id_solicitud");
-
     }
 
     /**
