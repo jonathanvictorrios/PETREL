@@ -8,6 +8,7 @@ use App\Http\Controllers\ProgramaLocalController;
 use App\Http\Controllers\RendimientoAcademicoController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\SolicitudCertProgController;
+use Illuminate\Support\Facades\Auth;
 
 /*
 |--------------------------------------------------------------------------
@@ -57,6 +58,19 @@ Route::post('descargarProgramas',[ProgramaLocalController::class,'descargarProgr
 
 Route::resource('hojaResumen',HojaResumenController::class);
 
+
 Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
     return view('dashboard');
 })->name('dashboard');
+
+Route::middleware(['auth:sanctum', 'verified'])->get('/usuario', function () {
+    return view('/usuario/index');
+})->name('usuario');
+/* 
+Route::middleware(['auth:sanctum', 'verified'])->get('/usuario/show', function () {
+    return view('/usuario.show');
+})->name('usuario/show'); */
+
+Route::group(['middleware' => 'auth'], function () {
+    Route::resource('users', \App\Http\Controllers\UsersController::class);
+});
