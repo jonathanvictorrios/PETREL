@@ -17,7 +17,7 @@
                     <div class="row tittle border-bottom p-2">
                         <h2 class="col text-center fw-bold">Nueva Solicitud</h2>
                     </div>
-                    <form name=formCreate id=formCreate action="{{-- route('solicitud.store') --}}" method=POST novalidate> {{-- REACTIVAR ACTION PARA FUNCIONAR. Desactivado para probar validaciones. --}}
+                    <form name=formCreate id=formCreate action="route('solicitud.store')" method=POST novalidate>
                         @csrf
                         @if ($errors->any()) {{-- Valida en servidor y regresa mostrando los siguientes errores --}}
                         <div class="alert alert-danger alert-dismissible fade show d-flex align-items-center m-3 p-3">
