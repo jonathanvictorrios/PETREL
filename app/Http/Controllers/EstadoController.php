@@ -182,7 +182,7 @@ class EstadoController extends Controller
     }
 
     public function finalizarTramite($idSolicitud) {
-        $solicitud = solicitud_cert_prog::find($idSolicitud);
+        $solicitud = SolicitudCertProg::find($idSolicitud);
     }
 
 // PRIVADA
