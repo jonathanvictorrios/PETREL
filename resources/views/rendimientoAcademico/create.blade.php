@@ -14,13 +14,13 @@
                         @csrf
                         <div class="row justify-content-between text-left">
                             <div class="form-group col col-sm-6 flex-column d-flex py-3">
-                                <label class="form-control-label py-2">Se cargará el rendimiento académico para la
+                                <label class="form-control py-2">Se cargará el rendimiento académico para la
                                     solicitud:{{ $idSolicitud }}</label>
                             </div>
                         </div>
                         <div class="row justify-content-between text-left">
                             <div class="form-group col col col-sm-6 flex-column d-flex py-3">
-                                <label class="form-control-label py-2" name="excel">Seleccione Archivo</label>
+                                <label class="form-control py-2" name="excel">Seleccione Archivo</label>
                                 <input class="border-0 cell" type="file" id="excel" name="excel"
                                     value="{{ old('excel') }}">
                             </div>

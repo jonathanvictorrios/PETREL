@@ -39,31 +39,31 @@
                         @endif
                         <div class="row justify-content-between text-left">
                             <div class="form-group col col col-sm-6 flex-column d-flex py-3">
-                                <label class="form-control-label py-2">Nombres</label>
+                                <label class="form-control py-2">Nombres</label>
                                 <input class="border-0 cell" type="text" id="nombre" name="nombre" placeholder="Ingrese todos sus nombres" required>
                             </div>
                             <div class="form-group col col-sm-6 flex-column d-flex py-3">
-                                <label class="form-control-label py-2">Apellidos</label>
+                                <label class="form-control py-2">Apellidos</label>
                                 <input class="border-0 cell" type="text" id="apellido" name="apellido" placeholder="Ingrese todos sus apellidos" required>
                             </div>
                         </div>
                         <div class="row justify-content-between text-left">
                             <div class="form-group col col-sm-6 flex-column d-flex py-3">
-                                <label class="form-control-label py-2">Email</label>
+                                <label class="form-control py-2">Email</label>
                                 <input class="border-0 cell" type="text" id="email" name="email" placeholder="Ingrese su dirección de email" required>
                             </div>
                             <div class="form-group col col-sm-6 flex-column d-flex py-3">
-                                <label class="form-control-label py-2">Número de Documento</label>
+                                <label class="form-control py-2">Número de Documento</label>
                                 <input class="border-0 cell" type="number" id="dni" name="dni" placeholder="Ingrese su numero de DNI" required>
                             </div>
                         </div>
                         <div class="row justify-content-between text-left">
                             <div class="form-group col col-sm-6 flex-column d-flex py-3">
-                                <label class="form-control-label py-2">Contraseña</label>
+                                <label class="form-control py-2">Contraseña</label>
                                 <input class="border-0 cell" type="text" id="email" name="email" placeholder="Ingrese su dirección de email" required>
                             </div>
                             <div class="form-group col col-sm-6 flex-column d-flex py-3">
-                                <label class="form-control-label py-2">Verificar Contraseña</label>
+                                <label class="form-control py-2">Verificar Contraseña</label>
                                 <input class="border-0 cell" type="text" id="dni" name="dni" placeholder="Ingrese su numero de DNI" required>
                             </div>
                         </div>

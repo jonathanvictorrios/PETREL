@@ -20,7 +20,7 @@
                         {{-- ingrese carrera --}}
                         <div class="row justify-content-between text-left">
                             <div class="form-group col col-12 flex-column d-flex py-3">
-                                <label class="form-control-label py-2">Carrera</label>
+                                <label class="form-control py-2">Carrera</label>
                                 <input class="border-0 cell" type="text" id="carrera" name="carrera" value="{{ old('carrera') }}" placeholder="Ingrese el nombre de la carrera">
                             </div>
                         </div>
