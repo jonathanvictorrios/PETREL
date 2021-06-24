@@ -1,6 +1,6 @@
 @extends('estructura/layout')
 @section('cuerpo')
-@php($titulo = 'Petrel - Modificar programa')@endphp
+@php($titulo = 'Modificar programa - Petrel')@endphp
 
 @include('estructura/header')
 <main class="p-2" id="cuerpo"> {{-- Inicio main cuerpo --}}
@@ -29,15 +29,15 @@
                                 <input class="border-0 cell" type="number" id="numero" name="numero" value="{{ old('numero', $programa->numero_programa) }}">
                             </div>
                         </div>
-                     
+
                         <div class="row justify-content-between text-left">
                             <div class="form-group col col-12 flex-column d-flex py-3">
                                 <label class="form-control-label py-2">Archivo</label>
                                 <input class="border-0 cell" type="file" id="pdfPrograma" name="pdfPrograma" value="{{ old('pdfPrograma') }}">
-                               
+
                             </div>
                         </div>
-                        
+
                         <div class="row justify-content-center text-center py-4">
                             <div class="form-group col col-sm-6">
                                 <button id="boton" name="boton" type="submit" class="botonFormulario">Crear</button>

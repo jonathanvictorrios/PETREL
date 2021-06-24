@@ -20,7 +20,9 @@ class DatabaseSeeder extends Seeder
             CarreraSeeder::class,
             ProgramaDriveSeeder::class,
             UsuarioSeeder::class,
-            SolicitudCertProgSeeder::class
+            SolicitudCertProgSeeder::class,
+            EstadoDescripcionSeeder::class,
+            EstadoSeeder::class
         ]);
     }
 }
