@@ -34,5 +34,13 @@ class CarreraSeeder extends Seeder
             'carrera'=>'Tecnicatura Universitaria en Desarrollo Web',
             'id_unidad_academica'=>1,
         ]);
+        DB::table('carrera')->insert([
+            'carrera'=>'Licenciatura en Economía',
+            'id_unidad_academica'=>2,
+        ]);
+        DB::table('carrera')->insert([
+            'carrera'=>'Contador Público',
+            'id_unidad_academica'=>2,
+        ]);
     }
 }

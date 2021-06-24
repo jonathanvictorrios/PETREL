@@ -17,5 +17,8 @@ class UnidadAcademicaSeeder extends Seeder
         DB::table('unidad_academica')->insert([
             'unidad_academica'=>'Facultad de Informática',
         ]);
+        DB::table('unidad_academica')->insert([
+            'unidad_academica'=>'Facultad de Economía',
+        ]);
     }
 }
