@@ -20,19 +20,19 @@
                         @csrf
                         <div class="row justify-content-between text-left">
                             <div class="form-group col col col-sm-6 flex-column d-flex py-3">
-                                <label class="form-control py-2">Nombres Materia</label>
+                                <label class="form-label py-2">Nombres Materia</label>
                                 <input class="border-0 cell" type="text" id="nombre" name="nombre" value="{{ old('nombre', $programa->nombre_programa) }}">
                             </div>
                             @method('put')
                             <div class="form-group col col-sm-6 flex-column d-flex py-3">
-                                <label class="form-control py-2">Numero Materia</label>
+                                <label class="form-label py-2">Numero Materia</label>
                                 <input class="border-0 cell" type="number" id="numero" name="numero" value="{{ old('numero', $programa->numero_programa) }}">
                             </div>
                         </div>
 
                         <div class="row justify-content-between text-left">
                             <div class="form-group col col-12 flex-column d-flex py-3">
-                                <label class="form-control py-2">Archivo</label>
+                                <label class="form-label py-2">Archivo</label>
                                 <input class="border-0 cell" type="file" id="pdfPrograma" name="pdfPrograma" value="{{ old('pdfPrograma') }}">
 
                             </div>

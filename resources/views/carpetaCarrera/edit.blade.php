@@ -21,7 +21,7 @@
                         @method('put')
                         <div class="row justify-content-between text-left">
                             <div class="form-group col col-12 flex-column d-flex py-3">
-                                <label class="form-control py-2">Carrera</label>
+                                <label class="form-label py-2">Carrera</label>
                                 <input class="border-0 cell" type="text" id="idCarpetaCarrera" name="idCarpetaCarrera" value="{{ old('idCarpetaCarrera', $carpetaCarrera->carrera->carrera) }}">
                             </div>
                         </div>

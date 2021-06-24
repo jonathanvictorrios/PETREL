@@ -20,7 +20,7 @@
                         {{-- ingrese año --}}
                         <div class="row justify-content-between text-left">
                             <div class="form-group col col-12 flex-column d-flex py-3">
-                                <label class="form-control py-2">Año</label>
+                                <label class="form-label py-2">Año</label>
                                 <input class="border-0 cell" type="number" id="anio" name="anio" value="{{ old('anio') }}" placeholder="Ingrese año válido">
                             </div>
                         </div>
