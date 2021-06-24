@@ -47,6 +47,4 @@ class HojaResumenController extends Controller
         $pdf->merge(storage_path().'/app/id-solicitud-'.$idSolicitud.'/'.$nombre);
         return 'id-solicitud-'.$idSolicitud.'/'.$nombre;
     }
-    
-
 }

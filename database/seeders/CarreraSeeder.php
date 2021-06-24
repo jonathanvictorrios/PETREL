@@ -34,6 +34,5 @@ class CarreraSeeder extends Seeder
             'carrera'=>'Tecnicatura Universitaria en Desarrollo Web',
             'id_unidad_academica'=>1,
         ]);
-
     }
 }

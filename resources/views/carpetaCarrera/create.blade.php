@@ -7,7 +7,12 @@
     <p>Creando una carpeta carrera en año: {{$carpetaAnio->numero_anio}}</p>
     <input type="hidden" id="idCarpetaAnio" name="idCarpetaAnio" value="{{ $carpetaAnio->id_carpeta_anio }}">
     Nombre Carrera:
-    <input type="text" id="carrera" name="carrera" value="{{ old('carrera') }}">
+    <select id="idCarrera" name="idCarrera">
+        <option value="">Elegir Carrera</option>
+        @foreach ($carreras as $carrera)
+            <option value="{{$carrera->id_carrera}}">{{$carrera->carrera}}</option>
+        @endforeach
+      </select>
     <input type="submit" value="enviar">
 </form>
 

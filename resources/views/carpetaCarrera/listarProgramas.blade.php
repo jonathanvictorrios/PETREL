@@ -9,7 +9,6 @@
             <th>Numero</th>
             <th>Nombre</th>
             <th>Descarga</th>
-            <th>Drive</th>
             <th><a href="{{ route('agregarPrograma', $carpetaCarrera->id_carpeta_carrera) }}">Agregar un programa</a></th>
         </tr>
     </thead>
