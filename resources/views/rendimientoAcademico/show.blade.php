@@ -104,6 +104,6 @@
             </div>
         </div>
     </form>
-    <button href="{{route('buscarProgramas',$idSolicitud)}}" style="float: right;">Siguiente</button>
+    <a href="{{route('buscarProgramas',$idSolicitud)}}" style="float: right;">Siguiente</a>
 </div>
 @endsection
