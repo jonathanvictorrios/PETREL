@@ -46,7 +46,7 @@ class NotaDptoAlumController extends Controller
                     'contenido' => $request->contenido,
                     'footer' => $request->footer
                 ]);
-        $directorioPDF = "solicitud_$request->id_solicitud/";
+        $directorioPDF = "id-solicitud-$request->id_solicitud/";
         $nombrePDF = "notaDptoAlumno$request->id_solicitud.pdf";
 
         Storage::put($directorioPDF.$nombrePDF, $objPDF->output());
@@ -60,6 +60,7 @@ class NotaDptoAlumController extends Controller
         $hojaResumen = HojaResumen::where('id_solicitud', '=', $request->id_solicitud)->firstOrFail();
         $hojaResumen->id_nota_dto_alumno = $idNota->id_nota_dto_alumno;
         $hojaResumen->save();
+
 
         # Retorno resultado
         return view('notaDptoAlum.show', ['id_nota' => $idNota->id_nota_dto_alumno]);

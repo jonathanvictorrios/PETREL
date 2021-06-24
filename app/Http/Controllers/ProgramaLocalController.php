@@ -59,7 +59,7 @@ class ProgramaLocalController extends Controller
         $hojaResumenEncontrada->save();
         //----------------------------------------//
 
-        return view('programaLocal.show',['idSolicitud'=>$request->idSolicitud])->with('programaLocal',$unPrograma);
+        return view('notaDptoAlum.create',['id_solicitud'=>$request->idSolicitud])->with('programaLocal',$unPrograma);
         //return redirect('programaLocal/',$unPrograma->id_programa_local);
     }
 

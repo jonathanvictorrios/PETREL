@@ -3,7 +3,7 @@
 @include('estructura/header')
 
 @php
-    $directorio = storage_path('app/solicitud_'.$id_solicitud.'/rendimientoAcademico'.$id_solicitud.'.json');
+    $directorio = storage_path('app/id-solicitud-'.$id_solicitud.'/rendimientoAcademico'.$id_solicitud.'.json');
     $arregloRendimiento = json_decode(file_get_contents($directorio),true);
     $fecha = date('d') . ' de ' . date('M') . ' del ' . date('Y');
 @endphp
