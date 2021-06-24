@@ -37,6 +37,9 @@ Route::view('/login', 'login');
 
 // CRUD:
 Route::resource('solicitud', SolicitudCertProgController::class);
+Route::get('solicitud/estudiante/{idEstudiante}',[SolicitudCertProgController::class,'indexEstudiante']);
+Route::get('solicitud/{idSolicitud}/estudiante',[SolicitudCertProgController::class,'showEstudiante']);
+
 
 Route::resource('carpeta/anio', CarpetaAnioController::class);
 Route::get('buscarCarreras/{anio}', [CarpetaAnioController::class, 'buscarCarreras'])->name('buscarCarreras');

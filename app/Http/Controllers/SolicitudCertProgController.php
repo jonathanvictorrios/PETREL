@@ -35,6 +35,22 @@ class SolicitudCertProgController extends Controller
         return view('solicitud.index',compact('solicitudes'));
     }
 
+    public function indexEstudiante($id)
+    {
+        $solicitudes = SolicitudCertProg::where('id_usuario_estudiante',$id)->get();
+        $Lista = array();
+        foreach($solicitudes as $solicitud)
+        {
+            $Mostrar = $this->ObtenerDatosSolicitud($solicitud);
+
+            array_push($Lista,$Mostrar);
+
+        }
+        $solicitudes=$Lista;
+        return view('solicitud.index',compact('solicitudes'));
+    }
+
+    
     /**
      * Show the form for creating a new resource.
      *
@@ -58,9 +74,7 @@ class SolicitudCertProgController extends Controller
         $solicitud = new SolicitudCertProg;
         $usuarioEstudiante = Usuario::find(1); //ACA TENGO QUE PASAR EL ID DEL USUARIO LOGUEADO
         // $usuarioEstudiante->id_usuario=1;
-        // $usuarioAdministrativo= null;
         
-
         $solicitud->id_usuario_estudiante=$usuarioEstudiante->id_usuario;
         //$usuarioEstudiante = null;// $request->idUsuario;// Ver como viene esto desde la vista
         //  $solicitud->id_user_u=$usuarioAdministrativo;
@@ -68,9 +82,6 @@ class SolicitudCertProgController extends Controller
         $solicitud->legajo=$request->legajo;
         $solicitud->universidad_destino=$request->universidadDestino;
         $solicitud->id_carrera=$request->carrera; //CAMBIAR POR SELECT DE DEL FORM
-        
-
-     ///   $solicitud->usuarioEstudiante=$usuarioEstudiante; //asignamos el usuario a la solicitud
 
         $solicitud->updated_at=null;
         $solicitud->save();
@@ -102,6 +113,17 @@ class SolicitudCertProgController extends Controller
         $solicitud= SolicitudCertProg::findOrFail($id);
         $solicitud=$this->ObtenerDatosSolicitud($solicitud);
 
+        return view('solicitud.show',compact('solicitud'));
+
+    }
+    public function showEstudiante($id)
+    {
+        $solicitud= SolicitudCertProg::findOrFail($id);
+        $solicitud=$this->ObtenerDatosSolicitud($solicitud);
+        if(($solicitud->UltimoEstado!='Iniciado') && ($solicitud->UltimoEstado!='Terminado'))
+        {
+             $solicitud->UltimoEstado='en Tramite';
+        }
         return view('solicitud.show',compact('solicitud'));
 
     }
