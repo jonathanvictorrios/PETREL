@@ -63,7 +63,7 @@ class NotaDptoAlumController extends Controller
 
 
         # Retorno resultado
-        return view('notaDptoAlum.show', ['id_nota' => $idNota->id_nota_dto_alumno]);
+        return view('notaDptoAlum.create', ['id_solicitud' => $_REQUEST['id_solicitud']]);
     }
 
     /**

@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\HojaResumen;
 use App\Models\PlanEstudio;
 use Illuminate\Http\Request;
-
+use Illuminate\Support\Facades\Storage;
 class PlanEstudioController extends Controller
 {
     /**
@@ -23,7 +23,7 @@ class PlanEstudioController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create($id_solicitud = 1)
+    public function crearPlan($id_solicitud)
     {
         # Generar el link de Ranquel
         $rendimientoAcademico = json_decode(file_get_contents(
@@ -68,9 +68,9 @@ class PlanEstudioController extends Controller
         $hojaResumen = HojaResumen::where('id_solicitud', '=', $request->id_solicitud)->firstOrFail();
         $hojaResumen->id_plan_estudio = $objPlanEstudio->id_plan_estudio;
         $hojaResumen->save();
-
+        //Storage::disk('local')->put('id-solicitud-'.$request->idSolicitud.'/temp/temp'.$i.'.pdf',$archivo);
         # Siguiente paso
-        return view('notaDptoAlum.create', ['id_solicitud' => $request->id_solicitud]);
+        return redirect("notaDA/create?id_solicitud=$request->id_solicitud");
     }
 
     /**

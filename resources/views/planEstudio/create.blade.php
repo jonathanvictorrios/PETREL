@@ -31,9 +31,12 @@
     <div class="form-group">
         <label for="url_ranquel"><strong>Modifica la url si no es correcta.</strong></label>
         <input type="text" name="urlRanquel" id="url_ranquel" class="form-control" value="{{ $url_ranquel }}">
+        <input type="file" name="filePdf" id="filePdf"> 
+        
     </div>
 
     <div class="form-group mt-2 d-flex">
+        
         <input type="hidden" name="id_solicitud" value="{{ $id_solicitud }}">
         <input type="button" value="Limpiar" onclick="document.getElementById('url_ranquel').value = ''" class="btn btn-secondary w-25 mx-2">
         <input type="submit" value="Confirmar y continuar" class="w-100 btn btn-primary">

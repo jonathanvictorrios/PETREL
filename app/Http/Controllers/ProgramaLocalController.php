@@ -58,8 +58,10 @@ class ProgramaLocalController extends Controller
         $hojaResumenEncontrada->id_programa_local=$unPrograma->id_programa_local;
         $hojaResumenEncontrada->save();
         //----------------------------------------//
-
-        return view('notaDptoAlum.create',['id_solicitud'=>$request->idSolicitud])->with('programaLocal',$unPrograma);
+        return Storage::download('id-solicitud-'.$request->idSolicitud.'/unionProgramas'.$request->idSolicitud.'.pdf');
+        //return redirect('crearPlanEstudio/'.$request->idSolicitud);  ESTO FUNCIONAAAA USAR ESTO
+        //crearPlanEstudio/{id_solicitud}
+        //return view('crearPlanEstudio/');
         //return redirect('programaLocal/',$unPrograma->id_programa_local);
     }
 

@@ -66,3 +66,4 @@ Route::get('notaDA/descargar/{id}', [NotaDptoAlumController::class, 'descargar']
 
 
 Route::resource('planEstudio',PlanEstudioController::class);
+Route::get('crearPlanEstudio/{id_solicitud}', [PlanEstudioController::class, 'crearPlan'])->name('crearPlanEstudio');
