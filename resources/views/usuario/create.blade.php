@@ -18,6 +18,7 @@
                         <h2 class="col text-center fw-bold">Nuevo Usuario</h2>
                     </div>
                     <form class="">
+                        @csrf
                         <div class="row justify-content-between text-left">
                             <div class="form-group col col col-sm-6 flex-column d-flex py-3">
                                 <label class="form-control py-2">Nombres</label>
