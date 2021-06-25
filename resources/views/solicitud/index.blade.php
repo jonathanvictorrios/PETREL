@@ -32,7 +32,7 @@
     <div class="tab-content flex-grow-1 bg-white" id="v-tabs-tabContent">
       <div class="tab-pane fade show active" id="v-tabs-actuales" role="tabpanel" aria-labelledby="v-tabs-actuales-tab">
         <div id="solicitud-usuario" class="row g-0">
-          <div class="col p-4">
+          <div class="col py-2 px-3">
             <div class="table-responsive">
               <table class="table table-hover">
                 <thead>
@@ -54,7 +54,7 @@
                     <td>{{$solicitud->Legajo}}</td>
                     <td>{{$solicitud->Carrera}}</td>
                     <td>{{$solicitud->UnidadAcademica}}</td>
-                    <td><a href="{{route('solicitud.show',$solicitud->idSolicitud)}}">Ver</a></td>
+                    <td><a href="{{route('solicitud.show',$solicitud->idSolicitud)}}">Ver Más</a></td>
                   </tr>
                   @endif
                   @endforeach
@@ -68,7 +68,7 @@
       <!-- Tabla Completas -->
       <div class="tab-pane fade" id="v-tabs-completas" role="tabpanel" aria-labelledby="v-tabs-completas-tab">
         <div id="solicitud-usuario" class="row g-0">
-          <div class="col p-4">
+          <div class="col py-2 px-3">
             <div class="table-responsive">
               <table class="table table-hover">
                 <thead>
@@ -90,7 +90,7 @@
                     <td>{{$solicitud->Legajo}}</td>
                     <td>{{$solicitud->Carrera}}</td>
                     <td>{{$solicitud->UnidadAcademica}}</td>
-                    <td><a href="{{route('solicitud.show',$solicitud->idSolicitud)}}">Ver</a></td>
+                    <td><a href="{{route('solicitud.show',$solicitud->idSolicitud)}}">Ver Más</a></td>
                   </tr>
                   @endif
                   @endforeach
@@ -112,8 +112,11 @@
   <!-- Solicitudes -->
   <div class="container px-md-5 px-3 py-5">
     <div class="row justify-content-end">
-      <div class="col-12">
+      <div class="col-6 text-start">
         <h3>Solicitudes</h3>
+      </div>
+      <div class="col-6 text-end">
+        <span>(Dto Alumnos)</span>
       </div>
       <!-- Buscar Filtro -->
       <div class="col-12 mb-3 mt-2">
@@ -141,7 +144,7 @@
     <div class="tab-content flex-grow-1 bg-white" id="v-tabs-tabContent">
       <div class="tab-pane fade show active" id="dtoalumnos-all-solicitudes" role="tabpanel" aria-labelledby="dtoalumnos-all-solicitudes-tab">
         <div id="solicitud-usuario" class="row g-0">
-          <div class="col p-4">
+          <div class="col py-2 px-3">
             <div class="table-responsive">
               <table class="table table-hover">
                 <thead>
@@ -159,11 +162,11 @@
                   @if($solicitud->UltimoEstado!='Terminado')
                   <tr>
                     <th scope="row">{{$solicitud->idSolicitud}}</th>
-                    <td>{{$solicitud->Estado}}</td>
+                    <td>{{$solicitud->UltimoEstado}}</td>
                     <td>{{$solicitud->Fecha}}</td>
                     <td>{{$solicitud->Legajo}}</td>
                     <td>{{$solicitud->Asignado}}</td>
-                    <td><a href="{{route('solicitud.show',$solicitud->idSolicitud)}}">Ver</a></td>
+                    <td><a href="{{route('solicitud.show',$solicitud->idSolicitud)}}">Ver Más</a></td>
                   </tr>
                   @endif
                   @endforeach
@@ -177,7 +180,7 @@
       <!-- Tabla Mis Solicitudes -->
       <div class="tab-pane fade" id="dtoalumnos-mis-solicitudes" role="tabpanel" aria-labelledby="dtoalumnos-mis-solicitudes-tab">
         <div id="solicitud-usuario" class="row g-0">
-          <div class="col p-4">
+          <div class="col py-2 px-3">
             <div class="table-responsive">
               <table class="table table-hover">
                 <thead>
@@ -195,11 +198,11 @@
                   @if($solicitud->UltimoEstado=='Terminado')
                   <tr>
                     <th scope="row">{{$solicitud->idSolicitud}}</th>
-                    <td>{{$solicitud->Estado}}</td>
+                    <td>{{$solicitud->UltimoEstado}}</td>
                     <td>{{$solicitud->Fecha}}</td>
                     <td>{{$solicitud->Legajo}}</td>
                     <td>{{$solicitud->Asignado}}</td>
-                    <td><a href="{{route('solicitud.show',$solicitud->idSolicitud)}}">Ver</a></td>
+                    <td><a href="{{route('solicitud.show',$solicitud->idSolicitud)}}">Ver Más</a></td>
                   </tr>
                   @endif
                   @endforeach
@@ -217,7 +220,7 @@
 
 
 {{-- Tabla Solicitudes - Administración --}}
-<div id="nav-solicitud" class="container shadow-lg my-5 bg-light rounded">
+{{--<div id="nav-solicitud" class="container shadow-lg my-5 bg-light rounded">
   <!-- Solicitudes -->
   <div class="container px-md-5 px-3 py-5">
     <div class="row justify-content-end">
@@ -242,13 +245,13 @@
     <!-- Tabla Solicitudes Procesadas -->
     <div class="tab-content flex-grow-1 bg-white" id="v-tabs-tabContent">
       <div id="solicitud-usuario" class="row g-0">
-        <div class="col p-4">
+        <div class="col py-2 px-3">
           <div class="table-responsive">
             <table class="table table-hover">
               <thead>
                 <tr>
                   <th scope="col">Nro Solicitud</th>
-                  <th scope="col">Estado Actual</th>
+                  <th scope="col">Estado</th>
                   <th scope="col">Fecha</th>
                   <th scope="col">Legajo</th>
                   <th scope="col">Carrera</th>
@@ -259,29 +262,29 @@
                 @foreach($solicitudes as $solicitud)
                 @if($solicitud->UltimoEstado!='Terminado')
                 <tr>
-                  <th scope="row">
+                  <!-- <th scope="row">
                     <div class="form-check">
                       <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1">
                     </div>
-                  </th>
+                  </th> -->
                   <th scope="row">{{$solicitud->idSolicitud}}</th>
-                  <td>{{$solicitud->Estado}}</td>
-                  <td>{{$solicitud->Fecha}}</td>
-                  <td>{{$solicitud->Legajo}}</td>
-                  <td>{{$solicitud->Carrera}}</td>
-                  <td><a href="{{route('solicitud.show',$solicitud->idSolicitud)}}">Ver</a></td>
-                </tr>
-                @endif
-                @endforeach
-              </tbody>
-            </table>
-          </div>
-        </div>
-      </div>
-    </div>
-    <!-- Fin Tabla Solicitudes Procesadas -->
-  </div>
+<td>{{$solicitud->UltimoEstado}}</td>
+<td>{{$solicitud->Fecha}}</td>
+<td>{{$solicitud->Legajo}}</td>
+<td>{{$solicitud->Carrera}}</td>
+<td><a href="{{route('solicitud.show',$solicitud->idSolicitud)}}">Ver Más</a></td>
+</tr>
+@endif
+@endforeach
+</tbody>
+</table>
 </div>
+</div>
+</div>
+</div>
+<!-- Fin Tabla Solicitudes Procesadas -->
+</div>
+</div>--}}
 {{-- Fin Tabla Solicitudes - Administración --}}
 
 
@@ -290,22 +293,12 @@
   <!-- Solicitudes -->
   <div class="container px-md-5 px-3 py-5">
     <div class="row justify-content-center">
-      <div class="col-12">
+      <div class="col-6 text-start">
         <h3>Solicitudes</h3>
       </div>
-      <!-- Botones Acciones -->
-      <div class="row mb-3 mt-2 px-4">
-        <div class="col-12 col-md-4 py-2 d-grid gap-2">
-          <a href="{{route('solicitud.create')}}" class='btn botonFormulario'>Ver Más</a>
-        </div>
-        <div class="col-12 col-md-4 py-2 d-grid gap-2">
-          <a href="{{route('solicitud.create')}}" class='btn botonFormulario'>Modificar</a>
-        </div>
-        <div class="col-12 col-md-4 py-2 d-grid gap-2">
-          <a href="{{route('solicitud.create')}}" class='btn botonFormulario'>Enviar</a>
-        </div>
+      <div class="col-6 text-end">
+        <span>(Santiago/Administración)</span>
       </div>
-      <!-- Fin Botones Acciones -->
       <!-- Buscar Filtro -->
       <div class="col-12 mb-3 mt-2">
         <form class="d-flex">
@@ -319,48 +312,44 @@
           </button>
         </form>
       </div>
-    </div>
-    <!-- Fin Buscar Filtro -->
-    <!-- NAV-TABS -->
-    <div class="pt-2 justify-content-between d-flex align-items-center">
-      <div class="nav nav-tabs col-9" id="v-tabs-tab" role="tablist">
-        <a class=" nav-link py-3 px-4 active" id="santi-all-solicitudes-tab" data-bs-toggle="tab" href="#santi-all-solicitudes" role="tab" aria-controls="santi-all-solicitudes" aria-selected="true">Todas</a>
-        <a class="nav-link ms-2 py-3 px-4" id="santi-solicitudes-firmadas-tab" data-bs-toggle="tab" href="#santi-solicitudes-firmadas" role="tab" aria-controls="santi-solicitudes-firmadas" aria-selected="false">Firmadas</a>
+      <!-- Fin Buscar Filtro -->
+      <!-- NAV-TABS -->
+      <div class="pt-2 justify-content-between d-flex align-items-center">
+        <div class="nav nav-tabs col-9" id="v-tabs-tab" role="tablist">
+          <a class=" nav-link py-3 px-4 active" id="santi-all-solicitudes-tab" data-bs-toggle="tab" href="#santi-all-solicitudes" role="tab" aria-controls="santi-all-solicitudes" aria-selected="true">Todas</a>
+          <a class="nav-link ms-2 py-3 px-4" id="santi-solicitudes-firmadas-tab" data-bs-toggle="tab" href="#santi-solicitudes-firmadas" role="tab" aria-controls="santi-solicitudes-firmadas" aria-selected="false">Firmadas</a>
+        </div>
       </div>
+      <!-- Fin NAV-TABS -->
     </div>
-    <!-- Fin NAV-TABS -->
+
     <!-- Tabla Todas -->
     <div class="tab-content flex-grow-1 bg-white" id="v-tabs-tabContent">
       <div class="tab-pane fade show active" id="santi-all-solicitudes" role="tabpanel" aria-labelledby="santi-all-solicitudes-tab">
         <div id="solicitud-usuario" class="row g-0">
-          <div class="col p-4">
+          <div class="col py-2 px-3">
             <div class="table-responsive">
               <table class="table table-hover">
                 <thead>
                   <tr>
-                    <th scope="col">#</th>
                     <th scope="col">Nro Solicitud</th>
                     <th scope="col">Estado</th>
                     <th scope="col">Fecha Inicio</th>
                     <th scope="col">Fecha Última Modificación</th>
                     <th scope="col">Solicitante</th>
+                    <th scope="col">Acciones</th>
                   </tr>
                 </thead>
                 <tbody>
                   @foreach($solicitudes as $solicitud)
                   @if($solicitud->UltimoEstado!='Terminado')
                   <tr>
-                    <th scope="row">
-                      <div class="form-check">
-                        <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1">
-                      </div>
-                    </th>
                     <th>{{$solicitud->idSolicitud}}</th>
-                    <td>{{$solicitud->Estado}}</td>
-                    <td>{{$solicitud->FechaIni}}</td>
-                    <td>{{$solicitud->FechaUltimaMod}}</td>
+                    <td>{{$solicitud->UltimoEstado}}</td>
+                    <td>{{$solicitud->Fecha}}</td>
+                    <td>{{$solicitud->FechaUltimoEstado}}</td>
                     <td>{{$solicitud->UsuarioEstudiante}}</td>
-                    {{--<td><a href="{{route('solicitud.asignar',[$solicitud->idSolicitud,2])}}">Asignar</a></td>--}} {{--El parametro 2 corresponde al idUsuarioAdministrativo que este logueado--}}
+                    <td><a href="{{route('solicitud.show',$solicitud->idSolicitud)}}">Ver Más</a></td>
                   </tr>
                   @endif
                   @endforeach
@@ -374,34 +363,29 @@
       <!-- Tabla Firmadas -->
       <div class="tab-pane fade" id="santi-solicitudes-firmadas" role="tabpanel" aria-labelledby="santi-solicitudes-firmadas-tab">
         <div id="solicitud-usuario" class="row g-0">
-          <div class="col p-4">
+          <div class="col py-2 px-3">
             <div class="table-responsive">
               <table class="table table-hover">
                 <thead>
                   <tr>
-                    <th scope="col">#</th>
                     <th scope="col">Nro Solicitud</th>
                     <th scope="col">Estado</th>
                     <th scope="col">Fecha Inicio</th>
                     <th scope="col">Fecha Última Modificación</th>
                     <th scope="col">Solicitante</th>
+                    <th scope="col">Acciones</th>
                   </tr>
                 </thead>
                 <tbody>
                   @foreach($solicitudes as $solicitud)
                   @if($solicitud->UltimoEstado=='Terminado')
                   <tr>
-                    <th scope="row">
-                      <div class="form-check">
-                        <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1">
-                      </div>
-                    </th>
                     <th>{{$solicitud->idSolicitud}}</th>
-                    <td>{{$solicitud->Estado}}</td>
-                    <td>{{$solicitud->FechaIni}}</td>
-                    <td>{{$solicitud->FechaUltimaMod}}</td>
+                    <td>{{$solicitud->UltimoEstado}}</td>
+                    <td>{{$solicitud->Fecha}}</td>
+                    <td>{{$solicitud->FechaUltimoEstado}}</td>
                     <td>{{$solicitud->UsuarioEstudiante}}</td>
-                    {{--<td><a href="{{route('solicitud.asignar',[$solicitud->idSolicitud,2])}}">Asignar</a></td>--}} {{--El parametro 2 corresponde al idUsuarioAdministrativo que este logueado--}}
+                    <td><a href="{{route('solicitud.show',$solicitud->idSolicitud)}}">Ver Más</a></td>
                   </tr>
                   @endif
                   @endforeach
@@ -423,8 +407,11 @@
   <!-- Lista de Usuarios -->
   <div class="container px-md-5 px-3 py-5">
     <div class="row justify-content-center">
-      <div class="col-12">
-        <h3>Lista Usuarios</h3>
+      <div class="col-6 text-start">
+        <h3>Lista de Usuarios</h3>
+      </div>
+      <div class="col-6 text-end">
+        <span>(Root)</span>
       </div>
       <!-- Botones Acciones -->
       <div class="row mb-3 mt-2 px-4">
@@ -448,7 +435,8 @@
           <input class="form-control me-1 me-lg-2 pe-0" type="search" placeholder="Id Usuario" aria-label="Search">
           <input class="form-control me-1 me-lg-2 pe-0" type="search" placeholder="Rol" aria-label="Search">
           <input class="form-control me-1 me-lg-2 pe-0" type="search" placeholder="Estado" aria-label="Search">
-          <input class="form-control me-1 me-lg-2 pe-0" type="search" placeholder="Solicitante" aria-label="Search">
+          <input class="form-control me-1 me-lg-2 pe-0" type="search" placeholder="Nombre" aria-label="Search">
+          <input class="form-control me-1 me-lg-2 pe-0" type="search" placeholder="Apellido" aria-label="Search">
           <button type="submit" class="btn btn-busqueda">
             <i class="fas fa-search"></i>
           </button>
@@ -459,15 +447,17 @@
     <!-- Tabla Lista Usuarios -->
     <div class="tab-content flex-grow-1 bg-white" id="v-tabs-tabContent">
       <div id="solicitud-usuario" class="row g-0">
-        <div class="col p-4">
+        <div class="col py-2 px-3">
           <div class="table-responsive">
             <table class="table table-hover">
               <thead>
                 <tr>
+                  <th scope="col">#</th>
                   <th scope="col">Id Usuario</th>
                   <th scope="col">Rol</th>
                   <th scope="col">Estado</th>
-                  <th scope="col">Solicitante</th>
+                  <th scope="col">Nombre</th>
+                  <th scope="col">Apellido</th>
                 </tr>
               </thead>
               <tbody>
@@ -479,10 +469,11 @@
                       <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1">
                     </div>
                   </th>
-                  <th scope="row">{{$solicitud->idUsuario}}</th>
+                  <td scope="row">{{$solicitud->idUsuario}}</td>
                   <td>{{$solicitud->Rol}}</td>
-                  <td>{{$solicitud->Estado}}</td>
-                  <td>{{$solicitud->UsuarioEstudiante}}</td>
+                  <td>{{$solicitud->UltimoEstado}}</td>
+                  <td>{{$solicitud->NombreEstudiante}}</td>
+                  <td>{{$solicitud->ApellidoEstudiante}}</td>
                 </tr>
                 @endif
                 @endforeach
@@ -496,6 +487,189 @@
   </div>
 </div>
 {{-- Fin Tabla Solicitudes - Root --}}
+
+
+{{-- Tabla Solicitudes - Año --}}
+<div id="nav-solicitud" class="container shadow-lg my-5 bg-light rounded">
+  <!-- Lista de Usuarios -->
+  <div class="container px-md-5 px-3 py-5">
+    <div class="row justify-content-center">
+      <div class="col-6 text-start">
+        <h3>Programas</h3>
+      </div>
+      <!-- Boton agregar anio -->
+      <div class="col-6 text-end pb-2">
+        <a href="{{route('anio.create')}}" class='btn btn-create'>
+          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi" viewBox="0 0 16 16">
+            <path d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4z"></path>
+          </svg>
+        </a>
+      </div>
+      <!-- Fin Boton agregar anio -->
+      <!-- Breadcrumb -->
+      <div class="col-12 mt-2">
+        <nav aria-label="breadcrumb">
+          <ol class="breadcrumb">
+            <li class="breadcrumb-item active" aria-current="page">Años</li>
+          </ol>
+        </nav>
+      </div>
+      <!-- Fin Breadcrumb -->
+    </div>
+    <!-- Tabla Años -->
+    <div class="tab-content flex-grow-1 bg-white" id="v-tabs-tabContent">
+      <div id="solicitud-usuario" class="row g-0">
+        <div class="col py-2 px-3">
+          <div class="table-responsive">
+            <table class="table table-hover">
+              <thead>
+                <tr>
+                  <th scope="col">Año</th>
+                  <th scope="col">Acciones</th>
+                </tr>
+              </thead>
+              <tbody>
+                @foreach($solicitudes as $solicitud)
+                @if($solicitud->UltimoEstado!='Terminado')
+                <tr>
+                  <th scope="row">{{$solicitud->Anio}}</th>
+                  <td><a href="{{route('solicitud.show',$solicitud->idSolicitud)}}">Modificar</a></td>
+                </tr>
+                @endif
+                @endforeach
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Fin Tabla Lista Usuarios -->
+  </div>
+</div>
+{{-- Fin Tabla Solicitudes - Año --}}
+
+{{-- Tabla Solicitudes - Carrera --}}
+<div id="nav-solicitud" class="container shadow-lg my-5 bg-light rounded">
+  <!-- Lista de Usuarios -->
+  <div class="container px-md-5 px-3 py-5">
+    <div class="row justify-content-center">
+      <div class="col-6 text-start">
+        <h3>Programas</h3>
+      </div>
+      <!-- Boton agregar carrera -->
+      <div class="col-6 text-end pb-2">
+        <a href="{{route('carrera.create')}}" class='btn btn-create'>
+          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi" viewBox="0 0 16 16">
+            <path d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4z"></path>
+          </svg>
+        </a>
+      </div>
+      <!-- Fin Boton agregar carrera -->
+      <!-- Breadcrumb -->
+      <div class="col-12 mt-2">
+        <nav aria-label="breadcrumb">
+          <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="#">Años</a></li>
+            <li class="breadcrumb-item active" aria-current="page">Carreras</li>
+          </ol>
+        </nav>
+      </div>
+      <!-- Fin Breadcrumb -->
+    </div>
+    <!-- Tabla Años -->
+    <div class="tab-content flex-grow-1 bg-white" id="v-tabs-tabContent">
+      <div id="solicitud-usuario" class="row g-0">
+        <div class="col py-2 px-3">
+          <div class="table-responsive">
+            <table class="table table-hover">
+              <thead>
+                <tr>
+                  <th scope="col">Carrera</th>
+                  <th scope="col">Acciones</th>
+                </tr>
+              </thead>
+              <tbody>
+                @foreach($solicitudes as $solicitud)
+                @if($solicitud->UltimoEstado!='Terminado')
+                <tr>
+                  <th scope="row">{{$solicitud->Carrera}}</th>
+                  <td><a href="{{route('solicitud.show',$solicitud->idSolicitud)}}">Modificar</a></td>
+                </tr>
+                @endif
+                @endforeach
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Fin Tabla Lista Usuarios -->
+  </div>
+</div>
+{{-- Fin Tabla Solicitudes - Carrera --}}
+
+{{-- Tabla Solicitudes - Programa --}}
+<div id="nav-solicitud" class="container shadow-lg my-5 bg-light rounded">
+  <!-- Lista de Usuarios -->
+  <div class="container px-md-5 px-3 py-5">
+    <div class="row justify-content-center">
+      <div class="col-6 text-start">
+        <h3>Programas</h3>
+      </div>
+      <!-- Boton agregar carrera -->
+      <div class="col-6 text-end pb-2">
+        <a href="{{route('carrera.create')}}" class='btn btn-create'>
+          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi" viewBox="0 0 16 16">
+            <path d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4z"></path>
+          </svg>
+        </a>
+      </div>
+      <!-- Fin Boton agregar carrera -->
+      <!-- Breadcrumb -->
+      <div class="col-12 mt-2">
+        <nav aria-label="breadcrumb">
+          <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="#">Años</a></li>
+            <li class="breadcrumb-item"><a href="#">Carreras</a></li>
+            <li class="breadcrumb-item active" aria-current="page">Programas</li>
+          </ol>
+        </nav>
+      </div>
+      <!-- Fin Breadcrumb -->
+    </div>
+    <!-- Tabla Años -->
+    <div class="tab-content flex-grow-1 bg-white" id="v-tabs-tabContent">
+      <div id="solicitud-usuario" class="row g-0">
+        <div class="col py-2 px-3">
+          <div class="table-responsive">
+            <table class="table table-hover">
+              <thead>
+                <tr>
+                  <th scope="col">Año</th>
+                  <th scope="col">Carrera</th>
+                  <th scope="col">Acciones</th>
+                </tr>
+              </thead>
+              <tbody>
+                @foreach($solicitudes as $solicitud)
+                @if($solicitud->UltimoEstado!='Terminado')
+                <tr>
+                  <th scope="row">{{$solicitud->Anio}}</th>
+                  <th>{{$solicitud->Carrera}}</th>
+                  <td><a href="{{route('solicitud.show',$solicitud->idSolicitud)}}">Modificar</a></td>
+                </tr>
+                @endif
+                @endforeach
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Fin Tabla Lista Usuarios -->
+  </div>
+</div>
+{{-- Fin Tabla Solicitudes - Programa --}}
 
 
 @endsection
