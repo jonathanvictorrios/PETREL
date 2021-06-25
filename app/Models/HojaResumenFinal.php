@@ -17,13 +17,6 @@ class HojaResumenFinal extends Model
 
     public function nota_admin_central()
     {
-        return $this->belongsTo(NotaAdminCentral::class,'id_nota_admin_central','id_nota_admin_central');
+        return $this->belongsTo(NotaAdminCentral::class, 'id_nota_admin_central', 'id_nota_admin_central');
     }
-
-    public function firma()
-    {
-        return $this->belongsTo(Firma::class, 'id_firma', 'id_firma');
-    }
-
-    
 }
