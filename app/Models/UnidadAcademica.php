@@ -17,6 +17,6 @@ class UnidadAcademica extends Model
 
     public function carrera()
     {
-        return $this->hasMany(Carrera::class, 'id_unidad_academica');
+        return $this->hasMany(Carrera::class, 'id_unidad_academica', 'id_unidad_academica');
     }
 }

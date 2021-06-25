@@ -1,7 +1,7 @@
 @extends('estructura/layout')
 @section('cuerpo')
     @include('estructura/header')
-
+    
     <div class="container-fluid mb-5 p-1 mx-auto">
         <div class="row d-flex justify-content-center">
             <div class="col-xl-6 col-lg-6  col-12 mt-4">
@@ -29,8 +29,6 @@
                                 <button id="boton" name="boton" type="submit" class="botonFormulario">Enviar</button>
                             </div>
                         </div>
-
-                        
                     </form>
                 </div>
             </div>
