@@ -22,8 +22,7 @@ class DatabaseSeeder extends Seeder
             //ProgramaDriveSeeder::class,
             UsuarioSeeder::class,
             SolicitudCertProgSeeder::class,
-            EstadoSeeder::class,
-            ProgramaDriveSeeder::class
+            EstadoSeeder::class
         ]);
     }
 }
