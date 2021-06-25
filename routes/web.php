@@ -3,6 +3,8 @@
 use App\Http\Controllers\CarpetaAnioController;
 use App\Http\Controllers\CarpetaCarreraController;
 use App\Http\Controllers\HojaResumenController;
+use App\Http\Controllers\NotaDptoAlumController;
+use App\Http\Controllers\PlanEstudioController;
 use App\Http\Controllers\ProgramaDriveController;
 use App\Http\Controllers\ProgramaLocalController;
 use App\Http\Controllers\RendimientoAcademicoController;
@@ -71,17 +73,18 @@ Route::resource('programaDrive', ProgramaDriveController::class);
 
 Route::resource('rendimientoAcademico',RendimientoAcademicoController::class);
 Route::post('convertirExcel',[RendimientoAcademicoController::class,'convertirExcel'])->name('convertirExcel');
-    
+
 Route::resource('programaLocal',ProgramaLocalController::class);
 Route::get('buscarProgramas/{idSolicitud}',[ProgramaDriveController::class,'buscarProgramas'])->name('buscarProgramas');
 Route::post('descargarProgramas',[ProgramaLocalController::class,'descargarProgramas'])->name('descargarProgramas');
 
-//Route::get('buscarProgramas/{idRendimientoAcademico}', [ProgramaDriveController::class, 'buscarProgramas'])->name('buscarProgramas');
-Route::post('descargarProgramas', [ProgramaLocalController::class, 'descargarProgramas'])->name('descargarProgramas');
-Route::post('descargarProgramas', [ProgramaLocalController::class, 'descargarProgramas'])->name('descargarProgramas');
-Route::resource('solicitud', SolicitudCertProgController::class);
+Route::resource('hojaResumen',HojaResumenController::class);
 
-// Pruebas de carga de archivos de la solicitud
-Route::get('archivos/{id}/download', [Archivo::class, 'download'])->name('archivos.download');
-Route::get('archivos/{id}/comment', [Archivo::class, 'cargarComentario'])->name('archivos.cargarComentario');
-Route::resource('archivos', Archivo::class);
+
+Route::resource('notaDA', NotaDptoAlumController::class);
+Route::post('notaDA/auth', [NotaDptoAlumController::class, 'autorizar'])->name('notada.auth');
+Route::get('notaDA/descargar/{id}', [NotaDptoAlumController::class, 'descargar']);
+
+
+Route::resource('planEstudio',PlanEstudioController::class);
+Route::get('crearPlanEstudio/{id_solicitud}', [PlanEstudioController::class, 'crearPlan'])->name('crearPlanEstudio');

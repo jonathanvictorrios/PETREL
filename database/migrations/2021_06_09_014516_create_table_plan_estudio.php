@@ -15,9 +15,9 @@ class CreateTablePlanEstudio extends Migration
     {
         Schema::create('plan_estudio', function (Blueprint $table) {
             $table->id('id_plan_estudio');
-            $table->year('anio');
-            $table->integer('nro_ordenanza');
-            $table->integer('nro_libro');
+            $table->year('anio')->nullable();
+            $table->integer('nro_ordenanza')->nullable();
+            $table->integer('nro_libro')->nullable();
             $table->string('url_pdf_plan_estudio');
             $table->timestamps();
         });

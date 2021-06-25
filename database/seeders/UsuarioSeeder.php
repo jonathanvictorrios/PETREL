@@ -21,10 +21,10 @@ class UsuarioSeeder extends Seeder
             'email'=>'jona@gmail.com',
         ]);
         DB::table('usuario')->insert([
-            'nombre'=>'Otro Usuario',
-            'apellido'=>'Administrativo',
-            'dni'=>29123456,
-            'email'=>'administrativo@fi.uncoma.edu.ar',
+            'nombre'=>'Administrativo',
+            'apellido'=>'Universidad',
+            'dni'=>33123111,
+            'email'=>'unadmin@fi.uncoma.edu.ar',
         ]);
         DB::table('usuario')->insert([
             'nombre'=>'Un usuario',

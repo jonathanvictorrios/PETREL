@@ -4,7 +4,7 @@ namespace Database\Seeders;
 
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
-
+use Carbon\Carbon;
 class EstadoSeeder extends Seeder
 {
     /**
@@ -14,11 +14,12 @@ class EstadoSeeder extends Seeder
      */
     public function run()
     {
-
         DB::table('estado')->insert([
             'id_solicitud'=>1,
-            'id_estado_descripcion'=>2,
-            'id_usuario'=>3,
+            'id_estado_descripcion'=>1,
+            'id_usuario'=>1,
+            'created_at'=> Carbon::now()->format('Y-m-d H:i:s')
+
         ]);
     }
 }

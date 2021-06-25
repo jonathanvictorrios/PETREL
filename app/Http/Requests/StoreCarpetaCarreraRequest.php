@@ -24,7 +24,7 @@ class StoreCarpetaCarreraRequest extends FormRequest
     public function rules()
     {
         return [
-            "carrera"=>"required|string"
+            "idCarrera"=>"required|string"
         ];
     }
 }
