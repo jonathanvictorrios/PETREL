@@ -8,21 +8,21 @@
     <input type="hidden" id="idSolicitud" name="idSolicitud" value="{{$idSolicitud}}">
     <h3>encontrados</h3>
     @foreach ($colProgramasEncontrados as $programa)
-        <input type="checkbox" name="urls[]" value="{{$programa->url_programa}}">
+        <input type="checkbox" name="urls[]" value="{{$programa->url_programa}}" checked>
         <label>{{$programa->nombre_programa}}</label>
         <br>
     @endforeach
     <br>
     <h3>sugerencias</h3>
     @foreach ($colProgramasSugerencias as $colPrograma)
-    <input type="checkbox" name="urls[]" id="{{($colPrograma[0])->nombre_programa}}" value="" onclick="return false">
-    <label>{{($colPrograma[0])->nombre_programa}}</label><br>
-        @foreach ($colPrograma as $programa)
-        {{-- cuando elige el radio, se carga la url en el checkbox, myfuncion(nombreprograma,urlDelPdfElegido) --}}
-            <input type="radio" onclick="myFuncion('{{$programa->nombre_programa}}','{{$programa->url_programa}}')">
-            <label>{{$programa->carpeta_carrera->carpeta_anio->numero_anio}}</label>
-            <br>
-        @endforeach
+        <label>{{($colPrograma[0])->nombre_programa}}</label>
+        <select name="urls[]">
+        <option value="0">Elegir Año</option>
+            @foreach ($colPrograma as $programa)
+                <option value="{{$programa->url_programa}}">{{$programa->carpeta_carrera->carpeta_anio->numero_anio}}</option>
+            @endforeach
+        </select>
+        <br>
     @endforeach
     <br>
     <h3>No encontradas</h3>
@@ -34,11 +34,4 @@
 
 </form>
     <a href="{{route('crearPlanEstudio',$idSolicitud)}}" >Siguiente</a>
-<script>
-    function myFuncion(cbox,urlRadio) {
-        alert('cbox'+cbox + '  radio: ' + urlRadio);
-        var el_checkbox = document.getElementById(cbox);
-        el_checkbox.checked = true;
-        el_checkbox.value=urlRadio;}
-</script>
 @endsection
