@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\HojaResumen;
 use App\Models\PlanEstudio;
+use App\Models\SolicitudCertProg;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 
@@ -42,10 +43,10 @@ class PlanEstudioController extends Controller
             "https://ranquel.uncoma.edu.ar/archivos/ord_$plan_nro"."_20$plan_anio"."_23.pdf",
             "https://ranquel.uncoma.edu.ar/archivos/ord_$plan_nro_mod"."_$plan_anio_mod"."_47.pdf"
         ];
-        
+        $objSolicitud=SolicitudCertProg::find($id_solicitud);
         # Mostrar
         return view('planEstudio.create', [
-            'id_solicitud' => $id_solicitud,
+            'solicitud' => $objSolicitud,
             'url_ranquel' => $urlRanquel,
             'plan_anio' => $plan_anio,
             'plan_anio_mod' => $plan_anio_mod,

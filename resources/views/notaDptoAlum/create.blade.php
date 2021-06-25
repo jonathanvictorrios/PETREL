@@ -3,7 +3,7 @@
 @include('estructura/header')
 
 @php
-    $directorio = storage_path('app/id-solicitud-'.$id_solicitud.'/rendimientoAcademico'.$id_solicitud.'.json');
+    $directorio = storage_path('app/id-solicitud-'.$solicitud->id_solicitud.'/rendimientoAcademico'.$solicitud->id_solicitud.'.json');
     $arregloRendimiento = json_decode(file_get_contents($directorio),true);
     $fecha = date('d') . ' de ' . date('M') . ' del ' . date('Y');
 @endphp
@@ -78,9 +78,9 @@
         </div>
     </div>
     <div class="form-group mt-3 d-flex">
-        <input type="hidden" name="id_solicitud" value="{{ $id_solicitud }}">
+        <input type="hidden" name="id_solicitud" value="{{ $solicitud->id_solicitud }}">
         <input type="button" value="Enviar" class="w-100 btn btn-primary" data-bs-toggle="modal" data-bs-target="#login_check">
-        <a href="#" class="w-25 btn mx-2 {{ (session('success')) ? 'btn-success' : 'btn-secondary' }}" id="btn_continuar">Continuar</a>
+        <a href="#" class="w-25 btn mx-2 {{ (session('success')) ? 'btn-success' : 'btn-secondary disabled' }}" id="btn_continuar">Continuar</a>
     </div>
 </form>
 
@@ -130,7 +130,7 @@
                 if (data === 'true') $('#formulario_nota').submit();
                 if (data === 'true') $('#login_check').modal('toggle');
                 if (data === 'true') $('#btn_continuar').attr("href", '/');
-                if (data === 'true') $('#btn_continuar').removeClass('btn-secondary');
+                if (data === 'true') $('#btn_continuar').removeClass('btn-secondary disabled');
                 if (data === 'true') $('#btn_continuar').addClass('btn-success');
             }
         });

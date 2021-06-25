@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\HojaResumen;
 use App\Models\NotaDptoAlum;
+use App\Models\SolicitudCertProg;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 use Mockery\Matcher\Not;
@@ -27,7 +28,8 @@ class NotaDptoAlumController extends Controller
      */
     public function crearNota($id_solicitud)
     {
-        return view('notaDptoAlum.create', ['id_solicitud' => $id_solicitud]);
+        $objSolicitud=SolicitudCertProg::find($id_solicitud);
+        return view('notaDptoAlum.create', ['solicitud' => $objSolicitud]);
     }
 
     /**

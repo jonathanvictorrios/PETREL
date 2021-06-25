@@ -48,10 +48,10 @@
     </div>
 
     <div class="form-group mt-4 d-flex">
-        <input type="hidden" name="id_solicitud" value="{{ $id_solicitud }}">
+        <input type="hidden" name="id_solicitud" value="{{ $solicitud->id_solicitud }}">
         <input type="button" value="Limpiar" onclick="document.getElementById('url_ranquel').value = ''" class="btn btn-secondary w-25">
         <input type="submit" value="Enviar" class="mx-2 w-100 btn btn-primary">
-        <a href="{{ (session('success')) ? route('notaDA.crear',$id_solicitud) : '#' }}" class="w-25 btn {{ (session('success')) ? 'btn-success' : 'btn-secondary' }}">Continuar</a>
+        <a href="{{ (session('success')) ? route('notaDA.crear',$solicitud->id_solicitud) : '#' }}" class="w-25 btn {{ (session('success')) ? 'btn-success' : 'btn-secondary disabled' }}">Continuar</a>
     </div>
 
 </form>
