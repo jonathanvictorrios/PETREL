@@ -61,9 +61,10 @@ Route::resource('hojaResumen',HojaResumenController::class);
 
 
 Route::resource('notaDA', NotaDptoAlumController::class);
+Route::get('notaDA/crear/{id_solicitud}', [NotaDptoAlumController::class, 'crearNota'])->name('notaDA.crear');
 Route::post('notaDA/auth', [NotaDptoAlumController::class, 'autorizar'])->name('notada.auth');
 Route::get('notaDA/descargar/{id}', [NotaDptoAlumController::class, 'descargar']);
 
 
 Route::resource('planEstudio',PlanEstudioController::class);
-Route::get('crearPlanEstudio/{id_solicitud}', [PlanEstudioController::class, 'crearPlan'])->name('crearPlanEstudio');
+Route::get('planEstudio/crear/{id_solicitud}', [PlanEstudioController::class, 'crearPlan']);

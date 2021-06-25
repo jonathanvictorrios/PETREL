@@ -25,9 +25,9 @@ class NotaDptoAlumController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function crearNota($id_solicitud)
     {
-        return view('notaDptoAlum.create', ['id_solicitud' => 1]);
+        return view('notaDptoAlum.create', ['id_solicitud' => $id_solicitud]);
     }
 
     /**
@@ -38,8 +38,6 @@ class NotaDptoAlumController extends Controller
      */
     public function store(Request $request)
     {
-        # Validar Formulario
-
         # Generar el pdf
         $objPDF = app('dompdf.wrapper')
                 ->loadView('notaDptoAlum.exportar_pdf', [
@@ -63,18 +61,17 @@ class NotaDptoAlumController extends Controller
 
 
         # Retorno resultado
-        return view('notaDptoAlum.create', ['id_solicitud' => $_REQUEST['id_solicitud']]);
+        return $objPDF->download("nota-generada-$request->id_solicitud.pdf");
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\NotaDptoAlum  $notaDptoAlum
      * @return \Illuminate\Http\Response
      */
-    public function show(NotaDptoAlum $notaDptoAlum)
+    public function show()
     {
-        # checkear si el usuario tiene permisos para ver esta página
+        //
     }
 
     /**

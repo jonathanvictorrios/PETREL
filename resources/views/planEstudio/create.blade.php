@@ -7,14 +7,25 @@
     {{ $errors->first() }}
 </div>
 @endif
+
+@if(session('success'))
+    <div class="alert alert-success mt-3 container">
+        {{session('success')}}
+    </div>
+@endif
+
 <form id="formulario_nota" action="{{ route('planEstudio.store') }}" method="POST" class="container w-75 py-3 pb-5">
     @csrf
     <h2 class="text-center">Seleccionar Plan de Estudios</h2>
     
     @isset($url_ranquel)
     <div class="alert alert-dark" role="alert">
-        Se encontró como posible plan el siguiente archivo:
-        <a href="{{ $url_ranquel }}" target="_blank" rel="noopener noreferrer">{{ $url_ranquel }}</a>
+        Se encontraron como posibles archivos las siguientes:
+        <ul>
+            @foreach ($url_ranquel as $url)
+                <li><a href="{{ $url }}" target="_blank" rel="noopener noreferrer">{{ $url }}</a></li>
+            @endforeach
+        </ul>
     </div>
     @endisset
 
@@ -29,19 +40,40 @@
     </div>
 
     <div class="form-group">
-        <label for="url_ranquel"><strong>Modifica la url si no es correcta.</strong></label>
-        <input type="text" name="urlRanquel" id="url_ranquel" class="form-control" value="{{ $url_ranquel }}">
-        <input type="file" name="filePdf" id="filePdf"> 
-        
+        <label><strong>Modifica la url si no es correcta.</strong></label>
+        <div id="inputs_contenedor">
+            <input type="text" name="urlRanquel[]" class="form-control" value="{{ end($url_ranquel) }}" placeholder="Ingresa URL de archivo en Ranquel..">
+        </div>
+        <a onclick="agregarInput()" id="btn_nuevo_input">+ agregar otro</a>
     </div>
 
-    <div class="form-group mt-2 d-flex">
-        
+    <div class="form-group mt-4 d-flex">
         <input type="hidden" name="id_solicitud" value="{{ $id_solicitud }}">
-        <input type="button" value="Limpiar" onclick="document.getElementById('url_ranquel').value = ''" class="btn btn-secondary w-25 mx-2">
-        <input type="submit" value="Confirmar y continuar" class="w-100 btn btn-primary">
+        <input type="button" value="Limpiar" onclick="document.getElementById('url_ranquel').value = ''" class="btn btn-secondary w-25">
+        <input type="submit" value="Enviar" class="mx-2 w-100 btn btn-primary">
+        <a href="{{ (session('success')) ? route('notaDA.crear',$id_solicitud) : '#' }}" class="w-25 btn {{ (session('success')) ? 'btn-success' : 'btn-secondary' }}">Continuar</a>
     </div>
 
 </form>
+<script>
+    var contador_url = 1;
+    function agregarInput() {
+        if (contador_url < 3) {
+            contador_url++;
+        
+            var input = document.createElement("input");
+            input.type = "text";
+            input.name = "urlRanquel[]";
+            input.placeholder = "Ingresa URL de archivo en Ranquel..";
+            input.className = "form-control mt-2";
+            
+            document.getElementById('inputs_contenedor').appendChild(input);
+        } 
+        
+        if (contador_url >= 3){
+            document.getElementById('btn_nuevo_input').style = 'color: #777';
+        }
+    }
+</script>
 
 @endsection
