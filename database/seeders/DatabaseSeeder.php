@@ -19,6 +19,7 @@ class DatabaseSeeder extends Seeder
             UnidadAcademicaSeeder::class,
             CarreraSeeder::class,
             EstadoDescripcionSeeder::class,
+            //ProgramaDriveSeeder::class,
             UsuarioSeeder::class,
             SolicitudCertProgSeeder::class,
             EstadoSeeder::class,
