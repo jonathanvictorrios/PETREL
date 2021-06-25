@@ -8,6 +8,17 @@
     $fecha = date('d') . ' de ' . date('M') . ' del ' . date('Y');
 @endphp
 
+@if($errors->any())
+<div class="alert alert-danger mt-3 container" role="alert">
+    {{ $errors->first() }}
+</div>
+@endif
+
+@if(session('success'))
+    <div class="alert alert-success mt-3 container">
+        {{session('success')}}
+    </div>
+@endif
 <form id="formulario_nota" action="{{ route('notaDA.store') }}" method="POST" class="container w-75 py-2">
     @csrf
     <h2 class="text-center">Crear nota</h2>
@@ -66,10 +77,10 @@
             </div>
         </div>
     </div>
-
-    <div class="form-group mt-2">
+    <div class="form-group mt-3 d-flex">
         <input type="hidden" name="id_solicitud" value="{{ $id_solicitud }}">
-        <input type="button" value="Guardar nota" class="form-control btn btn-primary" data-bs-toggle="modal" data-bs-target="#login_check">
+        <input type="button" value="Enviar" class="w-100 btn btn-primary" data-bs-toggle="modal" data-bs-target="#login_check">
+        <a href="#" class="w-25 btn mx-2 {{ (session('success')) ? 'btn-success' : 'btn-secondary' }}" id="btn_continuar">Continuar</a>
     </div>
 </form>
 
@@ -116,10 +127,11 @@
                 'contrasenia': $('#input_contrasenia').val()
             },
             success: function( data ) {
-                console.log(data);
-                if (data === 'true') {
-                    $('#formulario_nota').submit();
-                }
+                if (data === 'true') $('#formulario_nota').submit();
+                if (data === 'true') $('#login_check').modal('toggle');
+                if (data === 'true') $('#btn_continuar').attr("href", '/');
+                if (data === 'true') $('#btn_continuar').removeClass('btn-secondary');
+                if (data === 'true') $('#btn_continuar').addClass('btn-success');
             }
         });
     });
