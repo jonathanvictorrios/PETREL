@@ -6,6 +6,10 @@
         <meta http-equiv="X-UA-Compatible" content="ie=edge">
         <title>Rendimiento Academico</title>
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
+        
+         <!-- Estilos propios -->
+    <link rel="stylesheet" href="{{ asset('css/general.css') }}">
+
         <style>
             body {
                 font-size: medium;
@@ -107,7 +111,11 @@
                     <input type="hidden" id="rutaArchivo" name="rutaArchivo" value="{{$rutaArchivo}}">
                     <input type="submit" value="Crear PDF">
             </form>
-            <a href="{{route('buscarProgramas',$idSolicitud)}}" >Siguiente</a>
+            <div class="row p-3">
+                <div class= "botonFormulario">
+            <a  href="{{route('buscarProgramas',$idSolicitud)}}" >Siguiente</a>
         </div>
+        </div>
+    </div>
     </body>
 </html>
