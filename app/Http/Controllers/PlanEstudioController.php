@@ -65,10 +65,12 @@ class PlanEstudioController extends Controller
     public function store(Request $request)
     {
         # checkear si la url es válida
-        foreach ($request->urlRanquel as $i => $url) {
-            $file_headers = @get_headers($url);
-            if (!$file_headers || $file_headers[0] == 'HTTP/1.1 404 Not Found') {
-                return back()->withErrors(["La url proporcionada N°$i no es válida"]);
+        foreach($request->urlRanquel as $i => $url) {
+            if ($url != '' || $url != null) {
+                $file_headers = @get_headers($url);
+                if(!$file_headers || $file_headers[0] == 'HTTP/1.1 404 Not Found') {
+                    return back()->withErrors(["La url proporcionada N°$i no es válida"]);
+                }
             }
         }
 
@@ -97,9 +99,17 @@ class PlanEstudioController extends Controller
 
         # Actualizar tabla "hoja_resumen"
         $hojaResumen = HojaResumen::where('id_solicitud', '=', $request->id_solicitud)->firstOrFail();
-        $hojaResumen->id_plan_estudio = $objPlanEstudio->id_plan_estudio;
-        $hojaResumen->save();
 
+        # Agregar asociacion entre los Planes y la HojaResumen
+        foreach($arregloIdPlanes as $idPlan) {
+            DB::table('hoja_resumen_plan_estudio')->insert([
+                'id_hoja' => $hojaResumen->id_hoja_resumen,
+                'id_plan' => $idPlan,
+                'created_at' => date('Y-m-d H:i:s'),
+                'updated_at' => date('Y-m-d H:i:s')
+            ]);
+        }
+        
         # Siguiente paso
         return redirect()->back()->withSuccess('La información se guardo correctamente!');
     }
