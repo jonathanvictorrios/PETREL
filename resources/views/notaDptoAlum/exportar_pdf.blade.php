@@ -10,7 +10,7 @@
 <body>
     <header>
         <img src="https://www.uncoma.edu.ar/wp-content/uploads/2018/04/LOGOUNC-e1522858761795.png" alt="UNCOMA" />
-        <h2 class="tc ml-1">
+        <h2 class="tc ml">
             Universidad Nacional del Comahue <br>
             Centro Universitario Regional Zona Atlántica <br>
             Departamento de Alumnos
@@ -23,17 +23,32 @@
         {!! $footer !!}
     </footer>
 
-    <main>
+    <main class="tj">
         {!! $contenido !!}
         
-        <section id="firma">
-            <u>Firma</u>
+        <section id="firma" class="tc">
+            @isset($firma_dpto)
+            <div>
+                <img width="70px" height="70px" src="img/logito-fai.png" alt="F.A.I.">
+                <div>
+                    <h4>A/C. DEPTO ALUMNOS</h4>
+                    <h5>{{ $firma_dpto }}</h5>
+                </div>
+            </div>
+            @endisset
+            @isset($firma_secretaria)
+            <div>
+                <img width="70px" height="70px" src="img/logito-fai.png" alt="F.A.I.">
+                <div>
+                    <h4>SECRE</h4>
+                    <h5>{{ $firma_secretaria }}.</h5>
+                </div>
+            </div>
+            @endisset
         </section>
     </main>
 
-    <style>
-        * { font-family: "Times New Roman", Times, serif!important; }
-        
+    <style>        
         @page { margin: 4.5cm 2cm 2cm 3cm; }
         
         header {
@@ -54,8 +69,11 @@
         }
                 
         header img { float: left; width: 100px; height: 100px; margin-top: 15px; }
+        .tj { text-align: justify; }
         .tc { text-align: center; }
-        .ml-1 { margin-left: 25px; }
+        .ml { margin-left: 25px; }
+        #firma { width: 100%; padding-top: 60px; line-height: 0.2em; }
+        #firma > div { display: inline-block; width: 49%!important; }
     </style>
 </body>
 </html>

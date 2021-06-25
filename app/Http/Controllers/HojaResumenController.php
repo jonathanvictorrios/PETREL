@@ -45,10 +45,12 @@ class HojaResumenController extends Controller
         
         $contenidoNotaDpto=json_decode(file_get_contents(storage_path('/app/').'id-solicitud-'.$idSolicitud.'/contenidoNotaDpto'.$idSolicitud.'.json'));
         $objPDF = app('dompdf.wrapper')
-            ->loadView('notaDptoAlum.exportar_pdf',
-            ['contenido' => $contenidoNotaDpto->contenido,
-            'footer' => $contenidoNotaDpto->footer]
-        );
+            ->loadView('notaDptoAlum.exportar_pdf', [
+                'contenido' => $contenidoNotaDpto->contenido,
+                'footer' => $contenidoNotaDpto->footer,
+                'firma_dpto' => $contenidoNotaDpto->firma_dpto,
+                'firma_secretaria' => 'SILVIA AMARO'
+            ]);
         //ya guardamos pdf de la nota de departamento firmada por secretaria
         Storage::put('id-solicitud-'.$idSolicitud.'/notaDptoAlumno'.$idSolicitud.'.pdf', $objPDF->output());
         $this->realizarUnion($idSolicitud);

@@ -44,11 +44,13 @@ class NotaDptoAlumController extends Controller
         $contenidoNotaDpto = [];
         $contenidoNotaDpto['contenido'] = $request->contenido;
         $contenidoNotaDpto['footer'] = $request->footer;
+        $contenidoNotaDpto['firma_dpto'] = 'VIVIANA PEDRERO';
         Storage::disk('local')->put('id-solicitud-'.$request->id_solicitud.'/contenidoNotaDpto'.$request->id_solicitud.'.json',json_encode($contenidoNotaDpto));
         $objPDF = app('dompdf.wrapper')
                 ->loadView('notaDptoAlum.exportar_pdf', [
                     'contenido' => $request->contenido,
-                    'footer' => $request->footer
+                    'footer' => $request->footer,
+                    'firma_dpto' => 'VIVIANA PEDRERO'
                 ]);
         $directorioPDF = "id-solicitud-$request->id_solicitud/";
         $nombrePDF = "notaDptoAlumno$request->id_solicitud.pdf";
