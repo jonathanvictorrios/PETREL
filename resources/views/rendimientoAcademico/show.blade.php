@@ -77,20 +77,21 @@
         </p>
     </div>
     <table class="table table-borderless mt-5" style="width:100%;text-align: center">
-        <tr>
-            <td><img width="75px" height="75px" src="img/logito-fai.png" alt="firma_mariela"></td>
-            <td><img width="75px" height="75px" src="img/logito-fai.png" alt="firma_sol"></td>
-        </tr>
-        <tr style="font-weight: bold;">
-            <td>A/C. DEPTO ALUMNOS</td>
-            <td>SECRETARIA ACADEMICA</td>
-        </tr>
-        <tr style="font-weight: bold;">
-            <td><small>VIVIANA PEDRERO</small></td>
-            <td><small>SILVIA AMARO</small></td>
-        </tr>
+        <tbody>
+            <tr>
+                <td><img width="75px" height="75px" src="img/logito-fai.png" alt="firma_viviana"></td>
+                @if($arregloRendimiento["Secretaria"])<td><img width="75px" height="75px" src="img/logito-fai.png" alt="firma_sol"></td>@endif
+            </tr>
+            <tr style="font-weight: bold;">
+                <td>A/C. DEPTO ALUMNOS</td>
+                @if($arregloRendimiento["Secretaria"])<td>SECRETARIA ACADEMICA</td>@endif
+            </tr>
+            <tr style="font-weight: bold;">
+                <td><small>VIVIANA PEDRERO</small></td>
+                @if($arregloRendimiento["Secretaria"])<td><small>SILVIA AMARO</small></td>@endif
+            </tr>
+        </tbody>
     </table>
-
 </div>
 
 <div>

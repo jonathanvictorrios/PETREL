@@ -112,8 +112,8 @@ class RendimientoAcademicoController extends Controller
             "FechaIngresoCarrera" => "",
             "Lugar" => "",
             "FechaEmision" => "",
-            "DptoAlumno"=>array("Nombre"=>"","Apellido"=>"","Rol"=>"","Firma"=>true),
-            "SecretariaAcademica"=>array("Nombre"=>"","Apellido"=>"","Rol"=>"","Firma"=>false),
+            "Firmante"=>array("Nombre"=>"","Apellido"=>""),
+            "Secretaria"=>false,
         );
         // Mariela agrego Universidad Nacional del Comahue y Facultad de Informatica
         $arrayUA = array(

@@ -58,6 +58,8 @@ Route::get('buscarProgramas/{idSolicitud}',[ProgramaDriveController::class,'busc
 Route::post('descargarProgramas',[ProgramaLocalController::class,'descargarProgramas'])->name('descargarProgramas');
 
 Route::resource('hojaResumen',HojaResumenController::class);
+Route::post('firmaSecretaria',[HojaResumenController::class,'firmaSecretaria'])->name('firmaSecretaria');
+Route::get('firma',function(){return view('hojaResumen.secretaria');});
 
 
 Route::resource('notaDA', NotaDptoAlumController::class);
@@ -67,4 +69,4 @@ Route::get('notaDA/descargar/{id}', [NotaDptoAlumController::class, 'descargar']
 
 
 Route::resource('planEstudio',PlanEstudioController::class);
-Route::get('planEstudio/crear/{id_solicitud}', [PlanEstudioController::class, 'crearPlan']);
+Route::get('planEstudio/crear/{id_solicitud}', [PlanEstudioController::class, 'crearPlan'])->name('crearPlanEstudio');

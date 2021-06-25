@@ -6,6 +6,7 @@ use App\Models\HojaResumen;
 use App\Models\PlanEstudio;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
+
 class PlanEstudioController extends Controller
 {
     /**
@@ -68,7 +69,10 @@ class PlanEstudioController extends Controller
                 return back()->withErrors(["La url proporcionada N°$i no es válida"]);
             }
         }
-        
+        # guardar archivo de forma local
+        $nombreArchivo = "id-solicitud-$request->id_solicitud/planEstudio$request->id_solicitud.pdf";
+        $contenido     = file_get_contents($request->urlRanquel[0]);
+        Storage::put($nombreArchivo, $contenido);
         # guardar en la base de datos
         $objPlanEstudio = PlanEstudio::create(['url_pdf_plan_estudio' => $request->urlRanquel[0]]);
 

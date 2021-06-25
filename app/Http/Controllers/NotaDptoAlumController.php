@@ -39,6 +39,10 @@ class NotaDptoAlumController extends Controller
     public function store(Request $request)
     {
         # Generar el pdf
+        $contenidoNotaDpto = [];
+        $contenidoNotaDpto['contenido'] = $request->contenido;
+        $contenidoNotaDpto['footer'] = $request->footer;
+        Storage::disk('local')->put('id-solicitud-'.$request->id_solicitud.'/contenidoNotaDpto'.$request->id_solicitud.'.json',json_encode($contenidoNotaDpto));
         $objPDF = app('dompdf.wrapper')
                 ->loadView('notaDptoAlum.exportar_pdf', [
                     'contenido' => $request->contenido,

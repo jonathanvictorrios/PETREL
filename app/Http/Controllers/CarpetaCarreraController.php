@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Requests\StoreCarpetaCarreraRequest;
 use App\Models\CarpetaAnio;
 use App\Models\CarpetaCarrera;
 use App\Models\Carrera;
