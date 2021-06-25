@@ -7,23 +7,23 @@
  * http://www.opensource.org/licenses/mit-license.php
  */
 (function ($) {
-    $.fn.confirmarSalir = function (message) {
+    $.fn.confirmarSalir = function (avisoCartel) {
         var confirmarSalir = false;
 
         $('input, textarea, select', this).on('change keyup', function () {
-            // Do not set the event handler if not needed
+            // No llamar a este método si no hace falta
             if (!confirmarSalir) {
                 confirmarSalir = true;
 
                 window.onbeforeunload = function (event) {
                     var e = event || window.event;
 
-                    // For old IE and Firefox
+                    // Para Internet Explorer viejo y Firefox:
                     if (e) {
-                        e.returnValue = message;
+                        e.returnValue = avisoCartel;
                     }
 
-                    return message;
+                    return avisoCartel;
                 }
             }
         });

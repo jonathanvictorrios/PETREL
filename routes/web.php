@@ -8,6 +8,7 @@ use App\Http\Controllers\PlanEstudioController;
 use App\Http\Controllers\ProgramaDriveController;
 use App\Http\Controllers\ProgramaLocalController;
 use App\Http\Controllers\RendimientoAcademicoController;
+use App\Http\Controllers\Archivo;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\SolicitudCertProgController;
 
@@ -22,20 +23,40 @@ use App\Http\Controllers\SolicitudCertProgController;
 |
 */
 
-Route::get('solicitud/{idSolicitud}/asignar/{idAdministrativo}', [SolicitudCertProgController::class, 'asignar'])->name('solicitud.asignar');
 // Vistas configuradas:
 Route::redirect('/', '/home');
 Route::view('/home', 'home');
 //usuario
-Route::view('/registro', '/usuario/create');
+Route::view('/registro', '/usuario/registro');
+Route::view('/perfil', '/usuario/perfil');
+//nuevas rutas de vistas (lara)
+// Route::view('/crearusuario', '/usuario/create');
+// Route::view('/verusuario', '/usuario/show');
+// Route::view('/modificarusuario', '/usuario/modificar');
+// Route::view('/borrarusuario', '/usuario/borrar');
+//anio
+// Route::view('/crearanio', '/carpetaAnio/create');
+// Route::view('/modificaranio', '/carpetaAnio/edit');
+//carrera
+// Route::view('/crearcarrera', '/carpetaCarrera/create');
+// Route::view('/modificarcarrera', '/carpetaCarrera/edit');
+//programa
+// Route::view('/crearprograma', '/programaDrive/create');
+// Route::view('/modificarprograma', '/programaDrive/edit');
+///fin de nuevas rutas lara
 //solicitudes
 Route::view('/crearsolicitud', '/solicitud/create');
 Route::view('/versolicitud', '/solicitud/show');
-
-/* Otras rutas:
-Route::view('/registro', 'registro');
-Route::view('/login', 'login');
-*/
+//anio
+Route::view('/crearanio', '/carpetaAnio/create');
+Route::view('/modificaranio', '/carpetaAnio/edit');
+//carrera
+Route::view('/crearcarrera', '/carpetaCarrera/create');
+Route::view('/modificarcarrera', '/carpetaCarrera/edit');
+//programa
+Route::view('/crearprograma', '/programaDrive/create');
+Route::view('/modificarprograma', '/programaDrive/edit');
+Route::get('solicitud/{idSolicitud}/asignar/{idAdministrativo}', [SolicitudCertProgController::class, 'asignar'])->name('solicitud.asignar');
 
 // CRUD:
 Route::resource('solicitud', SolicitudCertProgController::class);
@@ -52,7 +73,7 @@ Route::resource('programaDrive', ProgramaDriveController::class);
 
 Route::resource('rendimientoAcademico',RendimientoAcademicoController::class);
 Route::post('convertirExcel',[RendimientoAcademicoController::class,'convertirExcel'])->name('convertirExcel');
-    
+
 Route::resource('programaLocal',ProgramaLocalController::class);
 Route::get('buscarProgramas/{idSolicitud}',[ProgramaDriveController::class,'buscarProgramas'])->name('buscarProgramas');
 Route::post('descargarProgramas',[ProgramaLocalController::class,'descargarProgramas'])->name('descargarProgramas');

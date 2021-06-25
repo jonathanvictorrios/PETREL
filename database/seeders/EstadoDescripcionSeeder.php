@@ -29,6 +29,5 @@ class EstadoDescripcionSeeder extends Seeder
         DB::table('estado_descripcion')->insert([
             'descripcion'=>'Terminado'
         ]);
-
     }
 }

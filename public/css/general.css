@@ -11,51 +11,61 @@
 #EE5551 - Naranja Peligro
 */
 
-/*Variables de paleta del documento*/
-:root{
---color-azulPrimario: #2b5769;
---color-azulHover: #40768C;
---color-verdeSecundario: #2A7977;
---color-verdeHover: #2a9d8f;
---color-amarilloAdvertencia: #E9C46A;
---color-naranjaPeligro: #EE5551;
---color-gris: #BBBBBB;
+/*--------------- IMPORTAMOS FUENTES ---------------*/
+
+@import url("https://fonts.googleapis.com/css2?family=Rancho&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap");
+
+/*--------------- DEFINIMOS VARIABLES ---------------*/
+
+:root {
+    --color-azulPrimario: #2b5769;
+    --color-azulHover: #40768c;
+    --color-verdeSecundario: #2a7977;
+    --color-verdeHover: #2a9d8f;
+    --color-amarilloAdvertencia: #e9c46a;
+    --color-naranjaPeligro: #ee5551;
+    --color-gris: #bbbbbb;
+    --fuente-roboto: "Roboto", sans-serif;
+    --fuente-rancho: "Rancho", cursive;
 }
-/*      Fuentes de Google:      */
-@import url("https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,400;0,700;1,400;1,700&display=swap");
-@import url("https://fonts.googleapis.com/css2?family=Rancho&display=swap");
+
+/*--------------- ESTILOS GENERALES ---------------*/
+
 body {
     background: #efefef;
-    font-family: "Roboto", sans-serif;
+    font-family: var(--fuente-roboto);
 }
 
 #cuerpo {
     background: #efefef;
 }
-#pie {
-    background: #6c757d;
-}
-#portada {
-    height: 100vh;
-}
-#logoHeader {
-    background: #2b5769;
-}
-.navbar-brand > img {
-    max-height: 24px;
+
+.botonFormulario {
+    border-radius: 0.25rem !important;
+    padding: 0.25rem !important;
+    width: 100% !important;
+    border: none !important;
+    background-color: var(--color-azulPrimario);
+    color: white;
+    /* font-weight: 300; */
 }
 
-#pie {
-    background: #6c757d;
-}
-#portada {
-    height: 100vh;
-}
-#logoHeader {
-    background: var(--color-azulPrimario);
+.botonFormulario:hover {
+    background-color: var(--color-verdeHover);
 }
 
+a {
+    text-decoration: none;
+    color: var(--color-verdeHover);
+}
+
+a:hover {
+    color: var(--color-azulPrimario);
+}
+
+/*--------------- BOTON VOLVER ARRIBA ---------------*/
 /* Estilo para hacer funcionar botón, ver volverArriba.js */
+
 #volverArriba {
     display: none; /* Oculto por defecto */
     cursor: default; /* Evita que se marque con manito */
@@ -67,95 +77,110 @@ body {
     z-index: 99;
 }
 #volverArriba:hover {
-    background-color: var(--color-verdeHover); /* Pone "verde hover" al pasar el cursor */
-}
-/*--------------estilos del home----------------------- */
-.home{
-    background: rgb(247,247,248);
-    background: linear-gradient(198deg, rgba(247,247,248,1) 8%, rgba(236,238,240,1) 18%, rgba(200,210,215,1) 28%, rgba(169,185,193,1) 36%, rgba(102,133,146,1) 53%, rgba(98,130,143,1) 54%, rgba(69,107,123,1) 65%, rgba(43,87,105,1) 82%, rgba(43,87,105,1) 91%);
-    height: 100 vh;
+    background-color: var(--color-verdeHover);
 }
 
-.titulohome{
-    font-family: 'Rancho', cursive;
+/*--------------- HOME ---------------*/
+
+#home {
+    /* background: rgb(247, 247, 248); */
+    background: linear-gradient(
+        198deg,
+        rgba(247, 247, 248, 1) 8%,
+        rgba(236, 238, 240, 1) 18%,
+        rgba(200, 210, 215, 1) 28%,
+        rgba(169, 185, 193, 1) 36%,
+        rgba(102, 133, 146, 1) 53%,
+        rgba(98, 130, 143, 1) 54%,
+        rgba(69, 107, 123, 1) 65%,
+        rgba(43, 87, 105, 1) 82%,
+        rgba(43, 87, 105, 1) 91%
+    );
+    /* height: 100vh; */
+}
+
+#home h1 {
+    font-family: var(--fuente-rancho);
     font-size: 64px;
 }
-.p_home{
+
+.p_home {
     font-size: 20px;
 }
-/*titulo preguntas frecuentes*/
-.tituloPregFrec{
-    color:white;
 
+/* Título preguntas frecuentes */
+.tituloPregFrec {
+    color: white;
 }
-/*Icono preguntas frecuentes*/
-.vermasicono{
+
+/* Icono ver+ preguntas frecuentes */
+.vermasicono {
     text-decoration: none;
-    color:white;
+    color: white;
     font-size: 50px;
     font-weight: 900;
 }
+
 .vermasicono:hover {
-    text-decoration: none;
     color: var(--color-verdeHover);
-    font-size: 50px;
-    font-weight: 900;
 }
-.botonacordeon{
-    border:0;
-    background:white;
+
+.botonacordeon {
+    border: 0;
+    background: white;
     color: var(--color-azulPrimario);
 }
- .ver{
+
+.ver {
     color: var(--color-azulPrimario);
     font-size: 25px;
-    border:0;
-    background:white;
-    }
-    .accordion-item{
-        border-bottom: solid 3px var(--color-verdeSecundario) !important;
-    
-    }
-
-/*-------------FIN ESTILOS HOME-----------------------------*/
-/*estilos de formularios*/
-.tittle {
-    color: var(--color-azulPrimario)
+    border: 0;
+    background: white;
 }
+
+.accordion-item {
+    border-bottom: solid 3px var(--color-verdeSecundario) !important;
+}
+
+#p-frecuentes button {
+    background-color: white;
+}
+
+#p-frecuentes h6 {
+    line-height: inherit;
+}
+
+/*---------- FORMULARIOS ----------*/
+
+.tittle {
+    color: var(--color-azulPrimario);
+}
+
 .card-form {
     padding: 30px 50px;
-    /* margin-top: 10px; */
-    margin-bottom: 60px;
+    /* margin-top: 10px;
+    margin-bottom: 60px; */
     border: none !important;
     box-shadow: 0 6px 6px 0 rgba(0, 0, 0, 0.2);
 }
+
 .cell {
     border-bottom: 1px solid var(--color-verdeHover) !important;
 }
+
 input::placeholder {
     color: #ccc;
     font-size: 12px;
 }
-button {
-    border: none !important;
-    background-color: var(--color-azulPrimario);
-    color: white;
-    font-weight: 300;
-}
-
-a {
-    text-decoration: none;
-    color: var(--color-verdeHover);
-}
 
 .form-select {
-    height: 25px;
+    height: 27px;
+    padding: 1px 30px 1px 2px;
 }
 
+/*---------- SOLICITUDES ----------*/
 
-
-
-/*NAV-TABS */
+/* NavTabs */
 #nav-solicitud .nav-tabs {
     border-bottom: 0;
 }
@@ -166,17 +191,24 @@ a {
 }
 
 #nav-solicitud .nav-tabs .nav-link {
-    background-color: var(--color-azulPrimario);
-    color: #fff;
+    background-color: transparent;
+    color: var(--color-azulPrimario);
+    font-weight: bold;
     border-top-left-radius: 0.55rem;
     border-top-right-radius: 0.55rem;
-    border-bottom: 0;
+    /* border-bottom: 1px solid var(--color-azulPrimario); */
+    /* border-right: 0;
+    border-left: 0;
+    border-top: 0; */
 }
 
 #nav-solicitud .nav-tabs .nav-link:hover {
     color: #fff;
     background-color: var(--color-verdeHover);
-    border-color: var(--color-verdeHover);
+    border-bottom: 1px solid var(--color-verdeHover);
+    border-right: 1px solid var(--color-verdeHover);
+    border-left: 1px solid var(--color-verdeHover);
+    border-top: 1px solid var(--color-verdeHover);
 }
 
 #nav-solicitud .nav-tabs .nav-link.active {
@@ -184,27 +216,102 @@ a {
     font-weight: bold;
     background-color: #fff;
     border-color: var(--color-azulPrimario);
+    border-bottom: 1px solid #fff;
+    border-right: 1px solid var(--color-azulPrimario);
+    border-left: 1px solid var(--color-azulPrimario);
+    border-top: 1px solid var(--color-azulPrimario);
 }
-/* Borde tabla */
+
+/* Borde Tabla */
 #v-tabs-tabContent.tab-content {
     border: 1px solid var(--color-azulPrimario);
 }
 
-/* BOTON DE CREAR SOLICITUD */
-.btn-round {
+/* Boton Crear Solicitud */
+.btn-create {
     border-radius: 50%;
-    padding: 0.375rem 0.375rem;
+    padding: 0.275rem 0.275rem;
     background-color: var(--color-azulPrimario);
     border-color: var(--color-azulPrimario);
+    color: white;
 }
 
-.btn-round:hover {
+.btn-create:hover {
     background-color: var(--color-verdeHover);
     border-color: var(--color-verdeHover);
+    color: #212529;
 }
 
 .bi {
     width: 1em;
     height: 1em;
     font-size: 2em;
+}
+
+/* Boton Búsqueda */
+.btn-busqueda {
+    border-radius: 0.25rem;
+    border: none;
+    background-color: var(--color-azulPrimario);
+    color: white;
+}
+
+.btn-busqueda:hover {
+    background-color: var(--color-verdeHover);
+    color: #212529;
+}
+
+/*---------- HEADER ----------*/
+
+/* Narvbar */
+#nav-solicitud a.color-user {
+    color: var(--color-azulPrimario);
+}
+
+#nav-solicitud a.color-user:hover {
+    color: var(--color-verdeHover);
+}
+
+#nav-solicitud.navbar {
+    padding-top: 0;
+    padding-bottom: 0;
+}
+
+#nav-solicitud .container,
+#nav-solicitud .container-fluid,
+#nav-solicitud .container-lg,
+#nav-solicitud .container-md,
+#nav-solicitud .container-sm,
+#nav-solicitud .container-xl,
+#nav-solicitud .container-xxl {
+    padding-right: 0;
+    padding-left: 0;
+}
+
+/* Le quito el borde y el padding al toggle */
+#nav-solicitud .navbar-toggler {
+    padding: 0;
+    border: 0;
+    background-color: transparent;
+    color: var(--color-azulPrimario);
+}
+
+/*---------- FOOTER ----------*/
+
+#pie {
+    background: var(--color-azulPrimario);
+}
+
+#copyright {
+    background-color: rgba(0, 0, 0, 0.2);
+    padding-top: 15px;
+    padding-bottom: 14px;
+}
+
+.list-info {
+    padding-left: 0;
+}
+
+.list-info li {
+    list-style: none;
 }

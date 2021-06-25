@@ -19,15 +19,21 @@ class UsuarioSeeder extends Seeder
             'apellido'=>'Rios',
             'dni'=>33123123,
             'email'=>'jona@gmail.com',
+            'password'=>'petrel2021'
         ]);
         DB::table('usuario')->insert([
             'nombre'=>'Administrativo',
             'apellido'=>'Universidad',
             'dni'=>33123111,
             'email'=>'unadmin@fi.uncoma.edu.ar',
+            'password'=>'petrel2021'
         ]);
-
-
-
+        DB::table('usuario')->insert([
+            'nombre'=>'Un usuario',
+            'apellido'=>'Estudiante',
+            'dni'=>34123456,
+            'email'=>'estudiante@hotmail.com',
+            'password'=>'petrel2021'
+        ]);
     }
 }

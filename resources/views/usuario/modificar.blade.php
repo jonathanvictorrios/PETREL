@@ -1,7 +1,7 @@
 @extends('estructura/layout')
 
 @section('cuerpo')
-@php($titulo = 'Crear usuario - Petrel')@endphp
+@php($titulo = 'Modificar usuario - Petrel')@endphp
 
 @include('estructura/header')
 <main class="p-2" id="cuerpo"> {{-- Inicio main cuerpo --}}
@@ -9,13 +9,13 @@
         <a href="{{url()->previous()}}" class="lead"><i class="fas fa-chevron-left me-2"></i>Atrás</a>
     </div>
 
-    {{-- inicio de Crear usuario --}}
+    {{-- inicio de Modificar usuario --}}
     <div class="container-fluid mb-5 p-1 mx-auto">
         <div class="row d-flex justify-content-center">
             <div class="col-xl-6 col-lg-6 col-md-12 col-12">
                 <div class="card card-form">
                     <div class="row tittle border-bottom p-2">
-                        <h2 class="col text-center fw-bold">Nuevo Usuario</h2>
+                        <h2 class="col text-center fw-bold">Modificar Usuario</h2>
                     </div>
                     <form class="">
                         @csrf
@@ -46,7 +46,7 @@
                         </div>
                         <div class="row justify-content-between text-left">
                             <div class="form-group col col-12 flex-column d-flex py-3">
-                                <label class="form-label py-2">Email</label>
+                                <label class="form-label-label py-2">Email</label>
                                 <input class="border-0 cell" type="text" id="email" name="email" placeholder="Ingrese el dirección de email">
                             </div>
 
@@ -54,7 +54,7 @@
 
                         <div class="row justify-content-center text-center py-4">
                             <div class="form-group col col-sm-6">
-                                <button id="boton" name="boton" type="submit" class="botonFormulario">Crear</button>
+                                <button id="boton" name="boton" type="submit" class="botonFormulario">Modificar</button>
                             </div>
                         </div>
                     </form>
