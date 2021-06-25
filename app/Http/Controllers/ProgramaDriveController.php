@@ -23,10 +23,10 @@ class ProgramaDriveController extends Controller
     /**
      * a traves del formulario leemos los campos y agregamos el nuevo programa
      * verificamos si existen ambas carpetas y luego subimos el programa
-     * @param Request
+     * @param StoreProgramaDriveRequest
      * @return view programa.show
      */
-    public function store(StoreProgramaDriveRequest $request)
+    public function store(Request $request)
     {
         $carpetaCarrera = CarpetaCarrera::find($request->idCarpetaCarrera);
         $colProgramas = $carpetaCarrera->programa_drive;
@@ -37,14 +37,13 @@ class ProgramaDriveController extends Controller
             $i++;
         }
         if(!$programaEncontrado){
-            $nombre = $request->numeroPrograma.'-'.$request->nombrePrograma;
+            $nombre = $request->nombrePrograma.'.pdf';
             $guardadoDrive = $request->file('pdfPrograma')->storeAs(
                 $carpetaCarrera->url_carrera,//donde se guarda
-                $nombre,//nombre con el que se guarda
+                $request->numeroPrograma.'-'.$nombre,//nombre con el que se guarda
                 'google'
             );
             if($guardadoDrive){
-                sleep(5);
                 $colArchivos = Storage::disk('google')->files($carpetaCarrera->url_carrera);
                 $i=0;
                 $encontrado = false;
@@ -55,11 +54,11 @@ class ProgramaDriveController extends Controller
                 $urlPrograma = substr(strrchr($colArchivos[($i-1)],'/'),1);
                 $programa = ProgramaDrive::create([
                     'id_carpeta_carrera' => $carpetaCarrera->id_carpeta_carrera,
-                    'nombre_programa' => $request->nombrePrograma,
+                    'nombre_programa' => $nombre,
                     'numero_programa' => $request->numeroPrograma,
                     'url_programa' => $urlPrograma,
                 ]);
-                return view('programaDrive.show')->with('programaDrive',$programa);
+                return view('carpetaCarrera.listarProgramas')->with('carpetaCarrera',$programa->carpeta_carrera);
             }else{
                 echo "no se guardo en drive";
             }
@@ -181,6 +180,7 @@ class ProgramaDriveController extends Controller
                 $colProgramasNoEncontrados[]=['Programa'=>$nombreMateria,'Anio'=>$anioMateriaAprobada];
             }
         }
-        return view('programaLocal.create',['idSolicitud'=>$idSolicitud,'colProgramasEncontrados'=>$colProgramasEncontrados,'colProgramasSugerencias'=>$colProgramasSugerencias,'colProgramasNoEncontrados'=>$colProgramasNoEncontrados]);
+        $objSolicitud=SolicitudCertProg::find($idSolicitud);
+        return view('programaLocal.create',['solicitud'=>$objSolicitud,'colProgramasEncontrados'=>$colProgramasEncontrados,'colProgramasSugerencias'=>$colProgramasSugerencias,'colProgramasNoEncontrados'=>$colProgramasNoEncontrados]);
     }
 }

@@ -16,7 +16,7 @@ class CarpetaAnioController extends Controller
      */
     public function index()
     {
-        $carpetaAnio = CarpetaAnio::get();
+        $carpetaAnio = CarpetaAnio::orderByDesc('numero_anio')->get();
         return view('carpetaAnio.index')->with('colCarpetasAnio',$carpetaAnio);
     }
 
@@ -101,7 +101,7 @@ class CarpetaAnioController extends Controller
         foreach($carpetaAnio->carpeta_carrera as $carpetaCarrera){
             $existentes[]= $carpetaCarrera->id_carrera;
         }
-        $carreras = Carrera::whereNotIn('id_carrera', $existentes)->get();
+        $carreras = Carrera::where('id_unidad_academica',1)->whereNotIn('id_carrera', $existentes)->get();
         return view('carpetaCarrera.create',['carreras'=>$carreras])->with('carpetaAnio',$carpetaAnio);
     }
 

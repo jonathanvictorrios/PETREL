@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\HojaResumen;
 use App\Models\NotaDptoAlum;
+use App\Models\SolicitudCertProg;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 use Mockery\Matcher\Not;
@@ -25,9 +26,10 @@ class NotaDptoAlumController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function crearNota($id_solicitud)
     {
-        return view('notaDptoAlum.create', ['id_solicitud' => 1]);
+        $objSolicitud=SolicitudCertProg::find($id_solicitud);
+        return view('notaDptoAlum.create', ['solicitud' => $objSolicitud]);
     }
 
     /**
@@ -38,13 +40,17 @@ class NotaDptoAlumController extends Controller
      */
     public function store(Request $request)
     {
-        # Validar Formulario
-
         # Generar el pdf
+        $contenidoNotaDpto = [];
+        $contenidoNotaDpto['contenido'] = $request->contenido;
+        $contenidoNotaDpto['footer'] = $request->footer;
+        $contenidoNotaDpto['firma_dpto'] = 'VIVIANA PEDRERO';
+        Storage::disk('local')->put('id-solicitud-'.$request->id_solicitud.'/contenidoNotaDpto'.$request->id_solicitud.'.json',json_encode($contenidoNotaDpto));
         $objPDF = app('dompdf.wrapper')
                 ->loadView('notaDptoAlum.exportar_pdf', [
                     'contenido' => $request->contenido,
-                    'footer' => $request->footer
+                    'footer' => $request->footer,
+                    'firma_dpto' => 'VIVIANA PEDRERO'
                 ]);
         $directorioPDF = "id-solicitud-$request->id_solicitud/";
         $nombrePDF = "notaDptoAlumno$request->id_solicitud.pdf";
@@ -63,18 +69,17 @@ class NotaDptoAlumController extends Controller
 
 
         # Retorno resultado
-        return view('notaDptoAlum.create', ['id_solicitud' => $_REQUEST['id_solicitud']]);
+        return $objPDF->download("nota-generada-$request->id_solicitud.pdf");
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\NotaDptoAlum  $notaDptoAlum
      * @return \Illuminate\Http\Response
      */
-    public function show(NotaDptoAlum $notaDptoAlum)
+    public function show()
     {
-        # checkear si el usuario tiene permisos para ver esta página
+        //
     }
 
     /**

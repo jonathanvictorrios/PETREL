@@ -77,33 +77,45 @@
         </p>
     </div>
     <table class="table table-borderless mt-5" style="width:100%;text-align: center">
-        <tr>
-            <td><img width="75px" height="75px" src="img/logito-fai.png" alt="firma_mariela"></td>
-            <td><img width="75px" height="75px" src="img/logito-fai.png" alt="firma_sol"></td>
-        </tr>
-        <tr style="font-weight: bold;">
-            <td>A/C. DEPTO ALUMNOS</td>
-            <td>SECRETARIA ACADEMICA</td>
-        </tr>
-        <tr style="font-weight: bold;">
-            <td><small>VIVIANA PEDRERO</small></td>
-            <td><small>SILVIA AMARO</small></td>
-        </tr>
+        <tbody>
+            <tr>
+                <td><img width="75px" height="75px" src="img/logito-fai.png" alt="firma_viviana"></td>
+                @if($arregloRendimiento["Secretaria"])<td><img width="75px" height="75px" src="img/logito-fai.png" alt="firma_sol"></td>@endif
+            </tr>
+            <tr style="font-weight: bold;">
+                <td>A/C. DEPTO ALUMNOS</td>
+                @if($arregloRendimiento["Secretaria"])<td>SECRETARIA ACADEMICA</td>@endif
+            </tr>
+            <tr style="font-weight: bold;">
+                <td><small>VIVIANA PEDRERO</small></td>
+                @if($arregloRendimiento["Secretaria"])<td><small>SILVIA AMARO</small></td>@endif
+            </tr>
+        </tbody>
     </table>
-
 </div>
 
 <div>
-    <form action="{{ route('rendimientoAcademico.store') }}" method="POST" autocomplete="off">
-        @csrf
-        <input type="hidden" id="idSolicitud" name="idSolicitud" value={{$idSolicitud}}>
-        <input type="hidden" id="rutaArchivo" name="rutaArchivo" value="{{$rutaArchivo}}">
-        <div class="row clearfix">
-            <div class="col-md-12 text-center">
+    <div class="row clearfix">
+        <div class="col-md-6 text-center">
+            <form action="{{ route('rendimientoAcademico.store') }}" method="POST" autocomplete="off">
+                @csrf
+                <input type="hidden" id="idSolicitud" name="idSolicitud" value={{$solicitud->id_solicitud}}>
+                <input type="hidden" id="rutaArchivo" name="rutaArchivo" value="{{$rutaArchivo}}">
                 <input id="btn_crear-pdf" class="btn btn-primary m-2 font-weight-bold" name="btn_crear-pdf" type="submit" value="Crear PDF">
-            </div>
+            </form>
         </div>
-    </form>
-    <a href="{{route('buscarProgramas',$idSolicitud)}}" style="float: right;">Siguiente</a>
+        <div class="col-md-6 text-center">
+            <a href="{{route('buscarProgramas',$solicitud->id_solicitud)}}" id="botonContinuar" class="w-25 btn btn-secondary disabled" >Continuar</a>
+        </div> 
+    </div>
 </div>
+<script src="//cdn.ckeditor.com/4.14.1/basic/ckeditor.js"></script>
+<script type="text/javascript">
+
+$('#btn_crear-pdf').on('click', function () {
+    $('#botonContinuar').removeClass("disabled")
+    $('#botonContinuar').removeClass("btn-secondary")
+    $('#botonContinuar').addClass("btn-success")
+});
+</script>
 @endsection
