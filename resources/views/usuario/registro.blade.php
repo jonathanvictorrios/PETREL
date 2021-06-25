@@ -1,7 +1,7 @@
 @extends('estructura/layout')
 
 @section('cuerpo')
-@php($titulo = 'Petrel - Registro de usuario')
+@php($titulo = 'Registro de usuario - Petrel')@endphp
 
 @include('estructura/header')
 <main class="p-2" id="cuerpo"> {{-- Inicio main cuerpo --}}
@@ -24,7 +24,7 @@
                     <div class="row tittle border-bottom p-2">
                         <h2 class="col text-center fw-bold">Registro de Usuario</h2>
                     </div>
-                    <form class="">
+                    <form name=formRegistro id=formRegistro action="" method=POST>
                         @csrf
                         @if ($errors->any()) {{-- Valida en servidor y regresa mostrando los siguientes errores --}}
                         <div class="alert alert-danger alert-dismissible fade show d-flex align-items-center m-3 p-3">
@@ -39,32 +39,32 @@
                         @endif
                         <div class="row justify-content-between text-left">
                             <div class="form-group col col col-sm-6 flex-column d-flex py-3">
-                                <label class="form-control-label py-2">Nombres</label>
-                                <input class="border-0 cell" type="text" id="nombre" name="nombre" placeholder="Ingrese todos sus nombres">
+                                <label class="form-label py-2">Nombres</label>
+                                <input class="border-0 cell" type="text" id="nombre" name="nombre" placeholder="Ingrese todos sus nombres" required>
                             </div>
                             <div class="form-group col col-sm-6 flex-column d-flex py-3">
-                                <label class="form-control-label py-2">Apellidos</label>
-                                <input class="border-0 cell" type="text" id="apellido" name="apellido" placeholder="Ingrese todos sus apellidos">
-                            </div>
-                        </div>
-                        <div class="row justify-content-between text-left">
-                            <div class="form-group col col-sm-6 flex-column d-flex py-3">
-                                <label class="form-control-label py-2">Email</label>
-                                <input class="border-0 cell" type="text" id="email" name="email" placeholder="Ingrese su dirección de email">
-                            </div>
-                            <div class="form-group col col-sm-6 flex-column d-flex py-3">
-                                <label class="form-control-label py-2">Número de Documento</label>
-                                <input class="border-0 cell" type="number" id="dni" name="dni" placeholder="Ingrese su numero de DNI">
+                                <label class="form-label py-2">Apellidos</label>
+                                <input class="border-0 cell" type="text" id="apellido" name="apellido" placeholder="Ingrese todos sus apellidos" required>
                             </div>
                         </div>
                         <div class="row justify-content-between text-left">
                             <div class="form-group col col-sm-6 flex-column d-flex py-3">
-                                <label class="form-control-label py-2">Contraseña</label>
-                                <input class="border-0 cell" type="text" id="email" name="email" placeholder="Ingrese su dirección de email">
+                                <label class="form-label py-2">Email</label>
+                                <input class="border-0 cell" type="text" id="email" name="email" placeholder="Ingrese su dirección de email" required>
                             </div>
                             <div class="form-group col col-sm-6 flex-column d-flex py-3">
-                                <label class="form-control-label py-2">Verificar Contraseña</label>
-                                <input class="border-0 cell" type="text" id="dni" name="dni" placeholder="Ingrese su numero de DNI">
+                                <label class="form-label py-2">Número de Documento</label>
+                                <input class="border-0 cell" type="number" id="dni" name="dni" placeholder="Ingrese su numero de DNI" required>
+                            </div>
+                        </div>
+                        <div class="row justify-content-between text-left">
+                            <div class="form-group col col-sm-6 flex-column d-flex py-3">
+                                <label class="form-label py-2">Contraseña</label>
+                                <input class="border-0 cell" type="text" id="email" name="email" placeholder="Ingrese su dirección de email" required>
+                            </div>
+                            <div class="form-group col col-sm-6 flex-column d-flex py-3">
+                                <label class="form-label py-2">Verificar Contraseña</label>
+                                <input class="border-0 cell" type="text" id="dni" name="dni" placeholder="Ingrese su numero de DNI" required>
                             </div>
                         </div>
 

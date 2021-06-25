@@ -1,6 +1,6 @@
 @extends('estructura/layout')
 @section('cuerpo')
-@php($titulo = 'Petrel - Modificar Año')@endphp
+@php($titulo = 'Modificar Año - Petrel')@endphp
 
 @include('estructura/header')
 <main class="p-2" id="cuerpo"> {{-- Inicio main cuerpo --}}
@@ -21,7 +21,7 @@
                         @method('put')
                         <div class="row justify-content-between text-left">
                             <div class="form-group col col-12 flex-column d-flex py-3">
-                                <label class="form-control-label py-2">Año</label>
+                                <label class="form-label py-2">Año</label>
                                 <input class="border-0 cell" type="number" id="anio" name="anio" value="{{ old('anio', $carpetaAnio->numero_anio) }}">
                             </div>
                         </div>

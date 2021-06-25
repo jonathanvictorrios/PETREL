@@ -2,7 +2,7 @@
 
 
 @section('cuerpo')
-    @php($titulo = 'Petrel - Ver detalles solicitud')
+    @php($titulo = 'Ver detalles solicitud - Petrel')@endphp
 
 
         @include('estructura/header')
@@ -121,48 +121,50 @@
                     </div>
                 </div>
             </div>
-            <div class="tittle cp-1 cell my-3">
-                    <h2 class="text-center fw-bold">Actividad </h2>
-            </div>
-                <table class="table table-borderless">
-                    <thead class="border-bottom">
-                        <tr>
-                            <th scope="col">Fecha</th>
-                            <th scope="col">Usuario</th>
-                            <th scope="col">Detalle</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td>12/05/2021</td>
-                            <td>Viviana Pedrero</td>
-                            <td>asignado a Raquel</td>
-                        </tr>
-                        <tr>
-                            <td>12/05/2021</td>
-                            <td>Viviana Pedrero</td>
-                            <td>comentario 2 blablablablablalbalba</td>
-                        </tr>
-                        <tr>
-                            <td>12/05/2021</td>
-                            <td>Viviana Pedrero</td>
-                            <td>asignado a Raquel</td>
-                        </tr>
-                    </tbody>
-                </table>
-            
-            <div class="row justify-content-center ">
-                <div class="col-6 p-2 m-2">
-                    {{-- ESTE FORM/BOTÒN DEBERIA SER VISIBLE SÒLO SI EL USUARIO ASIGNADO ES EL USUARIO LOGUEADO --}}
-                    <form action= "{{ route('hojaResumen.store') }}" method="POST" autocomplete="off" enctype="multipart/form-data">
-                        @csrf
-                        {{-- aca voy a recibir el $idSolicitud , por ahora utilizo un input , luego este $idSolicitud estara en un campo oculto --}}
-                        <input type="hidden" id="idSolicitud" name="idSolicitud" value="{{ $solicitud->idSolicitud }}">
-                        <input type="submit" class="botonFormulario" value="comenzar trámite">
-                    </form>
+
+            <div class="container-fluid p-1 mx-auto"> {{-- Comienzo div Actividad (mostrar como acordeón) --}}
+                <div class="tittle cp-1 cell my-3">
+                        <h2 class="text-center fw-bold">Actividad </h2>
                 </div>
-            </div>
-           
+                    <table class="table table-borderless">
+                        <thead class="border-bottom">
+                            <tr>
+                                <th scope="col">Fecha</th>
+                                <th scope="col">Usuario</th>
+                                <th scope="col">Detalle</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>12/05/2021</td>
+                                <td>Viviana Pedrero</td>
+                                <td>asignado a Raquel</td>
+                            </tr>
+                            <tr>
+                                <td>12/05/2021</td>
+                                <td>Viviana Pedrero</td>
+                                <td>comentario 2 blablablablablalbalba</td>
+                            </tr>
+                            <tr>
+                                <td>12/05/2021</td>
+                                <td>Viviana Pedrero</td>
+                                <td>asignado a Raquel</td>
+                            </tr>
+                        </tbody>
+                    </table>
+
+                <div class="row justify-content-center ">
+                    <div class="col-6 p-2 m-2">
+                        {{-- ESTE FORM/BOTÒN DEBERIA SER VISIBLE SÒLO SI EL USUARIO ASIGNADO ES EL USUARIO LOGUEADO --}}
+                        <form action= "{{ route('hojaResumen.store') }}" method="POST" autocomplete="off" enctype="multipart/form-data">
+                            @csrf
+                            {{-- aca voy a recibir el $idSolicitud , por ahora utilizo un input , luego este $idSolicitud estara en un campo oculto --}}
+                            <input type="hidden" id="idSolicitud" name="idSolicitud" value="{{ $solicitud->idSolicitud }}">
+                            <input type="submit" class="botonFormulario" value="comenzar trámite">
+                        </form>
+                    </div>
+                </div>
+            </div> {{-- Fin div Actividad --}}
 
 
         </main> <!-- Fin main cuerpo -->

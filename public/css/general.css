@@ -174,7 +174,8 @@ input::placeholder {
 }
 
 .form-select {
-    height: 25px;
+    height: 27px;
+    padding: 1px 30px 1px 2px;
 }
 
 /*---------- SOLICITUDES ----------*/
