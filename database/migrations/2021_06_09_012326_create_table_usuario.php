@@ -19,6 +19,7 @@ class CreateTableUsuario extends Migration
             $table->string('apellido');
             $table->string('dni');
             $table->string('email');
+            $table->string('password');
             $table->timestamps();
         });
     }

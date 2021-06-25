@@ -1,6 +1,6 @@
 @extends('estructura/layout')
 @section('cuerpo')
-@php($titulo = 'Petrel - Inicio')
+@php($titulo = 'Inicio - Petrel')@endphp
 <section id="home" class="min-vh-100">
     <header>
         <nav class="navbar navbar-expand-md navbar-light">
