@@ -180,6 +180,7 @@ class ProgramaDriveController extends Controller
                 $colProgramasNoEncontrados[]=['Programa'=>$nombreMateria,'Anio'=>$anioMateriaAprobada];
             }
         }
-        return view('programaLocal.create',['idSolicitud'=>$idSolicitud,'colProgramasEncontrados'=>$colProgramasEncontrados,'colProgramasSugerencias'=>$colProgramasSugerencias,'colProgramasNoEncontrados'=>$colProgramasNoEncontrados]);
+        $objSolicitud=SolicitudCertProg::find($idSolicitud);
+        return view('programaLocal.create',['solicitud'=>$objSolicitud,'colProgramasEncontrados'=>$colProgramasEncontrados,'colProgramasSugerencias'=>$colProgramasSugerencias,'colProgramasNoEncontrados'=>$colProgramasNoEncontrados]);
     }
 }

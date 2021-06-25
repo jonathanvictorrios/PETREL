@@ -7,6 +7,7 @@ use PhpOffice\PhpSpreadsheet\IOFactory;
 use Illuminate\Support\Facades\Storage;
 use App\Models\RendimientoAcademico;
 use App\Models\HojaResumen;
+use App\Models\SolicitudCertProg;
 use Illuminate\Http\Request;
 use PDF;
 
@@ -58,7 +59,8 @@ class RendimientoAcademicoController extends Controller
         $carpetaStorageApp = storage_path('/app/').'id-solicitud-'.$request->idSolicitud;//tomamos id solicitud unico
         $this->convertirACsv($archivo,$carpetaStorageApp);
         $nombreJson = $this->convertirArreglo($carpetaStorageApp);
-        return view('rendimientoAcademico.show',['idSolicitud'=>$request->idSolicitud])->with('rutaArchivo',$carpetaStorageApp.'/'.$nombreJson);
+        $objSolicitud=SolicitudCertProg::find($request->idSolicitud);
+        return view('rendimientoAcademico.show',['solicitud'=>$objSolicitud])->with('rutaArchivo',$carpetaStorageApp.'/'.$nombreJson);
     }
     
     /**

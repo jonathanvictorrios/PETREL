@@ -95,16 +95,27 @@
 </div>
 
 <div>
-    <form action="{{ route('rendimientoAcademico.store') }}" method="POST" autocomplete="off">
-        @csrf
-        <input type="hidden" id="idSolicitud" name="idSolicitud" value={{$idSolicitud}}>
-        <input type="hidden" id="rutaArchivo" name="rutaArchivo" value="{{$rutaArchivo}}">
-        <div class="row clearfix">
-            <div class="col-md-12 text-center">
+    <div class="row clearfix">
+        <div class="col-md-6 text-center">
+            <form action="{{ route('rendimientoAcademico.store') }}" method="POST" autocomplete="off">
+                @csrf
+                <input type="hidden" id="idSolicitud" name="idSolicitud" value={{$solicitud->id_solicitud}}>
+                <input type="hidden" id="rutaArchivo" name="rutaArchivo" value="{{$rutaArchivo}}">
                 <input id="btn_crear-pdf" class="btn btn-primary m-2 font-weight-bold" name="btn_crear-pdf" type="submit" value="Crear PDF">
-            </div>
+            </form>
         </div>
-    </form>
-    <a href="{{route('buscarProgramas',$idSolicitud)}}" style="float: right;">Siguiente</a>
+        <div class="col-md-6 text-center">
+            <a href="{{route('buscarProgramas',$solicitud->id_solicitud)}}" id="botonContinuar" class="w-25 btn btn-secondary disabled" >Continuar</a>
+        </div> 
+    </div>
 </div>
+<script src="//cdn.ckeditor.com/4.14.1/basic/ckeditor.js"></script>
+<script type="text/javascript">
+
+$('#btn_crear-pdf').on('click', function () {
+    $('#botonContinuar').removeClass("disabled")
+    $('#botonContinuar').removeClass("btn-secondary")
+    $('#botonContinuar').addClass("btn-success")
+});
+</script>
 @endsection

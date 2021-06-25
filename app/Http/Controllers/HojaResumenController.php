@@ -22,7 +22,8 @@ class HojaResumenController extends Controller
         $unaHojaResumen=new HojaResumen();
         $unaHojaResumen->id_solicitud=$request->idSolicitud;
         $unaHojaResumen->save();
-        return view('rendimientoAcademico.create')->with('idSolicitud',$request->idSolicitud);
+        $objSolicitud=SolicitudCertProg::find($request->idSolicitud);
+        return view('rendimientoAcademico.create')->with('solicitud',$objSolicitud);
     }
 
     
