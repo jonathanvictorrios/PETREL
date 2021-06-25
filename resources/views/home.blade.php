@@ -77,7 +77,7 @@
                                             </div>
                                             <div class="row justify-content-center text-center py-4">
                                                 <div class="form-group col-sm-6">
-                                                    <button id="boton" name="boton" type="submit" class="btn-block w-100 p-1 rounded-2">Ingresar</button>
+                                                    <button id="boton" name="boton" type="submit" class="botonFormulario">Ingresar</button>
                                                 </div>
                                             </div>
                                         </form>
