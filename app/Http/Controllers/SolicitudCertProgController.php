@@ -55,25 +55,44 @@ class SolicitudCertProgController extends Controller
      */
     public function store(Request $request)
     {
+       print($request);
+
         $solicitud = new SolicitudCertProg;
         $usuarioEstudiante = Usuario::find(1); //ACA TENGO QUE PASAR EL ID DEL USUARIO LOGUEADO
-        // $usuarioEstudiante->id_usuario=1;
-        // $usuarioAdministrativo= null;
         
+        if(isset($usuarioEstudiante))
+        {
+            $solicitud->id_usuario_estudiante=$usuarioEstudiante->id_usuario;   
+        }
+        else{
+            return back()->with('error','Necesita estar Logueado para Ingresar una Nueva Solicitud');
+        }
+        
+        if(isset($request->legajo))
+        {
+            $solicitud->legajo=$request->legajo;
+        }
+        else
+        {
+            return back()->with('error','Completar Legajo');
+        }
+        if(isset($request->extranjero))
+        {
+            $solicitud->extranjero=$request->extranjero;
+        }
+        else{
+            $solicitud->extranjero=false;
+        }
 
-        $solicitud->id_usuario_estudiante=$usuarioEstudiante->id_usuario;
-        //$usuarioEstudiante = null;// $request->idUsuario;// Ver como viene esto desde la vista
-        //  $solicitud->id_user_u=$usuarioAdministrativo;
-        
-        $solicitud->legajo=$request->legajo;
         $solicitud->universidad_destino=$request->universidadDestino;
+
         $solicitud->id_carrera=$request->carrera; //CAMBIAR POR SELECT DE DEL FORM
         
 
      ///   $solicitud->usuarioEstudiante=$usuarioEstudiante; //asignamos el usuario a la solicitud
 
         $solicitud->updated_at=null;
-        $solicitud->save();
+       // $solicitud->save();
         
         $estado = new Estado;
         $estadoDescripcion = EstadoDescripcion::find(1);
@@ -82,13 +101,13 @@ class SolicitudCertProgController extends Controller
         $estado->id_estado_descripcion=$estadoDescripcion->id_estado_descripcion;
         $estado->id_usuario=null;
         $estado->updated_at=null;
-        $estado->save();
+        //$estado->save();
         
         $solicitudes=SolicitudCertProg::all();//NECESITO RECUPERAR TODAS LAS SOLICITUDES PORQUE VUELVO EL RETORNO A LA VISTA.
                                               // SI EL RETORNO NO ES HACIA solicitud.index puede sacarse
         
 
-        return view('solicitud.index',compact('solicitudes'))->with('mensaje','Se ingreso la Solicitud');
+        return view('solicitud.index',compact('solicitudes'));
     }
 
     /**

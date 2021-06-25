@@ -18,8 +18,8 @@ class SolicitudCertProgSeeder extends Seeder
             'id_usuario_estudiante'=>1,
             'id_carrera'=>1,
             'legajo'=>'FAI-1231',
-            'universidad_destino'=>'new york university'
-
+            'universidad_destino'=>'new york university',
+            'extranjero'=>true
         ]);
     }
 }
