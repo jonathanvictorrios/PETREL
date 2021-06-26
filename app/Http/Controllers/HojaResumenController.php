@@ -68,12 +68,17 @@ class HojaResumenController extends Controller
             unionProgramas6.pdf
         */
 
-        $urlPdfsLocales = [];
-        $urlPdfsLocales[] = 'notaDptoAlumno' . $idSolicitud . '.pdf';
-        $urlPdfsLocales[] = 'rendimientoAcademico' . $idSolicitud . '.pdf';
-        $urlPdfsLocales[] = 'planEstudio' . $idSolicitud . '.pdf';
-        $urlPdfsLocales[] = 'unionProgramas' . $idSolicitud . '.pdf';
-
+        $urlPdfsLocales=[];
+        $urlPdfsLocales[]='notaDptoAlumno'.$idSolicitud.'.pdf';
+        $urlPdfsLocales[]='rendimientoAcademico'.$idSolicitud.'.pdf';
+        $i = 0;
+        do {
+            $urlPdfsLocales[] = "planEstudio-$idSolicitud-$i.pdf";
+            $i++;
+        }
+        while (file_exists(storage_path("id-solicitud-$idSolicitud/planEstudio-$idSolicitud-$i.pdf")));
+        $urlPdfsLocales[]='unionProgramas'.$idSolicitud.'.pdf';
+        
         $pdf = new PdfMerge();
         foreach ($urlPdfsLocales as $unaUrl) {
             $pdf->add(storage_path() . '/app/id-solicitud-' . $idSolicitud . '/' . $unaUrl, 'all');
