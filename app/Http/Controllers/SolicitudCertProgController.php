@@ -89,7 +89,7 @@ class SolicitudCertProgController extends Controller
      ///   $solicitud->usuarioEstudiante=$usuarioEstudiante; //asignamos el usuario a la solicitud
 
         $solicitud->updated_at=null;
-       // $solicitud->save();
+        $solicitud->save();
         
         $estado = new Estado;
         $estadoDescripcion = EstadoDescripcion::find(1);
@@ -98,7 +98,7 @@ class SolicitudCertProgController extends Controller
         $estado->id_estado_descripcion=$estadoDescripcion->id_estado_descripcion;
         $estado->id_usuario=null;
         $estado->updated_at=null;
-        //$estado->save();
+        $estado->save();
         
         $solicitudes=SolicitudCertProg::all();//NECESITO RECUPERAR TODAS LAS SOLICITUDES PORQUE VUELVO EL RETORNO A LA VISTA.
                                               // SI EL RETORNO NO ES HACIA solicitud.index puede sacarse
@@ -197,6 +197,7 @@ class SolicitudCertProgController extends Controller
        
         //return view('solicitud.asignar');
         $solicitud = SolicitudCertProg::findOrFail($idSolicitud);
+
         $usuarioAdministrativo = Usuario::findOrFail($idUsuarioAdministrativo);
 
         //$nuevoEstado = new Estado;
@@ -207,10 +208,7 @@ class SolicitudCertProgController extends Controller
         $solicitud->id_user_u=$usuarioAdministrativo->id_usuario;
         
          $solicitud->save();
-        //$nuevoEstado->id_solicitud=$solicitud->id_solicitud;
 
-        // print($solicitud);
-        // print($usuarioAdministrativo);
 
 
     }
