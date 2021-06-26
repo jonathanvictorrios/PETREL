@@ -9,7 +9,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 
 class CarpetaCarreraController extends Controller
-{    
+{
     /**
      * verificamos la existencia de la carpeta año y luego
      * damos la posibilidad de crear y guardar en la base de datos
@@ -19,23 +19,23 @@ class CarpetaCarreraController extends Controller
     public function store(Request $request)
     {
         $carrera = Carrera::find($request->idCarrera);
-        $carpetaAnio=CarpetaAnio::find($request->idCarpetaAnio);
-        Storage::disk('google')->makeDirectory($carpetaAnio->url_anio.'/'.$carrera->carrera);
+        $carpetaAnio = CarpetaAnio::find($request->idCarpetaAnio);
+        Storage::disk('google')->makeDirectory($carpetaAnio->url_anio . '/' . $carrera->carrera);
         $colCarpetasCarrera = Storage::disk('google')->directories($carpetaAnio->url_anio);
-        $i=0;
+        $i = 0;
         $urlEncontrada = false;
-        while($i<count($colCarpetasCarrera) && !$urlEncontrada){
+        while ($i < count($colCarpetasCarrera) && !$urlEncontrada) {
             //comparamos cada url si le pertenece a la carpeta agregada recientemente
-            $urlEncontrada = Storage::disk('google')->getMetadata($colCarpetasCarrera[$i])['name']==$carrera->carrera;
+            $urlEncontrada = Storage::disk('google')->getMetadata($colCarpetasCarrera[$i])['name'] == $carrera->carrera;
             $i++;
         }
-        $urlCarpeta = explode('/',$colCarpetasCarrera[($i-1)])[1];//obtenemos la posicion de la url que le pertenece a la carpeta recien creada
+        $urlCarpeta = explode('/', $colCarpetasCarrera[($i - 1)])[1]; //obtenemos la posicion de la url que le pertenece a la carpeta recien creada
         $carpeta = CarpetaCarrera::create([
             'id_carpeta_anio' => $carpetaAnio->id_carpeta_anio,
-            'id_carrera'=>$carrera->id_carrera,
+            'id_carrera' => $carrera->id_carrera,
             'url_carrera' => $urlCarpeta,
         ]);
-        return view('carpetaAnio.listarCarreras')->with('carpetaAnio',$carpeta->carpeta_anio);
+        return view('carpetaAnio.listarCarreras')->with('carpetaAnio', $carpeta->carpeta_anio);
     }
 
     /**
@@ -56,7 +56,7 @@ class CarpetaCarreraController extends Controller
     public function verProgramas($idCarpetaCarrera)
     {
         $carpeta = CarpetaCarrera::find($idCarpetaCarrera);
-        return view('carpetaCarrera.listarProgramas')->with('carpetaCarrera',$carpeta);
+        return view('carpetaCarrera.listarProgramas')->with('carpetaCarrera', $carpeta);
     }
 
     /**
@@ -67,6 +67,6 @@ class CarpetaCarreraController extends Controller
     public function agregarPrograma($idCarpetaCarrera)
     {
         $carpeta = CarpetaCarrera::find($idCarpetaCarrera);
-        return view('programaDrive.create')->with('carpetaCarrera',$carpeta);
+        return view('programaDrive.create')->with('carpetaCarrera', $carpeta);
     }
 }
