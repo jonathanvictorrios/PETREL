@@ -1,6 +1,6 @@
 @extends('estructura/layout')
 @section('cuerpo')
-@php($titulo = 'Petrel - Rendimiento Academico') @endphp
+@php($titulo = 'Rendimiento Academico - Petrel') @endphp
 
 <div class="container shadow-lg mt-5 mb-5 pb-3 bg-light rounded col-8">
     @php
@@ -106,7 +106,7 @@
         </div>
         <div class="col-md-6 text-center">
             <a href="{{route('buscarProgramas',$solicitud->id_solicitud)}}" id="botonContinuar" class="w-25 btn btn-secondary disabled" >Continuar</a>
-        </div> 
+        </div>
     </div>
 </div>
 <script src="//cdn.ckeditor.com/4.14.1/basic/ckeditor.js"></script>

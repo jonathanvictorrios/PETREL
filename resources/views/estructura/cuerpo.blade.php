@@ -4,4 +4,4 @@
     <!-- Acá van botón back y título -->
     @yield('contenido')
     @include('estructura/footer')
-</main> <!-- Fin main cuerpo -->
+</main> {{-- Fin main cuerpo --}}

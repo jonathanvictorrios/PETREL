@@ -1,5 +1,6 @@
 @extends('estructura/layout')
 @section('cuerpo')
+@php($titulo = 'Programa - Petrel')@endphp
 @include('estructura/header')
 
 <h1>{{ $programaDrive->numero_materia.' '.$programaDrive->nombre_programa }}</h1>

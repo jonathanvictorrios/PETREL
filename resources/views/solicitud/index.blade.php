@@ -1,10 +1,7 @@
 @extends('estructura/layout')
-
 @section('cuerpo')
 @php($titulo = 'Listado solicitudes - Petrel')@endphp
-
 @include('estructura/header')
-
 
 {{-- Tabla Solicitudes - Estudiante --}}
 <div id="nav-solicitud" class="container shadow-lg my-5 bg-light rounded">

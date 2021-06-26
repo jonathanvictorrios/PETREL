@@ -1,8 +1,8 @@
 @extends('estructura/layout')
 @section('cuerpo')
-@php($titulo = 'Petrel')
-
+@php($titulo = 'Archivo - Petrel')@endphp
 @include('estructura/header')
+
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-8">

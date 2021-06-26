@@ -19,6 +19,17 @@
                     </div>
                     <form class="">
                         @csrf
+                        @if ($errors->any()) {{-- Valida en servidor y regresa mostrando los siguientes errores --}}
+                        <div class="alert alert-danger alert-dismissible fade show d-flex align-items-center m-3 p-3">
+                            <i class='fas fa-times-circle mx-2'></i><h5>Revisa los siguientes datos e inténtalo nuevamente</h5>
+                            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                            <ul>
+                                @foreach ($errors->all() as $error)
+                                    <li>{{ $error }}</li>
+                                @endforeach
+                            </ul>
+                        </div>
+                        @endif
                         <div class="row justify-content-between text-left">
                             <div class="form-group col col col-sm-6 flex-column d-flex py-3">
                                 <label class="form-label py-2">Nombres</label>
@@ -62,6 +73,6 @@
             </div>
         </div>
     </div>
-</main> <!-- Fin main cuerpo -->
+</main> {{-- Fin main cuerpo --}}
 
 @endsection
