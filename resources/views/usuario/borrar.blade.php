@@ -1,10 +1,9 @@
 @extends('estructura/layout')
-
 @section('cuerpo')
 @php($titulo = 'Borrar usuario - Petrel')@endphp
-
 @include('estructura/header')
-<main class=p-2 id=cuerpo> <!-- Inicio main cuerpo -->
+
+<main class=p-2 id=cuerpo> {{-- Inicio main cuerpo --}}
     <div class=container>
         <a href="{{url()->previous()}}" class="lead"><i class="fas fa-chevron-left me-2"></i>Atrás</a>
     </div>
@@ -71,6 +70,6 @@
 </div>
 {{-- fin mostrar usuario --}}
 
-</main> <!-- Fin main cuerpo -->
+</main> {{-- Fin main cuerpo --}}
 
 @endsection

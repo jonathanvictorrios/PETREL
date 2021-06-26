@@ -1,5 +1,6 @@
 @extends('estructura/layout')
 @section('cuerpo')
+@php($titulo = 'Crear Nota - Petrel')@endphp
 @include('estructura/header')
 
 @php
@@ -22,7 +23,7 @@
 <form id="formulario_nota" action="{{ route('notaDA.store') }}" method="POST" class="container w-75 py-2">
     @csrf
     <h2 class="text-center">Crear nota</h2>
-    
+
     <div class="alert alert-success" role="alert">
         Puedes editar el contenido a necesidad, y agregar por ejemplo:
         <ul>
@@ -35,17 +36,17 @@
         <textarea class="ckeditor form-control" name="contenido">
             <p>
                 El Departamento de Alumnos del Centro Universitario Regional Zona Atlántica de la Universidad Nacional
-                del Comahue certifica que: <b>{{ $arregloRendimiento['Alumno']['Apellido'] }}, {{ $arregloRendimiento['Alumno']['Nombre'] }}</b> — 
-                {{ $arregloRendimiento['Documento']['Tipo'] }}: <b>{{ $arregloRendimiento['Documento']['Nro'] }}</b> Legajo Nro. <b>{{ $arregloRendimiento['Alumno']['Legajo'] }}</b>, 
-                estudiante de la carrera <b>{{ $arregloRendimiento['Carrera'] }}</b>, ha cursado y aprobado las asignaturas correspondientes al 
+                del Comahue certifica que: <b>{{ $arregloRendimiento['Alumno']['Apellido'] }}, {{ $arregloRendimiento['Alumno']['Nombre'] }}</b> —
+                {{ $arregloRendimiento['Documento']['Tipo'] }}: <b>{{ $arregloRendimiento['Documento']['Nro'] }}</b> Legajo Nro. <b>{{ $arregloRendimiento['Alumno']['Legajo'] }}</b>,
+                estudiante de la carrera <b>{{ $arregloRendimiento['Carrera'] }}</b>, ha cursado y aprobado las asignaturas correspondientes al
                 Plan de Estudios Ordenanza (CS) N.º <b>{{ $arregloRendimiento['Plan']['Nro'] }}/{{ $arregloRendimiento['Plan']['Anio'] }}</b>.
             </p>
             <p>
-                Se adjunta el Rendimiento Académico, el Plan de Estudios, y los programas de las asignaturas aprobadas con examen final 
+                Se adjunta el Rendimiento Académico, el Plan de Estudios, y los programas de las asignaturas aprobadas con examen final
                 o promoción, que son copia fiel de los originales que obran en dependencia del Centro Regional.
             </p>
             <p>
-                La escala de calificación que rige en esta Universidad según Reglamentación General de Administración Académica de carreras de Grado, 
+                La escala de calificación que rige en esta Universidad según Reglamentación General de Administración Académica de carreras de Grado,
                 Ordenanza (CS) N.º 273/18 es la siguiente:
             </p>
             <ul>
@@ -54,7 +55,7 @@
                 </li>
             </ul>
             <p>
-                A pedido del/la estudiante, y para ser presentado ante las autoridades que lo requieran, se extiende 
+                A pedido del/la estudiante, y para ser presentado ante las autoridades que lo requieran, se extiende
                 el presente en la Ciudad de {{ $arregloRendimiento['Lugar'] }}, para {{ $fecha }}.
             </p>
         </textarea>

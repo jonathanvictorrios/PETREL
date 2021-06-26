@@ -1,9 +1,8 @@
 @extends('estructura/layout')
-
 @section('cuerpo')
-@php($titulo = 'Petrel - Crear solicitud')
-
+@php($titulo = 'Crear solicitud - Petrel')
 @include('estructura/header')
+
 <main class="p-2" id="cuerpo"> {{-- Inicio main cuerpo --}}
     <div class="container mt-3">
         <a href="{{url()->previous()}}" class="lead"><i class="fas fa-chevron-left me-2"></i>Atrás</a>
