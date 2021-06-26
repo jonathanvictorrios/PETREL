@@ -17,8 +17,24 @@ class HojaResumenController extends Controller
         // $colHojasResumen=HojaResumen::get();
         // return view('hojaResumen.show')->with('colHojasResumen',$colHojasResumen);
     }
-    public function store(Request $request)
-    {
+
+    public function continuarTramite($idSolicitud){
+        $objHojaResumen = HojaResumen::where('id_solicitud',$idSolicitud)->get();
+        if(count($objHojaResumen)>0){
+            $objSolicitud=SolicitudCertProg::find($idSolicitud);
+            if($objHojaResumen[0]->id_rendimiento_academico==null){
+                return view('rendimientoAcademico.create')->with('solicitud',$objSolicitud);
+            }elseif($objHojaResumen[0]->id_programa_local==null){
+                return redirect()->route('buscarProgramas',$objSolicitud->id_solicitud);
+            }elseif(count($objHojaResumen[0]->plan_estudio)<1){
+                return redirect()->route('crearPlanEstudio',$objSolicitud->id_solicitud);
+            }else{
+                return redirect()->route('notaDA.crear',$objSolicitud->id_solicitud);
+            }
+        }
+    }
+
+    public function store(Request $request){
         //creo el objeto hojaresumen y lo cargo en la base de datos solo con el idSolicitud
         //los demas campos los agregare a medida que se vayan concretando determinadas tareas
         $unaHojaResumen = new HojaResumen();

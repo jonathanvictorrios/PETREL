@@ -14,14 +14,6 @@ use PDF;
 class RendimientoAcademicoController extends Controller
 {
     /**
-     * esta ocasion no hay crud de rendimiento academico, 
-     */
-    public function index()
-    {
-        return view('rendimientoAcademico.create');
-    }
-
-    /**
      * se realiza la confirmacion de generar el pdf del rendimiento academico
      * y lo guardamos en storage/app junto a la base de datos
      * @param Request $request
