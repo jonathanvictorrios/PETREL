@@ -17,12 +17,12 @@ class SolicitudCertProg extends Model
 
     public function hojaResumen()
     {
-        return $this->hasOne(HojaResumen::class, 'id_hoja_resumen', 'id_hoja_resumen');
+        return $this->hasOne(HojaResumen::class, 'id_hoja_resumen', 'id_solicitud');
     }
 
     public function estados()
     {
-        return $this->hasMany(Estado::class, 'id_estado', 'id_estado');
+        return $this->hasMany(Estado::class, 'id_solicitud', 'id_solicitud');
     }
 
     public function carrera()
@@ -36,7 +36,7 @@ class SolicitudCertProg extends Model
     }
     public function usuarioAdministrativo()
     {
-        return $this->belongsTo(Usuario::class, 'id_user_a', 'id_usuario');
+        return $this->belongsTo(Usuario::class, 'id_user_u', 'id_usuario');
     }
     public function comentario()
     {
