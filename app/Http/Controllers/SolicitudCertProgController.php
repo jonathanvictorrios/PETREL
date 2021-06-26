@@ -21,15 +21,14 @@ class SolicitudCertProgController extends Controller
     {
         $solicitudes = SolicitudCertProg::all();
         $Lista = array();
-        foreach($solicitudes as $solicitud)
-        {
+        foreach ($solicitudes as $solicitud) {
             $Mostrar = $this->ObtenerDatosSolicitud($solicitud);
   
             array_push($Lista,$Mostrar);
 
         }
-        $solicitudes=$Lista;
-        return view('solicitud.index',compact('solicitudes'));
+        $solicitudes = $Lista;
+        return view('solicitud.index', compact('solicitudes'));
     }
 
     /**
@@ -97,18 +96,18 @@ class SolicitudCertProgController extends Controller
         $solicitud->id_carrera=$request->carrera; //CAMBIAR POR SELECT DE DEL FORM
         
 
-     ///   $solicitud->usuarioEstudiante=$usuarioEstudiante; //asignamos el usuario a la solicitud
+        ///   $solicitud->usuarioEstudiante=$usuarioEstudiante; //asignamos el usuario a la solicitud
 
-        $solicitud->updated_at=null;
+        $solicitud->updated_at = null;
         $solicitud->save();
         
         $estado = new Estado;
         $estadoDescripcion = EstadoDescripcion::find(1);
 
-        $estado->id_solicitud=$solicitud->id_solicitud;
-        $estado->id_estado_descripcion=$estadoDescripcion->id_estado_descripcion;
-        $estado->id_usuario=null;
-        $estado->updated_at=null;
+        $estado->id_solicitud = $solicitud->id_solicitud;
+        $estado->id_estado_descripcion = $estadoDescripcion->id_estado_descripcion;
+        $estado->id_usuario = null;
+        $estado->updated_at = null;
         $estado->save();
         
         $solicitudes=SolicitudCertProg::all();//NECESITO RECUPERAR TODAS LAS SOLICITUDES PORQUE VUELVO EL RETORNO A LA VISTA.
@@ -134,11 +133,10 @@ class SolicitudCertProgController extends Controller
      */
     public function show($id)
     {
-        $solicitud= SolicitudCertProg::findOrFail($id);
-        $solicitud=$this->ObtenerDatosSolicitud($solicitud);
+        $solicitud = SolicitudCertProg::findOrFail($id);
+        $solicitud = $this->ObtenerDatosSolicitud($solicitud);
 
-        return view('solicitud.show',compact('solicitud'));
-
+        return view('solicitud.show', compact('solicitud'));
     }
 
     /**
@@ -179,7 +177,7 @@ class SolicitudCertProgController extends Controller
     {
        
         $Mostrar = new SolicitudCertProg;
-        $Mostrar->idSolicitud=$solicitud->id_solicitud;
+        $Mostrar->idSolicitud = $solicitud->id_solicitud;
 
         $Mostrar->Legajo=$solicitud->legajo;
         
@@ -187,14 +185,14 @@ class SolicitudCertProgController extends Controller
         
         $Mostrar->Carrera=$solicitud->carrera->carrera;
 
-        $Mostrar->UniversidadDestino=$solicitud->universidad_destino;
+        $Mostrar->UniversidadDestino = $solicitud->universidad_destino;
 
-        $Mostrar->UnidadAcademica=$solicitud->carrera->unidad_academica->unidad_academica;
+        $Mostrar->UnidadAcademica = $solicitud->carrera->unidad_academica->unidad_academica;
 
-        $ApellidoNombreUsuarioEst = $solicitud->usuarioEstudiante->apellido." ".$solicitud->usuarioEstudiante->nombre;
-        $Mostrar->UsuarioEstudiante=$ApellidoNombreUsuarioEst;
-        $Mostrar->NombreEstudiante=$solicitud->usuarioEstudiante->nombre;
-        $Mostrar->ApellidoEstudiante=$solicitud->usuarioEstudiante->apellido;
+        $ApellidoNombreUsuarioEst = $solicitud->usuarioEstudiante->apellido . " " . $solicitud->usuarioEstudiante->nombre;
+        $Mostrar->UsuarioEstudiante = $ApellidoNombreUsuarioEst;
+        $Mostrar->NombreEstudiante = $solicitud->usuarioEstudiante->nombre;
+        $Mostrar->ApellidoEstudiante = $solicitud->usuarioEstudiante->apellido;
 
 
         $Mostrar->UltimoEstado=($solicitud->estados)->last()->estado_descripcion->descripcion;
@@ -204,14 +202,14 @@ class SolicitudCertProgController extends Controller
         return $Mostrar;
     }
 
-      /**
+    /**
      * Asigna una solicitud
      *
      * @param  int  $idSolicitud
      * @param  int  $idUsuarioAdministrativo
      * @return \Illuminate\Http\Response
      */
-    public function asignar($idSolicitud,$idUsuarioAdministrativo)
+    public function asignar($idSolicitud, $idUsuarioAdministrativo)
     {
        
         $solicitud = SolicitudCertProg::findOrFail($idSolicitud);

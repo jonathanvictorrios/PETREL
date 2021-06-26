@@ -11,7 +11,9 @@ use App\Http\Controllers\RendimientoAcademicoController;
 use App\Http\Controllers\Archivo;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\SolicitudCertProgController;
-
+use App\Mail\mailPetrel;
+use App\Mail\mailPetrelFinalizacion;
+use Illuminate\Support\Facades\Mail;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -115,3 +117,19 @@ Route::get('archivos/{id}/confirmarContrasenia', [Archivo::class, 'confirmarCont
 Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
     return view('dashboard');
 })->name('dashboard');
+Route::get('solicitud_iniciada', function () {
+    // $correo debe inicializarse con el $idSolicitud como variable
+    $idSolicitud = 3;
+    $correo = new mailPetrel($idSolicitud);
+    $datosMail = $correo->datosMail;
+    //print_r($datosMail);
+    Mail::to($datosMail->correoUsuario)->send($correo);
+    //return ('Correo enviado');
+    return view('/home');
+});
+Route::get('finalizacion', function () {
+    $correo = new mailPetrelFinalizacion;
+    Mail::to("gksaibot@gmail.com")->send($correo);
+    //return ('Correo enviado');
+    return view('/finalizacionview');
+});
