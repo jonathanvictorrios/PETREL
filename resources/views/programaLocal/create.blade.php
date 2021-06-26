@@ -50,8 +50,7 @@
             <a href="{{ url('carpeta/anio')}}" id="faltaPrograma" class="mb-2 w-25 btn btn-success d-none" >Cargar faltantes</a>
         </div> 
         <div class="col-md-6 text-center">
-            <a href="{{route('crearPlanEstudio',$solicitud->id_solicitud)}}" id="botonContinuar"
-                class="w-25 btn btn-secondary disabled">Continuar</a>
+            <a href="{{route('crearPlanEstudio',$solicitud->id_solicitud)}}" id="botonContinuar" class="w-25 btn btn-secondary disabled" >Continuar</a>
         </div>
     </div> 
 </form>
