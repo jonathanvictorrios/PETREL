@@ -23,8 +23,11 @@
 </head>
 <body>
     <!-- <img src="{{ url('img/logo_petrel-02.png') }}" alt="Logo Petrel"> -->
-    <p>¡Hola! Queríamos avisarte que ya recibimos tu solicitud de certificación del programa de tu carrera.</p>
-    <p>Estos son los datos registrados:</p>
+    <p>¡Hola, {{ $datosMail->Nombre }}!</p>
+    <p>Tu solicitud de certificación de programas ha sido registrada con éxito.
+        Podés consultar el estado de la solicitud cuando lo desees a partir del siguiente <a class="nav-link" href="{{'#'}}">link</a>
+    </p>
+
     <ul>
         <li>Número de Solicitud: {{ $datosMail->idSolicitud }}</li>
         <li>Nombre y Apellido: {{ $datosMail->Nombre }} {{ $datosMail->Apellido }}</li>
@@ -32,7 +35,14 @@
         <li>Carrera: {{ $datosMail->Carrera }}</li>
         <li>Para presentar en: {{ $datosMail->UniversidadDestino }}</li>
     </ul>
-    <p>Vamos a estar contactándote a la brevedad para enviarte más info. </p>
+
+    <p>Recibirás una notificación via email cuando el trámite haya finalizado.
+        Atentamente,
+        
+        -- Petrel --
+        Secretaría Académica 
+        Universidad Nacional del Comahue.
+        </p>
     <p>¡Saludos!</p>
 
     <a class="nav-link" href="{{'#'}}">Ingresar a Petrel</a>

@@ -62,7 +62,7 @@ Route::resource('hojaResumen',HojaResumenController::class);
 // Email registro solicitud
 Route::get('solicitud_iniciada', function(){
     // $correo debe inicializarse con el $idSolicitud como variable
-    $idSolicitud = 3;
+    $idSolicitud = 3/*session('idSolicitud') */ ;
     $correo = new MailEstudiante($idSolicitud);
     $datosMail = $correo->datosMail;
     //print_r($datosMail);
