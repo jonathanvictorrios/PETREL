@@ -177,15 +177,15 @@ input::placeholder {
     height: 27px;
     padding: 1px 30px 1px 2px;
 }
-input[type = file]::file-selector-button {
+input[type="file"]::file-selector-button {
     background-color: transparent;
     border: 1.5px solid;
     /* border-bottom: 0px; */
-    padding: .25rem;
-    border-radius: .2rem;
+    padding: 0.25rem;
+    border-radius: 0.2rem;
     /* border-top-left-radius: .2rem;
     border-top-right-radius: .2rem; */
-    border-color:var(--color-verdeSecundario);
+    border-color: var(--color-verdeSecundario);
     text-align: center;
     color: var(--color-verdeSecundario);
 }
@@ -247,7 +247,8 @@ input[type = file]::file-selector-button {
     color: white;
 }
 
-.btn-create:hover, input[type = file]::file-selector-button:hover {
+.btn-create:hover,
+input[type="file"]::file-selector-button:hover {
     background-color: var(--color-verdeHover);
     border-color: var(--color-verdeHover);
     color: #fff;

@@ -22,9 +22,11 @@
     </header>
     <div>
         <div style="text-align: center;font-weight: bold;border-bottom:solid 1px grey;">RENDIMIENTO ACADEMICO </div>
-        <p>Certifico que {{$arregloRendimiento["Alumno"]["Apellido"]}}, {{$arregloRendimiento["Alumno"]["Nombre"]}} - {{$arregloRendimiento["Documento"]["Tipo"]}}: {{$arregloRendimiento["Documento"]["Nro"]}}
+        <p>Certifico que {{$arregloRendimiento["Alumno"]["Apellido"]}}, {{$arregloRendimiento["Alumno"]["Nombre"]}} -
+            {{$arregloRendimiento["Documento"]["Tipo"]}}: {{$arregloRendimiento["Documento"]["Nro"]}}
             Legajo Nro: {{$arregloRendimiento["Alumno"]["Legajo"]}} que cursa sus
-            estudios en la carrera {{$arregloRendimiento["Carrera"]}} Plan: {{$arregloRendimiento["Plan"]["Nro"]}}/{{$arregloRendimiento["Plan"]["Anio"]}}
+            estudios en la carrera {{$arregloRendimiento["Carrera"]}} Plan:
+            {{$arregloRendimiento["Plan"]["Nro"]}}/{{$arregloRendimiento["Plan"]["Anio"]}}
             ha cuarsado y aprobado las
             siguientes asignaturas:
         </p>
@@ -81,7 +83,8 @@
         <tbody>
             <tr>
                 <td><img width="75px" height="75px" src="img/logito-fai.png" alt="firma_viviana"></td>
-                @if($arregloRendimiento["Secretaria"])<td><img width="75px" height="75px" src="img/logito-fai.png" alt="firma_sol"></td>@endif
+                @if($arregloRendimiento["Secretaria"])<td><img width="75px" height="75px" src="img/logito-fai.png"
+                        alt="firma_sol"></td>@endif
             </tr>
             <tr style="font-weight: bold;">
                 <td>A/C. DEPTO ALUMNOS</td>
@@ -102,18 +105,19 @@
                 @csrf
                 <input type="hidden" id="idSolicitud" name="idSolicitud" value={{$solicitud->id_solicitud}}>
                 <input type="hidden" id="rutaArchivo" name="rutaArchivo" value="{{$rutaArchivo}}">
-                <input id="btn_crear-pdf" class="btn btn-primary m-2 font-weight-bold" name="btn_crear-pdf" type="submit" value="Crear PDF">
+                <input id="btn_crear-pdf" class="btn btn-primary m-2 font-weight-bold" name="btn_crear-pdf"
+                    type="submit" value="Crear PDF">
             </form>
         </div>
         <div class="col-md-6 text-center">
-            <a href="{{route('buscarProgramas',$solicitud->id_solicitud)}}" id="botonContinuar" class="w-25 btn btn-secondary disabled" >Continuar</a>
+            <a href="{{route('buscarProgramas',$solicitud->id_solicitud)}}" id="botonContinuar"
+                class="w-25 btn btn-secondary disabled">Continuar</a>
         </div>
     </div>
 </div>
 <script src="//cdn.ckeditor.com/4.14.1/basic/ckeditor.js"></script>
 <script type="text/javascript">
-
-$('#btn_crear-pdf').on('click', function () {
+$('#btn_crear-pdf').on('click', function() {
     $('#botonContinuar').removeClass("disabled")
     $('#botonContinuar').removeClass("btn-secondary")
     $('#botonContinuar').addClass("btn-success")

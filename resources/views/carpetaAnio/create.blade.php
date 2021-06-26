@@ -20,11 +20,12 @@
                         @csrf
                         @if ($errors->any()) {{-- Valida en servidor y regresa mostrando los siguientes errores --}}
                         <div class="alert alert-danger alert-dismissible fade show d-flex align-items-center m-3 p-3">
-                            <i class='fas fa-times-circle mx-2'></i><h5>Revisa los siguientes datos e inténtalo nuevamente</h5>
+                            <i class='fas fa-times-circle mx-2'></i>
+                            <h5>Revisa los siguientes datos e inténtalo nuevamente</h5>
                             <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
                             <ul>
                                 @foreach ($errors->all() as $error)
-                                    <li>{{ $error }}</li>
+                                <li>{{ $error }}</li>
                                 @endforeach
                             </ul>
                         </div>
@@ -33,7 +34,8 @@
                         <div class="row justify-content-between text-left">
                             <div class="form-group col col-12 flex-column d-flex py-3">
                                 <label class="form-label py-2">Año</label>
-                                <input class="border-0 cell" type="number" id="anio" name="anio" value="{{ old('anio') }}" placeholder="Ingrese año válido">
+                                <input class="border-0 cell" type="number" id="anio" name="anio"
+                                    value="{{ old('anio') }}" placeholder="Ingrese año válido">
                             </div>
                         </div>
                         <div class="row justify-content-center text-center py-4">
@@ -46,4 +48,18 @@
             </div>
         </div>
     </div>
+</main>
 @endsection
+{{-- @extends('estructura/layout')
+@section('cuerpo')
+@include('estructura/header')
+
+<form action="{{ route('anio.store') }}" method="POST" autocomplete="off">
+@csrf
+<h1>Creando una carpeta de año</h1>
+Año de para la nueva carpeta:
+<input type="number" id="anio" name="anio" value="{{ old('anio') }}">
+<input type="submit" value="enviar">
+</form>
+
+@endsection --}}
