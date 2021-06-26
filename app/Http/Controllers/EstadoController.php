@@ -128,20 +128,18 @@ class EstadoController extends Controller
         }
     }
     
-    public function asignarTramite($Solicitud, $NuevoUsuario) {
+    public function CambiarEstado($Solicitud, $NuevoUsuario,$EstadoDescripcion) {
         
         //$Solicitud :: SolcititudCertProg --Recibo la Solicitud
-        //$NuevoUsuario :: Usuario  -- Recibo el Usuario Administrativo al que se le asigna el Trámite
+        //$NuevoUsuario :: Usuario  -- ecibo el Usuario Administrativo al que se le asigna el Trámite
+        //$EstadoDescripcion :: EstadoDescripcion -- Recibe el nuevo Estado
 
-       // $solicitud_cert_prog = SolicitudCertProg::findOrFail($idSolicitud);
-        print( $Solicitud );
         // verificamos que existe la solicitud
         if ($Solicitud != null) { 
         
-         //   print('hola');
             // creamos la descripción del estado a asignar
             $EstadoDescripcion = new EstadoDescripcion;
-            $EstadoDescripcion->idEstadoDescripcion = 2;
+            $EstadoDescripcion->idEstadoDescripcion = $EstadoDescripcion; //1: Iniciado / 2:Asignado /3: Aguarda Firma Dept Alumno /4: Aguarda Firma Secretaria Academica /5:Terminado
 
             //print($EstadoDescripcion);
             // recuperamos el último estado para modificar la fecha
