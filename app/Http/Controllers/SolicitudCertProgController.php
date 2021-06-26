@@ -52,8 +52,6 @@ class SolicitudCertProgController extends Controller
      */
     public function store(Request $request)
     {
-       print($request);
-
         $solicitud = new SolicitudCertProg;
         $usuarioEstudiante = Usuario::find(1); //ACA TENGO QUE PASAR EL ID DEL USUARIO LOGUEADO
         
@@ -75,13 +73,26 @@ class SolicitudCertProgController extends Controller
         }
         if(isset($request->extranjero))
         {
-            $solicitud->extranjero=$request->extranjero;
+            if($request->extranjero=='si')
+            {
+            $solicitud->extranjero=true;
+            }
+            else{
+                $solicitud->extranjero=false;
+            }
         }
         else{
             $solicitud->extranjero=false;
         }
 
-        $solicitud->universidad_destino=$request->universidadDestino;
+        if(isset($request->universidadDestino))
+        {
+            $solicitud->universidad_destino=$request->universidadDestino;
+        }
+        else
+        {
+            return back()->with('error','Completar Unidad Academica Destino');
+        }
 
         $solicitud->id_carrera=$request->carrera; //CAMBIAR POR SELECT DE DEL FORM
         
@@ -102,7 +113,15 @@ class SolicitudCertProgController extends Controller
         
         $solicitudes=SolicitudCertProg::all();//NECESITO RECUPERAR TODAS LAS SOLICITUDES PORQUE VUELVO EL RETORNO A LA VISTA.
                                               // SI EL RETORNO NO ES HACIA solicitud.index puede sacarse
-        
+        $Lista = array();
+        foreach($solicitudes as $solicitud)
+        {
+            $Mostrar = $this->ObtenerDatosSolicitud($solicitud);
+  
+            array_push($Lista,$Mostrar);
+
+        }
+        $solicitudes=$Lista;
 
         return view('solicitud.index',compact('solicitudes'));
     }
@@ -195,21 +214,77 @@ class SolicitudCertProgController extends Controller
     public function asignar($idSolicitud,$idUsuarioAdministrativo)
     {
        
-        //return view('solicitud.asignar');
         $solicitud = SolicitudCertProg::findOrFail($idSolicitud);
 
         $usuarioAdministrativo = Usuario::findOrFail($idUsuarioAdministrativo);
 
         //$nuevoEstado = new Estado;
         $estadoController= new EstadoController;
-        $estadoController->asignarTramite($solicitud,$usuarioAdministrativo);
+        $estadoDescripcion = EstadoDescripcion::find(2);
 
-        print($usuarioAdministrativo->id_usuario);
+        $estadoController->cambiarEstado($solicitud,$usuarioAdministrativo,$estadoDescripcion);
+
         $solicitud->id_user_u=$usuarioAdministrativo->id_usuario;
         
-         $solicitud->save();
+        $solicitud->save();
 
 
 
     }
+    public function listoParaFirmarDptoAlumno($idSolicitud,$idUsuarioAdministrativo)
+    {
+        $solicitud = SolicitudCertProg::findOrFail($idSolicitud);
+        $usuarioAdministrativo = Usuario::findOrFail($idUsuarioAdministrativo);
+
+        $estadoDescripcion = EstadoDescripcion::find(3);
+        $estadoController = new EstadoController;
+
+        $estadoController->cambiarEstado($solicitud,$usuarioAdministrativo,$estadoDescripcion);
+
+        $solicitud->save();
+
+    }
+    public function listoParaFirmarSecretariaAcademica($idSolicitud,$idUsuarioAdministrativo)
+    {
+        $solicitud = SolicitudCertProg::findOrFail($idSolicitud);
+        $usuarioAdministrativo = Usuario::findOrFail($idUsuarioAdministrativo);
+
+        $estadoDescripcion = EstadoDescripcion::find(4);
+        $estadoController = new EstadoController;
+
+        $estadoController->cambiarEstado($solicitud,$usuarioAdministrativo,$estadoDescripcion);
+
+        $solicitud->save();
+
+    }
+    public function listoParaFirmarSantiago($idSolicitud,$idUsuarioAdministrativo)
+    {
+        $solicitud = SolicitudCertProg::findOrFail($idSolicitud);
+        $usuarioAdministrativo = Usuario::findOrFail($idUsuarioAdministrativo);
+
+        $estadoDescripcion = EstadoDescripcion::find(5);
+        $estadoController = new EstadoController;
+
+        $estadoController->cambiarEstado($solicitud,$usuarioAdministrativo,$estadoDescripcion);
+
+        $solicitud->save();
+
+    }
+    public function terminar($idSolicitud,$idUsuarioAdministrativo)
+    {
+        $solicitud = SolicitudCertProg::findOrFail($idSolicitud);
+        $usuarioAdministrativo = Usuario::findOrFail($idUsuarioAdministrativo);
+
+        $estadoDescripcion = EstadoDescripcion::find(6);
+        $estadoController = new EstadoController;
+
+        $estadoController->cambiarEstado($solicitud,$usuarioAdministrativo,$estadoDescripcion);
+
+        $solicitud->save();
+
+    }
+
+
+
+
 }

@@ -57,6 +57,11 @@ Route::view('/modificarcarrera', '/carpetaCarrera/edit');
 Route::view('/crearprograma', '/programaDrive/create');
 Route::view('/modificarprograma', '/programaDrive/edit');
 Route::get('solicitud/{idSolicitud}/asignar/{idAdministrativo}', [SolicitudCertProgController::class, 'asignar'])->name('solicitud.asignar');
+Route::get('solicitud/{idSolicitud}/listoFirmaDptoAlumno/{idAdministrativo}', [SolicitudCertProgController::class, 'listoParaFirmarDptoAlumno'])->name('solicitud.listoFirmaDptoAlumno');
+Route::get('solicitud/{idSolicitud}/listoFirmaSecretariaAcademica/{idAdministrativo}', [SolicitudCertProgController::class, 'listoParaFirmarSecretariaAcademica'])->name('solicitud.listoFirmaSecretariaAcademica');
+Route::get('solicitud/{idSolicitud}/listoFirmaSantiago/{idAdministrativo}', [SolicitudCertProgController::class, 'listoParaFirmarSantiago'])->name('solicitud.listoFirmaSantiago');
+Route::get('solicitud/{idSolicitud}/terminar/{idAdministrativo}', [SolicitudCertProgController::class, 'terminar'])->name('solicitud.terminar');
+
 
 // CRUD:
 Route::resource('solicitud', SolicitudCertProgController::class);
