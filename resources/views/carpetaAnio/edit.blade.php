@@ -1,8 +1,8 @@
 @extends('estructura/layout')
 @section('cuerpo')
 @php($titulo = 'Modificar Año - Petrel')@endphp
-
 @include('estructura/header')
+
 <main class="p-2" id="cuerpo"> {{-- Inicio main cuerpo --}}
     <div class="container mt-3">
         <a href="{{url()->previous()}}" class="lead"><i class="fas fa-chevron-left me-2"></i>Atrás</a>
@@ -17,6 +17,17 @@
                     </div>
                     <form class="form-card" action="{{ route('anio.update', $carpetaAnio->id_carpeta_anio) }}" method="POST" autocomplete="off" enctype="multipart/form-data">
                         @csrf
+                        @if ($errors->any()) {{-- Valida en servidor y regresa mostrando los siguientes errores --}}
+                        <div class="alert alert-danger alert-dismissible fade show d-flex align-items-center m-3 p-3">
+                            <i class='fas fa-times-circle mx-2'></i><h5>Revisa los siguientes datos e inténtalo nuevamente</h5>
+                            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                            <ul>
+                                @foreach ($errors->all() as $error)
+                                    <li>{{ $error }}</li>
+                                @endforeach
+                            </ul>
+                        </div>
+                        @endif
                         {{-- ingrese año --}}
                         @method('put')
                         <div class="row justify-content-between text-left">
@@ -35,6 +46,7 @@
             </div>
         </div>
     </div>
+</main>
     @endsection
 
     {{-- @extends('estructura/layout')

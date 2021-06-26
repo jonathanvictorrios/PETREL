@@ -1,5 +1,6 @@
 @extends('estructura/layout')
 @section('cuerpo')
+@php($titulo = 'Plan de estudios - Petrel')@endphp
 @include('estructura/header')
 
 @if($errors->any())
@@ -17,7 +18,7 @@
 <form id="formulario_nota" action="{{ route('planEstudio.store') }}" method="POST" class="container w-75 py-3 pb-5">
     @csrf
     <h2 class="text-center">Seleccionar Plan de Estudios</h2>
-    
+
     @isset($url_ranquel)
     <div class="alert alert-dark" role="alert">
         Se encontraron como posibles archivos las siguientes:
@@ -60,16 +61,16 @@
     function agregarInput() {
         if (contador_url < 3) {
             contador_url++;
-        
+
             var input = document.createElement("input");
             input.type = "text";
             input.name = "urlRanquel[]";
             input.placeholder = "Ingresa URL de archivo en Ranquel..";
             input.className = "form-control mt-2";
-            
+
             document.getElementById('inputs_contenedor').appendChild(input);
-        } 
-        
+        }
+
         if (contador_url >= 3){
             document.getElementById('btn_nuevo_input').style = 'color: #777';
         }

@@ -1,8 +1,8 @@
 @extends('estructura/layout')
 @section('cuerpo')
 @php($titulo = 'Crear programa - Petrel')@endphp
-
 @include('estructura/header')
+
 <main class="p-2" id="cuerpo"> {{-- Inicio main cuerpo --}}
     <div class="container mt-3">
         <a href="{{url()->previous()}}" class="lead"><i class="fas fa-chevron-left me-2"></i>Atrás</a>
@@ -32,7 +32,7 @@
                         <div class="row justify-content-between text-left">
                             <div class="form-group col col-12 flex-column d-flex py-3">
                                 <label class="form-label py-2">Archivo</label>
-                                <input class="border-0 cell" type="file" id="pdfPrograma" name="pdfPrograma" value="{{ old('pdfPrograma') }}">
+                                <input class="border-0" type="file" id="pdfPrograma" name="pdfPrograma" value="{{ old('pdfPrograma') }}">
 
                             </div>
 
@@ -48,24 +48,6 @@
             </div>
         </div>
     </div>
-</main> <!-- Fin main cuerpo -->
-
-@endsection
-{{-- @extends('estructura/layout')
-@section('cuerpo')
-@include('estructura/header')
-
-<form action="{{ route('programaDrive.store') }}" method="POST" autocomplete="off" enctype="multipart/form-data">
-    @csrf
-    <h1>{{$carpetaCarrera->carrera->carrera.' '.$carpetaCarrera->carpeta_anio->numero_anio}}</h1>
-    <input type="hidden" id="idCarpetaCarrera" name="idCarpetaCarrera" value="{{ $carpetaCarrera->id_carpeta_carrera }}">
-        Nombre materia:<input type="text" id="nombrePrograma" name="nombrePrograma" value="{{ old('nombrePrograma') }}">
-    <br>
-        Numero materia:<input type="text" id="numeroPrograma" name="numeroPrograma" value="{{ old('numeroPrograma') }}">
-    <br>
-        Archivo:<input type="file" id="pdfPrograma" name="pdfPrograma" value="{{ old('pdfPrograma') }}">
-    <br>
-    <input type="submit" value="enviar">
-</form>
+</main> {{-- Fin main cuerpo --}}
 
 @endsection
