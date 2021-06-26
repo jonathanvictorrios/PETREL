@@ -12,70 +12,67 @@
         <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
     </div>
     @endif
-    <!-- Solicitudes -->
-    <div class="container px-md-5 px-3 py-5">
-        <h3>Mis solicitudes</h3>
-        <div class="pt-2 justify-content-between d-flex align-items-center">
-            <!-- NAV-TABS -->
-            <div class="nav nav-tabs col-9" id="v-tabs-tab" role="tablist">
-                <a class=" nav-link py-3 px-4 active" id="v-tabs-actuales-tab" data-bs-toggle="tab"
-                    href="#v-tabs-actuales" role="tab" aria-controls="v-tabs-actuales" aria-selected="true">Actuales</a>
-                <a class="nav-link ms-2 py-3 px-4" id="v-tabs-completas-tab" data-bs-toggle="tab"
-                    href="#v-tabs-completas" role="tab" aria-controls="v-tabs-completas"
-                    aria-selected="false">Completadas</a>
+      <!-- Solicitudes -->
+  <div class="container px-md-5 px-3 py-5">
+    <h3>Mis solicitudes</h3>
+    <div class="pt-2 justify-content-between d-flex align-items-center">
+      <!-- NAV-TABS -->
+      <div class="nav nav-tabs col-9" id="v-tabs-tab" role="tablist">
+        <a class=" nav-link py-3 px-4 active" id="v-tabs-actuales-tab" data-bs-toggle="tab" href="#v-tabs-actuales" role="tab" aria-controls="v-tabs-actuales" aria-selected="true">Actuales</a>
+        <a class="nav-link ms-2 py-3 px-4" id="v-tabs-completas-tab" data-bs-toggle="tab" href="#v-tabs-completas" role="tab" aria-controls="v-tabs-completas" aria-selected="false">Completadas</a>
+      </div>
+      <!-- Fin NAV-TABS -->
+      <!-- Boton agregar solicitud -->
+      <div class="col-3 text-end">
+        <a href="{{route('solicitud.create')}}" class='btn btn-create'>
+          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi" viewBox="0 0 16 16">
+            <path d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4z"></path>
+          </svg>
+        </a>
+      </div>
+      <!-- Fin Boton agregar solicitud -->
+    </div>
+    <!-- Tabla Actuales -->
+    <div class="tab-content flex-grow-1 bg-white" id="v-tabs-tabContent">
+      <div class="tab-pane fade show active" id="v-tabs-actuales" role="tabpanel" aria-labelledby="v-tabs-actuales-tab">
+        <div id="solicitud-usuario" class="row g-0">
+          <div class="col py-2 px-3">
+            <div class="table-responsive">
+              <table class="table table-hover">
+                <thead>
+                  <tr>
+                    <th scope="col">Nro Solicitud</th>
+                    <th scope="col">Solicitante</th>
+                    <th scope="col">Legajo</th>
+                    <th scope="col">Carrera</th>
+                    <th scope="col">Unidad Académica</th>
+                    <th scope="col">Acciones</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  @foreach($solicitudes as $solicitud)
+                  @if($solicitud->UltimoEstado!='Terminado')
+                  <tr>
+                    <th scope="row">{{$solicitud->idSolicitud}}</th>
+                    <td>{{$solicitud->UsuarioEstudiante}}</td>
+                    <td>{{$solicitud->Legajo}}</td>
+                    <td>{{$solicitud->Carrera}}</td>
+                    <td>{{$solicitud->UnidadAcademica}}</td>
+                    <td><a href="{{route('solicitud.show',$solicitud->idSolicitud)}}">Ver Más</a></td>
+                    <td><a href="{{route('solicitud.asignar',[$solicitud->idSolicitud,2])}}">Asignar</a></td>
+                    <td><a href="{{route('solicitud.listoFirmaDptoAlumno',[$solicitud->idSolicitud,2])}}">listoParaFirmarDptoAlumno</a></td>
+                    <td><a href="{{route('solicitud.listoFirmaSecretariaAcademica',[$solicitud->idSolicitud,2])}}">listoParaFirmarSecretariaAcademica</a></td>
+                    <td><a href="{{route('solicitud.listoFirmaSantiago',[$solicitud->idSolicitud,2])}}">listoParaFirmarSantiago</a></td>
+                    <td><a href="{{route('solicitud.terminar',[$solicitud->idSolicitud,2])}}">terminar</a></td>
+                  </tr>
+                  @endif
+                  @endforeach
+                </tbody>
+              </table>
             </div>
-            <!-- Fin NAV-TABS -->
-            <!-- Boton agregar solicitud -->
-            <div class="col-3 text-end">
-                <a href="{{route('solicitud.create')}}" class='btn btn-create'>
-                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi"
-                        viewBox="0 0 16 16">
-                        <path
-                            d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4z">
-                        </path>
-                    </svg>
-                </a>
-            </div>
-            <!-- Fin Boton agregar solicitud -->
+          </div>
         </div>
-        <!-- Tabla Actuales -->
-        <div class="tab-content flex-grow-1 bg-white" id="v-tabs-tabContent">
-            <div class="tab-pane fade show active" id="v-tabs-actuales" role="tabpanel"
-                aria-labelledby="v-tabs-actuales-tab">
-                <div id="solicitud-usuario" class="row g-0">
-                    <div class="col py-2 px-3">
-                        <div class="table-responsive">
-                            <table class="table table-hover">
-                                <thead>
-                                    <tr>
-                                        <th scope="col">Nro Solicitud</th>
-                                        <th scope="col">Solicitante</th>
-                                        <th scope="col">Legajo</th>
-                                        <th scope="col">Carrera</th>
-                                        <th scope="col">Unidad Académica</th>
-                                        <th scope="col">Acciones</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    @foreach($solicitudes as $solicitud)
-                                    @if($solicitud->UltimoEstado!='Terminado')
-                                    <tr>
-                                        <th scope="row">{{$solicitud->idSolicitud}}</th>
-                                        <td>{{$solicitud->UsuarioEstudiante}}</td>
-                                        <td>{{$solicitud->Legajo}}</td>
-                                        <td>{{$solicitud->Carrera}}</td>
-                                        <td>{{$solicitud->UnidadAcademica}}</td>
-                                        <td><a href="{{route('solicitud.show',$solicitud->idSolicitud)}}">Ver Más</a>
-                                        </td>
-                                    </tr>
-                                    @endif
-                                    @endforeach
-                                </tbody>
-                            </table>
-                        </div>
-                    </div>
-                </div>
-            </div>
+      </div>
             <!-- Fin Tabla Actuales -->
             <!-- Tabla Completas -->
             <div class="tab-pane fade" id="v-tabs-completas" role="tabpanel" aria-labelledby="v-tabs-completas-tab">
@@ -298,6 +295,7 @@
 <td>{{$solicitud->Legajo}}</td>
 <td>{{$solicitud->Carrera}}</td>
 <td><a href="{{route('solicitud.show',$solicitud->idSolicitud)}}">Ver Más</a></td>
+
 </tr>
 @endif
 @endforeach

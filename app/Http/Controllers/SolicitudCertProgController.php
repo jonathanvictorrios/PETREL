@@ -230,9 +230,8 @@ class SolicitudCertProgController extends Controller
         
         $solicitud->save();
 
-
-
     }
+   
     public function listoParaFirmarDptoAlumno($idSolicitud,$idUsuarioAdministrativo)
     {
         $solicitud = SolicitudCertProg::findOrFail($idSolicitud);
