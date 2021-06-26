@@ -90,14 +90,11 @@ Route::resource('programaLocal', ProgramaLocalController::class);
 Route::get('buscarProgramas/{idSolicitud}', [ProgramaDriveController::class, 'buscarProgramas'])->name('buscarProgramas');
 Route::post('descargarProgramas', [ProgramaLocalController::class, 'descargarProgramas'])->name('descargarProgramas');
 
-Route::resource('hojaResumen', HojaResumenController::class);
-Route::post('firmaSecretaria', [HojaResumenController::class, 'firmaSecretaria'])->name('firmaSecretaria');
-Route::get('firma', function () {
-    return view('hojaResumen.secretaria');
-});
-Route::post('continuarTramite', [HojaResumenController::class, 'continuarTramite'])->name('continuarTramite');
+Route::resource('hojaResumen',HojaResumenController::class);
+Route::post('firmaSecretaria',[HojaResumenController::class,'firmaSecretaria'])->name('firmaSecretaria');
+Route::get('firma',function(){return view('hojaResumen.secretaria');});
+Route::post('continuarTramite',[HojaResumenController::class,'continuarTramite'])->name('continuarTramite');
 Route::get('foliar/{idSolicitud}', [HojaResumenFinalController::class, 'foliar'])->name('foliar');
-
 
 Route::resource('notaDA', NotaDptoAlumController::class);
 Route::get('notaDA/crear/{id_solicitud}', [NotaDptoAlumController::class, 'crearNota'])->name('notaDA.crear');
