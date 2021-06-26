@@ -71,16 +71,18 @@ Route::get('agregarPrograma/{idCarpetaCarrera}', [CarpetaCarreraController::clas
 
 Route::resource('programaDrive', ProgramaDriveController::class);
 
-Route::resource('rendimientoAcademico',RendimientoAcademicoController::class);
-Route::post('convertirExcel',[RendimientoAcademicoController::class,'convertirExcel'])->name('convertirExcel');
+Route::resource('rendimientoAcademico', RendimientoAcademicoController::class);
+Route::post('convertirExcel', [RendimientoAcademicoController::class, 'convertirExcel'])->name('convertirExcel');
 
-Route::resource('programaLocal',ProgramaLocalController::class);
-Route::get('buscarProgramas/{idSolicitud}',[ProgramaDriveController::class,'buscarProgramas'])->name('buscarProgramas');
-Route::post('descargarProgramas',[ProgramaLocalController::class,'descargarProgramas'])->name('descargarProgramas');
+Route::resource('programaLocal', ProgramaLocalController::class);
+Route::get('buscarProgramas/{idSolicitud}', [ProgramaDriveController::class, 'buscarProgramas'])->name('buscarProgramas');
+Route::post('descargarProgramas', [ProgramaLocalController::class, 'descargarProgramas'])->name('descargarProgramas');
 
-Route::resource('hojaResumen',HojaResumenController::class);
-Route::post('firmaSecretaria',[HojaResumenController::class,'firmaSecretaria'])->name('firmaSecretaria');
-Route::get('firma',function(){return view('hojaResumen.secretaria');});
+Route::resource('hojaResumen', HojaResumenController::class);
+Route::post('firmaSecretaria', [HojaResumenController::class, 'firmaSecretaria'])->name('firmaSecretaria');
+Route::get('firma', function () {
+    return view('hojaResumen.secretaria');
+});
 
 
 Route::resource('notaDA', NotaDptoAlumController::class);
@@ -89,5 +91,17 @@ Route::post('notaDA/auth', [NotaDptoAlumController::class, 'autorizar'])->name('
 Route::get('notaDA/descargar/{id}', [NotaDptoAlumController::class, 'descargar']);
 
 
-Route::resource('planEstudio',PlanEstudioController::class);
+Route::resource('planEstudio', PlanEstudioController::class);
 Route::get('planEstudio/crear/{id_solicitud}', [PlanEstudioController::class, 'crearPlan'])->name('crearPlanEstudio');
+Route::resource('programaLocal', ProgramaLocalController::class);
+Route::get('buscarProgramas/{idRendimientoAcademico}', [ProgramaDriveController::class, 'buscarProgramas'])->name('buscarProgramas');
+Route::post('descargarProgramas', [ProgramaLocalController::class, 'descargarProgramas'])->name('descargarProgramas');
+Route::post('descargarProgramas', [ProgramaLocalController::class, 'descargarProgramas'])->name('descargarProgramas');
+Route::resource('solicitud', SolicitudCertProgController::class);
+
+// Pruebas de carga de archivos de la solicitud
+Route::get('archivos/{id}/downloadSinFirma', [Archivo::class, 'downloadSinFirma'])->name('archivos.downloadSinFirma');
+Route::get('archivos/{id}/downloadFirmado', [Archivo::class, 'downloadFirmado'])->name('archivos.downloadFirmado');
+Route::get('archivos/{id}/comment', [Archivo::class, 'cargarComentario'])->name('archivos.cargarComentario');
+Route::resource('archivos', Archivo::class);
+Route::get('archivos/{id}/confirmarContrasenia', [Archivo::class, 'confirmarContrasenia'])->name('archivos.confirmarContrasenia');

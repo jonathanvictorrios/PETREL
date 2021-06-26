@@ -2,6 +2,7 @@ $('input[name=seleccion]').click(function () {
     $('#href-download').removeClass('disabled');
     $('#href-carga-archivo').removeClass('disabled');
     $('#href-comentar').removeClass('disabled');
+    $('#href-aprobar').removeClass('disabled');
 
     id = $(this).val();
 
@@ -18,10 +19,13 @@ $('input[name=seleccion]').click(function () {
     $('#href-carga-archivo').attr('href', cadenaFinalCargaArchivo);
 
     /* Esto es para cambiar la url del action del form del modal */
-    urlCargaComentario = $('#formComentario').attr('action');
-    cadenaNuevaCargaComentario = urlCargaComentario.slice(0, 26);
-    cadenaFinalCargaComentario = cadenaNuevaCargaComentario + id + '/comment';
-    $('#formComentario').attr('action', cadenaFinalCargaComentario);
+    urlAprobacion = $('#formAprobar').attr('action');
+    cadenaNuevaAprobacion = urlAprobacion.slice(0, 26);
+    cadenaFinalAprobacion = cadenaNuevaAprobacion + id + '/confirmarContrasenia';
+    $('#formAprobar').attr('action', cadenaFinalAprobacion);
+
+    /* Esto es para cambiar la url del action del form del modal para aprobar */
+
 
 })
 

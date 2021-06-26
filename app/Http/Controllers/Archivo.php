@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Estado;
+use App\Models\EstadoDescripcion;
 use App\Models\HojaResumen;
 use App\Models\HojaResumenFinal;
 use App\Models\SolicitudCertProg;
@@ -23,14 +24,8 @@ class Archivo extends Controller
      */
     public function index()
     {
-        $estadosSolicitud = DB::table('estado')
-            ->join('solicitud_cert_prog', 'estado.id_solicitud', '=', 'solicitud_cert_prog.id_solicitud')
-            ->join('usuario', 'solicitud_cert_prog.id_usuario_estudiante', '=', 'usuario.id_usuario')
-            ->join('estado_descripcion', 'estado.id_estado_descripcion', '=', 'estado_descripcion.id_estado_descripcion')
-            ->where('estado.id_estado_descripcion', '1')->get();
-
-        $datos['lista'] = $estadosSolicitud;
-        return view('archivos.index', $datos);
+        $solicitudes = SolicitudCertProg::all();
+        return view('archivos.index', compact('solicitudes'));
     }
 
     /**
@@ -62,6 +57,8 @@ class Archivo extends Controller
             $hojaResumenFinal->url_hoja_unida_final = $request->file('archivo')->storeAs($ubicacion, $nombreArchivo, 'local');
         }
 
+        $hojaResumenFinal->save();
+
         if ($hojaResumenFinal->save()) {
             $mensaje = 'Archivo cargado';
         } else {
@@ -91,18 +88,18 @@ class Archivo extends Controller
         return response()->file($pathFile);
     }
 
-    public function download($id)
+    public function downloadSinFirma($id)
     {
-        $hojaResumen = DB::table('hoja_resumen')
-            ->join('hoja_resumen_final', 'hoja_resumen.id_hoja_resumen', '=', 'hoja_resumen_final.id_hoja_resumen')
-            ->where('id_solicitud', $id)
-            ->get()['0'];
+        $path = SolicitudCertProg::find($id)->hojaResumen->hoja_resumen_final->url_hoja_unida_final_sin_firma;
 
-        if ($hojaResumen->url_hoja_unida_final == null) {
-            $path = $hojaResumen->url_hoja_unida_final_sin_firma;
-        } else {
-            $path = $hojaResumen->url_hoja_unida_final;
-        }
+        $pathFile = storage_path('app/' . $path);
+        header("Cache-Control: no-cache, must-revalidate");
+        return response()->download($pathFile);
+    }
+
+    public function downloadFirmado($id)
+    {
+        $path = SolicitudCertProg::find($id)->hojaResumen->hoja_resumen_final->url_hoja_unida_final;
 
         $pathFile = storage_path('app/' . $path);
         header("Cache-Control: no-cache, must-revalidate");
@@ -134,6 +131,37 @@ class Archivo extends Controller
         if ($comentario->save() && $estadoNuevo) {
             $mensaje = 'Solicitud retornada';
         } else {
+            $mensaje = 'ha ocurrido un error';
+        }
+
+        return redirect()->route('archivos.index')->with('mensaje', $mensaje);
+    }
+
+    public function confirmarContrasenia(Request $request, $idSolicitud)
+    {
+        $contraseniaIngresada = $request->all();
+        $confirmacionContrasenia = DB::table('usuario')
+            ->where('password', $contraseniaIngresada['password'])
+            ->get();
+
+        if (count($confirmacionContrasenia) == 1) {
+            $estado = DB::table('estado')
+                ->where('estado.id_solicitud', $idSolicitud)
+                ->get()['0'];
+
+            $estadoDescripcionNuevo = $estado->id_estado_descripcion + 1; /* Estp debe cambiarse a -1 ya que se retrocede el estado */
+
+            $estadoNuevo = DB::table('estado')
+                ->where('id_solicitud', $idSolicitud)
+                ->update(['id_estado_descripcion' => $estadoDescripcionNuevo]);
+
+            if ($estadoNuevo) {
+                $mensaje = 'Solicitud aprobada';
+            } else {
+                $mensaje = 'ha ocurrido un error';
+            }
+        } else {
+            ddd('no es igual');
             $mensaje = 'ha ocurrido un error';
         }
 
