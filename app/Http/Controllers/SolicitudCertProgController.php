@@ -10,9 +10,6 @@ use App\Models\Carrera;
 use App\Models\Estado;
 use App\Models\EstadoDescripcion;
 
-
-
-
 class SolicitudCertProgController extends Controller
 {
     /**
@@ -27,7 +24,7 @@ class SolicitudCertProgController extends Controller
         foreach($solicitudes as $solicitud)
         {
             $Mostrar = $this->ObtenerDatosSolicitud($solicitud);
-
+  
             array_push($Lista,$Mostrar);
 
         }
@@ -44,7 +41,7 @@ class SolicitudCertProgController extends Controller
     {
         $unidadesAcademicas = UnidadAcademica::all();
         return view ('solicitud.create',compact('unidadesAcademicas'));
-
+        
     }
 
     /**
@@ -55,38 +52,45 @@ class SolicitudCertProgController extends Controller
      */
     public function store(Request $request)
     {
-        // Primero valida los campos requeridos. Si algo falla, retorna arreglo $error a la vista:
-        /* [DESACTIVADO]
-        Unidad académica y carrera son selects, ¿validar que las opciones existan, ante posible inyección de datos al formulario?
-        $request->validate([
-            'nombre' => 'required|min:2|max:150',
-            'apellido' => 'required|min:2|max:150',
-            'legajo' => 'required|min:2|max:50',
-            'unidadAcademica' => 'required',
-            'carrera' => 'required',
-            'universidadDestino' => 'required|min:3|max:150'
-        ]); */
+       print($request);
 
         $solicitud = new SolicitudCertProg;
         $usuarioEstudiante = Usuario::find(1); //ACA TENGO QUE PASAR EL ID DEL USUARIO LOGUEADO
-        // $usuarioEstudiante->id_usuario=1;
-        // $usuarioAdministrativo= null;
+        
+        if(isset($usuarioEstudiante))
+        {
+            $solicitud->id_usuario_estudiante=$usuarioEstudiante->id_usuario;   
+        }
+        else{
+            return back()->with('error','Necesita estar Logueado para Ingresar una Nueva Solicitud');
+        }
+        
+        if(isset($request->legajo))
+        {
+            $solicitud->legajo=$request->legajo;
+        }
+        else
+        {
+            return back()->with('error','Completar Legajo');
+        }
+        if(isset($request->extranjero))
+        {
+            $solicitud->extranjero=$request->extranjero;
+        }
+        else{
+            $solicitud->extranjero=false;
+        }
 
-
-        $solicitud->id_usuario_estudiante=$usuarioEstudiante->id_usuario;
-        //$usuarioEstudiante = null;// $request->idUsuario;// Ver como viene esto desde la vista
-        //  $solicitud->id_user_u=$usuarioAdministrativo;
-
-        $solicitud->legajo=$request->legajo;
         $solicitud->universidad_destino=$request->universidadDestino;
-        $solicitud->id_carrera=$request->carrera; //CAMBIAR POR SELECT DE DEL FORM
 
+        $solicitud->id_carrera=$request->carrera; //CAMBIAR POR SELECT DE DEL FORM
+        
 
      ///   $solicitud->usuarioEstudiante=$usuarioEstudiante; //asignamos el usuario a la solicitud
 
         $solicitud->updated_at=null;
-        $solicitud->save();
-
+       // $solicitud->save();
+        
         $estado = new Estado;
         $estadoDescripcion = EstadoDescripcion::find(1);
 
@@ -94,15 +98,13 @@ class SolicitudCertProgController extends Controller
         $estado->id_estado_descripcion=$estadoDescripcion->id_estado_descripcion;
         $estado->id_usuario=null;
         $estado->updated_at=null;
-        $estado->save();
-
+        //$estado->save();
+        
         $solicitudes=SolicitudCertProg::all();//NECESITO RECUPERAR TODAS LAS SOLICITUDES PORQUE VUELVO EL RETORNO A LA VISTA.
                                               // SI EL RETORNO NO ES HACIA solicitud.index puede sacarse
+        
 
-
-        return view('solicitud.index',compact('solicitudes'))->with('mensaje','<span class="fw-bold">Se ingresó la solicitud con éxito.<span> <br>
-        En el menú Mis Solicitudes puedes consultar el estado del trámite. <br>
-        También serás notificado a través de tu email cuando esté listo.');
+        return view('solicitud.index',compact('solicitudes'));
     }
 
     /**
@@ -156,14 +158,14 @@ class SolicitudCertProgController extends Controller
 
     public function ObtenerDatosSolicitud($solicitud)
     {
-
+       
         $Mostrar = new SolicitudCertProg;
         $Mostrar->idSolicitud=$solicitud->id_solicitud;
 
         $Mostrar->Legajo=$solicitud->legajo;
-
+        
         $Mostrar->Estados=$solicitud->estados;
-
+        
         $Mostrar->Carrera=$solicitud->carrera->carrera;
 
         $Mostrar->UniversidadDestino=$solicitud->universidad_destino;
@@ -179,7 +181,7 @@ class SolicitudCertProgController extends Controller
         $Mostrar->UltimoEstado=($solicitud->estados)->last()->estado_descripcion->descripcion;
         $Mostrar->FechaUltimoEstado=($solicitud->estados)->last()->created_at;
      //   print($Mostrar);
-
+        
         return $Mostrar;
     }
 
@@ -192,7 +194,7 @@ class SolicitudCertProgController extends Controller
      */
     public function asignar($idSolicitud,$idUsuarioAdministrativo)
     {
-
+       
         //return view('solicitud.asignar');
         $solicitud = SolicitudCertProg::findOrFail($idSolicitud);
         $usuarioAdministrativo = Usuario::findOrFail($idUsuarioAdministrativo);
@@ -203,38 +205,13 @@ class SolicitudCertProgController extends Controller
 
         print($usuarioAdministrativo->id_usuario);
         $solicitud->id_user_u=$usuarioAdministrativo->id_usuario;
-
+        
          $solicitud->save();
         //$nuevoEstado->id_solicitud=$solicitud->id_solicitud;
 
         // print($solicitud);
         // print($usuarioAdministrativo);
 
-
-    }
-    public function indexEstudiante($id)
-    {
-        $solicitudes = SolicitudCertProg::where('id_usuario_estudiante',$id)->get();
-        $Lista = array();
-        foreach($solicitudes as $solicitud)
-        {
-            $Mostrar = $this->ObtenerDatosSolicitud($solicitud);
-
-            array_push($Lista,$Mostrar);
-
-        }
-        $solicitudes=$Lista;
-        return view('solicitud.index',compact('solicitudes'));
-    }
-    public function showEstudiante($id)
-    {
-        $solicitud= SolicitudCertProg::findOrFail($id);
-        $solicitud=$this->ObtenerDatosSolicitud($solicitud);
-        if(($solicitud->UltimoEstado!='Iniciado') && ($solicitud->UltimoEstado!='Terminado'))
-        {
-             $solicitud->UltimoEstado='en Tramite';
-        }
-        return view('solicitud.show',compact('solicitud'));
 
     }
 }
