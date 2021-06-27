@@ -16,8 +16,14 @@ use App\Http\Controllers\UnidadAcademicaController;
 |
 */
 
+<<<<<<< HEAD
 Route::get('/unidadAcademica', [UnidadAcademicaController::class, 'selectUnidadAcademica']);
 Route::get('/unidadAcademica/{idUnidadAcademica}/carreras', [CarreraController::class, 'selectCarrera']);
 // Route::middleware('auth:api')->get('/user', function (Request $request) {
+=======
+Route::get('/unidadAcademica',[UnidadAcademicaController::class,'selectUnidadAcademica']);
+Route::get('/unidadAcademica/{idUnidadAcademica}/carreras',[CarreraController::class,'selectCarrera']);
+// Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
+>>>>>>> 30cc40c08a2d805a227cdbd77537a86e499d1a32
 //     return $request->user();
 // });

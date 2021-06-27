@@ -1,7 +1,11 @@
 <x-guest-layout>
     <x-jet-authentication-card>
         <x-slot name="logo">
+<<<<<<< HEAD
             <x-jet-authentication-card-logo />
+=======
+        <img src="{{ asset('img/vector_petrel.svg') }}" alt="Logo Petrel" width="100">
+>>>>>>> 30cc40c08a2d805a227cdbd77537a86e499d1a32
         </x-slot>
 
         <x-jet-validation-errors class="mb-4" />

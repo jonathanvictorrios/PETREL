@@ -6,6 +6,7 @@ use App\Models\HojaResumen;
 use App\Models\PlanEstudio;
 use App\Models\SolicitudCertProg;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Storage;
 
 class PlanEstudioController extends Controller
@@ -70,12 +71,29 @@ class PlanEstudioController extends Controller
                 return back()->withErrors(["La url proporcionada N°$i no es válida"]);
             }
         }
+
         # guardar archivo de forma local
-        $nombreArchivo = "id-solicitud-$request->id_solicitud/planEstudio$request->id_solicitud.pdf";
-        $contenido     = file_get_contents($request->urlRanquel[0]);
-        Storage::put($nombreArchivo, $contenido);
-        # guardar en la base de datos
-        $objPlanEstudio = PlanEstudio::create(['url_pdf_plan_estudio' => $request->urlRanquel[0]]);
+        foreach($request->urlRanquel as $i => $url) {
+            if ($url != '' || $url != null) {
+                $nombreArchivo = "id-solicitud-$request->id_solicitud/planEstudio"."-"."$request->id_solicitud"."-$i.pdf";
+                $contenido     = file_get_contents($url);
+                Storage::put($nombreArchivo, $contenido);
+            }
+        }
+
+        # Guardar Planes en la Base de Datos
+        $arregloIdPlanes = array();
+        foreach($request->urlRanquel as $url) {
+            if ($url != '' || $url != null) {
+                # Verificar si existe un registro para la url dada
+                $planEstudio = PlanEstudio::where('url_pdf_plan_estudio', '=', $url)->first();
+                if ($planEstudio === null) {
+                    // si no existe
+                    $planEstudio = PlanEstudio::create(['url_pdf_plan_estudio' => $url]);
+                }
+                array_push($arregloIdPlanes, $planEstudio->id_plan_estudio);
+            }
+        }
 
         # Actualizar tabla "hoja_resumen"
         $hojaResumen = HojaResumen::where('id_solicitud', '=', $request->id_solicitud)->firstOrFail();

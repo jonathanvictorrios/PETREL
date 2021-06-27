@@ -36,10 +36,9 @@ $fecha = date('d') . ' de ' . date('M') . ' del ' . date('Y');
     <div class="form-group">
         <textarea class="ckeditor form-control" name="contenido">
             <p>
-                El Departamento de Alumnos del Centro Universitario Regional Zona Atlántica de la Universidad Nacional
-                del Comahue certifica que: <b>{{ $arregloRendimiento['Alumno']['Apellido'] }}, {{ $arregloRendimiento['Alumno']['Nombre'] }}</b> —
-                {{ $arregloRendimiento['Documento']['Tipo'] }}: <b>{{ $arregloRendimiento['Documento']['Nro'] }}</b> Legajo Nro. <b>{{ $arregloRendimiento['Alumno']['Legajo'] }}</b>,
-                estudiante de la carrera <b>{{ $arregloRendimiento['Carrera'] }}</b>, ha cursado y aprobado las asignaturas correspondientes al
+                El Departamento de Alumnos del {{ $arregloRendimiento['UA']['Facultad'] }} de la {{ $arregloRendimiento['UA']['Universidad']}} certifica que: <b>{{ $arregloRendimiento['Alumno']['Apellido'] }}, {{ $arregloRendimiento['Alumno']['Nombre'] }}</b> — 
+                {{ $arregloRendimiento['Documento']['Tipo'] }}: <b>{{ $arregloRendimiento['Documento']['Nro'] }}</b> Legajo Nro. <b>{{ $arregloRendimiento['Alumno']['Legajo'] }}</b>, 
+                estudiante de la carrera <b>{{ $arregloRendimiento['Carrera'] }}</b>, ha cursado y aprobado las asignaturas correspondientes al 
                 Plan de Estudios Ordenanza (CS) N.º <b>{{ $arregloRendimiento['Plan']['Nro'] }}/{{ $arregloRendimiento['Plan']['Anio'] }}</b>.
             </p>
             <p>

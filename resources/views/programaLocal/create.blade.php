@@ -39,6 +39,7 @@
     @endforeach
     <br>
     <h3>No encontradas</h3>
+    <input type="hidden" id="faltaProgramas" value="{{$faltaProgramas}}">
     @foreach ($colProgramasNoEncontrados as $programa)
     <label>{{$programa['Programa'].' '. $programa['Anio'] }}</label>
     <br>
@@ -52,7 +53,7 @@
             <a href="{{route('crearPlanEstudio',$solicitud->id_solicitud)}}" id="botonContinuar"
                 class="w-25 btn btn-secondary disabled">Continuar</a>
         </div>
-    </div>
+    </div> 
 </form>
 <script>
 $('#btn_crear-pdf').on('click', function() {

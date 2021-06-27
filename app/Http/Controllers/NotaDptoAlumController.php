@@ -62,12 +62,12 @@ class NotaDptoAlumController extends Controller
             'url_nota_dpto_alum' => $directorioPDF . $nombrePDF
         ]);
 
+        HojaResumenController::realizarUnion($request->id_solicitud);
         # Actualizar tabla HojaResumen
         $hojaResumen = HojaResumen::where('id_solicitud', '=', $request->id_solicitud)->firstOrFail();
         $hojaResumen->id_nota_dto_alumno = $idNota->id_nota_dto_alumno;
+        $hojaResumen->url_hoja_unida = 'id-solicitud-'.$request->id_solicitud.'/hojaUnida'.$request->id_solicitud.'.pdf';
         $hojaResumen->save();
-
-
         # Retorno resultado
         return $objPDF->download("nota-generada-$request->id_solicitud.pdf");
     }

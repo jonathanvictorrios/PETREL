@@ -52,7 +52,7 @@
             </div>
         </div>
     </div>
-</main> {{-- Fin main cuerpo --}}
+</main> <!-- Fin main cuerpo -->
 
 @endsection
 {{-- @extends('estructura/layout')

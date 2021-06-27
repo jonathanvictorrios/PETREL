@@ -12,15 +12,6 @@ use Illuminate\Support\Facades\Storage;
 class ProgramaDriveController extends Controller
 {
     /**
-     * Leemos todos los programas que existan en nuestra base de datos
-     * @return view programaDrive.index
-     *
-     * public function index(){
-     *      $programas = ProgramaDrive::get();
-     *      return view('programaDrive.index')->with('colProgramas',$programas);
-     * } */
-
-    /**
      * a traves del formulario leemos los campos y agregamos el nuevo programa
      * verificamos si existen ambas carpetas y luego subimos el programa
      * @param StoreProgramaDriveRequest

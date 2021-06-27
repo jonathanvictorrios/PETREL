@@ -26,7 +26,13 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
+<<<<<<< HEAD
         'name', 'email', 'password',
+=======
+        'name',
+        'email',
+        'password',
+>>>>>>> 30cc40c08a2d805a227cdbd77537a86e499d1a32
     ];
 
     /**
@@ -58,4 +64,39 @@ class User extends Authenticatable
     protected $appends = [
         'profile_photo_url',
     ];
+<<<<<<< HEAD
 }
+=======
+
+    public function __construct(array $attributes = [])
+    {
+        parent::__construct($attributes);
+        self::created(function (User $user) {
+            if (!$user->roles()->get()->contains(2)) {
+                $user->roles()->attach(2);
+            }
+        });
+    }
+
+    public function roles()
+    {
+        return $this->belongsToMany(Role::class);
+    }
+    public function solicitudesCertProgEstudiante()
+    {
+        return $this->hasMany(SolicitudCertProg::class, 'id_usuario_estudiante', 'id_usuario');
+    }
+    public function solicitudesCertProgAdministrativo()
+    {
+        return $this->hasMany(SolicitudCertProg::class, 'id_user_u', 'id_usuario');
+    }
+    public function comentarios()
+    {
+        return $this->hasMany(Comentario::class, 'id_usuario', 'id_usuario');
+    }
+    public function estado()
+    {
+        return $this->belongsTo(Estado::class, 'id_usuario', 'id_usuario');
+    }
+}
+>>>>>>> 30cc40c08a2d805a227cdbd77537a86e499d1a32

@@ -13,7 +13,7 @@
         <img src="https://www.uncoma.edu.ar/wp-content/uploads/2018/04/LOGOUNC-e1522858761795.png" alt="UNCOMA" />
         <h2 class="tc ml">
             Universidad Nacional del Comahue <br>
-            Centro Universitario Regional Zona Atlántica <br>
+            Facultad de Informática <br>
             Departamento de Alumnos
         </h2>
         <hr>
@@ -41,7 +41,7 @@
             <div>
                 <img width="70px" height="70px" src="img/logito-fai.png" alt="F.A.I.">
                 <div>
-                    <h4>SECRE</h4>
+                    <h4>SECRETARIA ACADÉMICA</h4>
                     <h5>{{ $firma_secretaria }}.</h5>
                 </div>
             </div>

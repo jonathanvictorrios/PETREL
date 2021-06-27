@@ -59,7 +59,7 @@ class HojaResumenController extends Controller
         return view('solicitud.show', ['solicitud' => $objSolicitud]);
     }
 
-    private function realizarUnion($idSolicitud)
+    public static function realizarUnion($idSolicitud)
     {
         /*Nombres de archivos pdf para conformar la hoja resumen: idSolicitud=6
             notaDtoAlum6.pdf

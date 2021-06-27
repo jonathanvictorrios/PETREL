@@ -75,8 +75,8 @@
                                         <td>{{ date_format( $solicitud->updated_at,"d/m/Y H:i:s") }}</td>
                                         <td>{{$solicitud->usuarioEstudiante->nombre.' '.$solicitud->usuarioEstudiante->apellido}}
                                         </td>
-                                        <!-- <td><a href="{{route('solicitud.show',$solicitud->id_solicitud)}}">Ver Más</a>
-                                        </td> -->
+                                        {{-- <td><a href="{{route ('solicitud.show',$solicitud->id_solicitud)}}">Ver Más</a> --}}
+                                        </td>
                                         <td><a class="btn btn-primary" data-bs-toggle="modal"
                                                 data-bs-target="#modalComentar">
                                                 Ver mas
