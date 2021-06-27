@@ -1,9 +1,8 @@
 @extends('estructura/layout')
-
 @section('cuerpo')
-@php($titulo = 'Petrel - Crear solicitud')
-
+@php($titulo = 'Crear solicitud - Petrel')
 @include('estructura/header')
+
 <main class="p-2" id="cuerpo"> {{-- Inicio main cuerpo --}}
     <div class="container mt-3">
         <a href="{{url()->previous()}}" class="lead"><i class="fas fa-chevron-left me-2"></i>Atrás</a>
@@ -17,15 +16,16 @@
                     <div class="row tittle border-bottom p-2">
                         <h2 class="col text-center fw-bold">Nueva Solicitud</h2>
                     </div>
-                    <form name=formCreate id=formCreate action="route('solicitud.store')" method=POST novalidate>
+                    <form name=formCreate id=formCreate action="{{route('solicitud.store')}}" method=POST novalidate>
                         @csrf
                         @if ($errors->any()) {{-- Valida en servidor y regresa mostrando los siguientes errores --}}
                         <div class="alert alert-danger alert-dismissible fade show d-flex align-items-center m-3 p-3">
-                            <i class='fas fa-times-circle mx-2'></i><h5>Revisa los siguientes datos e inténtalo nuevamente</h5>
+                            <i class='fas fa-times-circle mx-2'></i>
+                            <h5>Revisa los siguientes datos e inténtalo nuevamente</h5>
                             <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
                             <ul>
                                 @foreach ($errors->all() as $error)
-                                    <li>{{ $error }}</li>
+                                <li>{{ $error }}</li>
                                 @endforeach
                             </ul>
                         </div>
@@ -34,22 +34,27 @@
                         <div class="row justify-content-between text-left">
                             <div class="form-group col col-sm-6 flex-column d-flex py-3">
                                 <label class="form-label py-2">Nombres</label>
-                                <input class="border-0 cell" type="text" id="nombre" name="nombre" placeholder="Ingrese todos sus nombres" value="{{old('nombre')}}">
+                                <input class="border-0 cell" type="text" id="nombre" name="nombre"
+                                    placeholder="Ingrese todos sus nombres" value="{{old('nombre')}}">
                             </div>
                             <div class="form-group col col-sm-6 flex-column d-flex py-3">
                                 <label class="form-label py-2">Apellidos</label>
-                                <input class="border-0 cell" type="text" id="apellido" name="apellido" placeholder="Ingrese todos sus apellidos" value="{{old('apellido')}}">
+                                <input class="border-0 cell" type="text" id="apellido" name="apellido"
+                                    placeholder="Ingrese todos sus apellidos" value="{{old('apellido')}}">
                             </div>
                         </div>
                         {{-- elija unidad academica e ingrese el legajo --}}
                         <div class="row justify-content-between text-left">
                             <div class="form-group col col-sm-6 flex-column d-flex py-3">
                                 <label class="form-label py-2">Legajo</label>
-                                <input class="border-0 cell" type="text" id="legajo" name="legajo" placeholder="Ingrese su legajo sin guion" value="{{old('legajo')}}" required>
+                                <input class="border-0 cell" type="text" id="legajo" name="legajo"
+                                    placeholder="Ingrese su legajo sin guion" value="{{old('legajo')}}" required>
                             </div>
                             <div class="form-group col col-sm-6 flex-column d-flex py-3">
                                 <label class="form-label py-2">Unidad Académica</label>
-                                <select class="form-select border-0 rounded-0 cell" aria-label="Seleccionar unidad académica en el menú desplegable" id="unidadAcademica" name="unidadAcademica" required>
+                                <select class="form-select border-0 rounded-0 cell"
+                                    aria-label="Seleccionar unidad académica en el menú desplegable"
+                                    id="unidadAcademica" name="unidadAcademica" required>
                                     {{-- @foreach($unidadesAcademicas as $unidad)
                                 <option value="{{$unidad->id_unidad_academica}}">{{$unidad->unidad_academica}}</option>
                                     @endforeach
@@ -62,7 +67,9 @@
                         <div class="row justify-content-between text-left">
                             <div class="form-group col col-12 flex-column d-flex py-3">
                                 <label class="form-label py-2">Carrera</label>
-                                <select class="form-select border-0 rounded-0 cell" aria-label="Seleccionar carrera en el menú desplegable" id="carrera" name="carrera" value="{{old('carrera')}}" required>
+                                <select class="form-select border-0 rounded-0 cell"
+                                    aria-label="Seleccionar carrera en el menú desplegable" id="carrera" name="carrera"
+                                    value="{{old('carrera')}}" required>
                                     {{-- @foreach($unidadesAcademicas as $unidad)
                                 <option value="{{$unidad->id_unidad_academica}}">{{$unidad->unidad_academica}}</option>
                                     @endforeach
@@ -74,7 +81,9 @@
                         <div class="row justify-content-between text-left">
                             <div class="form-group col col-12 flex-column d-flex py-3">
                                 <label class="form-label py-2">Institución Educativa de Destino</label>
-                                <input class="border-0 cell" type="text" id='universidadDestino' name='universidadDestino' placeholder="Ingrese la Institución Educativa de destino" value="{{old('universidadDestino')}}" required>
+                                <input class="border-0 cell" type="text" id='universidadDestino'
+                                    name='universidadDestino' placeholder="Ingrese la Institución Educativa de destino"
+                                    value="{{old('universidadDestino')}}" required>
                             </div>
                         </div>
                         {{-- opcion extranjero --}}
@@ -85,11 +94,13 @@
                                     {{-- <legend class="col-form-label col-12 pt-0">¿La Institución Educativa es extranjera?</legend> --}}
                                     <div class="col-12">
                                         <div class="form-check form-check-inline">
-                                            <input class="form-check-input" type="radio" name="extranjero" id="extranjero" value="si">
+                                            <input class="form-check-input" type="radio" name="extranjero"
+                                                id="extranjero" value="si">
                                             <label class="form-check-label" for="extranjero">Si</label>
                                         </div>
                                         <div class="form-check form-check-inline">
-                                            <input class="form-check-input" type="radio" name="extranjero" id="extranjero" value="no">
+                                            <input class="form-check-input" type="radio" name="extranjero"
+                                                id="extranjero" value="no">
                                             <label class="form-check-label" for="extranjero">No</label>
                                         </div>
                                     </div>
@@ -108,53 +119,6 @@
         </div>
     </div>
     {{-- fin formulario nueva solicitud --}}
-
-
-    {{-- <form action="{{route('solicitud.store')}}" method='POST' >
-    @csrf
-    -----------------formulario anterior-----------
-    <div class="row">
-        <div class="col col-8">
-            <label class="form-label" for="">Nombre:</label>
-            <input type="text" class='form-control' value='Nombre del Usuario Logueado' disabled>
-        </div>
-        <div class="col col-4">
-            <label class="form-label" for="">Legajo</label>
-            <input type="text" class='form-control' name='legajo'>
-        </div>
-    </div>
-
-    <div class="row">
-        <div class="col-col-12">
-            <label class="form-label" for="">Universidad Destino</label>
-            <input class='form-control' type="text" name='universidadDestino'>
-        </div>
-    </div>
-
-    <div class="row">
-        <div class="col-col-12">
-            <label class="form-label" for="">Unidad Academica</label>
-            <select class='form-control' name="unidadAcademica" id="">
-                @foreach($unidadesAcademicas as $unidad)
-                <option value="{{$unidad->id_unidad_academica}}">{{$unidad->unidad_academica}}</option>
-                @endforeach
-            </select>
-        </div>
-    </div>
-    <div class="row">
-        <div class="col-col-12">
-            <label class="form-label" for="">Carrera</label>
-            <select class='form-control' name="carrera" id="">
-                <!-- @foreach($unidadesAcademicas as $unidad)
-            <option value="{{$unidad->id_unidad_academica}}">{{$unidad->unidad_academica}}</option>
-        @endforeach -->
-            </select>
-        </div>
-    </div>
-
-    <button type='submit' class='btn btn-primary mt-2'>Enviar</button>
-    </form> --}}
-
 </main> <!-- Fin main cuerpo -->
 
 @endsection

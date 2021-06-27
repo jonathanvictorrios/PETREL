@@ -11,7 +11,9 @@ use App\Http\Controllers\RendimientoAcademicoController;
 use App\Http\Controllers\Archivo;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\SolicitudCertProgController;
-
+use Illuminate\Support\Facades\Mail;
+use App\Mail\mailPetrel;
+use App\Mail\mailPetrelFinalizacion;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -57,6 +59,11 @@ Route::view('/modificarcarrera', '/carpetaCarrera/edit');
 Route::view('/crearprograma', '/programaDrive/create');
 Route::view('/modificarprograma', '/programaDrive/edit');
 Route::get('solicitud/{idSolicitud}/asignar/{idAdministrativo}', [SolicitudCertProgController::class, 'asignar'])->name('solicitud.asignar');
+Route::get('solicitud/{idSolicitud}/listoFirmaDptoAlumno/{idAdministrativo}', [SolicitudCertProgController::class, 'listoParaFirmarDptoAlumno'])->name('solicitud.listoFirmaDptoAlumno');
+Route::get('solicitud/{idSolicitud}/listoFirmaSecretariaAcademica/{idAdministrativo}', [SolicitudCertProgController::class, 'listoParaFirmarSecretariaAcademica'])->name('solicitud.listoFirmaSecretariaAcademica');
+Route::get('solicitud/{idSolicitud}/listoFirmaSantiago/{idAdministrativo}', [SolicitudCertProgController::class, 'listoParaFirmarSantiago'])->name('solicitud.listoFirmaSantiago');
+Route::get('solicitud/{idSolicitud}/terminar/{idAdministrativo}', [SolicitudCertProgController::class, 'terminar'])->name('solicitud.terminar');
+
 
 // CRUD:
 Route::resource('solicitud', SolicitudCertProgController::class);
@@ -71,16 +78,18 @@ Route::get('agregarPrograma/{idCarpetaCarrera}', [CarpetaCarreraController::clas
 
 Route::resource('programaDrive', ProgramaDriveController::class);
 
-Route::resource('rendimientoAcademico',RendimientoAcademicoController::class);
-Route::post('convertirExcel',[RendimientoAcademicoController::class,'convertirExcel'])->name('convertirExcel');
+Route::resource('rendimientoAcademico', RendimientoAcademicoController::class);
+Route::post('convertirExcel', [RendimientoAcademicoController::class, 'convertirExcel'])->name('convertirExcel');
 
-Route::resource('programaLocal',ProgramaLocalController::class);
-Route::get('buscarProgramas/{idSolicitud}',[ProgramaDriveController::class,'buscarProgramas'])->name('buscarProgramas');
-Route::post('descargarProgramas',[ProgramaLocalController::class,'descargarProgramas'])->name('descargarProgramas');
+Route::resource('programaLocal', ProgramaLocalController::class);
+Route::get('buscarProgramas/{idSolicitud}', [ProgramaDriveController::class, 'buscarProgramas'])->name('buscarProgramas');
+Route::post('descargarProgramas', [ProgramaLocalController::class, 'descargarProgramas'])->name('descargarProgramas');
 
-Route::resource('hojaResumen',HojaResumenController::class);
-Route::post('firmaSecretaria',[HojaResumenController::class,'firmaSecretaria'])->name('firmaSecretaria');
-Route::get('firma',function(){return view('hojaResumen.secretaria');});
+Route::resource('hojaResumen', HojaResumenController::class);
+Route::post('firmaSecretaria', [HojaResumenController::class, 'firmaSecretaria'])->name('firmaSecretaria');
+Route::get('firma', function () {
+    return view('hojaResumen.secretaria');
+});
 
 
 Route::resource('notaDA', NotaDptoAlumController::class);
@@ -89,5 +98,38 @@ Route::post('notaDA/auth', [NotaDptoAlumController::class, 'autorizar'])->name('
 Route::get('notaDA/descargar/{id}', [NotaDptoAlumController::class, 'descargar']);
 
 
-Route::resource('planEstudio',PlanEstudioController::class);
+Route::resource('planEstudio', PlanEstudioController::class);
 Route::get('planEstudio/crear/{id_solicitud}', [PlanEstudioController::class, 'crearPlan'])->name('crearPlanEstudio');
+Route::resource('programaLocal', ProgramaLocalController::class);
+Route::get('buscarProgramas/{idRendimientoAcademico}', [ProgramaDriveController::class, 'buscarProgramas'])->name('buscarProgramas');
+Route::post('descargarProgramas', [ProgramaLocalController::class, 'descargarProgramas'])->name('descargarProgramas');
+Route::post('descargarProgramas', [ProgramaLocalController::class, 'descargarProgramas'])->name('descargarProgramas');
+Route::resource('solicitud', SolicitudCertProgController::class);
+
+// Pruebas de carga de archivos de la solicitud
+Route::get('archivos/{id}/downloadSinFirma', [Archivo::class, 'downloadSinFirma'])->name('archivos.downloadSinFirma');
+Route::get('archivos/{id}/downloadFirmado', [Archivo::class, 'downloadFirmado'])->name('archivos.downloadFirmado');
+Route::get('archivos/{id}/comment', [Archivo::class, 'cargarComentario'])->name('archivos.cargarComentario');
+Route::resource('archivos', Archivo::class);
+
+Route::get('archivos/{id}/confirmarContrasenia', [Archivo::class, 'confirmarContrasenia'])->name('archivos.confirmarContrasenia');
+
+Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
+    return view('dashboard');
+})->name('dashboard');
+Route::get('solicitud_iniciada', function () {
+    // $correo debe inicializarse con el $idSolicitud como variable
+    $idSolicitud = 3;
+    $correo = new mailPetrel($idSolicitud);
+    $datosMail = $correo->datosMail;
+    //print_r($datosMail);
+    Mail::to($datosMail->correoUsuario)->send($correo);
+    //return ('Correo enviado');
+    return view('/home');
+});
+Route::get('finalizacion', function () {
+    $correo = new mailPetrelFinalizacion;
+    Mail::to("federico.garcia@est.fi.uncoma.edu.ar")->send($correo);
+    //return ('Correo enviado');
+    return view('/home');
+});

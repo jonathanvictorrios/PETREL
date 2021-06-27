@@ -18,6 +18,6 @@ use App\Http\Controllers\UnidadAcademicaController;
 
 Route::get('/unidadAcademica',[UnidadAcademicaController::class,'selectUnidadAcademica']);
 Route::get('/unidadAcademica/{idUnidadAcademica}/carreras',[CarreraController::class,'selectCarrera']);
-// Route::middleware('auth:api')->get('/user', function (Request $request) {
+// Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 //     return $request->user();
 // });

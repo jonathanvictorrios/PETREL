@@ -1,8 +1,8 @@
 @extends('estructura/layout')
 @section('cuerpo')
 @php($titulo = 'Modificar Año - Petrel')@endphp
-
 @include('estructura/header')
+
 <main class="p-2" id="cuerpo"> {{-- Inicio main cuerpo --}}
     <div class="container mt-3">
         <a href="{{url()->previous()}}" class="lead"><i class="fas fa-chevron-left me-2"></i>Atrás</a>
@@ -15,14 +15,28 @@
                     <div class="row tittle border-bottom p-2">
                         <h2 class="col text-center fw-bold">Modificar Carpeta Año</h2>
                     </div>
-                    <form class="form-card" action="{{ route('anio.update', $carpetaAnio->id_carpeta_anio) }}" method="POST" autocomplete="off" enctype="multipart/form-data">
+                    <form class="form-card" action="{{ route('anio.update', $carpetaAnio->id_carpeta_anio) }}"
+                        method="POST" autocomplete="off" enctype="multipart/form-data">
                         @csrf
+                        @if ($errors->any()) {{-- Valida en servidor y regresa mostrando los siguientes errores --}}
+                        <div class="alert alert-danger alert-dismissible fade show d-flex align-items-center m-3 p-3">
+                            <i class='fas fa-times-circle mx-2'></i>
+                            <h5>Revisa los siguientes datos e inténtalo nuevamente</h5>
+                            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                            <ul>
+                                @foreach ($errors->all() as $error)
+                                <li>{{ $error }}</li>
+                                @endforeach
+                            </ul>
+                        </div>
+                        @endif
                         {{-- ingrese año --}}
                         @method('put')
                         <div class="row justify-content-between text-left">
                             <div class="form-group col col-12 flex-column d-flex py-3">
                                 <label class="form-label py-2">Año</label>
-                                <input class="border-0 cell" type="number" id="anio" name="anio" value="{{ old('anio', $carpetaAnio->numero_anio) }}">
+                                <input class="border-0 cell" type="number" id="anio" name="anio"
+                                    value="{{ old('anio', $carpetaAnio->numero_anio) }}">
                             </div>
                         </div>
                         <div class="row justify-content-center text-center py-4">
@@ -35,19 +49,21 @@
             </div>
         </div>
     </div>
-    @endsection
+</main>
+@endsection
 
-    {{-- @extends('estructura/layout')
+{{-- @extends('estructura/layout')
 @section('cuerpo')
 @include('estructura/header')
 
-<form action="{{ route('anio.update', $carpetaAnio->id_carpeta_anio) }}" method="POST" autocomplete="off" enctype="multipart/form-data">
-    @csrf
-    <h1>Modificando una carpeta de año</h1>
-    @method('put')
-    Carpeta año:
-    <input type="number" id="anio" name="anio" value="{{ old('anio', $carpetaAnio->numero_anio) }}">
-    <input type="submit" value="enviar">
+<form action="{{ route('anio.update', $carpetaAnio->id_carpeta_anio) }}" method="POST" autocomplete="off"
+enctype="multipart/form-data">
+@csrf
+<h1>Modificando una carpeta de año</h1>
+@method('put')
+Carpeta año:
+<input type="number" id="anio" name="anio" value="{{ old('anio', $carpetaAnio->numero_anio) }}">
+<input type="submit" value="enviar">
 </form>
 
 @endsection

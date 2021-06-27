@@ -52,6 +52,6 @@
     </div>
 </div>
 {{-- fin mostrar perfil --}}
-</main> <!-- Fin main cuerpo -->
+</main> {{-- Fin main cuerpo --}}
 
 @endsection
