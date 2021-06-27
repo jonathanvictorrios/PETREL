@@ -65,7 +65,7 @@ a:hover {
     border-radius: 0.25rem;
     padding: 0.3rem 0.25rem;
     width: 100%;
-    border: none;
+    border: solid 1px var(--color-azulPrimario);
     background-color: var(--color-azulPrimario);
     color: white;
     /* font-weight: 300; */
@@ -74,6 +74,7 @@ a:hover {
 .botonFormulario:hover {
     background-color: var(--color-verdeHover);
 }
+/* boton para plan estudio limpiar continuar. ofrece otras funciones */
 .botonFormulario2 {
     border-radius: 0.25rem;
     padding: 0.3rem 0.25rem;
