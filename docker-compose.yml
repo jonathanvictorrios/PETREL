@@ -1,11 +1,7 @@
 version: "3.4"
 
 services:
-  petrel:
-    image: petrel
-    build:
-      context: .
-      dockerfile: ./Dockerfile
+  
   laravel.test:
     build:
       context: ./vendor/laravel/sail/runtimes/8.0
