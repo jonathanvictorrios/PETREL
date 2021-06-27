@@ -32,12 +32,12 @@ class AuthServiceProvider extends ServiceProvider
             return $user->role_id == 1;
         }); */
 
-        $permisos = Permission::findAll();
+        // $permisos = Permission::findAll();
 
-        foreach ($permisos as $permiso){
-            Gate::define($permiso->name, function(User $user, $permiso){
-                return $user->role_id == $permiso->id;
-            });
-        }
+        // foreach ($permisos as $permiso){
+        //     Gate::define($permiso->name, function(User $user, $permiso){
+        //         return $user->role_id == $permiso->id;
+        //     });
+        // }
     }
 }
