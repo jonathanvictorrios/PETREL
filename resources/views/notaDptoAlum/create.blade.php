@@ -20,7 +20,7 @@
         {{session('success')}}
     </div>
 @endif
-<form id="formulario_nota" action="{{ route('notaDA.store') }}" method="POST" class="container w-75 py-2">
+<form name="formulario_nota" id="formulario_nota" action="{{ route('notaDA.store') }}" method="POST" class="container w-75 py-2" novalidate>
     @csrf
     <h2 class="text-center">Crear nota</h2>
 

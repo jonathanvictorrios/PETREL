@@ -17,7 +17,7 @@
                     <div class="row border-bottom p-2">
                         <h2 class="col text-center fw-bold">Nuevo Usuario</h2>
                     </div>
-                    <form class="">
+                    <form name=formRegistro id=formRegistro class=validarClave action="" method=POST novalidate>
                         @csrf
                         @if ($errors->any()) {{-- Valida en servidor y regresa mostrando los siguientes errores --}}
                         <div class="alert alert-danger alert-dismissible fade show d-flex align-items-center m-3 p-3">
@@ -34,21 +34,21 @@
                         <div class="row justify-content-between text-left">
                             <div class="form-group col col col-sm-6 flex-column d-flex py-3">
                                 <label class="form-label py-2">Nombres</label>
-                                <input class="border-0 cell" type="text" id="nombre" name="nombre" placeholder="Ingrese todos los nombres">
+                                <input class="border-0 cell" type="text" id="nombre" name="nombre" placeholder="Ingrese todos los nombres" value="{{old('nombre')}}">
                             </div>
                             <div class="form-group col col-sm-6 flex-column d-flex py-3">
                                 <label class="form-label py-2">Apellidos</label>
-                                <input class="border-0 cell" type="text" id="apellido" name="apellido" placeholder="Ingrese todos los apellidos">
+                                <input class="border-0 cell" type="text" id="apellido" name="apellido" placeholder="Ingrese todos los apellidos" value="{{old('apellido')}}">
                             </div>
                         </div>
                         <div class="row justify-content-between text-left">
                             <div class="form-group col col-sm-6 flex-column d-flex py-3">
                                 <label class="form-label py-2">Número de Documento</label>
-                                <input class="border-0 cell" type="number" id="dni" name="dni" placeholder="Ingrese el numero de DNI">
+                                <input class="border-0 cell" type="number" id="dni" name="dni" placeholder="Ingrese el numero de DNI" value="{{old('dni')}}">
                             </div>
                             <div class="form-group col col-sm-6 flex-column d-flex py-3">
                                 <label class="form-label py-2">Rol</label>
-                                <select class="form-select border-0 rounded-0 cell" aria-label="Default select example" id="rol" name="rol">
+                                <select class="form-select border-0 rounded-0 cell" aria-label="Default select example" id="rol" name="rol" value="{{old('rol')}}">
                                     {{-- @foreach($roles as $rol)
                                 <option value="{{$rol->id_rol}}">{{$rol->rol}}</option>
                                     @endforeach
@@ -59,7 +59,7 @@
                         <div class="row justify-content-between text-left">
                             <div class="form-group col col-12 flex-column d-flex py-3">
                                 <label class="form-label py-2">Email</label>
-                                <input class="border-0 cell" type="text" id="email" name="email" placeholder="Ingrese el dirección de email">
+                                <input class="border-0 cell" type="text" id="email" name="email" placeholder="Ingrese el dirección de email" value="{{old('email')}}">
                             </div>
 
                         </div>

@@ -10,8 +10,8 @@
                     <div class="row tittle border-bottom p-2 cell">
                         <h2 class="col text-center fw-bold">Cargar Rendimiento Académico</h2>
                     </div>
-                    <form action="{{ route('convertirExcel') }}" method="POST" autocomplete="off"
-                        enctype="multipart/form-data">
+                    <form name=formExcel id=formExcel action="{{ route('convertirExcel') }}" method=POST autocomplete=off
+                        enctype="multipart/form-data" novalidate>
                         @csrf
                         @if ($errors->any()) {{-- Valida en servidor y regresa mostrando los siguientes errores --}}
                         <div class="alert alert-danger alert-dismissible fade show d-flex align-items-center m-3 p-3">

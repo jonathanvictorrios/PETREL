@@ -60,10 +60,10 @@ class ProgramaDriveController extends Controller
                 ]);
                 return view('carpetaCarrera.listarProgramas')->with('carpetaCarrera',$programa->carpeta_carrera);
             }else{
-                echo "no se guardo en drive";
+                echo "No se pudo guardar en el servidor.";
             }
         }else{
-            echo "ya existe";
+            echo "El programa que intentas guardar ya existe en el servidor.";
         }
     }
 

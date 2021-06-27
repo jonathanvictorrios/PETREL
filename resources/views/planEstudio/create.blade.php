@@ -15,7 +15,7 @@
     </div>
 @endif
 
-<form id="formulario_nota" action="{{ route('planEstudio.store') }}" method="POST" class="container w-75 py-3 pb-5">
+<form name="formulario_nota" id="formulario_nota" action="{{ route('planEstudio.store') }}" method="POST" class="container w-75 py-3 pb-5" novalidate>
     @csrf
     <h2 class="text-center">Seleccionar Plan de Estudios</h2>
 
