@@ -11,9 +11,9 @@ use App\Http\Controllers\RendimientoAcademicoController;
 use App\Http\Controllers\Archivo;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\SolicitudCertProgController;
+use Illuminate\Support\Facades\Mail;
 use App\Mail\mailPetrel;
 use App\Mail\mailPetrelFinalizacion;
-use Illuminate\Support\Facades\Mail;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -129,7 +129,7 @@ Route::get('solicitud_iniciada', function () {
 });
 Route::get('finalizacion', function () {
     $correo = new mailPetrelFinalizacion;
-    Mail::to("gksaibot@gmail.com")->send($correo);
+    Mail::to("federico.garcia@est.fi.uncoma.edu.ar")->send($correo);
     //return ('Correo enviado');
-    return view('/finalizacionview');
+    return view('/home');
 });

@@ -30,6 +30,6 @@ class mailPetrelFinalizacion extends Mailable
      */
     public function build()
     {
-        return $this->view('email.finalizacion.name');
+        return $this->view('emails.finalizacion');
     }
 }
