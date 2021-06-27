@@ -9,6 +9,7 @@ use App\Http\Controllers\ProgramaDriveController;
 use App\Http\Controllers\ProgramaLocalController;
 use App\Http\Controllers\RendimientoAcademicoController;
 use App\Http\Controllers\Archivo;
+use App\Http\Controllers\mailPetrelController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\SolicitudCertProgController;
 use App\Http\Controllers\NotaAdminCentralController;
