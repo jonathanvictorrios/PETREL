@@ -44,7 +44,7 @@
     <script src="{{ asset('js/bootstrap/bootstrap.bundle.min.js') }}"></script>
 
     <!-- Carga scripts propios -->
-    <script src="{{ asset('js/volverArriba.js') }}"></script>
+    <script src="{{ asset('js/archivos.js') }}"></script>
 
     <script src="{{ asset('js/formularios/selectUnidadAcademica.js') }}"></script>
     <script src="{{ asset('js/formularios/confirmarSalir.js') }}"></script>
@@ -52,11 +52,7 @@
     <script src="{{ asset('js/formularios/messages_es.min.js') }}"></script>
     <script src="{{ asset('js/formularios/validaciones.js') }}"></script>
 
-    <script src="{{ asset('js/confirmarSalir.js') }}"></script>
     <script src="{{ asset('js/volverArriba.js') }}"></script>
-    <script src="{{ asset('js/selectUnidadAcademica.js') }}"></script>
-    <script src="{{ asset('js/archivos.js') }}"></script>
-
     <button class="btn btn-secondary shadow-sm" onclick="irArriba()" id="volverArriba" title="Volver arriba"><i
             class="fas fa-chevron-up"></i></button>
 </body>
