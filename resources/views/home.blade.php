@@ -62,13 +62,13 @@
                                         <form class="">
                                             <div class="row justify-content-between text-left">
                                                 <div class="form-group col-12 flex-column d-flex py-3">
-                                                    <label class="form-control-label px-3 py-2">Email</label>
+                                                    <label class="form-control-label py-2">Email</label>
                                                     <input class="border-0 cell" type="text" id="email" name="email" placeholder="Ingrese su email">
                                                 </div>
                                             </div>
                                             <div class="row justify-content-between text-left">
                                                 <div class="form-group col-12 flex-column d-flex py-3">
-                                                    <label class="form-control-label px-3 py-2">Contraseña</label>
+                                                    <label class="form-control-label py-2">Contraseña</label>
                                                     <input class="border-0 cell" type="text" id="password" name="password" placeholder="Ingrese su contraseña">
                                                 </div>
                                             </div>

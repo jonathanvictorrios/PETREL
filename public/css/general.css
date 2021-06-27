@@ -52,11 +52,11 @@ h6 {
 
 a {
     text-decoration: none;
-    color: var(--color-verdeHover);
+    color: var(--color-azulPrimario);
 }
 
 a:hover {
-    color: var(--color-azulPrimario);
+    color: var(--color-verdeHover);
 }
 
 /*--------------- BOTONES ---------------*/
@@ -74,7 +74,18 @@ a:hover {
 .botonFormulario:hover {
     background-color: var(--color-verdeHover);
 }
-
+.botonFormulario2 {
+    border-radius: 0.25rem;
+    padding: 0.3rem 0.25rem;
+    width: 100%;
+    border: solid 1px var(--color-azulPrimario);
+    background-color: white;
+    color: var(--color-azulPrimario);
+    /* font-weight: 300; */
+}
+.botonFormulario2:hover {
+    background-color: var(--color-verdeHover);
+}
 /* Boton VolverArriba */
 
 #volverArriba {
