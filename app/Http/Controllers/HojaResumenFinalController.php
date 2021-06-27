@@ -21,8 +21,14 @@ class HojaResumenFinalController extends Controller
      */
     public function index()
     {
+        $unaSolicitud= SolicitudCertProg::find();
         
-        $unaSolicitud= SolicitudCertProg::find(1);
+        return view('hojaResumenFinal.indexHojaFinal')->with('solicitud', $unaSolicitud);
+    }
+
+    public function show($idSolicitud)
+    {
+        $unaSolicitud= SolicitudCertProg::find($idSolicitud);
         
         return view('hojaResumenFinal.indexHojaFinal')->with('solicitud', $unaSolicitud);
         
@@ -128,79 +134,4 @@ class HojaResumenFinalController extends Controller
         $pdf->Output(storage_path()."/app/id-solicitud-".$idSolicitud."/hojaUnidaFinalSinFirma".$idSolicitud.".pdf","F");
         return redirect()->route('solicitud');
       }
-
-
-
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    /*    public function index()
-    {
-        //
-    } */
-
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    /*     public function create()
-    {
-        //
-    }
- */
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-
-
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    /*    public function show($id)
-    {
-        //
-    } */
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    /*    public function edit($id)
-    {
-        //
-    } */
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    /*    public function update(Request $request, $id)
-    {
-        //
-    }
- */
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    /*  public function destroy($id)
-    {
-        //
-    } */
 }

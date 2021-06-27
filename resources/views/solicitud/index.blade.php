@@ -475,7 +475,7 @@
                                 </thead>
                                 <tbody>
                                     @foreach($solicitudes as $solicitud)
-                                    @if($solicitud->estados->last()->estado_descripcion->descripcion!='Terminado')
+                                    @if($solicitud->UltimoEstado == 'Aguarda Firma Santiago')
                                     <tr>
                                         <th scope="row">
                                             <div class="form-check">

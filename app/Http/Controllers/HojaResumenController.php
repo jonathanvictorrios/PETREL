@@ -72,7 +72,9 @@ class HojaResumenController extends Controller
         //ya guardamos pdf de la nota de departamento firmada por secretaria
         Storage::put('id-solicitud-' . $idSolicitud . '/notaDptoAlumno' . $idSolicitud . '.pdf', $objPDF->output());
         $this->realizarUnion($idSolicitud);
-        return view('solicitud.show', ['solicitud' => $objSolicitud]);
+        return Storage::download('id-solicitud-'.$idSolicitud.'/hojaUnida'.$idSolicitud.'.pdf');
+        /* return view('solicitud.show',['solicitud'=>$objSolicitud]); */
+        /* return redirect()->route('solicitud'); */
     }
 
     public static function realizarUnion($idSolicitud)

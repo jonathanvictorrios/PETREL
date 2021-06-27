@@ -57,20 +57,28 @@
                         </div>
                     </div>
                     <div class="row">
-                        <div class="col"><a class="btn btn-primary"
-                                href="{{ route('archivos.downloadSinFirma',$solicitud->idSolicitud) }}">Descargar
+                        @if($solicitud->url_hoja_unida_final_sin_firma == null)
+                        <div class="col-3"><a class="btn btn-primary disabled" href="{{ route('archivos.downloadSinFirma',$solicitud->idSolicitud) }}">Descargar
                                 documento sin firmar</a>
                         </div>
-                        <div class="col"><a class="btn btn-primary"
-                                href="{{ route('archivos.downloadFirmado',$solicitud->idSolicitud) }}">Descargar
+                        <div class="col-3"><a class="btn btn-primary url_hoja_unida_final_sin_firma disabled" href="{{ route('archivos.downloadFirmado',$solicitud->idSolicitud) }}">Descargar
                                 documento firmado</a>
                         </div>
-                        <div class="col"><a class="btn btn-primary"
-                                href="{{ route('archivos.create', 'dato='.$solicitud->idSolicitud) }}">Adjuntar
+                        <div class="col-3"><a class="btn btn-primary url_hoja_unida_final_sin_firma disabled" href="{{ route('archivos.create', 'dato='.$solicitud->idSolicitud) }}">Adjuntar
                                 firmado</a>
                         </div>
-                        <div class="col"><a class="btn btn-primary"
-                                href="{{ route('archivos.create', 'dato='.$solicitud->idSolicitud) }}">Generar nota</a>
+                        @else
+                        <div class="col-3"><a class="btn btn-primary" href="{{ route('archivos.downloadSinFirma',$solicitud->idSolicitud) }}">Descargar
+                                documento sin firmar</a>
+                        </div>
+                        <div class="col-3"><a class="btn btn-primary" href="{{ route('archivos.downloadFirmado',$solicitud->idSolicitud) }}">Descargar
+                                documento firmado</a>
+                        </div>
+                        <div class="col-3"><a class="btn btn-primary" href="{{ route('archivos.create', 'dato='.$solicitud->idSolicitud) }}">Adjuntar
+                                firmado</a>
+                        </div>
+                        @endif
+                        <div class="col-3"><a class="btn btn-primary" href="{{ route('hojaResumenFinal.show',$solicitud->idSolicitud) }}">Gestion</a>
                         </div>
                     </div>
                 </div>
@@ -443,6 +451,34 @@
                                         <input type="submit" class="botonFormulario2" value="Agregar Mensaje">
                                     </form>
                                 </div>
+                            <p class=" "><span class="text-secondary fs-5">Legajo: </span> {{ $solicitud->Legajo }}</p>
+                        </div>
+                        {{-- unidad academica --}}
+                        <div class="row justify-content-between text-left">
+                            <p class=" "><span class="text-secondary fs-5">Unidad Académica: </span>
+                                {{ $solicitud->UnidadAcademica }}
+                            </p>
+                        </div>
+                        {{-- carrera --}}
+                        <div class="row justify-content-between text-left ">
+                            <p class=" "><span class="text-secondary fs-5">Carrera: </span> {{ $solicitud->Carrera }}</p>
+                        </div>
+                        {{-- universidad de destino --}}
+                        <div class="row justify-content-center text-left">
+                            <p class=" "><span class="text-secondary fs-5">Institución Educativa de Destino: </span>
+                                {{ $solicitud->UniversidadDestino }}
+                            </p>
+                        </div>
+                        {{-- asignado a --}}
+                        <div class="row justify-content-center text-left">
+                            <div class="col-6">
+                                <p class=" "><span class="text-secondary fs-5">Asignado a: </span> Viviana Pedrero
+                                    {{-- ACÀ DEBE TOMAR EL NOMBRE DE PERSONA ASIGNADA --}}
+                                </p>
+                            </div>
+                            <div class="col-6">
+                                <button class=" botonFormulario">cambiar asignación </button>
+                                {{-- ACÀ abre pag de asignaciòn o lo convertimos en un form con un select de admin? --}}</p>
                             </div>
                         </div>
                     </div>
@@ -600,6 +636,50 @@
                                                 dbahmsdbahmsdbahmsbdamsbdamhsbdahsbfkhasbfhasfbmahsfbamsfbamhsbfmhasfaf
                                             </td>
                                         </tr>
+
+        <div class="container-fluid p-1 mx-auto"> {{-- Comienzo div Actividad (mostrar como acordeón) --}}
+            <div class="tittle cp-1 cell my-3">
+                <h2 class="text-center fw-bold">Actividad </h2>
+            </div>
+            <table class="table table-borderless">
+                <thead class="border-bottom">
+                    <tr>
+                        <th scope="col">Fecha</th>
+                        <th scope="col">Usuario</th>
+                        <th scope="col">Detalle</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>12/05/2021</td>
+                        <td>Viviana Pedrero</td>
+                        <td>asignado a Raquel</td>
+                    </tr>
+                    <tr>
+                        <td>12/05/2021</td>
+                        <td>Viviana Pedrero</td>
+                        <td>comentario 2 blablablablablalbalba</td>
+                    </tr>
+                    <tr>
+                        <td>12/05/2021</td>
+                        <td>Viviana Pedrero</td>
+                        <td>asignado a Raquel</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <div class="row justify-content-center ">
+                <div class="col-6 p-2 m-2">
+                    {{-- ESTE FORM/BOTÒN DEBERIA SER VISIBLE SÒLO SI EL USUARIO ASIGNADO ES EL USUARIO LOGUEADO --}}
+                    <form action="{{ route('hojaResumen.store') }}" method="POST" autocomplete="off" enctype="multipart/form-data">
+                        @csrf
+                        {{-- aca voy a recibir el $idSolicitud , por ahora utilizo un input , luego este $idSolicitud estara en un campo oculto --}}
+                        <input type="hidden" id="idSolicitud" name="idSolicitud" value="{{ $solicitud->idSolicitud }}">
+                        <input type="submit" class="botonFormulario" value="comenzar trámite">
+                    </form>
+                </div>
+            </div>
+        </div> {{-- Fin div Actividad --}}
 
                                         <tr>
                                             <td class="p-2">12/05/2021</td>
