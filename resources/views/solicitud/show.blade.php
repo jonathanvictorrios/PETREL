@@ -56,6 +56,23 @@
                             </p>
                         </div>
                     </div>
+                    <div class="row">
+                        <div class="col"><a class="btn btn-primary"
+                                href="{{ route('archivos.downloadSinFirma',$solicitud->idSolicitud) }}">Descargar
+                                documento sin firmar</a>
+                        </div>
+                        <div class="col"><a class="btn btn-primary"
+                                href="{{ route('archivos.downloadFirmado',$solicitud->idSolicitud) }}">Descargar
+                                documento firmado</a>
+                        </div>
+                        <div class="col"><a class="btn btn-primary"
+                                href="{{ route('archivos.create', 'dato='.$solicitud->idSolicitud) }}">Adjuntar
+                                firmado</a>
+                        </div>
+                        <div class="col"><a class="btn btn-primary"
+                                href="{{ route('archivos.create', 'dato='.$solicitud->idSolicitud) }}">Generar nota</a>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
