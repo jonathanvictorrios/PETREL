@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Requests\StoreProgramaDriveRequest;
 use App\Models\CarpetaCarrera;
 use App\Models\ProgramaDrive;
+use App\Models\SolicitudCertProg;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 
@@ -22,10 +23,10 @@ class ProgramaDriveController extends Controller
     /**
      * a traves del formulario leemos los campos y agregamos el nuevo programa
      * verificamos si existen ambas carpetas y luego subimos el programa
-     * @param Request
+     * @param StoreProgramaDriveRequest
      * @return view programa.show
      */
-    public function store(StoreProgramaDriveRequest $request)
+    public function store(Request $request)
     {
         $carpetaCarrera = CarpetaCarrera::find($request->idCarpetaCarrera);
         $colProgramas = $carpetaCarrera->programa_drive;
@@ -36,14 +37,13 @@ class ProgramaDriveController extends Controller
             $i++;
         }
         if(!$programaEncontrado){
-            $nombre = $request->numeroPrograma.'-'.$request->nombrePrograma;
+            $nombre = $request->nombrePrograma.'.pdf';
             $guardadoDrive = $request->file('pdfPrograma')->storeAs(
                 $carpetaCarrera->url_carrera,//donde se guarda
-                $nombre,//nombre con el que se guarda
+                $request->numeroPrograma.'-'.$nombre,//nombre con el que se guarda
                 'google'
             );
             if($guardadoDrive){
-                sleep(5);
                 $colArchivos = Storage::disk('google')->files($carpetaCarrera->url_carrera);
                 $i=0;
                 $encontrado = false;
@@ -54,11 +54,11 @@ class ProgramaDriveController extends Controller
                 $urlPrograma = substr(strrchr($colArchivos[($i-1)],'/'),1);
                 $programa = ProgramaDrive::create([
                     'id_carpeta_carrera' => $carpetaCarrera->id_carpeta_carrera,
-                    'nombre_programa' => $request->nombrePrograma,
+                    'nombre_programa' => $nombre,
                     'numero_programa' => $request->numeroPrograma,
                     'url_programa' => $urlPrograma,
                 ]);
-                return view('programaDrive.show')->with('programaDrive',$programa);
+                return view('carpetaCarrera.listarProgramas')->with('carpetaCarrera',$programa->carpeta_carrera);
             }else{
                 echo "no se guardo en drive";
             }
@@ -115,41 +115,72 @@ class ProgramaDriveController extends Controller
     /**
      * Buscamos los programas de las materias aprobadas por el solicitante
      * @param int $idRendimientoAcademico
-     * @return view programaLocal.cargarProgramas
+     * @return view programaLocal.create
      */
     public function buscarProgramas($idSolicitud){
+        $objSolicitud = SolicitudCertProg::find($idSolicitud);
+        $carreraSolicitud = $objSolicitud->carrera->carrera;
         $nombreJson = 'id-solicitud-'.$idSolicitud.'/rendimientoAcademico'.$idSolicitud.'.json';
         $arregloRendimiento =json_decode(file_get_contents(storage_path('/app/'.$nombreJson)),true);
         $materias = $arregloRendimiento['Materias'];
-        $colProgramas = [];
+        $colProgramasEncontrados = [];
+        $colProgramasSugerencias = [];
+        $colProgramasNoEncontrados = [];
         foreach($materias as $programa){
-            $numeroMateria = (int)$programa['NroMateria'];
+            //datos para comparar
             $nombreMateria = $programa['Materia'].'.pdf';
-            $objProgramas = ProgramaDrive::where('numero_programa',$numeroMateria)
-                ->where('nombre_programa','like',$nombreMateria)
-                ->get();
-            if(count($objProgramas)>1){
-                /*en caso que hayan 2 o mas objetos programas filtramos por carrera
-                y por le año a la cual debe pertenecer*/
-                $anioMateriaAprobada = $programa['AnioMateria'];
-                $carrera = $arregloRendimiento['Carrera'];
-                $j=0;
-                $materiaEncontrada = false;
-                while($j<count($objProgramas) && $materiaEncontrada){
-                    $materiaEncontrada =
-                    $objProgramas[$j]->carpeta_carrera->carpeta_anio == $anioMateriaAprobada
-                    && $objProgramas[$j]->carpeta_carrera->carrera->carrera==$carrera;
-                    $j++;
+            $nombreMateria = ucwords(mb_strtolower($nombreMateria));
+            $anioMateriaAprobada = (int) ($programa['AnioMateria']);
+            $objProgramas = ProgramaDrive::where('nombre_programa','like',$nombreMateria)->get();
+            if(count($objProgramas)>0){
+                //al menos encontro 1 programa
+                if(count($objProgramas)>1){
+                    //encontro 2 o mas programas
+                    $j=0;
+                    $materiaEncontrada = false;
+                    $tempColSugerencias =[];
+                    while($j<count($objProgramas) && !$materiaEncontrada){
+                        //$materiaEncontrada = $objProgramas[$j]->carpeta_carrera->carpeta_anio->numero_anio == $anioMateriaAprobada;
+                        $materiaEncontrada = $objProgramas[$j]->carpeta_carrera->carrera->carrera == $carreraSolicitud;
+                        if($materiaEncontrada && $objProgramas[$j]->carpeta_carrera->carpeta_anio->numero_anio == $anioMateriaAprobada){
+                            //la carrera y año coinciden, es un programa encontrado
+                            $colProgramasEncontrados[]=$objProgramas[$j];
+                        }elseif($materiaEncontrada){
+                            $tempColSugerencias[]=$objProgramas[$j];
+                            $materiaEncontrada = false;
+                        }
+                        $j++;
+                    }
+                    if(!$materiaEncontrada){
+                        if(count($tempColSugerencias)>0){
+                            $colProgramasSugerencias[] = $tempColSugerencias;
+                        }else{
+                            $nombreMateria = explode('.',$nombreMateria)[0];
+                            $colProgramasNoEncontrados[]=['Programa'=>$nombreMateria,'Anio'=>$anioMateriaAprobada];
+                        }
+                    }
+                }else{
+                    if($objProgramas[0]->carpeta_carrera->carrera->carrera == $carreraSolicitud){
+                        if($objProgramas[0]->carpeta_carrera->carpeta_anio->numero_anio == $anioMateriaAprobada){
+                            //encontro el programa que pertenece a la carrera y anio al mismo tiempo
+                            $colProgramasEncontrados[]=$objProgramas[0];
+                        }else{
+                            //encontro el programa de la carrera pero no coindice con el año
+                            $colProgramasSugerencias[]=[$objProgramas[0]];
+                        }
+                    }else{
+                        //un programa encontrado por el nombre pero no pertenece a la misma carrera
+                        $nombreMateria = explode('.',$nombreMateria)[0];
+                        $colProgramasNoEncontrados[]=['Programa'=>$nombreMateria,'Anio'=>$anioMateriaAprobada];
+                    }
                 }
-                if($materiaEncontrada){
-                    $colProgramas[]=$objProgramas[($j-1)];
-                }
-            }elseif(count($objProgramas)>0){
-                /* Puede ser que sea el unico programa con ese numero y nombre,
-                por lo tanto solo guardamos el objeto programa */
-                $colProgramas[]=$objProgramas[0];
+            }else{
+                //no se encontro ningun programa para ese nombre
+                $nombreMateria = explode('.',$nombreMateria)[0];
+                $colProgramasNoEncontrados[]=['Programa'=>$nombreMateria,'Anio'=>$anioMateriaAprobada];
             }
         }
-        return view('programaLocal.create',['idSolicitud'=>$idSolicitud])->with('colProgramas',$colProgramas);
+        $objSolicitud=SolicitudCertProg::find($idSolicitud);
+        return view('programaLocal.create',['solicitud'=>$objSolicitud,'colProgramasEncontrados'=>$colProgramasEncontrados,'colProgramasSugerencias'=>$colProgramasSugerencias,'colProgramasNoEncontrados'=>$colProgramasNoEncontrados]);
     }
 }

@@ -35,7 +35,7 @@ class ProgramaDriveSeeder extends Seeder
                 $i=0;
                 $carreraEncontrada = false;
                 while($i<count($colCarreras) && !$carreraEncontrada){
-                    $carreraEncontrada = $carrera == $colCarreras[$i]->carrera;
+                    $carreraEncontrada = strtolower($carrera) == strtolower($colCarreras[$i]->carrera);
                     $i++;
                 }
                 DB::table('carpeta_carrera')->insert([

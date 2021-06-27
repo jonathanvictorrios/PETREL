@@ -1,8 +1,6 @@
 @extends('estructura/layout')
-
 @section('cuerpo')
-@php($titulo = 'Petrel - Crear solicitud')
-
+@php($titulo = 'Asignar solicitud - Petrel')@endphp
 @include('estructura/header')
 
 

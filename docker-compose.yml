@@ -1,5 +1,5 @@
-version: "3.4"
-
+# For more information: https://laravel.com/docs/sail
+version: "3"
 services:
   laravel.test:
     build:
@@ -28,7 +28,7 @@ services:
       MYSQL_DATABASE: "${DB_DATABASE}"
       MYSQL_USER: "${DB_USERNAME}"
       MYSQL_PASSWORD: "${DB_PASSWORD}"
-      MYSQL_ALLOW_EMPTY_PASSWORD: "no"
+      MYSQL_ALLOW_EMPTY_PASSWORD: "yes"
     volumes:
       - "sailmysql:/var/lib/mysql"
     networks:
@@ -50,3 +50,4 @@ networks:
 volumes:
   sailmysql:
     driver: local
+    

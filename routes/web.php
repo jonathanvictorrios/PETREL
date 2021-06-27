@@ -1,14 +1,17 @@
-<?php
+Manuel, [27.06.21 01:09]
+ <?php
 
 use App\Http\Controllers\CarpetaAnioController;
 use App\Http\Controllers\CarpetaCarreraController;
 use App\Http\Controllers\HojaResumenController;
+use App\Http\Controllers\NotaDptoAlumController;
+use App\Http\Controllers\PlanEstudioController;
 use App\Http\Controllers\ProgramaDriveController;
 use App\Http\Controllers\ProgramaLocalController;
 use App\Http\Controllers\RendimientoAcademicoController;
+use App\Http\Controllers\Archivo;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\SolicitudCertProgController;
-use Illuminate\Support\Facades\Auth;
 
 /*
 |--------------------------------------------------------------------------
@@ -21,20 +24,40 @@ use Illuminate\Support\Facades\Auth;
 |
 */
 
-Route::get('solicitud/{idSolicitud}/asignar/{idAdministrativo}', [SolicitudCertProgController::class, 'asignar'])->name('solicitud.asignar');
 // Vistas configuradas:
 Route::redirect('/', '/home');
 Route::view('/home', 'home');
 //usuario
-Route::view('/registro', '/usuario/create');
+Route::view('/registro', '/usuario/registro');
+Route::view('/perfil', '/usuario/perfil');
+//nuevas rutas de vistas (lara)
+// Route::view('/crearusuario', '/usuario/create');
+// Route::view('/verusuario', '/usuario/show');
+// Route::view('/modificarusuario', '/usuario/modificar');
+// Route::view('/borrarusuario', '/usuario/borrar');
+//anio
+// Route::view('/crearanio', '/carpetaAnio/create');
+// Route::view('/modificaranio', '/carpetaAnio/edit');
+//carrera
+// Route::view('/crearcarrera', '/carpetaCarrera/create');
+// Route::view('/modificarcarrera', '/carpetaCarrera/edit');
+//programa
+// Route::view('/crearprograma', '/programaDrive/create');
+// Route::view('/modificarprograma', '/programaDrive/edit');
+///fin de nuevas rutas lara
 //solicitudes
 Route::view('/crearsolicitud', '/solicitud/create');
 Route::view('/versolicitud', '/solicitud/show');
-
-/* Otras rutas:
-Route::view('/registro', 'registro');
-Route::view('/login', 'login');
-*/
+//anio
+Route::view('/crearanio', '/carpetaAnio/create');
+Route::view('/modificaranio', '/carpetaAnio/edit');
+//carrera
+Route::view('/crearcarrera', '/carpetaCarrera/create');
+Route::view('/modificarcarrera', '/carpetaCarrera/edit');
+//programa
+Route::view('/crearprograma', '/programaDrive/create');
+Route::view('/modificarprograma', '/programaDrive/edit');
+Route::get('solicitud/{idSolicitud}/asignar/{idAdministrativo}', [SolicitudCertProgController::class, 'asignar'])->name('solicitud.asignar');
 
 // CRUD:
 Route::resource('solicitud', SolicitudCertProgController::class);
@@ -49,28 +72,42 @@ Route::get('agregarPrograma/{idCarpetaCarrera}', [CarpetaCarreraController::clas
 
 Route::resource('programaDrive', ProgramaDriveController::class);
 
-Route::resource('rendimientoAcademico',RendimientoAcademicoController::class);
-Route::post('convertirExcel',[RendimientoAcademicoController::class,'convertirExcel'])->name('convertirExcel');
-    
-Route::resource('programaLocal',ProgramaLocalController::class);
-Route::get('buscarProgramas/{idSolicitud}',[ProgramaDriveController::class,'buscarProgramas'])->name('buscarProgramas');
-Route::post('descargarProgramas',[ProgramaLocalController::class,'descargarProgramas'])->name('descargarProgramas');
+Route::resource('rendimientoAcademico', RendimientoAcademicoController::class);
+Route::post('convertirExcel', [RendimientoAcademicoController::class, 'convertirExcel'])->name('convertirExcel');
 
-Route::resource('hojaResumen',HojaResumenController::class);
+Route::resource('programaLocal', ProgramaLocalController::class);
+Route::get('buscarProgramas/{idSolicitud}', [ProgramaDriveController::class, 'buscarProgramas'])->name('buscarProgramas');
+Route::post('descargarProgramas', [ProgramaLocalController::class, 'descargarProgramas'])->name('descargarProgramas');
 
+Route::resource('hojaResumen', HojaResumenController::class);
+Route::post('firmaSecretaria', [HojaResumenController::class, 'firmaSecretaria'])->name('firmaSecretaria');
+Route::get('firma', function () {
+    return view('hojaResumen.secretaria');
+});
+
+
+Route::resource('notaDA', NotaDptoAlumController::class);
+Route::get('notaDA/crear/{id_solicitud}', [NotaDptoAlumController::class, 'crearNota'])->name('notaDA.crear');
+Route::post('notaDA/auth', [NotaDptoAlumController::class, 'autorizar'])->name('notada.auth');
+Route::get('notaDA/descargar/{id}', [NotaDptoAlumController::class, 'descargar']);
+
+
+Route::resource('planEstudio', PlanEstudioController::class);
+Route::get('planEstudio/crear/{id_solicitud}', [PlanEstudioController::class, 'crearPlan'])->name('crearPlanEstudio');
+Route::resource('programaLocal', ProgramaLocalController::class);
+Route::get('buscarProgramas/{idRendimientoAcademico}', [ProgramaDriveController::class, 'buscarProgramas'])->name('buscarProgramas');
+Route::post('descargarProgramas', [ProgramaLocalController::class, 'descargarProgramas'])->name('descargarProgramas');
+Route::post('descargarProgramas', [ProgramaLocalController::class, 'descargarProgramas'])->name('descargarProgramas');
+Route::resource('solicitud', SolicitudCertProgController::class);
+
+// Pruebas de carga de archivos de la solicitud
+Route::get('archivos/{id}/downloadSinFirma', [Archivo::class, 'downloadSinFirma'])->name('archivos.downloadSinFirma');
+Route::get('archivos/{id}/downloadFirmado', [Archivo::class, 'downloadFirmado'])->name('archivos.downloadFirmado');
+Route::get('archivos/{id}/comment', [Archivo::class, 'cargarComentario'])->name('archivos.cargarComentario');
+Route::resource('archivos', Archivo::class);
+
+Route::get('archivos/{id}/confirmarContrasenia', [Archivo::class, 'confirmarContrasenia'])->name('archivos.confirmarContrasenia');
 
 Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
     return view('dashboard');
 })->name('dashboard');
-
-Route::middleware(['auth:sanctum', 'verified'])->get('/usuario', function () {
-    return view('/usuario/index');
-})->name('usuario');
-/* 
-Route::middleware(['auth:sanctum', 'verified'])->get('/usuario/show', function () {
-    return view('/usuario.show');
-})->name('usuario/show'); */
-
-Route::group(['middleware' => 'auth'], function () {
-    Route::resource('users', \App\Http\Controllers\UsersController::class);
-});

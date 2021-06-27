@@ -1977,7 +1977,7 @@ var Alpine = {
   get raw() {
     return raw;
   },
-  version: "3.1.0",
+  version: "3.1.1",
   disableEffectScheduling,
   setReactivityEngine,
   addRootSelector,
@@ -2959,9 +2959,9 @@ function loop(el, iteratorNames, evaluateItems, evaluateKey) {
       let key = keys[index];
       let clone2 = document.importNode(templateEl.content, true).firstElementChild;
       addScopeToNode(clone2, reactive(scope), templateEl);
-      initTree(clone2);
       mutateDom(() => {
         lastEl.after(clone2);
+        initTree(clone2);
       });
       lookup[key] = clone2;
     }
@@ -3033,8 +3033,10 @@ directive("if", (el, {expression}, {effect: effect3, cleanup}) => {
       return el._x_currentIfEl;
     let clone2 = el.content.cloneNode(true).firstElementChild;
     addScopeToNode(clone2, {}, el);
-    initTree(clone2);
-    mutateDom(() => el.after(clone2));
+    mutateDom(() => {
+      el.after(clone2);
+      initTree(clone2);
+    });
     el._x_currentIfEl = clone2;
     el._x_undoIf = () => {
       clone2.remove();
@@ -3042,7 +3044,12 @@ directive("if", (el, {expression}, {effect: effect3, cleanup}) => {
     };
     return clone2;
   };
-  let hide = () => el._x_undoIf?.() || delete el._x_undoIf;
+  let hide = () => {
+    if (!el._x_undoIf)
+      return;
+    el._x_undoIf();
+    delete el._x_undoIf;
+  };
   effect3(() => evaluate2((value) => {
     value ? show() : hide();
   }));

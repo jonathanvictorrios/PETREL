@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\StoreCarpetaAnioRequest;
 use App\Models\CarpetaAnio;
+use App\Models\Carrera;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 
@@ -15,7 +16,7 @@ class CarpetaAnioController extends Controller
      */
     public function index()
     {
-        $carpetaAnio = CarpetaAnio::get();
+        $carpetaAnio = CarpetaAnio::orderByDesc('numero_anio')->get();
         return view('carpetaAnio.index')->with('colCarpetasAnio',$carpetaAnio);
     }
 
@@ -53,17 +54,6 @@ class CarpetaAnioController extends Controller
     }
 
     /**
-     * solo mostramos los datos de la carpeta año
-     * @param int $idCarpetaAnio
-     * @return view carpetaAnio.show
-     */
-    /* public function show($idCarpetaAnio)
-    {
-        $carpeta = CarpetaAnio::find($idCarpetaAnio);
-        return view('carpetaAnio.show')->with('carpetaAnio',$carpeta);
-    }*/
-
-    /**
      * actualizamos el nombre de la carpeta
      * @param Request $request
      * @return view carpetaAnio.show
@@ -81,7 +71,7 @@ class CarpetaAnioController extends Controller
      * @param Request $request 
      * @return view carpetaAnio.index
      */
-    public function destroy(StoreCarpetaAnioRequest $request)
+    public function destroy(Request $request)
     {
         echo "borrado logico sobre carpeta año";
     }
@@ -100,13 +90,19 @@ class CarpetaAnioController extends Controller
 
     /**
      * cada carpeta año se encarga de crear sus carpetas carreras
+     * filtramos las opciones disponibles segun la carpeta año
      * @param int $idCarpetaAnio
      * @return view carpetaCarrera.create
      */
     public function crearCarpetaCarrera($idCarpetaAnio)
     {
-        $carpeta = CarpetaAnio::find($idCarpetaAnio);
-        return view('carpetaCarrera.create')->with('carpetaAnio',$carpeta);
+        $carpetaAnio = CarpetaAnio::find($idCarpetaAnio);
+        $existentes =[];
+        foreach($carpetaAnio->carpeta_carrera as $carpetaCarrera){
+            $existentes[]= $carpetaCarrera->id_carrera;
+        }
+        $carreras = Carrera::where('id_unidad_academica',1)->whereNotIn('id_carrera', $existentes)->get();
+        return view('carpetaCarrera.create',['carreras'=>$carreras])->with('carpetaAnio',$carpetaAnio);
     }
 
     /**
