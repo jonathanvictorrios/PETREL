@@ -125,8 +125,7 @@ $(document).ready(function() {
  */
 $('#modal_sesion_submit').on('click', function() {
     $.post({
-        url: '{{ route('
-        notada.auth ') }}',
+        url: '{{ route('notada.auth') }}',
         data: {
             '_token': '{{ csrf_token() }}',
             'contrasenia': $('#input_contrasenia').val()
