@@ -51,7 +51,6 @@
     <script src="{{ asset('js/formularios/jquery.validate.min.js') }}"></script>
     <script src="{{ asset('js/formularios/messages_es.min.js') }}"></script>
     <script src="{{ asset('js/formularios/validaciones.js') }}"></script>
-    <script src="{{ asset('js/formularios/validarClave.js') }}"></script>
 
     <button class="btn btn-secondary shadow-sm" onclick="irArriba()" id="volverArriba" title="Volver arriba"><i
             class="fas fa-chevron-up"></i></button>

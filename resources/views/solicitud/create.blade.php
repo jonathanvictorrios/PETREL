@@ -33,11 +33,11 @@
                         <div class="row justify-content-between text-left">
                             <div class="form-group col col-sm-6 flex-column d-flex py-3">
                                 <label class="form-label py-2">Nombres</label>
-                                <input class="border-0 cell" type="text" id="nombre" name="nombre" placeholder="Ingrese todos sus nombres" value="{{old('nombre')}}">
+                                <input class="border-0 cell" type="text" id="nombre" name="nombre" placeholder="Ingrese todos sus nombres" value="{{old('nombre')}}" required>
                             </div>
                             <div class="form-group col col-sm-6 flex-column d-flex py-3">
                                 <label class="form-label py-2">Apellidos</label>
-                                <input class="border-0 cell" type="text" id="apellido" name="apellido" placeholder="Ingrese todos sus apellidos" value="{{old('apellido')}}">
+                                <input class="border-0 cell" type="text" id="apellido" name="apellido" placeholder="Ingrese todos sus apellidos" value="{{old('apellido')}}" required>
                             </div>
                         </div>
                         {{-- elija unidad academica e ingrese el legajo --}}
@@ -89,7 +89,7 @@
                                         </div>
                                         <div class="form-check form-check-inline">
                                             <input class="form-check-input" type="radio" name="extranjero" id="extranjero" value="no">
-                                            <label class="form-check-label" for="extranjero">No</label>
+                                            <label class="form-check-label" for="extranjero" checked>No</label>
                                         </div>
                                     </div>
                                 </fieldset>
