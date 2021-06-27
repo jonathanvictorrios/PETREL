@@ -49,12 +49,12 @@ class HojaResumenController extends Controller
     {
         $idSolicitud = $request->idSolicitud;
         $objSolicitud = SolicitudCertProg::find($idSolicitud);
-        $objHojaResumen = HojaResumen::find($idSolicitud); //$objSolicitud->hoja_resumen;
-
-        $arregloRendimiento = json_decode(file_get_contents(storage_path('/app/') . 'id-solicitud-' . $idSolicitud . '/rendimientoAcademico' . $idSolicitud . '.json'), true);
-        $arregloRendimiento['Secretaria'] = true;
-        $pdf = PDF::loadView('rendimientoAcademico.exportarPdf', compact('arregloRendimiento'));
-
+        $objHojaResumen = HojaResumen::where('id_solicitud',$idSolicitud)->get()[0];//$objSolicitud->hoja_resumen;
+        
+        $arregloRendimiento = json_decode(file_get_contents(storage_path('/app/').'id-solicitud-'.$idSolicitud.'/rendimientoAcademico'.$idSolicitud.'.json'),true);
+        $arregloRendimiento['Secretaria']=true;
+        $pdf = PDF::loadView('rendimientoAcademico.exportarPdf',compact('arregloRendimiento'));
+        
         $contenido = $pdf->download()->getOriginalContent();
         $nombreRendimiendoPdf = 'rendimientoAcademico' . $idSolicitud . '.pdf';
 
