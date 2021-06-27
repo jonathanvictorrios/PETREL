@@ -17,7 +17,7 @@
 
     <p>¡Hola, {{ $datosMail->Nombre }}!</p>
     <p>Tu solicitud de certificación de programas, registrada bajo el número {{ $datosMail->idSolicitud }}, ha sido completada con éxito.
-        Podés consultar el estado de la solicitud cuando lo desees y descargar tu programa certificado a partir del siguiente <a class="nav-link" href="{{'#'}}">link</a>
+        Podés consultar el estado de la solicitud cuando lo desees y descargar tu certificación de programas desde este <a class="nav-link" href="{{'#'}}">link</a>
     </p>
     
     {{--  <ul>
