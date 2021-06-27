@@ -85,6 +85,7 @@ Route::get('firma', function () {
     return view('hojaResumen.secretaria');
 });
 
+
 Route::resource('notaDA', NotaDptoAlumController::class);
 Route::get('notaDA/crear/{id_solicitud}', [NotaDptoAlumController::class, 'crearNota'])->name('notaDA.crear');
 Route::post('notaDA/auth', [NotaDptoAlumController::class, 'autorizar'])->name('notada.auth');

@@ -29,7 +29,7 @@ class HojaResumen extends Model
 
     public function rendimiento_academico()
     {
-        return $this->belongsTo(RendimientoAcademico::class,'id_rendimiento_academico','id_rendimiento_academico');
+        return $this->belongsTo(RendimientoAcademico::class, 'id_rendimiento_academico', 'id_rendimiento_academico');
     }
 
     public function plan_estudio()
@@ -39,15 +39,16 @@ class HojaResumen extends Model
 
     public function nota_dpto_alum()
     {
-        return $this->belongsTo(NotaDptoAlum::class , 'id_nota_dto_alumno' , 'id_nota_dto_alumno');
+        return $this->belongsTo(NotaDptoAlum::class, 'id_nota_dto_alumno', 'id_nota_dto_alumno');
     }
 
-    public function programa_local(){
-        return $this->belongsTo(ProgramaLocal::class,'id_programa_local','id_programa_local');
-    }
-
-    public function programas()
+    public function programa_local()
     {
-        return $this->hasMany(Programa::class, 'id_hoja_resumen', 'id_hoja_resumen');
+        return $this->belongsTo(ProgramaLocal::class, 'id_programa_local', 'id_programa_local');
+    }
+
+    public function hoja_resumen_final()
+    {
+        return $this->belongsTo(HojaResumenFinal::class, 'id_hoja_resumen', 'id_hoja_resumen');
     }
 }

@@ -4,7 +4,10 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\HojaResumen;
+use App\Models\SolicitudCertProg;
+use Illuminate\Support\Facades\Storage;
 use Karriere\PdfMerge\PdfMerge;
+use PDF;
 
 class HojaResumenController extends Controller
 {
@@ -19,12 +22,44 @@ class HojaResumenController extends Controller
         $unaHojaResumen=new HojaResumen();
         $unaHojaResumen->id_solicitud=$request->idSolicitud;
         $unaHojaResumen->save();
-        return view('rendimientoAcademico.create')->with('idSolicitud',$request->idSolicitud);
+        $objSolicitud=SolicitudCertProg::find($request->idSolicitud);
+        return view('rendimientoAcademico.create')->with('solicitud',$objSolicitud);
     }
+
+    
+    public function firmaSecretaria(Request $request)
+    {
+        $idSolicitud = $request->idSolicitud;
+        $objSolicitud = SolicitudCertProg::find($idSolicitud);
+        $objHojaResumen = HojaResumen::find($idSolicitud);//$objSolicitud->hoja_resumen;
+        
+        $arregloRendimiento = json_decode(file_get_contents(storage_path('/app/').'id-solicitud-'.$idSolicitud.'/rendimientoAcademico'.$idSolicitud.'.json'),true);
+        $arregloRendimiento['Secretaria']=true;
+        $pdf = PDF::loadView('rendimientoAcademico.exportarPdf',compact('arregloRendimiento'));
+        
+        $contenido = $pdf->download()->getOriginalContent();
+        $nombreRendimiendoPdf = 'rendimientoAcademico'.$idSolicitud.'.pdf';
+        
+        //ya guardamos pdf del renidimiento academico con ambas firmas
+        Storage::disk('local')->put('id-solicitud-'.$idSolicitud.'/'.$nombreRendimiendoPdf,$contenido);
+        
+        $contenidoNotaDpto=json_decode(file_get_contents(storage_path('/app/').'id-solicitud-'.$idSolicitud.'/contenidoNotaDpto'.$idSolicitud.'.json'));
+        $objPDF = app('dompdf.wrapper')
+            ->loadView('notaDptoAlum.exportar_pdf', [
+                'contenido' => $contenidoNotaDpto->contenido,
+                'footer' => $contenidoNotaDpto->footer,
+                'firma_dpto' => $contenidoNotaDpto->firma_dpto,
+                'firma_secretaria' => 'SILVIA AMARO'
+            ]);
+        //ya guardamos pdf de la nota de departamento firmada por secretaria
+        Storage::put('id-solicitud-'.$idSolicitud.'/notaDptoAlumno'.$idSolicitud.'.pdf', $objPDF->output());
+        $this->realizarUnion($idSolicitud);
+        return view('solicitud.show',['solicitud'=>$objSolicitud]);
+    }
+
     private function realizarUnion($idSolicitud)
     {
-        /*
-        *Nombres de archivos pdf para conformar la hoja resumen: idSolicitud=6
+        /*Nombres de archivos pdf para conformar la hoja resumen: idSolicitud=6
             notaDtoAlum6.pdf
             rendimientoAcademico6.pdf
             planEstudio6.pdf
@@ -32,12 +67,10 @@ class HojaResumenController extends Controller
         */
 
         $urlPdfsLocales=[];
-        $urlPdfsLocales[]='notaDtoAlum'.$idSolicitud.'.pdf';
+        $urlPdfsLocales[]='notaDptoAlumno'.$idSolicitud.'.pdf';
         $urlPdfsLocales[]='rendimientoAcademico'.$idSolicitud.'.pdf';
         $urlPdfsLocales[]='planEstudio'.$idSolicitud.'.pdf';
         $urlPdfsLocales[]='unionProgramas'.$idSolicitud.'.pdf';
-        
-        
         
         $pdf = new PdfMerge();
         foreach($urlPdfsLocales as $unaUrl){
@@ -45,8 +78,5 @@ class HojaResumenController extends Controller
         }
         $nombre = 'hojaUnida'.$idSolicitud.'.pdf';
         $pdf->merge(storage_path().'/app/id-solicitud-'.$idSolicitud.'/'.$nombre);
-        return 'id-solicitud-'.$idSolicitud.'/'.$nombre;
     }
-    
-
 }

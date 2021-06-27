@@ -21,10 +21,10 @@ class CreateTableHojaResumenFinal extends Migration
             $table->timestamps();
 
             $table->unsignedBigInteger('id_nota_admin_central');
-            
+
 
             $table->foreign('id_nota_admin_central')->references('id_nota_admin_central')->on('nota_admin_central');
-            
+            $table->foreign('id_hoja_resumen')->references('id_hoja_resumen')->on('hoja_resumen');
         });
     }
 
