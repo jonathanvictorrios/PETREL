@@ -18,7 +18,6 @@ use App\Http\Controllers\PruebaSolicitudController;
 
 use App\Mail\mailPetrel;
 use App\Mail\mailPetrelFinalizacion;
-use Illuminate\Support\Facades\Mail;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
