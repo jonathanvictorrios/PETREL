@@ -10,6 +10,7 @@ use App\Http\Controllers\ProgramaLocalController;
 use App\Http\Controllers\RendimientoAcademicoController;
 use App\Http\Controllers\Archivo;
 use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Facades\Mail;
 use App\Http\Controllers\SolicitudCertProgController;
 use App\Mail\mailPetrelFinalizacion;
 /*
@@ -122,7 +123,8 @@ Route::get('solicitud_iniciada', function () {
 });
 Route::get('finalizacion', function () {
     $correo = new mailPetrelFinalizacion;
+
     Mail::to("gksaibot@gmail.com")->send($correo);
     //return ('Correo enviado');
-    return view('/finalizacionview');
+    return "Mensaje de finalizacion enviado";
 });
