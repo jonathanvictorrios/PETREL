@@ -24,7 +24,7 @@
                                 <input class="border-0 cell" type="text" id="nombrePrograma" name="nombrePrograma" value="{{ old('nombrePrograma') }}" placeholder="ingrese el nombre de la materia">
                             </div>
                             <div class="form-group col col-sm-6 flex-column d-flex py-3">
-                                <label class="form-label py-2">Numero Materia</label>
+                                <label class="form-label py-2">Número Materia</label>
                                 <input class="border-0 cell" type="text" id="numeroPrograma" name="numeroPrograma" value="{{ old('numeroPrograma') }}" placeholder="ingrese el numero de la materia">
                             </div>
                         </div>
