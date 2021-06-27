@@ -27,7 +27,7 @@
                         <div class="row justify-content-between text-left">
                             <div class="form-group col col-12 flex-column d-flex py-3">
                                 <h4 class="col text-center fw-bold">Se cargará el rendimiento académico para la
-                                     SOLICITUD: {{ $idSolicitud }} </h4>
+                                     SOLICITUD: {{ $solicitud->id_solicitud }} </h4>
                             </div>
                         </div>
                         <div class="row justify-content-between text-left">
@@ -36,7 +36,7 @@
                             </div>
                         </div>
                         <div class="row justify-content-center text-center py-4">
-                            <input type="hidden" id="idSolicitud" name="idSolicitud" value="{{ $idSolicitud }}">
+                            <input type="hidden" id="idSolicitud" name="idSolicitud" value="{{ $solicitud->id_solicitud }}">
                             <div class="form-group col col-sm-6">
                                 <button id="boton" name="boton" type="submit" class="botonFormulario">Enviar</button>
                             </div>

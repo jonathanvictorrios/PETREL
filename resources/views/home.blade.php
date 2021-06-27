@@ -39,10 +39,10 @@
 
     {{-- comienzo 1era.fila con tres columnas --}}
     <div class="row">
-        <div class="col-4 p-5">
+        <div class="col-lg-4 p-5 order-2 order-lg-1">
             <img src="{{ asset('img/icono_petrel.ico') }}" alt="Icono Petrel" style="min-height: 400px">
         </div>
-        <div class="col-8  mt-5 ps-5">
+        <div class="col-lg-8  order-1 order-lg-2 lg-mt-5 lg-ps-5">
             <h1 class="p-3">Petrel</h1>
             <p class="p_home ps-3">El sistema de certificación de materias <br> de la Universidad Nacional del Comahue</p>
         </div>
@@ -105,8 +105,8 @@
 <section id="p-frecuentes">
     <div class="row p-2 bg-light">
         <a name="pregfrecuentes"></a>
-        <div class="col-6 ">
-            <div class="accordion accordion-flush p-5" id="acordeon1">
+        <div class="col-lg-6 col-sm-12">
+            <div class="accordion accordion-flush p-2" id="acordeon1">
                 <div class="accordion-item row mb-1">
                     <div class="col-10">
                         <button class="botonacordeon" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseOne" aria-expanded="false" aria-controls="flush-collapseOne">
@@ -133,8 +133,8 @@
             </div>
         </div>
 
-        <div class="col-6">
-            <div class="accordion accordion-flush p-5" id="acordeon2">
+        <div class="col-lg-6 col-sm-12">
+            <div class="accordion accordion-flush p-2" id="acordeon2">
                 <div class="accordion-item row mb-1">
                     <div class="col-10 ">
                         <button class="botonacordeon" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseTwo" aria-expanded="false" aria-controls="flush-collapseTwo">
@@ -162,8 +162,8 @@
         </div>
     </div>
     <div class="row p-2 bg-light">
-        <div class="col-6">
-            <div class="accordion accordion-flush p-5" id="acordeon3">
+        <div class="col-lg-6 col-sm-12">
+            <div class="accordion accordion-flush p-2" id="acordeon3">
                 <div class="accordion-item row mb-1">
                     <div class="col-10">
                         <button class="botonacordeon" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseThree" aria-expanded="false" aria-controls="flush-collapseThree">
@@ -189,8 +189,8 @@
                 </div>
             </div>
         </div>
-        <div class="col-6">
-            <div class="accordion accordion-flush p-5" id="acordeon4">
+        <div class="col-lg-6 col-sm-12">
+            <div class="accordion accordion-flush p-2" id="acordeon4">
                 <div class="accordion-item row mb-1">
                     <div class="col-10">
                         <button class="botonacordeon" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseFour" aria-expanded="false" aria-controls="flush-collapseFour">

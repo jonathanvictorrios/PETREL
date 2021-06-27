@@ -1,5 +1,6 @@
 @extends('estructura/layout')
 @section('cuerpo')
+@include("estructura/header")
 @php($titulo = 'Rendimiento Academico - Petrel') @endphp
 
 <div class="container shadow-lg mt-5 mb-5 pb-3 bg-light rounded col-8">
