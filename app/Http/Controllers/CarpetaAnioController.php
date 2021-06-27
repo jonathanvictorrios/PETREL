@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Requests\StoreCarpetaAnioRequest;
 use App\Models\CarpetaAnio;
 use App\Models\Carrera;
 use Illuminate\Http\Request;
@@ -25,7 +24,7 @@ class CarpetaAnioController extends Controller
      * @param Request $request datos del formulario
      * @return view carpetaAnio.show
      */
-    public function store(StoreCarpetaAnioRequest $request)
+    public function store(Request $request)
     {
         Storage::disk('google')->makeDirectory($request->anio);
         $colCarpetasAnio = Storage::disk('google')->directories();//leemos todas las url donde se creo la carpeta
@@ -41,7 +40,8 @@ class CarpetaAnioController extends Controller
             'numero_anio' =>(int)$request->anio,
             'url_anio' => $urlCarpeta,
         ]);
-        return view('carpetaAnio.index');
+        $colCarpetasAnio = CarpetaAnio::get();
+        return view('carpetaAnio.index')->with('colCarpetasAnio',$colCarpetasAnio);
     }
 
     /**
@@ -63,7 +63,8 @@ class CarpetaAnioController extends Controller
         $carpetaAnio = CarpetaAnio::find($request->id_carpeta_anio);
         $carpetaAnio->numero_anio =$request->anio;
         $carpetaAnio->save();
-        return view('carpetaAnio.index');
+        $colCarpetasAnio = CarpetaAnio::get();
+        return view('carpetaAnio.index')->with('colCarpetasAnio',$colCarpetasAnio);
     }
 
     /**

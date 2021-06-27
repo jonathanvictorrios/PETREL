@@ -16,11 +16,11 @@ class CreateTableHojaResumenFinal extends Migration
         Schema::create('hoja_resumen_final', function (Blueprint $table) {
             //es hija de hoja-resumen
             $table->id('id_hoja_resumen');
-            $table->string('url_hoja_unida_final_sin_firma');
-            $table->string('url_hoja_unida_final');
+            $table->string('url_hoja_unida_final_sin_firma')->nullable();
+            $table->string('url_hoja_unida_final')->nullable();
             $table->timestamps();
 
-            $table->unsignedBigInteger('id_nota_admin_central');
+            $table->unsignedBigInteger('id_nota_admin_central')->nullable();
 
 
             $table->foreign('id_nota_admin_central')->references('id_nota_admin_central')->on('nota_admin_central');
