@@ -150,8 +150,6 @@ class SolicitudCertProgController extends Controller
         }
 
         return view('solicitud.show',compact('solicitud','iniciarTramite'));
-
-        return view('solicitud.show', compact('solicitud'));
     }
 
     /**
