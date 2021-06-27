@@ -55,14 +55,47 @@ var regexNombre = /^[a-zA-Zàáâäãåąčćęèéêëėįìíîïłńòóôö�
 /* --- Validaciones formularios --- */
 
 $(function() {
+    // Ajustes por defecto, cómo muestra errores:
+    $.validator.setDefaults({
+        errorElement: "em",
+        errorPlacement: function ( error, element ) {
+            // Add the `invalid-feedback` class to the error element
+            error.addClass("invalid-feedback");
+            error.removeClass("valid-feedback");
+
+            if ( element.prop( "type" ) === "checkbox" ) {
+                error.insertAfter( element.next( "label" ) );
+            } else {
+                error.insertAfter( element );
+            }
+        },
+        success: function(label) {
+            label.addClass("valid-feedback").text("Listo");
+            label.removeClass("invalid-feedback");
+        },
+        highlight: function ( element, errorClass, validClass ) {
+            $( element ).addClass( errorClass ).removeClass( validClass );
+        },
+        unhighlight: function (element, errorClass, validClass) {
+            $( element ).addClass( validClass ).removeClass( errorClass );
+        }
+    });
+
     // Agregar método regex al validador:
-    $.validator.addMethod(
-        "regex",
+    $.validator.addMethod( "regex",
         function(value, element, regexp) {
-        var re = new RegExp(regexp);
-        return this.optional(element) || re.test(value);
+            var re = new RegExp(regexp);
+            return this.optional(element) || re.test(value);
         },
         "Por favor, respeta el formato ingresado"
+    );
+
+    // Agregar método extensión al validador. Documentación: https://jqueryvalidation.org/extension-method/
+    $.validator.addMethod( "extension",
+        function( value, element, param ) {
+            param = typeof param === "string" ? param.replace( /,/g, "|" ) : "png|jpe?g|gif";
+            return this.optional( element ) || value.match( new RegExp( "\\.(" + param + ")$", "i" ) );
+        }, $.validator.format( "Por favor, ingresa un formato de archivo válido" )
     );
 
     $("#formCreate").validate({
@@ -113,34 +146,10 @@ $(function() {
                 minlength: "La institución debe contener al menos 2 caracteres",
                 maxlength: "El texto es demasiado largo"
             }
-        },
-        errorElement: "em",
-        errorPlacement: function ( error, element ) {
-            // Add the `invalid-feedback` class to the error element
-            error.addClass( "invalid-feedback" );
-
-            if ( element.prop( "type" ) === "checkbox" ) {
-                error.insertAfter( element.next( "label" ) );
-            } else {
-                error.insertAfter( element );
-            }
-        },
-        success: function(label) {
-            label.addClass("valid-feedback").text("Listo");
-            label.removeClass("invalid-feedback");
-        },
-        highlight: function ( element, errorClass, validClass ) {
-            $( element ).addClass( errorClass ).removeClass( validClass );
-        },
-        unhighlight: function (element, errorClass, validClass) {
-            $( element ).addClass( validClass ).removeClass( errorClass );
         }
     });
 
     $("#formRegistro").validate({
-        success: function(label) {
-            label.addClass("valid-feedback").text("Listo");
-        },
         rules: {
             nombre: {
                 required: true,
@@ -160,8 +169,8 @@ $(function() {
             },
             dni: {
                 required: true,
-                minlength: 2,
-                maxlength: 12,
+                min: 1,
+                max: 99999999,
                 digits: true
             }, /* Se usa validarClave.js
             pass: {
@@ -191,8 +200,8 @@ $(function() {
             },
             dni: {
                 required: "Debes completar el DNI",
-                minlength: "El número de DNI es demasiado corto",
-                maxlength: "El número de DNI es demasiado largo",
+                min: "El número de DNI es demasiado corto",
+                max: "El número de DNI es demasiado largo",
                 digits: "Ingresa solo números, sin puntos"
             },
             pass: {
@@ -205,26 +214,110 @@ $(function() {
                 required: "Debes completar de nuevo la contraseña",
                 equalTo: "La contraseña ingresada no coincide"
             }
-        },
-        errorElement: "em",
-        errorPlacement: function ( error, element ) {
-            // Add the `invalid-feedback` class to the error element
-            error.addClass( "invalid-feedback" );
+        }
+    });
 
-            if ( element.prop( "type" ) === "checkbox" ) {
-                error.insertAfter( element.next( "label" ) );
-            } else {
-                error.insertAfter( element );
+    $("#formExcel").validate({
+        rules: {
+            excel: {
+                required: true,
+                extension: "xls|xlsx|xlsb|xlsx|xlt|xl|xmlm|csv|ods|txt"
             }
         },
-        highlight: function ( element, errorClass, validClass ) {
-            $( element ).addClass( "is-invalid" ).removeClass( "is-valid" );
+        messages: {
+            excel: {
+                required: "Debes elegir un archivo",
+                extension: "Solo se admiten formatos de Excel y CSV"
+            }
+        }
+    });
+
+    $("#formPrograma").validate({
+        rules: {
+            nombrePrograma: {
+                required: true,
+                minlength: 3,
+                maxlength: 250
+            },
+            numeroPrograma: {
+                required: true,
+                min: 1,
+                maxlength: 250,
+                digits: true
+            },
+            pdfPrograma: {
+                required: true,
+                extension: "pdf"
+            }
         },
-        unhighlight: function (element, errorClass, validClass) {
-            $( element ).addClass( "is-valid" ).removeClass( "is-invalid" );
+        messages: {
+            nombre: {
+                required: "Debes completar el nombre del programa",
+                minlength: "El nombre debe contener al menos 3 letras",
+                maxlength: "El nombre es demasiado largo",
+                regex: "El nombre no puede contener números ni otros símbolos"
+            },
+            numeroPrograma: {
+                required: "Debes completar el número del programa",
+                min: "El número de programa debe ser entero positivo",
+                maxlength: "El número de programa es demasiado largo",
+                digits: true
+            },
+            pdfPrograma: {
+                required: "Debes elegir un archivo",
+                extension: "Solo se admiten formatos PDF"
+            }
+        }
+    });
+
+    $("#formulario_nota").validate({
+        rules: {
+            'urlRanquel[]': {
+                required: true,
+                url:  true
+            } /*, Formulario en notaDptoAlum/create - Difícil validar porque usa ckeditor y ya trae texto por defecto
+            contenido: {
+                required: true
+            },
+            footer: {
+                required: true
+            } */
+        },
+        messages: {
+            'urlRanquel[]': {
+                required: "Debes ingresar un enlace",
+                extension: "El enlace debe respetar formato URL (ej: http://ejemplo.com)"
+            }
+        }
+    });
+
+    $("#formCarpeta").validate({
+        rules: {
+            carrera: {
+                required: true,
+                minlength: 3,
+                maxlength: 250,
+                regex: regexNombre
+            },
+            anio: {
+                required: true,
+                range: [1980, 9999]
+            },
+        },
+        messages: {
+            carrera: {
+                required: "Debes completar el nombre",
+                minlength: "El nombre debe contener al menos 3 letras",
+                maxlength: "El nombre es demasiado largo",
+                regex: "El nombre no puede contener números ni otros símbolos"
+            },
+            anio: {
+                required: "Debes completar el año",
+                range: "El año debe ser de cuatro cifras"
+            },
         }
     });
 });
 
 // Para cuando se modifique algún campo, advierta antes de salir o recargar la página:
-$('#formCreate, #formRegistro').confirmarSalir('');
+$('#formCreate, #formRegistro, #formExcel, #formPrograma, #formulario_nota, #formCarpeta').confirmarSalir('');
