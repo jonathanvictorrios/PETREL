@@ -49,6 +49,7 @@
             </div>
         </div>
     </div>
+</main>
     @endsection
     {{-- @extends('estructura/layout')
 @section('cuerpo')

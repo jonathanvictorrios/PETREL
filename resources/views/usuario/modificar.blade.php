@@ -14,18 +14,19 @@
         <div class="row d-flex justify-content-center">
             <div class="col-xl-6 col-lg-6 col-md-12 col-12">
                 <div class="card card-form">
-                    <div class="row tittle border-bottom p-2">
+                    <div class="row border-bottom p-2">
                         <h2 class="col text-center fw-bold">Modificar Usuario</h2>
                     </div>
                     <form class="">
                         @csrf
                         @if ($errors->any()) {{-- Valida en servidor y regresa mostrando los siguientes errores --}}
                         <div class="alert alert-danger alert-dismissible fade show d-flex align-items-center m-3 p-3">
-                            <i class='fas fa-times-circle mx-2'></i><h5>Revisa los siguientes datos e inténtalo nuevamente</h5>
+                            <i class='fas fa-times-circle mx-2'></i>
+                            <h5>Revisa los siguientes datos e inténtalo nuevamente</h5>
                             <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
                             <ul>
                                 @foreach ($errors->all() as $error)
-                                    <li>{{ $error }}</li>
+                                <li>{{ $error }}</li>
                                 @endforeach
                             </ul>
                         </div>

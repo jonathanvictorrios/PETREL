@@ -46,4 +46,9 @@ class HojaResumen extends Model
     {
         return $this->belongsTo(ProgramaLocal::class, 'id_programa_local', 'id_programa_local');
     }
+
+    public function hoja_resumen_final()
+    {
+        return $this->belongsTo(HojaResumenFinal::class, 'id_hoja_resumen', 'id_hoja_resumen');
+    }
 }

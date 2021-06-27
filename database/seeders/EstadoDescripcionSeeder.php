@@ -15,19 +15,22 @@ class EstadoDescripcionSeeder extends Seeder
     public function run()
     {
         DB::table('estado_descripcion')->insert([
-            'descripcion'=>'Iniciado'
+            'descripcion' => 'Iniciado'
         ]);
         DB::table('estado_descripcion')->insert([
-            'descripcion'=>'Asignado'
+            'descripcion' => 'Asignado'
         ]);
         DB::table('estado_descripcion')->insert([
-            'descripcion'=>'Aguarda Firma Dpto Alumno'
+            'descripcion' => 'Aguarda Firma Dpto Alumno'
         ]);
         DB::table('estado_descripcion')->insert([
-            'descripcion'=>'Aguarda Firma Secretaria Academica'
+            'descripcion' => 'Aguarda Firma Secretaria Academica'
         ]);
         DB::table('estado_descripcion')->insert([
-            'descripcion'=>'Terminado'
+            'descripcion' => 'Aguarda Firma Santiago'
+        ]);
+        DB::table('estado_descripcion')->insert([
+            'descripcion' => 'Terminado'
         ]);
     }
 }

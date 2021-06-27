@@ -13,18 +13,19 @@
         <div class="row d-flex justify-content-center">
             <div class="col-xl-6 col-lg-6 col-md-12 col-12">
                 <div class="card card-form">
-                    <div class="row tittle border-bottom p-2">
+                    <div class="row border-bottom p-2">
                         <h2 class="col text-center fw-bold">Nueva Solicitud</h2>
                     </div>
                     <form name=formCreate id=formCreate action="route('solicitud.store')" method=POST novalidate>
                         @csrf
                         @if ($errors->any()) {{-- Valida en servidor y regresa mostrando los siguientes errores --}}
                         <div class="alert alert-danger alert-dismissible fade show d-flex align-items-center m-3 p-3">
-                            <i class='fas fa-times-circle mx-2'></i><h5>Revisa los siguientes datos e inténtalo nuevamente</h5>
+                            <i class="fas fa-times-circle mx-2"></i>
+                            <h5>Revisa los siguientes datos e inténtalo nuevamente</h5>
                             <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
                             <ul>
                                 @foreach ($errors->all() as $error)
-                                    <li>{{ $error }}</li>
+                                <li>{{ $error }}</li>
                                 @endforeach
                             </ul>
                         </div>
@@ -107,53 +108,6 @@
         </div>
     </div>
     {{-- fin formulario nueva solicitud --}}
-
-
-    {{-- <form action="{{route('solicitud.store')}}" method='POST' >
-    @csrf
-    -----------------formulario anterior-----------
-    <div class="row">
-        <div class="col col-8">
-            <label class="form-label" for="">Nombre:</label>
-            <input type="text" class='form-control' value='Nombre del Usuario Logueado' disabled>
-        </div>
-        <div class="col col-4">
-            <label class="form-label" for="">Legajo</label>
-            <input type="text" class='form-control' name='legajo'>
-        </div>
-    </div>
-
-    <div class="row">
-        <div class="col-col-12">
-            <label class="form-label" for="">Universidad Destino</label>
-            <input class='form-control' type="text" name='universidadDestino'>
-        </div>
-    </div>
-
-    <div class="row">
-        <div class="col-col-12">
-            <label class="form-label" for="">Unidad Academica</label>
-            <select class='form-control' name="unidadAcademica" id="">
-                @foreach($unidadesAcademicas as $unidad)
-                <option value="{{$unidad->id_unidad_academica}}">{{$unidad->unidad_academica}}</option>
-                @endforeach
-            </select>
-        </div>
-    </div>
-    <div class="row">
-        <div class="col-col-12">
-            <label class="form-label" for="">Carrera</label>
-            <select class='form-control' name="carrera" id="">
-                <!-- @foreach($unidadesAcademicas as $unidad)
-            <option value="{{$unidad->id_unidad_academica}}">{{$unidad->unidad_academica}}</option>
-        @endforeach -->
-            </select>
-        </div>
-    </div>
-
-    <button type='submit' class='btn btn-primary mt-2'>Enviar</button>
-    </form> --}}
-
-</main> {{-- Fin main cuerpo --}}
+</main> <!-- Fin main cuerpo -->
 
 @endsection
