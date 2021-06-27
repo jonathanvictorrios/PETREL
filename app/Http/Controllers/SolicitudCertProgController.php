@@ -10,6 +10,7 @@ use App\Models\Carrera;
 use App\Models\Estado;
 use App\Models\EstadoDescripcion;
 use App\Http\Controllers\mailPetrelController;
+use App\Models\HojaResumen;
 
 class SolicitudCertProgController extends Controller
 {
@@ -137,8 +138,18 @@ class SolicitudCertProgController extends Controller
      */
     public function show($id)
     {
-        $solicitud = SolicitudCertProg::findOrFail($id);
-        $solicitud = $this->ObtenerDatosSolicitud($solicitud);
+        $solicitud= SolicitudCertProg::findOrFail($id);
+        $solicitud=$this->ObtenerDatosSolicitud($solicitud);
+
+
+        $hojaResumen = HojaResumen::where('id_solicitud',$id)->get();
+        if(count($hojaResumen)>0){
+            $iniciarTramite = false;
+        }else{
+            $iniciarTramite = true;
+        }
+
+        return view('solicitud.show',compact('solicitud','iniciarTramite'));
 
         return view('solicitud.show', compact('solicitud'));
     }
