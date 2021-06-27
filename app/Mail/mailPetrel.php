@@ -13,8 +13,9 @@ class mailPetrel extends Mailable
 {
     use Queueable, SerializesModels;
 
-    public $subject = 'Solicitud de trámite iniciada';
+    public $subject;
     public $datosMail;
+    public $vista;
     /**
      * Create a new message instance.
      *
@@ -28,7 +29,6 @@ class mailPetrel extends Mailable
         // Se genera una nueva instancia de SolicitudCertProg y se cargan los datos:
         $datosMail = new SolicitudCertProg;
         $datosMail->idSolicitud = $id;
-
         $datosMail->Nombre = $solicitud->usuarioEstudiante->nombre;
         $datosMail->Apellido = $solicitud->usuarioEstudiante->apellido;
         $datosMail->Legajo = $solicitud->legajo;
@@ -52,6 +52,9 @@ class mailPetrel extends Mailable
      */
     public function build()
     {
-        return $this->view('emails.view');
+        //print $vista;
+        // return $this->view($vista);
+        return $this->view($this->vista);
+        
     }
 }

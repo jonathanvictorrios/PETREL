@@ -9,6 +9,7 @@ use App\Http\Controllers\ProgramaDriveController;
 use App\Http\Controllers\ProgramaLocalController;
 use App\Http\Controllers\RendimientoAcademicoController;
 use App\Http\Controllers\Archivo;
+use App\Http\Controllers\mailPetrelController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\SolicitudCertProgController;
 use Illuminate\Support\Facades\Mail;
@@ -117,19 +118,7 @@ Route::get('archivos/{id}/confirmarContrasenia', [Archivo::class, 'confirmarCont
 Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
     return view('dashboard');
 })->name('dashboard');
-Route::get('solicitud_iniciada', function () {
-    // $correo debe inicializarse con el $idSolicitud como variable
-    $idSolicitud = 3;
-    $correo = new mailPetrel($idSolicitud);
-    $datosMail = $correo->datosMail;
-    //print_r($datosMail);
-    Mail::to($datosMail->correoUsuario)->send($correo);
-    //return ('Correo enviado');
-    return view('/home');
-});
-Route::get('finalizacion', function () {
-    $correo = new mailPetrelFinalizacion;
-    Mail::to("federico.garcia@est.fi.uncoma.edu.ar")->send($correo);
-    //return ('Correo enviado');
-    return view('/home');
-});
+
+// Rutas para el envío de Mails
+Route::get('solicitud_iniciada/{idSolicitud}', [mailPetrelController::class, 'enviarMailSolicitudIniciada']);
+Route::get('finalizacion/{idSolicitud}', [mailPetrelController::class, 'enviarMailSolicitudFinalizada']);

@@ -9,6 +9,7 @@ use App\Models\Usuario;
 use App\Models\Carrera;
 use App\Models\Estado;
 use App\Models\EstadoDescripcion;
+use App\Http\Controllers\mailPetrelController;
 
 class SolicitudCertProgController extends Controller
 {
@@ -109,6 +110,9 @@ class SolicitudCertProgController extends Controller
         $estado->id_usuario = null;
         $estado->updated_at = null;
         $estado->save();
+
+        $controlMail = new mailPetrelController;
+        $controlMail->enviarMailSolicitudIniciada($solicitud->id_solicitud);
         
         $solicitudes=SolicitudCertProg::all();//NECESITO RECUPERAR TODAS LAS SOLICITUDES PORQUE VUELVO EL RETORNO A LA VISTA.
                                               // SI EL RETORNO NO ES HACIA solicitud.index puede sacarse
@@ -279,6 +283,8 @@ class SolicitudCertProgController extends Controller
         $estadoController->cambiarEstado($solicitud,$usuarioAdministrativo,$estadoDescripcion);
 
         $solicitud->save();
+        $controlMail = new mailPetrelController;
+        $controlMail->enviarMailSolicitudFinalizada($solicitud->id_solicitud);    
 
     }
 
