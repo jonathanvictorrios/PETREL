@@ -11,7 +11,7 @@ class SolicitudCertProg extends Model
 
     protected $table = 'solicitud_cert_prog';
     protected $primaryKey = 'id_solicitud';
-    protected $fillable = array('id_usuario_estudiante', 'id_user_u', 'id_carrera', 'legajo', 'universidad_destino');
+    protected $fillable = array('id_usuario_estudiante', 'id_user_u','id_carrera', 'legajo', 'universidad_destino','extranjero');
 
     protected $hidden = ['created_at', 'updated_at'];
 
@@ -27,19 +27,20 @@ class SolicitudCertProg extends Model
 
     public function carrera()
     {
-        return $this->hasOne(Carrera::class, 'id_carrera', 'id_carrera');
+        return $this->hasOne(Carrera::class,'id_carrera','id_carrera');
     }
 
     public function usuarioEstudiante()
     {
-        return $this->belongsTo(Usuario::class, 'id_usuario_estudiante', 'id_usuario');
+        return $this->belongsTo(Usuario::class,'id_usuario_estudiante');
     }
     public function usuarioAdministrativo()
     {
         return $this->belongsTo(Usuario::class, 'id_user_u', 'id_usuario');
     }
+
     public function comentario()
     {
-        return $this->hasMany(Comentario::class, 'id_comentario', 'id_comentario');
+        return $this->hasMany(Comentario::class);
     }
 }

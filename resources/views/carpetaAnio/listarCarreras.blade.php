@@ -5,8 +5,8 @@
 
 @if (session('mensaje') ) {{-- Aviso de carpeta creada (u otra notificación desde controller) --}}
 <div class="alert alert-success alert-dismissible fade show d-flex align-items-center m-3 p-3">
-  <i class='fas fa-check-circle mx-2'></i>{{ session('mensaje') }}
-  <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    <i class='fas fa-check-circle mx-2'></i>{{ session('mensaje') }}
+    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
 </div>
 @endif
 
@@ -24,12 +24,12 @@
     </thead>
     <tbody>
         @foreach ($carpetaAnio->carpeta_carrera as $carrera)
-            <tr>
-                <td>{{ $carrera->carrera->carrera }}</td>
-                <td>
-                    <a href=" {{ route('verProgramas',$carrera->id_carpeta_carrera) }} ">Ver programas</a>
-                </td>
-            </tr>
+        <tr>
+            <td>{{ $carrera->carrera->carrera }}</td>
+            <td>
+                <a href=" {{ route('verProgramas',$carrera->id_carpeta_carrera) }} ">Ver programas</a>
+            </td>
+        </tr>
         @endforeach
     </tbody>
 </table>
