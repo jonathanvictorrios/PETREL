@@ -12,12 +12,13 @@ class ComentarioController extends Controller
     
     public function store(Request $request)
     {
-        //print_r($request);
+        //ddd($request);
         $comentarioNuevo = new Comentario;
         $comentarioNuevo->descripcion = $request->mensaje;
         $comentarioNuevo->id_usuario = $request->idUsuario;
         $comentarioNuevo->id_solicitud = $request->idSolicitud;
         $comentarioNuevo->save();
+        return back();
     }
 
     // Retorna una arreglo con la información del mensaje
