@@ -150,8 +150,7 @@ class SolicitudCertProgController extends Controller
             $iniciarTramite = true;
         }
 
-        return view('solicitud.show',compact('solicitud','iniciarTramite'));
-
+        
         $solicitud = SolicitudCertProg::findOrFail($id);
         $solicitud = $this->ObtenerDatosSolicitud($solicitud);
         
@@ -160,8 +159,9 @@ class SolicitudCertProgController extends Controller
         {
             $solicitud->comentarios = $coleccionComentarios;
         }
-
-        return view('solicitud.show', compact('solicitud'));
+        // dd($coleccionComentarios);
+        // return view('solicitud.show', compact('solicitud'));
+        return view('solicitud.show',compact('solicitud','iniciarTramite'));
     }
 
     /**
