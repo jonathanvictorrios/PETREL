@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use App\Models\Comentario;
 
 class SolicitudCertProg extends Model
 {
@@ -22,7 +23,13 @@ class SolicitudCertProg extends Model
 
     public function estados()
     {
+
         return $this->hasMany(Estado::class, 'id_solicitud', 'id_solicitud');
+    }
+
+    public function comentarios()
+    {
+        return $this->hasMany(Comentario::class, 'id_solicitud', 'id_solicitud');
     }
 
     public function carrera()

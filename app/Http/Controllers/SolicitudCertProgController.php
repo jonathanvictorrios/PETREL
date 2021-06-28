@@ -11,6 +11,7 @@ use App\Models\Estado;
 use App\Models\EstadoDescripcion;
 use App\Http\Controllers\mailPetrelController;
 use App\Models\HojaResumen;
+use App\Models\Comentario;
 
 class SolicitudCertProgController extends Controller
 {
@@ -150,6 +151,13 @@ class SolicitudCertProgController extends Controller
         }
 
         return view('solicitud.show',compact('solicitud','iniciarTramite'));
+
+        $solicitud = SolicitudCertProg::findOrFail($id);
+        $solicitud = $this->ObtenerDatosSolicitud($solicitud);
+        
+        $coleccionComentarios = Comentario::find($id)->get();
+        $solicitud->comentarios = $coleccionComentarios;
+        return view('solicitud.show', compact('solicitud'));
     }
 
     /**

@@ -11,9 +11,9 @@ class Comentario extends Model
 
     protected $table = 'comentario';
     protected $primaryKey = 'id_comentario';
-    protected $fillable = array('descripcion', 'id_solicitud', 'id_usuario');
+    protected $fillable = array('descripcion', 'id_solicitud', 'id_usuario', 'created_at');
 
-    protected $hidden = ['created_at', 'updated_at'];
+    protected $hidden = ['updated_at'];
 
     public function solicitudCertProg()
     {
