@@ -32,7 +32,7 @@ class AuthServiceProvider extends ServiceProvider
         Gate::define('manage-users', function (User $user) {
             return $user->role_id == 1;
         }); */
-        $user = $this->user;
+        /* $user = $this->user;
         $permisos = Permission::All();
         $roles = Role::get($user->id)->toArray();
 
@@ -42,6 +42,6 @@ class AuthServiceProvider extends ServiceProvider
                     return $role->id == $permiso->role_id;        
                 });  
             }            
-        }
+        } */
     }
 }
