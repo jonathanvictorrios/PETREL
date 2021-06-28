@@ -194,15 +194,16 @@
                                     <div class="row d-flex justify-content-center">
                                         <div class="col">
                                             <div class="card card-form">
-                                                <form class="" method="GET" action="{{ route('comentario.store') }}">
+                                                <form class="" method="POST" action="{{ route('comentario.store') }}">
+                                                    @csrf
                                                     <div class="row justify-content-between text-left">
                                                         <div class="form-group col-12 flex-column d-flex py-3">
                                                             <input class="border-0 cell" type="text" id="mensaje"
                                                                 name="mensaje" placeholder="Ingrese el mensaje">
-                                                            <input type="text" hidden id="idUsuario"
+                                                            <input type="text" hidden id="idUsuario" name="idUsuario"
                                                                 value="{{ $estado->usuario->id_usuario }}">
-                                                            <input type="text" hidden id="idUsuario"
-                                                                value="{{ $estado->usuario->id_usuario }}">
+                                                            <input type="text" hidden id="idSolicitud" name="idSolicitud"
+                                                                value="{{ $estado->id_solicitud }}">
                                                         </div>
                                                         <div class="row justify-content-center text-center py-4">
                                                             <div class="form-group col-sm-6">
@@ -219,20 +220,20 @@
                         </div>
                     </div>
                 </div>
-                {{-- fin modal --}}
-                <div class="row justify-content-center ">
-                    <div class="col-6 p-2 m-2">
-                        {{-- ESTE FORM/BOTÒN DEBERIA SER VISIBLE SÒLO SI EL USUARIO ASIGNADO ES EL USUARIO LOGUEADO --}}
-                        <form action="{{ route('hojaResumen.store') }}" method="POST" autocomplete="off"
-                            enctype="multipart/form-data">
-                            @csrf
-                            {{-- aca voy a recibir el $idSolicitud , por ahora utilizo un input , luego este $idSolicitud estara en un campo oculto --}}
-                            <input type="hidden" id="idSolicitud" name="idSolicitud"
-                                value="{{ $solicitud->idSolicitud }}">
-                            <input type="submit" class="botonFormulario" value="comenzar trámite">
-                        </form>
-                    </div>
+            </div>
+            {{-- fin modal --}}
+            <div class="row justify-content-center ">
+                <div class="col-6 p-2 m-2">
+                    {{-- ESTE FORM/BOTÒN DEBERIA SER VISIBLE SÒLO SI EL USUARIO ASIGNADO ES EL USUARIO LOGUEADO --}}
+                    <form action="{{ route('hojaResumen.store') }}" method="POST" autocomplete="off"
+                        enctype="multipart/form-data">
+                        @csrf
+                        {{-- aca voy a recibir el $idSolicitud , por ahora utilizo un input , luego este $idSolicitud estara en un campo oculto --}}
+                        <input type="hidden" id="idSolicitud" name="idSolicitud" value="{{ $solicitud->idSolicitud }}">
+                        <input type="submit" class="botonFormulario" value="comenzar trámite">
+                    </form>
                 </div>
-            </div> {{-- Fin div Actividad --}}
+            </div>
+        </div> {{-- Fin div Actividad --}}
     </main> {{-- Fin main cuerpo --}}
-    @endsection
+@endsection

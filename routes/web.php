@@ -73,7 +73,7 @@ Route::get('solicitud/{idSolicitud}/terminar/{idAdministrativo}', [SolicitudCert
 
 // CRUD:
 Route::resource('solicitud', SolicitudCertProgController::class);
-Route::get('comentario', [ComentarioController::class, 'store']);
+Route::post('comentario', [ComentarioController::class, 'store'])->name('comentario.store');
 
 Route::resource('carpeta/anio', CarpetaAnioController::class);
 Route::get('buscarCarreras/{anio}', [CarpetaAnioController::class, 'buscarCarreras'])->name('buscarCarreras');
