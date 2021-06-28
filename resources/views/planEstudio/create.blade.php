@@ -20,10 +20,10 @@
     <h2 class="text-center cell p-3 m-3">Seleccionar Plan de Estudios</h2>
 
     @isset($url_ranquel)
-    <div class=" row col-12 text-center" >   
+    <div class="col-12">   
         Se encontraron como posibles archivos las siguientes:
         </div>
-        <div class="row col-12 alert alert-dark mb-5" role="alert">
+        <div class="col-12 alert alert-dark mb-5 overflow-hidden" role="alert">
         <ul>
             @foreach ($url_ranquel as $url)
             
@@ -33,7 +33,7 @@
         </ul>
     </div>
     @endisset
-    <div class="col-12 text-center" >   
+    <div class="col-12" >   
         Información académica:
         </div>
     <div class=" col-12 alert alert-secondary mb-5" role="alert">
@@ -48,8 +48,8 @@
 
     <div class="form-group">
         <label class="text-center"><strong>Modifica la url si no es correcta.</strong></label>
-        <div id="inputs_contenedor">
-            <input type="text" name="urlRanquel[]" class="form-control" value="{{ end($url_ranquel) }}" placeholder="Ingresa URL de archivo en Ranquel..">
+        <div id="inputs_contenedor" class="">
+            <input type="text" name="urlRanquel[]" class="form-control" value="{{ end($url_ranquel) }}" placeholder="Ingresa URL de archivo en Ranquel.">
         </div>
         <a href="" onclick="agregarInput()" id="btn_nuevo_input">+ agregar otro</a>
     </div>

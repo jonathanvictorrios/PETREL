@@ -202,7 +202,6 @@
             </div>
         </div>
     </div>
-
     <script>
         $("#answer1").click(function() {
             $(this).toggleClass("fas fa-plus-square fas fa-minus-square");
