@@ -257,9 +257,12 @@ input[type="file"]::file-selector-button:hover {
 }
 
 /*---------- SHOW SOLICITUD COMENTARIOS ----------*/
-
-.acordeonComentarios {
+.acordeonComentarios{
+    max-height: 200px;
+}
+.botonAcordeonComentarios {
     background-color: var(--color-gris);
+    
 }
 
 /*---------- FORMULARIOS ----------*/

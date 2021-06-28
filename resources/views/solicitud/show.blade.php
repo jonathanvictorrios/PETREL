@@ -11,47 +11,47 @@
         </div>
         {{-- inicion mostrar solicitud --}}
         <div class="container-fluid p-1 mx-auto">
-            <div class="row d-flex justify-content-center">
-                <div class="col-md-8 col-12">
+            <div class="row d-flex justify-content-center  ">
+                <div class="col-md-8 col-12 ">
                     <div class="card card-form bg-light">
-                        <div class="card-header p-1 bg-light cell mb-3">
+                        <div class="card-header p-1 bg-light cell mb-3 ">
                             <h2 class="text-center fw-bold">Detalles de Solicitud {{ $solicitud->idSolicitud }}</h2>
                         </div>
                         {{-- fecha --}}
                         <div class="row justify-content-between text-left ">
-                            <p class=" "><span class="text-secondary fs-5">Fecha de Inicio: </span>
+                            <p class=" "><span class="text-secondary ">Fecha de Inicio: </span>
                                 {{ $solicitud->FechaUltimoEstado }}
                             </p>
                         </div>
                         {{-- estado --}}
                         <div class="row justify-content-between text-left ">
-                            <p class=" "><span class="text-secondary fs-5">Estado: </span> {{ $solicitud->UltimoEstado }}
+                            <p class=" "><span class="text-secondary ">Estado: </span> {{ $solicitud->UltimoEstado }}
                             </p>
                         </div>
 
                         {{-- nombres y apellidos --}}
                         <div class="row justify-content-between text-left">
-                            <p class=" "><span class="text-secondary fs-5">Solicitante: </span>
+                            <p class=" "><span class="text-secondary ">Solicitante: </span>
                                 {{ $solicitud->UsuarioEstudiante }}
                             </p>
                         </div>
                         {{-- legajo --}}
                         <div class="row justify-content-between text-left ">
-                            <p class=" "><span class="text-secondary fs-5">Legajo: </span> {{ $solicitud->Legajo }}</p>
+                            <p class=" "><span class="text-secondary ">Legajo: </span> {{ $solicitud->Legajo }}</p>
                         </div>
                         {{-- unidad academica --}}
                         <div class="row justify-content-between text-left">
-                            <p class=" "><span class="text-secondary fs-5">Unidad Académica: </span>
+                            <p class=" "><span class="text-secondary">Unidad Académica: </span>
                                 {{ $solicitud->UnidadAcademica }}
                             </p>
                         </div>
                         {{-- carrera --}}
                         <div class="row justify-content-between text-left ">
-                            <p class=" "><span class="text-secondary fs-5">Carrera: </span> {{ $solicitud->Carrera }}</p>
+                            <p class=" "><span class="text-secondary">Carrera: </span> {{ $solicitud->Carrera }}</p>
                         </div>
                         {{-- universidad de destino --}}
                         <div class="row justify-content-center text-left">
-                            <p class=" "><span class="text-secondary fs-5">Institución Educativa de Destino: </span>
+                            <p class=" "><span class="text-secondary">Institución Educativa de Destino: </span>
                                 {{ $solicitud->UniversidadDestino }}
                             </p>
                         </div>
@@ -76,47 +76,47 @@
                             <h2 class="text-center fw-bold">Detalles de Solicitud {{ $solicitud->idSolicitud }}</h2>
                         </div>
                         {{-- fecha --}}
-                        <div class="row justify-content-between text-left ">
-                            <p class=" "><span class="text-secondary fs-5">Fecha de Inicio: </span>
+                        <div class="row justify-content-between text-left">
+                            <p class=" "><span class="text-secondary">Fecha de Inicio: </span>
                                 {{ $solicitud->FechaUltimoEstado }}
                             </p>
                         </div>
                         {{-- estado --}}
-                        <div class="row justify-content-between text-left ">
-                            <p class=" "><span class="text-secondary fs-5">Estado: </span> {{ $solicitud->UltimoEstado }}
+                        <div class="row justify-content-between text-left">
+                            <p class=" "><span class="text-secondary">Estado: </span> {{ $solicitud->UltimoEstado }}
                             </p>
                         </div>
 
                         {{-- nombres y apellidos --}}
                         <div class="row justify-content-between text-left">
-                            <p class=" "><span class="text-secondary fs-5">Solicitante: </span>
+                            <p class=" "><span class="text-secondary ">Solicitante: </span>
                                 {{ $solicitud->UsuarioEstudiante }}
                             </p>
                         </div>
                         {{-- legajo --}}
                         <div class="row justify-content-between text-left ">
-                            <p class=" "><span class="text-secondary fs-5">Legajo: </span> {{ $solicitud->Legajo }}</p>
+                            <p class=" "><span class="text-secondary">Legajo: </span> {{ $solicitud->Legajo }}</p>
                         </div>
                         {{-- unidad academica --}}
-                        <div class="row justify-content-between text-left">
-                            <p class=" "><span class="text-secondary fs-5">Unidad Académica: </span>
+                        <div class="row justify-content-between text-left ">
+                            <p class=" "><span class="text-secondary">Unidad Académica: </span>
                                 {{ $solicitud->UnidadAcademica }}
                             </p>
                         </div>
                         {{-- carrera --}}
                         <div class="row justify-content-between text-left ">
-                            <p class=" "><span class="text-secondary fs-5">Carrera: </span> {{ $solicitud->Carrera }}</p>
+                            <p class=" "><span class="text-secondary">Carrera: </span> {{ $solicitud->Carrera }}</p>
                         </div>
                         {{-- universidad de destino --}}
                         <div class="row justify-content-center text-left">
-                            <p class=" "><span class="text-secondary fs-5">Institución Educativa de Destino: </span>
+                            <p class=" "><span class="text-secondary">Institución Educativa de Destino: </span>
                                 {{ $solicitud->UniversidadDestino }}
                             </p>
                         </div>
                         {{-- asignado a --}}
                         <div class="row justify-content-center text-left">
                             <div class="col-12">
-                                <p class=" "><span class="text-secondary fs-5">Solicitud asignada a: </span></p>
+                                <p class=" "><span class="text-secondary">Solicitud asignada a: </span></p>
                             </div>
                             {{-- ACÀ DEBE TOMAR EL NOMBRE DE PERSONA ASIGNADA mostrarlo y guardarlo en base de datos --}}
                             {{-- dejo este select como muestra visual, 
@@ -145,7 +145,7 @@
                                     <div class="accordion-item mt-4">
 
                                         <button
-                                            class="accordion-button collapsed justify-content-center acordeonComentarios"
+                                            class="accordion-button collapsed justify-content-center botonAcordeonComentarios"
                                             type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne"
                                             aria-expanded="true" aria-controls="collapseOne">
                                             <h2 class="align-self-center" id="headingOne"> Actividad </h2>
@@ -153,7 +153,7 @@
 
                                         <div id="collapseOne" class="accordion-collapse collapse justify-content-center"
                                             aria-labelledby="headingOne" data-bs-parent="#acordeonComentarios">
-                                            <div class="accordion-body  d-flex justify-content-center">
+                                            <div class="accordion-body  d-flex justify-content-center acordeonComentarios">
                                                 <div class="table-responsive col-12 mx-3">
                                                     <table
                                                         class="table table-striped table-hover align-middle table-borderless">
@@ -233,39 +233,39 @@
                         </div>
                         {{-- fecha --}}
                         <div class="row justify-content-between text-left ">
-                            <p class=" "><span class="text-secondary fs-5">Fecha de Inicio: </span>
+                            <p class=" "><span class="text-secondary">Fecha de Inicio: </span>
                                 {{ $solicitud->FechaUltimoEstado }}
                             </p>
                         </div>
                         {{-- estado --}}
                         <div class="row justify-content-between text-left ">
-                            <p class=" "><span class="text-secondary fs-5">Estado: </span> {{ $solicitud->UltimoEstado }}
+                            <p class=" "><span class="text-secondary">Estado: </span> {{ $solicitud->UltimoEstado }}
                             </p>
                         </div>
 
                         {{-- nombres y apellidos --}}
                         <div class="row justify-content-between text-left">
-                            <p class=" "><span class="text-secondary fs-5">Solicitante: </span>
+                            <p class=" "><span class="text-secondary">Solicitante: </span>
                                 {{ $solicitud->UsuarioEstudiante }}
                             </p>
                         </div>
                         {{-- legajo --}}
                         <div class="row justify-content-between text-left ">
-                            <p class=" "><span class="text-secondary fs-5">Legajo: </span> {{ $solicitud->Legajo }}</p>
+                            <p class=" "><span class="text-secondary">Legajo: </span> {{ $solicitud->Legajo }}</p>
                         </div>
                         {{-- unidad academica --}}
                         <div class="row justify-content-between text-left">
-                            <p class=" "><span class="text-secondary fs-5">Unidad Académica: </span>
+                            <p class=" "><span class="text-secondary">Unidad Académica: </span>
                                 {{ $solicitud->UnidadAcademica }}
                             </p>
                         </div>
                         {{-- carrera --}}
                         <div class="row justify-content-between text-left ">
-                            <p class=" "><span class="text-secondary fs-5">Carrera: </span> {{ $solicitud->Carrera }}</p>
+                            <p class=" "><span class="text-secondary">Carrera: </span> {{ $solicitud->Carrera }}</p>
                         </div>
                         {{-- universidad de destino --}}
                         <div class="row justify-content-center text-left">
-                            <p class=" "><span class="text-secondary fs-5">Institución Educativa de Destino: </span>
+                            <p class=" "><span class="text-secondary">Institución Educativa de Destino: </span>
                                 {{ $solicitud->UniversidadDestino }}
                             </p>
                         </div>
@@ -276,7 +276,7 @@
                                     <div class="accordion-item mt-4">
 
                                         <button
-                                            class="accordion-button collapsed justify-content-center acordeonComentarios"
+                                            class="accordion-button collapsed justify-content-center botonAcordeonComentarios"
                                             type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne"
                                             aria-expanded="true" aria-controls="collapseOne">
                                             <h2 class="align-self-center" id="headingOne"> Actividad </h2>
@@ -284,7 +284,7 @@
 
                                         <div id="collapseOne" class="accordion-collapse collapse justify-content-center"
                                             aria-labelledby="headingOne" data-bs-parent="#acordeonComentarios">
-                                            <div class="accordion-body  d-flex justify-content-center">
+                                            <div class="accordion-body  d-flex justify-content-center acordeonComentarios">
                                                 <div class="table-responsive col-12 mx-3">
                                                     <table
                                                         class="table table-striped table-hover align-middle table-borderless">
@@ -372,50 +372,50 @@
                         </div>
                         {{-- fecha --}}
                         <div class="row justify-content-between text-left ">
-                            <p class=" "><span class="text-secondary fs-5">Fecha de Inicio: </span>
+                            <p class=" "><span class="text-secondary">Fecha de Inicio: </span>
                                 {{ $solicitud->FechaUltimoEstado }}
                             </p>
                         </div>
                         {{-- estado --}}
                         <div class="row justify-content-between text-left ">
-                            <p class=" "><span class="text-secondary fs-5">Estado: </span> {{ $solicitud->UltimoEstado }}
+                            <p class=" "><span class="text-secondary">Estado: </span> {{ $solicitud->UltimoEstado }}
                             </p>
                         </div>
 
                         {{-- nombres y apellidos --}}
                         <div class="row justify-content-between text-left">
-                            <p class=" "><span class="text-secondary fs-5">Solicitante: </span>
+                            <p class=" "><span class="text-secondary">Solicitante: </span>
                                 {{ $solicitud->UsuarioEstudiante }}
                             </p>
                         </div>
                         {{-- legajo --}}
                         <div class="row justify-content-between text-left ">
-                            <p class=" "><span class="text-secondary fs-5">Legajo: </span> {{ $solicitud->Legajo }}</p>
+                            <p class=" "><span class="text-secondary">Legajo: </span> {{ $solicitud->Legajo }}</p>
                         </div>
                         {{-- unidad academica --}}
                         <div class="row justify-content-between text-left">
-                            <p class=" "><span class="text-secondary fs-5">Unidad Académica: </span>
+                            <p class=" "><span class="text-secondary">Unidad Académica: </span>
                                 {{ $solicitud->UnidadAcademica }}
                             </p>
                         </div>
                         {{-- carrera --}}
                         <div class="row justify-content-between text-left ">
-                            <p class=" "><span class="text-secondary fs-5">Carrera: </span> {{ $solicitud->Carrera }}</p>
+                            <p class=" "><span class="text-secondary">Carrera: </span> {{ $solicitud->Carrera }}</p>
                         </div>
                         {{-- universidad de destino --}}
                         <div class="row justify-content-center text-left">
-                            <p class=" "><span class="text-secondary fs-5">Institución Educativa de Destino: </span>
+                            <p class=" "><span class="text-secondary">Institución Educativa de Destino: </span>
                                 {{ $solicitud->UniversidadDestino }}
                             </p>
                         </div>
                         {{-- Comienzo div Actividad (mostrar como acordeón) --}}
                         <div class="row d-flex justify-content-center">
                             <div class="col-12  p-2">
-                                <div class="accordion scroll" id="acordeonComentarios">
+                                <div class="accordion" id="acordeonComentarios">
                                     <div class="accordion-item mt-4">
 
                                         <button
-                                            class="accordion-button collapsed justify-content-center acordeonComentarios"
+                                            class="accordion-button collapsed justify-content-center botonAcordeonComentarios"
                                             type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne"
                                             aria-expanded="true" aria-controls="collapseOne">
                                             <h2 class="align-self-center" id="headingOne"> Actividad </h2>
@@ -423,7 +423,7 @@
 
                                         <div id="collapseOne" class="accordion-collapse collapse justify-content-center"
                                             aria-labelledby="headingOne" data-bs-parent="#acordeonComentarios">
-                                            <div class="accordion-body  d-flex justify-content-center">
+                                            <div class="accordion-body  d-flex justify-content-center acordeonComentarios">
                                                 <div class="table-responsive col-12 mx-3">
                                                     <table
                                                         class="table table-striped table-hover align-middle table-borderless">
