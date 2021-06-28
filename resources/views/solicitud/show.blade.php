@@ -57,6 +57,7 @@
                         </div>
                     </div>
                     <div class="row">
+                    @if($solicitud->hoja_resumen_final != null)
                         @if($solicitud->hoja_resumen_final->url_hoja_unida_final_sin_firma == null)
                         <div class="col-3"><a class="btn btn-primary disabled" href="{{ route('archivos.downloadSinFirma',$solicitud->idSolicitud) }}">Descargar
                                 documento sin firmar</a>
@@ -109,6 +110,7 @@
                             </div>
                         </form>
                         @endif
+                    @endif
                     </div>
                 </div>
             </div>

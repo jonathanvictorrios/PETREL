@@ -124,7 +124,7 @@ $(document).ready(function() {
      */
     $('.ckeditor').ckeditor();
 });
-
+    
     /*
     * Este método es temporal para mostrar el uso de la aplicación
     * Donde el usuario debe confirmar su contraseña (autenticarse en el sistema)
@@ -132,7 +132,7 @@ $(document).ready(function() {
     */
     $('#modal_sesion_submit').on('click', function () {
         $.post({
-            url: '{{ route('notada.auth') }}',
+            url: "{{ route('notada.auth') }}",
             data: {
                 '_token': '{{ csrf_token() }}',
                 'contrasenia': $('#input_contrasenia').val()
@@ -146,7 +146,6 @@ $(document).ready(function() {
             }
         });
     });
-});
 </script>
 </div>
 @endsection
