@@ -25,7 +25,7 @@
                     </div>
                     {{-- estado --}}
                     <div class="row justify-content-between text-left ">
-                        <p class=" "><span class="text-secondary fs-5">Estado: </span> en progreso{{-- ACÀ DEBE IR ESTADO DE ESTUDIANTE{{$solicitud->UltimoEstado}}</p> --}}
+                        <p class=" "><span class="text-secondary fs-5">Estado: </span> {{$solicitud->UltimoEstado}}</p>
                     </div>
 
                     {{-- nombres y apellidos --}}
@@ -82,9 +82,8 @@
                     </div>
                     {{-- estado --}}
                     <div class="row justify-content-between text-left ">
-                        <p class=" "><span class="text-secondary fs-5">Estado: </span> Iniciado
-                            {{-- ACÀ DEBE IR ESTADO DE SOLICITUD NO ASIGNACIÒN{{$solicitud->UltimoEstado}}
-                        </p> --}}
+                        <p class=" "><span class="text-secondary fs-5">Estado: </span> {{$solicitud->UltimoEstado}}
+                        </p> 
                     </div>
 
                     {{-- nombres y apellidos --}}
@@ -115,53 +114,84 @@
                     </div>
                     {{-- asignado a --}}
                     <div class="row justify-content-center text-left">
-                        <div class="col-6">
-                            <p class=" "><span class="text-secondary fs-5">Asignado a: </span> Viviana Pedrero
-                                {{-- ACÀ DEBE TOMAR EL NOMBRE DE PERSONA ASIGNADA --}}
-                            </p>
+                        <div class="col-12">
+                            <p class=" "><span class="text-secondary fs-5">Solicitud asignada a: </span></p>
+                        </div>   
+                       {{-- ACÀ DEBE TOMAR EL NOMBRE DE PERSONA ASIGNADA mostrarlo y guardarlo en base de datos--}}       
+                        {{-- dejo este select como muestra visual, 
+                        hay que eliminarlo al hacer el real de arriba --}}
+                        <form action="" method="">
+                            <div class="col-12">  
+                            <select class="btn botonFormulario3 w-100 " name="">
+                                <option value="0">Elegir Persona</option>
+                                        <option value="1">Mario Domini</option>
+                                        <option value="2">Rosa Piper</option>
+                                        <option value="3">Catalina Blum</option>
+                                        <option value="4">Ricardo Ford</option>
+                                </select>
+                                <br>
                         </div>
-                        <div class="col-6">
-                            <button class=" botonFormulario">cambiar asignación </button> {{-- ACÀ abre pag de asignaciòn o lo convertimos en un form con un select de admin? --}}</p>
+                        <div class="col-12 mt-2">
+                            <button type="submit" class=" botonFormulario2">Asignar/cambiar asignación </button> {{-- botòn que guarda en la base --}}</p>
                         </div>
+                        </form>
+                    </div>
+                
+       
+    
+
+     {{-- Comienzo div Actividad (mostrar como acordeón) --}}
+         <div class="row d-flex justify-content-center">
+             <div class="col-12  p-2">
+                <div class="accordion" id="acordeonComentarios">
+                    <div class="accordion-item mt-4">
+                        
+                        <button class="accordion-button collapsed justify-content-center acordeonComentarios" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">   
+                            <h2 class="align-self-center" id="headingOne"> Actividad </h2>
+                        </button>
+                    
+                      <div id="collapseOne" class="accordion-collapse collapse justify-content-center" aria-labelledby="headingOne" data-bs-parent="#acordeonComentarios">
+                        <div class="accordion-body  d-flex justify-content-center">
+                            <div class="table-responsive col-12 mx-3">
+                                <table class="table table-striped table-hover align-middle table-borderless">
+                                    <thead class="border-bottom">
+                                        <tr>
+                                            <th scope="col" class="p-2 text-center">Fecha</th>
+                                            <th scope="col" class="p-2 text-center">Usuario</th>
+                                            <th scope="col" class="p-2 text-center">Detalle</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td class="p-2">12/05/2021</td>
+                                            <td class="p-2">Viviana Pedrero</td> 
+                                            <td class="p-2">asignado a Raquel sdhakshaksdas dbahsbdhamsbdasbdjasbdajsdbaksdhakhs dbahmsdbahmsdbahmsbdamsbdamhsbdahsbfkhasbfhasfbmahsfbamsfbamhsbfmhasfaf</td>
+                                        </tr>
+                                       
+                                        <tr>
+                                            <td class="p-2">12/05/2021</td>
+                                            <td class="p-2">Viviana Pedrero</td> 
+                                            <td class="p-2">asignado a Raquel sdhakshaksdas dbahsbdhamsbdasbdjasbdajsdbaksdhakhs dbahmsdbahmsdbahmsbdamsbdamhsbdahsbfkhasbfhasfbmahsfbamsfbamhsbfmhasfaf</td>
+                                        </tr>
+                                      
+                                        <tr>
+                                            <td class="p-2">12/05/2021</td>
+                                            <td class="p-2">Viviana Pedrero</td> 
+                                            <td class="p-2">asignado a Raquel sdhakshaksdas dbahsbdhamsbdasbdjasbdajsdbaksdhakhs dbahmsdbahmsdbahmsbdamsbdamhsbdahsbfkhasbfhasfbmahsfbamsfbamhsbfmhasfaf</td>
+                                        </tr>
+                                    </tbody>
+                                </table>                        
+                        </div>
+                      </div>
                     </div>
                 </div>
             </div>
-        </div>
-    </div>
+        </div> 
+    </div> {{-- Fin div Actividad --}}
 
-    <div class="container-fluid p-1 mx-auto"> {{-- Comienzo div Actividad (mostrar como acordeón) --}}
-        <div class="cp-1 cell my-3">
-            <h2 class="text-center fw-bold">Actividad </h2>
-        </div>
-        <table class="table table-borderless">
-            <thead class="border-bottom">
-                <tr>
-                    <th scope="col">Fecha</th>
-                    <th scope="col">Usuario</th>
-                    <th scope="col">Detalle</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td>12/05/2021</td>
-                    <td>Viviana Pedrero</td>
-                    <td>asignado a Raquel</td>
-                </tr>
-                <tr>
-                    <td>12/05/2021</td>
-                    <td>Viviana Pedrero</td>
-                    <td>comentario 2 blablablablablalbalba</td>
-                </tr>
-                <tr>
-                    <td>12/05/2021</td>
-                    <td>Viviana Pedrero</td>
-                    <td>asignado a Raquel</td>
-                </tr>
-            </tbody>
-        </table>
-
-        <div class="row justify-content-center ">
-            <div class="col-6 p-2 m-2">
+        
+        <div class="row justify-content-center">
+            <div class="col-12 mt-2 p-2 ">
                 {{-- ESTE FORM/BOTÒN DEBERIA SER VISIBLE SÒLO SI EL USUARIO ASIGNADO ES EL USUARIO LOGUEADO --}}
                 <form action="{{ route('hojaResumen.store') }}" method="POST" autocomplete="off" enctype="multipart/form-data">
                     @csrf
@@ -171,8 +201,11 @@
                 </form>
             </div>
         </div>
-    </div> {{-- Fin div Actividad --}}
-
+    </div>
+    </div>
+    </div> 
+</div>
+</div>
 
 </main> {{-- Fin main cuerpo --}}
 

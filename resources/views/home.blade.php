@@ -111,17 +111,13 @@
                     <div class="col-10">
                         <button class="botonacordeon" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseOne" aria-expanded="false" aria-controls="flush-collapseOne">
                             <h6 class="accordion-header pt-2 ps-3">
-                                ¿Qué necesito para iniciar una solicitud? </h6>
+                                Equivalencias vs. certificado de materias </h6>
                         </button>
                     </div>
                     <div class="col-2">
                         <button class="botonacordeon ver" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseOne" aria-expanded="false" aria-controls="flush-collapseOne">
-                            <i class="fas fa-plus-square"></i>
+                            <i class="fas fa-plus-square" id="answer1"></i>
                         </button>
-                        {{-- <button class="botonacordeon cerrar" type="button" data-bs-toggle="collapse"
-                                data-bs-target="#flush-collapseOne" aria-expanded="false" aria-controls="flush-collapseOne">
-                                <i class="fas fa-minus-square "></i>
-                            </button> --}}
                     </div>
                     <div id="flush-collapseOne" class="accordion-collapse collapse" aria-labelledby="flush-headingOne" data-bs-parent="#acordeon1">
                         <div class="accordion-body">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Architecto
@@ -139,17 +135,14 @@
                     <div class="col-10 ">
                         <button class="botonacordeon" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseTwo" aria-expanded="false" aria-controls="flush-collapseTwo">
                             <h6 class="accordion-header pt-2 ps-3">
-                                Recibí el mail. ¿Cómo descargo mi certificado? </h6>
+                                ¿Qué necesito para iniciar una solicitud?
+                                </h6>
                         </button>
                     </div>
                     <div class="col-2 ">
                         <button class="botonacordeon ver" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseTwo" aria-expanded="false" aria-controls="flush-collapseTwo">
-                            <i class="fas fa-plus-square"></i>
+                            <i class="fas fa-plus-square" id="answer2"></i>
                         </button>
-                        {{-- <button class="botonacordeon cerrar" type="button" data-bs-toggle="collapse"
-                                data-bs-target="#flush-collapseTwo" aria-expanded="false" aria-controls="flush-collapseTwo">
-                                <i class="fas fa-minus-square "></i>
-                            </button> --}}
                     </div>
                     <div id="flush-collapseTwo" class="accordion-collapse collapse" aria-labelledby="flush-headingTwo" data-bs-parent="#acordeon2">
                         <div class="accordion-body">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Architecto
@@ -168,17 +161,14 @@
                     <div class="col-10">
                         <button class="botonacordeon" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseThree" aria-expanded="false" aria-controls="flush-collapseThree">
                             <h6 class="accordion-header pt-2 ps-3">
-                                ¿Cómo puedo consultar el estado de mi solicitud?</h6>
+                                Recibí el mail. ¿Cómo descargo mi certificado? 
+                                </h6>
                         </button>
                     </div>
                     <div class="col-2 ">
                         <button class="botonacordeon ver" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseThree" aria-expanded="false" aria-controls="flush-collapseThree">
-                            <i class="fas fa-plus-square "></i>
+                            <i class="fas fa-plus-square" id="answer3"></i>
                         </button>
-                        {{-- <button class="botonacordeon cerrar" type="button" data-bs-toggle="collapse"
-                                data-bs-target="#flush-collapseThree" aria-expanded="false" aria-controls="flush-collapseThree">
-                                <i class="fas fa-minus-square "></i>
-                            </button> --}}
                     </div>
                     <div id="flush-collapseThree" class="accordion-collapse collapse" aria-labelledby="flush-headingThree" data-bs-parent="#acordeon3">
                         <div class="accordion-body">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Architecto
@@ -200,7 +190,7 @@
                     </div>
                     <div class="col-2">
                         <button class="botonacordeon ver" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseFour" aria-expanded="false" aria-controls="flush-collapseFour">
-                            <i class="fas fa-plus-square "></i>
+                            <i class="fas fa-plus-square" id="answer4"></i>
                         </button>
                         {{-- <button class="botonacordeon cerrar" type="button" data-bs-toggle="collapse"
                                 data-bs-target="#flush-collapseFour" aria-expanded="false" aria-controls="flush-collapseFour">
@@ -217,5 +207,20 @@
             </div>
         </div>
     </div>
+    <script>
+        $("#answer1").click(function(){
+             $(this).toggleClass("fas fa-plus-square fas fa-minus-square");
+        });
+        $("#answer2").click(function(){
+             $(this).toggleClass("fas fa-plus-square fas fa-minus-square");
+        });
+        $("#answer3").click(function(){
+             $(this).toggleClass("fas fa-plus-square fas fa-minus-square");
+        });
+        $("#answer4").click(function(){
+             $(this).toggleClass("fas fa-plus-square fas fa-minus-square");
+        });
+
+    </script>
 </section>
 @endsection
