@@ -15,44 +15,44 @@
                 <div class="col-md-8 col-12 ">
                     <div class="card card-form bg-light">
                         <div class="card-header p-1 bg-light cell mb-3 ">
-                            <h2 class="text-center fw-bold">Detalles de Solicitud {{ $solicitud->idSolicitud }}</h2>
+                            <h2 class="text-center fw-bold">Detalles de Solicitud {{ $solicitud->id_solicitud }}</h2>
                         </div>
                         {{-- fecha --}}
                         <div class="row justify-content-between text-left ">
                             <p class=" "><span class="text-secondary ">Fecha de Inicio: </span>
-                                {{ $solicitud->FechaUltimoEstado }}
+                                {{ $solicitud->estados->first()->created_at }}
                             </p>
                         </div>
                         {{-- estado --}}
                         <div class="row justify-content-between text-left ">
-                            <p class=" "><span class="text-secondary ">Estado: </span> {{ $solicitud->UltimoEstado }}
+                            <p class=" "><span class="text-secondary ">Estado: </span> {{ $solicitud->estados->last()->estado_descripcion->descripcion }}
                             </p>
                         </div>
 
                         {{-- nombres y apellidos --}}
                         <div class="row justify-content-between text-left">
                             <p class=" "><span class="text-secondary ">Solicitante: </span>
-                                {{ $solicitud->UsuarioEstudiante }}
+                            {{ $solicitud->usuarioEstudiante->apellido }}, {{ $solicitud->usuarioEstudiante->nombre }} 
                             </p>
                         </div>
                         {{-- legajo --}}
                         <div class="row justify-content-between text-left ">
-                            <p class=" "><span class="text-secondary ">Legajo: </span> {{ $solicitud->Legajo }}</p>
+                            <p class=" "><span class="text-secondary ">Legajo: </span> {{ $solicitud->legajo }}</p>
                         </div>
                         {{-- unidad academica --}}
                         <div class="row justify-content-between text-left">
                             <p class=" "><span class="text-secondary">Unidad Académica: </span>
-                                {{ $solicitud->UnidadAcademica }}
+                                {{ $solicitud->carrera->unidad_academica->unidad_academica }}
                             </p>
                         </div>
                         {{-- carrera --}}
                         <div class="row justify-content-between text-left ">
-                            <p class=" "><span class="text-secondary">Carrera: </span> {{ $solicitud->Carrera }}</p>
+                            <p class=" "><span class="text-secondary">Carrera: </span> {{ $solicitud->carrera->carrera }}</p>
                         </div>
                         {{-- universidad de destino --}}
                         <div class="row justify-content-center text-left">
                             <p class=" "><span class="text-secondary">Institución Educativa de Destino: </span>
-                                {{ $solicitud->UniversidadDestino }}
+                                {{ $solicitud->universidad_destino }}
                             </p>
                         </div>
                     </div>
@@ -73,57 +73,58 @@
                 <div class="col-md-8 col-12">
                     <div class="card card-form bg-light">
                         <div class="card-header p-1 bg-light cell mb-3">
-                            <h2 class="text-center fw-bold">Detalles de Solicitud {{ $solicitud->idSolicitud }}</h2>
+                            <h2 class="text-center fw-bold">Detalles de Solicitud {{ $solicitud->id_solicitud }}</h2>
                         </div>
                         {{-- fecha --}}
                         <div class="row justify-content-between text-left">
                             <p class=" "><span class="text-secondary">Fecha de Inicio: </span>
-                                {{ $solicitud->FechaUltimoEstado }}
+                                {{ $solicitud->estados->first()->created_at }}
                             </p>
                         </div>
                         {{-- estado --}}
                         <div class="row justify-content-between text-left">
-                            <p class=" "><span class="text-secondary">Estado: </span> {{ $solicitud->UltimoEstado }}
+                            <p class=" "><span class="text-secondary">Estado: </span> {{$solicitud->estados->last()->estado_descripcion->descripcion }}
                             </p>
                         </div>
 
                         {{-- nombres y apellidos --}}
                         <div class="row justify-content-between text-left">
                             <p class=" "><span class="text-secondary ">Solicitante: </span>
-                                {{ $solicitud->UsuarioEstudiante }}
+                            {{ $solicitud->usuarioEstudiante->apellido }}, {{ $solicitud->usuarioEstudiante->nombre }} 
                             </p>
                         </div>
                         {{-- legajo --}}
                         <div class="row justify-content-between text-left ">
-                            <p class=" "><span class="text-secondary">Legajo: </span> {{ $solicitud->Legajo }}</p>
+                            <p class=" "><span class="text-secondary">Legajo: </span> {{ $solicitud->legajo }}</p>
                         </div>
                         {{-- unidad academica --}}
                         <div class="row justify-content-between text-left ">
                             <p class=" "><span class="text-secondary">Unidad Académica: </span>
-                                {{ $solicitud->UnidadAcademica }}
+                                {{ $solicitud->carrera->unidad_academica->unidad_academica }}
                             </p>
                         </div>
                         {{-- carrera --}}
                         <div class="row justify-content-between text-left ">
-                            <p class=" "><span class="text-secondary">Carrera: </span> {{ $solicitud->Carrera }}</p>
+                            <p class=" "><span class="text-secondary">Carrera: </span> {{ $solicitud->carrera->carrera }}</p>
                         </div>
                         {{-- universidad de destino --}}
                         <div class="row justify-content-center text-left">
                             <p class=" "><span class="text-secondary">Institución Educativa de Destino: </span>
-                                {{ $solicitud->UniversidadDestino }}
+                                {{ $solicitud->universidad_destino }}
                             </p>
                         </div>
                         {{-- asignado a --}}
                         <div class="row justify-content-center text-left">
                             <div class="col-12">
-                                <p class=" "><span class="text-secondary">Solicitud asignada a: </span></p>
+                                <p class=" "><span class="text-secondary">Solicitud asignada a: </span>
+                                {{$solicitud->usuarioAdministrativo->apellido ?? ''}} {{$solicitud->usuarioAdministrativo->nombre ?? ''}}</p>
                             </div>
                             {{-- ACÀ DEBE TOMAR EL NOMBRE DE PERSONA ASIGNADA mostrarlo y guardarlo en base de datos --}}
                             {{-- dejo este select como muestra visual, 
                         hay que eliminarlo al hacer el real de arriba --}}
-                            <form action="" method="">
+                            <form action="{{route('solicitud.asignar',[$solicitud->id_solicitud])}}" method="">
                                 <div class="col-12">
-                                    <select class="btn botonFormulario3 w-100 " name="">
+                                    <select class="btn botonFormulario3 w-100 " name="usuarioAdministrativo">
                                         <option value="0">Elegir Persona</option>
                                         <option value="1">Mario Domini</option>
                                         <option value="2">Rosa Piper</option>
@@ -239,7 +240,7 @@
                                                                 @csrf
                                                                 {{-- aca voy a recibir el $idSolicitud --}}
                                                                 <input type="hidden" id="idSolicitud" name="idSolicitud"
-                                                                    value="{{ $solicitud->idSolicitud }}">
+                                                                    value="{{ $solicitud->id_solicitud }}">
                                                                 <input type="submit" class="botonFormulario2" value="Agregar Mensaje">
                                                             </form>
                                                         </div>
@@ -259,7 +260,7 @@
                                     @csrf
                                     {{-- aca voy a recibir el $idSolicitud , por ahora utilizo un input , luego este $idSolicitud estara en un campo oculto --}}
                                     <input type="hidden" id="idSolicitud" name="idSolicitud"
-                                        value="{{ $solicitud->idSolicitud }}">
+                                        value="{{ $solicitud->id_solicitud }}">
                                     <input type="submit" class="botonFormulario" value="comenzar trámite">
                                 </form>
                             </div>
@@ -280,44 +281,44 @@
                 <div class="col-md-8 col-12">
                     <div class="card card-form bg-light">
                         <div class="card-header p-1 bg-light cell mb-3">
-                            <h2 class="text-center fw-bold">Detalles de Solicitud {{ $solicitud->idSolicitud }}</h2>
+                            <h2 class="text-center fw-bold">Detalles de Solicitud {{ $solicitud->id_solicitud }}</h2>
                         </div>
                         {{-- fecha --}}
                         <div class="row justify-content-between text-left ">
                             <p class=" "><span class="text-secondary">Fecha de Inicio: </span>
-                                {{ $solicitud->FechaUltimoEstado }}
+                                 {{$solicitud->estados->first()->created_at }}
                             </p>
                         </div>
                         {{-- estado --}}
                         <div class="row justify-content-between text-left ">
-                            <p class=" "><span class="text-secondary">Estado: </span> {{ $solicitud->UltimoEstado }}
+                            <p class=" "><span class="text-secondary">Estado: </span>  {{$solicitud->estados->last()->estado_descripcion->descripcion }}
                             </p>
                         </div>
 
                         {{-- nombres y apellidos --}}
                         <div class="row justify-content-between text-left">
                             <p class=" "><span class="text-secondary">Solicitante: </span>
-                                {{ $solicitud->UsuarioEstudiante }}
+                            {{ $solicitud->usuarioEstudiante->apellido }}, {{ $solicitud->usuarioEstudiante->nombre }} 
                             </p>
                         </div>
                         {{-- legajo --}}
                         <div class="row justify-content-between text-left ">
-                            <p class=" "><span class="text-secondary">Legajo: </span> {{ $solicitud->Legajo }}</p>
+                            <p class=" "><span class="text-secondary">Legajo: </span> {{ $solicitud->legajo }}</p>
                         </div>
                         {{-- unidad academica --}}
                         <div class="row justify-content-between text-left">
                             <p class=" "><span class="text-secondary">Unidad Académica: </span>
-                                {{ $solicitud->UnidadAcademica }}
+                                {{ $solicitud->carrera->unidad_academica->unidad_academica }}
                             </p>
                         </div>
                         {{-- carrera --}}
                         <div class="row justify-content-between text-left ">
-                            <p class=" "><span class="text-secondary">Carrera: </span> {{ $solicitud->Carrera }}</p>
+                            <p class=" "><span class="text-secondary">Carrera: </span> {{ $solicitud->carrera->carrera }}</p>
                         </div>
                         {{-- universidad de destino --}}
                         <div class="row justify-content-center text-left">
                             <p class=" "><span class="text-secondary">Institución Educativa de Destino: </span>
-                                {{ $solicitud->UniversidadDestino }}
+                                {{ $solicitud->universidad_destino }}
                             </p>
                         </div>
   {{-- Comienzo div Actividad (mostrar como acordeón) --}}
@@ -421,7 +422,7 @@
                                         @csrf
                                         {{-- aca voy a recibir el $idSolicitud --}}
                                         <input type="hidden" id="idSolicitud" name="idSolicitud"
-                                            value="{{ $solicitud->idSolicitud }}">
+                                            value="{{ $solicitud->id_solicitud }}">
                                         <input type="submit" class="botonFormulario2" value="Agregar Mensaje">
                                     </form>
                                 </div>
@@ -470,44 +471,44 @@
                 <div class="col-md-8 col-12">
                     <div class="card card-form bg-light">
                         <div class="card-header p-1 bg-light cell mb-3">
-                            <h2 class="text-center fw-bold">Detalles de Solicitud {{ $solicitud->idSolicitud }}</h2>
+                            <h2 class="text-center fw-bold">Detalles de Solicitud {{ $solicitud->id_solicitud }}</h2>
                         </div>
                         {{-- fecha --}}
                         <div class="row justify-content-between text-left ">
                             <p class=" "><span class="text-secondary">Fecha de Inicio: </span>
-                                {{ $solicitud->FechaUltimoEstado }}
+                                {{ $solicitud->estados->first()->created_at }}
                             </p>
                         </div>
                         {{-- estado --}}
                         <div class="row justify-content-between text-left ">
-                            <p class=" "><span class="text-secondary">Estado: </span> {{ $solicitud->UltimoEstado }}
+                            <p class=" "><span class="text-secondary">Estado: </span> {{ $solicitud->estados->last()->estado_descripcion->descripcion }}
                             </p>
                         </div>
 
                         {{-- nombres y apellidos --}}
                         <div class="row justify-content-between text-left">
                             <p class=" "><span class="text-secondary">Solicitante: </span>
-                                {{ $solicitud->UsuarioEstudiante }}
+                            {{ $solicitud->usuarioEstudiante->apellido }}, {{ $solicitud->usuarioEstudiante->nombre }} 
                             </p>
                         </div>
                         {{-- legajo --}}
                         <div class="row justify-content-between text-left ">
-                            <p class=" "><span class="text-secondary">Legajo: </span> {{ $solicitud->Legajo }}</p>
+                            <p class=" "><span class="text-secondary">Legajo: </span> {{ $solicitud->legajo }}</p>
                         </div>
                         {{-- unidad academica --}}
                         <div class="row justify-content-between text-left">
                             <p class=" "><span class="text-secondary">Unidad Académica: </span>
-                                {{ $solicitud->UnidadAcademica }}
+                                {{ $solicitud->carrera->unidad_academica->unidad_academica }}
                             </p>
                         </div>
                         {{-- carrera --}}
                         <div class="row justify-content-between text-left ">
-                            <p class=" "><span class="text-secondary">Carrera: </span> {{ $solicitud->Carrera }}</p>
+                            <p class=" "><span class="text-secondary">Carrera: </span> {{ $solicitud->carrera->carrera }}</p>
                         </div>
                         {{-- universidad de destino --}}
                         <div class="row justify-content-center text-left">
                             <p class=" "><span class="text-secondary">Institución Educativa de Destino: </span>
-                                {{ $solicitud->UniversidadDestino }}
+                                {{ $solicitud->universidad_destino }}
                             </p>
                         </div>
    {{-- Comienzo div Actividad (mostrar como acordeón) --}}
@@ -609,9 +610,9 @@
                                     <form action="" method="POST" autocomplete="off"
                                         enctype="multipart/form-data">
                                         @csrf
-                                        {{-- aca voy a recibir el $idSolicitud --}}
-                                        <input type="hidden" id="idSolicitud" name="idSolicitud"
-                                            value="{{ $solicitud->idSolicitud }}">
+                                        {{-- aca voy a recibir el $id_solicitud --}}
+                                        <input type="hidden" id="id_solicitud" name="idSolicitud"
+                                            value="{{ $solicitud->id_solicitud }}">
                                         <input type="submit" class="botonFormulario2" value="Agregar Mensaje">
                                     </form>
                                 </div>
