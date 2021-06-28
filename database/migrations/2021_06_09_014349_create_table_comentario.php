@@ -20,7 +20,7 @@ class CreateTableComentario extends Migration
             $table->unsignedBigInteger('id_usuario');
 
             $table->foreign('id_solicitud')->references('id_solicitud')->on('solicitud_cert_prog');
-            $table->foreign('id_usuario')->references('id_usuario')->on('usuario');
+            $table->foreign('id_usuario')->references('id')->on('users');
             $table->timestamps();
         });
     }

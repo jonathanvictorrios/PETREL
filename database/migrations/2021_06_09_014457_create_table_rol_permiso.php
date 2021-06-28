@@ -19,7 +19,7 @@ class CreateTableRolPermiso extends Migration
 
             $table->primary('roles_id', 'permissions_id');
 
-            $table->foreign('id_rol')->references('id_rol')->on('roles');
+            $table->foreign('roles_id')->references('id')->on('roles');
             $table->foreign('permissions_id')->references('id')->on('permissions');
             $table->timestamps();
         });

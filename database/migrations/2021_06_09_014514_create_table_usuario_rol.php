@@ -20,8 +20,8 @@ class CreateTableUsuarioRol extends Migration
 
             $table->primary(['id_usuario', 'id_rol']);
 
-            $table->foreign('id_usuario')->references('id_usuario')->on('usuario');
-            $table->foreign('id_rol')->references('id_rol')->on('rol');
+            $table->foreign('id_usuario')->references('id')->on('users');
+            $table->foreign('id_rol')->references('id')->on('roles');
             $table->timestamps();
         });
     }
