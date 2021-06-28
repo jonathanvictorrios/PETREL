@@ -13,14 +13,14 @@
         <div class="row d-flex justify-content-center">
             <div class="col-xl-6 col-lg-6 col-md-12 col-12">
                 <div class="card card-form">
-                    <div class="row tittle border-bottom p-2">
+                    <div class="row border-bottom p-2">
                         <h2 class="col text-center fw-bold">Nueva Solicitud</h2>
                     </div>
                     <form name=formCreate id=formCreate action="{{route('solicitud.store')}}" method=POST novalidate>
                         @csrf
                         @if ($errors->any()) {{-- Valida en servidor y regresa mostrando los siguientes errores --}}
                         <div class="alert alert-danger alert-dismissible fade show d-flex align-items-center m-3 p-3">
-                            <i class='fas fa-times-circle mx-2'></i>
+                            <i class="fas fa-times-circle mx-2"></i>
                             <h5>Revisa los siguientes datos e inténtalo nuevamente</h5>
                             <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
                             <ul>
@@ -47,14 +47,11 @@
                         <div class="row justify-content-between text-left">
                             <div class="form-group col col-sm-6 flex-column d-flex py-3">
                                 <label class="form-label py-2">Legajo</label>
-                                <input class="border-0 cell" type="text" id="legajo" name="legajo"
-                                    placeholder="Ingrese su legajo sin guion" value="{{old('legajo')}}" required>
+                                <input class="border-0 cell" type="text" id="legajo" name="legajo" placeholder="Ingrese su legajo sin guion" value="{{old('legajo')}}">
                             </div>
                             <div class="form-group col col-sm-6 flex-column d-flex py-3">
                                 <label class="form-label py-2">Unidad Académica</label>
-                                <select class="form-select border-0 rounded-0 cell"
-                                    aria-label="Seleccionar unidad académica en el menú desplegable"
-                                    id="unidadAcademica" name="unidadAcademica" required>
+                                <select class="form-select border-0 rounded-0 cell" aria-label="Seleccionar unidad académica en el menú desplegable" id="unidadAcademica" name="unidadAcademica">
                                     {{-- @foreach($unidadesAcademicas as $unidad)
                                 <option value="{{$unidad->id_unidad_academica}}">{{$unidad->unidad_academica}}</option>
                                     @endforeach

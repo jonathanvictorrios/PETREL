@@ -2,20 +2,22 @@
 @section('cuerpo')
 @php($titulo = 'Archivo - Petrel')@endphp
 @include('estructura/header')
-
+<div class="container shadow-lg mt-5 mb-5 p-3 bg-light rounded col-8">
 @if (session('mensaje') ) {{-- Aviso de carpeta creada (u otra notificación desde controller) --}}
 <div class="alert alert-success alert-dismissible fade show d-flex align-items-center m-3 p-3">
-    <i class='fas fa-check-circle mx-2'></i>{{ session('mensaje') }}
-    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+  <i class='fas fa-check-circle mx-2'></i>{{ session('mensaje') }}
+  <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
 </div>
 @endif
 
-<h1>Listado de años</h1>
-<table>
-    <thead>
+<h2 class="text-center cell p-3 m-3">Listado de años</h2>
+<table   class="table table-striped table-hover align-middle table-borderless">
+    <thead class="border-bottom">
+   
         <tr>
             <th>Año</th>
             <th><a href="{{ route('anio.create') }}">Nueva Carpeta</a></th>
+            <th>Acción</th>
         </tr>
     </thead>
     <tbody>
@@ -28,5 +30,5 @@
         @endforeach
     </tbody>
 </table>
-
+</div>
 @endsection

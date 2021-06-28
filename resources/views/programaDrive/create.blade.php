@@ -16,8 +16,8 @@
                     <div class="row tittle border-bottom p-2">
                         <h2 class="col text-center fw-bold">Nuevo Programa</h2>
                     </div>
-                    <form class="" action="{{ route('programaDrive.store') }}" method="POST" autocomplete="off"
-                        enctype="multipart/form-data">
+                    <form name=formPrograma id=formPrograma action="{{ route('programaDrive.store') }}"
+                        method="POST" autocomplete="off" enctype="multipart/form-data" novalidate>
                         @csrf
                         <div class="row justify-content-between text-left">
                             <div class="form-group col col col-sm-6 flex-column d-flex py-3">
@@ -52,6 +52,6 @@
             </div>
         </div>
     </div>
-</main> <!-- Fin main cuerpo -->
+</main> {{-- Fin main cuerpo --}}
 
 @endsection

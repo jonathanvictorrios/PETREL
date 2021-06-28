@@ -2,7 +2,7 @@
     <div class="d-flex justify-content-md-center px-2 pt-4 pb-2 text-light">
         <div class="container row">
             <div class="col-lg-4 col-md-6 text-sm-start">
-                <h5>+ Info</h5>
+                <h5 class="text-white">+ Info</h5>
                 <ul class="list-info">
                     <li><a class="text-white" href="http://www.uncoma.edu.ar" target="_blank">Universidad Nacional del
                             Comahue</a></li>
@@ -19,7 +19,7 @@
                 <img src="{{ asset('img/logo-uncoma.svg') }}" alt="Logo UNComa" style="max-height: 150px">
             </div>
             <div class="col-lg-4 col-md-6 text-lg-end text-sm-start">
-                <h5>Contacto</h5>
+                <h5 class="text-white">Contacto</h5>
                 <p>
                     Buenos Aires 1400<br>
                     Neuquén Capital (8300),<br>

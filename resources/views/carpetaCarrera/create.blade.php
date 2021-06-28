@@ -1,6 +1,6 @@
 @extends('estructura/layout')
 @section('cuerpo')
-@php($titulo = 'Crear Carrera - Petrel')@endphp
+@php($titulo = 'Crear carpeta Carrera - Petrel')@endphp
 @include('estructura/header')
 
 <main class="p-2" id="cuerpo"> {{-- Inicio main cuerpo --}}
@@ -16,7 +16,7 @@
                     <div class="row tittle border-bottom p-2">
                         <h2 class="col text-center fw-bold">Nueva Carpeta Carrera</h2>
                     </div>
-                    <form class="form-card" action="{{ route('carrera.store') }}" method="POST" autocomplete="off">
+                    <form name=formCarpeta id=formCarpeta class="form-card" action="{{ route('carrera.store') }}" method="POST" autocomplete="off" novalidate>
                         @csrf
                         @if ($errors->any()) {{-- Valida en servidor y regresa mostrando los siguientes errores --}}
                         <div class="alert alert-danger alert-dismissible fade show d-flex align-items-center m-3 p-3">
@@ -57,4 +57,5 @@
             </div>
         </div>
     </div>
+</main>
 @endsection

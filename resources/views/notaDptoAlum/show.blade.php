@@ -4,9 +4,9 @@
 @include('estructura/header')
 
 <div class="container mt-5">
-    <p class="text-center h2">
-        Nota Generada - {{ $id_nota }}
-        <button type="button" onclick="location.href='/notaDA/descargar/{{ $id_nota }}';">Descargar</button>
+    <p class="text-center">
+       <h2 class="m-2"> Nota Generada - {{ $id_nota }}</h2>
+        <button type="button" class="botonFormulario" onclick="location.href='/notaDA/descargar/{{ $id_nota }}';">Descargar</button>
     </p>
 
 

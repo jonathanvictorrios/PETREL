@@ -2,7 +2,7 @@
 @section('cuerpo')
 @php($titulo = 'Crear Nota - Petrel')@endphp
 @include('estructura/header')
-
+<div class="container shadow-lg mt-5 mb-5 pb-3 bg-light rounded col-8">
 @php
 $directorio =
 storage_path('app/id-solicitud-'.$solicitud->id_solicitud.'/rendimientoAcademico'.$solicitud->id_solicitud.'.json');
@@ -21,9 +21,9 @@ $fecha = date('d') . ' de ' . date('M') . ' del ' . date('Y');
     {{session('success')}}
 </div>
 @endif
-<form id="formulario_nota" action="{{ route('notaDA.store') }}" method="POST" class="container w-75 py-2">
+<form name="formulario_nota" id="formulario_nota" action="{{ route('notaDA.store') }}" method="POST" class="container w-75 py-2" novalidate>
     @csrf
-    <h2 class="text-center">Crear nota</h2>
+    <h2 class="text-center cell p-3 m-3">Crear nota</h2>
 
     <div class="alert alert-success" role="alert">
         Puedes editar el contenido a necesidad, y agregar por ejemplo:
@@ -33,12 +33,13 @@ $fecha = date('d') . ' de ' . date('M') . ' del ' . date('Y');
         </ul>
     </div>
 
-    <div class="form-group">
+    <div class="form-group mb-2">
         <textarea class="ckeditor form-control" name="contenido">
             <p>
-                El Departamento de Alumnos del {{ $arregloRendimiento['UA']['Facultad'] }} de la {{ $arregloRendimiento['UA']['Universidad']}} certifica que: <b>{{ $arregloRendimiento['Alumno']['Apellido'] }}, {{ $arregloRendimiento['Alumno']['Nombre'] }}</b> — 
-                {{ $arregloRendimiento['Documento']['Tipo'] }}: <b>{{ $arregloRendimiento['Documento']['Nro'] }}</b> Legajo Nro. <b>{{ $arregloRendimiento['Alumno']['Legajo'] }}</b>, 
-                estudiante de la carrera <b>{{ $arregloRendimiento['Carrera'] }}</b>, ha cursado y aprobado las asignaturas correspondientes al 
+                El Departamento de Alumnos del Centro Universitario Regional Zona Atlántica de la Universidad Nacional
+                del Comahue certifica que: <b>{{ $arregloRendimiento['Alumno']['Apellido'] }}, {{ $arregloRendimiento['Alumno']['Nombre'] }}</b> —
+                {{ $arregloRendimiento['Documento']['Tipo'] }}: <b>{{ $arregloRendimiento['Documento']['Nro'] }}</b> Legajo Nro. <b>{{ $arregloRendimiento['Alumno']['Legajo'] }}</b>,
+                estudiante de la carrera <b>{{ $arregloRendimiento['Carrera'] }}</b>, ha cursado y aprobado las asignaturas correspondientes al
                 Plan de Estudios Ordenanza (CS) N.º <b>{{ $arregloRendimiento['Plan']['Nro'] }}/{{ $arregloRendimiento['Plan']['Anio'] }}</b>.
             </p>
             <p>
@@ -63,8 +64,7 @@ $fecha = date('d') . ' de ' . date('M') . ' del ' . date('Y');
 
     <!-- EDITAR PIE DE PÁGINA -->
     <div class="form-group">
-        <a class="btn btn-light btn-lg d-block" data-bs-toggle="collapse" href="#footer_editor" role="button"
-            aria-expanded="false" aria-controls="footer_editor">
+        <a class="btn botonFormulario2 btn-lg d-block" data-bs-toggle="collapse" href="#footer_editor" role="button" aria-expanded="false" aria-controls="footer_editor">
             Editar pie de página
         </a>
 
@@ -79,13 +79,16 @@ $fecha = date('d') . ' de ' . date('M') . ' del ' . date('Y');
             </div>
         </div>
     </div>
-    <div class="form-group mt-3 d-flex">
+    <div class="form-group mt-3 d-lg-flex">
         <input type="hidden" name="id_solicitud" value="{{ $solicitud->id_solicitud }}">
-        <input type="button" value="Enviar" class="w-100 btn btn-primary" data-bs-toggle="modal"
-            data-bs-target="#login_check">
-        <a href="#" class="w-25 btn mx-2 {{ (session('success')) ? 'btn-success' : 'btn-secondary disabled' }}"
-            id="btn_continuar">Continuar</a>
+        <div class="col-12 col-lg-8 p-1 ">    
+            <input type="button" value="Guardar y Descargar nota.pdf" class="btn botonFormulario" data-bs-toggle="modal" data-bs-target="#login_check">
+        </div>
+        <div class="col-12 col-lg-4 p-1 ">
+            <a href="#" class="btn {{ (session('success')) ? 'botonFormulario2' : 'botonFormulario2 disabled' }}" id="btn_continuar">Continuar</a>
+        </div>
     </div>
+
 </form>
 
 <!-- Modal autenticar contraseña -->
@@ -106,6 +109,10 @@ $fecha = date('d') . ' de ' . date('M') . ' del ' . date('Y');
                 <button type="button" class="btn btn-primary" id="modal_sesion_submit">Autenticar y continuar</button>
             </div>
         </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn botonFormulario" id="modal_sesion_submit">Autenticar y continuar</button>
+      </div>
     </div>
 </div>
 
@@ -141,5 +148,5 @@ $(document).ready(function() {
     });
 });
 </script>
-
+</div>
 @endsection

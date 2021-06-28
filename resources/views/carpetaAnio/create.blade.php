@@ -16,7 +16,7 @@
                     <div class="row tittle border-bottom p-2">
                         <h2 class="col text-center fw-bold">Nueva Carpeta Año</h2>
                     </div>
-                    <form class="form-card" action="{{ route('anio.store') }}" method="POST" autocomplete="off">
+                    <form name=formCarpeta id=formCarpeta class="form-card" action="{{ route('anio.store') }}" method="POST" autocomplete="off" novalidate>
                         @csrf
                         @if ($errors->any()) {{-- Valida en servidor y regresa mostrando los siguientes errores --}}
                         <div class="alert alert-danger alert-dismissible fade show d-flex align-items-center m-3 p-3">

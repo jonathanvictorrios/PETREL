@@ -3,7 +3,7 @@
 @include('estructura/header')
 @php($titulo = 'Petrel - Rendimiento Academico') @endphp
 
-<div class="container shadow-lg mt-5 mb-5 pb-3 bg-light rounded col-8">
+<div class="container  shadow-lg mt-5 mb-5 p-4 bg-light rounded col-8">
     @php
     $arregloRendimiento = json_decode(file_get_contents($rutaArchivo),true);
     @endphp
@@ -96,25 +96,26 @@
             </tr>
         </tbody>
     </table>
-</div>
 
-<div>
+
+
     <div class="row clearfix">
         <div class="col-md-6 text-center">
             <form action="{{ route('rendimientoAcademico.store') }}" method="POST" autocomplete="off">
                 @csrf
                 <input type="hidden" id="idSolicitud" name="idSolicitud" value={{$solicitud->id_solicitud}}>
                 <input type="hidden" id="rutaArchivo" name="rutaArchivo" value="{{$rutaArchivo}}">
-                <input id="btn_crear-pdf" class="btn btn-primary m-2 font-weight-bold" name="btn_crear-pdf"
-                    type="submit" value="Crear PDF">
+                <input id="btn_crear-pdf" class="btn botonFormulario" name="btn_crear-pdf" type="submit" value="Crear PDF">
             </form>
         </div>
         <div class="col-md-6 text-center">
-            <a href="{{route('buscarProgramas',$solicitud->id_solicitud)}}" id="botonContinuar"
-                class="w-25 btn btn-secondary disabled">Continuar</a>
+            <a href="{{route('buscarProgramas',$solicitud->id_solicitud)}}" id="botonContinuar" class="btn botonFormulario2 disabled" >Continuar</a>
         </div>
     </div>
 </div>
+<div>
+</div>
+
 <script src="//cdn.ckeditor.com/4.14.1/basic/ckeditor.js"></script>
 <script type="text/javascript">
 $('#btn_crear-pdf').on('click', function() {

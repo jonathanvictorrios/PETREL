@@ -7,8 +7,7 @@ $(function(){
     // });
     // const csrfToken = document.head.querySelector("[name~=csrf-token][content]").content;
 
-    //------------------------------------------------------- INICIO EJERCICIO 1 ------------------------------------------------
-    $.get('/api/unidadAcademica',function (data){ //al iniciar cargo el primer combo con las Unidadades academicas
+    $.get('/api/unidadAcademica',function (data){ // Al iniciar, cargo el primer combo con las Unidadades academicas
       console.log(data);
       html=$('#unidadAcademica');
       html.empty();
@@ -20,9 +19,9 @@ $(function(){
         `);
       }
     })
-  
+
     $('#unidadAcademica').on('change',function (){
-        
+
       idUnidadAcademica=$('#unidadAcademica').val();
       $.get('/api/unidadAcademica/'+idUnidadAcademica+'/carreras',function (data){
         html=$('#carrera');

@@ -49,12 +49,12 @@ class ProgramaDriveController extends Controller
                     'numero_programa' => $request->numeroPrograma,
                     'url_programa' => $urlPrograma,
                 ]);
-                return view('carpetaCarrera.listarProgramas')->with('carpetaCarrera', $programa->carpeta_carrera);
-            } else {
-                echo "no se guardo en drive";
+                return view('carpetaCarrera.listarProgramas')->with('carpetaCarrera',$programa->carpeta_carrera);
+            }else{
+                echo "No se pudo guardar en el servidor.";
             }
-        } else {
-            echo "ya existe";
+        }else{
+            echo "El programa que intentas guardar ya existe en el servidor.";
         }
     }
 
