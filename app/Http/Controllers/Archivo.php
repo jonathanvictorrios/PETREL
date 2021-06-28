@@ -94,7 +94,11 @@ class Archivo extends Controller
     public function downloadSinFirma($id)
     {
         $objetoHojaResumen = HojaResumen::where('id_solicitud', $id)->get()[0];
-        $path = $objetoHojaResumen->hoja_resumen_final->url_hoja_unida_final_sin_firma;
+        if($objetoHojaResumen->hoja_resumen_final == null){
+            $path = $objetoHojaResumen->url_hoja_unida;
+        }else{
+            $path = $objetoHojaResumen->hoja_resumen_final->url_hoja_unida_final_sin_firma;
+        }
 
         $pathFile = storage_path('app/' . $path);
         header("Cache-Control: no-cache, must-revalidate");

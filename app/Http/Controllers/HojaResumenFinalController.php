@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\HojaResumenFinal;
 use App\Models\HojaResumen;
 use App\Models\SolicitudCertProg;
+use App\Http\Controllers\SolicitudCertProgController;
 use TCPDI;
 
 //use Karriere\PdfMerge\PdfMerge;
@@ -133,6 +134,6 @@ class HojaResumenFinalController extends Controller
         ob_end_clean();
         $pdf->setPDFVersion();
         $pdf->Output(storage_path()."/app/id-solicitud-".$idSolicitud."/hojaUnidaFinalSinFirma".$idSolicitud.".pdf","F");
-        return redirect()->route('solicitud');
+        return redirect()->route('solicitud.show',$idSolicitud);
       }
 }
