@@ -14,6 +14,7 @@ use Helpers as GlobalHelpers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Artisan;
 use Illuminate\Support\Facades\DB;
+use App\Http\Controllers\mailPetrelController;
 
 class Archivo extends Controller
 {
@@ -159,13 +160,24 @@ class Archivo extends Controller
                 ->where('id_solicitud', $idSolicitud)
                 ->update(['id_estado_descripcion' => $estadoDescripcionNuevo]); */
 
-            $objSolicitud = SolicitudCertProg::find($idSolicitud);
+            /* $objSolicitud = SolicitudCertProg::find($idSolicitud);
 
             $estado = new Estado();
             $estado->id_solicitud = $idSolicitud;
             $estado->id_estado_descripcion = 6;
             $estado->id_usuario = $objSolicitud->usuarioAdministrativo->id_usuario;
             $estado->save();
+
+            $correo = new mailPetrelController();
+            $correo->enviarMailSolicitudFinalizada($idSolicitud); */
+
+            //$objetoSolicitud = new SolicitudCertProg;
+            $objSolicitudController = new SolicitudCertProgController;
+
+            $objSolicitud = SolicitudCertProg::find($idSolicitud);
+            $idAdministrativo = $objSolicitud->usuarioAdministrativo->id_usuario;
+
+            $objSolicitudController->terminar($idSolicitud,$idAdministrativo);
 
             $mensaje = 'Solicitud aprobada';
         /* } else { */

@@ -40,6 +40,7 @@ class AuthServiceProvider extends ServiceProvider
         //     });
         // }
 /*         $permisos = Permission::findAll();
+        /* $permisos = Permission::findAll();
 
         foreach ($permisos as $permiso){
             Gate::define($permiso->name, function(User $user, $permiso){
