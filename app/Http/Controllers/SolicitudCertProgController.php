@@ -141,7 +141,11 @@ class SolicitudCertProgController extends Controller
         $solicitud = SolicitudCertProg::findOrFail($id);
         $solicitud = $this->ObtenerDatosSolicitud($solicitud);
         $coleccionComentarios = Comentario::find($id)->get();
-        $solicitud->comentarios = $coleccionComentarios;
+        if(isset($coleccionComentarios))
+        {
+            $solicitud->comentarios = $coleccionComentarios;
+        }
+
         return view('solicitud.show', compact('solicitud'));
     }
 
