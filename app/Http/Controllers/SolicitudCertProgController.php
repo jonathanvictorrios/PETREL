@@ -9,9 +9,7 @@ use App\Models\Usuario;
 use App\Models\Carrera;
 use App\Models\Estado;
 use App\Models\EstadoDescripcion;
-
-
-
+use App\Models\HojaResumen;
 
 class SolicitudCertProgController extends Controller
 {
@@ -116,7 +114,15 @@ class SolicitudCertProgController extends Controller
         $solicitud= SolicitudCertProg::findOrFail($id);
         $solicitud=$this->ObtenerDatosSolicitud($solicitud);
 
-        return view('solicitud.show',compact('solicitud'));
+
+        $hojaResumen = HojaResumen::where('id_solicitud',$id)->get()[0];
+        if(count($hojaResumen)>0){
+            $iniciarTramite = false;
+        }else{
+            $iniciarTramite = true;
+        }
+
+        return view('solicitud.show',compact('solicitud','iniciarTramite'));
 
     }
 

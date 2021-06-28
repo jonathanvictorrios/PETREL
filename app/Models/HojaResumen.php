@@ -14,7 +14,6 @@ class HojaResumen extends Model
     protected $fillable = array(
         'id_rendimiento_academico',
         'id_programa_local',
-        'id_plan_estudio',
         'id_nota_dto_alumno',
         'url_hoja_unida',
         'id_solicitud'
@@ -31,10 +30,9 @@ class HojaResumen extends Model
     {
         return $this->belongsTo(RendimientoAcademico::class, 'id_rendimiento_academico', 'id_rendimiento_academico');
     }
-
     public function plan_estudio()
     {
-        return $this->belongsTo(PlanEstudio::class, 'id_plan_estudio', 'id_plan_estudio');
+        return $this->belongsToMany(PlanEstudio::class, 'hoja_resumen_plan_estudio', 'id_hoja', 'id_plan');
     }
 
     public function nota_dpto_alum()
