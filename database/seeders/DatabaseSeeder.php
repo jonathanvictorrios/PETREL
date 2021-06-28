@@ -18,11 +18,13 @@ class DatabaseSeeder extends Seeder
         $this->call([
             UnidadAcademicaSeeder::class,
             CarreraSeeder::class,
-            EstadoDescripcionSeeder::class,
-            //ProgramaDriveSeeder::class,
+            EstadoDescripcionSeeder::class,            
             UsuarioSeeder::class,
             SolicitudCertProgSeeder::class,
             EstadoSeeder::class,
+            RoleSeeder::class,
+            PermissionSeeder::class
+            //ProgramaDriveSeeder::class,
         ]);
     }
 }

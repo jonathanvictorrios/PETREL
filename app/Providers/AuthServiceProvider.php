@@ -5,6 +5,7 @@ namespace App\Providers;
 use Illuminate\Foundation\Support\Providers\AuthServiceProvider as ServiceProvider;
 use Illuminate\Support\Facades\Gate;
 use App\Models\User;
+use App\Models\Role;
 use App\Models\Permission;
 
 class AuthServiceProvider extends ServiceProvider
@@ -31,13 +32,16 @@ class AuthServiceProvider extends ServiceProvider
         Gate::define('manage-users', function (User $user) {
             return $user->role_id == 1;
         }); */
-
-        $permisos = Permission::findAll();
+        $user = $this->user;
+        $permisos = Permission::All();
+        $roles = Role::get($user->id)->toArray();
 
         foreach ($permisos as $permiso){
-            Gate::define($permiso->name, function(User $user, $permiso){
-                return $user->role_id == $permiso->id;
-            });
+            foreach ($roles as $role){
+                Gate::define($permiso->name, function($permiso, $role){                
+                    return $role->id == $permiso->role_id;        
+                });  
+            }            
         }
     }
 }

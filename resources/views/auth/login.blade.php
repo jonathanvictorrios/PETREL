@@ -1,5 +1,6 @@
-<x-guest-layout>
-    <x-jet-authentication-card>
+<!-- <x-guest-layout>
+    <x-jet-authentication-card> -->
+        @section('logform')
         <x-slot name="logo">
         <img src="{{ asset('img/vector_petrel.svg') }}" alt="Logo Petrel" width="60">
         </x-slot>
@@ -44,5 +45,6 @@
                 </x-jet-button>
             </div>
         </form>
-    </x-jet-authentication-card>
-</x-guest-layout>
+        @endsection
+<!--     </x-jet-authentication-card>
+</x-guest-layout> -->

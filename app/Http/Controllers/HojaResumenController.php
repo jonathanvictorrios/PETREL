@@ -7,7 +7,7 @@ use App\Models\HojaResumen;
 use App\Models\SolicitudCertProg;
 use Illuminate\Support\Facades\Storage;
 use Karriere\PdfMerge\PdfMerge;
-use PDF;
+use App\Models\PDF;
 
 class HojaResumenController extends Controller
 {

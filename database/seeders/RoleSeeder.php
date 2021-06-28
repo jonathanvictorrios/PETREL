@@ -13,7 +13,7 @@ class RoleSeeder extends Seeder
             'name' => 'Admin',
         ]);
         DB::table('roles')->insert([
-            'name' => 'Santiago',
+            'name' => 'Director SecA', // EL SANTI
         ]);
         DB::table('roles')->insert([
             'name' => 'Departamento Central',
