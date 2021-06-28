@@ -153,46 +153,83 @@
 
                                         <div id="collapseOne" class="accordion-collapse collapse justify-content-center"
                                             aria-labelledby="headingOne" data-bs-parent="#acordeonComentarios">
+                                           
                                             <div class="accordion-body  d-flex justify-content-center acordeonComentarios">
+                                                
                                                 <div class="table-responsive col-12 mx-3">
+                                                    <h4 class="text-center fw-bold cell">Historial de Estados de la Solicitud</h4>
                                                     <table
                                                         class="table table-striped table-hover align-middle table-borderless">
                                                         <thead class="border-bottom">
                                                             <tr>
                                                                 <th scope="col" class="p-2 text-center">Fecha</th>
                                                                 <th scope="col" class="p-2 text-center">Usuario</th>
-                                                                <th scope="col" class="p-2 text-center">Detalle</th>
+                                                                <th scope="col" class="p-2 text-center">Estado</th>
                                                             </tr>
                                                         </thead>
                                                         <tbody>
                                                             <tr>
                                                                 <td class="p-2">12/05/2021</td>
                                                                 <td class="p-2">Viviana Pedrero</td>
-                                                                <td class="p-2">asignado a Raquel sdhakshaksdas
-                                                                    dbahsbdhamsbdasbdjasbdajsdbaksdhakhs
-                                                                    dbahmsdbahmsdbahmsbdamsbdamhsbdahsbfkhasbfhasfbmahsfbamsfbamhsbfmhasfaf
+                                                                <td class="p-2">asignado a Raquel
+                                                                </td>
+                                                            </tr>
+
+                                                            <tr>
+                                                                <td class="p-2">17/05/2021</td>
+                                                                <td class="p-2">Viviana Pedrero</td>
+                                                                <td class="p-2">asignado a Ricardo Ford
                                                                 </td>
                                                             </tr>
 
                                                             <tr>
                                                                 <td class="p-2">12/05/2021</td>
                                                                 <td class="p-2">Viviana Pedrero</td>
-                                                                <td class="p-2">asignado a Raquel sdhakshaksdas
-                                                                    dbahsbdhamsbdasbdjasbdajsdbaksdhakhs
-                                                                    dbahmsdbahmsdbahmsbdamsbdamhsbdahsbfkhasbfhasfbmahsfbamsfbamhsbfmhasfaf
-                                                                </td>
-                                                            </tr>
-
-                                                            <tr>
-                                                                <td class="p-2">12/05/2021</td>
-                                                                <td class="p-2">Viviana Pedrero</td>
-                                                                <td class="p-2">asignado a Raquel sdhakshaksdas
-                                                                    dbahsbdhamsbdasbdjasbdajsdbaksdhakhs
-                                                                    dbahmsdbahmsdbahmsbdamsbdamhsbdahsbfkhasbfhasfbmahsfbamsfbamhsbfmhasfaf
+                                                                <td class="p-2">espera firma Secretaria
                                                                 </td>
                                                             </tr>
                                                         </tbody>
                                                     </table>
+                                                    <h4 class="text-center fw-bold cell">Mensajes</h4>
+                                                    <div class="table-responsive col-12 mx-3">
+                                                        <table
+                                                            class="table table-striped table-hover align-middle table-borderless">
+                                                            <thead class="border-bottom">
+                                                                <tr>
+                                                                    <th scope="col" class="p-2 text-center">Fecha</th>
+                                                                    <th scope="col" class="p-2 text-center">Usuario</th>
+                                                                    <th scope="col" class="p-2 text-center">Detalle</th>
+                                                                </tr>
+                                                            </thead>
+                                                            <tbody>
+                                                                <tr>
+                                                                    <td class="p-2">12/05/2021</td>
+                                                                    <td class="p-2">Viviana Pedrero</td>
+                                                                    <td class="p-2">asignado a Raquel sdhakshaksdas
+                                                                        dbahsbdhamsbdasbdjasbdajsdbaksdhakhs
+                                                                        dbahmsdbahmsdbahmsbdamsbdamhsbdahsbfkhasbfhasfbmahsfbamsfbamhsbfmhasfaf
+                                                                    </td>
+                                                                </tr>
+    
+                                                                <tr>
+                                                                    <td class="p-2">12/05/2021</td>
+                                                                    <td class="p-2">Viviana Pedrero</td>
+                                                                    <td class="p-2">asignado a Raquel sdhakshaksdas
+                                                                        dbahsbdhamsbdasbdjasbdajsdbaksdhakhs
+                                                                        dbahmsdbahmsdbahmsbdamsbdamhsbdahsbfkhasbfhasfbmahsfbamsfbamhsbfmhasfaf
+                                                                    </td>
+                                                                </tr>
+    
+                                                                <tr>
+                                                                    <td class="p-2">12/05/2021</td>
+                                                                    <td class="p-2">Viviana Pedrero</td>
+                                                                    <td class="p-2">asignado a Raquel sdhakshaksdas
+                                                                        dbahsbdhamsbdasbdjasbdajsdbaksdhakhs
+                                                                        dbahmsdbahmsdbahmsbdamsbdamhsbdahsbfkhasbfhasfbmahsfbamsfbamhsbfmhasfaf
+                                                                    </td>
+                                                                </tr>
+                                                            </tbody>
+                                                        </table>
                                                     {{-- boton de agregar comentario --}}
                                                     <div class="row justify-content-center">
                                                         <div class="col-12 mt-2 p-2 ">
@@ -203,7 +240,7 @@
                                                                 {{-- aca voy a recibir el $idSolicitud --}}
                                                                 <input type="hidden" id="idSolicitud" name="idSolicitud"
                                                                     value="{{ $solicitud->idSolicitud }}">
-                                                                <input type="submit" class="botonFormulario2" value="Agregar comentario">
+                                                                <input type="submit" class="botonFormulario2" value="Agregar Mensaje">
                                                             </form>
                                                         </div>
                                                     </div>
@@ -283,82 +320,119 @@
                                 {{ $solicitud->UniversidadDestino }}
                             </p>
                         </div>
-                        {{-- Comienzo div Actividad (mostrar como acordeón) --}}
-                        <div class="row d-flex justify-content-center">
-                            <div class="col-12  p-2">
-                                <div class="accordion" id="acordeonComentarios">
-                                    <div class="accordion-item mt-4">
+  {{-- Comienzo div Actividad (mostrar como acordeón) --}}
+  <div class="row d-flex justify-content-center">
+    <div class="col-12  p-2">
+        <div class="accordion" id="acordeonComentarios">
+            <div class="accordion-item mt-4">
 
-                                        <button
-                                            class="accordion-button collapsed justify-content-center botonAcordeonComentarios"
-                                            type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne"
-                                            aria-expanded="true" aria-controls="collapseOne">
-                                            <h2 class="align-self-center" id="headingOne"> Actividad </h2>
-                                        </button>
+                <button
+                    class="accordion-button collapsed justify-content-center botonAcordeonComentarios"
+                    type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne"
+                    aria-expanded="true" aria-controls="collapseOne">
+                    <h2 class="align-self-center" id="headingOne"> Actividad </h2>
+                </button>
 
-                                        <div id="collapseOne" class="accordion-collapse collapse justify-content-center"
-                                            aria-labelledby="headingOne" data-bs-parent="#acordeonComentarios">
-                                            <div class="accordion-body  d-flex justify-content-center acordeonComentarios">
-                                                <div class="table-responsive col-12 mx-3">
-                                                    <table
-                                                        class="table table-striped table-hover align-middle table-borderless">
-                                                        <thead class="border-bottom">
-                                                            <tr>
-                                                                <th scope="col" class="p-2 text-center">Fecha</th>
-                                                                <th scope="col" class="p-2 text-center">Usuario</th>
-                                                                <th scope="col" class="p-2 text-center">Detalle</th>
-                                                            </tr>
-                                                        </thead>
-                                                        <tbody>
-                                                            <tr>
-                                                                <td class="p-2">12/05/2021</td>
-                                                                <td class="p-2">Viviana Pedrero</td>
-                                                                <td class="p-2">asignado a Raquel sdhakshaksdas
-                                                                    dbahsbdhamsbdasbdjasbdajsdbaksdhakhs
-                                                                    dbahmsdbahmsdbahmsbdamsbdamhsbdahsbfkhasbfhasfbmahsfbamsfbamhsbfmhasfaf
-                                                                </td>
-                                                            </tr>
+                <div id="collapseOne" class="accordion-collapse collapse justify-content-center"
+                    aria-labelledby="headingOne" data-bs-parent="#acordeonComentarios">
+                   
+                    <div class="accordion-body  d-flex justify-content-center acordeonComentarios">
+                        
+                        <div class="table-responsive col-12 mx-3">
+                            <h4 class="text-center fw-bold cell">Historial de Estados de la Solicitud</h4>
+                            <table
+                                class="table table-striped table-hover align-middle table-borderless">
+                                <thead class="border-bottom">
+                                    <tr>
+                                        <th scope="col" class="p-2 text-center">Fecha</th>
+                                        <th scope="col" class="p-2 text-center">Usuario</th>
+                                        <th scope="col" class="p-2 text-center">Estado</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td class="p-2">12/05/2021</td>
+                                        <td class="p-2">Viviana Pedrero</td>
+                                        <td class="p-2">asignado a Raquel
+                                        </td>
+                                    </tr>
 
-                                                            <tr>
-                                                                <td class="p-2">12/05/2021</td>
-                                                                <td class="p-2">Viviana Pedrero</td>
-                                                                <td class="p-2">asignado a Raquel sdhakshaksdas
-                                                                    dbahsbdhamsbdasbdjasbdajsdbaksdhakhs
-                                                                    dbahmsdbahmsdbahmsbdamsbdamhsbdahsbfkhasbfhasfbmahsfbamsfbamhsbfmhasfaf
-                                                                </td>
-                                                            </tr>
+                                    <tr>
+                                        <td class="p-2">17/05/2021</td>
+                                        <td class="p-2">Viviana Pedrero</td>
+                                        <td class="p-2">asignado a Ricardo Ford
+                                        </td>
+                                    </tr>
 
-                                                            <tr>
-                                                                <td class="p-2">12/05/2021</td>
-                                                                <td class="p-2">Viviana Pedrero</td>
-                                                                <td class="p-2">asignado a Raquel sdhakshaksdas
-                                                                    dbahsbdhamsbdasbdjasbdajsdbaksdhakhs
-                                                                    dbahmsdbahmsdbahmsbdamsbdamhsbdahsbfkhasbfhasfbmahsfbamsfbamhsbfmhasfaf
-                                                                </td>
-                                                            </tr>
-                                                        </tbody>
-                                                    </table>
-                                                      {{-- boton de agregar comentario --}}
-                                                      <div class="row justify-content-center">
-                                                        <div class="col-12 mt-2 p-2 ">
-                                                           
-                                                            <form action="" method="POST" autocomplete="off"
-                                                                enctype="multipart/form-data">
-                                                                @csrf
-                                                                {{-- aca voy a recibir el $idSolicitud --}}
-                                                                <input type="hidden" id="idSolicitud" name="idSolicitud"
-                                                                    value="{{ $solicitud->idSolicitud }}">
-                                                                <input type="submit" class="botonFormulario2" value="Agregar comentario">
-                                                            </form>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
+                                    <tr>
+                                        <td class="p-2">12/05/2021</td>
+                                        <td class="p-2">Viviana Pedrero</td>
+                                        <td class="p-2">espera firma Secretaria
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                            <h4 class="text-center fw-bold cell">Mensajes</h4>
+                            <div class="table-responsive col-12 mx-3">
+                                <table
+                                    class="table table-striped table-hover align-middle table-borderless">
+                                    <thead class="border-bottom">
+                                        <tr>
+                                            <th scope="col" class="p-2 text-center">Fecha</th>
+                                            <th scope="col" class="p-2 text-center">Usuario</th>
+                                            <th scope="col" class="p-2 text-center">Detalle</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td class="p-2">12/05/2021</td>
+                                            <td class="p-2">Viviana Pedrero</td>
+                                            <td class="p-2">asignado a Raquel sdhakshaksdas
+                                                dbahsbdhamsbdasbdjasbdajsdbaksdhakhs
+                                                dbahmsdbahmsdbahmsbdamsbdamhsbdahsbfkhasbfhasfbmahsfbamsfbamhsbfmhasfaf
+                                            </td>
+                                        </tr>
+
+                                        <tr>
+                                            <td class="p-2">12/05/2021</td>
+                                            <td class="p-2">Viviana Pedrero</td>
+                                            <td class="p-2">asignado a Raquel sdhakshaksdas
+                                                dbahsbdhamsbdasbdjasbdajsdbaksdhakhs
+                                                dbahmsdbahmsdbahmsbdamsbdamhsbdahsbfkhasbfhasfbmahsfbamsfbamhsbfmhasfaf
+                                            </td>
+                                        </tr>
+
+                                        <tr>
+                                            <td class="p-2">12/05/2021</td>
+                                            <td class="p-2">Viviana Pedrero</td>
+                                            <td class="p-2">asignado a Raquel sdhakshaksdas
+                                                dbahsbdhamsbdasbdjasbdajsdbaksdhakhs
+                                                dbahmsdbahmsdbahmsbdamsbdamhsbdahsbfkhasbfhasfbmahsfbamsfbamhsbfmhasfaf
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            {{-- boton de agregar comentario --}}
+                            <div class="row justify-content-center">
+                                <div class="col-12 mt-2 p-2 ">
+                                   
+                                    <form action="" method="POST" autocomplete="off"
+                                        enctype="multipart/form-data">
+                                        @csrf
+                                        {{-- aca voy a recibir el $idSolicitud --}}
+                                        <input type="hidden" id="idSolicitud" name="idSolicitud"
+                                            value="{{ $solicitud->idSolicitud }}">
+                                        <input type="submit" class="botonFormulario2" value="Agregar Mensaje">
+                                    </form>
                                 </div>
                             </div>
-                        </div> {{-- Fin div Actividad --}}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div> {{-- Fin div Actividad --}}
                         <div class="row clearfix">
                             <div class="form-group mt-4 d-lg-flex">
                                 {{-- un boton para descargar --}}
@@ -436,82 +510,119 @@
                                 {{ $solicitud->UniversidadDestino }}
                             </p>
                         </div>
-                        {{-- Comienzo div Actividad (mostrar como acordeón) --}}
-                        <div class="row d-flex justify-content-center">
-                            <div class="col-12  p-2">
-                                <div class="accordion" id="acordeonComentarios">
-                                    <div class="accordion-item mt-4">
+   {{-- Comienzo div Actividad (mostrar como acordeón) --}}
+   <div class="row d-flex justify-content-center">
+    <div class="col-12  p-2">
+        <div class="accordion" id="acordeonComentarios">
+            <div class="accordion-item mt-4">
 
-                                        <button
-                                            class="accordion-button collapsed justify-content-center botonAcordeonComentarios"
-                                            type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne"
-                                            aria-expanded="true" aria-controls="collapseOne">
-                                            <h2 class="align-self-center" id="headingOne"> Actividad </h2>
-                                        </button>
+                <button
+                    class="accordion-button collapsed justify-content-center botonAcordeonComentarios"
+                    type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne"
+                    aria-expanded="true" aria-controls="collapseOne">
+                    <h2 class="align-self-center" id="headingOne"> Actividad </h2>
+                </button>
 
-                                        <div id="collapseOne" class="accordion-collapse collapse justify-content-center"
-                                            aria-labelledby="headingOne" data-bs-parent="#acordeonComentarios">
-                                            <div class="accordion-body  d-flex justify-content-center acordeonComentarios">
-                                                <div class="table-responsive col-12 mx-3">
-                                                    <table
-                                                        class="table table-striped table-hover align-middle table-borderless">
-                                                        <thead class="border-bottom">
-                                                            <tr>
-                                                                <th scope="col" class="p-2 text-center">Fecha</th>
-                                                                <th scope="col" class="p-2 text-center">Usuario</th>
-                                                                <th scope="col" class="p-2 text-center">Detalle</th>
-                                                            </tr>
-                                                        </thead>
-                                                        <tbody>
-                                                            <tr>
-                                                                <td class="p-2">12/05/2021</td>
-                                                                <td class="p-2">Viviana Pedrero</td>
-                                                                <td class="p-2">asignado a Raquel sdhakshaksdas
-                                                                    dbahsbdhamsbdasbdjasbdajsdbaksdhakhs
-                                                                    dbahmsdbahmsdbahmsbdamsbdamhsbdahsbfkhasbfhasfbmahsfbamsfbamhsbfmhasfaf
-                                                                </td>
-                                                            </tr>
+                <div id="collapseOne" class="accordion-collapse collapse justify-content-center"
+                    aria-labelledby="headingOne" data-bs-parent="#acordeonComentarios">
+                   
+                    <div class="accordion-body  d-flex justify-content-center acordeonComentarios">
+                        
+                        <div class="table-responsive col-12 mx-3">
+                            <h4 class="text-center fw-bold cell">Historial de Estados de la Solicitud</h4>
+                            <table
+                                class="table table-striped table-hover align-middle table-borderless">
+                                <thead class="border-bottom">
+                                    <tr>
+                                        <th scope="col" class="p-2 text-center">Fecha</th>
+                                        <th scope="col" class="p-2 text-center">Usuario</th>
+                                        <th scope="col" class="p-2 text-center">Estado</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td class="p-2">12/05/2021</td>
+                                        <td class="p-2">Viviana Pedrero</td>
+                                        <td class="p-2">asignado a Raquel
+                                        </td>
+                                    </tr>
 
-                                                            <tr>
-                                                                <td class="p-2">12/05/2021</td>
-                                                                <td class="p-2">Viviana Pedrero</td>
-                                                                <td class="p-2">asignado a Raquel sdhakshaksdas
-                                                                    dbahsbdhamsbdasbdjasbdajsdbaksdhakhs
-                                                                    dbahmsdbahmsdbahmsbdamsbdamhsbdahsbfkhasbfhasfbmahsfbamsfbamhsbfmhasfaf
-                                                                </td>
-                                                            </tr>
+                                    <tr>
+                                        <td class="p-2">17/05/2021</td>
+                                        <td class="p-2">Viviana Pedrero</td>
+                                        <td class="p-2">asignado a Ricardo Ford
+                                        </td>
+                                    </tr>
 
-                                                            <tr>
-                                                                <td class="p-2">12/05/2021</td>
-                                                                <td class="p-2">Viviana Pedrero</td>
-                                                                <td class="p-2">asignado a Raquel sdhakshaksdas
-                                                                    dbahsbdhamsbdasbdjasbdajsdbaksdhakhs
-                                                                    dbahmsdbahmsdbahmsbdamsbdamhsbdahsbfkhasbfhasfbmahsfbamsfbamhsbfmhasfaf
-                                                                </td>
-                                                            </tr>
-                                                        </tbody>
-                                                    </table>
-                                                      {{-- boton de agregar comentario --}}
-                                                      <div class="row justify-content-center">
-                                                        <div class="col-12 mt-2 p-2 ">
-                                                           
-                                                            <form action="" method="POST" autocomplete="off"
-                                                                enctype="multipart/form-data">
-                                                                @csrf
-                                                                {{-- aca voy a recibir el $idSolicitud --}}
-                                                                <input type="hidden" id="idSolicitud" name="idSolicitud"
-                                                                    value="{{ $solicitud->idSolicitud }}">
-                                                                <input type="submit" class="botonFormulario2" value="Agregar comentario">
-                                                            </form>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
+                                    <tr>
+                                        <td class="p-2">12/05/2021</td>
+                                        <td class="p-2">Viviana Pedrero</td>
+                                        <td class="p-2">espera firma Secretaria
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                            <h4 class="text-center fw-bold cell">Mensajes</h4>
+                            <div class="table-responsive col-12 mx-3">
+                                <table
+                                    class="table table-striped table-hover align-middle table-borderless">
+                                    <thead class="border-bottom">
+                                        <tr>
+                                            <th scope="col" class="p-2 text-center">Fecha</th>
+                                            <th scope="col" class="p-2 text-center">Usuario</th>
+                                            <th scope="col" class="p-2 text-center">Detalle</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td class="p-2">12/05/2021</td>
+                                            <td class="p-2">Viviana Pedrero</td>
+                                            <td class="p-2">asignado a Raquel sdhakshaksdas
+                                                dbahsbdhamsbdasbdjasbdajsdbaksdhakhs
+                                                dbahmsdbahmsdbahmsbdamsbdamhsbdahsbfkhasbfhasfbmahsfbamsfbamhsbfmhasfaf
+                                            </td>
+                                        </tr>
+
+                                        <tr>
+                                            <td class="p-2">12/05/2021</td>
+                                            <td class="p-2">Viviana Pedrero</td>
+                                            <td class="p-2">asignado a Raquel sdhakshaksdas
+                                                dbahsbdhamsbdasbdjasbdajsdbaksdhakhs
+                                                dbahmsdbahmsdbahmsbdamsbdamhsbdahsbfkhasbfhasfbmahsfbamsfbamhsbfmhasfaf
+                                            </td>
+                                        </tr>
+
+                                        <tr>
+                                            <td class="p-2">12/05/2021</td>
+                                            <td class="p-2">Viviana Pedrero</td>
+                                            <td class="p-2">asignado a Raquel sdhakshaksdas
+                                                dbahsbdhamsbdasbdjasbdajsdbaksdhakhs
+                                                dbahmsdbahmsdbahmsbdamsbdamhsbdahsbfkhasbfhasfbmahsfbamsfbamhsbfmhasfaf
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            {{-- boton de agregar comentario --}}
+                            <div class="row justify-content-center">
+                                <div class="col-12 mt-2 p-2 ">
+                                   
+                                    <form action="" method="POST" autocomplete="off"
+                                        enctype="multipart/form-data">
+                                        @csrf
+                                        {{-- aca voy a recibir el $idSolicitud --}}
+                                        <input type="hidden" id="idSolicitud" name="idSolicitud"
+                                            value="{{ $solicitud->idSolicitud }}">
+                                        <input type="submit" class="botonFormulario2" value="Agregar Mensaje">
+                                    </form>
                                 </div>
                             </div>
-                        </div> {{-- Fin div Actividad --}}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div> {{-- Fin div Actividad --}}
                         <div class="row clearfix">
                             <div class="form-group mt-4 d-lg-flex">
                                 {{-- un boton para descargar --}}
