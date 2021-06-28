@@ -57,7 +57,7 @@
                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
                     <div class="modal-body">
-                        <div class="container-fluid px-1 py-5 mx-auto">
+                        <!-- <div class="container-fluid px-1 py-5 mx-auto">
                             <div class="row d-flex justify-content-center">
                                 <div class="col">
                                     <div class="card card-form">
@@ -89,7 +89,9 @@
                                     </div>
                                 </div>
                             </div>
-                        </div>
+                        </div> -->
+                        @include('auth.login')
+                        @yield('logform')
                     </div>
 
                 </div>
