@@ -50,12 +50,12 @@ h6 {
     color: var(--color-azulPrimario);
 }
 
-a {
+a,.agregarOtro{
     text-decoration: none;
     color: var(--color-azulPrimario);
 }
 
-a:hover {
+a:hover, .agregarOtro:hover{
     color: var(--color-verdeHover);
 }
 

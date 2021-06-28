@@ -51,7 +51,7 @@
         <div id="inputs_contenedor" class="">
             <input type="text" name="urlRanquel[]" class="form-control" value="{{ end($url_ranquel) }}" placeholder="Ingresa URL de archivo en Ranquel.">
         </div>
-        <a href="" onclick="agregarInput()" id="btn_nuevo_input">+ agregar otro</a>
+        <a class="agregarOtro" onclick="agregarInput()" id="btn_nuevo_input">+ agregar otro</a>
     </div>
 
     <div class="form-group mt-4 d-lg-flex">

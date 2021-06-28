@@ -148,7 +148,7 @@
                                             class="accordion-button collapsed justify-content-center botonAcordeonComentarios"
                                             type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne"
                                             aria-expanded="true" aria-controls="collapseOne">
-                                            <h2 class="align-self-center" id="headingOne"> Actividad </h2>
+                                            <h2 class="text-center" id="headingOne"> Actividad </h2>
                                         </button>
 
                                         <div id="collapseOne" class="accordion-collapse collapse justify-content-center"
