@@ -18,6 +18,9 @@ class PermissionSeeder extends Seeder
     {
         //root
         DB::table('permissions')->insert([
+            'name' => 'users_manage',
+        ]);
+        DB::table('permissions')->insert([
             'name' => 'deleteAnio',
         ]);
         DB::table('permissions')->insert([
