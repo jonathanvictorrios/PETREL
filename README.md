@@ -1,20 +1,18 @@
 # PETREL
-### *Certificaciones de Programas Aprobados más fáciles y más Rápidos*
+
+### _Certificaciones de Programas Aprobados más fáciles y más Rápidos_
 
 <img src="https://i.postimg.cc/VL2DtKJB/index.png">
 
-
-> Petrel es un sistema implementado por la generación 2021 del curso de "Programación Web Avanzada" de la Carrera Tecnicatura Universitaria de Desarrollo Web. 
-
+> Petrel es un sistema implementado por la generación 2021 del curso de "Programación Web Avanzada" de la Carrera Tecnicatura Universitaria de Desarrollo Web.
 
 ## Features
 
-- Permitir a los usuarios (Alumnos y/o ex-Alumnos) acceder a la certificación de Programas de las Materias aprobadas para las carreras dictadas en la Universidad.
-- Optimización de los tiempos administrativos y conformación de expedientes referentes a la aprobación de dichas certificaciones.
-- Recopilar los PDF en servidores en la nube, y escanear los programas de cada materia
-- Lorem Ipsum
-- Lorem Ipsum x2
-
+-   Permitir a los usuarios (Alumnos y/o ex-Alumnos) acceder a la certificación de Programas de las Materias aprobadas para las carreras dictadas en la Universidad.
+-   Optimización de los tiempos administrativos y conformación de expedientes referentes a la aprobación de dichas certificaciones.
+-   Recopilar los PDF en servidores en la nube, y escanear los programas de cada materia
+-   Lorem Ipsum
+-   Lorem Ipsum x2
 
 ## Tech
 
@@ -35,19 +33,16 @@ Petrel hace uso en su implementación de las siguientes tecnologias:
 ## Installation
 
 Algunas consideraciones (Luego pasaré el limpio)
+
 > Para copiar el repositorio en sus máquinas el commando: git clone https://github.com/PETREL-PWAUNCO2021/PETREL.git (Aca depende el link según el branch, espero) funciona perfectamente
 
->Como por defecto el .gitignore no permite pasar la carpeta Vendor ni el .ENV: Usar el comando -> composer update, para restablecer la carpeta Vendor a partir del composer.json Crear una copia del archivo .env.example y guardarlo como .env
+> Como por defecto el .gitignore no permite pasar la carpeta Vendor ni el .ENV: Usar el comando -> composer update, para restablecer la carpeta Vendor a partir del composer.json Crear una copia del archivo .env.example y guardarlo como .env
 
->Ejecutar el comando php artisan key:generate de ser necesario
+> Ejecutar el comando php artisan key:generate de ser necesario
 
 Si el mysql no inicia
+
 > cambiar en .env los valores 'DB_USERNAME=sail' y 'DB_PASSWORD=password'. Y reiniciar el contenedor.
-
-
-
-
-
 
 ## Plugins
 
@@ -72,8 +67,5 @@ MIT
 **Free Software, Hell Yeah!??**
 
 ### Activity
+
 <!--START_SECTION:activity-->
-
-
-
-

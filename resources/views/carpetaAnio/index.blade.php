@@ -22,11 +22,11 @@
     </thead>
     <tbody>
         @foreach ($colCarpetasAnio as $carpeta)
-            <tr>
-                <td>{{ $carpeta->numero_anio }}</td>
-                <td><a href="{{ route('buscarCarreras',$carpeta->id_carpeta_anio) }}">ver carpeta</a></td>
-                <td><a href="{{ route('anio.edit',$carpeta->id_carpeta_anio) }}">Modificar</a></td>
-            </tr>
+        <tr>
+            <td>{{ $carpeta->numero_anio }}</td>
+            <td><a href="{{ route('buscarCarreras',$carpeta->id_carpeta_anio) }}">ver carpeta</a></td>
+            <td><a href="{{ route('anio.edit',$carpeta->id_carpeta_anio) }}">Modificar</a></td>
+        </tr>
         @endforeach
     </tbody>
 </table>

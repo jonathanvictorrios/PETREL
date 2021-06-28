@@ -81,7 +81,6 @@ return [
     */
 
     'locale' => 'es',
-
     /*
     |--------------------------------------------------------------------------
     | Application Fallback Locale
@@ -174,6 +173,8 @@ return [
         // App\Providers\BroadcastServiceProvider::class,
         App\Providers\EventServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
+        App\Providers\FortifyServiceProvider::class,
+        App\Providers\JetstreamServiceProvider::class,
         App\Providers\GoogleDriveServiceProvider::class,
         Barryvdh\DomPDF\ServiceProvider::class,
     ],

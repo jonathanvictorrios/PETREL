@@ -6,14 +6,17 @@
             <img src="{{ asset('img/logo_petrel.svg') }}" alt="Logo Petrel" width="60">
         </a>
         <!-- Toggle button -->
-        <button class="navbar-toggler my-2 mx-5" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <button class="navbar-toggler my-2 mx-5" type="button" data-bs-toggle="collapse"
+            data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
+            aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
         <!-- Comienzo contenido a la derecha -->
         <div class="navbar-collapse justify-content-end collapse py-2 px-5" id="navbarSupportedContent">
             <ul class="nav navbar-nav">
                 <li class="nav-item dropdown mb-3 mb-lg-0">
-                    <a class="nav-link dropdown-toggle" href="#" id="MenuTest" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    <a class="nav-link dropdown-toggle" href="#" id="MenuTest" role="button" data-bs-toggle="dropdown"
+                        aria-haspopup="true" aria-expanded="false">
                         <i class="fas fa-tools mx-2"></i> Menú test
                     </a>
                     <ul class="dropdown-menu" aria-labelledby="MenuTest">
@@ -27,7 +30,8 @@
                     </ul>
                 </li>
                 <li class="nav-item dropdown mb-3 mb-lg-0">
-                    <a class="nav-link dropdown-toggle" href="#" id="MenuUsuario" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    <a class="nav-link dropdown-toggle" href="#" id="MenuUsuario" role="button"
+                        data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                         <i class="fas fa-user mx-2"></i> {{ $usuarioActivo ?? 'Menú usuario' }}
                     </a>
                     <ul class="dropdown-menu" aria-labelledby="MenuUsuario">

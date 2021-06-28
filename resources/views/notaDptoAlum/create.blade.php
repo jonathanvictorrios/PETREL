@@ -4,9 +4,10 @@
 @include('estructura/header')
 <div class="container shadow-lg mt-5 mb-5 pb-3 bg-light rounded col-8">
 @php
-    $directorio = storage_path('app/id-solicitud-'.$solicitud->id_solicitud.'/rendimientoAcademico'.$solicitud->id_solicitud.'.json');
-    $arregloRendimiento = json_decode(file_get_contents($directorio),true);
-    $fecha = date('d') . ' de ' . date('M') . ' del ' . date('Y');
+$directorio =
+storage_path('app/id-solicitud-'.$solicitud->id_solicitud.'/rendimientoAcademico'.$solicitud->id_solicitud.'.json');
+$arregloRendimiento = json_decode(file_get_contents($directorio),true);
+$fecha = date('d') . ' de ' . date('M') . ' del ' . date('Y');
 @endphp
 
 @if($errors->any())
@@ -16,9 +17,9 @@
 @endif
 
 @if(session('success'))
-    <div class="alert alert-success mt-3 container">
-        {{session('success')}}
-    </div>
+<div class="alert alert-success mt-3 container">
+    {{session('success')}}
+</div>
 @endif
 <form name="formulario_nota" id="formulario_nota" action="{{ route('notaDA.store') }}" method="POST" class="container w-75 py-2" novalidate>
     @csrf
@@ -92,33 +93,37 @@
 
 <!-- Modal autenticar contraseña -->
 <div class="modal fade" id="login_check" tabindex="-1" aria-labelledby="login_check" aria-hidden="true">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="login_check_h">Debes confirmar tu contraseña</h5>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-      </div>
-      <div class="modal-body">
-        <div class="form-group">
-            <label for="input_contrasenia">Contraseña</label>
-            <input type="password" name="password" id="input_contrasenia" class="form-control">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="login_check_h">Debes confirmar tu contraseña</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <div class="form-group">
+                    <label for="input_contrasenia">Contraseña</label>
+                    <input type="password" name="password" id="input_contrasenia" class="form-control">
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-primary" id="modal_sesion_submit">Autenticar y continuar</button>
+            </div>
         </div>
       </div>
       <div class="modal-footer">
         <button type="button" class="btn botonFormulario" id="modal_sesion_submit">Autenticar y continuar</button>
       </div>
     </div>
-  </div>
 </div>
 
 <script src="//cdn.ckeditor.com/4.14.1/basic/ckeditor.js"></script>
 <script type="text/javascript">
-    $(document).ready(function () {
-        /**
-         * Al momento de cargar el documento, se reemplaza el textarea por la app ckeditor
-        */
-        $('.ckeditor').ckeditor();
-    });
+$(document).ready(function() {
+    /**
+     * Al momento de cargar el documento, se reemplaza el textarea por la app ckeditor
+     */
+    $('.ckeditor').ckeditor();
+});
 
     /*
     * Este método es temporal para mostrar el uso de la aplicación
@@ -135,12 +140,13 @@
             success: function( data ) {
                 if (data === 'true') $('#formulario_nota').submit();
                 if (data === 'true') $('#login_check').modal('toggle');
-                if (data === 'true') $('#btn_continuar').attr("href", '/');
+                if (data === 'true') $('#btn_continuar').attr("href", '/solicitud');
                 if (data === 'true') $('#btn_continuar').removeClass('btn-secondary disabled');
                 if (data === 'true') $('#btn_continuar').addClass('btn-success');
             }
         });
     });
+});
 </script>
 </div>
 @endsection

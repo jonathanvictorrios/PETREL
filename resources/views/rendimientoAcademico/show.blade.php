@@ -1,7 +1,7 @@
 @extends('estructura/layout')
 @section('cuerpo')
-@include("estructura/header")
-@php($titulo = 'Rendimiento Academico - Petrel') @endphp
+@include('estructura/header')
+@php($titulo = 'Petrel - Rendimiento Academico') @endphp
 
 <div class="container  shadow-lg mt-5 mb-5 p-4 bg-light rounded col-8">
     @php
@@ -22,9 +22,11 @@
     </header>
     <div>
         <div style="text-align: center;font-weight: bold;border-bottom:solid 1px grey;">RENDIMIENTO ACADEMICO </div>
-        <p>Certifico que {{$arregloRendimiento["Alumno"]["Apellido"]}}, {{$arregloRendimiento["Alumno"]["Nombre"]}} - {{$arregloRendimiento["Documento"]["Tipo"]}}: {{$arregloRendimiento["Documento"]["Nro"]}}
+        <p>Certifico que {{$arregloRendimiento["Alumno"]["Apellido"]}}, {{$arregloRendimiento["Alumno"]["Nombre"]}} -
+            {{$arregloRendimiento["Documento"]["Tipo"]}}: {{$arregloRendimiento["Documento"]["Nro"]}}
             Legajo Nro: {{$arregloRendimiento["Alumno"]["Legajo"]}} que cursa sus
-            estudios en la carrera {{$arregloRendimiento["Carrera"]}} Plan: {{$arregloRendimiento["Plan"]["Nro"]}}/{{$arregloRendimiento["Plan"]["Anio"]}}
+            estudios en la carrera {{$arregloRendimiento["Carrera"]}} Plan:
+            {{$arregloRendimiento["Plan"]["Nro"]}}/{{$arregloRendimiento["Plan"]["Anio"]}}
             ha cuarsado y aprobado las
             siguientes asignaturas:
         </p>
@@ -81,7 +83,8 @@
         <tbody>
             <tr>
                 <td><img width="75px" height="75px" src="img/logito-fai.png" alt="firma_viviana"></td>
-                @if($arregloRendimiento["Secretaria"])<td><img width="75px" height="75px" src="img/logito-fai.png" alt="firma_sol"></td>@endif
+                @if($arregloRendimiento["Secretaria"])<td><img width="75px" height="75px" src="img/logito-fai.png"
+                        alt="firma_sol"></td>@endif
             </tr>
             <tr style="font-weight: bold;">
                 <td>A/C. DEPTO ALUMNOS</td>
@@ -115,8 +118,7 @@
 
 <script src="//cdn.ckeditor.com/4.14.1/basic/ckeditor.js"></script>
 <script type="text/javascript">
-
-$('#btn_crear-pdf').on('click', function () {
+$('#btn_crear-pdf').on('click', function() {
     $('#botonContinuar').removeClass("disabled")
     $('#botonContinuar').removeClass("btn-secondary")
     $('#botonContinuar').addClass("btn-success")

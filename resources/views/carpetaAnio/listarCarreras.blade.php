@@ -24,12 +24,12 @@
     </thead>
     <tbody>
         @foreach ($carpetaAnio->carpeta_carrera as $carrera)
-            <tr>
-                <td>{{ $carrera->carrera->carrera }}</td>
-                <td>
-                    <a href=" {{ route('verProgramas',$carrera->id_carpeta_carrera) }} ">Ver programas</a>
-                </td>
-            </tr>
+        <tr>
+            <td>{{ $carrera->carrera->carrera }}</td>
+            <td>
+                <a href=" {{ route('verProgramas',$carrera->id_carpeta_carrera) }} ">Ver programas</a>
+            </td>
+        </tr>
         @endforeach
     </tbody>
 </table>

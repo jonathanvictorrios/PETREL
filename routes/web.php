@@ -9,9 +9,16 @@ use App\Http\Controllers\ProgramaDriveController;
 use App\Http\Controllers\ProgramaLocalController;
 use App\Http\Controllers\RendimientoAcademicoController;
 use App\Http\Controllers\Archivo;
+use App\Http\Controllers\mailPetrelController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\SolicitudCertProgController;
+use App\Http\Controllers\NotaAdminCentralController;
+use App\Http\Controllers\HojaResumenFinalController;
+// de prueba 
+use App\Http\Controllers\PruebaSolicitudController;
 
+use App\Mail\mailPetrel;
+use App\Mail\mailPetrelFinalizacion;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -57,6 +64,11 @@ Route::view('/modificarcarrera', '/carpetaCarrera/edit');
 Route::view('/crearprograma', '/programaDrive/create');
 Route::view('/modificarprograma', '/programaDrive/edit');
 Route::get('solicitud/{idSolicitud}/asignar/{idAdministrativo}', [SolicitudCertProgController::class, 'asignar'])->name('solicitud.asignar');
+Route::get('solicitud/{idSolicitud}/listoFirmaDptoAlumno/{idAdministrativo}', [SolicitudCertProgController::class, 'listoParaFirmarDptoAlumno'])->name('solicitud.listoFirmaDptoAlumno');
+Route::get('solicitud/{idSolicitud}/listoFirmaSecretariaAcademica/{idAdministrativo}', [SolicitudCertProgController::class, 'listoParaFirmarSecretariaAcademica'])->name('solicitud.listoFirmaSecretariaAcademica');
+Route::get('solicitud/{idSolicitud}/listoFirmaSantiago/{idAdministrativo}', [SolicitudCertProgController::class, 'listoParaFirmarSantiago'])->name('solicitud.listoFirmaSantiago');
+Route::get('solicitud/{idSolicitud}/terminar/{idAdministrativo}', [SolicitudCertProgController::class, 'terminar'])->name('solicitud.terminar');
+
 
 // CRUD:
 Route::resource('solicitud', SolicitudCertProgController::class);
@@ -78,12 +90,11 @@ Route::resource('programaLocal', ProgramaLocalController::class);
 Route::get('buscarProgramas/{idSolicitud}', [ProgramaDriveController::class, 'buscarProgramas'])->name('buscarProgramas');
 Route::post('descargarProgramas', [ProgramaLocalController::class, 'descargarProgramas'])->name('descargarProgramas');
 
-Route::resource('hojaResumen', HojaResumenController::class);
-Route::post('firmaSecretaria', [HojaResumenController::class, 'firmaSecretaria'])->name('firmaSecretaria');
-Route::get('firma', function () {
-    return view('hojaResumen.secretaria');
-});
-
+Route::resource('hojaResumen',HojaResumenController::class);
+Route::post('firmaSecretaria',[HojaResumenController::class,'firmaSecretaria'])->name('firmaSecretaria');
+Route::get('firma',function(){return view('hojaResumen.secretaria');});
+Route::post('continuarTramite',[HojaResumenController::class,'continuarTramite'])->name('continuarTramite');
+Route::get('foliar/{idSolicitud}', [HojaResumenFinalController::class, 'foliar'])->name('foliar');
 
 Route::resource('notaDA', NotaDptoAlumController::class);
 Route::get('notaDA/crear/{id_solicitud}', [NotaDptoAlumController::class, 'crearNota'])->name('notaDA.crear');
@@ -104,4 +115,35 @@ Route::get('archivos/{id}/downloadSinFirma', [Archivo::class, 'downloadSinFirma'
 Route::get('archivos/{id}/downloadFirmado', [Archivo::class, 'downloadFirmado'])->name('archivos.downloadFirmado');
 Route::get('archivos/{id}/comment', [Archivo::class, 'cargarComentario'])->name('archivos.cargarComentario');
 Route::resource('archivos', Archivo::class);
+
+Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
+    return view('dashboard');
+})->name('dashboard');
 Route::get('archivos/{id}/confirmarContrasenia', [Archivo::class, 'confirmarContrasenia'])->name('archivos.confirmarContrasenia');
+
+//Rutas mariela 
+
+// rutas de nota admin central y hoja final
+
+Route::resource('nota_admin_central', 'App\Http\Controllers\NotaAdminCentralController');
+
+Route::post('crear-nota-central', [NotaAdminCentralController::class, 'crearNotaAdminCentral'])->name('crear-nota-central');
+
+Route::post('descargar-nota-central', [NotaAdminCentralController::class, 'descargarPdf'])->name('descargar-nota-central');
+
+Route::resource('hojaResumenFinal', HojaResumenFinalController::class);
+
+Route::post('descargar-hoja-sin-firma', [HojaResumenFinalController::class, 'descargarPdfSinFirma'])->name('descargar-hoja-sin-firma');
+
+
+/* De aca mando el id de la solicitud y me dirije a la vista hojaResumenFinal.indexHojaFinal
+ con el objeto solicitud donde se inica la creacion de la nota de certificacion */
+
+// de prueba
+Route::view('nota-central', 'prueba_hoja.solicitud')->name('nota-central');
+
+Route::post('solicitud', [PruebaSolicitudController::class, 'index'])->name('solicitud');
+
+// Rutas para el envío de Mails
+Route::get('solicitud_iniciada/{idSolicitud}', [mailPetrelController::class, 'enviarMailSolicitudIniciada']);
+Route::get('finalizacion/{idSolicitud}', [mailPetrelController::class, 'enviarMailSolicitudFinalizada']);

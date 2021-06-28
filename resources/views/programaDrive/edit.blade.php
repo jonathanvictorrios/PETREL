@@ -16,24 +16,27 @@
                     <div class="row tittle border-bottom p-2">
                         <h2 class="col text-center fw-bold">Modificar Programa</h2>
                     </div>
-                    <form class="" action="{{ route('programa.update', $programa->id_programa) }}" method="POST" autocomplete="off" enctype="multipart/form-data">
+                    <form class="" action="{{ route('programa.update', $programa->id_programa) }}" method="POST"
+                        autocomplete="off" enctype="multipart/form-data">
                         @csrf
                         <div class="row justify-content-between text-left">
                             <div class="form-group col col col-sm-6 flex-column d-flex py-3">
-                                <label class="form-label py-2">Nombres Materia</label>
+                                <label class="form-label py-2">Nombre Materia</label>
                                 <input class="border-0 cell" type="text" id="nombre" name="nombre" value="{{ old('nombre', $programa->nombre_programa) }}">
                             </div>
                             @method('put')
                             <div class="form-group col col-sm-6 flex-column d-flex py-3">
                                 <label class="form-label py-2">Numero Materia</label>
-                                <input class="border-0 cell" type="number" id="numero" name="numero" value="{{ old('numero', $programa->numero_programa) }}">
+                                <input class="border-0 cell" type="number" id="numero" name="numero"
+                                    value="{{ old('numero', $programa->numero_programa) }}">
                             </div>
                         </div>
 
                         <div class="row justify-content-between text-left">
                             <div class="form-group col col-12 flex-column d-flex py-3">
                                 <label class="form-label py-2">Archivo</label>
-                                <input class="border-0 cell" type="file" id="pdfPrograma" name="pdfPrograma" value="{{ old('pdfPrograma') }}">
+                                <input class="border-0 cell" type="file" id="pdfPrograma" name="pdfPrograma"
+                                    value="{{ old('pdfPrograma') }}">
 
                             </div>
                         </div>
@@ -49,22 +52,5 @@
         </div>
     </div>
 </main> {{-- Fin main cuerpo --}}
-
-@endsection
-{{-- @extends('estructura/layout')
-@section('cuerpo')
-@include('estructura/header')
-
-<form action="{{ route('programa.update', $programa->id_programa) }}" method="POST" autocomplete="off" enctype="multipart/form-data">
-    @csrf
-    <h1>{{$programa->numero_programa."-".$programa->nombre_programa}}</h1>
-    @method('put')
-    <input type="hidden" id="idProgramaDrive" name="idProgramaDrive" value="{{$programa->id_programa_drive}}">
-    Nombre:<input type="text" id="nombre" name="nombre" value="{{ old('nombre', $programa->nombre_programa) }}">
-    <br>
-    Numero:<input type="number" id="numero" name="numero" value="{{ old('numero', $programa->numero_programa) }}">
-    <br>
-    <input type="submit" value="enviar">
-</form>
 
 @endsection

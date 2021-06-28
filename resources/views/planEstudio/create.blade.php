@@ -10,14 +10,18 @@
 @endif
 
 @if(session('success'))
-    <div class="alert alert-success mt-3 container">
-        {{session('success')}}
-    </div>
+<div class="alert alert-success mt-3 container">
+    {{session('success')}}
+</div>
 @endif
 
 <form name="formulario_nota" id="formulario_nota" action="{{ route('planEstudio.store') }}" method="POST" class="container w-75 py-3 pb-5" novalidate>
     @csrf
+<<<<<<< HEAD
     <h2 class="text-center cell p-3 m-3">Seleccionar Plan de Estudios</h2>
+=======
+    <h2 class="text-center">Seleccionar Plan de Estudios</h2>
+>>>>>>> 73ab802e41cc97eae743c2daea0400097c258195
 
     @isset($url_ranquel)
     <div class="col-12">   
@@ -39,10 +43,10 @@
     <div class=" col-12 alert alert-secondary mb-5" role="alert">
        
         <ul>
-            @isset($plan_anio)      <li>Año de Ordenanza: <strong>{{ '20'.$plan_anio }}</strong></li>       @endisset
-            @isset($plan_nro)       <li>Número de Ordenanza: <strong>{{ $plan_nro }}</strong></li>          @endisset
-            @isset($plan_anio_mod)  <li>Año de Ordenanza Mod: <strong>{{ $plan_anio_mod }}</strong></li>    @endisset
-            @isset($plan_nro_mod)   <li>Número de Ordenanza Mod: <strong>{{ $plan_nro_mod }}</strong></li>  @endisset
+            @isset($plan_anio) <li>Año de Ordenanza: <strong>{{ '20'.$plan_anio }}</strong></li> @endisset
+            @isset($plan_nro) <li>Número de Ordenanza: <strong>{{ $plan_nro }}</strong></li> @endisset
+            @isset($plan_anio_mod) <li>Año de Ordenanza Mod: <strong>{{ $plan_anio_mod }}</strong></li> @endisset
+            @isset($plan_nro_mod) <li>Número de Ordenanza Mod: <strong>{{ $plan_nro_mod }}</strong></li> @endisset
         </ul>
     </div>
 
@@ -87,6 +91,7 @@
             document.getElementById('btn_nuevo_input').style = 'color: #777';
         }
     }
+}
 </script>
 </div>
 @endsection
