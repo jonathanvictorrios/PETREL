@@ -109,7 +109,7 @@
 <section id="p-frecuentes">
     <div class="row p-2 bg-light">
         <a name="pregfrecuentes"></a>
-        <div class="col-lg-6 col-sm-12">
+        <div class="col col-lg-6 col-sm-12">
             <div class="accordion accordion-flush p-5" id="acordeon1">
                 <div class="accordion-item row mb-1">
                     <div class="col-10">
