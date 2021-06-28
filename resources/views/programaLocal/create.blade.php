@@ -46,21 +46,26 @@
     @endforeach
     <div class="row clearfix">
         <div class="col-md-6 text-center">
-            <input id="btn_crear-pdf" class="btn btn-primary m-2 font-weight-bold" name="btn_crear-pdf" type="submit"
-                value="Crear PDF">
-        </div>
+            <input id="btn_crear-pdf" class="btn btn-primary m-2 font-weight-bold" name="btn_crear-pdf" type="submit" value="Crear PDF">
+            <a href="{{ url('carpeta/anio')}}" id="faltaPrograma" class="mb-2 w-25 btn btn-success d-none" >Cargar faltantes</a>
+        </div> 
         <div class="col-md-6 text-center">
-            <a href="{{route('crearPlanEstudio',$solicitud->id_solicitud)}}" id="botonContinuar"
-                class="w-25 btn btn-secondary disabled">Continuar</a>
+            <a href="{{route('crearPlanEstudio',$solicitud->id_solicitud)}}" id="botonContinuar" class="w-25 btn btn-secondary disabled" >Continuar</a>
         </div>
     </div> 
 </form>
 <script>
-$('#btn_crear-pdf').on('click', function() {
-    $('#botonContinuar').removeClass("disabled")
-    $('#botonContinuar').removeClass("btn-secondary")
-    $('#botonContinuar').addClass("btn-success")
-});
+    $pararTramite = document.getElementById('faltaProgramas').value;
+    if($pararTramite){
+        $("#faltaPrograma").removeClass("d-none");
+        $("#btn_crear-pdf").addClass("d-none");
+        $('#botonContinuar').addClass("d-none");
+    }
+    $('#btn_crear-pdf').on('click', function () {
+        $('#botonContinuar').removeClass("disabled")
+        $('#botonContinuar').removeClass("btn-secondary")
+        $('#botonContinuar').addClass("btn-success")
+    });
 </script>
 
 @endsection

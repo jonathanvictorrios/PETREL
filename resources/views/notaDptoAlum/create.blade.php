@@ -118,25 +118,26 @@ $(document).ready(function() {
     $('.ckeditor').ckeditor();
 });
 
-/*
- * Este método es temporal para mostrar el uso de la aplicación
- * Donde el usuario debe confirmar su contraseña (autenticarse en el sistema)
- * para poder enviar la nota (generar el pdf firmado)
- */
-$('#modal_sesion_submit').on('click', function() {
-    $.post({
-        url: '{{ route('notada.auth') }}',
-        data: {
-            '_token': '{{ csrf_token() }}',
-            'contrasenia': $('#input_contrasenia').val()
-        },
-        success: function(data) {
-            if (data === 'true') $('#formulario_nota').submit();
-            if (data === 'true') $('#login_check').modal('toggle');
-            if (data === 'true') $('#btn_continuar').attr("href", '/');
-            if (data === 'true') $('#btn_continuar').removeClass('btn-secondary disabled');
-            if (data === 'true') $('#btn_continuar').addClass('btn-success');
-        }
+    /*
+    * Este método es temporal para mostrar el uso de la aplicación
+    * Donde el usuario debe confirmar su contraseña (autenticarse en el sistema)
+    * para poder enviar la nota (generar el pdf firmado)
+    */
+    $('#modal_sesion_submit').on('click', function () {
+        $.post({
+            url: '{{ route('notada.auth') }}',
+            data: {
+                '_token': '{{ csrf_token() }}',
+                'contrasenia': $('#input_contrasenia').val()
+            },
+            success: function( data ) {
+                if (data === 'true') $('#formulario_nota').submit();
+                if (data === 'true') $('#login_check').modal('toggle');
+                if (data === 'true') $('#btn_continuar').attr("href", '/solicitud');
+                if (data === 'true') $('#btn_continuar').removeClass('btn-secondary disabled');
+                if (data === 'true') $('#btn_continuar').addClass('btn-success');
+            }
+        });
     });
 });
 </script>

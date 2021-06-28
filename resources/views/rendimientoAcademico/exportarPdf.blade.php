@@ -14,36 +14,36 @@
     <link rel="stylesheet" href="css/bootstrap/bootstrap.min.css">
 
     <style>
-    body {
-        font-size: medium;
-    }
+        body {
+            font-size: medium;
+        }
 
-    @page {
+        @page {
 
-        /* margin: 125px 75px;  */
-        margin-top: 120px;
-        margin-bottom: 50px;
-        margin-right: 75px;
-        margin-left: 75px;
-    }
+            /* margin: 125px 75px;  */
+            margin-top: 135px;
+            margin-bottom: 50px;
+            margin-right: 75px;
+            margin-left: 75px;
+        }
 
-    header {
-        position: fixed;
-        left: 0px;
-        top: -100px;
-        right: 0px;
-        height: 100px;
+        header {
+            position: fixed;
+            left: 0px;
+            top: -100px;
+            right: 0px;
+            height: 100px;
 
-    }
+        }
 
-    footer {
-        position: fixed;
-        left: 0px;
-        bottom: -110px;
-        right: 0px;
-        height: 100px;
+        footer {
+            position: fixed;
+            left: 0px;
+            bottom: -110px;
+            right: 0px;
+            height: 100px;
 
-    }
+        }
     </style>
 </head>
 

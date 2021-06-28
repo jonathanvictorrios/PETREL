@@ -17,8 +17,24 @@ class HojaResumenController extends Controller
         // $colHojasResumen=HojaResumen::get();
         // return view('hojaResumen.show')->with('colHojasResumen',$colHojasResumen);
     }
-    public function store(Request $request)
-    {
+
+    public function continuarTramite($idSolicitud){
+        $objHojaResumen = HojaResumen::where('id_solicitud',$idSolicitud)->get();
+        if(count($objHojaResumen)>0){
+            $objSolicitud=SolicitudCertProg::find($idSolicitud);
+            if($objHojaResumen[0]->id_rendimiento_academico==null){
+                return view('rendimientoAcademico.create')->with('solicitud',$objSolicitud);
+            }elseif($objHojaResumen[0]->id_programa_local==null){
+                return redirect()->route('buscarProgramas',$objSolicitud->id_solicitud);
+            }elseif(count($objHojaResumen[0]->plan_estudio)<1){
+                return redirect()->route('crearPlanEstudio',$objSolicitud->id_solicitud);
+            }else{
+                return redirect()->route('notaDA.crear',$objSolicitud->id_solicitud);
+            }
+        }
+    }
+
+    public function store(Request $request){
         //creo el objeto hojaresumen y lo cargo en la base de datos solo con el idSolicitud
         //los demas campos los agregare a medida que se vayan concretando determinadas tareas
         $unaHojaResumen = new HojaResumen();
@@ -33,12 +49,12 @@ class HojaResumenController extends Controller
     {
         $idSolicitud = $request->idSolicitud;
         $objSolicitud = SolicitudCertProg::find($idSolicitud);
-        $objHojaResumen = HojaResumen::find($idSolicitud); //$objSolicitud->hoja_resumen;
-
-        $arregloRendimiento = json_decode(file_get_contents(storage_path('/app/') . 'id-solicitud-' . $idSolicitud . '/rendimientoAcademico' . $idSolicitud . '.json'), true);
-        $arregloRendimiento['Secretaria'] = true;
-        $pdf = PDF::loadView('rendimientoAcademico.exportarPdf', compact('arregloRendimiento'));
-
+        $objHojaResumen = HojaResumen::where('id_solicitud',$idSolicitud)->get()[0];//$objSolicitud->hoja_resumen;
+        
+        $arregloRendimiento = json_decode(file_get_contents(storage_path('/app/').'id-solicitud-'.$idSolicitud.'/rendimientoAcademico'.$idSolicitud.'.json'),true);
+        $arregloRendimiento['Secretaria']=true;
+        $pdf = PDF::loadView('rendimientoAcademico.exportarPdf',compact('arregloRendimiento'));
+        
         $contenido = $pdf->download()->getOriginalContent();
         $nombreRendimiendoPdf = 'rendimientoAcademico' . $idSolicitud . '.pdf';
 
@@ -68,12 +84,17 @@ class HojaResumenController extends Controller
             unionProgramas6.pdf
         */
 
-        $urlPdfsLocales = [];
-        $urlPdfsLocales[] = 'notaDptoAlumno' . $idSolicitud . '.pdf';
-        $urlPdfsLocales[] = 'rendimientoAcademico' . $idSolicitud . '.pdf';
-        $urlPdfsLocales[] = 'planEstudio' . $idSolicitud . '.pdf';
-        $urlPdfsLocales[] = 'unionProgramas' . $idSolicitud . '.pdf';
-
+        $urlPdfsLocales=[];
+        $urlPdfsLocales[]='notaDptoAlumno'.$idSolicitud.'.pdf';
+        $urlPdfsLocales[]='rendimientoAcademico'.$idSolicitud.'.pdf';
+        $i = 0;
+        do {
+            $urlPdfsLocales[] = "planEstudio-$idSolicitud-$i.pdf";
+            $i++;
+        }
+        while (file_exists(storage_path("id-solicitud-$idSolicitud/planEstudio-$idSolicitud-$i.pdf")));
+        $urlPdfsLocales[]='unionProgramas'.$idSolicitud.'.pdf';
+        
         $pdf = new PdfMerge();
         foreach ($urlPdfsLocales as $unaUrl) {
             $pdf->add(storage_path() . '/app/id-solicitud-' . $idSolicitud . '/' . $unaUrl, 'all');

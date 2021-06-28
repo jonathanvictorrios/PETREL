@@ -175,7 +175,8 @@ class ProgramaDriveController extends Controller
                 $colProgramasNoEncontrados[] = ['Programa' => $nombreMateria, 'Anio' => $anioMateriaAprobada];
             }
         }
-        $objSolicitud = SolicitudCertProg::find($idSolicitud);
-        return view('programaLocal.create', ['solicitud' => $objSolicitud, 'colProgramasEncontrados' => $colProgramasEncontrados, 'colProgramasSugerencias' => $colProgramasSugerencias, 'colProgramasNoEncontrados' => $colProgramasNoEncontrados]);
+        $objSolicitud=SolicitudCertProg::find($idSolicitud);
+        $faltanProgramas = count($colProgramasNoEncontrados)>0;
+        return view('programaLocal.create',['solicitud'=>$objSolicitud,'colProgramasEncontrados'=>$colProgramasEncontrados,'colProgramasSugerencias'=>$colProgramasSugerencias,'colProgramasNoEncontrados'=>$colProgramasNoEncontrados,'faltaProgramas'=>$faltanProgramas]);
     }
 }
