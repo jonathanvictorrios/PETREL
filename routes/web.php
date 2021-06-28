@@ -14,6 +14,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\SolicitudCertProgController;
 use App\Http\Controllers\NotaAdminCentralController;
 use App\Http\Controllers\HojaResumenFinalController;
+use App\Http\Controllers\ComentarioController;
 // de prueba 
 use App\Http\Controllers\PruebaSolicitudController;
 
@@ -72,6 +73,7 @@ Route::get('solicitud/{idSolicitud}/terminar/{idAdministrativo}', [SolicitudCert
 
 // CRUD:
 Route::resource('solicitud', SolicitudCertProgController::class);
+Route::get('comentario', [ComentarioController::class, 'store']);
 
 Route::resource('carpeta/anio', CarpetaAnioController::class);
 Route::get('buscarCarreras/{anio}', [CarpetaAnioController::class, 'buscarCarreras'])->name('buscarCarreras');
@@ -145,7 +147,7 @@ Route::post('descargar-hoja-sin-firma', [HojaResumenFinalController::class, 'des
 // de prueba
 Route::view('nota-central', 'prueba_hoja.solicitud')->name('nota-central');
 
-Route::post('solicitud', [PruebaSolicitudController::class, 'index'])->name('solicitud');
+//Route::post('solicitud', [PruebaSolicitudController::class, 'index'])->name('solicitud');
 
 // Rutas para el envío de Mails
 Route::get('solicitud_iniciada/{idSolicitud}', [mailPetrelController::class, 'enviarMailSolicitudIniciada']);

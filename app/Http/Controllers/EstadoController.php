@@ -115,11 +115,11 @@ class EstadoController extends Controller
             $Estado->estado_descripcion = $EstadoDescripcion;
             $Estado->save();
 
-            $Notificacion = new Notificacion;
-            $Notificacion->estado = $Estado;
-            $Notificacion->mensaje = 'Hay una nueva solicitud. Aguardando asignación.';
-            $Notificacion->leida = false;
-            $Notificacion->save();
+            // $Notificacion = new Notificacion;
+            // $Notificacion->estado = $Estado;
+            // $Notificacion->mensaje = 'Hay una nueva solicitud. Aguardando asignación.';
+            // $Notificacion->leida = false;
+            // $Notificacion->save();
 
             return view('index'); //definir vista de retorno
         }
@@ -176,7 +176,7 @@ class EstadoController extends Controller
     }
 
     public function finalizarTramite($idSolicitud) {
-        $solicitud = solicitud_cert_prog::find($idSolicitud);
+        $solicitud = SolicitudCertProg::find($idSolicitud);
 
     }
 
