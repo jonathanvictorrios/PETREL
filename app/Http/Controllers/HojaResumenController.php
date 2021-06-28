@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\HojaResumen;
 use App\Models\SolicitudCertProg;
+use App\Models\Estado;
 use Illuminate\Support\Facades\Storage;
 use Karriere\PdfMerge\PdfMerge;
 use PDF;
@@ -72,6 +73,12 @@ class HojaResumenController extends Controller
         //ya guardamos pdf de la nota de departamento firmada por secretaria
         Storage::put('id-solicitud-' . $idSolicitud . '/notaDptoAlumno' . $idSolicitud . '.pdf', $objPDF->output());
         $this->realizarUnion($idSolicitud);
+
+        $estado=new Estado();
+            $estado->id_solicitud = $idSolicitud;
+            $estado->id_estado_descripcion = 5;
+            $estado->id_usuario = $objSolicitud->usuarioEstudiante->id_usuario;
+            $estado->save();
         return Storage::download('id-solicitud-'.$idSolicitud.'/hojaUnida'.$idSolicitud.'.pdf');
         /* return view('solicitud.show',['solicitud'=>$objSolicitud]); */
         /* return redirect()->route('solicitud'); */

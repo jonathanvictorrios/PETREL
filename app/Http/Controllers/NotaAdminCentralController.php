@@ -52,7 +52,7 @@ class NotaAdminCentralController extends Controller
         $hojaFinal->url_hoja_unida_final_sin_firma = $rutaHojaFinalSinFirma;
         $hojaFinal->save();
 
-        return redirect()->route('solicitud.index')->with('solicitud',$solicitudes);
+        return redirect()->route('foliar',$id_solicitud);
     }
 
 

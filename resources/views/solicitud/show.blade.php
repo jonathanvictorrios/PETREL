@@ -57,29 +57,58 @@
                         </div>
                     </div>
                     <div class="row">
-                        @if($solicitud->url_hoja_unida_final_sin_firma == null)
+                        @if($solicitud->hoja_resumen_final->url_hoja_unida_final_sin_firma == null)
                         <div class="col-3"><a class="btn btn-primary disabled" href="{{ route('archivos.downloadSinFirma',$solicitud->idSolicitud) }}">Descargar
                                 documento sin firmar</a>
                         </div>
-                        <div class="col-3"><a class="btn btn-primary url_hoja_unida_final_sin_firma disabled" href="{{ route('archivos.downloadFirmado',$solicitud->idSolicitud) }}">Descargar
-                                documento firmado</a>
-                        </div>
                         <div class="col-3"><a class="btn btn-primary url_hoja_unida_final_sin_firma disabled" href="{{ route('archivos.create', 'dato='.$solicitud->idSolicitud) }}">Adjuntar
                                 firmado</a>
+                        </div>
+                        <div class="col-3"><a class="btn btn-primary url_hoja_unida_final_sin_firma disabled" href="{{ route('archivos.downloadFirmado',$solicitud->idSolicitud) }}">Descargar
+                                documento firmado</a>
                         </div>
                         @else
                         <div class="col-3"><a class="btn btn-primary" href="{{ route('archivos.downloadSinFirma',$solicitud->idSolicitud) }}">Descargar
                                 documento sin firmar</a>
                         </div>
-                        <div class="col-3"><a class="btn btn-primary" href="{{ route('archivos.downloadFirmado',$solicitud->idSolicitud) }}">Descargar
-                                documento firmado</a>
-                        </div>
                         <div class="col-3"><a class="btn btn-primary" href="{{ route('archivos.create', 'dato='.$solicitud->idSolicitud) }}">Adjuntar
                                 firmado</a>
+                        </div>
+                        <div class="col-3"><a class="btn btn-primary" href="{{ route('archivos.downloadFirmado',$solicitud->idSolicitud) }}">Descargar
+                                documento firmado</a>
                         </div>
                         @endif
                         <div class="col-3"><a class="btn btn-primary" href="{{ route('hojaResumenFinal.show',$solicitud->idSolicitud) }}">Gestion</a>
                         </div>
+                        @if($solicitud->hoja_resumen_final->url_hoja_unida_final != null)
+                        <!-- <div class="col-3"><a class="btn btn-primary" href="{{ route('archivos.confirmarContrasenia',$solicitud->idSolicitud) }}">Aprobar y notificar</a>
+                        </div> -->
+                        <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#login_check">
+                            Aprobar y notificar
+                        </button>
+                        <!-- Modal autenticar contraseña -->
+                        <form action="{{ route('archivos.confirmarContrasenia', $solicitud->idSolicitud)}}">
+                            <div class="modal fade" id="login_check" tabindex="-1" aria-labelledby="login_check" aria-hidden="true">
+                                <div class="modal-dialog">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <h5 class="modal-title" id="login_check_h">Debes confirmar tu contraseña</h5>
+                                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                        </div>
+                                        <div class="modal-body">
+                                            <div class="form-group">
+                                                <label for="input_contrasenia">Contraseña</label>
+                                                <input type="password" name="password" id="input_contrasenia" class="form-control">
+                                            </div>
+                                        </div>
+                                        <div class="modal-footer">
+                                            <button type="submit" class="btn btn-primary" id="modal_sesion_submit">Confirmar</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+                        @endif
                     </div>
                 </div>
             </div>

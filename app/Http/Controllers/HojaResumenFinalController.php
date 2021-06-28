@@ -110,6 +110,7 @@ class HojaResumenFinalController extends Controller
         return $retorno;  
     }
     public function foliar($idSolicitud) {
+
         $pdf=new TCPDI();
         $url = storage_path()."/app/id-solicitud-".$idSolicitud."/hojaUnidaFinalSinFirma".$idSolicitud.".pdf";
         $pdf->setSourceFile($url);
