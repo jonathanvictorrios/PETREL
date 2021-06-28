@@ -4,7 +4,8 @@
 @include('estructura/header')
 
 <main class="p-2" id="cuerpo">
-    {{-- Tabla Solicitudes - Estudiante --}}
+
+    {{-- Tabla Solicitudes - Estudiante @can('realizaSolicitud') --}}
     <div id="nav-tabs-solicitud" class="container shadow-lg my-5 bg-light rounded">
 
         @if (session('mensaje') ) {{-- Mensaje final luego de submit --}}
@@ -112,7 +113,7 @@
             </div>
         </div>
     </div>
-    {{-- Fin Tabla Solicitudes - Estudiante --}}
+    {{-- Fin Tabla Solicitudes - Estudiante @endcan --}}
 
 
     {{-- Tabla Solicitudes - Dto Alumnos --}}

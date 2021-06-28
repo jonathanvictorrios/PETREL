@@ -60,6 +60,7 @@ a:hover {
 }
 
 /*--------------- BOTONES ---------------*/
+
 /*Boton Formulario */
 .botonFormulario {
     border-radius: 0.25rem;
@@ -68,27 +69,43 @@ a:hover {
     border: solid 1px var(--color-azulPrimario);
     background-color: var(--color-azulPrimario);
     color: white;
-    /* font-weight: 300; */
 }
 
 .botonFormulario:hover {
-    background-color: var(--color-verdeHover);
+    background-color: var(--color-azulHover);
+    border: solid 1px var(--color-azulHover);
+    color: white;
 }
-/* boton para plan estudio limpiar continuar. ofrece otras funciones */
+
+/* Boton para plan estudio limpiar continuar. Ofrece otras funciones */
 .botonFormulario2 {
     border-radius: 0.25rem;
     padding: 0.3rem 0.25rem;
     width: 100%;
-    border: solid 1px var(--color-azulPrimario);
-    background-color: white;
-    color: var(--color-azulPrimario);
-    /* font-weight: 300; */
+    border: solid 1px var(--color-verdeSecundario);
+    background-color: var(--color-verdeSecundario);
+    color: white;
 }
+
 .botonFormulario2:hover {
     background-color: var(--color-verdeHover);
 }
-/* Boton VolverArriba */
 
+/* Boton para select de buscarProgramas */
+.botonFormulario3 {
+    border-radius: 0.25rem;
+    padding: 0.3rem 0.25rem;
+    border: solid 1px var(--color-verdeSecundario);
+    background-color: white;
+    color: var(--color-verdeSecundario);
+}
+
+.botonFormulario3:hover {
+    background-color: var(--color-verdeHover);
+    color: white;
+}
+
+/* Boton VolverArriba */
 #volverArriba {
     display: none; /* Oculto por defecto */
     cursor: default; /* Evita que se marque con manito */
@@ -105,7 +122,6 @@ a:hover {
 }
 
 /* Boton Seleccionar Archivo */
-
 input[type="file"]::file-selector-button {
     background-color: transparent;
     border: 1.5px solid;
@@ -120,7 +136,6 @@ input[type="file"]::file-selector-button {
 }
 
 /* Boton Crear Solicitud */
-
 .bi {
     width: 1em;
     height: 1em;
@@ -155,6 +170,13 @@ input[type="file"]::file-selector-button:hover {
     color: white;
 }
 
+/* Boton Acordeon */
+.botonacordeon {
+    border: 0;
+    background: white;
+    color: var(--color-azulPrimario);
+}
+
 /*--------------- HOME ---------------*/
 
 #home {
@@ -184,9 +206,9 @@ input[type="file"]::file-selector-button:hover {
 }
 
 /* Título preguntas frecuentes */
-.tituloPregFrec {
+/* .tituloPregFrec {
     color: white;
-}
+} */
 
 /* Icono ver+ preguntas frecuentes */
 .vermasicono {
@@ -199,12 +221,6 @@ input[type="file"]::file-selector-button:hover {
 .vermasicono:hover {
     color: var(--color-verdeHover);
 }
-
-/* .botonacordeon {
-    border: 0;
-    background: white;
-    color: var(--color-azulPrimario);
-} */
 
 .ver {
     color: var(--color-azulPrimario);
@@ -223,6 +239,12 @@ input[type="file"]::file-selector-button:hover {
 
 #p-frecuentes h6 {
     line-height: inherit;
+}
+
+/*---------- SHOW SOLICITUD COMENTARIOS ----------*/
+
+.acordeonComentarios {
+    background-color: var(--color-gris);
 }
 
 /*---------- FORMULARIOS ----------*/
@@ -309,7 +331,7 @@ input::placeholder {
 }
 
 /* Le quito el borde y el padding al toggle */
-#nav-solicitud .navbar-toggler {
+.navbar-toggler {
     padding: 0;
     border: 0;
     background-color: transparent;
@@ -338,4 +360,27 @@ input::placeholder {
 
 .list-info li {
     list-style: none;
+}
+
+/*---------- MEDIA QUERY HOME ----------*/
+
+@media (min-width: 768px) {
+    .logoHome {
+        width: 100% !important;
+    }
+}
+
+@media (min-width: 992px) {
+    .logoHome {
+        width: 80% !important;
+    }
+}
+
+@media (max-width: 767px) {
+    #home h1 {
+        color: white;
+    }
+    #home .p_home {
+        color: white;
+    }
 }
