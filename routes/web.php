@@ -63,7 +63,7 @@ Route::view('/modificarcarrera', '/carpetaCarrera/edit');
 //programa
 Route::view('/crearprograma', '/programaDrive/create');
 Route::view('/modificarprograma', '/programaDrive/edit');
-Route::get('solicitud/{idSolicitud}/asignar/{idAdministrativo}', [SolicitudCertProgController::class, 'asignar'])->name('solicitud.asignar');
+Route::get('solicitud/{idSolicitud}/asignar', [SolicitudCertProgController::class, 'asignar'])->name('solicitud.asignar');
 Route::get('solicitud/{idSolicitud}/listoFirmaDptoAlumno/{idAdministrativo}', [SolicitudCertProgController::class, 'listoParaFirmarDptoAlumno'])->name('solicitud.listoFirmaDptoAlumno');
 Route::get('solicitud/{idSolicitud}/listoFirmaSecretariaAcademica/{idAdministrativo}', [SolicitudCertProgController::class, 'listoParaFirmarSecretariaAcademica'])->name('solicitud.listoFirmaSecretariaAcademica');
 Route::get('solicitud/{idSolicitud}/listoFirmaSantiago/{idAdministrativo}', [SolicitudCertProgController::class, 'listoParaFirmarSantiago'])->name('solicitud.listoFirmaSantiago');
@@ -142,7 +142,7 @@ Route::post('descargar-hoja-sin-firma', [HojaResumenFinalController::class, 'des
 // de prueba
 Route::view('nota-central', 'prueba_hoja.solicitud')->name('nota-central');
 
-Route::post('solicitud', [PruebaSolicitudController::class, 'index'])->name('solicitud');
+//Route::post('solicitud', [PruebaSolicitudController::class, 'index'])->name('solicitud');
 
 // Rutas para el envío de Mails
 Route::get('solicitud_iniciada/{idSolicitud}', [mailPetrelController::class, 'enviarMailSolicitudIniciada']);

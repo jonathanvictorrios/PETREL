@@ -44,16 +44,9 @@
         <div class="col-md-5 py-2 text-center text-md-end">
             <img src="{{ asset('img/logo_petrel.svg') }}" alt="Icono Petrel" class="w-50 logoHome">
         </div>
-<<<<<<< HEAD
         <div class="col-md-7 pt-3 pt-sm-0 text-center text-md-start ps-md-3">
             <h1>Petrel</h1>
             <p class="p_home">El sistema de certificación de materias <br> de la Universidad Nacional del Comahue</p>
-=======
-        <div class="col-8  mt-5 ps-5">
-            <h1 class="p-3">Petrel</h1>
-            <p class="p_home ps-3">El sistema de certificación de materias <br> de la Universidad Nacional del Comahue
-            </p>
->>>>>>> 73ab802e41cc97eae743c2daea0400097c258195
         </div>
         <!-- Modal -->
         <div class="modal fade" id="modalLogin" tabindex="-1" aria-labelledby="modalLoginLabel" aria-hidden="true">

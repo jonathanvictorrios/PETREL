@@ -22,14 +22,6 @@ class SolicitudCertProgController extends Controller
     public function index()
     {
         $solicitudes = SolicitudCertProg::all();
-        $Lista = array();
-        foreach ($solicitudes as $solicitud) {
-            $Mostrar = $this->ObtenerDatosSolicitud($solicitud);
-  
-            array_push($Lista,$Mostrar);
-
-        }
-        $solicitudes = $Lista;
         return view('solicitud.index', compact('solicitudes'));
     }
 
@@ -116,17 +108,7 @@ class SolicitudCertProgController extends Controller
         $controlMail->enviarMailSolicitudIniciada($solicitud->id_solicitud);
         
         $solicitudes=SolicitudCertProg::all();//NECESITO RECUPERAR TODAS LAS SOLICITUDES PORQUE VUELVO EL RETORNO A LA VISTA.
-                                              // SI EL RETORNO NO ES HACIA solicitud.index puede sacarse
-        $Lista = array();
-        foreach($solicitudes as $solicitud)
-        {
-            $Mostrar = $this->ObtenerDatosSolicitud($solicitud);
-  
-            array_push($Lista,$Mostrar);
-
-        }
-        $solicitudes=$Lista;
-
+      
         return view('solicitud.index',compact('solicitudes'));
     }
 
@@ -139,8 +121,6 @@ class SolicitudCertProgController extends Controller
     public function show($id)
     {
         $solicitud= SolicitudCertProg::findOrFail($id);
-        $solicitud=$this->ObtenerDatosSolicitud($solicitud);
-
 
         $hojaResumen = HojaResumen::where('id_solicitud',$id)->get();
         if(count($hojaResumen)>0){
@@ -186,35 +166,6 @@ class SolicitudCertProgController extends Controller
         //
     }
 
-    public function ObtenerDatosSolicitud($solicitud)
-    {
-       
-        $Mostrar = new SolicitudCertProg;
-        $Mostrar->idSolicitud = $solicitud->id_solicitud;
-
-        $Mostrar->Legajo=$solicitud->legajo;
-        
-        $Mostrar->Estados=$solicitud->estados;
-        
-        $Mostrar->Carrera=$solicitud->carrera->carrera;
-
-        $Mostrar->UniversidadDestino = $solicitud->universidad_destino;
-
-        $Mostrar->UnidadAcademica = $solicitud->carrera->unidad_academica->unidad_academica;
-
-        $ApellidoNombreUsuarioEst = $solicitud->usuarioEstudiante->apellido . " " . $solicitud->usuarioEstudiante->nombre;
-        $Mostrar->UsuarioEstudiante = $ApellidoNombreUsuarioEst;
-        $Mostrar->NombreEstudiante = $solicitud->usuarioEstudiante->nombre;
-        $Mostrar->ApellidoEstudiante = $solicitud->usuarioEstudiante->apellido;
-
-
-        $Mostrar->UltimoEstado=($solicitud->estados)->last()->estado_descripcion->descripcion;
-        $Mostrar->FechaUltimoEstado=($solicitud->estados)->last()->created_at;
-     //   print($Mostrar);
-        
-        return $Mostrar;
-    }
-
     /**
      * Asigna una solicitud
      *
@@ -222,12 +173,12 @@ class SolicitudCertProgController extends Controller
      * @param  int  $idUsuarioAdministrativo
      * @return \Illuminate\Http\Response
      */
-    public function asignar($idSolicitud, $idUsuarioAdministrativo)
+    public function asignar($idSolicitud, Request $request)
     {
        
         $solicitud = SolicitudCertProg::findOrFail($idSolicitud);
-
-        $usuarioAdministrativo = Usuario::findOrFail($idUsuarioAdministrativo);
+        
+        $usuarioAdministrativo = Usuario::findOrFail($request->usuarioAdministrativo);
 
         //$nuevoEstado = new Estado;
         $estadoController= new EstadoController;
@@ -238,10 +189,26 @@ class SolicitudCertProgController extends Controller
         $solicitud->id_user_u=$usuarioAdministrativo->id_usuario;
         
         $solicitud->save();
+       
+        $solicitudes = SolicitudCertProg::all();
+        return view('solicitud.index', compact('solicitudes'));
 
     }
    
-    public function listoParaFirmarDptoAlumno($idSolicitud,$idUsuarioAdministrativo)
+    // public function listoParaFirmarDptoAlumno($idSolicitud,$idUsuarioAdministrativo)
+    // {
+    //     $solicitud = SolicitudCertProg::findOrFail($idSolicitud);
+    //     $usuarioAdministrativo = Usuario::findOrFail($idUsuarioAdministrativo);
+
+    //     $estadoDescripcion = EstadoDescripcion::find(3);
+    //     $estadoController = new EstadoController;
+
+    //     $estadoController->cambiarEstado($solicitud,$usuarioAdministrativo,$estadoDescripcion);
+
+    //     $solicitud->save();
+
+    // }
+    public function listoParaFirmarSecretariaAcademica($idSolicitud,$idUsuarioAdministrativo)
     {
         $solicitud = SolicitudCertProg::findOrFail($idSolicitud);
         $usuarioAdministrativo = Usuario::findOrFail($idUsuarioAdministrativo);
@@ -254,7 +221,7 @@ class SolicitudCertProgController extends Controller
         $solicitud->save();
 
     }
-    public function listoParaFirmarSecretariaAcademica($idSolicitud,$idUsuarioAdministrativo)
+    public function listoParaFirmarSantiago($idSolicitud,$idUsuarioAdministrativo)
     {
         $solicitud = SolicitudCertProg::findOrFail($idSolicitud);
         $usuarioAdministrativo = Usuario::findOrFail($idUsuarioAdministrativo);
@@ -267,25 +234,12 @@ class SolicitudCertProgController extends Controller
         $solicitud->save();
 
     }
-    public function listoParaFirmarSantiago($idSolicitud,$idUsuarioAdministrativo)
-    {
-        $solicitud = SolicitudCertProg::findOrFail($idSolicitud);
-        $usuarioAdministrativo = Usuario::findOrFail($idUsuarioAdministrativo);
-
-        $estadoDescripcion = EstadoDescripcion::find(5);
-        $estadoController = new EstadoController;
-
-        $estadoController->cambiarEstado($solicitud,$usuarioAdministrativo,$estadoDescripcion);
-
-        $solicitud->save();
-
-    }
     public function terminar($idSolicitud,$idUsuarioAdministrativo)
     {
         $solicitud = SolicitudCertProg::findOrFail($idSolicitud);
         $usuarioAdministrativo = Usuario::findOrFail($idUsuarioAdministrativo);
 
-        $estadoDescripcion = EstadoDescripcion::find(6);
+        $estadoDescripcion = EstadoDescripcion::find(5);
         $estadoController = new EstadoController;
 
         $estadoController->cambiarEstado($solicitud,$usuarioAdministrativo,$estadoDescripcion);

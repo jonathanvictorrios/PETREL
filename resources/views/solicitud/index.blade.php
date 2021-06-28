@@ -54,14 +54,14 @@
                                     </thead>
                                     <tbody>
                                         @foreach($solicitudes as $solicitud)
-                                        @if($solicitud->UltimoEstado!='Terminado')
+                                        @if($solicitud->estados->last()->estado_descripcion->descripcion!='Terminado')
                                         <tr>
-                                            <th scope="row">{{$solicitud->idSolicitud}}</th>
-                                            <td>{{$solicitud->UsuarioEstudiante}}</td>
-                                            <td>{{$solicitud->Legajo}}</td>
-                                            <td>{{$solicitud->Carrera}}</td>
-                                            <td>{{$solicitud->UnidadAcademica}}</td>
-                                            <td><a href="{{route('solicitud.show',$solicitud->idSolicitud)}}">Ver Más</a>
+                                            <th scope="row">{{$solicitud->id_solicitud}}</th>
+                                            <td>{{$solicitud->usuarioEstudiante->apellido}}, {{$solicitud->usuarioEstudiante->nombre}}</td>
+                                            <td>{{$solicitud->legajo}}</td>
+                                            <td>{{$solicitud->carrera->carrera}}</td>
+                                            <td>{{$solicitud->carrera->unidad_academica->unidad_academica}}</td>
+                                            <td><a href="{{route('solicitud.show',$solicitud->id_solicitud)}}">Ver Más</a>
                                             </td>
                                         </tr>
                                         @endif
@@ -91,14 +91,14 @@
                                     </thead>
                                     <tbody>
                                         @foreach($solicitudes as $solicitud)
-                                        @if($solicitud->UltimoEstado=='Terminado')
+                                        @if($solicitud->estados->last()->estado_descripcion->descripcion!=='Terminado')
                                         <tr>
-                                            <th scope="row">{{$solicitud->idSolicitud}}</th>
-                                            <td>{{$solicitud->UsuarioEstudiante}} </td>
-                                            <td>{{$solicitud->Legajo}}</td>
-                                            <td>{{$solicitud->Carrera}}</td>
-                                            <td>{{$solicitud->UnidadAcademica}}</td>
-                                            <td><a href="{{route('solicitud.show',$solicitud->idSolicitud)}}">Ver Más</a>
+                                        <th scope="row">{{$solicitud->id_solicitud}}</th>
+                                            <td>{{$solicitud->usuarioEstudiante->apellido}}, {{$solicitud->usuarioEstudiante->nombre}}</td>
+                                            <td>{{$solicitud->legajo}}</td>
+                                            <td>{{$solicitud->carrera->carrera}}</td>
+                                            <td>{{$solicitud->carrera->unidad_academica->unidad_academica}}</td>
+                                            <td><a href="{{route('solicitud.show',$solicitud->id_solicitud)}}">Ver Más</a>
                                             </td>
                                         </tr>
                                         @endif
@@ -168,14 +168,14 @@
                                     </thead>
                                     <tbody>
                                         @foreach($solicitudes as $solicitud)
-                                        @if($solicitud->UltimoEstado!='Terminado')
+                                        @if($solicitud->estados->last()->estado_descripcion->descripcion!='Terminado')
                                         <tr>
-                                            <th scope="row">{{$solicitud->idSolicitud}}</th>
-                                            <td>{{$solicitud->UltimoEstado}}</td>
-                                            <td>{{$solicitud->Fecha}}</td>
-                                            <td>{{$solicitud->Legajo}}</td>
-                                            <td>{{$solicitud->Asignado}}</td>
-                                            <td><a href="{{route('solicitud.show',$solicitud->idSolicitud)}}">Ver Más</a>
+                                            <th scope="row">{{$solicitud->id_solicitud}}</th>
+                                            <td>{{$solicitud->estados->last()->estado_descripcion->descripcon}}</td>
+                                            <td>{{$solicitud->estados->last()->created_at}}</td>
+                                            <td>{{$solicitud->legajo}}</td>
+                                            <td>{{$solicitud->usuarioAdministrativo->apellido ?? ''}}, {{$solicitud->usuarioAdministrativo->nombre ?? ''}}</td>
+                                            <td><a href="{{route('solicitud.show',$solicitud->id_solicitud)}}">Ver Más</a>
                                             </td>
                                         </tr>
                                         @endif
@@ -205,13 +205,13 @@
                                     </thead>
                                     <tbody>
                                         @foreach($solicitudes as $solicitud)
-                                        @if($solicitud->UltimoEstado=='Terminado')
+                                        @if($solicitud->estados->last()->estado_descripcion->descripcion=='Terminado')
                                         <tr>
-                                            <th scope="row">{{$solicitud->idSolicitud}}</th>
-                                            <td>{{$solicitud->UltimoEstado}}</td>
-                                            <td>{{$solicitud->Fecha}}</td>
-                                            <td>{{$solicitud->Legajo}}</td>
-                                            <td>{{$solicitud->Asignado}}</td>
+                                            <th scope="row">{{$solicitud->id_solicitud}}</th>
+                                            <td>{{$solicitud->estados->last()->estado_descripcion->descripcion}}</td>
+                                            <td>{{$solicitud->estados->last()->created_at}}</td>
+                                            <td>{{$solicitud->legajo}}</td>
+                                            <td>{{$solicitud->usuarioAdministrativo->apellido}}, {{$solicitud->usuarioAdministrativo->nombre}}</td>
                                             <td><a href="{{route('solicitud.show',$solicitud->idSolicitud)}}">Ver Más</a>
                                             </td>
                                         </tr>
@@ -271,20 +271,20 @@
               </thead>
               <tbody>
                 @foreach($solicitudes as $solicitud)
-                @if($solicitud->UltimoEstado!='Terminado')
+                @if($solicitud->estados->last()->estado_descripcion->descripcion!='Terminado')
                 <tr>
                   <!-- <th scope="row">
                     <div class="form-check">
                       <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1">
                     </div>
                   </th> -->
-                  <th scope="row">{{$solicitud->idSolicitud}}</th>
-    <td>{{$solicitud->UltimoEstado}}</td>
-    <td>{{$solicitud->Fecha}}</td>
-    <td>{{$solicitud->Legajo}}</td>
-    <td>{{$solicitud->Carrera}}</td>
-    <td><a href="{{route('solicitud.show',$solicitud->idSolicitud)}}">Ver Más</a></td>
-    </tr>
+                  <th scope="row">{{$solicitud->id_solicitud}}</th>
+                  <td>{{$solicitud->estados->last()->estado_descripcion->descripcion}}</td>
+                  <td>{{$solicitud->estados->last()->created_at}}</td>
+                  <td>{{$solicitud->legajo}}</td>
+                  <td>{{$solicitud->carrera->carrera}}</td>
+                  <td><a href="{{route('solicitud.show',$solicitud->id_solicitud)}}">Ver Más</a></td>
+                </tr>
     @endif
     @endforeach
     </tbody>
@@ -353,14 +353,14 @@
                                     </thead>
                                     <tbody>
                                         @foreach($solicitudes as $solicitud)
-                                        @if($solicitud->UltimoEstado!='Terminado')
+                                        @if($solicitud->estados->last()->estado_descripcion->descripcion!='Terminado')
                                         <tr>
-                                            <th>{{$solicitud->idSolicitud}}</th>
-                                            <td>{{$solicitud->UltimoEstado}}</td>
-                                            <td>{{$solicitud->Fecha}}</td>
-                                            <td>{{$solicitud->FechaUltimoEstado}}</td>
-                                            <td>{{$solicitud->UsuarioEstudiante}}</td>
-                                            <td><a href="{{route('solicitud.show',$solicitud->idSolicitud)}}">Ver Más</a>
+                                            <th>{{$solicitud->id_solicitud}}</th>
+                                            <td>{{$solicitud->estados->last()->estado_descripcion->descripcion}}</td>
+                                            <td>{{$solicitud->estados->first()->created_at}}</td>
+                                            <td>{{$solicitud->estados->last()->created_at}}</td>
+                                            <td>{{$solicitud->usuarioEstudiante->apellido}}, {{$solicitud->usuarioEstudiante->nombre}}</td>
+                                            <td><a href="{{route('solicitud.show',$solicitud->id_solicitud)}}">Ver Más</a>
                                             </td>
                                         </tr>
                                         @endif
@@ -390,13 +390,13 @@
                                     </thead>
                                     <tbody>
                                         @foreach($solicitudes as $solicitud)
-                                        @if($solicitud->UltimoEstado=='Terminado')
+                                        @if($solicitud->estados->last()->estado_descripcion->descripcion=='Terminado')
                                         <tr>
-                                            <th>{{$solicitud->idSolicitud}}</th>
-                                            <td>{{$solicitud->UltimoEstado}}</td>
-                                            <td>{{$solicitud->Fecha}}</td>
-                                            <td>{{$solicitud->FechaUltimoEstado}}</td>
-                                            <td>{{$solicitud->UsuarioEstudiante}}</td>
+                                        <th>{{$solicitud->id_solicitud}}</th>
+                                            <td>{{$solicitud->estados->last()->estado_descripcion->descripcion}}</td>
+                                            <td>{{$solicitud->estados->firt()->created_at}}</td>
+                                            <td>{{$solicitud->estados->last()->created_at}}</td>
+                                            <td>{{$solicitud->usuarioEstudiante->apellido}}, {{$solicitud->usuarioEstudiante->nombre}}</td>
                                             <td><a href="{{route('solicitud.show',$solicitud->idSolicitud)}}">Ver Más</a>
                                             </td>
                                         </tr>
@@ -475,18 +475,18 @@
                                 </thead>
                                 <tbody>
                                     @foreach($solicitudes as $solicitud)
-                                    @if($solicitud->UltimoEstado!='Terminado')
+                                    @if($solicitud->estados->last()->estado_descripcion->descripcion!='Terminado')
                                     <tr>
                                         <th scope="row">
                                             <div class="form-check">
                                                 <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1">
                                             </div>
                                         </th>
-                                        <td scope="row">{{$solicitud->idUsuario}}</td>
+                                        <td scope="row">{{$solicitud->usuarioEstudiante->id_usuario}}</td>
                                         <td>{{$solicitud->Rol}}</td>
-                                        <td>{{$solicitud->UltimoEstado}}</td>
-                                        <td>{{$solicitud->NombreEstudiante}}</td>
-                                        <td>{{$solicitud->ApellidoEstudiante}}</td>
+                                        <td>{{$solicitud->estados->last()->estado_descripcion->descripcion}}</td>
+                                        <td>{{$solicitud->usuarioEstudiante->nombre}}</td>
+                                        <td>{{$solicitud->usuarioEstudiante->apellido}}</td>
                                     </tr>
                                     @endif
                                     @endforeach
@@ -544,10 +544,10 @@
                                 </thead>
                                 <tbody>
                                     @foreach($solicitudes as $solicitud)
-                                    @if($solicitud->UltimoEstado!='Terminado')
+                                    @if($solicitud->estados->last()->estado_descripcion->descripcion!='Terminado')
                                     <tr>
                                         <th scope="row">{{$solicitud->Anio}}</th>
-                                        <td><a href="{{route('solicitud.show',$solicitud->idSolicitud)}}">Modificar</a></td>
+                                        <td><a href="{{route('solicitud.show',$solicitud->id_solicitud)}}">Modificar</a></td>
                                     </tr>
                                     @endif
                                     @endforeach
@@ -605,10 +605,10 @@
                                 </thead>
                                 <tbody>
                                     @foreach($solicitudes as $solicitud)
-                                    @if($solicitud->UltimoEstado!='Terminado')
+                                    @if($solicitud->estados->last()->estado_descripcion->descripcion!='Terminado')
                                     <tr>
-                                        <th scope="row">{{$solicitud->Carrera}}</th>
-                                        <td><a href="{{route('solicitud.show',$solicitud->idSolicitud)}}">Modificar</a></td>
+                                        <th scope="row">{{$solicitud->carrera->carrera}}</th>
+                                        <td><a href="{{route('solicitud.show',$solicitud->id_solicitud)}}">Modificar</a></td>
                                     </tr>
                                     @endif
                                     @endforeach
@@ -668,11 +668,11 @@
                                 </thead>
                                 <tbody>
                                     @foreach($solicitudes as $solicitud)
-                                    @if($solicitud->UltimoEstado!='Terminado')
+                                    @if($solicitud->estados->last()->estado_descripcion->descripcion!='Terminado')
                                     <tr>
                                         <th scope="row">{{$solicitud->Anio}}</th>
-                                        <th>{{$solicitud->Carrera}}</th>
-                                        <td><a href="{{route('solicitud.show',$solicitud->idSolicitud)}}">Modificar</a></td>
+                                        <th>{{$solicitud->carrera->carrera}}</th>
+                                        <td><a href="{{route('solicitud.show',$solicitud->id_solicitud)}}">Modificar</a></td>
                                     </tr>
                                     @endif
                                     @endforeach
