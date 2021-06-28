@@ -193,6 +193,20 @@
                                                             </tr>
                                                         </tbody>
                                                     </table>
+                                                    {{-- boton de agregar comentario --}}
+                                                    <div class="row justify-content-center">
+                                                        <div class="col-12 mt-2 p-2 ">
+                                                           
+                                                            <form action="" method="POST" autocomplete="off"
+                                                                enctype="multipart/form-data">
+                                                                @csrf
+                                                                {{-- aca voy a recibir el $idSolicitud --}}
+                                                                <input type="hidden" id="idSolicitud" name="idSolicitud"
+                                                                    value="{{ $solicitud->idSolicitud }}">
+                                                                <input type="submit" class="botonFormulario2" value="Agregar comentario">
+                                                            </form>
+                                                        </div>
+                                                    </div>
                                                 </div>
                                             </div>
                                         </div>
@@ -324,6 +338,20 @@
                                                             </tr>
                                                         </tbody>
                                                     </table>
+                                                      {{-- boton de agregar comentario --}}
+                                                      <div class="row justify-content-center">
+                                                        <div class="col-12 mt-2 p-2 ">
+                                                           
+                                                            <form action="" method="POST" autocomplete="off"
+                                                                enctype="multipart/form-data">
+                                                                @csrf
+                                                                {{-- aca voy a recibir el $idSolicitud --}}
+                                                                <input type="hidden" id="idSolicitud" name="idSolicitud"
+                                                                    value="{{ $solicitud->idSolicitud }}">
+                                                                <input type="submit" class="botonFormulario2" value="Agregar comentario">
+                                                            </form>
+                                                        </div>
+                                                    </div>
                                                 </div>
                                             </div>
                                         </div>
@@ -463,6 +491,20 @@
                                                             </tr>
                                                         </tbody>
                                                     </table>
+                                                      {{-- boton de agregar comentario --}}
+                                                      <div class="row justify-content-center">
+                                                        <div class="col-12 mt-2 p-2 ">
+                                                           
+                                                            <form action="" method="POST" autocomplete="off"
+                                                                enctype="multipart/form-data">
+                                                                @csrf
+                                                                {{-- aca voy a recibir el $idSolicitud --}}
+                                                                <input type="hidden" id="idSolicitud" name="idSolicitud"
+                                                                    value="{{ $solicitud->idSolicitud }}">
+                                                                <input type="submit" class="botonFormulario2" value="Agregar comentario">
+                                                            </form>
+                                                        </div>
+                                                    </div>
                                                 </div>
                                             </div>
                                         </div>
