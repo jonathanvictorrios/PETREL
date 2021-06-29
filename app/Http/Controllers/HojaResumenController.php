@@ -14,7 +14,7 @@ class HojaResumenController extends Controller
 {
     public function continuarTramite(Request $request){
         $idSolicitud = $request->idSolicitud;
-        $objHojaResumen = HojaResumen::where('id_solicitud',$idSolicitud)->get();
+        $objHojaResumen = HojaResumen::where('id_solicitud',$idSolicitud)->first();
         if(count($objHojaResumen)>0){
             $objSolicitud=SolicitudCertProg::find($idSolicitud);
             if($objHojaResumen[0]->id_rendimiento_academico==null){
