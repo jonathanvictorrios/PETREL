@@ -67,7 +67,7 @@ class Archivo extends Controller
         } else {
             $mensaje = 'Ha ocurrido un error';
         }
-        return redirect()->route('solicitud.index')->with('mensaje', $mensaje);
+        return redirect()->route('solicitud.show',$archivo['idSolicitud'])->with('mensaje', $mensaje);
     }
 
     /**

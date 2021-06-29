@@ -426,22 +426,22 @@
                                         <input type="submit" class="botonFormulario2" value="Agregar Mensaje">
                                     </form>
                                 </div>
-                            <p class=" "><span class="text-secondary fs-5">Legajo: </span> {{ $solicitud->Legajo }}</p>
+                            <p class=" "><span class="text-secondary fs-5">Legajo: </span> {{ $solicitud->legajo }}</p>
                         </div>
                         {{-- unidad academica --}}
                         <div class="row justify-content-between text-left">
                             <p class=" "><span class="text-secondary fs-5">Unidad Académica: </span>
-                                {{ $solicitud->UnidadAcademica }}
+                                {{ $solicitud->carrera->unidad_academica->unidad_academica }}
                             </p>
                         </div>
                         {{-- carrera --}}
                         <div class="row justify-content-between text-left ">
-                            <p class=" "><span class="text-secondary fs-5">Carrera: </span> {{ $solicitud->Carrera }}</p>
+                            <p class=" "><span class="text-secondary fs-5">Carrera: </span> {{ $solicitud->carrera->carrera }}</p>
                         </div>
                         {{-- universidad de destino --}}
                         <div class="row justify-content-center text-left">
                             <p class=" "><span class="text-secondary fs-5">Institución Educativa de Destino: </span>
-                                {{ $solicitud->UniversidadDestino }}
+                                {{ $solicitud->universidad_destino }}
                             </p>
                         </div>
                         {{-- asignado a --}}
@@ -700,9 +700,9 @@
                             <div class="form-group mt-4 d-lg-flex">
                                 {{-- un boton para descargar --}}
                                 <div class="col-12 col-lg-4  p-1">
-                                    <a href="{{ route('archivos.downloadSinFirma',$solicitud->idSolicitud) }}" class="btn botonFormulario">Descargar doc. sin firmar</a>
+                                    <a href="{{ route('archivos.downloadSinFirma',$solicitud->id_solicitud) }}" class="btn botonFormulario">Descargar doc. sin firmar</a>
                                 </div>
-                                @if($solicitud->hoja_resumen_final == null)
+                                @if($solicitud->hojaResumen->hoja_resumen_final == null)
                                 {{-- un boton para cargar archivo(firma secretaria -imagen) --}}
                                 <div class="col-12 col-lg-4  p-1">
                                     <a href="#" class="btn botonFormulario2 form-control">Adjuntar doc. Firmado</a>
@@ -713,20 +713,20 @@
                                 </div>
                                 @else
                                 <div class="col-12 col-lg-4  p-1">
-                                    <a href="{{ route('archivos.create', 'dato='.$solicitud->idSolicitud) }}" class="btn botonFormulario2 form-control">Adjuntar doc. Firmado</a>
+                                    <a href="{{ route('archivos.create', 'dato='.$solicitud->id_solicitud) }}" class="btn botonFormulario2 form-control">Adjuntar doc. Firmado</a>
                                 </div>
                                 <div class="col-12 col-lg-4  p-1">
-                                    <a href="{{ route('archivos.downloadFirmado',$solicitud->idSolicitud) }}" class="btn botonFormulario">Descargar doc. Firmado</a>
+                                    <a href="{{ route('archivos.downloadFirmado',$solicitud->id_solicitud) }}" class="btn botonFormulario">Descargar doc. Firmado</a>
                                 </div>
                                 @endif
                             </div>
                             <div class="form-group mt-4 d-lg-flex">
                                 {{-- un botòn para gestion central --}}
                                 <div class="col-12 col-lg-6  p-1">
-                                    <a href="{{ route('hojaResumenFinal.show',$solicitud->idSolicitud) }}" class="btn botonFormulario">Gestion</a>
+                                    <a href="{{ route('hojaResumenFinal.show',$solicitud->id_solicitud) }}" class="btn botonFormulario">Gestion</a>
                                 </div>
                                 <div class="col-12 col-lg-6  p-1">
-                                    @if($solicitud->hoja_resumen_final == null)
+                                    @if($solicitud->hojaResumen->hoja_resumen_final == null)
                                         <button id="boton" name="boton" class="botonFormulario" data-bs-toggle="modal" data-bs-target="#">Aprobar y
                                         notificar
                                         </button>
@@ -736,7 +736,7 @@
                                         </button>
                                     @endif
                                         <!-- Modal autenticar contraseña -->
-                                        <form action="{{ route('archivos.confirmarContrasenia', $solicitud->idSolicitud)}}">
+                                        <form action="{{ route('archivos.confirmarContrasenia', $solicitud->id_solicitud)}}">
                                         @csrf
                                             <div class="modal fade" id="login_check" tabindex="-1" aria-labelledby="login_check" aria-hidden="true">
                                                 <div class="modal-dialog">
