@@ -32,7 +32,7 @@
                         {{-- nombres y apellidos --}}
                         <div class="row justify-content-between text-left">
                             <p class=" "><span class="text-secondary ">Solicitante: </span>
-                            {{ $solicitud->usuarioEstudiante->apellido }}, {{ $solicitud->usuarioEstudiante->nombre }} 
+                            {{ $solicitud->usuarioEstudiante->apellido }}, {{ $solicitud->usuarioEstudiante->nombre }}
                             </p>
                         </div>
                         {{-- legajo --}}
@@ -90,7 +90,7 @@
                         {{-- nombres y apellidos --}}
                         <div class="row justify-content-between text-left">
                             <p class=" "><span class="text-secondary ">Solicitante: </span>
-                            {{ $solicitud->usuarioEstudiante->apellido }}, {{ $solicitud->usuarioEstudiante->nombre }} 
+                            {{ $solicitud->usuarioEstudiante->apellido }}, {{ $solicitud->usuarioEstudiante->nombre }}
                             </p>
                         </div>
                         {{-- legajo --}}
@@ -120,7 +120,7 @@
                                 {{$solicitud->usuarioAdministrativo->apellido ?? ''}} {{$solicitud->usuarioAdministrativo->nombre ?? ''}}</p>
                             </div>
                             {{-- ACÀ DEBE TOMAR EL NOMBRE DE PERSONA ASIGNADA mostrarlo y guardarlo en base de datos --}}
-                            {{-- dejo este select como muestra visual, 
+                            {{-- dejo este select como muestra visual,
                         hay que eliminarlo al hacer el real de arriba --}}
                             <form action="{{route('solicitud.asignar',[$solicitud->id_solicitud])}}" method="">
                                 <div class="col-12">
@@ -154,9 +154,9 @@
 
                                         <div id="collapseOne" class="accordion-collapse collapse justify-content-center"
                                             aria-labelledby="headingOne" data-bs-parent="#acordeonComentarios">
-                                           
+
                                             <div class="accordion-body  d-flex justify-content-center acordeonComentarios">
-                                                
+
                                                 <div class="table-responsive col-12 mx-3">
                                                     <h4 class="text-center fw-bold cell">Historial de Estados de la Solicitud</h4>
                                                     <table
@@ -211,7 +211,7 @@
                                                                         dbahmsdbahmsdbahmsbdamsbdamhsbdahsbfkhasbfhasfbmahsfbamsfbamhsbfmhasfaf
                                                                     </td>
                                                                 </tr>
-    
+
                                                                 <tr>
                                                                     <td class="p-2">12/05/2021</td>
                                                                     <td class="p-2">Viviana Pedrero</td>
@@ -220,7 +220,7 @@
                                                                         dbahmsdbahmsdbahmsbdamsbdamhsbdahsbfkhasbfhasfbmahsfbamsfbamhsbfmhasfaf
                                                                     </td>
                                                                 </tr>
-    
+
                                                                 <tr>
                                                                     <td class="p-2">12/05/2021</td>
                                                                     <td class="p-2">Viviana Pedrero</td>
@@ -234,7 +234,7 @@
                                                     {{-- boton de agregar comentario --}}
                                                     <div class="row justify-content-center">
                                                         <div class="col-12 mt-2 p-2 ">
-                                                           
+
                                                             <form action="" method="POST" autocomplete="off"
                                                                 enctype="multipart/form-data">
                                                                 @csrf
@@ -298,7 +298,7 @@
                         {{-- nombres y apellidos --}}
                         <div class="row justify-content-between text-left">
                             <p class=" "><span class="text-secondary">Solicitante: </span>
-                            {{ $solicitud->usuarioEstudiante->apellido }}, {{ $solicitud->usuarioEstudiante->nombre }} 
+                            {{ $solicitud->usuarioEstudiante->apellido }}, {{ $solicitud->usuarioEstudiante->nombre }}
                             </p>
                         </div>
                         {{-- legajo --}}
@@ -336,9 +336,9 @@
 
                 <div id="collapseOne" class="accordion-collapse collapse justify-content-center"
                     aria-labelledby="headingOne" data-bs-parent="#acordeonComentarios">
-                   
+
                     <div class="accordion-body  d-flex justify-content-center acordeonComentarios">
-                        
+
                         <div class="table-responsive col-12 mx-3">
                             <h4 class="text-center fw-bold cell">Historial de Estados de la Solicitud</h4>
                             <table
@@ -416,7 +416,7 @@
                             {{-- boton de agregar comentario --}}
                             <div class="row justify-content-center">
                                 <div class="col-12 mt-2 p-2 ">
-                                   
+
                                     <form action="" method="POST" autocomplete="off"
                                         enctype="multipart/form-data">
                                         @csrf
@@ -471,8 +471,11 @@
                                 </div>
                                 {{-- un boton para cargar archivo(firma secretaria -imagen) --}}
                                 <div class="col-12 col-lg-4  p-1">
-                                    <input type="button" class="btn botonFormulario2 form-control" id="" name=""
-                                        value="Aplicar Firma">
+                                    <form action="{{ route('firmaSecretaria') }}" method="POST" autocomplete="off" enctype="multipart/form-data">
+                                        @csrf
+                                        <input type="hidden" id="idSolicitud" name="idSolicitud" value="{{$solicitud->idSolicitud}}">
+                                        <input type="submit" class="btn botonFormulario2 form-control" value="Aplicar Firma">
+                                    </form>
                                 </div>
                                 {{-- un botòn para decargar --}}
                                 <div class="col-12 col-lg-4  p-1">
@@ -516,7 +519,7 @@
                         {{-- nombres y apellidos --}}
                         <div class="row justify-content-between text-left">
                             <p class=" "><span class="text-secondary">Solicitante: </span>
-                            {{ $solicitud->usuarioEstudiante->apellido }}, {{ $solicitud->usuarioEstudiante->nombre }} 
+                            {{ $solicitud->usuarioEstudiante->apellido }}, {{ $solicitud->usuarioEstudiante->nombre }}
                             </p>
                         </div>
                         {{-- legajo --}}
@@ -554,9 +557,9 @@
 
                 <div id="collapseOne" class="accordion-collapse collapse justify-content-center"
                     aria-labelledby="headingOne" data-bs-parent="#acordeonComentarios">
-                   
+
                     <div class="accordion-body  d-flex justify-content-center acordeonComentarios">
-                        
+
                         <div class="table-responsive col-12 mx-3">
                             <h4 class="text-center fw-bold cell">Historial de Estados de la Solicitud</h4>
                             <table
@@ -678,7 +681,7 @@
                             {{-- boton de agregar comentario --}}
                             <div class="row justify-content-center">
                                 <div class="col-12 mt-2 p-2 ">
-                                   
+
                                     <form action="" method="POST" autocomplete="off"
                                         enctype="multipart/form-data">
                                         @csrf
@@ -702,38 +705,47 @@
                                 <div class="col-12 col-lg-4  p-1">
                                     <a href="{{ route('archivos.downloadSinFirma',$solicitud->id_solicitud) }}" class="btn botonFormulario">Descargar doc. sin firmar</a>
                                 </div>
-                                @if($solicitud->hojaResumen->hoja_resumen_final == null)
-                                {{-- un boton para cargar archivo(firma secretaria -imagen) --}}
-                                <div class="col-12 col-lg-4  p-1">
-                                    <a href="#" class="btn botonFormulario2 form-control">Adjuntar doc. Firmado</a>
-                                </div>
-                                {{-- un botòn para decargar --}}
-                                <div class="col-12 col-lg-4  p-1">
-                                    <a href="#" class="btn botonFormulario">Descargar doc. Firmado</a>
-                                </div>
-                                @else
-                                <div class="col-12 col-lg-4  p-1">
-                                    <a href="{{ route('archivos.create', 'dato='.$solicitud->id_solicitud) }}" class="btn botonFormulario2 form-control">Adjuntar doc. Firmado</a>
-                                </div>
-                                <div class="col-12 col-lg-4  p-1">
-                                    <a href="{{ route('archivos.downloadFirmado',$solicitud->id_solicitud) }}" class="btn botonFormulario">Descargar doc. Firmado</a>
-                                </div>
+                                {{-- Este if esta previsto para todos los demas casos donde todavia no existe una hoja resumen (a la espera de roles)--}}
+                                @if($solicitud->hojaResumen!=null)
+                                    @if($solicitud->hojaResumen->hoja_resumen_final == null)
+                                    {{-- un boton para cargar archivo(firma secretaria -imagen) --}}
+                                    <div class="col-12 col-lg-4  p-1">
+                                        <a href="#" class="btn botonFormulario2 form-control">Adjuntar doc. Firmado</a>
+                                    </div>
+                                    {{-- un botòn para decargar --}}
+                                    <div class="col-12 col-lg-4  p-1">
+                                        <a href="#" class="btn botonFormulario">Descargar doc. Firmado</a>
+                                    </div>
+                                    @else
+                                        <div class="col-12 col-lg-4  p-1">
+                                            <a href="{{ route('archivos.create', 'dato='.$solicitud->id_solicitud) }}" class="btn botonFormulario2 form-control">Adjuntar doc. Firmado</a>
+                                        </div>
+                                        <div class="col-12 col-lg-4  p-1">
+                                            <a href="{{ route('archivos.downloadFirmado',$solicitud->id_solicitud) }}" class="btn botonFormulario">Descargar doc. Firmado</a>
+                                        </div>
+                                    @endif
                                 @endif
                             </div>
                             <div class="form-group mt-4 d-lg-flex">
                                 {{-- un botòn para gestion central --}}
                                 <div class="col-12 col-lg-6  p-1">
-                                    <a href="{{ route('hojaResumenFinal.show',$solicitud->id_solicitud) }}" class="btn botonFormulario">Gestion</a>
+                                    <form action="{{ route('hojaResumenFinal.store') }}" method="POST" autocomplete="off" enctype="multipart/form-data">
+                                        @csrf
+                                        <input type="hidden" id="id_solicitud" name="id_solicitud" value="{{$solicitud->idSolicitud}}">
+                                        <input type="submit" class="btn botonFormulario" value="Gestion">
+                                    </form>
                                 </div>
                                 <div class="col-12 col-lg-6  p-1">
-                                    @if($solicitud->hojaResumen->hoja_resumen_final == null)
-                                        <button id="boton" name="boton" class="botonFormulario" data-bs-toggle="modal" data-bs-target="#">Aprobar y
-                                        notificar
-                                        </button>
-                                    @else
-                                    <button id="boton" name="boton" class="botonFormulario" data-bs-toggle="modal" data-bs-target="#login_check">Aprobar y
-                                        notificar
-                                        </button>
+                                    @if($solicitud->hojaResumen!=null)
+                                        @if($solicitud->hojaResumen->hoja_resumen_final == null)
+                                            <button id="boton" name="boton" class="botonFormulario" data-bs-toggle="modal" data-bs-target="#">Aprobar y
+                                            notificar
+                                            </button>
+                                        @else
+                                        <button id="boton" name="boton" class="botonFormulario" data-bs-toggle="modal" data-bs-target="#login_check">Aprobar y
+                                            notificar
+                                            </button>
+                                        @endif
                                     @endif
                                         <!-- Modal autenticar contraseña -->
                                         <form action="{{ route('archivos.confirmarContrasenia', $solicitud->id_solicitud)}}">

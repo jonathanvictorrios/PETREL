@@ -25,7 +25,7 @@ class NotaAdminCentralController extends Controller
         $contenido_pie=$request->contenido_pie;
 
         $hoja = HojaResumen::where('id_solicitud', '=', $id_solicitud)->first();
-        $solicitud = $hoja->solicitud_cert_prog;    
+        $solicitud = $hoja->solicitud_cert_prog;
 
         $pdf = PDF::loadView('notaAdminCentral.crearPdfNotaCentral', compact('contenido_subencabezado','contenido_principal', 'contenido_pie', 'solicitud'));
 
@@ -33,12 +33,12 @@ class NotaAdminCentralController extends Controller
         //Se guarda el archivo pdf nota certificacion en storage
         $pdf->save(storage_path('app/id-solicitud-' . $id_solicitud) . '/' . $nombreNotaCentralPdf);
 
-        //Se guarda en la bd la url del pdf 
+        //Se guarda en la bd la url del pdf
         $unaNotaCentral = new NotaAdminCentral();
         $unaNotaCentral->url_pdf_nota_admin_central = 'id-solicitud-' . $id_solicitud . '/' . $nombreNotaCentralPdf;
         $unaNotaCentral->save();
 
-        //Actualizo tabla hoja_resumen_final. Se guarda el id_nota_admin_central 
+        //Actualizo tabla hoja_resumen_final. Se guarda el id_nota_admin_central
         $idHoja = $hoja->id_hoja_resumen;
 
         $hojaFinal = new HojaResumenFinal();
@@ -90,7 +90,7 @@ class NotaAdminCentralController extends Controller
      */
     public function index()
     {
-        /*  
+        /*
         $datosNotaAdminCentral = NotaAdminCentral::get();
         return view('notaAdminCentral.index')->with('datosNotaAdminCentral', $datosNotaAdminCentral);*/
     }
@@ -106,8 +106,8 @@ class NotaAdminCentralController extends Controller
         /*
         $request->validate([
             'url_pdf_nota_admin_central' => 'required',
-        ]);     
-        
+        ]);
+
         NotaAdminCentral::create($request->all());
 
         return redirect()->route('notaAmincentral.index')->with('exito', 'Nota creada con exito!!.');
@@ -136,7 +136,7 @@ class NotaAdminCentralController extends Controller
      */
     public function show($id_nota_admin_central)
     {
-        /* 
+        /*
         $notaAdminCentral = NotaAdminCentral::find($id_nota_admin_central);
         return view('notaAdminCentral.show')->with('notaAdminCentral', $notaAdminCentral);*/
     }
@@ -149,7 +149,7 @@ class NotaAdminCentralController extends Controller
      */
     public function edit($id_nota_admin_central)
     {
-        /*  
+        /*
         $notaAdminCentral = NotaAdminCentral::findOrFail($id_nota_admin_central);
         return view('notaAdminCentral.edit')->with('notaAdminCentral', $notaAdminCentral);*/
     }
@@ -163,7 +163,7 @@ class NotaAdminCentralController extends Controller
      */
     public function update(Request $request, $id_nota_admin_central)
     {
-        /* 
+        /*
         $notaAdminCentral = NotaAdminCentral::find($id_nota_admin_central);
         $notaAdminCentral->update($request->all());
 

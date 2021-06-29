@@ -39,12 +39,12 @@
     @endforeach
     <br>
     <h4>No encontrados:</h4>
-    {{-- <input type="hidden" id="faltaProgramas" value="{{$faltaProgramas}}">
+    <input type="hidden" id="faltaProgramas" value="{{$faltaProgramas}}">
     @foreach ($colProgramasNoEncontrados as $programa)
        <li>  <label>{{$programa['Programa'].' '. $programa['Anio'] }}</label></li> 
        @endforeach 
        <br>
-     --}}
+    
     <div class="row clearfix">
         <div class="form-group mt-4 d-lg-flex">
             <div class="col-12 col-lg-4  p-1">

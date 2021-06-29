@@ -34,7 +34,7 @@ class SolicitudCertProgController extends Controller
     {
         $unidadesAcademicas = UnidadAcademica::all();
         return view ('solicitud.create',compact('unidadesAcademicas'));
-        
+
     }
 
     /**
@@ -47,15 +47,15 @@ class SolicitudCertProgController extends Controller
     {
         $solicitud = new SolicitudCertProg;
         $usuarioEstudiante = Usuario::find(1); //ACA TENGO QUE PASAR EL ID DEL USUARIO LOGUEADO
-        
+
         if(isset($usuarioEstudiante))
         {
-            $solicitud->id_usuario_estudiante=$usuarioEstudiante->id_usuario;   
+            $solicitud->id_usuario_estudiante=$usuarioEstudiante->id_usuario;
         }
         else{
             return back()->with('error','Necesita estar Logueado para Ingresar una Nueva Solicitud');
         }
-        
+
         if(isset($request->legajo))
         {
             $solicitud->legajo=$request->legajo;
@@ -88,13 +88,13 @@ class SolicitudCertProgController extends Controller
         }
 
         $solicitud->id_carrera=$request->carrera; //CAMBIAR POR SELECT DE DEL FORM
-        
+
 
         ///   $solicitud->usuarioEstudiante=$usuarioEstudiante; //asignamos el usuario a la solicitud
 
         $solicitud->updated_at = null;
         $solicitud->save();
-        
+
         $estado = new Estado;
         $estadoDescripcion = EstadoDescripcion::find(1);
 
@@ -106,9 +106,9 @@ class SolicitudCertProgController extends Controller
 
         $controlMail = new mailPetrelController;
         $controlMail->enviarMailSolicitudIniciada($solicitud->id_solicitud);
-        
+
         $solicitudes=SolicitudCertProg::all();//NECESITO RECUPERAR TODAS LAS SOLICITUDES PORQUE VUELVO EL RETORNO A LA VISTA.
-      
+
         return view('solicitud.index',compact('solicitudes'));
     }
 
@@ -121,15 +121,18 @@ class SolicitudCertProgController extends Controller
     public function show($id)
     {
         $solicitud= SolicitudCertProg::findOrFail($id);
-
         $hojaResumen = HojaResumen::where('id_solicitud',$id)->get();
         if(count($hojaResumen)>0){
-            $iniciarTramite = false;
+            if($hojaResumen[0]->url_hoja_unida!=null){
+                $finSolicitud = 1;
+            }else{
+                $finSolicitud = 0;
+            }
         }else{
-            $iniciarTramite = true;
+            $finSolicitud = -1;
         }
 
-        return view('solicitud.show',compact('solicitud','iniciarTramite'));
+        return view('solicitud.show',compact('solicitud','finSolicitud'));
     }
 
     /**
@@ -175,9 +178,9 @@ class SolicitudCertProgController extends Controller
      */
     public function asignar($idSolicitud, Request $request)
     {
-       
+
         $solicitud = SolicitudCertProg::findOrFail($idSolicitud);
-        
+
         $usuarioAdministrativo = Usuario::findOrFail($request->usuarioAdministrativo);
 
         //$nuevoEstado = new Estado;
@@ -187,14 +190,14 @@ class SolicitudCertProgController extends Controller
         $estadoController->cambiarEstado($solicitud,$usuarioAdministrativo,$estadoDescripcion);
 
         $solicitud->id_user_u=$usuarioAdministrativo->id_usuario;
-        
+
         $solicitud->save();
-       
+
         $solicitudes = SolicitudCertProg::all();
         return view('solicitud.index', compact('solicitudes'));
 
     }
-   
+
     // public function listoParaFirmarDptoAlumno($idSolicitud,$idUsuarioAdministrativo)
     // {
     //     $solicitud = SolicitudCertProg::findOrFail($idSolicitud);
@@ -246,7 +249,7 @@ class SolicitudCertProgController extends Controller
 
         $solicitud->save();
         $controlMail = new mailPetrelController;
-        $controlMail->enviarMailSolicitudFinalizada($solicitud->id_solicitud);    
+        $controlMail->enviarMailSolicitudFinalizada($solicitud->id_solicitud);
 
     }
 

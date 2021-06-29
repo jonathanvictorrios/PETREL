@@ -81,7 +81,7 @@ $fecha = date('d') . ' de ' . date('M') . ' del ' . date('Y');
     </div>
     <div class="form-group mt-3 d-lg-flex">
         <input type="hidden" name="id_solicitud" value="{{ $solicitud->id_solicitud }}">
-        <div class="col-12 col-lg-8 p-1 ">    
+        <div class="col-12 col-lg-8 p-1 ">
             <input type="button" value="Guardar y Descargar nota.pdf" class="btn botonFormulario" data-bs-toggle="modal" data-bs-target="#login_check">
         </div>
         <div class="col-12 col-lg-4 p-1 ">
@@ -106,25 +106,21 @@ $fecha = date('d') . ' de ' . date('M') . ' del ' . date('Y');
                 </div>
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-primary" id="modal_sesion_submit">Autenticar y continuar</button>
+                <button type="button" class="btn botonFormulario" id="modal_sesion_submit">Autenticar y continuar</button>
             </div>
         </div>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn botonFormulario" id="modal_sesion_submit">Autenticar y continuar</button>
       </div>
     </div>
 </div>
 
 <script src="//cdn.ckeditor.com/4.14.1/basic/ckeditor.js"></script>
 <script type="text/javascript">
-$(document).ready(function() {
-    /**
-     * Al momento de cargar el documento, se reemplaza el textarea por la app ckeditor
-     */
-    $('.ckeditor').ckeditor();
-});
-    
+    $(document).ready(function() {
+        /**
+        * Al momento de cargar el documento, se reemplaza el textarea por la app ckeditor
+        */
+        $('.ckeditor').ckeditor();
+    });
     /*
     * Este método es temporal para mostrar el uso de la aplicación
     * Donde el usuario debe confirmar su contraseña (autenticarse en el sistema)
@@ -138,11 +134,13 @@ $(document).ready(function() {
                 'contrasenia': $('#input_contrasenia').val()
             },
             success: function( data ) {
-                if (data === 'true') $('#formulario_nota').submit();
-                if (data === 'true') $('#login_check').modal('toggle');
-                if (data === 'true') $('#btn_continuar').attr("href", '/solicitud');
-                if (data === 'true') $('#btn_continuar').removeClass('btn-secondary disabled');
-                if (data === 'true') $('#btn_continuar').addClass('btn-success');
+                if (data === 'true'){
+                     $('#formulario_nota').submit();
+                    $('#login_check').modal('toggle');
+                    $('#btn_continuar').attr("href", '/solicitud');
+                    $('#btn_continuar').removeClass('btn-secondary disabled');
+                    $('#btn_continuar').addClass('btn-success');
+                }
             }
         });
     });

@@ -19,7 +19,8 @@ class HojaResumenController extends Controller
         // return view('hojaResumen.show')->with('colHojasResumen',$colHojasResumen);
     }
 
-    public function continuarTramite($idSolicitud){
+    public function continuarTramite(Request $request){
+        $idSolicitud = $request->idSolicitud;
         $objHojaResumen = HojaResumen::where('id_solicitud',$idSolicitud)->get();
         if(count($objHojaResumen)>0){
             $objSolicitud=SolicitudCertProg::find($idSolicitud);
@@ -51,11 +52,11 @@ class HojaResumenController extends Controller
         $idSolicitud = $request->idSolicitud;
         $objSolicitud = SolicitudCertProg::find($idSolicitud);
         $objHojaResumen = HojaResumen::where('id_solicitud',$idSolicitud)->get()[0];//$objSolicitud->hoja_resumen;
-        
+
         $arregloRendimiento = json_decode(file_get_contents(storage_path('/app/').'id-solicitud-'.$idSolicitud.'/rendimientoAcademico'.$idSolicitud.'.json'),true);
         $arregloRendimiento['Secretaria']=true;
         $pdf = PDF::loadView('rendimientoAcademico.exportarPdf',compact('arregloRendimiento'));
-        
+
         $contenido = $pdf->download()->getOriginalContent();
         $nombreRendimiendoPdf = 'rendimientoAcademico' . $idSolicitud . '.pdf';
 
@@ -103,7 +104,7 @@ class HojaResumenController extends Controller
         }
         while (file_exists(storage_path("id-solicitud-$idSolicitud/planEstudio-$idSolicitud-$i.pdf")));
         $urlPdfsLocales[]='unionProgramas'.$idSolicitud.'.pdf';
-        
+
         $pdf = new PdfMerge();
         foreach ($urlPdfsLocales as $unaUrl) {
             $pdf->add(storage_path() . '/app/id-solicitud-' . $idSolicitud . '/' . $unaUrl, 'all');
