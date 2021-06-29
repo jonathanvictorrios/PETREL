@@ -504,14 +504,45 @@
                                                 class="btn botonFormulario">Descargar Preliminar</a>
                                         </div>
                                         {{-- un boton para cargar archivo(firma secretaria -imagen) --}}
-                                        <div class="col-12 col-lg-4  p-1">
+                                        <div class="col-12 col-lg-4  p-1">       
+                                            <button id="boton" name="boton" class="botonFormulario2"
+                                                    data-bs-toggle="modal" data-bs-target="#login_check1">Aplicar Firma
+                                            </button>
+                                                <!-- Modal autenticar contraseña -->
+                                                {{-- <form
+                                                action="{{ route('archivos.confirmarContrasenia', $solicitud->id_solicitud) }}"> --}}
                                             <form action="{{ route('firmaSecretaria') }}" method="POST"
                                                 autocomplete="off" enctype="multipart/form-data">
                                                 @csrf
+                                                
                                                 <input type="hidden" id="idSolicitud" name="idSolicitud"
                                                     value="{{ $solicitud->id_solicitud }}">
-                                                <input type="submit" class="btn botonFormulario2 form-control"
-                                                    value="Aplicar Firma">
+
+                                                <div class="modal fade" id="login_check1" tabindex="-1"
+                                                    aria-labelledby="login_check1" aria-hidden="true">
+                                                    <div class="modal-dialog">
+                                                        <div class="modal-content">
+                                                            <div class="modal-header">
+                                                                <h5 class="modal-title" id="login_check_h">¿Esta seguro que
+                                                                    desea aprobar la solicitud?</h5>
+                                                                <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                                                    aria-label="Close"></button>
+                                                            </div>
+                                                            <div class="modal-body">
+                                                                <div class="form-group">
+                                                                    <label for="input_contrasenia">Contraseña</label>
+                                                                    <input type="password" name="password"
+                                                                        id="input_contrasenia" class="form-control">
+                                                                </div>
+                                                            </div>
+                                                            <div class="modal-footer">
+                                                                <button type="submit" class="btn botonFormulario"
+                                                                    id="modal_sesion_submit">Confirmar</button>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                </form>
                                             </form>
                                         </div>
                                         {{-- un botòn para decargar --}}
@@ -521,6 +552,7 @@
                                                 class="btn botonFormulario">Descargar Preliminar Firmado</a>
                                         </div>
                                     </div>
+                                      
                                 </div>
 
                             </div>
@@ -529,7 +561,7 @@
                 </div>
             </div>
         </div>
-        @elseif($solicitud->estados->last()->estado_descripcion->descripcion=='Aguarda Firma Santiago')
+        @elseif($solicitud->estados->last()->estado_descripcion->descripcion=='Aguarda Firma Dir. Académica Central')
         {{-- ---------------- ESTE ES EL SHOW DE SANTIAGO -------------------------------------- --}}
         <div class="container">
             <a href="{{ url()->previous() }}" class="lead"><i class="fas fa-chevron-left me-2"></i>Atrás</a>
@@ -655,60 +687,9 @@
                                                                         dbahmsdbahmsdbahmsbdamsbdamhsbdahsbfkhasbfhasfbmahsfbamsfbamhsbfmhasfaf
                                                                     </td>
                                                                 </tr>
-
-                                                                <div class="container-fluid p-1 mx-auto">
-                                                                    {{-- Comienzo div Actividad (mostrar como acordeón) --}}
-                                                                    <div class="tittle cp-1 cell my-3">
-                                                                        <h2 class="text-center fw-bold">Actividad </h2>
-                                                                    </div>
-                                                                    <table class="table table-borderless">
-                                                                        <thead class="border-bottom">
-                                                                            <tr>
-                                                                                <th scope="col">Fecha</th>
-                                                                                <th scope="col">Usuario</th>
-                                                                                <th scope="col">Detalle</th>
-                                                                            </tr>
-                                                                        </thead>
-                                                                        <tbody>
-                                                                            <tr>
-                                                                                <td>12/05/2021</td>
-                                                                                <td>Viviana Pedrero</td>
-                                                                                <td>asignado a Raquel</td>
-                                                                            </tr>
-                                                                            <tr>
-                                                                                <td>12/05/2021</td>
-                                                                                <td>Viviana Pedrero</td>
-                                                                                <td>comentario 2 blablablablablalbalba
-                                                                                </td>
-                                                                            </tr>
-                                                                            <tr>
-                                                                                <td>12/05/2021</td>
-                                                                                <td>Viviana Pedrero</td>
-                                                                                <td>asignado a Raquel</td>
-                                                                            </tr>
-                                                                        </tbody>
-                                                                    </table>
-                                                                </div> {{-- Fin div Actividad --}}
-
-                                                                <tr>
-                                                                    <td class="p-2">12/05/2021</td>
-                                                                    <td class="p-2">Viviana Pedrero</td>
-                                                                    <td class="p-2">asignado a Raquel sdhakshaksdas
-                                                                        dbahsbdhamsbdasbdjasbdajsdbaksdhakhs
-                                                                        dbahmsdbahmsdbahmsbdamsbdamhsbdahsbfkhasbfhasfbmahsfbamsfbamhsbfmhasfaf
-                                                                    </td>
-                                                                </tr>
-
-                                                                <tr>
-                                                                    <td class="p-2">12/05/2021</td>
-                                                                    <td class="p-2">Viviana Pedrero</td>
-                                                                    <td class="p-2">asignado a Raquel sdhakshaksdas
-                                                                        dbahsbdhamsbdasbdjasbdajsdbaksdhakhs
-                                                                        dbahmsdbahmsdbahmsbdamsbdamhsbdahsbfkhasbfhasfbmahsfbamsfbamhsbfmhasfaf
-                                                                    </td>
-                                                                </tr>
                                                             </tbody>
-                                                        </table>
+                                                            </table>
+                                                                
                                                         {{-- boton de agregar comentario --}}
                                                         <div class="row justify-content-center">
                                                             <div class="col-12 mt-2 p-2 ">
@@ -730,8 +711,16 @@
                                             </div>
                                         </div>
                                     </div>
+                                   
                                 </div>
-                            </div> {{-- Fin div Actividad --}}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    
+{{-- Fin div Actividad --}}
                             <div class="row clearfix">
                                 <div class="form-group mt-4 d-lg-flex">
                                     {{-- un botòn para gestionar nota administraciòn central --}}
@@ -762,12 +751,12 @@
                                         @if ($solicitud->hojaResumen->hoja_resumen_final == null)
                                             {{-- un boton para cargar archivo(firma secretaria -imagen) --}}
                                             <div class="col-12 col-lg-4  p-1">
-                                                <a href="#" class="btn botonFormulario2 form-control">Adjuntar doc.
+                                                <a href="#" class="btn botonFormulario2 form-control disabled">Adjuntar doc.
                                                     Firmado</a>
                                             </div>
                                             {{-- un botòn para decargar --}}
                                             <div class="col-12 col-lg-4  p-1">
-                                                <a href="#" class="btn botonFormulario">Descargar doc. Firmado</a>
+                                                <a href="#" class="btn botonFormulario disabled">Descargar doc. Firmado</a>
                                             </div>
                                         @else
                                             <div class="col-12 col-lg-4  p-1">
@@ -782,17 +771,8 @@
                                     @endif
                                 </div>
                                 <div class="form-group mt-4 d-lg-flex">
-                                    {{-- un botòn para gestion central --}}
-                                    <div class="col-12 col-lg-6  p-1">
-                                        <form action="{{ route('hojaResumenFinal.store') }}" method="POST"
-                                            autocomplete="off">
-                                            @csrf
-                                            <input type="hidden" id="id_solicitud" name="id_solicitud"
-                                                value="{{ $solicitud->id_solicitud }}">
-                                            <input type="submit" class="btn botonFormulario" value="Gestion">
-                                        </form>
-                                    </div>
-                                    <div class="col-12 col-lg-6  p-1">
+                                   
+                                    <div class="col-12 p-1">
                                         @if ($solicitud->hojaResumen != null)
                                             @if ($solicitud->hojaResumen->hoja_resumen_final == null)
                                                 <button id="boton" name="boton" class="botonFormulario"
@@ -828,7 +808,7 @@
                                                             </div>
                                                         </div>
                                                         <div class="modal-footer">
-                                                            <button type="submit" class="btn btn-primary"
+                                                            <button type="submit" class="btn botonFormulario"
                                                                 id="modal_sesion_submit">Confirmar</button>
                                                         </div>
                                                     </div>
