@@ -426,6 +426,34 @@
                                         <input type="submit" class="botonFormulario2" value="Agregar Mensaje">
                                     </form>
                                 </div>
+                            <p class=" "><span class="text-secondary fs-5">Legajo: </span> {{ $solicitud->legajo }}</p>
+                        </div>
+                        {{-- unidad academica --}}
+                        <div class="row justify-content-between text-left">
+                            <p class=" "><span class="text-secondary fs-5">Unidad Académica: </span>
+                                {{ $solicitud->carrera->unidad_academica->unidad_academica }}
+                            </p>
+                        </div>
+                        {{-- carrera --}}
+                        <div class="row justify-content-between text-left ">
+                            <p class=" "><span class="text-secondary fs-5">Carrera: </span> {{ $solicitud->carrera->carrera }}</p>
+                        </div>
+                        {{-- universidad de destino --}}
+                        <div class="row justify-content-center text-left">
+                            <p class=" "><span class="text-secondary fs-5">Institución Educativa de Destino: </span>
+                                {{ $solicitud->universidad_destino }}
+                            </p>
+                        </div>
+                        {{-- asignado a --}}
+                        <div class="row justify-content-center text-left">
+                            <div class="col-6">
+                                <p class=" "><span class="text-secondary fs-5">Asignado a: </span> Viviana Pedrero
+                                    {{-- ACÀ DEBE TOMAR EL NOMBRE DE PERSONA ASIGNADA --}}
+                                </p>
+                            </div>
+                            <div class="col-6">
+                                <button class=" botonFormulario">cambiar asignación </button>
+                                {{-- ACÀ abre pag de asignaciòn o lo convertimos en un form con un select de admin? --}}</p>
                             </div>
                         </div>
                     </div>
@@ -584,6 +612,50 @@
                                             </td>
                                         </tr>
 
+        <div class="container-fluid p-1 mx-auto"> {{-- Comienzo div Actividad (mostrar como acordeón) --}}
+            <div class="tittle cp-1 cell my-3">
+                <h2 class="text-center fw-bold">Actividad </h2>
+            </div>
+            <table class="table table-borderless">
+                <thead class="border-bottom">
+                    <tr>
+                        <th scope="col">Fecha</th>
+                        <th scope="col">Usuario</th>
+                        <th scope="col">Detalle</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>12/05/2021</td>
+                        <td>Viviana Pedrero</td>
+                        <td>asignado a Raquel</td>
+                    </tr>
+                    <tr>
+                        <td>12/05/2021</td>
+                        <td>Viviana Pedrero</td>
+                        <td>comentario 2 blablablablablalbalba</td>
+                    </tr>
+                    <tr>
+                        <td>12/05/2021</td>
+                        <td>Viviana Pedrero</td>
+                        <td>asignado a Raquel</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <div class="row justify-content-center ">
+                <div class="col-6 p-2 m-2">
+                    {{-- ESTE FORM/BOTÒN DEBERIA SER VISIBLE SÒLO SI EL USUARIO ASIGNADO ES EL USUARIO LOGUEADO --}}
+                    <form action="{{ route('hojaResumen.store') }}" method="POST" autocomplete="off" enctype="multipart/form-data">
+                        @csrf
+                        {{-- aca voy a recibir el $idSolicitud , por ahora utilizo un input , luego este $idSolicitud estara en un campo oculto --}}
+                        <input type="hidden" id="idSolicitud" name="idSolicitud" value="{{ $solicitud->idSolicitud }}">
+                        <input type="submit" class="botonFormulario" value="comenzar trámite">
+                    </form>
+                </div>
+            </div>
+        </div> {{-- Fin div Actividad --}}
+
                                         <tr>
                                             <td class="p-2">12/05/2021</td>
                                             <td class="p-2">Viviana Pedrero</td>
@@ -628,36 +700,67 @@
                             <div class="form-group mt-4 d-lg-flex">
                                 {{-- un boton para descargar --}}
                                 <div class="col-12 col-lg-4  p-1">
-                                    <input type="button" id="" class="btn botonFormulario" name=""
-                                        value="Descargar doc. sin firmar">
+                                    <a href="{{ route('archivos.downloadSinFirma',$solicitud->id_solicitud) }}" class="btn botonFormulario">Descargar doc. sin firmar</a>
                                 </div>
+                                @if($solicitud->hojaResumen->hoja_resumen_final == null)
                                 {{-- un boton para cargar archivo(firma secretaria -imagen) --}}
                                 <div class="col-12 col-lg-4  p-1">
-                                    <input type="button" class="btn botonFormulario2 form-control" id="" name=""
-                                        value="Adjuntar doc. Firmado">
+                                    <a href="#" class="btn botonFormulario2 form-control">Adjuntar doc. Firmado</a>
                                 </div>
                                 {{-- un botòn para decargar --}}
                                 <div class="col-12 col-lg-4  p-1">
-                                    <input type="button" id="" class="btn botonFormulario" name=""
-                                        value="Descargar doc. Firmado">
+                                    <a href="#" class="btn botonFormulario">Descargar doc. Firmado</a>
                                 </div>
+                                @else
+                                <div class="col-12 col-lg-4  p-1">
+                                    <a href="{{ route('archivos.create', 'dato='.$solicitud->id_solicitud) }}" class="btn botonFormulario2 form-control">Adjuntar doc. Firmado</a>
+                                </div>
+                                <div class="col-12 col-lg-4  p-1">
+                                    <a href="{{ route('archivos.downloadFirmado',$solicitud->id_solicitud) }}" class="btn botonFormulario">Descargar doc. Firmado</a>
+                                </div>
+                                @endif
                             </div>
                             <div class="form-group mt-4 d-lg-flex">
                                 {{-- un botòn para gestion central --}}
                                 <div class="col-12 col-lg-6  p-1">
-                                    <input type="button" id="" class="btn botonFormulario" name="" value="Gestion">
+                                    <a href="{{ route('hojaResumenFinal.show',$solicitud->id_solicitud) }}" class="btn botonFormulario">Gestion</a>
                                 </div>
-                        
-                        <div class="col-12 col-lg-6  p-1">
-                            <form name="" id="" action="" method="POST" autocomplete="off" enctype="multipart/form-data"
-                                novalidate>
-                                @csrf
-                                <button id="boton" name="boton" type="submit" class="botonFormulario">Aprobar y
-                                notificar</button>
-                            </form>
+                                <div class="col-12 col-lg-6  p-1">
+                                    @if($solicitud->hojaResumen->hoja_resumen_final == null)
+                                        <button id="boton" name="boton" class="botonFormulario" data-bs-toggle="modal" data-bs-target="#">Aprobar y
+                                        notificar
+                                        </button>
+                                    @else
+                                    <button id="boton" name="boton" class="botonFormulario" data-bs-toggle="modal" data-bs-target="#login_check">Aprobar y
+                                        notificar
+                                        </button>
+                                    @endif
+                                        <!-- Modal autenticar contraseña -->
+                                        <form action="{{ route('archivos.confirmarContrasenia', $solicitud->id_solicitud)}}">
+                                        @csrf
+                                            <div class="modal fade" id="login_check" tabindex="-1" aria-labelledby="login_check" aria-hidden="true">
+                                                <div class="modal-dialog">
+                                                    <div class="modal-content">
+                                                        <div class="modal-header">
+                                                            <h5 class="modal-title" id="login_check_h">¿Esta seguro que desea aprobar la solicitud?</h5>
+                                                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                                        </div>
+                                                        <div class="modal-body">
+                                                            <div class="form-group">
+                                                                <label for="input_contrasenia">Contraseña</label>
+                                                                <input type="password" name="password" id="input_contrasenia" class="form-control">
+                                                            </div>
+                                                        </div>
+                                                        <div class="modal-footer">
+                                                            <button type="submit" class="btn btn-primary" id="modal_sesion_submit">Confirmar</button>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </form>
+                                </div>
+                            </div>
                         </div>
-                        </div>
-                    </div>
                     </div>
                 </div>
             </div>

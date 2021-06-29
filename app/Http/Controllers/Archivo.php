@@ -14,6 +14,7 @@ use Helpers as GlobalHelpers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Artisan;
 use Illuminate\Support\Facades\DB;
+use App\Http\Controllers\mailPetrelController;
 
 class Archivo extends Controller
 {
@@ -51,6 +52,8 @@ class Archivo extends Controller
         $idHojaResumen = HojaResumen::where('id_solicitud', $archivo['idSolicitud'])->get()[0]->id_hoja_resumen;
         $hojaResumenFinal = HojaResumenFinal::where('id_hoja_resumen', $idHojaResumen)->get()[0];
 
+        /* ddd($hojaResumenFinal); */
+
         if ($request->hasFile('archivo')) {
             $ubicacion = 'id-solicitud-' . $archivo['idSolicitud'];
             $nombreArchivo = 'hoja_unida_final_firmada' . $archivo['idSolicitud'] . '.pdf';
@@ -64,7 +67,7 @@ class Archivo extends Controller
         } else {
             $mensaje = 'Ha ocurrido un error';
         }
-        return redirect()->route('archivos.index')->with('mensaje', $mensaje);
+        return redirect()->route('solicitud.show',$archivo['idSolicitud'])->with('mensaje', $mensaje);
     }
 
     /**
@@ -90,7 +93,12 @@ class Archivo extends Controller
 
     public function downloadSinFirma($id)
     {
-        $path = SolicitudCertProg::find($id)->hojaResumen->hoja_resumen_final->url_hoja_unida_final_sin_firma;
+        $objetoHojaResumen = HojaResumen::where('id_solicitud', $id)->get()[0];
+        if($objetoHojaResumen->hoja_resumen_final == null){
+            $path = $objetoHojaResumen->url_hoja_unida;
+        }else{
+            $path = $objetoHojaResumen->hoja_resumen_final->url_hoja_unida_final_sin_firma;
+        }
 
         $pathFile = storage_path('app/' . $path);
         header("Cache-Control: no-cache, must-revalidate");
@@ -99,7 +107,8 @@ class Archivo extends Controller
 
     public function downloadFirmado($id)
     {
-        $path = SolicitudCertProg::find($id)->hojaResumen->hoja_resumen_final->url_hoja_unida_final;
+        $objetoHojaResumen = HojaResumen::where('id_solicitud', $id)->get()[0];
+        $path = $objetoHojaResumen->hoja_resumen_final->url_hoja_unida_final;
 
         $pathFile = storage_path('app/' . $path);
         header("Cache-Control: no-cache, must-revalidate");
@@ -139,33 +148,47 @@ class Archivo extends Controller
 
     public function confirmarContrasenia(Request $request, $idSolicitud)
     {
-        $contraseniaIngresada = $request->all();
+        /* $contraseniaIngresada = $request->all();
         $confirmacionContrasenia = DB::table('usuario')
             ->where('password', $contraseniaIngresada['password'])
-            ->get();
+            ->get(); */
 
-        if (count($confirmacionContrasenia) == 1) {
-            $estado = DB::table('estado')
+        /* if (count($confirmacionContrasenia) == 1) { */
+            /*  $estado = DB::table('estado')
                 ->where('estado.id_solicitud', $idSolicitud)
                 ->get()['0'];
 
-            $estadoDescripcionNuevo = $estado->id_estado_descripcion + 1; /* Estp debe cambiarse a -1 ya que se retrocede el estado */
+            $estadoDescripcionNuevo = $estado->id_estado_descripcion + 1;
 
             $estadoNuevo = DB::table('estado')
                 ->where('id_solicitud', $idSolicitud)
-                ->update(['id_estado_descripcion' => $estadoDescripcionNuevo]);
+                ->update(['id_estado_descripcion' => $estadoDescripcionNuevo]); */
 
-            if ($estadoNuevo) {
-                $mensaje = 'Solicitud aprobada';
-            } else {
-                $mensaje = 'ha ocurrido un error';
-            }
-        } else {
-            ddd('no es igual');
-            $mensaje = 'ha ocurrido un error';
-        }
+            /* $objSolicitud = SolicitudCertProg::find($idSolicitud);
 
-        return redirect()->route('archivos.index')->with('mensaje', $mensaje);
+            $estado = new Estado();
+            $estado->id_solicitud = $idSolicitud;
+            $estado->id_estado_descripcion = 6;
+            $estado->id_usuario = $objSolicitud->usuarioAdministrativo->id_usuario;
+            $estado->save();
+
+            $correo = new mailPetrelController();
+            $correo->enviarMailSolicitudFinalizada($idSolicitud); */
+
+            //$objetoSolicitud = new SolicitudCertProg;
+            $objSolicitudController = new SolicitudCertProgController;
+
+            $objSolicitud = SolicitudCertProg::find($idSolicitud);
+            $idAdministrativo = $objSolicitud->usuarioAdministrativo->id_usuario;
+
+            $objSolicitudController->terminar($idSolicitud,$idAdministrativo);
+
+            $mensaje = 'Solicitud aprobada';
+        /* } else { */
+            /* $mensaje = 'ha ocurrido un error'; */
+        /* } */
+
+        return redirect()->route('solicitud.index')->with('mensaje', $mensaje);
     }
 
     /**

@@ -7,7 +7,7 @@ use Illuminate\Http\Request;
 use App\Models\NotaAdminCentral;
 use App\Models\HojaResumenFinal;
 use App\Models\HojaResumen;
-
+use App\Models\SolicitudCertProg;
 use Barryvdh\DomPDF\Facade as PDF;
 //use Illuminate\Support\Facades\Storage;
 
@@ -17,6 +17,8 @@ class NotaAdminCentralController extends Controller
 {
     public function crearNotaAdminCentral(Request $request)
     {
+        $solicitudes = SolicitudCertProg::all();
+
         $id_solicitud = $request->id_solicitud;
         $contenido_subencabezado=$request->contenido_subencabezado;
         $contenido_principal=$request->contenido_principal;
@@ -50,7 +52,7 @@ class NotaAdminCentralController extends Controller
         $hojaFinal->url_hoja_unida_final_sin_firma = $rutaHojaFinalSinFirma;
         $hojaFinal->save();
 
-        return view('hojaResumenFinal.indexHojaFinal')->with('solicitud', $solicitud);
+        return redirect()->route('foliar',$id_solicitud);
     }
 
 

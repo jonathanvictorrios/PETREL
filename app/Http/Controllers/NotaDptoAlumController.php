@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\HojaResumen;
 use App\Models\NotaDptoAlum;
+use App\Models\Estado;
 use App\Models\SolicitudCertProg;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
@@ -68,6 +69,14 @@ class NotaDptoAlumController extends Controller
         $hojaResumen->id_nota_dto_alumno = $idNota->id_nota_dto_alumno;
         $hojaResumen->url_hoja_unida = 'id-solicitud-'.$request->id_solicitud.'/hojaUnida'.$request->id_solicitud.'.pdf';
         $hojaResumen->save();
+
+        $objSolicitud=SolicitudCertProg::find($request->id_solicitud);
+            $estado=new Estado();
+            $estado->id_solicitud = $request->id_solicitud;
+            $estado->id_estado_descripcion = 4;
+            $estado->id_usuario = $objSolicitud->usuarioEstudiante->id_usuario;
+            $estado->save();
+
         # Retorno resultado
         return $objPDF->download("nota-generada-$request->id_solicitud.pdf");
     }
