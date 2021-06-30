@@ -370,7 +370,7 @@
                                                             <input class="border-0 cell" type="text" id="mensaje"
                                                                 name="mensaje" placeholder="Ingrese el mensaje">
                                                             <input type="text" hidden id="idUsuario" name="idUsuario"
-                                                                value="{{ $estado->usuario->id_usuario }}">
+                                                                value="{{ $estado->usuario->id_usuario ?? ''}}">
                                                             <input type="text" hidden id="idSolicitud" name="idSolicitud"
                                                                 value="{{ $estado->id_solicitud }}">
 
@@ -494,6 +494,100 @@
                                                 aria-labelledby="headingOne" data-bs-parent="#acordeonComentarios">
                                                 <div
                                                     class="accordion-body  d-flex justify-content-center acordeonComentarios">
+
+        <div class="container">
+            <a href="{{ url()->previous() }}" class="lead"><i class="fas fa-chevron-left me-2"></i>Atrás</a>
+        </div>
+        {{-- inicion mostrar solicitud --}}
+        <div class="container-fluid p-1 mx-auto">
+            <div class="row d-flex justify-content-center">
+                <div class="col-md-8 col-12">
+                    <div class="card card-form bg-light">
+                        <div class="card-header p-1 bg-light cell mb-3">
+                            <h2 class="text-center fw-bold">Detalles de Solicitud {{ $solicitud->id_solicitud }}</h2>
+                        </div>
+                        {{-- fecha --}}
+                        <div class="row justify-content-between text-left ">
+                            <p class=" "><span class="text-secondary">Fecha de Inicio: </span>
+                                {{ $solicitud->estados->first()->created_at }}
+                            </p>
+                        </div>
+                        {{-- estado --}}
+                        <div class="row justify-content-between text-left ">
+                            <p class=" "><span class="text-secondary">Estado: </span>
+                                {{ $solicitud->estados->last()->estado_descripcion->descripcion }}
+                            </p>
+                        </div>
+
+                        {{-- nombres y apellidos --}}
+                        <div class="row justify-content-between text-left">
+                            <p class=" "><span class="text-secondary">Solicitante: </span>
+                                {{ $solicitud->usuarioEstudiante->apellido }},
+                                {{ $solicitud->usuarioEstudiante->nombre }}
+                            </p>
+                        </div>
+                        {{-- legajo --}}
+                        <div class="row justify-content-between text-left ">
+                            <p class=" "><span class="text-secondary">Legajo: </span> {{ $solicitud->legajo }}</p>
+                        </div>
+                        {{-- unidad academica --}}
+                        <div class="row justify-content-between text-left">
+                            <p class=" "><span class="text-secondary">Unidad Académica: </span>
+                                {{ $solicitud->carrera->unidad_academica->unidad_academica }}
+                            </p>
+                        </div>
+                        {{-- carrera --}}
+                        <div class="row justify-content-between text-left ">
+                            <p class=" "><span class="text-secondary">Carrera: </span> {{ $solicitud->carrera->carrera }}
+                            </p>
+                        </div>
+                        {{-- universidad de destino --}}
+                        <div class="row justify-content-center text-left">
+                            <p class=" "><span class="text-secondary">Institución Educativa de Destino: </span>
+                                {{ $solicitud->universidad_destino }}
+                            </p>
+                        </div>
+                        {{-- Comienzo div Actividad (mostrar como acordeón) --}}
+                        <div class="row d-flex justify-content-center">
+                            <div class="col-12  p-2">
+                                <div class="accordion" id="acordeonComentarios">
+                                    <div class="accordion-item mt-4">
+
+                                        <button
+                                            class="accordion-button collapsed justify-content-center botonAcordeonComentarios"
+                                            type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne"
+                                            aria-expanded="true" aria-controls="collapseOne">
+                                            <h2 class="align-self-center" id="headingOne"> Actividad </h2>
+                                        </button>
+
+                                        <div id="collapseOne" class="accordion-collapse collapse justify-content-center"
+                                            aria-labelledby="headingOne" data-bs-parent="#acordeonComentarios">
+
+                                            <div class="accordion-body  d-flex justify-content-center acordeonComentarios">
+
+                                                <div class="table-responsive col-12 mx-3">
+                                                    <h4 class="text-center fw-bold cell">Historial de Estados de la
+                                                        Solicitud</h4>
+                                                    <table
+                                                        class="table table-striped table-hover align-middle table-borderless">
+                                                        <thead class="border-bottom">
+                                                            <tr>
+                                                                <th scope="col" class="p-2 text-center">Fecha</th>
+                                                                <th scope="col" class="p-2 text-center">Usuario</th>
+                                                                <th scope="col" class="p-2 text-center">Estado</th>
+                                                            </tr>
+                                                        </thead>
+                                                        <tbody>
+                                                            @foreach ($solicitud->estados as $estado)
+                                                            <tr>
+                                                                <td class="p-2">{{ $estado->created_at }}</td>
+                                                                <td class="p-2">{{ $estado->usuario->nombre ?? ''}} {{ $estado->usuario->apellido ?? ''}}</td>
+                                                                <td class="p-2">{{ $estado->estado_descripcion->descripcion }}</td>
+                                                            </tr>
+                                                            @endforeach
+                                                        </tbody>
+                                                    </table>
+                                                    <h4 class="text-center fw-bold cell">Mensajes</h4>
                                                     <div class="table-responsive col-12 mx-3">
                                                         <h4 class="text-center fw-bold cell">Historial de Estados de la
                                                             Solicitud</h4>
@@ -700,6 +794,7 @@
                             <i class='fas fa-check-circle mx-2'></i>{{ session('mensaje') }}
                             <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
                         </div>
+
                     </div>
                 </div>
             </div>
@@ -770,6 +865,49 @@
                                                 aria-labelledby="headingOne" data-bs-parent="#acordeonComentarios">
                                                 <div
                                                     class="accordion-body  d-flex justify-content-center acordeonComentarios">
+
+                        {{-- Comienzo div Actividad (mostrar como acordeón) --}}
+                        <div class="row d-flex justify-content-center">
+                            <div class="col-12  p-2">
+                                <div class="accordion" id="acordeonComentarios">
+                                    <div class="accordion-item mt-4">
+
+                                        <button
+                                            class="accordion-button collapsed justify-content-center botonAcordeonComentarios"
+                                            type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne"
+                                            aria-expanded="true" aria-controls="collapseOne">
+                                            <h2 class="align-self-center" id="headingOne"> Actividad </h2>
+                                        </button>
+
+                                        <div id="collapseOne" class="accordion-collapse collapse justify-content-center"
+                                            aria-labelledby="headingOne" data-bs-parent="#acordeonComentarios">
+
+                                            <div class="accordion-body  d-flex justify-content-center acordeonComentarios">
+
+                                                <div class="table-responsive col-12 mx-3">
+                                                    <h4 class="text-center fw-bold cell">Historial de Estados de la
+                                                        Solicitud</h4>
+                                                    <table
+                                                        class="table table-striped table-hover align-middle table-borderless">
+                                                        <thead class="border-bottom">
+                                                            <tr>
+                                                                <th scope="col" class="p-2 text-center">Fecha</th>
+                                                                <th scope="col" class="p-2 text-center">Usuario</th>
+                                                                <th scope="col" class="p-2 text-center">Estado</th>
+                                                            </tr>
+                                                        </thead>
+                                                        <tbody>
+                                                            @foreach ($solicitud->estados as $estado)
+                                                            <tr>
+                                                                <td class="p-2">{{ $estado->created_at }}</td>
+                                                                <td class="p-2">{{ $estado->usuario->nombre ?? ''}} {{ $estado->usuario->apellido ?? ''}}</td>
+                                                                <td class="p-2">{{ $estado->estado_descripcion->descripcion }}</td>
+                                                            </tr>
+                                                            @endforeach
+                                                        </tbody>
+                                                    </table>
+                                                    <h4 class="text-center fw-bold cell">Mensajes</h4>
+
                                                     <div class="table-responsive col-12 mx-3">
                                                         <h4 class="text-center fw-bold cell">Historial de Estados de la
                                                             Solicitud</h4>
