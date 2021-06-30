@@ -169,26 +169,13 @@
                                                             </tr>
                                                         </thead>
                                                         <tbody>
+                                                            @foreach ($solicitud->estados as $estado)
                                                             <tr>
-                                                                <td class="p-2">12/05/2021</td>
-                                                                <td class="p-2">Viviana Pedrero</td>
-                                                                <td class="p-2">asignado a Raquel
-                                                                </td>
+                                                                <td>{{ $estado->created_at }}</td>
+                                                                <td>{{ $estado->usuario->nombre }} {{ $estado->usuario->apellido }}</td>
+                                                                <td>{{ $estado->estado_descripcion->descripcion }}</td>
                                                             </tr>
-
-                                                            <tr>
-                                                                <td class="p-2">17/05/2021</td>
-                                                                <td class="p-2">Viviana Pedrero</td>
-                                                                <td class="p-2">asignado a Ricardo Ford
-                                                                </td>
-                                                            </tr>
-
-                                                            <tr>
-                                                                <td class="p-2">12/05/2021</td>
-                                                                <td class="p-2">Viviana Pedrero</td>
-                                                                <td class="p-2">espera firma Secretaria
-                                                                </td>
-                                                            </tr>
+                                                            @endforeach
                                                         </tbody>
                                                     </table>
                                                     <h4 class="text-center fw-bold cell">Mensajes</h4>
@@ -203,48 +190,61 @@
                                                                 </tr>
                                                             </thead>
                                                             <tbody>
-                                                                <tr>
-                                                                    <td class="p-2">12/05/2021</td>
-                                                                    <td class="p-2">Viviana Pedrero</td>
-                                                                    <td class="p-2">asignado a Raquel sdhakshaksdas
-                                                                        dbahsbdhamsbdasbdjasbdajsdbaksdhakhs
-                                                                        dbahmsdbahmsdbahmsbdamsbdamhsbdahsbfkhasbfhasfbmahsfbamsfbamhsbfmhasfaf
-                                                                    </td>
-                                                                </tr>
-
-                                                                <tr>
-                                                                    <td class="p-2">12/05/2021</td>
-                                                                    <td class="p-2">Viviana Pedrero</td>
-                                                                    <td class="p-2">asignado a Raquel sdhakshaksdas
-                                                                        dbahsbdhamsbdasbdjasbdajsdbaksdhakhs
-                                                                        dbahmsdbahmsdbahmsbdamsbdamhsbdahsbfkhasbfhasfbmahsfbamsfbamhsbfmhasfaf
-                                                                    </td>
-                                                                </tr>
-
-                                                                <tr>
-                                                                    <td class="p-2">12/05/2021</td>
-                                                                    <td class="p-2">Viviana Pedrero</td>
-                                                                    <td class="p-2">asignado a Raquel sdhakshaksdas
-                                                                        dbahsbdhamsbdasbdjasbdajsdbaksdhakhs
-                                                                        dbahmsdbahmsdbahmsbdamsbdamhsbdahsbfkhasbfhasfbmahsfbamsfbamhsbfmhasfaf
-                                                                    </td>
-                                                                </tr>
+                                                            @foreach ($solicitud->comentarios as $comentario)
+                                                            <tr>
+                                                                <td>{{ $comentario->created_at }}</td>
+                                                                <td>{{ $comentario->usuario->nombre }} {{ $comentario->usuario->apellido }}</td>
+                                                                <td>{{ $comentario->descripcion }}</td>
+                                                            </tr>
+                                                            @endforeach
                                                             </tbody>
                                                         </table>
                                                     {{-- boton de agregar comentario --}}
-                                                    <div class="row justify-content-center">
-                                                        <div class="col-12 mt-2 p-2 ">
-
-                                                            <form action="" method="POST" autocomplete="off"
-                                                                enctype="multipart/form-data">
-                                                                @csrf
-                                                                {{-- aca voy a recibir el $idSolicitud --}}
-                                                                <input type="hidden" id="idSolicitud" name="idSolicitud"
-                                                                    value="{{ $solicitud->id_solicitud }}">
-                                                                <input type="submit" class="botonFormulario2" value="Agregar Mensaje">
-                                                            </form>
+                                                    <a href="#" class="botonFormulario" data-bs-toggle="modal" data-bs-target="#modalMensaje">
+                    Nuevo mensaje
+                </a>
+                <!-- Modal -->
+                <div class="modal fade" id="modalMensaje" tabindex="-1" aria-labelledby="modalMensajeLabel"
+                    aria-hidden="true">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="modalLoginLabel">Nuevo Mensaje</h5>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                            </div>
+                            <div class="modal-body">
+                                <div class="container-fluid px-1 py-5 mx-auto">
+                                    <div class="row d-flex justify-content-center">
+                                        <div class="col">
+                                            <div class="card card-form">
+                                                <form class="" method="POST" action="{{ route('comentario.store') }}">
+                                                    @csrf
+                                                    <div class="row justify-content-between text-left">
+                                                        <div class="form-group col-12 flex-column d-flex py-3">
+                                                            <input class="border-0 cell" type="text" id="mensaje"
+                                                                name="mensaje" placeholder="Ingrese el mensaje">
+                                                            <input type="text" hidden id="idUsuario" name="idUsuario"
+                                                                value="{{ $estado->usuario->id_usuario }}">
+                                                            <input type="text" hidden id="idSolicitud" name="idSolicitud"
+                                                                value="{{ $estado->id_solicitud }}">
                                                         </div>
-                                                    </div>
+                                                        <div class="row justify-content-center text-center py-4">
+                                                            <div class="form-group col-sm-6">
+                                                                <button id="boton" name="boton" type="submit"
+                                                                    class="botonFormulario">Enviar mensaje</button>
+                                                            </div>
+                                                        </div>
+                                                </form>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            {{-- fin modal --}}
                                                 </div>
                                             </div>
                                         </div>
