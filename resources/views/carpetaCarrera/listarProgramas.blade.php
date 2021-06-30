@@ -2,6 +2,7 @@
 @section('cuerpo')
 @php($titulo = 'Programas - Petrel')@endphp
 @include('estructura/header')
+<main class="p-2" id="cuerpo">
 <div class="container shadow-lg mt-5 mb-5 p-3 bg-light rounded col-8">
 @if (session('mensaje') ) {{-- Aviso de carpeta creada (u otra notificación desde controller) --}}
 <div class="alert alert-success alert-dismissible fade show d-flex align-items-center m-3 p-3">
@@ -33,4 +34,5 @@
 <a href="{{ route('agregarPrograma', $carpetaCarrera->id_carpeta_carrera) }}"class="btn botonFormulario2">Agregar un programa</a>
 </div>
 </div>
+</main>
 @endsection
