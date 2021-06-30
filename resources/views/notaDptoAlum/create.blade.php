@@ -65,8 +65,8 @@ $fecha = date('d') . ' de ' . date('M') . ' del ' . date('Y');
 
     <!-- EDITAR PIE DE PÁGINA -->
     <div class="form-group">
-        <a class="btn botonFormulario2" data-bs-toggle="collapse" href="#footer_editor" role="button" aria-expanded="false" aria-controls="footer_editor">
-            Editar pie de página  <i class="fas fa-angle-down" aria-hidden="true" id="answer1"></i>
+        <a id="answer1" class="btn botonFormulario2" data-bs-toggle="collapse" href="#footer_editor" role="button" aria-expanded="false" aria-controls="footer_editor">
+            Editar pie de página  <i class="fas fa-angle-down" aria-hidden="true" id="answer11"></i>
         </a>
 
         <div class="collapse" id="footer_editor">
@@ -148,8 +148,8 @@ $fecha = date('d') . ' de ' . date('M') . ' del ' . date('Y');
 </script>
 {{-- para que las flechitas de los botones cambien al expandir el acordeòn --}}
 <script>
-    $("#answer1").click(function() {
-        $(this).toggleClass("fas fa-angle-down fas fa-angle-up");
+    $("#answer1, #answer11").click(function() {
+        $("#answer11").toggleClass("fas fa-angle-down fas fa-angle-up");
     });   
 </script>
 </div>
