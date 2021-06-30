@@ -34,13 +34,29 @@ use App\Mail\mailPetrelFinalizacion;
 // Vistas configuradas:
 Route::redirect('/', '/home');
 Route::view('/home', 'home');
+
+//Admin
+// Route::redirect('/', 'admin');
+Route::resource('permissions', PermissionController::class);
+Route::view('/permisos', '/admin/permissions');
+// Auth::routes(['register' => false]);
+/* Route::group(['middleware' => ['auth'], 'prefix' => 'admin', 'as' => 'admin.'], function () {
+    // Route::get('/home', 'HomeController@index')->name('home');
+    
+    /* Route::delete('permissions_mass_destroy', 'Admin\PermissionsController@massDestroy')->name('permissions.mass_destroy');
+    Route::resource('roles', '');
+    Route::delete('roles_mass_destroy', 'Admin\RolesController@massDestroy')->name('roles.mass_destroy');
+    Route::resource('users', 'Admin\UsersController');
+    Route::delete('users_mass_destroy', 'Admin\UsersController@massDestroy')->name('users.mass_destroy'); 
+}); */
 //usuario
+
 Route::view('/registro', '/usuario/registro');
 Route::view('/perfil', '/usuario/perfil');
 //nuevas rutas de vistas (lara)
 // Route::view('/crearusuario', '/usuario/create');
 // Route::view('/verusuario', '/usuario/show');
-// Route::view('/modificarusuario', '/usuario/modificar');
+Route::view('/modificarusuario', '/usuario/modificar');
 // Route::view('/borrarusuario', '/usuario/borrar');
 //anio
 // Route::view('/crearanio', '/carpetaAnio/create');
