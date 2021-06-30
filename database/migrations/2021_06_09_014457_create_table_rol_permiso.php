@@ -13,14 +13,16 @@ class CreateTableRolPermiso extends Migration
      */
     public function up()
     {
-        Schema::create('role_permissions', function (Blueprint $table) {
+        Schema::create('role_permission', function (Blueprint $table) {
             $table->unsignedBigInteger('role_id');
             $table->unsignedBigInteger('permissions_id');
 
             $table->index('role_id', 'permissions_id');
 
+            $table->primary(['role_id', 'permission_id']);
+            
             $table->foreign('role_id')->references('id')->on('roles');
-            $table->foreign('permissions_id')->references('id')->on('permissions');
+            $table->foreign('permission_id')->references('id')->on('permissions');
             $table->timestamps();
         });
     }

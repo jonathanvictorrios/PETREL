@@ -137,10 +137,21 @@ Route::get('archivos/{id}/comment', [Archivo::class, 'cargarComentario'])->name(
 Route::resource('archivos', Archivo::class);
 Route::get('verHojaResumen/{id}',[Archivo::class,'downloadHojaResumen'])->name('verHojaResumen');
 
-// NOTA CREADA POR SANTIAGO EN ADMINISTRACION CENTRAL
-Route::resource('nota_admin_central', NotaAdminCentralController::class);
-Route::post('crear-nota-central', [NotaAdminCentralController::class, 'crearNotaAdminCentral'])->name('crear-nota-central');
-Route::post('descargar-nota-central', [NotaAdminCentralController::class, 'descargarPdf'])->name('descargar-nota-central');
+Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
+    return view('dashboard');
+})->name('dashboard');
+
+Route::get('archivos/{id}/confirmarContrasenia', [Archivo::class, 'confirmarContrasenia'])->name('archivos.confirmarContrasenia');
+
+//Rutas mariela 
+
+// rutas de nota admin central y hoja final
+
+Route::resource('nota_admin_central', 'App\Http\Controllers\NotaAdminCentralController');
+
+Route::post('crear-nota-central', [NotaAdminCentralController::class,'crearNotaAdminCentral'])->name('crear-nota-central'); 
+
+Route::post('descargar-nota-central', [NotaAdminCentralController::class,'descargarPdf'])->name('descargar-nota-central'); 
 
 //HOJA RESUMEN FINAL PERTENECE A LA HOJA RESUMEN CREADA A  PARTIR DE SANTIAGO
 Route::resource('hojaResumenFinal', HojaResumenFinalController::class);

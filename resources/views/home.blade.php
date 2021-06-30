@@ -131,6 +131,7 @@
                         <div class="accordion-body">El certificado de materias o programa es ...
                         </div>
                     </div>
+                    
                 </div>
             </div>
         </div>
