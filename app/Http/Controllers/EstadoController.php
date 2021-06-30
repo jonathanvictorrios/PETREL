@@ -58,7 +58,7 @@ class EstadoController extends Controller
     public function show($id)
     {
         $Estados = Estado::findOrFail($id);
-        return view ('estado.index',compact('Estados'))->with('Mensaje','El ID seleccionado no existe en la base de datos.');
+        return view ('estado.index',compact('Estados'))->with('mensaje','El ID seleccionado no existe en la base de datos.');
     }
 
     /**
@@ -96,19 +96,19 @@ class EstadoController extends Controller
     }
 
     // Funciones específicas para la modificación de estados
- 
+
     // PUBLICAS
 
     public function iniciarTramite($idSolicitud) {
         // Crea el primer Estado (iniciado) para la solicitud dada
         $solicitud_cert_prog = SolicitudCertProg::findOrFail($idSolicitud);
 
-        if ($solicitud_cert_prog != null) { 
-        
-            
+        if ($solicitud_cert_prog != null) {
+
+
             $EstadoDescripcion = new EstadoDescripcion;
             $EstadoDescripcion->idEstadoDescripcion = 1;
-            
+
             $Estado = new Estado;
             $Estado->solicitud_cert_prog = $solicitud_cert_prog;
             $Estado->usuario = null;
@@ -127,16 +127,16 @@ class EstadoController extends Controller
             return back()->with('Error: no se encuentra la solicitud indicada.');
         }
     }
-    
+
     public function cambiarEstado($Solicitud, $NuevoUsuario = null,$EstadoDescripcion) {
-        
+
         //$Solicitud :: SolcititudCertProg --Recibo la Solicitud
         //$NuevoUsuario :: Usuario  -- ecibo el Usuario Administrativo al que se le asigna el Trámite
         //$EstadoDescripcion :: EstadoDescripcion -- Recibe el nuevo Estado
 
         // verificamos que existe la solicitud
-        if ($Solicitud != null) { 
-        
+        if ($Solicitud != null) {
+
             // asignamos la descripción del estado a asignar
             // $EstadoDescripcion->idEstadoDescripcion = $EstadoDescripcion->idEstado; //1: Iniciado / 2:Asignado /3: Aguarda Firma Dept Alumno /4: Aguarda Firma Secretaria Academica /5:Terminado
 
@@ -144,23 +144,23 @@ class EstadoController extends Controller
             $ultimoEstado = Estado::get()->where('id_solicitud', $Solicitud->id_solicitud)->last();
             $ultimoEstado->updated_at = date("Y-m-d");
             $ultimoEstado->save();
-            
+
             // tomamos la notificacion correspondiente al último estado y la marcamos como leída
             // $ultimaNotificacion = Notificacion::get()->where('idEstado', $ultimoEstado->idEstado);
             // $ultimaNotificacion->leido = true;
            // $ultimaNotificacion->save();
-            
+
             // recuperamos los datos del usuario al que se asigna la solicitud, y
             // generamos un nuevo estado al que asignamos el usuario recuperado
             // $usuario = usuario::find($idNuevoUsuario);
             $nuevoEstado = new Estado;
             $nuevoEstado->id_solicitud = $Solicitud->id_solicitud;
             $nuevoEstado->id_usuario = $NuevoUsuario->id_usuario;
-    
+
             $nuevoEstado->id_estado_descripcion = $EstadoDescripcion->id_estado_descripcion;
             $nuevoEstado->updated_at=null;
             $nuevoEstado->save();
-        
+
             // generamos una nueva notificación para el estado creado y editamos las notas
             // con el apellido y nombre del usuario
             $nuevaNotificacion = new Notificacion;

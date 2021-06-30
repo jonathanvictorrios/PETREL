@@ -13,22 +13,8 @@
         <div class="navbar-collapse justify-content-end collapse py-2 px-5 menu-nav" id="navbarSupportedContent">
             <ul class="nav navbar-nav">
                 <li class="nav-item dropdown mb-3 mb-lg-0">
-                    <a class="nav-link dropdown-toggle" href="#" id="MenuTest" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        <i class="fas fa-tools mx-2"></i> Menú test
-                    </a>
-                    <ul class="dropdown-menu" aria-labelledby="MenuTest">
-                        <li><a class="dropdown-item" href="/solicitud">Listado solicitudes</a></li>
-                        <li><a class="dropdown-item" href="/solicitud/create">Nueva solicitud</a></li>
-                        <li>
-                            <hr class="dropdown-divider">
-                        </li>
-                        <li><a class="dropdown-item" href="/registro">Registrarse</a></li>
-                        <li><a class="dropdown-item disabled" href="/usuario">Listado usuarios</a></li>
-                    </ul>
-                </li>
-                <li class="nav-item dropdown mb-3 mb-lg-0">
                     <a class="nav-link dropdown-toggle" href="#" id="MenuUsuario" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        <i class="fas fa-user mx-2"></i> {{ $usuarioActivo ?? 'Menú usuario' }}
+                        <i class="fas fa-user mx-2"></i> {{ $usuarioActivo ?? 'Menú usuario' }} {{-- AQUÍ LLEVA EL NOMBRE DEL USUARIO LOGUEADO --}}
                     </a>
                     <ul class="dropdown-menu" aria-labelledby="MenuUsuario">
                         <li><a class="dropdown-item" href="/perfil">Mi perfil</a></li>
