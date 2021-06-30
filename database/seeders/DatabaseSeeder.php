@@ -23,7 +23,8 @@ class DatabaseSeeder extends Seeder
             SolicitudCertProgSeeder::class,
             EstadoSeeder::class,
             RoleSeeder::class,
-            PermissionSeeder::class
+            PermissionSeeder::class,
+            RolesPermissionSeeder::class
             //ProgramaDriveSeeder::class,
         ]);
     }

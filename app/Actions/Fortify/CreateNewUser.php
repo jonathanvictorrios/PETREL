@@ -31,7 +31,7 @@ class CreateNewUser implements CreatesNewUsers
             'name' => $input['name'],
             'email' => $input['email'],
             'password' => Hash::make($input['password']),
-            'role_id' => 5 // El que tenga el usuario solicitante
+            'role_id' => 6 // Al registrarse inicia como invitado (no tiene rol ni permiso)
         ]);
     }
 }

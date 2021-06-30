@@ -24,5 +24,8 @@ class RoleSeeder extends Seeder
         DB::table('roles')->insert([
             'name' => 'Solicitante',
         ]);
+        DB::table('roles')->insert([
+            'name' => 'invitado', // you no have power here
+        ]);
     }
 }
