@@ -16,24 +16,28 @@
         @endif
         <!-- Solicitudes -->
         <div class="container px-md-5 px-3 py-5">
-            <h3>Mis solicitudes</h3>
-            <div class="pt-2 justify-content-between d-flex align-items-center">
-                <!-- NAV-TABS -->
-                <div class="nav nav-tabs col-9" id="v-tabs-tab" role="tablist">
-                    <a class=" nav-link py-3 px-4 active" id="v-tabs-actuales-tab" data-bs-toggle="tab" href="#v-tabs-actuales" role="tab" aria-controls="v-tabs-actuales" aria-selected="true">Actuales</a>
-                    <a class="nav-link ms-2 py-3 px-4" id="v-tabs-completas-tab" data-bs-toggle="tab" href="#v-tabs-completas" role="tab" aria-controls="v-tabs-completas" aria-selected="false">Completadas</a>
+            <div class="row justify-content-center">
+                <div class="col-6 text-start">
+                    <h3>Mis solicitudes</h3>
                 </div>
-                <!-- Fin NAV-TABS -->
-                <!-- Boton agregar solicitud -->
-                <div class="col-3 text-end">
-                    <a href="{{route('solicitud.create')}}" class='btn btn-create'>
+                <!-- Boton agregar anio -->
+                <div class="col-6 text-end pb-2">
+                    <a href="{{route('anio.create')}}" class='btn btn-create'>
                         <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi" viewBox="0 0 16 16">
                             <path d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4z">
                             </path>
                         </svg>
                     </a>
                 </div>
-                <!-- Fin Boton agregar solicitud -->
+                <!-- Fin Boton agregar anio -->
+            </div>
+            <div class="pt-2 justify-content-between d-flex align-items-center">
+                <!-- NAV-TABS -->
+                <div class="nav nav-tabs col-12" id="v-tabs-tab" role="tablist">
+                    <a class=" nav-link py-3 px-4 active" id="v-tabs-actuales-tab" data-bs-toggle="tab" href="#v-tabs-actuales" role="tab" aria-controls="v-tabs-actuales" aria-selected="true">Actuales</a>
+                    <a class="nav-link ms-2 py-3 px-4" id="v-tabs-completas-tab" data-bs-toggle="tab" href="#v-tabs-completas" role="tab" aria-controls="v-tabs-completas" aria-selected="false">Completadas</a>
+                </div>
+                <!-- Fin NAV-TABS -->
             </div>
             <!-- Tabla Actuales -->
             <div class="tab-content flex-grow-1 bg-white" id="v-tabs-tabContent">
@@ -93,7 +97,7 @@
                                         @foreach($solicitudes as $solicitud)
                                         @if($solicitud->estados->last()->estado_descripcion->descripcion!=='Terminado')
                                         <tr>
-                                        <th scope="row">{{$solicitud->id_solicitud}}</th>
+                                            <th scope="row">{{$solicitud->id_solicitud}}</th>
                                             <td>{{$solicitud->usuarioEstudiante->apellido}}, {{$solicitud->usuarioEstudiante->nombre}}</td>
                                             <td>{{$solicitud->legajo}}</td>
                                             <td>{{$solicitud->carrera->carrera}}</td>
@@ -143,7 +147,7 @@
             </div>
             <!-- NAV-TABS -->
             <div class="pt-2 justify-content-between d-flex align-items-center">
-                <div class="nav nav-tabs col-9" id="v-tabs-tab" role="tablist">
+                <div class="nav nav-tabs col-12" id="v-tabs-tab" role="tablist">
                     <a class=" nav-link py-3 px-4 active" id="dtoalumnos-all-solicitudes-tab" data-bs-toggle="tab" href="#dtoalumnos-all-solicitudes" role="tab" aria-controls="dtoalumnos-all-solicitudes" aria-selected="true">Todas</a>
                     <a class="nav-link ms-2 py-3 px-4" id="dtoalumnos-mis-solicitudes-tab" data-bs-toggle="tab" href="#dtoalumnos-mis-solicitudes" role="tab" aria-controls="dtoalumnos-mis-solicitudes" aria-selected="false">Mis Solicitudes</a>
                 </div>
@@ -279,12 +283,12 @@
                     </div>
                   </th> -->
                   <th scope="row">{{$solicitud->id_solicitud}}</th>
-                  <td>{{$solicitud->estados->last()->estado_descripcion->descripcion}}</td>
-                  <td>{{$solicitud->estados->last()->created_at}}</td>
-                  <td>{{$solicitud->legajo}}</td>
-                  <td>{{$solicitud->carrera->carrera}}</td>
-                  <td><a href="{{route('solicitud.show',$solicitud->id_solicitud)}}">Ver Más</a></td>
-                </tr>
+    <td>{{$solicitud->estados->last()->estado_descripcion->descripcion}}</td>
+    <td>{{$solicitud->estados->last()->created_at}}</td>
+    <td>{{$solicitud->legajo}}</td>
+    <td>{{$solicitud->carrera->carrera}}</td>
+    <td><a href="{{route('solicitud.show',$solicitud->id_solicitud)}}">Ver Más</a></td>
+    </tr>
     @endif
     @endforeach
     </tbody>
@@ -326,7 +330,7 @@
                 <!-- Fin Buscar Filtro -->
                 <!-- NAV-TABS -->
                 <div class="pt-2 justify-content-between d-flex align-items-center">
-                    <div class="nav nav-tabs col-9" id="v-tabs-tab" role="tablist">
+                    <div class="nav nav-tabs col-12" id="v-tabs-tab" role="tablist">
                         <a class=" nav-link py-3 px-4 active" id="santi-all-solicitudes-tab" data-bs-toggle="tab" href="#santi-all-solicitudes" role="tab" aria-controls="santi-all-solicitudes" aria-selected="true">Todas</a>
                         <a class="nav-link ms-2 py-3 px-4" id="santi-solicitudes-firmadas-tab" data-bs-toggle="tab" href="#santi-solicitudes-firmadas" role="tab" aria-controls="santi-solicitudes-firmadas" aria-selected="false">Firmadas</a>
                     </div>
@@ -392,7 +396,7 @@
                                         @foreach($solicitudes as $solicitud)
                                         @if($solicitud->estados->last()->estado_descripcion->descripcion=='Terminado')
                                         <tr>
-                                        <th>{{$solicitud->id_solicitud}}</th>
+                                            <th>{{$solicitud->id_solicitud}}</th>
                                             <td>{{$solicitud->estados->last()->estado_descripcion->descripcion}}</td>
                                             <td>{{$solicitud->estados->first()->created_at}}</td>
                                             <td>{{$solicitud->estados->last()->created_at}}</td>
@@ -530,7 +534,7 @@
                 </div>
                 <!-- Fin Breadcrumb -->
             </div>
-            <!-- Tabla Años -->
+            {{-- <!-- Tabla Años --> MARCOS COMENTAMOS ESTO POR UN PULL QUE NO SABIAMOS QUÈ ELEGIR
             <div class="tab-content flex-grow-1 bg-white" id="v-tabs-tabContent">
                 <div id="solicitud-usuario" class="row g-0">
                     <div class="col py-2 px-3">
@@ -552,13 +556,26 @@
                                             </tr>
                                             @endif
                                         @endif
+                                    @if($solicitud->hoja_resumen_final != null)
+                                    @if($solicitud->hoja_resumen_final->url_hoja_unida_final != null && $solicitud->UltimoEstado == 'Aguarda Firma Santiago')
+                                    <tr>
+                                        <th>{{$solicitud->idSolicitud}}</th>
+                                        <td>{{$solicitud->UltimoEstado}}</td>
+                                        <td>{{$solicitud->Fecha}}</td>
+                                        <td>{{$solicitud->FechaUltimoEstado}}</td>
+                                        <td>{{$solicitud->UsuarioEstudiante}}</td>
+                                        <td><a href="{{route('solicitud.show',$solicitud->idSolicitud)}}">Ver Más</a>
+                                        </td>
+                                    </tr>
+                                    @endif
+                                    @endif
                                     @endforeach
                                 </tbody>
-                            </table>
+                            </table> 
                         </div>
                     </div>
                 </div>
-            </div>
+            </div>--}}
             <!-- Fin Tabla Lista Usuarios -->
         </div>
     </div>

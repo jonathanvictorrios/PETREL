@@ -2,11 +2,11 @@
     <!-- Container wrapper -->
     <div class="container-fluid border-bottom border-3">
         <!-- Navbar brand -->
-        <a class="navbar-brand py-2 px-5" href="/">
+        <a class="navbar-brand py-2 px-3 px-lg-5" href="/">
             <img src="{{ asset('img/logo_petrel.svg') }}" alt="Logo Petrel" width="60">
         </a>
         <!-- Toggle button -->
-        <button class="navbar-toggler my-2 mx-5" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <button class="navbar-toggler my-2 mx-3" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
         <!-- Comienzo contenido a la derecha -->
