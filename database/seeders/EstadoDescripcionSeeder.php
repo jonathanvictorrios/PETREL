@@ -21,10 +21,17 @@ class EstadoDescripcionSeeder extends Seeder
             'descripcion' => 'Asignado'
         ]);
         DB::table('estado_descripcion')->insert([
+<<<<<<< HEAD
             'descripcion' => 'Aguarda Firma Departamento Alumnos'
         ]);
         DB::table('estado_descripcion')->insert([
             'descripcion' => 'Aguarda Firma Secretaría Académica'
+=======
+            'descripcion' => 'Aguarda Firma Dpto. de Alumnos'
+        ]);
+        DB::table('estado_descripcion')->insert([
+            'descripcion' => 'Aguarda Firma Secretaria Academica'
+>>>>>>> El Retorno del Estado: Aguarda Firma Dpto. de Alumnos
         ]);
         DB::table('estado_descripcion')->insert([
             'descripcion' => 'Aguarda Firma Santiago'
