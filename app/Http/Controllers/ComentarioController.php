@@ -12,7 +12,6 @@ class ComentarioController extends Controller
     
     public function store(Request $request)
     {
-        //print_r($request);
         $comentarioNuevo = new Comentario;
         $comentarioNuevo->descripcion = $request->mensaje;
         $comentarioNuevo->id_usuario = $request->idUsuario;

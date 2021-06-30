@@ -171,9 +171,9 @@
                                                         <tbody>
                                                             @foreach ($solicitud->estados as $estado)
                                                             <tr>
-                                                                <td>{{ $estado->created_at }}</td>
-                                                                <td>{{ $estado->usuario->nombre }} {{ $estado->usuario->apellido }}</td>
-                                                                <td>{{ $estado->estado_descripcion->descripcion }}</td>
+                                                                <td class="p-2">{{ $estado->created_at }}</td>
+                                                                <td class="p-2">{{ $estado->usuario->nombre ?? ''}} {{ $estado->usuario->apellido ?? ''}}</td>
+                                                                <td class="p-2">{{ $estado->estado_descripcion->descripcion }}</td>
                                                             </tr>
                                                             @endforeach
                                                         </tbody>
@@ -192,9 +192,9 @@
                                                             <tbody>
                                                             @foreach ($solicitud->comentarios as $comentario)
                                                             <tr>
-                                                                <td>{{ $comentario->created_at }}</td>
-                                                                <td>{{ $comentario->usuario->nombre }} {{ $comentario->usuario->apellido }}</td>
-                                                                <td>{{ $comentario->descripcion }}</td>
+                                                                <td class="p-2">{{ $comentario->created_at }}</td>
+                                                                <td class="p-2">{{ $comentario->usuario->nombre }} {{ $comentario->usuario->apellido }}</td>
+                                                                <td class="p-2">{{ $comentario->descripcion }}</td>
                                                             </tr>
                                                             @endforeach
                                                             </tbody>
@@ -224,7 +224,7 @@
                                                             <input class="border-0 cell" type="text" id="mensaje"
                                                                 name="mensaje" placeholder="Ingrese el mensaje">
                                                             <input type="text" hidden id="idUsuario" name="idUsuario"
-                                                                value="{{ $estado->usuario->id_usuario }}">
+                                                                value="{{ $estado->usuario->id_usuario ?? ''}}">
                                                             <input type="text" hidden id="idSolicitud" name="idSolicitud"
                                                                 value="{{ $estado->id_solicitud }}">
                                                         </div>
@@ -351,26 +351,13 @@
                                     </tr>
                                 </thead>
                                 <tbody>
+                                    @foreach ($solicitud->estados as $estado)
                                     <tr>
-                                        <td class="p-2">12/05/2021</td>
-                                        <td class="p-2">Viviana Pedrero</td>
-                                        <td class="p-2">asignado a Raquel
-                                        </td>
+                                        <td class="p-2">{{ $estado->created_at }}</td>
+                                        <td class="p-2">{{ $estado->usuario->nombre ?? ''}} {{ $estado->usuario->apellido ?? ''}}</td>
+                                        <td class="p-2">{{ $estado->estado_descripcion->descripcion }}</td>
                                     </tr>
-
-                                    <tr>
-                                        <td class="p-2">17/05/2021</td>
-                                        <td class="p-2">Viviana Pedrero</td>
-                                        <td class="p-2">asignado a Ricardo Ford
-                                        </td>
-                                    </tr>
-
-                                    <tr>
-                                        <td class="p-2">12/05/2021</td>
-                                        <td class="p-2">Viviana Pedrero</td>
-                                        <td class="p-2">espera firma Secretaria
-                                        </td>
-                                    </tr>
+                                    @endforeach
                                 </tbody>
                             </table>
                             <h4 class="text-center fw-bold cell">Mensajes</h4>
@@ -572,26 +559,13 @@
                                     </tr>
                                 </thead>
                                 <tbody>
+                                    @foreach ($solicitud->estados as $estado)
                                     <tr>
-                                        <td class="p-2">12/05/2021</td>
-                                        <td class="p-2">Viviana Pedrero</td>
-                                        <td class="p-2">asignado a Raquel
-                                        </td>
+                                        <td class="p-2">{{ $estado->created_at }}</td>
+                                        <td class="p-2">{{ $estado->usuario->nombre ?? ''}} {{ $estado->usuario->apellido ?? ''}}</td>
+                                        <td class="p-2">{{ $estado->estado_descripcion->descripcion }}</td>
                                     </tr>
-
-                                    <tr>
-                                        <td class="p-2">17/05/2021</td>
-                                        <td class="p-2">Viviana Pedrero</td>
-                                        <td class="p-2">asignado a Ricardo Ford
-                                        </td>
-                                    </tr>
-
-                                    <tr>
-                                        <td class="p-2">12/05/2021</td>
-                                        <td class="p-2">Viviana Pedrero</td>
-                                        <td class="p-2">espera firma Secretaria
-                                        </td>
-                                    </tr>
+                                    @endforeach
                                 </tbody>
                             </table>
                             <h4 class="text-center fw-bold cell">Mensajes</h4>

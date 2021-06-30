@@ -194,24 +194,11 @@ class SolicitudCertProgController extends Controller
         $solicitud->save();
 
         $solicitudes = SolicitudCertProg::all();
-        return view('solicitud.index', compact('solicitudes'));
+        return back();
 
     }
 
-    // public function listoParaFirmarDptoAlumno($idSolicitud,$idUsuarioAdministrativo)
-    // {
-    //     $solicitud = SolicitudCertProg::findOrFail($idSolicitud);
-    //     $usuarioAdministrativo = Usuario::findOrFail($idUsuarioAdministrativo);
-
-    //     $estadoDescripcion = EstadoDescripcion::find(3);
-    //     $estadoController = new EstadoController;
-
-    //     $estadoController->cambiarEstado($solicitud,$usuarioAdministrativo,$estadoDescripcion);
-
-    //     $solicitud->save();
-
-    // }
-    public function listoParaFirmarSecretariaAcademica($idSolicitud,$idUsuarioAdministrativo)
+    public function listoParaFirmarDptoAlumno($idSolicitud,$idUsuarioAdministrativo)
     {
         $solicitud = SolicitudCertProg::findOrFail($idSolicitud);
         $usuarioAdministrativo = Usuario::findOrFail($idUsuarioAdministrativo);
@@ -224,12 +211,25 @@ class SolicitudCertProgController extends Controller
         $solicitud->save();
 
     }
-    public function listoParaFirmarSantiago($idSolicitud,$idUsuarioAdministrativo)
+    public function listoParaFirmarSecretariaAcademica($idSolicitud,$idUsuarioAdministrativo)
     {
         $solicitud = SolicitudCertProg::findOrFail($idSolicitud);
         $usuarioAdministrativo = Usuario::findOrFail($idUsuarioAdministrativo);
 
         $estadoDescripcion = EstadoDescripcion::find(4);
+        $estadoController = new EstadoController;
+
+        $estadoController->cambiarEstado($solicitud,$usuarioAdministrativo,$estadoDescripcion);
+
+        $solicitud->save();
+
+    }
+    public function listoParaFirmarSantiago($idSolicitud,$idUsuarioAdministrativo)
+    {
+        $solicitud = SolicitudCertProg::findOrFail($idSolicitud);
+        $usuarioAdministrativo = Usuario::findOrFail($idUsuarioAdministrativo);
+
+        $estadoDescripcion = EstadoDescripcion::find(5);
         $estadoController = new EstadoController;
 
         $estadoController->cambiarEstado($solicitud,$usuarioAdministrativo,$estadoDescripcion);
