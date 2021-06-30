@@ -300,6 +300,11 @@ input[type="file"]::file-selector-button {
     text-align: center;
     color: var(--color-verdeSecundario);
 }
+
+.js-hidden { /* Usado por validarClave.js en usuario/registro */
+    display: none;
+}
+
 /*---------- SOLICITUDES ----------*/
 
 /* NavTabs */
