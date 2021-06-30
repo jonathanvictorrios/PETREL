@@ -1003,8 +1003,11 @@
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 >>>>>>> arreglo botones vista desecretaria general(santiago)
+=======
+>>>>>>> funcion sobre acordeon
 =======
 =======
 >>>>>>> Se agregó estilo .js-hidden para ocultar error "símbolo no permitido" en validación de fuerza de contraseña;
@@ -1024,10 +1027,15 @@
 =======
 >>>>>>> arreglo botones vista desecretaria general(santiago)
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 >>>>>>> funcion sobre acordeon
 =======
 >>>>>>> arreglo botones vista desecretaria general(santiago)
+=======
+=======
+>>>>>>> funcion sobre acordeon
+>>>>>>> funcion sobre acordeon
             "time": "2021-06-27T11:20:22+00:00"
         },
         {
@@ -1625,8 +1633,11 @@
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 >>>>>>> arreglo botones vista desecretaria general(santiago)
+=======
+>>>>>>> funcion sobre acordeon
             "time": "2021-06-29T16:14:35+00:00"
 =======
 =======
@@ -1820,8 +1831,11 @@
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 >>>>>>> arreglo botones vista desecretaria general(santiago)
+=======
+>>>>>>> funcion sobre acordeon
 =======
             "support": {
                 "issues": "https://github.com/laravel/framework/issues",
@@ -1912,8 +1926,11 @@
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 >>>>>>> arreglo botones vista desecretaria general(santiago)
+=======
+>>>>>>> funcion sobre acordeon
             "time": "2021-06-29T16:19:08+00:00"
 =======
 =======
@@ -9638,16 +9655,25 @@
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 >>>>>>> arreglo botones vista desecretaria general(santiago)
+=======
+>>>>>>> funcion sobre acordeon
     "plugin-api-version": "2.0.0"
 =======
     "plugin-api-version": "2.1.0"
 >>>>>>> arreglo botones vista desecretaria general(santiago)
+<<<<<<< HEAD
 <<<<<<< HEAD
 =======
     "plugin-api-version": "1.1.0"
 >>>>>>> funcion sobre acordeon
 =======
 >>>>>>> arreglo botones vista desecretaria general(santiago)
+=======
+=======
+    "plugin-api-version": "1.1.0"
+>>>>>>> funcion sobre acordeon
+>>>>>>> funcion sobre acordeon
 }
