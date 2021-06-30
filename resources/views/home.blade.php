@@ -116,7 +116,7 @@
                         <button id="answer1" class="botonacordeon" type="button" data-bs-toggle="collapse"
                             data-bs-target="#flush-collapseOne" aria-expanded="false" aria-controls="flush-collapseOne">
                             <h6 class="accordion-header pt-2 ps-3">
-                                Equivalencias vs Certificación de materias </h6>
+                                Equivalencias vs. certificado de materias </h6>
                         </button>
                     </div>
                     <div class="col-2">
