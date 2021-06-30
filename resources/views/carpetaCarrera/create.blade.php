@@ -1,6 +1,6 @@
 @extends('estructura/layout')
 @section('cuerpo')
-@php($titulo = 'Crear Carrera - Petrel')@endphp
+@php($titulo = 'Crear carpeta Carrera - Petrel')@endphp
 @include('estructura/header')
 
 <main class="p-2" id="cuerpo"> {{-- Inicio main cuerpo --}}
@@ -16,15 +16,16 @@
                     <div class="row tittle border-bottom p-2">
                         <h2 class="col text-center fw-bold">Nueva Carpeta Carrera</h2>
                     </div>
-                    <form class="form-card" action="{{ route('carrera.store') }}" method="POST" autocomplete="off">
+                    <form name=formCarpeta id=formCarpeta class="form-card" action="{{ route('carrera.store') }}" method="POST" autocomplete="off" novalidate>
                         @csrf
                         @if ($errors->any()) {{-- Valida en servidor y regresa mostrando los siguientes errores --}}
                         <div class="alert alert-danger alert-dismissible fade show d-flex align-items-center m-3 p-3">
-                            <i class='fas fa-times-circle mx-2'></i><h5>Revisa los siguientes datos e inténtalo nuevamente</h5>
+                            <i class='fas fa-times-circle mx-2'></i>
+                            <h5>Revisa los siguientes datos e inténtalo nuevamente</h5>
                             <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
                             <ul>
                                 @foreach ($errors->all() as $error)
-                                    <li>{{ $error }}</li>
+                                <li>{{ $error }}</li>
                                 @endforeach
                             </ul>
                         </div>
@@ -43,7 +44,8 @@
                             </div>
                         </div>
                         {{-- id año correspondiente --}}
-                        <input type="hidden" id="idCarpetaAnio" name="idCarpetaAnio" value="{{ $carpetaAnio->id_carpeta_anio }}">
+                        <input type="hidden" id="idCarpetaAnio" name="idCarpetaAnio"
+                            value="{{ $carpetaAnio->id_carpeta_anio }}">
 
                         <div class="row justify-content-center text-center py-4">
                             <div class="form-group col col-sm-6">
@@ -55,4 +57,5 @@
             </div>
         </div>
     </div>
+</main>
 @endsection

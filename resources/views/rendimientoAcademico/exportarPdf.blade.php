@@ -79,9 +79,12 @@
                 <p>RENDIMIENTO ACADEMICO</p>
             </div>
             <div style="text-align: justify;">
-                <p>Certifico que {{$arregloRendimiento["Alumno"]["Apellido"]}}, {{$arregloRendimiento["Alumno"]["Nombre"]}} - {{$arregloRendimiento["Documento"]["Tipo"]}}: {{$arregloRendimiento["Documento"]["Nro"]}}
+                <p>Certifico que {{$arregloRendimiento["Alumno"]["Apellido"]}},
+                    {{$arregloRendimiento["Alumno"]["Nombre"]}} - {{$arregloRendimiento["Documento"]["Tipo"]}}:
+                    {{$arregloRendimiento["Documento"]["Nro"]}}
                     Legajo Nro: {{$arregloRendimiento["Alumno"]["Legajo"]}} que cursa sus
-                    estudios en la carrera {{$arregloRendimiento["Carrera"]}} Plan: {{$arregloRendimiento["Plan"]["Nro"]}}/{{$arregloRendimiento["Plan"]["Anio"]}}
+                    estudios en la carrera {{$arregloRendimiento["Carrera"]}} Plan:
+                    {{$arregloRendimiento["Plan"]["Nro"]}}/{{$arregloRendimiento["Plan"]["Anio"]}}
                     ha cuarsado y aprobado las
                     siguientes asignaturas:
                 </p>
@@ -132,7 +135,8 @@
         </table>
         <div style="text-align: justify;">
             <p>Promedio general de las materias aprobadas: {{$arregloRendimiento["Promedio"]}}</p>
-            <p>Se extiende este certificado para su presentación ante las autoridadas que corresponda, en {{$arregloRendimiento["Lugar"]}} el {{$arregloRendimiento["FechaEmision"]}}.-
+            <p>Se extiende este certificado para su presentación ante las autoridadas que corresponda, en
+                {{$arregloRendimiento["Lugar"]}} el {{$arregloRendimiento["FechaEmision"]}}.-
                 El presente certificado carece de valor sin firma de esta Unidad Académica.
             </p>
             <p>
@@ -143,7 +147,8 @@
             <tbody>
                 <tr>
                     <td><img width="75px" height="75px" src="img/logito-fai.png" alt="firma_viviana"></td>
-                    @if($arregloRendimiento["Secretaria"])<td><img width="75px" height="75px" src="img/logito-fai.png" alt="firma_sol"></td>@endif
+                    @if($arregloRendimiento["Secretaria"])<td><img width="75px" height="75px" src="img/logito-fai.png"
+                            alt="firma_sol"></td>@endif
                 </tr>
                 <tr style="font-weight: bold;">
                     <td>A/C. DEPTO ALUMNOS</td>

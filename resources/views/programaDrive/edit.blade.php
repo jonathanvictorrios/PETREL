@@ -16,7 +16,8 @@
                     <div class="row tittle border-bottom p-2">
                         <h2 class="col text-center fw-bold">Modificar Programa</h2>
                     </div>
-                    <form class="" action="{{ route('programa.update', $programa->id_programa) }}" method="POST" autocomplete="off" enctype="multipart/form-data">
+                    <form class="" action="{{ route('programa.update', $programa->id_programa) }}" method="POST"
+                        autocomplete="off" enctype="multipart/form-data">
                         @csrf
                         <div class="row justify-content-between text-left">
                             <div class="form-group col col col-sm-6 flex-column d-flex py-3">
@@ -26,14 +27,16 @@
                             @method('put')
                             <div class="form-group col col-sm-6 flex-column d-flex py-3">
                                 <label class="form-label py-2">Numero Materia</label>
-                                <input class="border-0 cell" type="number" id="numero" name="numero" value="{{ old('numero', $programa->numero_programa) }}">
+                                <input class="border-0 cell" type="number" id="numero" name="numero"
+                                    value="{{ old('numero', $programa->numero_programa) }}">
                             </div>
                         </div>
 
                         <div class="row justify-content-between text-left">
                             <div class="form-group col col-12 flex-column d-flex py-3">
                                 <label class="form-label py-2">Archivo</label>
-                                <input class="border-0 cell" type="file" id="pdfPrograma" name="pdfPrograma" value="{{ old('pdfPrograma') }}">
+                                <input class="border-0 cell" type="file" id="pdfPrograma" name="pdfPrograma"
+                                    value="{{ old('pdfPrograma') }}">
 
                             </div>
                         </div>
@@ -48,6 +51,6 @@
             </div>
         </div>
     </div>
-</main> <!-- Fin main cuerpo -->
+</main> {{-- Fin main cuerpo --}}
 
 @endsection

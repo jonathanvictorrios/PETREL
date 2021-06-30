@@ -23,7 +23,7 @@ class CreateTableSolicitudCertProg extends Migration
             $table->foreign('id_carrera')->references('id_carrera')->on('carrera');
             $table->text('legajo');
             $table->text('universidad_destino');
-            
+            $table->boolean('extranjero');
             $table->timestamps();
         });
     }

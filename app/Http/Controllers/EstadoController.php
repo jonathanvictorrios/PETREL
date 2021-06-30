@@ -128,27 +128,22 @@ class EstadoController extends Controller
         }
     }
     
-    public function asignarTramite($Solicitud, $NuevoUsuario) {
+    public function cambiarEstado($Solicitud, $NuevoUsuario = null,$EstadoDescripcion) {
         
         //$Solicitud :: SolcititudCertProg --Recibo la Solicitud
-        //$NuevoUsuario :: Usuario  -- Recibo el Usuario Administrativo al que se le asigna el Trámite
+        //$NuevoUsuario :: Usuario  -- ecibo el Usuario Administrativo al que se le asigna el Trámite
+        //$EstadoDescripcion :: EstadoDescripcion -- Recibe el nuevo Estado
 
-       // $solicitud_cert_prog = SolicitudCertProg::findOrFail($idSolicitud);
-        print( $Solicitud );
         // verificamos que existe la solicitud
         if ($Solicitud != null) { 
         
-         //   print('hola');
-            // creamos la descripción del estado a asignar
-            $EstadoDescripcion = new EstadoDescripcion;
-            $EstadoDescripcion->idEstadoDescripcion = 2;
+            // asignamos la descripción del estado a asignar
+            // $EstadoDescripcion->idEstadoDescripcion = $EstadoDescripcion->idEstado; //1: Iniciado / 2:Asignado /3: Aguarda Firma Dept Alumno /4: Aguarda Firma Secretaria Academica /5:Terminado
 
-            //print($EstadoDescripcion);
             // recuperamos el último estado para modificar la fecha
             $ultimoEstado = Estado::get()->where('id_solicitud', $Solicitud->id_solicitud)->last();
             $ultimoEstado->updated_at = date("Y-m-d");
             $ultimoEstado->save();
-         //   print($ultimoEstado);
             
             // tomamos la notificacion correspondiente al último estado y la marcamos como leída
             // $ultimaNotificacion = Notificacion::get()->where('idEstado', $ultimoEstado->idEstado);
@@ -161,12 +156,11 @@ class EstadoController extends Controller
             $nuevoEstado = new Estado;
             $nuevoEstado->id_solicitud = $Solicitud->id_solicitud;
             $nuevoEstado->id_usuario = $NuevoUsuario->id_usuario;
-            $nuevoEstado->id_estado_descripcion = $EstadoDescripcion->idEstadoDescripcion;
+    
+            $nuevoEstado->id_estado_descripcion = $EstadoDescripcion->id_estado_descripcion;
             $nuevoEstado->updated_at=null;
             $nuevoEstado->save();
-           
-            // print($nuevoEstado);
-            
+        
             // generamos una nueva notificación para el estado creado y editamos las notas
             // con el apellido y nombre del usuario
             $nuevaNotificacion = new Notificacion;
@@ -183,6 +177,7 @@ class EstadoController extends Controller
 
     public function finalizarTramite($idSolicitud) {
         $solicitud = solicitud_cert_prog::find($idSolicitud);
+
     }
 
 // PRIVADA

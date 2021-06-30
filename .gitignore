@@ -21,3 +21,4 @@ docker-compose.yml
 resources/views/solicitud/create.blade.php
 resources/views/estructura/layout.blade.php
 resources/views/solicitud/create.blade.php
+composer.lock

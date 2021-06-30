@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\HojaResumenFinal;
 use App\Models\HojaResumen;
 use App\Models\SolicitudCertProg;
+use App\Http\Controllers\SolicitudCertProgController;
 use TCPDI;
 
 //use Karriere\PdfMerge\PdfMerge;
@@ -21,23 +22,29 @@ class HojaResumenFinalController extends Controller
      */
     public function index()
     {
-        
-        $unaSolicitud= SolicitudCertProg::find(1);
-        
+        $unaSolicitud= SolicitudCertProg::find();
+
         return view('hojaResumenFinal.indexHojaFinal')->with('solicitud', $unaSolicitud);
-        
+    }
+
+    public function show($idSolicitud)
+    {
+        $unaSolicitud= SolicitudCertProg::find($idSolicitud);
+
+        return view('hojaResumenFinal.indexHojaFinal')->with('solicitud', $unaSolicitud);
+
     }
     public function store(Request $request)
     {
         $id_solicitud = $request->id_solicitud;
 
-        //Busco la hoja resumen 
-        $unaHojaResumen = HojaResumen::where('id_solicitud', '=', $id_solicitud)->first();        
+        //Busco la hoja resumen
+        $unaHojaResumen = HojaResumen::where('id_solicitud', '=', $id_solicitud)->first();
         $idHojaResumen = $unaHojaResumen->id_hoja_resumen;
 
         $hojaFinal = HojaResumenFinal::where('id_hoja_resumen', '=', $idHojaResumen)->first();
         if ($hojaFinal == null) {
-            //Creo el objeto hoja resumen final y lo cargo en la base de datos 
+            //Creo el objeto hoja resumen final y lo cargo en la base de datos
             $hojaFinal = new HojaResumenFinal();
             $hojaFinal->id_hoja_resumen = $idHojaResumen;
             $hojaFinal->save();
@@ -65,7 +72,7 @@ class HojaResumenFinalController extends Controller
 
         $arregloFecha = ['dia' => $dia, 'mes' => $mes, 'anio' => $anio];
 
-            /*         
+            /*
         $fecha = Carbon::now()->locale('es');
         $dia = $fecha->format('d');
         $anio = $fecha->format('Y');
@@ -94,21 +101,22 @@ class HojaResumenFinalController extends Controller
             if ($ruta != null || $ruta != "") {
                 $filePath = storage_path('app/' . $ruta);
                 $retorno =  response()->download($filePath);
-            } else {                
-                // esto no se si esta bien, no me sale redireccionar         
+            } else {
+                // esto no se si esta bien, no me sale redireccionar
                 $retorno =  view('hojaResumenFinal.indexHojaFinal')->with('solicitud', $solicitud);
             }
         } else {
             $retorno =  view('hojaResumenFinal.indexHojaFinal')->with('solicitud', $solicitud);
         }
-        return $retorno;  
+        return $retorno;
     }
     public function foliar($idSolicitud) {
+
         $pdf=new TCPDI();
         $url = storage_path()."/app/id-solicitud-".$idSolicitud."/hojaUnidaFinalSinFirma".$idSolicitud.".pdf";
         $pdf->setSourceFile($url);
         $pageCount = $pdf->setSourceFile($url);
-      
+
         for ($pageNo = 1; $pageNo <= $pageCount; $pageNo++) {
           $tplIdx = $pdf->importPage($pageNo);
           // add a page
@@ -118,7 +126,7 @@ class HojaResumenFinalController extends Controller
           $pdf->SetFont('Helvetica',"",18);
           //$pdf->SetTextColor(200, 0, 0);
           // now write some text above the imported page
-          $pdf->SetXY(180,0); 
+          $pdf->SetXY(180,0);
           $pdf->Image('img/folio-img.png', '', '', 25, 25, 'PNG', '', 'T', false, 300, '', false, false, 1, false, false, false);
           $pdf->SetXY(42,10);
           $pdf->Cell(300, 1, '' . $pageNo, 0, 2, 'C');
@@ -126,81 +134,6 @@ class HojaResumenFinalController extends Controller
         ob_end_clean();
         $pdf->setPDFVersion();
         $pdf->Output(storage_path()."/app/id-solicitud-".$idSolicitud."/hojaUnidaFinalSinFirma".$idSolicitud.".pdf","F");
-        return redirect()->route('solicitud');
+        return redirect()->route('solicitud.show',$idSolicitud);
       }
-
-
-
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    /*    public function index()
-    {
-        //
-    } */
-
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    /*     public function create()
-    {
-        //
-    }
- */
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-
-
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    /*    public function show($id)
-    {
-        //
-    } */
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    /*    public function edit($id)
-    {
-        //
-    } */
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    /*    public function update(Request $request, $id)
-    {
-        //
-    }
- */
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    /*  public function destroy($id)
-    {
-        //
-    } */
 }

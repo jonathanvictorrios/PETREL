@@ -9,6 +9,7 @@ use App\Models\User;
 use App\Models\Carrera;
 use App\Models\Estado;
 use App\Models\EstadoDescripcion;
+use App\Http\Controllers\mailPetrelController;
 use App\Models\HojaResumen;
 
 class SolicitudCertProgController extends Controller
@@ -21,16 +22,7 @@ class SolicitudCertProgController extends Controller
     public function index()
     {
         $solicitudes = SolicitudCertProg::all();
-        $Lista = array();
-        foreach($solicitudes as $solicitud)
-        {
-            $Mostrar = $this->ObtenerDatosSolicitud($solicitud);
-
-            array_push($Lista,$Mostrar);
-
-        }
-        $solicitudes=$Lista;
-        return view('solicitud.index',compact('solicitudes'));
+        return view('solicitud.index', compact('solicitudes'));
     }
 
     /**
@@ -53,54 +45,73 @@ class SolicitudCertProgController extends Controller
      */
     public function store(Request $request)
     {
-        // Primero valida los campos requeridos. Si algo falla, retorna arreglo $error a la vista:
-        /* [DESACTIVADO]
-        Unidad académica y carrera son selects, ¿validar que las opciones existan, ante posible inyección de datos al formulario?
-        $request->validate([
-            'nombre' => 'required|min:2|max:150',
-            'apellido' => 'required|min:2|max:150',
-            'legajo' => 'required|min:2|max:50',
-            'unidadAcademica' => 'required',
-            'carrera' => 'required',
-            'universidadDestino' => 'required|min:3|max:150'
-        ]); */
-
         $solicitud = new SolicitudCertProg;
-        $usuarioEstudiante = User::find(1); //ACA TENGO QUE PASAR EL ID DEL USUARIO LOGUEADO
+        $usuarioEstudiante = User::find(Auth::user()); //ACA TENGO QUE PASAR EL ID DEL USUARIO LOGUEADO
         // $usuarioEstudiante->id_usuario=1;
         // $usuarioAdministrativo= null;
 
+        if(isset($usuarioEstudiante))
+        {
+            $solicitud->id_usuario_estudiante=$usuarioEstudiante->id_usuario;
+        }
+        else{
+            return back()->with('error','Necesita estar Logueado para Ingresar una Nueva Solicitud');
+        }
 
-        $solicitud->id_usuario_estudiante=$usuarioEstudiante->id_usuario;
-        //$usuarioEstudiante = null;// $request->idUsuario;// Ver como viene esto desde la vista
-        //  $solicitud->id_user_u=$usuarioAdministrativo;
+        if(isset($request->legajo))
+        {
+            $solicitud->legajo=$request->legajo;
+        }
+        else
+        {
+            return back()->with('error','Completar Legajo');
+        }
+        if(isset($request->extranjero))
+        {
+            if($request->extranjero=='si')
+            {
+            $solicitud->extranjero=true;
+            }
+            else{
+                $solicitud->extranjero=false;
+            }
+        }
+        else{
+            $solicitud->extranjero=false;
+        }
 
-        $solicitud->legajo=$request->legajo;
-        $solicitud->universidad_destino=$request->universidadDestino;
+        if(isset($request->universidadDestino))
+        {
+            $solicitud->universidad_destino=$request->universidadDestino;
+        }
+        else
+        {
+            return back()->with('error','Completar Unidad Academica Destino');
+        }
+
         $solicitud->id_carrera=$request->carrera; //CAMBIAR POR SELECT DE DEL FORM
 
 
-     ///   $solicitud->usuarioEstudiante=$usuarioEstudiante; //asignamos el usuario a la solicitud
+        ///   $solicitud->usuarioEstudiante=$usuarioEstudiante; //asignamos el usuario a la solicitud
 
-        $solicitud->updated_at=null;
+        $solicitud->updated_at = null;
         $solicitud->save();
 
         $estado = new Estado;
         $estadoDescripcion = EstadoDescripcion::find(1);
 
-        $estado->id_solicitud=$solicitud->id_solicitud;
-        $estado->id_estado_descripcion=$estadoDescripcion->id_estado_descripcion;
-        $estado->id_usuario=null;
-        $estado->updated_at=null;
+        $estado->id_solicitud = $solicitud->id_solicitud;
+        $estado->id_estado_descripcion = $estadoDescripcion->id_estado_descripcion;
+        $estado->id_usuario = null;
+        $estado->updated_at = null;
         $estado->save();
 
+        $controlMail = new mailPetrelController;
+        $controlMail->enviarMailSolicitudIniciada($solicitud->id_solicitud);
+
         $solicitudes=SolicitudCertProg::all();//NECESITO RECUPERAR TODAS LAS SOLICITUDES PORQUE VUELVO EL RETORNO A LA VISTA.
-                                              // SI EL RETORNO NO ES HACIA solicitud.index puede sacarse
 
-
-        return view('solicitud.index',compact('solicitudes'))->with('mensaje','<span class="fw-bold">Se ingresó la solicitud con éxito.<span> <br>
-        En el menú Mis Solicitudes puedes consultar el estado del trámite. <br>
-        También serás notificado a través de tu email cuando esté listo.');
+        return view('solicitud.index',compact('solicitudes'));
     }
 
     /**
@@ -112,18 +123,18 @@ class SolicitudCertProgController extends Controller
     public function show($id)
     {
         $solicitud= SolicitudCertProg::findOrFail($id);
-        $solicitud=$this->ObtenerDatosSolicitud($solicitud);
-
-
-        $hojaResumen = HojaResumen::where('id_solicitud',$id)->get()[0];
+        $hojaResumen = HojaResumen::where('id_solicitud',$id)->get();
         if(count($hojaResumen)>0){
-            $iniciarTramite = false;
+            if($hojaResumen[0]->url_hoja_unida!=null){
+                $finSolicitud = 1;
+            }else{
+                $finSolicitud = 0;
+            }
         }else{
-            $iniciarTramite = true;
+            $finSolicitud = -1;
         }
 
-        return view('solicitud.show',compact('solicitud','iniciarTramite'));
-
+        return view('solicitud.show',compact('solicitud','finSolicitud'));
     }
 
     /**
@@ -160,89 +171,91 @@ class SolicitudCertProgController extends Controller
         //
     }
 
-    public function ObtenerDatosSolicitud($solicitud)
-    {
-
-        $Mostrar = new SolicitudCertProg;
-        $Mostrar->idSolicitud=$solicitud->id_solicitud;
-
-        $Mostrar->Legajo=$solicitud->legajo;
-
-        $Mostrar->Estados=$solicitud->estados;
-
-        $Mostrar->Carrera=$solicitud->carrera->carrera;
-
-        $Mostrar->UniversidadDestino=$solicitud->universidad_destino;
-
-        $Mostrar->UnidadAcademica=$solicitud->carrera->unidad_academica->unidad_academica;
-
-        print($solicitud->usuarioEstudiante);
-        // COMENTE ESTO, NO ME MATEN, el duende me dijo que lo haga.
-        //$ApellidoNombreUsuarioEst = $solicitud->usuarioEstudiante->lastname." ".$solicitud->usuarioEstudiante->name;
-        //$Mostrar->UsuarioEstudiante=$ApellidoNombreUsuarioEst;
-        //$Mostrar->NombreEstudiante=$solicitud->usuarioEstudiante->name;
-        //$Mostrar->ApellidoEstudiante=$solicitud->usuarioEstudiante->lastname;
-
-
-        $Mostrar->UltimoEstado=($solicitud->estados)->last()->estado_descripcion->descripcion;
-        $Mostrar->FechaUltimoEstado=($solicitud->estados)->last()->created_at;
-     //   print($Mostrar);
-
-        return $Mostrar;
-    }
-
-      /**
+    /**
      * Asigna una solicitud
      *
      * @param  int  $idSolicitud
      * @param  int  $idUsuarioAdministrativo
      * @return \Illuminate\Http\Response
      */
-    public function asignar($idSolicitud,$idUsuarioAdministrativo)
+    public function asignar($idSolicitud, Request $request)
     {
 
-        //return view('solicitud.asignar');
         $solicitud = SolicitudCertProg::findOrFail($idSolicitud);
-        $usuarioAdministrativo = User::findOrFail($idUsuarioAdministrativo);
+
+        $usuarioAdministrativo = Usuario::findOrFail($request->usuarioAdministrativo);
 
         //$nuevoEstado = new Estado;
         $estadoController= new EstadoController;
-        $estadoController->asignarTramite($solicitud,$usuarioAdministrativo);
+        $estadoDescripcion = EstadoDescripcion::find(2);
 
-        print($usuarioAdministrativo->id_usuario);
+        $estadoController->cambiarEstado($solicitud,$usuarioAdministrativo,$estadoDescripcion);
+
         $solicitud->id_user_u=$usuarioAdministrativo->id_usuario;
 
-         $solicitud->save();
-        //$nuevoEstado->id_solicitud=$solicitud->id_solicitud;
+        $solicitud->save();
 
-        // print($solicitud);
-        // print($usuarioAdministrativo);
-
+        $solicitudes = SolicitudCertProg::all();
+        return view('solicitud.index', compact('solicitudes'));
 
     }
-    public function indexEstudiante($id)
+
+    // public function listoParaFirmarDptoAlumno($idSolicitud,$idUsuarioAdministrativo)
+    // {
+    //     $solicitud = SolicitudCertProg::findOrFail($idSolicitud);
+    //     $usuarioAdministrativo = Usuario::findOrFail($idUsuarioAdministrativo);
+
+    //     $estadoDescripcion = EstadoDescripcion::find(3);
+    //     $estadoController = new EstadoController;
+
+    //     $estadoController->cambiarEstado($solicitud,$usuarioAdministrativo,$estadoDescripcion);
+
+    //     $solicitud->save();
+
+    // }
+    public function listoParaFirmarSecretariaAcademica($idSolicitud,$idUsuarioAdministrativo)
     {
-        $solicitudes = SolicitudCertProg::where('id_usuario_estudiante',$id)->get();
-        $Lista = array();
-        foreach($solicitudes as $solicitud)
-        {
-            $Mostrar = $this->ObtenerDatosSolicitud($solicitud);
+        $solicitud = SolicitudCertProg::findOrFail($idSolicitud);
+        $usuarioAdministrativo = User::findOrFail($idUsuarioAdministrativo);
 
-            array_push($Lista,$Mostrar);
+        $estadoDescripcion = EstadoDescripcion::find(3);
+        $estadoController = new EstadoController;
 
-        }
-        $solicitudes=$Lista;
-        return view('solicitud.index',compact('solicitudes'));
+        $estadoController->cambiarEstado($solicitud,$usuarioAdministrativo,$estadoDescripcion);
+
+        $solicitud->save();
+
     }
-    public function showEstudiante($id)
+    public function listoParaFirmarSantiago($idSolicitud,$idUsuarioAdministrativo)
     {
-        $solicitud= SolicitudCertProg::findOrFail($id);
-        $solicitud=$this->ObtenerDatosSolicitud($solicitud);
-        if(($solicitud->UltimoEstado!='Iniciado') && ($solicitud->UltimoEstado!='Terminado'))
-        {
-             $solicitud->UltimoEstado='en Tramite';
-        }
-        return view('solicitud.show',compact('solicitud'));
+        $solicitud = SolicitudCertProg::findOrFail($idSolicitud);
+        $usuarioAdministrativo = User::findOrFail($idUsuarioAdministrativo);
+
+        $estadoDescripcion = EstadoDescripcion::find(4);
+        $estadoController = new EstadoController;
+
+        $estadoController->cambiarEstado($solicitud,$usuarioAdministrativo,$estadoDescripcion);
+
+        $solicitud->save();
 
     }
+    public function terminar($idSolicitud,$idUsuarioAdministrativo)
+    {
+        $solicitud = SolicitudCertProg::findOrFail($idSolicitud);
+        $usuarioAdministrativo = Usuario::findOrFail($idUsuarioAdministrativo);
+
+        $estadoDescripcion = EstadoDescripcion::find(5);
+        $estadoController = new EstadoController;
+
+        $estadoController->cambiarEstado($solicitud,$usuarioAdministrativo,$estadoDescripcion);
+
+        $solicitud->save();
+        $controlMail = new mailPetrelController;
+        $controlMail->enviarMailSolicitudFinalizada($solicitud->id_solicitud);
+
+    }
+
+
+
+
 }

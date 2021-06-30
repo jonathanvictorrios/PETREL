@@ -15,7 +15,7 @@
                     <div class="row tittle border-bottom p-2">
                         <h2 class="col text-center fw-bold">Modificar Carpeta Año</h2>
                     </div>
-                    <form class="form-card" action="{{ route('anio.update', $carpetaAnio->id_carpeta_anio) }}" method="POST" autocomplete="off" enctype="multipart/form-data">
+                    <form name=formCarpeta id=formCarpeta class="form-card" action="{{ route('anio.update', $carpetaAnio->id_carpeta_anio) }}" method="POST" autocomplete="off" enctype="multipart/form-data" novalidate>
                         @csrf
                         @if ($errors->any()) {{-- Valida en servidor y regresa mostrando los siguientes errores --}}
                         <div class="alert alert-danger alert-dismissible fade show d-flex align-items-center m-3 p-3">
@@ -29,11 +29,10 @@
                         </div>
                         @endif
                         {{-- ingrese año --}}
-                        @method('put')
                         <div class="row justify-content-between text-left">
                             <div class="form-group col col-12 flex-column d-flex py-3">
                                 <label class="form-label py-2">Año</label>
-                                <input class="border-0 cell" type="number" id="anio" name="anio" value="{{ old('anio', $carpetaAnio->numero_anio) }}">
+                                <input class="border-0 cell" type="number" id="anio" name="anio" value="{{ old('anio', $carpetaAnio->numero_anio) }}" placeholder="Ingrese año de cuatro cifras">
                             </div>
                         </div>
                         <div class="row justify-content-center text-center py-4">

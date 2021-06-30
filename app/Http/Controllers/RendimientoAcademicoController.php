@@ -19,20 +19,21 @@ class RendimientoAcademicoController extends Controller
      * @param Request $request
      * @return view 
      */
-    public function store(Request $request){
-        $arregloRendimiento = json_decode(file_get_contents($request->rutaArchivo),true);
-        $pdf = PDF::loadView('rendimientoAcademico.exportarPdf',compact('arregloRendimiento'));
+    public function store(Request $request)
+    {
+        $arregloRendimiento = json_decode(file_get_contents($request->rutaArchivo), true);
+        $pdf = PDF::loadView('rendimientoAcademico.exportarPdf', compact('arregloRendimiento'));
         $contenido = $pdf->download()->getOriginalContent();
-        $nombreRendimiendoPdf = 'rendimientoAcademico'.$request->idSolicitud.'.pdf';
-        Storage::disk('local')->put('id-solicitud-'.$request->idSolicitud.'/'.$nombreRendimiendoPdf,$contenido);
-        $unRendAcadem=new RendimientoAcademico();
-        $unRendAcadem->url_rendimiento_academico='id-solicitud-'.$request->idSolicitud.'/'.$nombreRendimiendoPdf;
+        $nombreRendimiendoPdf = 'rendimientoAcademico' . $request->idSolicitud . '.pdf';
+        Storage::disk('local')->put('id-solicitud-' . $request->idSolicitud . '/' . $nombreRendimiendoPdf, $contenido);
+        $unRendAcadem = new RendimientoAcademico();
+        $unRendAcadem->url_rendimiento_academico = 'id-solicitud-' . $request->idSolicitud . '/' . $nombreRendimiendoPdf;
         $unRendAcadem->save();
-        
+
         //Se agrega el id_rendimiento_academico a la hoja resumen
-        $unaHojaResumen=new HojaResumen();
-        $hojaResumenEncontrada=$unaHojaResumen::where('id_solicitud',$request->idSolicitud)->get()[0];
-        $hojaResumenEncontrada->id_rendimiento_academico=$unRendAcadem->id_rendimiento_academico;
+        $unaHojaResumen = new HojaResumen();
+        $hojaResumenEncontrada = $unaHojaResumen::where('id_solicitud', $request->idSolicitud)->get()[0];
+        $hojaResumenEncontrada->id_rendimiento_academico = $unRendAcadem->id_rendimiento_academico;
         $hojaResumenEncontrada->save();
         //
 
@@ -46,25 +47,26 @@ class RendimientoAcademicoController extends Controller
      * @param Request $request
      * @return view vistaPreviaPdf
      */
-    public function convertirExcel(Request $request){
-        Storage::makeDirectory('id-solicitud-'.$request->idSolicitud);
-        $archivo = $request->file('excel');//tomamos excel
-        $carpetaStorageApp = storage_path('/app/').'id-solicitud-'.$request->idSolicitud;//tomamos id solicitud unico
-        $this->convertirACsv($archivo,$carpetaStorageApp);
+    public function convertirExcel(Request $request)
+    {
+        Storage::makeDirectory('id-solicitud-' . $request->idSolicitud);
+        $archivo = $request->file('excel'); //tomamos excel
+        $carpetaStorageApp = storage_path('/app/') . 'id-solicitud-' . $request->idSolicitud; //tomamos id solicitud unico
+        $this->convertirACsv($archivo, $carpetaStorageApp);
         $nombreJson = $this->convertirArreglo($carpetaStorageApp);
-        $objSolicitud=SolicitudCertProg::find($request->idSolicitud);
-        return view('rendimientoAcademico.show',['solicitud'=>$objSolicitud])->with('rutaArchivo',$carpetaStorageApp.'/'.$nombreJson);
+        $objSolicitud = SolicitudCertProg::find($request->idSolicitud);
+        return view('rendimientoAcademico.show', ['solicitud' => $objSolicitud])->with('rutaArchivo', $carpetaStorageApp . '/' . $nombreJson);
     }
-    
+
     /**
      * La funcion crea un CSV a partir del excel entregado por dto de alumnos
      * guardamos ese CSV en storage/app/ con la idsolicitud unica
      * @param File $file excel del rendimientoAcademico
      * @param int $nro idSolicitud
      */
-    private function convertirACsv($file,$ruta)
+    private function convertirACsv($file, $ruta)
     {
-        $nroSolicitud = (explode('-',$ruta))[2];
+        $nroSolicitud = (explode('-', $ruta))[2];
         $spreadsheet = IOFactory::load($file);
         $loadedSheetNames = $spreadsheet->getSheetNames();
         $writer = new Csv($spreadsheet);
@@ -75,7 +77,7 @@ class RendimientoAcademicoController extends Controller
             $writer->setSheetIndex($sheetIndex);
             //setEnclosure es para encerrar el dato , aca indico que lo encierre con nada :D
             $writer->setEnclosure('');
-            $writer->save($ruta.'/rendimientoAcademico'.$nroSolicitud.'.csv');
+            $writer->save($ruta . '/rendimientoAcademico' . $nroSolicitud . '.csv');
         }
     }
 
@@ -88,8 +90,8 @@ class RendimientoAcademicoController extends Controller
      */
     private function convertirArreglo($ruta)
     {
-        $nroSolicitud = (explode('-',$ruta)[2]);
-        $lineas = file($ruta.'/rendimientoAcademico'.$nroSolicitud.'.csv');
+        $nroSolicitud = (explode('-', $ruta)[2]);
+        $lineas = file($ruta . '/rendimientoAcademico' . $nroSolicitud . '.csv');
         $array = array_map('str_getcsv', $lineas);
         $i = 0;
         $terminoRecorrido = false;
@@ -107,8 +109,8 @@ class RendimientoAcademicoController extends Controller
             "FechaIngresoCarrera" => "",
             "Lugar" => "",
             "FechaEmision" => "",
-            "Firmante"=>array("Nombre"=>"","Apellido"=>""),
-            "Secretaria"=>false,
+            "Firmante" => array("Nombre" => "", "Apellido" => ""),
+            "Secretaria" => false,
         );
         // Mariela agrego Universidad Nacional del Comahue y Facultad de Informatica
         $arrayUA = array(
@@ -159,7 +161,7 @@ class RendimientoAcademicoController extends Controller
                     preg_match_all('!\d+!', $array[$i][7], $arrayDatosPlan);
                     $arrayPlan["Nro"] = $arrayDatosPlan[0][0];
                     $arrayPlan["Anio"] = $arrayDatosPlan[0][1];
-                    
+
                     preg_match_all('!\d+!', $array[$i][8], $arrayDatosModificacionPlan);
                     $arrayPlan["ModOrd"] = $arrayDatosModificacionPlan[0][0];
                     $arrayPlan["AnioMod"] = $arrayDatosModificacionPlan[0][1];
@@ -171,8 +173,7 @@ class RendimientoAcademicoController extends Controller
                     $arrayResultante["FechaEmision"] = $array[$i][17];
                     $terminoIntroduccion = true;
                     $i--;
-                }
-                else {
+                } else {
                     //------------------Llenamos Datos Materias Aprobadas-----------------------//
                     $notaMateria = $array[$i][12];
                     if (is_numeric($notaMateria) && $notaMateria >= 4) {
@@ -200,8 +201,8 @@ class RendimientoAcademicoController extends Controller
         $arrayResultante["Alumno"] = $arrayAlumno;
         $arrayResultante["Documento"] = $arrayDocumento;
         $arrayResultante["Plan"] = $arrayPlan;
-        $nombreJson ='rendimientoAcademico'.$nroSolicitud.'.json';
-        Storage::disk('local')->put('id-solicitud-'.$nroSolicitud.'/'.$nombreJson,json_encode($arrayResultante));
-        return $nombreJson;   
+        $nombreJson = 'rendimientoAcademico' . $nroSolicitud . '.json';
+        Storage::disk('local')->put('id-solicitud-' . $nroSolicitud . '/' . $nombreJson, json_encode($arrayResultante));
+        return $nombreJson;
     }
 }

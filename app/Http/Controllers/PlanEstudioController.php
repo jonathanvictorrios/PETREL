@@ -41,10 +41,10 @@ class PlanEstudioController extends Controller
         if (isset($rendimientoAcademico->Plan->ModOrd)) $plan_nro_mod = $rendimientoAcademico->Plan->ModOrd;
 
         $urlRanquel = [
-            "https://ranquel.uncoma.edu.ar/archivos/ord_$plan_nro"."_20$plan_anio"."_23.pdf",
-            "https://ranquel.uncoma.edu.ar/archivos/ord_$plan_nro_mod"."_$plan_anio_mod"."_47.pdf"
+            "https://ranquel.uncoma.edu.ar/archivos/ord_$plan_nro" . "_20$plan_anio" . "_23.pdf",
+            "https://ranquel.uncoma.edu.ar/archivos/ord_$plan_nro_mod" . "_$plan_anio_mod" . "_47.pdf"
         ];
-        $objSolicitud=SolicitudCertProg::find($id_solicitud);
+        $objSolicitud = SolicitudCertProg::find($id_solicitud);
         # Mostrar
         return view('planEstudio.create', [
             'solicitud' => $objSolicitud,
