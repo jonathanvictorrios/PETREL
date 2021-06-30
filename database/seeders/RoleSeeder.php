@@ -13,7 +13,7 @@ class RoleSeeder extends Seeder
             'name' => 'Admin',
         ]);
         DB::table('roles')->insert([
-            'name' => 'Director SecA', // EL SANTI
+            'name' => 'Director Secretaria Acamedica', // EL SANTI
         ]);
         DB::table('roles')->insert([
             'name' => 'Departamento Central',
@@ -23,6 +23,9 @@ class RoleSeeder extends Seeder
         ]);
         DB::table('roles')->insert([
             'name' => 'Solicitante',
+        ]);
+        DB::table('roles')->insert([
+            'name' => 'Invitado',
         ]);
     }
 }

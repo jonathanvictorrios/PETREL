@@ -110,9 +110,9 @@ class PermissionsController extends Controller
 
     public function show(Permission $permission)
     {
-        if (! Gate::allows('users_manage')) {
+        /* if (! Gate::allows('users_manage')) {
             return abort(401);
-        }
+        } */
 
         return view('admin.permissions.show', compact('permission'));
     }
