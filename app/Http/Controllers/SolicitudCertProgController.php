@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\SolicitudCertProg;
 use App\Models\UnidadAcademica;
-use App\Models\Usuario;
+use App\Models\User;
 use App\Models\Carrera;
 use App\Models\Estado;
 use App\Models\EstadoDescripcion;
@@ -66,7 +66,7 @@ class SolicitudCertProgController extends Controller
         ]); */
 
         $solicitud = new SolicitudCertProg;
-        $usuarioEstudiante = Usuario::find(1); //ACA TENGO QUE PASAR EL ID DEL USUARIO LOGUEADO
+        $usuarioEstudiante = User::find(1); //ACA TENGO QUE PASAR EL ID DEL USUARIO LOGUEADO
         // $usuarioEstudiante->id_usuario=1;
         // $usuarioAdministrativo= null;
 
@@ -176,10 +176,12 @@ class SolicitudCertProgController extends Controller
 
         $Mostrar->UnidadAcademica=$solicitud->carrera->unidad_academica->unidad_academica;
 
-        $ApellidoNombreUsuarioEst = $solicitud->usuarioEstudiante->apellido." ".$solicitud->usuarioEstudiante->nombre;
-        $Mostrar->UsuarioEstudiante=$ApellidoNombreUsuarioEst;
-        $Mostrar->NombreEstudiante=$solicitud->usuarioEstudiante->nombre;
-        $Mostrar->ApellidoEstudiante=$solicitud->usuarioEstudiante->apellido;
+        print($solicitud->usuarioEstudiante);
+        // COMENTE ESTO, NO ME MATEN, el duende me dijo que lo haga.
+        //$ApellidoNombreUsuarioEst = $solicitud->usuarioEstudiante->lastname." ".$solicitud->usuarioEstudiante->name;
+        //$Mostrar->UsuarioEstudiante=$ApellidoNombreUsuarioEst;
+        //$Mostrar->NombreEstudiante=$solicitud->usuarioEstudiante->name;
+        //$Mostrar->ApellidoEstudiante=$solicitud->usuarioEstudiante->lastname;
 
 
         $Mostrar->UltimoEstado=($solicitud->estados)->last()->estado_descripcion->descripcion;
@@ -201,7 +203,7 @@ class SolicitudCertProgController extends Controller
 
         //return view('solicitud.asignar');
         $solicitud = SolicitudCertProg::findOrFail($idSolicitud);
-        $usuarioAdministrativo = Usuario::findOrFail($idUsuarioAdministrativo);
+        $usuarioAdministrativo = User::findOrFail($idUsuarioAdministrativo);
 
         //$nuevoEstado = new Estado;
         $estadoController= new EstadoController;

@@ -9,9 +9,19 @@
         <form method="POST" action="{{ route('register') }}">
             @csrf
 
-            <div>
-                <x-jet-label for="name" value="{{ __('Name') }}" />
+            <div class="mt-4">
+                <x-jet-label for="name" value="{{ __('Nombre') }}" />
                 <x-jet-input id="name" class="block mt-1 w-full" type="text" name="name" :value="old('name')" required autofocus autocomplete="name" />
+            </div>
+
+            <div class="mt-4">
+                <x-jet-label for="lastname" value="{{ __('Apellido') }}" />
+                <x-jet-input id="lastname" class="block mt-1 w-full" type="text" name="lastname" :value="old('lastname')" required autofocus autocomplete="lastname" />
+            </div>
+
+            <div class="mt-4">
+                <x-jet-label for="dni" value="{{ __('DNI') }}" />
+                <x-jet-input id="dni" class="block mt-1 w-full" type="number" min="111111" max="99999999" name="dni" :value="old('dni')" required autofocus autocomplete="dni" />
             </div>
 
             <div class="mt-4">
@@ -20,12 +30,12 @@
             </div>
 
             <div class="mt-4">
-                <x-jet-label for="password" value="{{ __('Password') }}" />
+                <x-jet-label for="password" value="{{ __('Contraseña') }}" />
                 <x-jet-input id="password" class="block mt-1 w-full" type="password" name="password" required autocomplete="new-password" />
             </div>
 
             <div class="mt-4">
-                <x-jet-label for="password_confirmation" value="{{ __('Confirm Password') }}" />
+                <x-jet-label for="password_confirmation" value="{{ __('Confirme su contraseña') }}" />
                 <x-jet-input id="password_confirmation" class="block mt-1 w-full" type="password" name="password_confirmation" required autocomplete="new-password" />
             </div>
 
@@ -52,7 +62,7 @@
                 </a>
 
                 <x-jet-button class="ml-4">
-                    {{ __('Register') }}
+                    {{ __('Regrist') }}
                 </x-jet-button>
             </div>
         </form>

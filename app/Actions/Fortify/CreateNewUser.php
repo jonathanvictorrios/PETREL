@@ -22,6 +22,8 @@ class CreateNewUser implements CreatesNewUsers
     {
         Validator::make($input, [
             'name' => ['required', 'string', 'max:255'],
+            'lastname' => ['required', 'string', 'max:255'],
+            'dni' => ['required', 'int'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
             'password' => $this->passwordRules(),
             'terms' => Jetstream::hasTermsAndPrivacyPolicyFeature() ? ['required', 'accepted'] : '',
@@ -29,6 +31,8 @@ class CreateNewUser implements CreatesNewUsers
 
         return User::create([
             'name' => $input['name'],
+            'lastname' => $input['lastname'],
+            'dni' => $input['dni'],
             'email' => $input['email'],
             'password' => Hash::make($input['password']),
             'role_id' => 6 // Al registrarse inicia como invitado (no tiene rol ni permiso)

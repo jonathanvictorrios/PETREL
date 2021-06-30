@@ -96,7 +96,7 @@
     </div> <!-- Fin primera fila -->
     {{-- segunda fila titulo preguntas --}}
     <div class="row">
-        <h4 class="tituloPregFrec text-center">{{ Auth::user()->email }}</h4>
+        <h4 class="tituloPregFrec text-center"> Preguntas frecuentes</h4>
     </div>
     {{-- tercera fila icono a preguntas frecuentes --}}
     <div class="row">

@@ -27,6 +27,6 @@ class CreateTableUnidadAcademica extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('table_unidad_academica');
+        Schema::dropIfExists('unidad_academica');
     }
 }

@@ -32,11 +32,11 @@ class SolicitudCertProg extends Model
 
     public function usuarioEstudiante()
     {
-        return $this->belongsTo(Usuario::class, 'id_usuario_estudiante', 'id_usuario');
+        return $this->belongsTo(User::class, 'legajo', 'id');
     }
     public function usuarioAdministrativo()
     {
-        return $this->belongsTo(Usuario::class, 'id_user_u', 'id_usuario');
+        return $this->belongsTo(User::class, 'cargo', 'id');
     }
     public function comentario()
     {
