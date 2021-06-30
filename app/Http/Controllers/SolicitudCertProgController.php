@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\SolicitudCertProg;
 use App\Models\UnidadAcademica;
-use App\Models\Usuario;
+use App\Models\User;
 use App\Models\Carrera;
 use App\Models\Estado;
 use App\Models\EstadoDescripcion;
@@ -200,7 +200,7 @@ class SolicitudCertProgController extends Controller
     public function listoParaFirmarDptoAlumno($idSolicitud,$idUsuarioAdministrativo)
     {
         $solicitud = SolicitudCertProg::findOrFail($idSolicitud);
-        $usuarioAdministrativo = Usuario::findOrFail($idUsuarioAdministrativo);
+        $usuarioAdministrativo = User::findOrFail($idUsuarioAdministrativo);
 
         $estadoDescripcion = EstadoDescripcion::find(3);
         $estadoController = new EstadoController;

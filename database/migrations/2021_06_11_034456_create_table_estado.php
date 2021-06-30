@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateTableEstadoMigration extends Migration
+class CreateTableEstado extends Migration
 {
     /**
      * Run the migrations.
@@ -21,7 +21,7 @@ class CreateTableEstadoMigration extends Migration
             $table->foreign('id_solicitud')->references('id_solicitud')->on('solicitud_cert_prog');
             $table->foreign('id_estado_descripcion')->references('id_estado_descripcion')->on('estado_descripcion');
             $table->foreign('id_usuario')->references('id')->on('users');
-            $table->timestampsTz();
+            $table->timestamps();
         });
     }
 

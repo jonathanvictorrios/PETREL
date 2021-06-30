@@ -87,54 +87,6 @@
                                     {{ $solicitud->estados->last()->estado_descripcion->descripcion }}
                                 </p>
                             </div>
-                        {{-- nombres y apellidos --}}
-                        <div class="row justify-content-between text-left">
-                            <p class=" "><span class="text-secondary ">Solicitante: </span>
-                                {{ $solicitud->usuarioEstudiante->apellido }},
-                                {{ $solicitud->usuarioEstudiante->nombre }}
-                            </p>
-                        </div>
-                        {{-- legajo --}}
-                        <div class="row justify-content-between text-left ">
-                            <p class=" "><span class="text-secondary">Legajo: </span> {{ $solicitud->legajo }}</p>
-                        </div>
-                        {{-- unidad academica --}}
-                        <div class="row justify-content-between text-left ">
-                            <p class=" "><span class="text-secondary">Unidad Académica: </span>
-                                {{ $solicitud->carrera->unidad_academica->unidad_academica }}
-                            </p>
-                        </div>
-                        {{-- carrera --}}
-                        <div class="row justify-content-between text-left ">
-                            <p class=" "><span class="text-secondary">Carrera: </span> {{ $solicitud->carrera->carrera }}
-                            </p>
-                        </div>
-                        {{-- universidad de destino --}}
-                        <div class="row justify-content-center text-left">
-                            <p class=" "><span class="text-secondary">Institución Educativa de Destino: </span>
-                                {{ $solicitud->universidad_destino }}
-                            </p>
-                        </div>
-                        {{-- asignado a --}}
-                        <div class="row justify-content-center text-left">
-                            <div class="col-12">
-                                <p class=" "><span class="text-secondary">Solicitud asignada a: </span>
-                                    {{ $solicitud->usuarioAdministrativo->apellido ?? '' }}
-                                    {{ $solicitud->usuarioAdministrativo->nombre ?? '' }}</p>
-
-                            </div>
-                            {{-- fecha --}}
-                            <div class="row justify-content-between text-left">
-                                <p class=" "><span class="text-secondary">Fecha de Inicio: </span>
-                                    {{ $solicitud->estados->first()->created_at }}
-                                </p>
-                            </div>
-                            {{-- estado --}}
-                            <div class="row justify-content-between text-left">
-                                <p class=" "><span class="text-secondary">Estado: </span>
-                                    {{ $solicitud->estados->last()->estado_descripcion->descripcion }}
-                                </p>
-                            </div>
                             {{-- nombres y apellidos --}}
                             <div class="row justify-content-between text-left">
                                 <p class=" "><span class="text-secondary ">Solicitante: </span>
@@ -169,12 +121,12 @@
                                 <div class="col-12">
                                     <p class=" "><span class="text-secondary">Solicitud Asignada a: </span>
                                         {{ $solicitud->usuarioAdministrativo->apellido ?? '' }}
-                                        {{ $solicitud->usuarioAdministrativo->nombre ?? '' }}</p>
+                                        {{ $solicitud->usuarioAdministrativo->nombre ?? '' }}
+                                    </p>
                                 </div>
                                 {{-- ACÀ DEBE TOMAR EL NOMBRE DE PERSONA ASIGNADA mostrarlo y guardarlo en base de datos --}}
                                 {{-- dejo este select como muestra visual,
                                     hay que eliminarlo al hacer el real de arriba --}}
-
                                 <form action="{{ route('solicitud.asignar', [$solicitud->id_solicitud]) }}" method="">
                                     <div class="row">
                                         <div class="col-lg-6 col-12">
@@ -208,13 +160,10 @@
                                             </button>
                                             <div id="collapseOne" class="accordion-collapse collapse justify-content-center"
                                                 aria-labelledby="headingOne" data-bs-parent="#acordeonComentarios">
-                                                <div
-                                                    class="accordion-body  d-flex justify-content-center acordeonComentarios">
+                                                <div class="accordion-body  d-flex justify-content-center acordeonComentarios">
                                                     <div class="table-responsive col-12 mx-3">
-                                                        <h4 class="text-center fw-bold cell">Historial de Estados de la
-                                                            Solicitud</h4>
-                                                            <table
-                                                            class="table table-striped table-hover align-middle table-borderless">
+                                                        <h4 class="text-center fw-bold cell">Historial de Estados de la Solicitud</h4>
+                                                        <table class="table table-striped table-hover align-middle table-borderless">
                                                             <thead class="border-bottom">
                                                                 <tr>
                                                                     <th scope="col" class="p-2">Usuario</th>
@@ -237,8 +186,7 @@
                                                             </tbody>
                                                         </table>
                                                         <h4 class="text-center fw-bold cell">Mensajes</h4>
-                                                        <table
-                                                            class="table table-striped table-hover align-middle table-borderless">
+                                                        <table class="table table-striped table-hover align-middle table-borderless">
                                                             <thead class="border-bottom">
                                                                 <tr>
                                                                     <th scope="col" class="p-2">Usuario</th>
@@ -265,8 +213,7 @@
                                                             Nuevo Mensaje
                                                         </a>
                                                         <!-- Modal -->
-                                                        <div class="modal fade" id="modalMensaje" tabindex="-1"
-                                                            aria-labelledby="modalMensajeLabel" aria-hidden="true">
+                                                        <div class="modal fade" id="modalMensaje" tabindex="-1" aria-labelledby="modalMensajeLabel" aria-hidden="true">
                                                             <div class="modal-dialog">
                                                                 <div class="modal-content">
                                                                     <div class="modal-header">
@@ -281,34 +228,16 @@
                                                                             <div class="row d-flex justify-content-center">
                                                                                 <div class="col">
                                                                                     <div class="card card-form">
-                                                                                        <form class="" method="POST"
-                                                                                            action="{{ route('comentario.store') }}">
+                                                                                        <form class="" method="POST" action="{{ route('comentario.store') }}">
                                                                                             @csrf
-                                                                                            <div
-                                                                                                class="row justify-content-between text-left">
-                                                                                                <div
-                                                                                                    class="form-group col-12 flex-column d-flex py-3">
-                                                                                                    <input
-                                                                                                        class="border-0 cell"
-                                                                                                        type="text"
-                                                                                                        id="mensaje"
-                                                                                                        name="mensaje"
-                                                                                                        placeholder="Ingrese el mensaje">
-                                                                                                    <input type="text"
-                                                                                                        hidden
-                                                                                                        id="idUsuario"
-                                                                                                        name="idUsuario"
-                                                                                                        value="{{ $solicitud->estados->last()->id_usuario ?? '' }}">
-                                                                                                    <input type="text"
-                                                                                                        hidden
-                                                                                                        id="idSolicitud"
-                                                                                                        name="idSolicitud"
-                                                                                                        value="{{ $solicitud->id_solicitud }}">
+                                                                                            <div class="row justify-content-between text-left">
+                                                                                                <div class="form-group col-12 flex-column d-flex py-3">
+                                                                                                    <input class="border-0 cell" type="text" id="mensaje" name="mensaje" placeholder="Ingrese el mensaje">
+                                                                                                    <input type="text" hidden id="idUsuario" name="idUsuario" value="{{ $solicitud->estados->last()->id_usuario ?? '' }}">
+                                                                                                    <input type="text" hidden id="idSolicitud" name="idSolicitud" value="{{ $solicitud->id_solicitud }}">
                                                                                                 </div>
-                                                                                                <div
-                                                                                                    class="row justify-content-center text-center py-4">
-                                                                                                    <div
-                                                                                                        class="form-group col-sm-6">
+                                                                                                <div class="row justify-content-center text-center py-4">
+                                                                                                    <div class="form-group col-sm-6">
                                                                                                         <button id="boton"
                                                                                                             name="boton"
                                                                                                             type="submit"
@@ -316,6 +245,7 @@
                                                                                                             mensaje</button>
                                                                                                     </div>
                                                                                                 </div>
+                                                                                            </div>
                                                                                         </form>
                                                                                     </div>
                                                                                 </div>
@@ -430,59 +360,29 @@
                                             </button>
                                             <div id="collapseOne" class="accordion-collapse collapse justify-content-center"
                                                 aria-labelledby="headingOne" data-bs-parent="#acordeonComentarios">
-                                                <div
-                                                    class="accordion-body  d-flex justify-content-center acordeonComentarios">
-                                                <div class="table-responsive col-12 mx-3">
-                                                    <h4 class="text-center fw-bold cell">Historial de Estados de la
-                                                        Solicitud</h4>
-                                                    <table
-                                                        class="table table-striped table-hover align-middle table-borderless">
-                                                        <thead class="border-bottom">
-                                                            <tr>
-                                                                <th scope="col" class="p-2 text-center">Fecha</th>
-                                                                <th scope="col" class="p-2 text-center">Usuario</th>
-                                                                <th scope="col" class="p-2 text-center">Estado</th>
-                                                            </tr>
-                                                        </thead>
-                                                        <tbody>
-                                                            @foreach ($solicitud->estados as $estado)
-                                                            <tr>
-                                                                <td class="p-2">{{ $estado->created_at }}</td>
-                                                                <td class="p-2">{{ $estado->usuario->nombre ?? ''}} {{ $estado->usuario->apellido ?? ''}}</td>
-                                                                <td class="p-2">{{ $estado->estado_descripcion->descripcion }}</td>
-                                                            </tr>
-                                                            @endforeach
-                                                        </tbody>
-                                                    </table>
-                                                    <h4 class="text-center fw-bold cell">Mensajes</h4>
-                                                        <h4 class="text-center fw-bold cell">Historial de Estados de la
-                                                            Solicitud</h4>
-                                                            <table
-                                                            class="table table-striped table-hover align-middle table-borderless">
+                                                <div class="accordion-body  d-flex justify-content-center acordeonComentarios">
+                                                    <div class="table-responsive col-12 mx-3">
+                                                        <h4 class="text-center fw-bold cell">Historial de Estados de la Solicitud</h4>
+                                                        <table class="table table-striped table-hover align-middle table-borderless">
                                                             <thead class="border-bottom">
                                                                 <tr>
-                                                                    <th scope="col" class="p-2">Usuario</th>
-                                                                    <th scope="col" class="p-2">Estado</th>
-                                                                    <th scope="col" class="p-2">Fecha</th>
+                                                                    <th scope="col" class="p-2 text-center">Fecha</th>
+                                                                    <th scope="col" class="p-2 text-center">Usuario</th>
+                                                                    <th scope="col" class="p-2 text-center">Estado</th>
                                                                 </tr>
                                                             </thead>
                                                             <tbody>
                                                                 @foreach ($solicitud->estados as $estado)
-                                                                    <tr>
-                                                                        <td class="p-2">
-                                                                            {{ $estado->usuario->nombre ?? '' }}
-                                                                            {{ $estado->usuario->apellido ?? '' }}</td>
-                                                                        <td class="p-2">
-                                                                            {{ $estado->estado_descripcion->descripcion }}
-                                                                        </td>
-                                                                        <td class="p-2">{{ $estado->created_at }}</td>
-                                                                    </tr>
+                                                                <tr>
+                                                                    <td class="p-2">{{ $estado->created_at }}</td>
+                                                                    <td class="p-2">{{ $estado->usuario->nombre ?? ''}} {{ $estado->usuario->apellido ?? ''}}</td>
+                                                                    <td class="p-2">{{ $estado->estado_descripcion->descripcion }}</td>
+                                                                </tr>
                                                                 @endforeach
                                                             </tbody>
                                                         </table>
                                                         <h4 class="text-center fw-bold cell">Mensajes</h4>
-                                                        <table
-                                                            class="table table-striped table-hover align-middle table-borderless">
+                                                        <table class="table table-striped table-hover align-middle table-borderless">
                                                             <thead class="border-bottom">
                                                                 <tr>
                                                                     <th scope="col" class="p-2">Usuario</th>
@@ -525,34 +425,16 @@
                                                                             <div class="row d-flex justify-content-center">
                                                                                 <div class="col">
                                                                                     <div class="card card-form">
-                                                                                        <form class="" method="POST"
-                                                                                            action="{{ route('comentario.store') }}">
+                                                                                        <form class="" method="POST" action="{{ route('comentario.store') }}">
                                                                                             @csrf
-                                                                                            <div
-                                                                                                class="row justify-content-between text-left">
-                                                                                                <div
-                                                                                                    class="form-group col-12 flex-column d-flex py-3">
-                                                                                                    <input
-                                                                                                        class="border-0 cell"
-                                                                                                        type="text"
-                                                                                                        id="mensaje"
-                                                                                                        name="mensaje"
-                                                                                                        placeholder="Ingrese el mensaje">
-                                                                                                    <input type="text"
-                                                                                                        hidden
-                                                                                                        id="idUsuario"
-                                                                                                        name="idUsuario"
-                                                                                                        value="{{ $solicitud->estados->last()->id_usuario ?? '' }}">
-                                                                                                    <input type="text"
-                                                                                                        hidden
-                                                                                                        id="idSolicitud"
-                                                                                                        name="idSolicitud"
-                                                                                                        value="{{ $solicitud->id_solicitud }}">
+                                                                                            <div class="row justify-content-between text-left">
+                                                                                                <div class="form-group col-12 flex-column d-flex py-3">
+                                                                                                    <input class="border-0 cell" type="text" id="mensaje" name="mensaje" placeholder="Ingrese el mensaje">
+                                                                                                    <input type="text" hidden id="idUsuario" name="idUsuario" value="{{ $solicitud->estados->last()->id_usuario ?? '' }}">
+                                                                                                    <input type="text" hidden id="idSolicitud" name="idSolicitud" value="{{ $solicitud->id_solicitud }}">
                                                                                                 </div>
-                                                                                                <div
-                                                                                                    class="row justify-content-center text-center py-4">
-                                                                                                    <div
-                                                                                                        class="form-group col-sm-6">
+                                                                                                <div class="row justify-content-center text-center py-4">
+                                                                                                    <div class="form-group col-sm-6">
                                                                                                         <button id="boton"
                                                                                                             name="boton"
                                                                                                             type="submit"
@@ -560,6 +442,7 @@
                                                                                                             mensaje</button>
                                                                                                     </div>
                                                                                                 </div>
+                                                                                            </div>
                                                                                         </form>
                                                                                     </div>
                                                                                 </div>
@@ -570,11 +453,12 @@
                                                             </div>
                                                         </div>
                                                         {{-- fin modal --}}
+                                                    </div>
                                                 </div>
                                             </div>
                                         </div>
-                                    </div>
-                                </div> {{-- Fin div Actividad --}}
+                                    </div> {{-- Fin div Actividad --}}
+                                </div>
                                 <div class="row clearfix">
                                     <div class="form-group mt-4 d-lg-flex">
                                         {{-- un boton para descargar --}}
@@ -592,13 +476,10 @@
                                             </button>
                                             <!-- Modal autenticar contraseña -->
                                             {{-- <form action="{{ route('archivos.confirmarContrasenia', $solicitud->id_solicitud) }}"> --}}
-                                            <form action="{{ route('firmaSecretaria') }}" method="POST"
-                                                autocomplete="off" enctype="multipart/form-data">
+                                            <form action="{{ route('firmaSecretaria') }}" method="POST" autocomplete="off" enctype="multipart/form-data">
                                                 @csrf
-
                                                 <input type="hidden" id="idSolicitud" name="idSolicitud"
                                                     value="{{ $solicitud->id_solicitud }}">
-
                                                 <div class="modal fade" id="login_check1" tabindex="-1"
                                                     aria-labelledby="login_check1" aria-hidden="true">
                                                     <div class="modal-dialog">
@@ -620,13 +501,10 @@
                                                                     <input type="password" name="password"
                                                                         id="input_contrasenia" class="form-control">
                                                                 </div>
-
                                                             </div>
-
                                                         </div>
                                                     </div>
                                                 </div>
-                                            </form>
                                             </form>
                                         </div>
                                         {{-- un botòn para decargar --}}
@@ -657,7 +535,6 @@
                                 <i class='fas fa-check-circle mx-2'></i>{{ session('mensaje') }}
                                 <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
                             </div>
-
                         </div>
                     </div>
                 </div>
@@ -726,59 +603,29 @@
                                             </button>
                                             <div id="collapseOne" class="accordion-collapse collapse justify-content-center"
                                                 aria-labelledby="headingOne" data-bs-parent="#acordeonComentarios">
-                                                <div
-                                                    class="accordion-body  d-flex justify-content-center acordeonComentarios">
-                                                <div class="table-responsive col-12 mx-3">
-                                                    <h4 class="text-center fw-bold cell">Historial de Estados de la
-                                                        Solicitud</h4>
-                                                    <table
-                                                        class="table table-striped table-hover align-middle table-borderless">
-                                                        <thead class="border-bottom">
-                                                            <tr>
-                                                                <th scope="col" class="p-2 text-center">Fecha</th>
-                                                                <th scope="col" class="p-2 text-center">Usuario</th>
-                                                                <th scope="col" class="p-2 text-center">Estado</th>
-                                                            </tr>
-                                                        </thead>
-                                                        <tbody>
-                                                            @foreach ($solicitud->estados as $estado)
-                                                            <tr>
-                                                                <td class="p-2">{{ $estado->created_at }}</td>
-                                                                <td class="p-2">{{ $estado->usuario->nombre ?? ''}} {{ $estado->usuario->apellido ?? ''}}</td>
-                                                                <td class="p-2">{{ $estado->estado_descripcion->descripcion }}</td>
-                                                            </tr>
-                                                            @endforeach
-                                                        </tbody>
-                                                    </table>
-                                                    <h4 class="text-center fw-bold cell">Mensajes</h4>                                                    
-                                                        <h4 class="text-center fw-bold cell">Historial de Estados de la
-                                                            Solicitud</h4>
-                                                        <table
-                                                            class="table table-striped table-hover align-middle table-borderless">
+                                                <div class="accordion-body  d-flex justify-content-center acordeonComentarios">
+                                                    <div class="table-responsive col-12 mx-3">
+                                                        <h4 class="text-center fw-bold cell">Historial de Estados de la Solicitud</h4>
+                                                        <table class="table table-striped table-hover align-middle table-borderless">
                                                             <thead class="border-bottom">
                                                                 <tr>
-                                                                    <th scope="col" class="p-2">Usuario</th>
-                                                                    <th scope="col" class="p-2">Estado</th>
-                                                                    <th scope="col" class="p-2">Fecha</th>
+                                                                    <th scope="col" class="p-2 text-center">Fecha</th>
+                                                                    <th scope="col" class="p-2 text-center">Usuario</th>
+                                                                    <th scope="col" class="p-2 text-center">Estado</th>
                                                                 </tr>
                                                             </thead>
                                                             <tbody>
                                                                 @foreach ($solicitud->estados as $estado)
-                                                                    <tr>
-                                                                        <td class="p-2">
-                                                                            {{ $estado->usuario->nombre ?? '' }}
-                                                                            {{ $estado->usuario->apellido ?? '' }}</td>
-                                                                        <td class="p-2">
-                                                                            {{ $estado->estado_descripcion->descripcion }}
-                                                                        </td>
-                                                                        <td class="p-2">{{ $estado->created_at }}</td>
-                                                                    </tr>
+                                                                <tr>
+                                                                    <td class="p-2">{{ $estado->created_at }}</td>
+                                                                    <td class="p-2">{{ $estado->usuario->nombre ?? ''}} {{ $estado->usuario->apellido ?? ''}}</td>
+                                                                    <td class="p-2">{{ $estado->estado_descripcion->descripcion }}</td>
+                                                                </tr>
                                                                 @endforeach
                                                             </tbody>
                                                         </table>
                                                         <h4 class="text-center fw-bold cell">Mensajes</h4>
-                                                        <table
-                                                            class="table table-striped table-hover align-middle table-borderless">
+                                                        <table class="table table-striped table-hover align-middle table-borderless">
                                                             <thead class="border-bottom">
                                                                 <tr>
                                                                     <th scope="col" class="p-2">Usuario</th>
@@ -821,34 +668,16 @@
                                                                             <div class="row d-flex justify-content-center">
                                                                                 <div class="col">
                                                                                     <div class="card card-form">
-                                                                                        <form class="" method="POST"
-                                                                                            action="{{ route('comentario.store') }}">
+                                                                                        <form class="" method="POST" action="{{ route('comentario.store') }}">
                                                                                             @csrf
-                                                                                            <div
-                                                                                                class="row justify-content-between text-left">
-                                                                                                <div
-                                                                                                    class="form-group col-12 flex-column d-flex py-3">
-                                                                                                    <input
-                                                                                                        class="border-0 cell"
-                                                                                                        type="text"
-                                                                                                        id="mensaje"
-                                                                                                        name="mensaje"
-                                                                                                        placeholder="Ingrese el mensaje">
-                                                                                                    <input type="text"
-                                                                                                        hidden
-                                                                                                        id="idUsuario"
-                                                                                                        name="idUsuario"
-                                                                                                        value="{{ $solicitud->estados->last()->id_usuario ?? '' }}">
-                                                                                                    <input type="text"
-                                                                                                        hidden
-                                                                                                        id="idSolicitud"
-                                                                                                        name="idSolicitud"
-                                                                                                        value="{{ $solicitud->id_solicitud }}">
+                                                                                            <div class="row justify-content-between text-left">
+                                                                                                <div class="form-group col-12 flex-column d-flex py-3">
+                                                                                                    <input class="border-0 cell" type="text" id="mensaje" name="mensaje" placeholder="Ingrese el mensaje">
+                                                                                                    <input type="text" hidden id="idUsuario" name="idUsuario" value="{{ $solicitud->estados->last()->id_usuario ?? '' }}">
+                                                                                                    <input type="text" hidden id="idSolicitud" name="idSolicitud" value="{{ $solicitud->id_solicitud }}">
                                                                                                 </div>
-                                                                                                <div
-                                                                                                    class="row justify-content-center text-center py-4">
-                                                                                                    <div
-                                                                                                        class="form-group col-sm-6">
+                                                                                                <div class="row justify-content-center text-center py-4">
+                                                                                                    <div class="form-group col-sm-6">
                                                                                                         <button id="boton"
                                                                                                             name="boton"
                                                                                                             type="submit"
@@ -856,6 +685,7 @@
                                                                                                             mensaje</button>
                                                                                                     </div>
                                                                                                 </div>
+                                                                                            </div>
                                                                                         </form>
                                                                                     </div>
                                                                                 </div>
@@ -866,6 +696,7 @@
                                                             </div>
                                                         </div>
                                                         {{-- fin modal --}}
+                                                    </div>
                                                 </div>
                                             </div>
                                         </div>
@@ -881,8 +712,7 @@
                                                 class="btn botonFormulario2">Ver hoja Resumen</a>
                                         </div>
                                         <div class="col-12 col-lg-6 px-0 pe-lg-1 py-1">
-                                            <form action="{{ route('crearNotaAdminCentral') }}" method="POST"
-                                                autocomplete="off">
+                                            <form action="{{ route('crearNotaAdminCentral') }}" method="POST" autocomplete="off">
                                                 @csrf
                                                 <input type="hidden" id="idSolicitud" name="idSolicitud"
                                                     value="{{ $solicitud->id_solicitud }}">
@@ -940,8 +770,7 @@
                                                 @endif
                                             @endif
                                             <!-- Modal autenticar contraseña -->
-                                            <form
-                                                action="{{ route('archivos.confirmarContrasenia', $solicitud->id_solicitud) }}">
+                                            <form action="{{ route('archivos.confirmarContrasenia', $solicitud->id_solicitud) }}">
                                                 @csrf
                                                 <div class="modal fade" id="login_check" tabindex="-1"
                                                     aria-labelledby="login_check" aria-hidden="true">

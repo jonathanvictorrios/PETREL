@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateTablePermiso extends Migration
+class CreateTableEstadoDescripcion extends Migration
 {
     /**
      * Run the migrations.
@@ -13,9 +13,9 @@ class CreateTablePermiso extends Migration
      */
     public function up()
     {
-        Schema::create('permiso', function (Blueprint $table) {
-            $table->id('id_permiso');
-            $table->string('descripcion');
+        Schema::create('estado_descripcion', function (Blueprint $table) {
+            $table->id('id_estado_descripcion');
+            $table->text('descripcion');
             $table->timestamps();
         });
     }
@@ -27,6 +27,6 @@ class CreateTablePermiso extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('permiso');
+        Schema::dropIfExists('estado_descripcion');
     }
 }

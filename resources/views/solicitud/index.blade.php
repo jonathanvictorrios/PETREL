@@ -512,7 +512,7 @@
 
 
     {{-- Tabla Solicitudes - Año --}}
-    {{-- <div id="nav-tabs-solicitud" class="container shadow-lg my-5 bg-light rounded">
+    <div id="nav-tabs-solicitud" class="container shadow-lg my-5 bg-light rounded">
         <!-- Lista de Usuarios -->
         <div class="container px-md-5 px-3 py-5">
             <div class="row justify-content-center">
@@ -564,13 +564,9 @@
                                     @if($solicitud->hoja_resumen_final != null)
                                     @if($solicitud->hoja_resumen_final->url_hoja_unida_final != null && $solicitud->UltimoEstado == 'Aguarda Firma Santiago')
                                     <tr>
-                                        <th>{{$solicitud->idSolicitud}}</th>
-                                        <td>{{$solicitud->UltimoEstado}}</td>
-                                        <td>{{$solicitud->Fecha}}</td>
-                                        <td>{{$solicitud->FechaUltimoEstado}}</td>
-                                        <td>{{$solicitud->UsuarioEstudiante}}</td>
-                                        <td><a href="{{route('solicitud.show',$solicitud->idSolicitud)}}">Ver Más</a>
-                                        </td>
+                                        <th scope="row">{{$solicitud->Anio}}</th>
+                                        <th>{{$solicitud->Carrera}}</th>
+                                        <td><a href="{{route('solicitud.show',$solicitud->idSolicitud)}}">Modificar</a></td>
                                     </tr>
                                     @endif
                                     @endif

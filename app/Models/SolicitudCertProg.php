@@ -36,7 +36,7 @@ class SolicitudCertProg extends Model
     }
     public function usuarioAdministrativo()
     {
-        return $this->belongsTo(Usuario::class, 'id_user_u', 'id_usuario');
+        return $this->belongsTo(User::class, 'cargo', 'id');
     }
 
     public function comentarios()
