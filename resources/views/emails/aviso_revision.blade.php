@@ -34,22 +34,18 @@
         <table style="text-align: center; margin: 0 auto;">
             <tr>
                 <td>
-                    <h3 style="font-size: 2rem;">Confirmación de finalización de tu Solicitud</h3>
+                    <h3 style="font-size: 2rem;">Nueva Solicitud Lista para Firmar</h3>
                 </td>
             </tr>
             <tr>
                 <td>
                     <p>
-                        ¡Hola, {{ $datosMail->Nombre }}!
+                        ¡Hola, {{ $datosMail->NombreUserU }}!
                     </p>
                     <p>
-                        Tu solicitud de certificación de programas, registrada bajo el número
-                        {{ $datosMail->idSolicitud }}, ha sido completada con éxito.<br>
-                        Podés consultar el estado de la solicitud cuando lo desees y descargar tu certificación de
-                        programas desde el botón de abajo.
-                    </p>
-                    <p>
-                        En caso de que encuentres algún problema con tu solicitud, por favor envianos un correo a <a href="mailto:dpto.alumnos@fi.uncoma.edu.ar">dpto.alumnos@fi.uncoma.edu.ar</a>.
+                        La solicitud registrada bajo el número {{ $datosMail->idSolicitud }}
+                        se encuentra lista para ser firmada.<br>
+                        Podés acceder al sistema desde el botón de abajo.
                     </p>
                     <p>Atentamente,</p>
                     <div class="column">

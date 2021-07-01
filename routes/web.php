@@ -12,6 +12,7 @@ use App\Http\Controllers\Archivo;
 use App\Http\Controllers\mailPetrelController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\SolicitudCertProgController;
+use App\Http\Controllers\ComentarioController;
 use App\Http\Controllers\NotaAdminCentralController;
 use App\Http\Controllers\HojaResumenFinalController;
 // de prueba
@@ -71,7 +72,6 @@ Route::get('solicitud/{idSolicitud}/terminar/{idAdministrativo}', [SolicitudCert
 
 
 // CRUD:
-Route::resource('solicitud', SolicitudCertProgController::class);
 
 
 //***********    H    O    J    A         R    E    S    U    M    E    N    ********/
@@ -149,3 +149,6 @@ Route::get('archivos/{id}/confirmarContrasenia', [Archivo::class, 'confirmarCont
 // Rutas para el envío de Mails
 Route::get('solicitud_iniciada/{idSolicitud}', [mailPetrelController::class, 'enviarMailSolicitudIniciada']);
 Route::get('finalizacion/{idSolicitud}', [mailPetrelController::class, 'enviarMailSolicitudFinalizada']);
+
+Route::resource('solicitud', SolicitudCertProgController::class);
+Route::post('comentario', [ComentarioController::class, 'store'])->name('comentario.store');

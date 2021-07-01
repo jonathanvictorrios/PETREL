@@ -21,8 +21,6 @@ class EstadoController extends Controller
     public function index($id)
     {
         //
-        $Estados = Estado::all();
-        return view ('estado.index',compact('Estados'));
     }
 
     /**
@@ -43,10 +41,7 @@ class EstadoController extends Controller
      */
     public function store(Request $request)
     {
-        $estadoNuevo = new Estado;
-        $estadoNuevo->idSolicitud = $request->idSolicitud;
-        $estadoNuevo->idEstadoDescripcion = $request->estadoDescripcion;
-        $estadoNuevo->nombre = $request->nombre;
+        //
     }
 
     /**
@@ -115,11 +110,11 @@ class EstadoController extends Controller
             $Estado->estado_descripcion = $EstadoDescripcion;
             $Estado->save();
 
-            $Notificacion = new Notificacion;
-            $Notificacion->estado = $Estado;
-            $Notificacion->mensaje = 'Hay una nueva solicitud. Aguardando asignación.';
-            $Notificacion->leida = false;
-            $Notificacion->save();
+            // $Notificacion = new Notificacion;
+            // $Notificacion->estado = $Estado;
+            // $Notificacion->mensaje = 'Hay una nueva solicitud. Aguardando asignación.';
+            // $Notificacion->leida = false;
+            // $Notificacion->save();
 
             return view('index'); //definir vista de retorno
         }
@@ -163,26 +158,17 @@ class EstadoController extends Controller
         
             // generamos una nueva notificación para el estado creado y editamos las notas
             // con el apellido y nombre del usuario
-            $nuevaNotificacion = new Notificacion;
-            $nuevaNotificacion->estado = $nuevoEstado;
-            $nuevaNotificacion->mensaje = 'La solicitud ha sido asignada al usuario {{$usuario->apellido}} {{$usuario->nombre}}.';
-            $nuevaNotificacion->leida = false;
-          //  $nuevaNotificacion->save();
-            return view('solicitud.index'); //definir vista de retorno
-        }
-        else {
-            return back()->with('Error: no se encuentra la solicitud indicada.');
+        //     $nuevaNotificacion = new Notificacion;
+        //     $nuevaNotificacion->estado = $nuevoEstado;
+        //     $nuevaNotificacion->mensaje = 'La solicitud ha sido asignada al usuario {{$usuario->apellido}} {{$usuario->nombre}}.';
+        //     $nuevaNotificacion->leida = false;
+        //   //  $nuevaNotificacion->save();
+            //return view('solicitud.index'); //definir vista de retorno
         }
     }
 
-    public function finalizarTramite($idSolicitud) {
-        $solicitud = solicitud_cert_prog::find($idSolicitud);
+    // public function finalizarTramite($idSolicitud) {
+    //     $solicitud = solicitud_cert_prog::find($idSolicitud);
 
-    }
-
-// PRIVADA
-
-    private function cambioEstado($idSolicitud, $idEstadoDescripcion, $idUsuario = null) {
-
-    }
+    // }
 }
