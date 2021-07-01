@@ -2,11 +2,12 @@
 @section('cuerpo')
     @php($titulo = 'Ver detalles solicitud - Petrel')@endphp
     @include('estructura/header')
+
     <main class="p-2" id="cuerpo">
         {{-- Inicio main cuerpo --}}
         {{-- ---------------- ESTE ES EL SHOW DE ESTUDIANTE -------------------------------------- --}}
         {{-- <div class="container">
-            <a href="{{ url()->previous() }}" class="lead"><i class="fas fa-chevron-left me-2"></i>Atrás</a>
+            <a href="{{ route('solicitud.index' }}" class="lead"><i class="fas fa-chevron-left me-2"></i>Atrás</a>
         </div>
         {{-- inicion mostrar solicitud --}}
         {{-- <div class="container-fluid p-1 mx-auto">
@@ -29,7 +30,7 @@
                             </p>
                         </div> --}}
 
-                        {{-- nombregit ps y apellidos --}}
+                        {{-- nombres y apellidos --}}
                         {{-- <div class="row justify-content-between text-left">
                             <p class=" "><span class="text-secondary ">Solicitante: </span>
                                 {{ $solicitud->usuarioEstudiante->apellido }},
@@ -65,7 +66,7 @@
 
 
 
-        @if($solicitud->estados->last()->estado_descripcion->descripcion=='Iniciado' || $solicitud->estados->last()->estado_descripcion->descripcion=='Aguarda Firma Departamento Alumnos' || $solicitud->estados->last()->estado_descripcion->descripcion=='Asignado') 
+        @if($solicitud->estados->last()->estado_descripcion->descripcion=='Iniciado' || $solicitud->estados->last()->estado_descripcion->descripcion=='Aguarda Firma Departamento Alumnos' || $solicitud->estados->last()->estado_descripcion->descripcion=='Asignado')
         {{-- ---------------- ESTE ES EL SHOW DE ADMINISTRATIVO DEPTO ALUMNOS -------------------------------------- --}}
         <div class="container">
             <a href="{{ url()->previous() }}" class="lead"><i class="fas fa-chevron-left me-2"></i>Atrás</a>
@@ -209,8 +210,7 @@
                                                             @endforeach
                                                             </tbody>
                                                         </table>
-                                                    {{-- boton de agregar comentario --}}
-                                                    <a href="#" class="botonFormulario" data-bs-toggle="modal" data-bs-target="#modalMensaje">
+                                                        <a href="#" class="botonFormulario" data-bs-toggle="modal" data-bs-target="#modalMensaje">
                     Nuevo mensaje
                 </a>
                 <!-- Modal -->
@@ -243,44 +243,7 @@
                                                                 <button id="boton" name="boton" type="submit"
                                                                     class="botonFormulario">Enviar mensaje</button>
                                                             </div>
-                                                    {{-- boton de agregar comentario --}}
-                                                    <a href="#" class="botonFormulario" data-bs-toggle="modal" data-bs-target="#modalMensaje">
-                    Nuevo mensaje
-                </a>
-                <!-- Modal -->
-                <div class="modal fade" id="modalMensaje" tabindex="-1" aria-labelledby="modalMensajeLabel"
-                    aria-hidden="true">
-                    <div class="modal-dialog">
-                        <div class="modal-content">
-                            <div class="modal-header">
-                                <h5 class="modal-title" id="modalLoginLabel">Nuevo Mensaje</h5>
-                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                            </div>
-                            <div class="modal-body">
-                                <div class="container-fluid px-1 py-5 mx-auto">
-                                    <div class="row d-flex justify-content-center">
-                                        <div class="col">
-                                            <div class="card card-form">
-                                                <form class="" method="POST" action="{{ route('comentario.store') }}">
-                                                    @csrf
-                                                    <div class="row justify-content-between text-left">
-                                                        <div class="form-group col-12 flex-column d-flex py-3">
-                                                            <input class="border-0 cell" type="text" id="mensaje"
-                                                                name="mensaje" placeholder="Ingrese el mensaje">
-                                                            <input type="text" hidden id="idUsuario" name="idUsuario"
-                                                                value="{{ $estado->usuario->id_usuario ?? ''}}">
-                                                            <input type="text" hidden id="idSolicitud" name="idSolicitud"
-                                                                value="{{ $estado->id_solicitud }}">
                                                         </div>
-<<<<<<< HEAD
-                                                        <div class="row justify-content-center text-center py-4">
-                                                            <div class="form-group col-sm-6">
-                                                                <button id="boton" name="boton" type="submit"
-                                                                    class="botonFormulario">Enviar mensaje</button>
-                                                            </div>
-                                                        </div>
-=======
->>>>>>> 24761f7add3d55d1f03245fddfbc1cb2c1796489
                                                 </form>
                                             </div>
                                         </div>
@@ -382,94 +345,12 @@
                                 {{ $solicitud->universidad_destino }}
                             </p>
                         </div>
-
                         {{-- Comienzo div Actividad (mostrar como acordeón) --}}
                         <div class="row d-flex justify-content-center">
                             <div class="col-12  p-2">
                                 <div class="accordion" id="acordeonComentarios">
                                     <div class="accordion-item mt-4">
-  {{-- Comienzo div Actividad (mostrar como acordeón) --}}
-  <div class="row d-flex justify-content-center">
-    <div class="col-12  p-2">
-        <div class="accordion" id="acordeonComentarios">
-            <div class="accordion-item mt-4">
 
-                <button
-                    class="accordion-button collapsed justify-content-center botonAcordeonComentarios"
-                    type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne"
-                    aria-expanded="true" aria-controls="collapseOne">
-                    <h2 class="align-self-center" id="headingOne"> Actividad </h2>
-                </button>
-
-                <div id="collapseOne" class="accordion-collapse collapse justify-content-center"
-                    aria-labelledby="headingOne" data-bs-parent="#acordeonComentarios">
-
-                    <div class="accordion-body  d-flex justify-content-center acordeonComentarios">
-
-                        <div class="table-responsive col-12 mx-3">
-                            <h4 class="text-center fw-bold cell">Historial de Estados de la Solicitud</h4>
-                            <table
-                                class="table table-striped table-hover align-middle table-borderless">
-                                <thead class="border-bottom">
-                                    <tr>
-                                        <th scope="col" class="p-2 text-center">Fecha</th>
-                                        <th scope="col" class="p-2 text-center">Usuario</th>
-                                        <th scope="col" class="p-2 text-center">Estado</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    @foreach ($solicitud->estados as $estado)
-                                    <tr>
-                                        <td class="p-2">{{ $estado->created_at }}</td>
-                                        <td class="p-2">{{ $estado->usuario->nombre ?? ''}} {{ $estado->usuario->apellido ?? ''}}</td>
-                                        <td class="p-2">{{ $estado->estado_descripcion->descripcion }}</td>
-                                    </tr>
-                                    @endforeach
-                                </tbody>
-                            </table>
-                            <h4 class="text-center fw-bold cell">Mensajes</h4>
-                            <div class="table-responsive col-12 mx-3">
-                                <table
-                                    class="table table-striped table-hover align-middle table-borderless">
-                                    <thead class="border-bottom">
-                                        <tr>
-                                            <th scope="col" class="p-2 text-center">Fecha</th>
-                                            <th scope="col" class="p-2 text-center">Usuario</th>
-                                            <th scope="col" class="p-2 text-center">Detalle</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        <tr>
-                                            <td class="p-2">12/05/2021</td>
-                                            <td class="p-2">Viviana Pedrero</td>
-                                            <td class="p-2">asignado a Raquel sdhakshaksdas
-                                                dbahsbdhamsbdasbdjasbdajsdbaksdhakhs
-                                                dbahmsdbahmsdbahmsbdamsbdamhsbdahsbfkhasbfhasfbmahsfbamsfbamhsbfmhasfaf
-                                            </td>
-                                        </tr>
-
-                                        <tr>
-                                            <td class="p-2">12/05/2021</td>
-                                            <td class="p-2">Viviana Pedrero</td>
-                                            <td class="p-2">asignado a Raquel sdhakshaksdas
-                                                dbahsbdhamsbdasbdjasbdajsdbaksdhakhs
-                                                dbahmsdbahmsdbahmsbdamsbdamhsbdahsbfkhasbfhasfbmahsfbamsfbamhsbfmhasfaf
-                                            </td>
-                                        </tr>
-
-                                        <tr>
-                                            <td class="p-2">12/05/2021</td>
-                                            <td class="p-2">Viviana Pedrero</td>
-                                            <td class="p-2">asignado a Raquel sdhakshaksdas
-                                                dbahsbdhamsbdasbdjasbdajsdbaksdhakhs
-                                                dbahmsdbahmsdbahmsbdamsbdamhsbdahsbfkhasbfhasfbmahsfbamsfbamhsbfmhasfaf
-                                            </td>
-                                        </tr>
-                                    </tbody>
-                                </table>
-                            {{-- boton de agregar comentario --}}
-                            <div class="row justify-content-center">
-                                <div class="col-12 mt-2 p-2 ">
                                         <button
                                             class="accordion-button collapsed justify-content-center botonAcordeonComentarios"
                                             type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne"
@@ -495,26 +376,13 @@
                                                             </tr>
                                                         </thead>
                                                         <tbody>
+                                                            @foreach ($solicitud->estados as $estado)
                                                             <tr>
-                                                                <td class="p-2">12/05/2021</td>
-                                                                <td class="p-2">Viviana Pedrero</td>
-                                                                <td class="p-2">asignado a Raquel
-                                                                </td>
+                                                                <td class="p-2">{{ $estado->created_at }}</td>
+                                                                <td class="p-2">{{ $estado->usuario->nombre ?? ''}} {{ $estado->usuario->apellido ?? ''}}</td>
+                                                                <td class="p-2">{{ $estado->estado_descripcion->descripcion }}</td>
                                                             </tr>
-
-                                                            <tr>
-                                                                <td class="p-2">17/05/2021</td>
-                                                                <td class="p-2">Viviana Pedrero</td>
-                                                                <td class="p-2">asignado a Ricardo Ford
-                                                                </td>
-                                                            </tr>
-
-                                                            <tr>
-                                                                <td class="p-2">12/05/2021</td>
-                                                                <td class="p-2">Viviana Pedrero</td>
-                                                                <td class="p-2">espera firma Secretaria
-                                                                </td>
-                                                            </tr>
+                                                            @endforeach
                                                         </tbody>
                                                     </table>
                                                     <h4 class="text-center fw-bold cell">Mensajes</h4>
@@ -529,32 +397,13 @@
                                                                 </tr>
                                                             </thead>
                                                             <tbody>
-                                                                <tr>
-                                                                    <td class="p-2">12/05/2021</td>
-                                                                    <td class="p-2">Viviana Pedrero</td>
-                                                                    <td class="p-2">asignado a Raquel sdhakshaksdas
-                                                                        dbahsbdhamsbdasbdjasbdajsdbaksdhakhs
-                                                                        dbahmsdbahmsdbahmsbdamsbdamhsbdahsbfkhasbfhasfbmahsfbamsfbamhsbfmhasfaf
-                                                                    </td>
-                                                                </tr>
-
-                                                                <tr>
-                                                                    <td class="p-2">12/05/2021</td>
-                                                                    <td class="p-2">Viviana Pedrero</td>
-                                                                    <td class="p-2">asignado a Raquel sdhakshaksdas
-                                                                        dbahsbdhamsbdasbdjasbdajsdbaksdhakhs
-                                                                        dbahmsdbahmsdbahmsbdamsbdamhsbdahsbfkhasbfhasfbmahsfbamsfbamhsbfmhasfaf
-                                                                    </td>
-                                                                </tr>
-
-                                                                <tr>
-                                                                    <td class="p-2">12/05/2021</td>
-                                                                    <td class="p-2">Viviana Pedrero</td>
-                                                                    <td class="p-2">asignado a Raquel sdhakshaksdas
-                                                                        dbahsbdhamsbdasbdjasbdajsdbaksdhakhs
-                                                                        dbahmsdbahmsdbahmsbdamsbdamhsbdahsbfkhasbfhasfbmahsfbamsfbamhsbfmhasfaf
-                                                                    </td>
-                                                                </tr>
+                                                            @foreach ($solicitud->comentarios as $comentario)
+                                                            <tr>
+                                                                <td class="p-2">{{ $comentario->created_at }}</td>
+                                                                <td class="p-2">{{ $comentario->usuario->nombre }} {{ $comentario->usuario->apellido }}</td>
+                                                                <td class="p-2">{{ $comentario->descripcion }}</td>
+                                                            </tr>
+                                                            @endforeach
                                                             </tbody>
                                                         </table>
                                                         {{-- boton de agregar comentario --}}
@@ -744,132 +593,7 @@
                                             aria-expanded="true" aria-controls="collapseOne">
                                             <h2 class="align-self-center" id="headingOne"> Actividad </h2>
                                         </button>
-   {{-- Comienzo div Actividad (mostrar como acordeón) --}}
-   <div class="row d-flex justify-content-center">
-    <div class="col-12  p-2">
-        <div class="accordion" id="acordeonComentarios">
-            <div class="accordion-item mt-4">
 
-                <button
-                    class="accordion-button collapsed justify-content-center botonAcordeonComentarios"
-                    type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne"
-                    aria-expanded="true" aria-controls="collapseOne">
-                    <h2 class="align-self-center" id="headingOne"> Actividad </h2>
-                </button>
-
-                <div id="collapseOne" class="accordion-collapse collapse justify-content-center"
-                    aria-labelledby="headingOne" data-bs-parent="#acordeonComentarios">
-
-                    <div class="accordion-body  d-flex justify-content-center acordeonComentarios">
-
-                        <div class="table-responsive col-12 mx-3">
-                            <h4 class="text-center fw-bold cell">Historial de Estados de la Solicitud</h4>
-                            <table
-                                class="table table-striped table-hover align-middle table-borderless">
-                                <thead class="border-bottom">
-                                    <tr>
-                                        <th scope="col" class="p-2 text-center">Fecha</th>
-                                        <th scope="col" class="p-2 text-center">Usuario</th>
-                                        <th scope="col" class="p-2 text-center">Estado</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    @foreach ($solicitud->estados as $estado)
-                                    <tr>
-                                        <td class="p-2">{{ $estado->created_at }}</td>
-                                        <td class="p-2">{{ $estado->usuario->nombre ?? ''}} {{ $estado->usuario->apellido ?? ''}}</td>
-                                        <td class="p-2">{{ $estado->estado_descripcion->descripcion }}</td>
-                                    </tr>
-                                    @endforeach
-                                </tbody>
-                            </table>
-                            <h4 class="text-center fw-bold cell">Mensajes</h4>
-                            <div class="table-responsive col-12 mx-3">
-                                <table
-                                    class="table table-striped table-hover align-middle table-borderless">
-                                    <thead class="border-bottom">
-                                        <tr>
-                                            <th scope="col" class="p-2 text-center">Fecha</th>
-                                            <th scope="col" class="p-2 text-center">Usuario</th>
-                                            <th scope="col" class="p-2 text-center">Detalle</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        <tr>
-                                            <td class="p-2">12/05/2021</td>
-                                            <td class="p-2">Viviana Pedrero</td>
-                                            <td class="p-2">asignado a Raquel sdhakshaksdas
-                                                dbahsbdhamsbdasbdjasbdajsdbaksdhakhs
-                                                dbahmsdbahmsdbahmsbdamsbdamhsbdahsbfkhasbfhasfbmahsfbamsfbamhsbfmhasfaf
-                                            </td>
-                                        </tr>
-
-        <div class="container-fluid p-1 mx-auto"> {{-- Comienzo div Actividad (mostrar como acordeón) --}}
-            <div class="tittle cp-1 cell my-3">
-                <h2 class="text-center fw-bold">Actividad </h2>
-            </div>
-            <table class="table table-borderless">
-                <thead class="border-bottom">
-                    <tr>
-                        <th scope="col">Fecha</th>
-                        <th scope="col">Usuario</th>
-                        <th scope="col">Detalle</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td>12/05/2021</td>
-                        <td>Viviana Pedrero</td>
-                        <td>asignado a Raquel</td>
-                    </tr>
-                    <tr>
-                        <td>12/05/2021</td>
-                        <td>Viviana Pedrero</td>
-                        <td>comentario 2 blablablablablalbalba</td>
-                    </tr>
-                    <tr>
-                        <td>12/05/2021</td>
-                        <td>Viviana Pedrero</td>
-                        <td>asignado a Raquel</td>
-                    </tr>
-                </tbody>
-            </table>
-
-            <div class="row justify-content-center ">
-                <div class="col-6 p-2 m-2">
-                    {{-- ESTE FORM/BOTÒN DEBERIA SER VISIBLE SÒLO SI EL USUARIO ASIGNADO ES EL USUARIO LOGUEADO --}}
-                    <form action="{{ route('hojaResumen.store') }}" method="POST" autocomplete="off" enctype="multipart/form-data">
-                        @csrf
-                        {{-- aca voy a recibir el $idSolicitud , por ahora utilizo un input , luego este $idSolicitud estara en un campo oculto --}}
-                        <input type="hidden" id="idSolicitud" name="idSolicitud" value="{{ $solicitud->idSolicitud }}">
-                        <input type="submit" class="botonFormulario" value="comenzar trámite">
-                    </form>
-                </div>
-            </div>
-        </div> {{-- Fin div Actividad --}}
-
-                                        <tr>
-                                            <td class="p-2">12/05/2021</td>
-                                            <td class="p-2">Viviana Pedrero</td>
-                                            <td class="p-2">asignado a Raquel sdhakshaksdas
-                                                dbahsbdhamsbdasbdjasbdajsdbaksdhakhs
-                                                dbahmsdbahmsdbahmsbdamsbdamhsbdahsbfkhasbfhasfbmahsfbamsfbamhsbfmhasfaf
-                                            </td>
-                                        </tr>
-
-                                        <tr>
-                                            <td class="p-2">12/05/2021</td>
-                                            <td class="p-2">Viviana Pedrero</td>
-                                            <td class="p-2">asignado a Raquel sdhakshaksdas
-                                                dbahsbdhamsbdasbdjasbdajsdbaksdhakhs
-                                                dbahmsdbahmsdbahmsbdamsbdamhsbdahsbfkhasbfhasfbmahsfbamsfbamhsbfmhasfaf
-                                            </td>
-                                        </tr>
-                                    </tbody>
-                                </table>
-                            {{-- boton de agregar comentario --}}
-                            <div class="row justify-content-center">
-                                <div class="col-12 mt-2 p-2 ">
                                         <div id="collapseOne" class="accordion-collapse collapse justify-content-center"
                                             aria-labelledby="headingOne" data-bs-parent="#acordeonComentarios">
 
@@ -888,26 +612,13 @@
                                                             </tr>
                                                         </thead>
                                                         <tbody>
+                                                            @foreach ($solicitud->estados as $estado)
                                                             <tr>
-                                                                <td class="p-2">12/05/2021</td>
-                                                                <td class="p-2">Viviana Pedrero</td>
-                                                                <td class="p-2">asignado a Raquel
-                                                                </td>
+                                                                <td class="p-2">{{ $estado->created_at }}</td>
+                                                                <td class="p-2">{{ $estado->usuario->nombre ?? ''}} {{ $estado->usuario->apellido ?? ''}}</td>
+                                                                <td class="p-2">{{ $estado->estado_descripcion->descripcion }}</td>
                                                             </tr>
-
-                                                            <tr>
-                                                                <td class="p-2">17/05/2021</td>
-                                                                <td class="p-2">Viviana Pedrero</td>
-                                                                <td class="p-2">asignado a Ricardo Ford
-                                                                </td>
-                                                            </tr>
-
-                                                            <tr>
-                                                                <td class="p-2">12/05/2021</td>
-                                                                <td class="p-2">Viviana Pedrero</td>
-                                                                <td class="p-2">espera firma Secretaria
-                                                                </td>
-                                                            </tr>
+                                                            @endforeach
                                                         </tbody>
                                                     </table>
                                                     <h4 class="text-center fw-bold cell">Mensajes</h4>
@@ -922,14 +633,13 @@
                                                                 </tr>
                                                             </thead>
                                                             <tbody>
-                                                                <tr>
-                                                                    <td class="p-2">12/05/2021</td>
-                                                                    <td class="p-2">Viviana Pedrero</td>
-                                                                    <td class="p-2">asignado a Raquel sdhakshaksdas
-                                                                        dbahsbdhamsbdasbdjasbdajsdbaksdhakhs
-                                                                        dbahmsdbahmsdbahmsbdamsbdamhsbdahsbfkhasbfhasfbmahsfbamsfbamhsbfmhasfaf
-                                                                    </td>
-                                                                </tr>
+                                                            @foreach ($solicitud->comentarios as $comentario)
+                                                            <tr>
+                                                                <td class="p-2">{{ $comentario->created_at }}</td>
+                                                                <td class="p-2">{{ $comentario->usuario->nombre }} {{ $comentario->usuario->apellido }}</td>
+                                                                <td class="p-2">{{ $comentario->descripcion }}</td>
+                                                            </tr>
+                                                            @endforeach
                                                             </tbody>
                                                             </table>
                                                                 
