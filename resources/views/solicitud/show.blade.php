@@ -65,11 +65,7 @@
 
 
 
-<<<<<<< HEAD
-        @if($solicitud->estados->last()->estado_descripcion->descripcion=='Iniciado' || $solicitud->estados->last()->estado_descripcion->descripcion=='Aguarda Firma Departamento Alumnos' || $solicitud->estados->last()->estado_descripcion->descripcion=='Asignado')
-=======
         @if($solicitud->estados->last()->estado_descripcion->descripcion=='Iniciado' || $solicitud->estados->last()->estado_descripcion->descripcion=='Aguarda Firma Departamento Alumnos' || $solicitud->estados->last()->estado_descripcion->descripcion=='Asignado') 
->>>>>>> para mergear
         {{-- ---------------- ESTE ES EL SHOW DE ADMINISTRATIVO DEPTO ALUMNOS -------------------------------------- --}}
         <div class="container">
             <a href="{{ url()->previous() }}" class="lead"><i class="fas fa-chevron-left me-2"></i>Atrás</a>
@@ -213,8 +209,6 @@
                                                             @endforeach
                                                             </tbody>
                                                         </table>
-<<<<<<< HEAD
-<<<<<<< HEAD
                                                         {{-- boton de agregar comentario --}}
                                                         <div class="row justify-content-center">
                                                             <div class="col-12 mt-2 p-2 ">
@@ -229,9 +223,6 @@
                                                                         value="Agregar Mensaje">
                                                                 </form>
                                                             </div>
-=======
-=======
->>>>>>> restaurando
                                                     {{-- boton de agregar comentario --}}
                                                     <a href="#" class="botonFormulario" data-bs-toggle="modal" data-bs-target="#modalMensaje">
                     Nuevo mensaje
@@ -260,10 +251,6 @@
                                                                 value="{{ $estado->usuario->id_usuario ?? ''}}">
                                                             <input type="text" hidden id="idSolicitud" name="idSolicitud"
                                                                 value="{{ $estado->id_solicitud }}">
-<<<<<<< HEAD
->>>>>>> Falta Arreglar un poco la vista
-=======
->>>>>>> restaurando
                                                         </div>
                                                         <div class="row justify-content-center text-center py-4">
                                                             <div class="form-group col-sm-6">
@@ -372,17 +359,12 @@
                                 {{ $solicitud->universidad_destino }}
                             </p>
                         </div>
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
->>>>>>> restaurando
+
                         {{-- Comienzo div Actividad (mostrar como acordeón) --}}
                         <div class="row d-flex justify-content-center">
                             <div class="col-12  p-2">
                                 <div class="accordion" id="acordeonComentarios">
                                     <div class="accordion-item mt-4">
-<<<<<<< HEAD
-=======
   {{-- Comienzo div Actividad (mostrar como acordeón) --}}
   <div class="row d-flex justify-content-center">
     <div class="col-12  p-2">
@@ -465,10 +447,6 @@
                             {{-- boton de agregar comentario --}}
                             <div class="row justify-content-center">
                                 <div class="col-12 mt-2 p-2 ">
->>>>>>> El Retorno del Estado: Aguarda Firma Dpto. de Alumnos
-=======
->>>>>>> restaurando
-
                                         <button
                                             class="accordion-button collapsed justify-content-center botonAcordeonComentarios"
                                             type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne"
@@ -731,10 +709,6 @@
                                 {{ $solicitud->universidad_destino }}
                             </p>
                         </div>
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
->>>>>>> restaurando
                         {{-- Comienzo div Actividad (mostrar como acordeón) --}}
                         <div class="row d-flex justify-content-center">
                             <div class="col-12  p-2">
@@ -747,8 +721,6 @@
                                             aria-expanded="true" aria-controls="collapseOne">
                                             <h2 class="align-self-center" id="headingOne"> Actividad </h2>
                                         </button>
-<<<<<<< HEAD
-=======
    {{-- Comienzo div Actividad (mostrar como acordeón) --}}
    <div class="row d-flex justify-content-center">
     <div class="col-12  p-2">
@@ -875,10 +847,6 @@
                             {{-- boton de agregar comentario --}}
                             <div class="row justify-content-center">
                                 <div class="col-12 mt-2 p-2 ">
->>>>>>> El Retorno del Estado: Aguarda Firma Dpto. de Alumnos
-=======
->>>>>>> restaurando
-
                                         <div id="collapseOne" class="accordion-collapse collapse justify-content-center"
                                             aria-labelledby="headingOne" data-bs-parent="#acordeonComentarios">
 
