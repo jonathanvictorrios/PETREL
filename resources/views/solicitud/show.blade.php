@@ -371,7 +371,6 @@
                                                                 value="{{ $estado->usuario->id_usuario ?? ''}}">
                                                             <input type="text" hidden id="idSolicitud" name="idSolicitud"
                                                                 value="{{ $estado->id_solicitud }}">
-
                                                         </div>
                                                         {{-- fin modal --}}
                                                     </div>
@@ -550,7 +549,6 @@
                             <div class="col-12  p-2">
                                 <div class="accordion" id="acordeonComentarios">
                                     <div class="accordion-item mt-4">
-
                                         <button
                                             class="accordion-button collapsed justify-content-center botonAcordeonComentarios"
                                             type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne"
