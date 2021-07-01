@@ -202,7 +202,7 @@ class SolicitudCertProgController extends Controller
         $solicitud = SolicitudCertProg::findOrFail($idSolicitud);
         $usuarioAdministrativo = Usuario::findOrFail($idUsuarioAdministrativo);
 
-        $estadoDescripcion = EstadoDescripcion::find(3);
+        $estadoDescripcion = EstadoDescripcion::find($idUsuarioAdministrativo);
         $estadoController = new EstadoController;
 
         $estadoController->cambiarEstado($solicitud,$usuarioAdministrativo,$estadoDescripcion);

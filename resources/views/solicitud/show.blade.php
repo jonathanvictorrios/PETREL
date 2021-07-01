@@ -970,6 +970,10 @@
                                                                     id="modal_sesion_submit">Confirmar</button>
                                                             </div>
                                                         </div>
+                                                        <div class="modal-footer">
+                                                            <button type="submit" class="btn botonFormulario"
+                                                                id="modal_sesion_submit">Confirmar</button>
+                                                        </div>
                                                     </div>
                                                 </div>
                                             </form>
