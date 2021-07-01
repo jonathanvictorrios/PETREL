@@ -51,7 +51,7 @@
                 <input id="btn_crear-pdf" class="btn botonFormulario" name="btn_crear-pdf" type="submit" value="Crear PDF">
             </div>
             <div class="col-12 col-lg-4  p-1">
-                <a href="{{ url('carpeta/anio')}}" id="faltaPrograma" class="btn botonFormulario2" >Cargar faltantes</a>
+                <a href="{{ url('carpeta/anio')}}" id="faltaPrograma" class="btn botonFormulario2 d-none" target="_blank" >Cargar faltantes</a>
             </div>
             <div class="col-12 col-lg-4  p-1">
                 <a href="{{route('crearPlanEstudio',$solicitud->id_solicitud)}}" id="botonContinuar" class="btn {{ (session('success')) ? 'botonFormulario2' : 'botonFormulario2 disabled' }}">Continuar</a>

@@ -151,12 +151,12 @@
                             alt="firma_sol"></td>@endif
                 </tr>
                 <tr style="font-weight: bold;">
-                    <td>A/C. DEPTO ALUMNOS</td>
-                    @if($arregloRendimiento["Secretaria"])<td>SECRETARIA ACADEMICA</td>@endif
+                    <td>A/C. DEPTO ALUMNOS</td>{{-- Auth::user()->CARGO }} --}}
+                    @if($arregloRendimiento["Secretaria"])<td>SECRETARIA ACADEMICA</td>@endif{{-- Auth::user()->currentTeam->name }} --}}
                 </tr>
                 <tr style="font-weight: bold;">
-                    <td><small>VIVIANA PEDRERO</small></td>
-                    @if($arregloRendimiento["Secretaria"])<td><small>SILVIA AMARO</small></td>@endif
+                    <td><small>VIVIANA PEDRERO</small></td>{{-- Auth::user()->currentTeam->name }} --}}
+                    @if($arregloRendimiento["Secretaria"])<td><small>SILVIA AMARO</small></td>@endif{{-- Auth::user()->currentTeam->name }} --}}
                 </tr>
             </tbody>
         </table>

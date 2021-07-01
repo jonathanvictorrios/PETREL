@@ -2,19 +2,12 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Estado;
-use App\Models\EstadoDescripcion;
 use App\Models\HojaResumen;
 use App\Models\HojaResumenFinal;
 use App\Models\SolicitudCertProg;
-use App\Models\Usuario;
-use App\Http\Controllers\Helpers;
 use App\Models\Comentario;
-use Helpers as GlobalHelpers;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Artisan;
 use Illuminate\Support\Facades\DB;
-use App\Http\Controllers\mailPetrelController;
 
 class Archivo extends Controller
 {
@@ -190,6 +183,19 @@ class Archivo extends Controller
 
         return redirect()->route('solicitud.index')->with('mensaje', $mensaje);
     }
+
+    /**
+     * solamente sirve para descargar hoja resumen
+     * @param int $id
+     */
+    public function downloadHojaResumen($id){
+        $objetoHojaResumen = HojaResumen::where('id_solicitud', $id)->get()[0];
+        $path = $objetoHojaResumen->url_hoja_unida;
+        $pathFile = storage_path('app/' . $path);
+        header("Cache-Control: no-cache, must-revalidate");
+        return response()->download($pathFile);
+    }
+
 
     /**
      * Show the form for editing the specified resource.

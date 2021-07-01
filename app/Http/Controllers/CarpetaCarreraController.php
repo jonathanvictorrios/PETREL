@@ -39,16 +39,6 @@ class CarpetaCarreraController extends Controller
     }
 
     /**
-     * realizamos un borrado logico sobre la carpeta carrera
-     * @param Request $request
-     * @return view carpetaCarrera.index
-     */
-    public function destroy(Request $request)
-    {
-        echo "borrado logico sobre carpeta carrera";
-    }
-
-    /**
      * vamos a buscar los programas que pertenecen a la carpeta
      * @param int $idCarpetaCarrera
      * @return view carpetaCarrera.listarProgramas

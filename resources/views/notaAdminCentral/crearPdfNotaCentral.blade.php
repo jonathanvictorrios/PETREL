@@ -41,7 +41,7 @@
         <p style="text-align: center;">
             <img height="65px" width="100%" src="img/logoteSecretariaAcademica.png" alt="logo-unco">
         </p>
-        <p style="text-align: center;">
+        <p style="text-align: center; font-size: 16px; font-family:Arial, Helvetica, sans-serif;">
             Dirección General de Administración Académica
         </p>
         <p style="border-bottom: 1px solid;"></p>
@@ -49,7 +49,7 @@
 
     </header>
 
-    <footer style="border-top: 1px solid;font-size: 12px;">
+    <footer style="border-top: 1px solid; font-size: 12px; font-family:Arial, Helvetica, sans-serif;">
 
         <div>{!! $contenido_pie !!}</div>
 
@@ -57,8 +57,8 @@
 
     <main>
 
-        <div>{!! $contenido_subencabezado !!}</div>
-        <div>{!! $contenido_principal !!}</div>
+        <div style="font-size: 16px; font-family:'Times New Roman', Times, serif;">{!! $contenido_subencabezado !!}</div>
+        <div style="font-size: 16px; font-family:'Times New Roman', Times, serif; text-align: justify;border-top: 1px solid;">{!! $contenido_principal !!}</div>
 
     </main>
 

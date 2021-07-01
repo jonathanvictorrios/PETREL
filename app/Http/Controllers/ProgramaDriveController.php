@@ -24,7 +24,7 @@ class ProgramaDriveController extends Controller
         $i = 0;
         $programaEncontrado = false;
         while ($i < count($colProgramas) && !$programaEncontrado) {
-            $programaEncontrado = (strcasecmp($colProgramas[$i]->nombre_programa, $request->nombrePrograma) == 0);
+            $programaEncontrado = (strcasecmp($colProgramas[$i]->nombre_programa, $request->nombrePrograma.'.pdf') == 0);
             $i++;
         }
         if (!$programaEncontrado) {
@@ -59,17 +59,6 @@ class ProgramaDriveController extends Controller
     }
 
     /**
-     * Buscamos con el id el programa y mostramos todos los atributos del programa
-     * @param int $idPrograma
-     * @return view programa.show
-     *
-     * public function show($idPrograma)
-     * {
-     *     $programa = ProgramaDrive::find($idPrograma);
-     *     return view('programaDrive.show')->with('programa',$programa);
-     * } */
-
-    /**
      * leemos el id del programa para agregar los nuevos datos sobre el mismo
      * @param int $idPrograma
      * @return view programaDrive.show
@@ -77,22 +66,37 @@ class ProgramaDriveController extends Controller
     public function update(Request $request)
     {
         $programa = ProgramaDrive::find($request->id_programa);
-        $programa->update([
-            'nombre_programa' => $request->nombre,
-            'numero_programa' => $request->numero
-        ]);
+        if($request->file('programaPdf')!=null){
+            $nombre =  $request->numeroPrograma . '-' . $request->nombre.'.pdf';
+            $guardadoDrive = $request->file('pdfPrograma')->storeAs(
+                $programa->carpeta_carrera->url_carrera, //donde se guarda
+                $nombre, //nombre con el que se guarda
+                'google'
+            );
+            if ($guardadoDrive) {
+                $colArchivos = Storage::disk('google')->files($programa->carpeta_carrera->url_carrera);
+                $i = 0;
+                $encontrado = false;
+                while ($i < count($colArchivos) && !$encontrado) {
+                    $encontrado = Storage::disk('google')->getMetadata($colArchivos[$i])['name'] == $nombre;
+                    $i++;
+                }
+                $urlPrograma = substr(strrchr($colArchivos[($i - 1)], '/'), 1);
+                $programa->update([
+                    'nombre_programa' => $nombre,
+                    'numero_programa' => $request->numeroPrograma,
+                    'url_programa' => $urlPrograma,
+                ]);
+            }else{
+                echo "No se ha cargado al sistema";
+            }
+        }else{
+            $programa->update([
+                'nombre_programa' => $request->nombre,
+                'numero_programa' => $request->numero
+            ]);
+        }
         return view('carpetaCarrera.listarProgramas')->with('carpetaCarrera', $programa->carpeta_carrera);
-    }
-
-    /**
-     * Realizamos el borrado logico sobre el programa de nuestra base de datos
-     * sigue existiendo en GoogleDrive
-     * @param Request $idPrograma
-     * @return view programaDrive.index
-     */
-    public function destroy(Request $idPrograma)
-    {
-        echo "borrado logico del programa";
     }
 
     /**

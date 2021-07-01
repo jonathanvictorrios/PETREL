@@ -60,7 +60,7 @@
             <input type="button" value="Limpiar" onclick="document.getElementById('url_ranquel').value = ''" class="btn botonFormulario2">
         </div>
         <div class="col-12 col-lg-6  p-1">
-            <input type="submit" value="Enviar" class="btn botonFormulario">
+            <input type="submit" value="Plan de estudios y ordenanzas" class="btn botonFormulario">
         </div>
         <div class="col-12 col-lg-3  p-1">
             <a href="{{ (session('success')) ? route('notaDA.crear',$solicitud->id_solicitud) : '#' }}" class="btn {{ (session('success')) ? 'botonFormulario2' : 'botonFormulario2 disabled' }}">Continuar</a>

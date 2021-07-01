@@ -7,9 +7,7 @@ use Illuminate\Http\Request;
 use App\Models\NotaAdminCentral;
 use App\Models\HojaResumenFinal;
 use App\Models\HojaResumen;
-use App\Models\SolicitudCertProg;
 use Barryvdh\DomPDF\Facade as PDF;
-//use Illuminate\Support\Facades\Storage;
 
 use Karriere\PdfMerge\PdfMerge;
 
@@ -17,9 +15,7 @@ class NotaAdminCentralController extends Controller
 {
     public function crearNotaAdminCentral(Request $request)
     {
-        $solicitudes = SolicitudCertProg::all();
-
-        $id_solicitud = $request->id_solicitud;
+        $id_solicitud = $request->idSolicitud;
         $contenido_subencabezado=$request->contenido_subencabezado;
         $contenido_principal=$request->contenido_principal;
         $contenido_pie=$request->contenido_pie;
@@ -55,7 +51,6 @@ class NotaAdminCentralController extends Controller
         return redirect()->route('foliar',$id_solicitud);
     }
 
-
     //Unir pfd hoja unida con pdf nota admin central y se forma pdf hoja unida final sin firma
     public function unirPdfs($idSolicitud)
     {
@@ -79,105 +74,5 @@ class NotaAdminCentralController extends Controller
         $ruta = 'id-solicitud-' . $idSolicitud . '/' . $nombrePdf;
 
         return $ruta;
-    }
-
-
-
-    /**
-     * Lista de todas las Notas de administracion Central
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function index()
-    {
-        /*
-        $datosNotaAdminCentral = NotaAdminCentral::get();
-        return view('notaAdminCentral.index')->with('datosNotaAdminCentral', $datosNotaAdminCentral);*/
-    }
-
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
-    {
-        /*
-        $request->validate([
-            'url_pdf_nota_admin_central' => 'required',
-        ]);
-
-        NotaAdminCentral::create($request->all());
-
-        return redirect()->route('notaAmincentral.index')->with('exito', 'Nota creada con exito!!.');
-      */
-    }
-
-
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        /*
-        return view('notaAdminCentral.create');*/
-    }
-
-
-
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id_nota_admin_central
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id_nota_admin_central)
-    {
-        /*
-        $notaAdminCentral = NotaAdminCentral::find($id_nota_admin_central);
-        return view('notaAdminCentral.show')->with('notaAdminCentral', $notaAdminCentral);*/
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id_nota_admin_central
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id_nota_admin_central)
-    {
-        /*
-        $notaAdminCentral = NotaAdminCentral::findOrFail($id_nota_admin_central);
-        return view('notaAdminCentral.edit')->with('notaAdminCentral', $notaAdminCentral);*/
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id_nota_admin_central
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, $id_nota_admin_central)
-    {
-        /*
-        $notaAdminCentral = NotaAdminCentral::find($id_nota_admin_central);
-        $notaAdminCentral->update($request->all());
-
-        return redirect()->route('notaAdminCentral.index')->with('sms', 'Nota Admin Central actualizada con exito!!'); */
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy($id)
-    {
-        //
     }
 }

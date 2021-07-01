@@ -12,13 +12,6 @@ use PDF;
 
 class HojaResumenController extends Controller
 {
-    public function index()
-    {
-        return view('hojaResumen.create');
-        // $colHojasResumen=HojaResumen::get();
-        // return view('hojaResumen.show')->with('colHojasResumen',$colHojasResumen);
-    }
-
     public function continuarTramite(Request $request){
         $idSolicitud = $request->idSolicitud;
         $objHojaResumen = HojaResumen::where('id_solicitud',$idSolicitud)->get();
@@ -43,6 +36,15 @@ class HojaResumenController extends Controller
         $unaHojaResumen->id_solicitud = $request->idSolicitud;
         $unaHojaResumen->save();
         $objSolicitud = SolicitudCertProg::find($request->idSolicitud);
+        $objSolicitud->id_user_u = 2;
+        $objSolicitud->save();
+        $objEstado = new Estado();
+        $objEstado->id_solicitud = $objSolicitud->id_solicitud;
+        $objEstado->id_estado_descripcion=3;
+        $objEstado->id_usuario=2;
+        $objEstado->created_at = date('Y-m-d H:i:s');
+        $objEstado->updated_at = date('Y-m-d H:i:s');
+        $objEstado->save();
         return view('rendimientoAcademico.create')->with('solicitud', $objSolicitud);
     }
 
@@ -80,20 +82,11 @@ class HojaResumenController extends Controller
             $estado->id_estado_descripcion = 5;
             $estado->id_usuario = $objSolicitud->usuarioEstudiante->id_usuario;
             $estado->save();
-        return Storage::download('id-solicitud-'.$idSolicitud.'/hojaUnida'.$idSolicitud.'.pdf');
-        /* return view('solicitud.show',['solicitud'=>$objSolicitud]); */
-        /* return redirect()->route('solicitud'); */
+        return Storage::download('id-solicitud-'.$idSolicitud.'/hojaUnida'.$idSolicitud.'.pdf','HojaResumen-'.$objSolicitud->id_solicitud.'-Firmada.pdf');
     }
 
     public static function realizarUnion($idSolicitud)
     {
-        /*Nombres de archivos pdf para conformar la hoja resumen: idSolicitud=6
-            notaDtoAlum6.pdf
-            rendimientoAcademico6.pdf
-            planEstudio6.pdf
-            unionProgramas6.pdf
-        */
-
         $urlPdfsLocales=[];
         $urlPdfsLocales[]='notaDptoAlumno'.$idSolicitud.'.pdf';
         $urlPdfsLocales[]='rendimientoAcademico'.$idSolicitud.'.pdf';

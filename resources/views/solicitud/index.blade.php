@@ -217,7 +217,7 @@
                                             <td>{{$solicitud->estados->last()->created_at}}</td>
                                             <td>{{$solicitud->legajo}}</td>
                                             <td>{{$solicitud->usuarioAdministrativo->apellido}}, {{$solicitud->usuarioAdministrativo->nombre}}</td>
-                                            <td><a href="{{route('solicitud.show',$solicitud->idSolicitud)}}">Ver Más</a>
+                                            <td><a href="{{route('solicitud.show',$solicitud->id_solicitud)}}">Ver Más</a>
                                             </td>
                                         </tr>
                                         @endif
@@ -399,10 +399,10 @@
                                         <tr>
                                         <th>{{$solicitud->id_solicitud}}</th>
                                             <td>{{$solicitud->estados->last()->estado_descripcion->descripcion}}</td>
-                                            <td>{{$solicitud->estados->firt()->created_at}}</td>
+                                            <td>{{$solicitud->estados->first()->created_at}}</td>
                                             <td>{{$solicitud->estados->last()->created_at}}</td>
                                             <td>{{$solicitud->usuarioEstudiante->apellido}}, {{$solicitud->usuarioEstudiante->nombre}}</td>
-                                            <td><a href="{{route('solicitud.show',$solicitud->idSolicitud)}}">Ver Más</a>
+                                            <td><a href="{{route('solicitud.show',$solicitud->id_solicitud)}}">Ver Más</a>
                                             </td>
                                         </tr>
                                         @endif
@@ -480,7 +480,7 @@
                                 </thead>
                                 <tbody>
                                     @foreach($solicitudes as $solicitud)
-                                    @if($solicitud->UltimoEstado == 'Aguarda Firma Santiago')
+                                    @if($solicitud->estados->last()->estado_descripcion->descripcion == 'Aguarda Firma Santiago')
                                     <tr>
                                         <th scope="row">
                                             <div class="form-check">
@@ -549,19 +549,14 @@
                                 </thead>
                                 <tbody>
                                     @foreach($solicitudes as $solicitud)
-                                    @if($solicitud->hoja_resumen_final != null)
-                                        @if($solicitud->hoja_resumen_final->url_hoja_unida_final != null && $solicitud->UltimoEstado == 'Aguarda Firma Santiago')
-                                        <tr>
-                                            <th>{{$solicitud->idSolicitud}}</th>
-                                            <td>{{$solicitud->UltimoEstado}}</td>
-                                            <td>{{$solicitud->Fecha}}</td>
-                                            <td>{{$solicitud->FechaUltimoEstado}}</td>
-                                            <td>{{$solicitud->UsuarioEstudiante}}</td>
-                                            <td><a href="{{route('solicitud.show',$solicitud->idSolicitud)}}">Ver Más</a>
-                                            </td>
-                                        </tr>
+                                        @if($solicitud->hoja_resumen_final != null)
+                                            @if($solicitud->hoja_resumen_final->url_hoja_unida_final != null && $solicitud->estados->last()->estado_descripcion->descripcion == 'Aguarda Firma Santiago')
+                                            <tr>
+                                                <th scope="row">{{$solicitud->Anio}}</th>
+                                                <td><a href="{{route('solicitud.show',$solicitud->idSolicitud)}}">Modificar</a></td>
+                                            </tr>
+                                            @endif
                                         @endif
-                                    @endif
                                     @endforeach
                                 </tbody>
                             </table>
@@ -680,13 +675,13 @@
                                 </thead>
                                 <tbody>
                                     @foreach($solicitudes as $solicitud)
-                                    @if($solicitud->estados->last()->estado_descripcion->descripcion!='Terminado')
-                                    <tr>
-                                        <th scope="row">{{$solicitud->Anio}}</th>
-                                        <th>{{$solicitud->carrera->carrera}}</th>
-                                        <td><a href="{{route('solicitud.show',$solicitud->id_solicitud)}}">Modificar</a></td>
-                                    </tr>
-                                    @endif
+                                        @if($solicitud->estados->last()->estado_descripcion->descripcion!='Terminado')
+                                            <tr>
+                                                <th scope="row">{{$solicitud->Anio}}</th>
+                                                <th>{{$solicitud->carrera->carrera}}</th>
+                                                <td><a href="{{route('solicitud.show',$solicitud->id_solicitud)}}">Modificar</a></td>
+                                            </tr>
+                                        @endif
                                     @endforeach
                                 </tbody>
                             </table>

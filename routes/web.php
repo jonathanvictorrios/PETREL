@@ -119,6 +119,7 @@ Route::get('archivos/{id}/downloadSinFirma', [Archivo::class, 'downloadSinFirma'
 Route::get('archivos/{id}/downloadFirmado', [Archivo::class, 'downloadFirmado'])->name('archivos.downloadFirmado');
 Route::get('archivos/{id}/comment', [Archivo::class, 'cargarComentario'])->name('archivos.cargarComentario');
 Route::resource('archivos', Archivo::class);
+Route::get('verHojaResumen/{id}',[Archivo::class,'downloadHojaResumen'])->name('verHojaResumen');
 
 // NOTA CREADA POR SANTIAGO EN ADMINISTRACION CENTRAL
 Route::resource('nota_admin_central', NotaAdminCentralController::class);
@@ -129,6 +130,10 @@ Route::post('descargar-nota-central', [NotaAdminCentralController::class, 'desca
 Route::resource('hojaResumenFinal', HojaResumenFinalController::class);
 Route::post('descargar-hoja-sin-firma', [HojaResumenFinalController::class, 'descargarPdfSinFirma'])->name('descargar-hoja-sin-firma');
 Route::get('foliar/{idSolicitud}', [HojaResumenFinalController::class, 'foliar'])->name('foliar');
+
+////// Ruta para que ile pueda agregar los estilos a la vista de creacion de nota admin central (de jona:D)//////
+Route::post('crearNotaAdminCentral', [HojaResumenFinalController::class, 'store'])->name('crearNotaAdminCentral');
+////// ////// ////// ////// ////// ////// ////// ////// ////// ////// ////// ////// ////// //////
 
 /* De aca mando el id de la solicitud y me dirije a la vista hojaResumenFinal.indexHojaFinal
 con el objeto solicitud donde se inica la creacion de la nota de certificacion */
@@ -144,6 +149,9 @@ Route::get('archivos/{id}/confirmarContrasenia', [Archivo::class, 'confirmarCont
 // Rutas para el envío de Mails
 Route::get('solicitud_iniciada/{idSolicitud}', [mailPetrelController::class, 'enviarMailSolicitudIniciada']);
 Route::get('finalizacion/{idSolicitud}', [mailPetrelController::class, 'enviarMailSolicitudFinalizada']);
+<<<<<<< HEAD
 
 Route::resource('solicitud', SolicitudCertProgController::class);
 Route::post('comentario', [ComentarioController::class, 'store'])->name('comentario.store');
+=======
+>>>>>>> 728c1c66b02d389d62bb0ba4debe35f820fd08b5

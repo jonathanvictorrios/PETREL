@@ -39,59 +39,6 @@ class ProgramaLocalController extends Controller
         $hojaResumenEncontrada->save();
         //----------------------------------------//
         return Storage::download('id-solicitud-'.$request->idSolicitud.'/unionProgramas'.$request->idSolicitud.'.pdf');
-        //return redirect('crearPlanEstudio/'.$request->idSolicitud);  ESTO FUNCIONAAAA USAR ESTO
-        //crearPlanEstudio/{id_solicitud}
-        //return view('crearPlanEstudio/');
-        //return redirect('programaLocal/',$unPrograma->id_programa_local);
-    }
-
-    /**
-     * Display the specified resource.
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id_programa_local)
-    {     
-        $progLocal = ProgramaLocal::find($id_programa_local);
-        return view('programaLocal.show')->with('programaLocal', $progLocal);
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id_programa_local)
-    {
-        $progLocal=ProgramaLocal::findOrFail($id_programa_local);   
-        return view('programaLocal.edit')->with('programaLocal', $progLocal);
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, $id_programa_local)
-    {
-        $progLocal = ProgramaLocal::find($id_programa_local);
-        $progLocal->update($request->all());
-        return view('programaLocal.show')->with('programaLocal', $progLocal);
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy($id_programa_local)
-    {
-        $progLocal=ProgramaLocal::find($id_programa_local);
-        $progLocal->delete();
-        return view('programaLocal.index');
     }
 
     /**
