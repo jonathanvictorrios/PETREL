@@ -26,21 +26,26 @@ class CarpetaAnioController extends Controller
      */
     public function store(Request $request)
     {
-        Storage::disk('google')->makeDirectory($request->anio);
-        $colCarpetasAnio = Storage::disk('google')->directories(); //leemos todas las url donde se creo la carpeta
-        $i = 0;
-        $encontrado = false;
-        while ($i < count($colCarpetasAnio) && !$encontrado) {
-            //comparamos cada url si le pertenece a la carpeta agregada recientemente
-            $encontrado = Storage::disk('google')->getMetadata($colCarpetasAnio[$i])['name'] == $request->anio;
-            $i++;
+        $objCarpetaAnio = CarpetaAnio::where('numero_anio',(int)$request->anio)->get();
+        if(count($objCarpetaAnio)<1){
+            Storage::disk('google')->makeDirectory($request->anio);
+            $colCarpetasAnio = Storage::disk('google')->directories(); //leemos todas las url donde se creo la carpeta
+            $i = 0;
+            $encontrado = false;
+            while ($i < count($colCarpetasAnio) && !$encontrado) {
+                //comparamos cada url si le pertenece a la carpeta agregada recientemente
+                $encontrado = Storage::disk('google')->getMetadata($colCarpetasAnio[$i])['name'] == $request->anio;
+                $i++;
+            }
+            $urlCarpeta = $colCarpetasAnio[($i - 1)]; //obtenemos la posicion de la url de le pertenece a la carpeta recien creada
+            CarpetaAnio::create([
+                'numero_anio' => (int)$request->anio,
+                'url_anio' => $urlCarpeta,
+            ]);
+            $colCarpetasAnio = CarpetaAnio::get();
+        }else{
+            echo "Ya existe";
         }
-        $urlCarpeta = $colCarpetasAnio[($i - 1)]; //obtenemos la posicion de la url de le pertenece a la carpeta recien creada
-        CarpetaAnio::create([
-            'numero_anio' => (int)$request->anio,
-            'url_anio' => $urlCarpeta,
-        ]);
-        $colCarpetasAnio = CarpetaAnio::get();
         return view('carpetaAnio.index')->with('colCarpetasAnio',$colCarpetasAnio);
     }
 
@@ -65,16 +70,6 @@ class CarpetaAnioController extends Controller
         $carpetaAnio->save();
         $colCarpetasAnio = CarpetaAnio::get();
         return view('carpetaAnio.index')->with('colCarpetasAnio',$colCarpetasAnio);
-    }
-
-    /**
-     * Realizamos un borrado logico a la carpeta año
-     * @param Request $request 
-     * @return view carpetaAnio.index
-     */
-    public function destroy(Request $request)
-    {
-        echo "borrado logico sobre carpeta año";
     }
 
     /**
@@ -103,7 +98,7 @@ class CarpetaAnioController extends Controller
             $existentes[] = $carpetaCarrera->id_carrera;
         }
         $carreras = Carrera::where('id_unidad_academica', 1)->whereNotIn('id_carrera', $existentes)->get();
-        return view('carpetaCarrera.create', ['carreras' => $carreras])->with('carpetaAnio', $carpetaAnio);
+        return view('carpetaCarrera.create', ['carreras' => $carreras,'carpetaAnio'=>$carpetaAnio]);
     }
 
     /**

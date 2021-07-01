@@ -8,20 +8,9 @@ use App\Models\Estado;
 use App\Models\SolicitudCertProg;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
-use Mockery\Matcher\Not;
 
 class NotaDptoAlumController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function index()
-    {
-        //
-    }
-
     /**
      * Show the form for creating a new resource.
      *
@@ -71,60 +60,19 @@ class NotaDptoAlumController extends Controller
         $hojaResumen->save();
 
         $objSolicitud=SolicitudCertProg::find($request->id_solicitud);
-            $estado=new Estado();
-            $estado->id_solicitud = $request->id_solicitud;
-            $estado->id_estado_descripcion = 4;
-            $estado->id_usuario = $objSolicitud->usuarioEstudiante->id_usuario;
-            $estado->save();
+        $estado=new Estado();
+        $estado->id_solicitud = $request->id_solicitud;
+        $estado->id_estado_descripcion = 4;
+        $estado->id_usuario = $objSolicitud->id_user_u;
+        $estado->save();
+
+        $objSolicitud->id_user_u=3;
+        $objSolicitud->save();
 
         # Retorno resultado
         return $objPDF->download("nota-generada-$request->id_solicitud.pdf");
     }
-
-    /**
-     * Display the specified resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function show()
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Models\NotaDptoAlum  $notaDptoAlum
-     * @return \Illuminate\Http\Response
-     */
-    public function edit(NotaDptoAlum $notaDptoAlum)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\NotaDptoAlum  $notaDptoAlum
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, NotaDptoAlum $notaDptoAlum)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\Models\NotaDptoAlum  $notaDptoAlum
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy(NotaDptoAlum $notaDptoAlum)
-    {
-        //
-    }
-
+    
     /**
      * Verifica si la contraseña provista del formulario es válida para el usuario loggeado
      *

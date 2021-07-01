@@ -21,10 +21,11 @@ $fecha = date('d') . ' de ' . date('M') . ' del ' . date('Y');
     {{session('success')}}
 </div>
 @endif
-<form name="formulario_nota" id="formulario_nota" action="{{ route('notaDA.store') }}" method="POST" class="container w-75 py-2" novalidate>
-    @csrf
-    <h2 class="text-center cell p-3 m-3">Crear nota</h2>
+<h2 class="text-center cell p-3 m-3">Crear nota Departamento de Alumnos</h2>
 
+<form name="formulario_nota" id="formulario_nota" action="{{ route('notaDA.store') }}" method="POST" class="container w-80 py-2" novalidate>
+    @csrf
+   
     <div class="alert alert-success" role="alert">
         Puedes editar el contenido a necesidad, y agregar por ejemplo:
         <ul>
@@ -64,8 +65,8 @@ $fecha = date('d') . ' de ' . date('M') . ' del ' . date('Y');
 
     <!-- EDITAR PIE DE PÁGINA -->
     <div class="form-group">
-        <a class="btn botonFormulario2 btn-lg d-block" data-bs-toggle="collapse" href="#footer_editor" role="button" aria-expanded="false" aria-controls="footer_editor">
-            Editar pie de página
+        <a class="btn botonFormulario2" data-bs-toggle="collapse" href="#footer_editor" role="button" aria-expanded="false" aria-controls="footer_editor">
+            Editar pie de página  <i class="fas fa-angle-down" aria-hidden="true" id="answer1"></i>
         </a>
 
         <div class="collapse" id="footer_editor">
@@ -85,7 +86,7 @@ $fecha = date('d') . ' de ' . date('M') . ' del ' . date('Y');
             <input type="button" value="Guardar y Descargar nota.pdf" class="btn botonFormulario" data-bs-toggle="modal" data-bs-target="#login_check">
         </div>
         <div class="col-12 col-lg-4 p-1 ">
-            <a href="#" class="btn {{ (session('success')) ? 'botonFormulario2' : 'botonFormulario2 disabled' }}" id="btn_continuar">Continuar</a>
+            <a href="{{route('solicitud.show',$solicitud->id_solicitud)}}" class="btn {{ (session('success')) ? 'botonFormulario2' : 'botonFormulario2 disabled' }}" id="btn_continuar">Continuar</a>
         </div>
     </div>
 
@@ -105,12 +106,12 @@ $fecha = date('d') . ' de ' . date('M') . ' del ' . date('Y');
                     <input type="password" name="password" id="input_contrasenia" class="form-control">
                 </div>
             </div>
-            <div class="modal-footer">
-                <button type="button" class="btn botonFormulario" id="modal_sesion_submit">Autenticar y continuar</button>
-            </div>
-        </div>
+         
+      <div class="modal-footer">
+        <button type="button" class="btn botonFormulario" id="modal_sesion_submit">Autenticar y continuar</button>
       </div>
     </div>
+</div>
 </div>
 
 <script src="//cdn.ckeditor.com/4.14.1/basic/ckeditor.js"></script>
@@ -137,13 +138,19 @@ $fecha = date('d') . ' de ' . date('M') . ' del ' . date('Y');
                 if (data === 'true'){
                      $('#formulario_nota').submit();
                     $('#login_check').modal('toggle');
-                    $('#btn_continuar').attr("href", '/solicitud');
+                    //$('#btn_continuar').attr("href", '/solicitud/');
                     $('#btn_continuar').removeClass('btn-secondary disabled');
                     $('#btn_continuar').addClass('btn-success');
                 }
             }
         });
     });
+</script>
+{{-- para que las flechitas de los botones cambien al expandir el acordeòn --}}
+<script>
+    $("#answer1").click(function() {
+        $(this).toggleClass("fas fa-angle-down fas fa-angle-up");
+    });   
 </script>
 </div>
 @endsection

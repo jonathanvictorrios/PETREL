@@ -44,7 +44,7 @@
                     <div class="row justify-content-center text-center py-4">
                         {{-- botón modificar --}}
                         <div class="form-group col-sm-6">
-                            <a href="/perfil/modificar" id="botonPrimario" class="btn-block w-100 p-1 rounded-2">Modificar datos</a>
+                            <a href="/perfil/modificar" class="botonFormulario btn-block w-100 p-1 rounded-2"><i class="fas fa-user-edit mx-2"></i>Modificar datos</a>
                         </div>
                     </div>
                 </div>

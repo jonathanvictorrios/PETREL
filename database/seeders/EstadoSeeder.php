@@ -17,9 +17,32 @@ class EstadoSeeder extends Seeder
         DB::table('estado')->insert([
             'id_solicitud'=>1,
             'id_estado_descripcion'=>1,
-            'id_usuario'=>1,
+            'id_usuario'=>null,
             'created_at'=> Carbon::now()->format('Y-m-d H:i:s')
-
+        ]);
+        DB::table('estado')->insert([
+            'id_solicitud'=>2,
+            'id_estado_descripcion'=>1,
+            'id_usuario'=>null,
+            'created_at'=> Carbon::now()->format('Y-m-d H:i:s')
+        ]);
+        DB::table('estado')->insert([
+            'id_solicitud'=>3,
+            'id_estado_descripcion'=>1,
+            'id_usuario'=>null,
+            'created_at'=> Carbon::now()->format('Y-m-d H:i:s')
+        ]);
+        DB::table('estado')->insert([
+            'id_solicitud'=>4,
+            'id_estado_descripcion'=>1,
+            'id_usuario'=>null,
+            'created_at'=> Carbon::now()->format('Y-m-d H:i:s')
+        ]);
+        DB::table('estado')->insert([
+            'id_solicitud'=>5,
+            'id_estado_descripcion'=>1,
+            'id_usuario'=>null,
+            'created_at'=> Carbon::now()->format('Y-m-d H:i:s')
         ]);
     }
 }

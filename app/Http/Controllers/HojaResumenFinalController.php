@@ -5,40 +5,18 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\HojaResumenFinal;
 use App\Models\HojaResumen;
-use App\Models\SolicitudCertProg;
-use App\Http\Controllers\SolicitudCertProgController;
 use TCPDI;
 
 //use Karriere\PdfMerge\PdfMerge;
 
 class HojaResumenFinalController extends Controller
 {
-
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function index()
-    {
-        $unaSolicitud= SolicitudCertProg::find();
-
-        return view('hojaResumenFinal.indexHojaFinal')->with('solicitud', $unaSolicitud);
-    }
-
-    public function show($idSolicitud)
-    {
-        $unaSolicitud= SolicitudCertProg::find($idSolicitud);
-
-        return view('hojaResumenFinal.indexHojaFinal')->with('solicitud', $unaSolicitud);
-
-    }
     public function store(Request $request)
     {
-        $id_solicitud = $request->id_solicitud;
+        //$id_solicitud = $request->id_solicitud;
 
         //Busco la hoja resumen
+        $id_solicitud = $request->idSolicitud;
         $unaHojaResumen = HojaResumen::where('id_solicitud', '=', $id_solicitud)->first();
         $idHojaResumen = $unaHojaResumen->id_hoja_resumen;
 
@@ -116,7 +94,8 @@ class HojaResumenFinalController extends Controller
         $url = storage_path()."/app/id-solicitud-".$idSolicitud."/hojaUnidaFinalSinFirma".$idSolicitud.".pdf";
         $pdf->setSourceFile($url);
         $pageCount = $pdf->setSourceFile($url);
-
+        $pdf->setPrintHeader(false);
+        $pdf->setPrintFooter(false);
         for ($pageNo = 1; $pageNo <= $pageCount; $pageNo++) {
           $tplIdx = $pdf->importPage($pageNo);
           // add a page

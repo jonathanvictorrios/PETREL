@@ -11,7 +11,7 @@
 @endif
 
 <h2 class="text-center cell p-3 m-3">Listado de años</h2>
-<table   class="table table-striped table-hover align-middle table-borderless">
+<table class="table table-striped table-hover align-middle table-borderless">
     <thead class="border-bottom">
    
         <tr>

@@ -22,18 +22,53 @@ class UsuarioSeeder extends Seeder
             'password'=>'petrel2021'
         ]);
         DB::table('usuario')->insert([
-            'nombre'=>'Administrativo',
-            'apellido'=>'Universidad',
-            'dni'=>33123111,
-            'email'=>'unadmin@fi.uncoma.edu.ar',
+            'nombre'=>'Viviana',
+            'apellido'=>'Pedrero',
+            'dni'=>12332112,
+            'email'=>'viviana.pedrero@fi.uncoma.edu.ar',
             'password'=>'petrel2021'
         ]);
         DB::table('usuario')->insert([
-            'nombre'=>'Un usuario',
-            'apellido'=>'Estudiante',
-            'dni'=>34123456,
-            'email'=>'estudiante@hotmail.com',
+            'nombre'=>'Silvia',
+            'apellido'=>'Amaro',
+            'dni'=>11223344,
+            'email'=>'silvia.amaro@fi.uncoma.edu.ar',
             'password'=>'petrel2021'
+        ]);
+        DB::table('usuario')->insert([
+            'nombre'=>'Franco',
+            'apellido'=>'Rodriguez',
+            'dni'=>12312312,
+            'email'=>'francorodriguez@hotmail.com',
+            'password'=>'contrasenia123'
+        ]);
+        DB::table('usuario')->insert([
+            'nombre'=>'Ezequiel',
+            'apellido'=>'Vera',
+            'dni'=>98798798,
+            'email'=>'ezequielVera@hotmail.com',
+            'password'=>'contrasenia123'
+        ]);
+        DB::table('usuario')->insert([
+            'nombre'=>'Natalia',
+            'apellido'=>'Baeza',
+            'dni'=>40123123,
+            'email'=>'nataliaBaeza@hotmail.com',
+            'password'=>'contrasenia123'
+        ]);
+        DB::table('usuario')->insert([
+            'nombre'=>'Maximiliano',
+            'apellido'=>'Villalba',
+            'dni'=>45645645,
+            'email'=>'maxivillalba@hotmail.com',
+            'password'=>'contrasenia123'
+        ]);
+        DB::table('usuario')->insert([
+            'nombre'=>'Santiago',
+            'apellido'=>'Briceño',
+            'dni'=>45645645,
+            'email'=>'santiagobriseño@fi.uncoma.edu.ar',
+            'password'=>'contrasenia123'
         ]);
     }
 }

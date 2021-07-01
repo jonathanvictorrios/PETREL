@@ -124,15 +124,14 @@ class SolicitudCertProgController extends Controller
         $hojaResumen = HojaResumen::where('id_solicitud',$id)->get();
         if(count($hojaResumen)>0){
             if($hojaResumen[0]->url_hoja_unida!=null){
-                $finSolicitud = 1;
+                $iniciarTramite = 1;
             }else{
-                $finSolicitud = 0;
+                $iniciarTramite = 0;
             }
         }else{
-            $finSolicitud = -1;
+            $iniciarTramite = -1;
         }
-
-        return view('solicitud.show',compact('solicitud','finSolicitud'));
+        return view('solicitud.show',compact('solicitud','iniciarTramite'));
     }
 
     /**

@@ -50,12 +50,14 @@ h6 {
     color: var(--color-azulPrimario);
 }
 
-a,.agregarOtro{
+a,
+.agregarOtro {
     text-decoration: none;
     color: var(--color-azulPrimario);
 }
 
-a:hover, .agregarOtro:hover{
+a:hover,
+.agregarOtro:hover {
     color: var(--color-verdeHover);
 }
 
@@ -91,6 +93,7 @@ a:hover, .agregarOtro:hover{
     background-color: var(--color-verdeHover);
     color: white;
 }
+
 /* Boton para select de buscarProgramas */
 .botonFormulario3 {
     border-radius: 0.25rem;
@@ -99,8 +102,8 @@ a:hover, .agregarOtro:hover{
     border: solid 1px var(--color-verdeSecundario);
     background-color: white;
     color: var(--color-verdeSecundario);
-    /* font-weight: 300; */
 }
+
 .botonFormulario3:hover {
     background-color: var(--color-verdeHover);
     color: white;
@@ -257,12 +260,11 @@ input[type="file"]::file-selector-button:hover {
 }
 
 /*---------- SHOW SOLICITUD COMENTARIOS ----------*/
-.acordeonComentarios{
+.acordeonComentarios {
     max-height: 200px;
 }
 .botonAcordeonComentarios {
     background-color: var(--color-gris);
-    
 }
 
 /*---------- FORMULARIOS ----------*/
@@ -337,39 +339,8 @@ input[type="file"]::file-selector-button {
     border: 1px solid var(--color-azulPrimario);
 }
 
-/* Boton Crear Solicitud */
-.btn-create {
-    border-radius: 50%;
-    padding: 0.275rem 0.275rem;
-    background-color: var(--color-azulPrimario);
-    border-color: var(--color-azulPrimario);
-    color: white;
-}
-
-.btn-create:hover,
-input[type="file"]::file-selector-button:hover {
-    background-color: var(--color-verdeHover);
-    border-color: var(--color-verdeHover);
-    color: #fff;
-}
-
-.bi {
-    width: 1em;
-    height: 1em;
-    font-size: 2em;
-}
-
-/* Boton Búsqueda */
-.btn-busqueda {
-    border-radius: 0.25rem;
-    border: none;
-    background-color: var(--color-azulPrimario);
-    color: white;
-}
-
-.btn-busqueda:hover {
-    background-color: var(--color-verdeHover);
-    color: #212529;
+.table-responsive {
+    white-space: nowrap;
 }
 
 /*---------- HEADER ----------*/
