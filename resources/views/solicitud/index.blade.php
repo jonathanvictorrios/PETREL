@@ -95,7 +95,7 @@
                                     </thead>
                                     <tbody>
                                         @foreach($solicitudes as $solicitud)
-                                        @if($solicitud->estados->last()->estado_descripcion->descripcion!=='Terminado')
+                                        @if($solicitud->estados->last()->estado_descripcion->descripcion=='Terminado')
                                         <tr>
                                             <th scope="row">{{$solicitud->id_solicitud}}</th>
                                             <td>{{$solicitud->usuarioEstudiante->apellido}}, {{$solicitud->usuarioEstudiante->nombre}}</td>

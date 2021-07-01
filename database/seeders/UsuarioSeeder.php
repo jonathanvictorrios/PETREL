@@ -32,7 +32,7 @@ class UsuarioSeeder extends Seeder
             'nombre'=>'Silvia',
             'apellido'=>'Amaro',
             'dni'=>11223344,
-            'email'=>'silvia.amaro@fi.uncoma.edu.ar',
+            'email'=>'franco.rodriguez@est.fi.uncoma.edu.ar',
             'password'=>'petrel2021'
         ]);
         DB::table('usuario')->insert([
@@ -60,7 +60,7 @@ class UsuarioSeeder extends Seeder
             'nombre'=>'Maximiliano',
             'apellido'=>'Villalba',
             'dni'=>45645645,
-            'email'=>'mfranco.rodriguez@est.fi.uncoma.edu.ar',
+            'email'=>'franco.rodriguez@est.fi.uncoma.edu.ar',
             'password'=>'contrasenia123'
         ]);
         DB::table('usuario')->insert([
