@@ -34,7 +34,7 @@
         <table style="text-align: center; margin: 0 auto;">
             <tr>
                 <td>
-                    <h3 style="font-size: 2rem;">Confirmación de finalización de tu Solicitud</h3>
+                    <h3 style="font-size: 2rem;">Nueva Solicitud Lista para Firmar</h3>
                 </td>
             </tr>
             <tr>
