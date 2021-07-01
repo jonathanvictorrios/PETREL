@@ -150,8 +150,14 @@ Route::get('archivos/{id}/confirmarContrasenia', [Archivo::class, 'confirmarCont
 Route::get('solicitud_iniciada/{idSolicitud}', [mailPetrelController::class, 'enviarMailSolicitudIniciada']);
 Route::get('finalizacion/{idSolicitud}', [mailPetrelController::class, 'enviarMailSolicitudFinalizada']);
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 
 Route::resource('solicitud', SolicitudCertProgController::class);
 Route::post('comentario', [ComentarioController::class, 'store'])->name('comentario.store');
 >>>>>>> Falta Arreglar un poco la vista
+=======
+
+Route::resource('solicitud', SolicitudCertProgController::class);
+Route::post('comentario', [ComentarioController::class, 'store'])->name('comentario.store');
+>>>>>>> restaurando

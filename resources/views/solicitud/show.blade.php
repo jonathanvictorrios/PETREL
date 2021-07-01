@@ -215,6 +215,7 @@
                                                             </tbody>
                                                         </table>
 <<<<<<< HEAD
+<<<<<<< HEAD
                                                         {{-- boton de agregar comentario --}}
                                                         <div class="row justify-content-center">
                                                             <div class="col-12 mt-2 p-2 ">
@@ -230,6 +231,8 @@
                                                                 </form>
                                                             </div>
 =======
+=======
+>>>>>>> restaurando
                                                     {{-- boton de agregar comentario --}}
                                                     <a href="#" class="botonFormulario" data-bs-toggle="modal" data-bs-target="#modalMensaje">
                     Nuevo mensaje
@@ -258,7 +261,10 @@
                                                                 value="{{ $estado->usuario->id_usuario ?? ''}}">
                                                             <input type="text" hidden id="idSolicitud" name="idSolicitud"
                                                                 value="{{ $estado->id_solicitud }}">
+<<<<<<< HEAD
 >>>>>>> Falta Arreglar un poco la vista
+=======
+>>>>>>> restaurando
                                                         </div>
                                                         <div class="row justify-content-center text-center py-4">
                                                             <div class="form-group col-sm-6">
@@ -368,11 +374,15 @@
                             </p>
                         </div>
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> restaurando
                         {{-- Comienzo div Actividad (mostrar como acordeón) --}}
                         <div class="row d-flex justify-content-center">
                             <div class="col-12  p-2">
                                 <div class="accordion" id="acordeonComentarios">
                                     <div class="accordion-item mt-4">
+<<<<<<< HEAD
 =======
   {{-- Comienzo div Actividad (mostrar como acordeón) --}}
   <div class="row d-flex justify-content-center">
@@ -457,6 +467,8 @@
                             <div class="row justify-content-center">
                                 <div class="col-12 mt-2 p-2 ">
 >>>>>>> El Retorno del Estado: Aguarda Firma Dpto. de Alumnos
+=======
+>>>>>>> restaurando
 
                                         <button
                                             class="accordion-button collapsed justify-content-center botonAcordeonComentarios"
@@ -721,6 +733,9 @@
                             </p>
                         </div>
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> restaurando
                         {{-- Comienzo div Actividad (mostrar como acordeón) --}}
                         <div class="row d-flex justify-content-center">
                             <div class="col-12  p-2">
@@ -733,6 +748,7 @@
                                             aria-expanded="true" aria-controls="collapseOne">
                                             <h2 class="align-self-center" id="headingOne"> Actividad </h2>
                                         </button>
+<<<<<<< HEAD
 =======
    {{-- Comienzo div Actividad (mostrar como acordeón) --}}
    <div class="row d-flex justify-content-center">
@@ -861,6 +877,8 @@
                             <div class="row justify-content-center">
                                 <div class="col-12 mt-2 p-2 ">
 >>>>>>> El Retorno del Estado: Aguarda Firma Dpto. de Alumnos
+=======
+>>>>>>> restaurando
 
                                         <div id="collapseOne" class="accordion-collapse collapse justify-content-center"
                                             aria-labelledby="headingOne" data-bs-parent="#acordeonComentarios">
