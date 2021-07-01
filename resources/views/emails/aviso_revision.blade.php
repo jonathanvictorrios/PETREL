@@ -40,13 +40,12 @@
             <tr>
                 <td>
                     <p>
-                        ¡Hola, {{ $datosMail->Nombre }}!
+                        ¡Hola, {{ $datosMail->NombreUserU }}!
                     </p>
                     <p>
-                        Tu solicitud de certificación de programas, registrada bajo el número
-                        {{ $datosMail->idSolicitud }}, ha sido completada con éxito.<br>
-                        Podés consultar el estado de la solicitud cuando lo desees y descargar tu certificación de
-                        programas desde el botón de abajo.
+                        La solicitud registrada bajo el número {{ $datosMail->idSolicitud }}
+                        se encuentra lista para ser firmada.<br>
+                        Podés acceder al sistema desde el botón de abajo.
                     </p>
                     <p>Atentamente,</p>
                     <div class="column">
