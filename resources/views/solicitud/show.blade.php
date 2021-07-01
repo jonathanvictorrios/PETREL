@@ -66,7 +66,7 @@
 
 
 
-        @if($solicitud->estados->last()->estado_descripcion->descripcion=='Iniciado' || $solicitud->estados->last()->estado_descripcion->descripcion=='Aguarda Firma Departamento Alumnos')
+        @if($solicitud->estados->last()->estado_descripcion->descripcion=='Iniciado' || $solicitud->estados->last()->estado_descripcion->descripcion=='Aguarda Firma Departamento Alumnos' || $solicitud->estados->last()->estado_descripcion->descripcion=='Asignado')
         {{-- ---------------- ESTE ES EL SHOW DE ADMINISTRATIVO DEPTO ALUMNOS -------------------------------------- --}}
         <div class="container">
             <a href="{{ url()->previous() }}" class="lead"><i class="fas fa-chevron-left me-2"></i>Atrás</a>
