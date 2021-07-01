@@ -2,8 +2,6 @@
 @section('cuerpo')
     @php($titulo = 'Ver detalles solicitud - Petrel')@endphp
     @include('estructura/header')
-    <a href="{{route('solicitud.santiago',[1,8])}}">email santiago</a>
-
     <main class="p-2" id="cuerpo">
         {{-- Inicio main cuerpo --}}
         {{-- ---------------- ESTE ES EL SHOW DE ESTUDIANTE -------------------------------------- --}}
@@ -31,7 +29,7 @@
                             </p>
                         </div> --}}
 
-                        {{-- nombres y apellidos --}}
+                        {{-- nombregit ps y apellidos --}}
                         {{-- <div class="row justify-content-between text-left">
                             <p class=" "><span class="text-secondary ">Solicitante: </span>
                                 {{ $solicitud->usuarioEstudiante->apellido }},
