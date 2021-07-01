@@ -178,7 +178,12 @@
                                             <td>{{$solicitud->estados->last()->estado_descripcion->descripcion}}</td>
                                             <td>{{$solicitud->estados->last()->created_at}}</td>
                                             <td>{{$solicitud->legajo}}</td>
-                                            <td>{{$solicitud->usuarioAdministrativo->apellido ?? ''}}, {{$solicitud->usuarioAdministrativo->nombre ?? ''}}</td>
+                                            @isset($solicitud->usuarioAdministrativo->apellido)
+                                                <td>{{$solicitud->usuarioAdministrativo->apellido ?? ''}}, {{$solicitud->usuarioAdministrativo->nombre ?? ''}}</td>    
+                                            @endisset
+                                            @empty($solicitud->usuarioAdministrativo)
+                                                <td><i>no asignada</i></td>
+                                            @endempty
                                             <td><a href="{{route('solicitud.show',$solicitud->id_solicitud)}}">Ver Más</a>
                                             </td>
                                         </tr>

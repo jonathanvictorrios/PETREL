@@ -35,4 +35,18 @@ class mailPetrelController extends Controller
     //return ('Correo enviado');
     //return back()->with('mensaje','Correo enviado con éxito');
     }
+
+    public function enviarMailSolicitudFirma($idSolicitud) 
+    {
+    // $correo debe inicializarse con el $idSolicitud como variable
+    // $idSolicitud = 3; // hardcodeado para testing
+    $correo = new mailPetrel($idSolicitud);
+    $datosMail = $correo->datosMail;
+    $correo->subject = "Solicitud de trámite iniciada";
+    $correo->vista = "emails.aviso_revision";
+    //dd($datosMail);
+    Mail::to($datosMail->correoUserU)->send($correo);
+    //return ('Correo enviado');
+    //return back()->with('mensaje','Correo enviado con éxito');
+    }
 }
