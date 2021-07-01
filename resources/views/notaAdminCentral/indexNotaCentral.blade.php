@@ -42,7 +42,7 @@
     </div>    
       <div class="form-group m-1">
                 <a id="answer2" class="btn botonFormulario2" data-bs-toggle="collapse" href="#footer_editor2" role="button" aria-expanded="false" aria-controls="footer_editor2">
-                    Editar econtenido principal  <i class="fas fa-angle-up" aria-hidden="true" id="answer22"></i>
+                    Editar contenido principal  <i class="fas fa-angle-up" aria-hidden="true" id="answer22"></i>
                 </a>
             
           <div class="collapse show m-1" id="footer_editor2">

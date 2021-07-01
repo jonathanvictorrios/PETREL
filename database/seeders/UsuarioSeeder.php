@@ -39,7 +39,7 @@ class UsuarioSeeder extends Seeder
             'nombre'=>'Franco',
             'apellido'=>'Rodriguez',
             'dni'=>12312312,
-            'email'=>'francorodriguez@hotmail.com',
+            'email'=>'franco.rodriguez@est.fi.uncoma.edu.ar',
             'password'=>'contrasenia123'
         ]);
         DB::table('usuario')->insert([
