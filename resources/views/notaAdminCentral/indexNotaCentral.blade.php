@@ -14,7 +14,7 @@
 
         <header>
             <p style="text-align: center;">
-                <img height="80px" width="100%" src={{ asset('img/logoteSecretariaAcademica.png') }} alt="logo-unco">
+                <img height="80px" width="100%" src={{ asset('img/portada_nota.svg') }} alt="logo-unco">
             </p>
             <p style="text-align: center;">
                 Dirección General de Administración Académica

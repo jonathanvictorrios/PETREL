@@ -130,22 +130,24 @@
                             {{-- ACÀ DEBE TOMAR EL NOMBRE DE PERSONA ASIGNADA mostrarlo y guardarlo en base de datos --}}
                             {{-- dejo este select como muestra visual,
                         hay que eliminarlo al hacer el real de arriba --}}
-                            <form action="{{ route('solicitud.asignar', [$solicitud->id_solicitud]) }}" method="">
-                                <div class="col-12">
-                                    <select class="btn botonFormulario3 w-100 " name="usuarioAdministrativo">
+
+                        <form action="{{route('solicitud.asignar',[$solicitud->id_solicitud])}}" method="">
+                            <div class="row">
+                                <div class="col-lg-6 col-12">
+                                    <select class="form-select botonFormulario3 " style="height:35px;" name="usuarioAdministrativo">
                                         <option value="0">Elegir Persona</option>
                                         <option value="1">Mario Domini</option>
                                         <option value="2">Rosa Piper</option>
                                         <option value="3">Catalina Blum</option>
                                         <option value="4">Ricardo Ford</option>
                                     </select>
-                                    <br>
                                 </div>
-                                <div class="col-12 mt-2">
-                                    <button type="submit" class=" botonFormulario2">Asignar/cambiar asignación </button>
-                                    {{-- botòn que guarda en la base --}}</p>
-                                </div>
-                            </form>
+                            <div class="col-lg-6 col-12 pt-2 pt-lg-0">
+                                  {{-- botòn que guarda en la base --}}
+                                <button type="submit" class="btn botonFormulario2">Asignar/cambiar asignación </button>
+                            </div>
+                            </div>
+                        </form>                        
                         </div>
                         {{-- Comienzo div Actividad (mostrar como acordeón) --}}
                         <div class="row d-flex justify-content-center">
