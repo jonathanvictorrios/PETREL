@@ -62,6 +62,7 @@
                         </div>
                     </div> --}}
         {{-- </div> --}}
+
         @if ($solicitud->estados->last()->estado_descripcion->descripcion == 'Iniciado' || $solicitud->estados->last()->estado_descripcion->descripcion == 'Aguarda Firma Departamento Alumnos' || $solicitud->estados->last()->estado_descripcion->descripcion == 'Asignado')
             {{-- ---------------- ESTE ES EL SHOW DE ADMINISTRATIVO DEPTO ALUMNOS -------------------------------------- --}}
             <div class="container">
@@ -74,6 +75,76 @@
                         <div class="card card-form bg-light">
                             <div class="card-header p-1 bg-light cell mb-3">
                                 <h2 class="text-center fw-bold">Detalles de Solicitud {{ $solicitud->id_solicitud }}</h2>
+
+
+
+
+
+
+        @if($solicitud->estados->last()->estado_descripcion->descripcion=='Iniciado' || $solicitud->estados->last()->estado_descripcion->descripcion=='Aguarda Firma Departamento Alumnos' || $solicitud->estados->last()->estado_descripcion->descripcion=='Asignado')
+
+        @if($solicitud->estados->last()->estado_descripcion->descripcion=='Iniciado' || $solicitud->estados->last()->estado_descripcion->descripcion=='Aguarda Firma Departamento Alumnos' || $solicitud->estados->last()->estado_descripcion->descripcion=='Asignado') 
+
+        {{-- ---------------- ESTE ES EL SHOW DE ADMINISTRATIVO DEPTO ALUMNOS -------------------------------------- --}}
+        <div class="container">
+            <a href="{{ url()->previous() }}" class="lead"><i class="fas fa-chevron-left me-2"></i>Atrás</a>
+        </div>
+        {{-- inicion mostrar solicitud --}}
+        <div class="container-fluid p-1 mx-auto">
+            <div class="row d-flex justify-content-center">
+                <div class="col-md-8 col-12">
+                    <div class="card card-form bg-light">
+                        <div class="card-header p-1 bg-light cell mb-3">
+                            <h2 class="text-center fw-bold">Detalles de Solicitud {{ $solicitud->id_solicitud }}</h2>
+                        </div>
+                        {{-- fecha --}}
+                        <div class="row justify-content-between text-left">
+                            <p class=" "><span class="text-secondary">Fecha de Inicio: </span>
+                                {{ $solicitud->estados->first()->created_at }}
+                            </p>
+                        </div>
+                        {{-- estado --}}
+                        <div class="row justify-content-between text-left">
+                            <p class=" "><span class="text-secondary">Estado: </span>
+                                {{ $solicitud->estados->last()->estado_descripcion->descripcion }}
+                            </p>
+                        </div>
+
+                        {{-- nombres y apellidos --}}
+                        <div class="row justify-content-between text-left">
+                            <p class=" "><span class="text-secondary ">Solicitante: </span>
+                                {{ $solicitud->usuarioEstudiante->apellido }},
+                                {{ $solicitud->usuarioEstudiante->nombre }}
+                            </p>
+                        </div>
+                        {{-- legajo --}}
+                        <div class="row justify-content-between text-left ">
+                            <p class=" "><span class="text-secondary">Legajo: </span> {{ $solicitud->legajo }}</p>
+                        </div>
+                        {{-- unidad academica --}}
+                        <div class="row justify-content-between text-left ">
+                            <p class=" "><span class="text-secondary">Unidad Académica: </span>
+                                {{ $solicitud->carrera->unidad_academica->unidad_academica }}
+                            </p>
+                        </div>
+                        {{-- carrera --}}
+                        <div class="row justify-content-between text-left ">
+                            <p class=" "><span class="text-secondary">Carrera: </span> {{ $solicitud->carrera->carrera }}
+                            </p>
+                        </div>
+                        {{-- universidad de destino --}}
+                        <div class="row justify-content-center text-left">
+                            <p class=" "><span class="text-secondary">Institución Educativa de Destino: </span>
+                                {{ $solicitud->universidad_destino }}
+                            </p>
+                        </div>
+                        {{-- asignado a --}}
+                        <div class="row justify-content-center text-left">
+                            <div class="col-12">
+                                <p class=" "><span class="text-secondary">Solicitud asignada a: </span>
+                                    {{ $solicitud->usuarioAdministrativo->apellido ?? '' }}
+                                    {{ $solicitud->usuarioAdministrativo->nombre ?? '' }}</p>
+
                             </div>
                             {{-- fecha --}}
                             <div class="row justify-content-between text-left">
