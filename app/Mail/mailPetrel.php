@@ -41,9 +41,7 @@ class mailPetrel extends Mailable
         $destinatario = Usuario::findOrFail($solicitud->id_usuario_estudiante);
         $datosMail->correoUsuario = $destinatario->email;
 
-        $destinatarioAdministracion = new Usuario;
-        $destinatarioAdministracion = Usuario::find($solicitud->id_user_u);
-        $datosMail->correoUserU = $destinatarioAdministracion->email;
+
         //print($datosMail);
         //return view('emails/solicitud_iniciada', compact('datosMail'));
         $this->datosMail = $datosMail;

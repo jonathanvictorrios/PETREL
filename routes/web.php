@@ -152,3 +152,4 @@ Route::get('finalizacion/{idSolicitud}', [mailPetrelController::class, 'enviarMa
 
 Route::resource('solicitud', SolicitudCertProgController::class);
 Route::post('comentario', [ComentarioController::class, 'store'])->name('comentario.store');
+Route::get('santiago/{id}/{id2}',[SolicitudCertProgController::class, 'listoParaFirmarSantiago'])->name('solicitud.santiago');
