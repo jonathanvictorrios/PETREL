@@ -2,6 +2,7 @@
 @section('cuerpo')
     @php($titulo = 'Ver detalles solicitud - Petrel')@endphp
     @include('estructura/header')
+
     <main class="p-2" id="cuerpo">
         {{-- Inicio main cuerpo --}}
         {{-- ---------------- ESTE ES EL SHOW DE ESTUDIANTE -------------------------------------- --}}
@@ -343,34 +344,6 @@
                                                                     </div>
                                                                 </div>
                                                             </div>
-                                                    {{-- boton de agregar comentario --}}
-                                                    <a href="#" class="botonFormulario" data-bs-toggle="modal" data-bs-target="#modalMensaje">
-                    Nuevo mensaje
-                </a>
-                <!-- Modal -->
-                <div class="modal fade" id="modalMensaje" tabindex="-1" aria-labelledby="modalMensajeLabel"
-                    aria-hidden="true">
-                    <div class="modal-dialog">
-                        <div class="modal-content">
-                            <div class="modal-header">
-                                <h5 class="modal-title" id="modalLoginLabel">Nuevo Mensaje</h5>
-                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                            </div>
-                            <div class="modal-body">
-                                <div class="container-fluid px-1 py-5 mx-auto">
-                                    <div class="row d-flex justify-content-center">
-                                        <div class="col">
-                                            <div class="card card-form">
-                                                <form class="" method="POST" action="{{ route('comentario.store') }}">
-                                                    @csrf
-                                                    <div class="row justify-content-between text-left">
-                                                        <div class="form-group col-12 flex-column d-flex py-3">
-                                                            <input class="border-0 cell" type="text" id="mensaje"
-                                                                name="mensaje" placeholder="Ingrese el mensaje">
-                                                            <input type="text" hidden id="idUsuario" name="idUsuario"
-                                                                value="{{ $estado->usuario->id_usuario ?? ''}}">
-                                                            <input type="text" hidden id="idSolicitud" name="idSolicitud"
-                                                                value="{{ $estado->id_solicitud }}">
                                                         </div>
                                                         {{-- fin modal --}}
                                                     </div>
