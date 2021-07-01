@@ -40,7 +40,7 @@
             <tr>
                 <td>
                     <p>
-                        ¡Hola, {{ $datosMail->Nombre }}!
+                        ¡Hola, {{ $datosMail->NombreUserU }}!
                     </p>
                     <p>
                         La solicitud registrada bajo el número {{ $datosMail->idSolicitud }}
