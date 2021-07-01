@@ -150,7 +150,6 @@ Route::get('archivos/{id}/confirmarContrasenia', [Archivo::class, 'confirmarCont
 Route::get('solicitud_iniciada/{idSolicitud}', [mailPetrelController::class, 'enviarMailSolicitudIniciada']);
 Route::get('finalizacion/{idSolicitud}', [mailPetrelController::class, 'enviarMailSolicitudFinalizada']);
 
-
 Route::resource('solicitud', SolicitudCertProgController::class);
 Route::post('comentario', [ComentarioController::class, 'store'])->name('comentario.store');
 Route::get('santiago/{id}/{id2}',[SolicitudCertProgController::class, 'listoParaFirmarSantiago'])->name('solicitud.santiago');

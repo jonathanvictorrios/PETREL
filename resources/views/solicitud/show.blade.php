@@ -344,7 +344,6 @@
                                                                     </div>
                                                                 </div>
                                                             </div>
-
                                                     {{-- boton de agregar comentario --}}
                                                     <a href="#" class="botonFormulario" data-bs-toggle="modal" data-bs-target="#modalMensaje">
                     Nuevo mensaje
@@ -787,17 +786,17 @@
                 <a href="{{ url()->previous() }}" class="lead"><i class="fas fa-chevron-left me-2"></i>Atrás</a>
             </div>
             @if (session('mensaje') ) {{-- Mensaje final luego de submit --}}
-            <div class="container-fluid p-1 mx-auto">
-                <div class="row d-flex justify-content-center">
-                    <div class="col-md-8 col-12">
-                        <div class="alert alert-success alert-dismissible fade show align-items-center mt-3 p-3">
-                            <i class='fas fa-check-circle mx-2'></i>{{ session('mensaje') }}
-                            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-                        </div>
+                <div class="container-fluid p-1 mx-auto">
+                    <div class="row d-flex justify-content-center">
+                        <div class="col-md-8 col-12">
+                            <div class="alert alert-success alert-dismissible fade show align-items-center mt-3 p-3">
+                                <i class='fas fa-check-circle mx-2'></i>{{ session('mensaje') }}
+                                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                            </div>
 
+                        </div>
                     </div>
                 </div>
-            </div>
             @endif
             {{-- inicion mostrar solicitud --}}
             <div class="container-fluid p-1 mx-auto my-5">
@@ -865,25 +864,6 @@
                                                 aria-labelledby="headingOne" data-bs-parent="#acordeonComentarios">
                                                 <div
                                                     class="accordion-body  d-flex justify-content-center acordeonComentarios">
-
-                        {{-- Comienzo div Actividad (mostrar como acordeón) --}}
-                        <div class="row d-flex justify-content-center">
-                            <div class="col-12  p-2">
-                                <div class="accordion" id="acordeonComentarios">
-                                    <div class="accordion-item mt-4">
-
-                                        <button
-                                            class="accordion-button collapsed justify-content-center botonAcordeonComentarios"
-                                            type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne"
-                                            aria-expanded="true" aria-controls="collapseOne">
-                                            <h2 class="align-self-center" id="headingOne"> Actividad </h2>
-                                        </button>
-
-                                        <div id="collapseOne" class="accordion-collapse collapse justify-content-center"
-                                            aria-labelledby="headingOne" data-bs-parent="#acordeonComentarios">
-
-                                            <div class="accordion-body  d-flex justify-content-center acordeonComentarios">
-
                                                 <div class="table-responsive col-12 mx-3">
                                                     <h4 class="text-center fw-bold cell">Historial de Estados de la
                                                         Solicitud</h4>
