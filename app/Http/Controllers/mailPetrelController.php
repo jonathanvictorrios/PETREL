@@ -5,8 +5,12 @@ namespace App\Http\Controllers;
 use App\Mail\mailPetrel;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Http\Request;
+use App\Models\Usuario;
+use App\Models\SolicitudCertProg;
+
 
 class mailPetrelController extends Controller
+
 {
     public function enviarMailSolicitudIniciada($idSolicitud) 
     {
@@ -41,11 +45,21 @@ class mailPetrelController extends Controller
     // $correo debe inicializarse con el $idSolicitud como variable
     // $idSolicitud = 3; // hardcodeado para testing
     $correo = new mailPetrel($idSolicitud);
+
     $datosMail = $correo->datosMail;
+  //  print($solicitud);
+    $destinatarioAdministracion = Usuario::find(7);//EL ID de SANTIAGO
+    //print($destinatarioAdministracion->email);
+    //print($datosMail->correoUsuario);    
+    $datosMail->correoUsuario = $destinatarioAdministracion->email;
+    
+    $datosMail = $correo->datosMail;
+    $datosMail->Nombre=$destinatarioAdministracion->nombre;
     $correo->subject = "Solicitud de trámite iniciada";
     $correo->vista = "emails.aviso_revision";
     //dd($datosMail);
-    Mail::to($datosMail->correoUserU)->send($correo);
+    print($datosMail->correoUsuario);
+    Mail::to($datosMail->correoUsuario)->send($correo);
     //return ('Correo enviado');
     //return back()->with('mensaje','Correo enviado con éxito');
     }
