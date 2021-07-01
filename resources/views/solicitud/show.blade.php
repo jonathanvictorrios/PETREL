@@ -208,7 +208,6 @@
                                                             @endforeach
                                                             </tbody>
                                                         </table>
-<<<<<<< HEAD
                                                     {{-- boton de agregar comentario --}}
                                                     <a href="#" class="botonFormulario" data-bs-toggle="modal" data-bs-target="#modalMensaje">
                     Nuevo mensaje
@@ -237,22 +236,6 @@
                                                                 value="{{ $estado->usuario->id_usuario ?? ''}}">
                                                             <input type="text" hidden id="idSolicitud" name="idSolicitud"
                                                                 value="{{ $estado->id_solicitud }}">
-=======
-                                                        {{-- boton de agregar comentario --}}
-                                                        <div class="row justify-content-center">
-                                                            <div class="col-12 mt-2 p-2 ">
-
-                                                                <form action="" method="POST" autocomplete="off"
-                                                                    enctype="multipart/form-data">
-                                                                    @csrf
-                                                                    {{-- aca voy a recibir el $idSolicitud --}}
-                                                                    <input type="hidden" id="idSolicitud" name="idSolicitud"
-                                                                        value="{{ $solicitud->id_solicitud }}">
-                                                                    <input type="submit" class="botonFormulario2"
-                                                                        value="Agregar Mensaje">
-                                                                </form>
-                                                            </div>
->>>>>>> 728c1c66b02d389d62bb0ba4debe35f820fd08b5
                                                         </div>
                                                         <div class="row justify-content-center text-center py-4">
                                                             <div class="form-group col-sm-6">
@@ -361,96 +344,11 @@
                                 {{ $solicitud->universidad_destino }}
                             </p>
                         </div>
-<<<<<<< HEAD
-  {{-- Comienzo div Actividad (mostrar como acordeón) --}}
-  <div class="row d-flex justify-content-center">
-    <div class="col-12  p-2">
-        <div class="accordion" id="acordeonComentarios">
-            <div class="accordion-item mt-4">
-
-                <button
-                    class="accordion-button collapsed justify-content-center botonAcordeonComentarios"
-                    type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne"
-                    aria-expanded="true" aria-controls="collapseOne">
-                    <h2 class="align-self-center" id="headingOne"> Actividad </h2>
-                </button>
-
-                <div id="collapseOne" class="accordion-collapse collapse justify-content-center"
-                    aria-labelledby="headingOne" data-bs-parent="#acordeonComentarios">
-
-                    <div class="accordion-body  d-flex justify-content-center acordeonComentarios">
-
-                        <div class="table-responsive col-12 mx-3">
-                            <h4 class="text-center fw-bold cell">Historial de Estados de la Solicitud</h4>
-                            <table
-                                class="table table-striped table-hover align-middle table-borderless">
-                                <thead class="border-bottom">
-                                    <tr>
-                                        <th scope="col" class="p-2 text-center">Fecha</th>
-                                        <th scope="col" class="p-2 text-center">Usuario</th>
-                                        <th scope="col" class="p-2 text-center">Estado</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    @foreach ($solicitud->estados as $estado)
-                                    <tr>
-                                        <td class="p-2">{{ $estado->created_at }}</td>
-                                        <td class="p-2">{{ $estado->usuario->nombre ?? ''}} {{ $estado->usuario->apellido ?? ''}}</td>
-                                        <td class="p-2">{{ $estado->estado_descripcion->descripcion }}</td>
-                                    </tr>
-                                    @endforeach
-                                </tbody>
-                            </table>
-                            <h4 class="text-center fw-bold cell">Mensajes</h4>
-                            <div class="table-responsive col-12 mx-3">
-                                <table
-                                    class="table table-striped table-hover align-middle table-borderless">
-                                    <thead class="border-bottom">
-                                        <tr>
-                                            <th scope="col" class="p-2 text-center">Fecha</th>
-                                            <th scope="col" class="p-2 text-center">Usuario</th>
-                                            <th scope="col" class="p-2 text-center">Detalle</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        <tr>
-                                            <td class="p-2">12/05/2021</td>
-                                            <td class="p-2">Viviana Pedrero</td>
-                                            <td class="p-2">asignado a Raquel sdhakshaksdas
-                                                dbahsbdhamsbdasbdjasbdajsdbaksdhakhs
-                                                dbahmsdbahmsdbahmsbdamsbdamhsbdahsbfkhasbfhasfbmahsfbamsfbamhsbfmhasfaf
-                                            </td>
-                                        </tr>
-
-                                        <tr>
-                                            <td class="p-2">12/05/2021</td>
-                                            <td class="p-2">Viviana Pedrero</td>
-                                            <td class="p-2">asignado a Raquel sdhakshaksdas
-                                                dbahsbdhamsbdasbdjasbdajsdbaksdhakhs
-                                                dbahmsdbahmsdbahmsbdamsbdamhsbdahsbfkhasbfhasfbmahsfbamsfbamhsbfmhasfaf
-                                            </td>
-                                        </tr>
-
-                                        <tr>
-                                            <td class="p-2">12/05/2021</td>
-                                            <td class="p-2">Viviana Pedrero</td>
-                                            <td class="p-2">asignado a Raquel sdhakshaksdas
-                                                dbahsbdhamsbdasbdjasbdajsdbaksdhakhs
-                                                dbahmsdbahmsdbahmsbdamsbdamhsbdahsbfkhasbfhasfbmahsfbamsfbamhsbfmhasfaf
-                                            </td>
-                                        </tr>
-                                    </tbody>
-                                </table>
-                            {{-- boton de agregar comentario --}}
-                            <div class="row justify-content-center">
-                                <div class="col-12 mt-2 p-2 ">
-=======
                         {{-- Comienzo div Actividad (mostrar como acordeón) --}}
                         <div class="row d-flex justify-content-center">
                             <div class="col-12  p-2">
                                 <div class="accordion" id="acordeonComentarios">
                                     <div class="accordion-item mt-4">
->>>>>>> 728c1c66b02d389d62bb0ba4debe35f820fd08b5
 
                                         <button
                                             class="accordion-button collapsed justify-content-center botonAcordeonComentarios"
@@ -682,140 +580,11 @@
                                 {{ $solicitud->universidad_destino }}
                             </p>
                         </div>
-<<<<<<< HEAD
-   {{-- Comienzo div Actividad (mostrar como acordeón) --}}
-   <div class="row d-flex justify-content-center">
-    <div class="col-12  p-2">
-        <div class="accordion" id="acordeonComentarios">
-            <div class="accordion-item mt-4">
-
-                <button
-                    class="accordion-button collapsed justify-content-center botonAcordeonComentarios"
-                    type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne"
-                    aria-expanded="true" aria-controls="collapseOne">
-                    <h2 class="align-self-center" id="headingOne"> Actividad </h2>
-                </button>
-
-                <div id="collapseOne" class="accordion-collapse collapse justify-content-center"
-                    aria-labelledby="headingOne" data-bs-parent="#acordeonComentarios">
-
-                    <div class="accordion-body  d-flex justify-content-center acordeonComentarios">
-
-                        <div class="table-responsive col-12 mx-3">
-                            <h4 class="text-center fw-bold cell">Historial de Estados de la Solicitud</h4>
-                            <table
-                                class="table table-striped table-hover align-middle table-borderless">
-                                <thead class="border-bottom">
-                                    <tr>
-                                        <th scope="col" class="p-2 text-center">Fecha</th>
-                                        <th scope="col" class="p-2 text-center">Usuario</th>
-                                        <th scope="col" class="p-2 text-center">Estado</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    @foreach ($solicitud->estados as $estado)
-                                    <tr>
-                                        <td class="p-2">{{ $estado->created_at }}</td>
-                                        <td class="p-2">{{ $estado->usuario->nombre ?? ''}} {{ $estado->usuario->apellido ?? ''}}</td>
-                                        <td class="p-2">{{ $estado->estado_descripcion->descripcion }}</td>
-                                    </tr>
-                                    @endforeach
-                                </tbody>
-                            </table>
-                            <h4 class="text-center fw-bold cell">Mensajes</h4>
-                            <div class="table-responsive col-12 mx-3">
-                                <table
-                                    class="table table-striped table-hover align-middle table-borderless">
-                                    <thead class="border-bottom">
-                                        <tr>
-                                            <th scope="col" class="p-2 text-center">Fecha</th>
-                                            <th scope="col" class="p-2 text-center">Usuario</th>
-                                            <th scope="col" class="p-2 text-center">Detalle</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        <tr>
-                                            <td class="p-2">12/05/2021</td>
-                                            <td class="p-2">Viviana Pedrero</td>
-                                            <td class="p-2">asignado a Raquel sdhakshaksdas
-                                                dbahsbdhamsbdasbdjasbdajsdbaksdhakhs
-                                                dbahmsdbahmsdbahmsbdamsbdamhsbdahsbfkhasbfhasfbmahsfbamsfbamhsbfmhasfaf
-                                            </td>
-                                        </tr>
-
-        <div class="container-fluid p-1 mx-auto"> {{-- Comienzo div Actividad (mostrar como acordeón) --}}
-            <div class="tittle cp-1 cell my-3">
-                <h2 class="text-center fw-bold">Actividad </h2>
-            </div>
-            <table class="table table-borderless">
-                <thead class="border-bottom">
-                    <tr>
-                        <th scope="col">Fecha</th>
-                        <th scope="col">Usuario</th>
-                        <th scope="col">Detalle</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td>12/05/2021</td>
-                        <td>Viviana Pedrero</td>
-                        <td>asignado a Raquel</td>
-                    </tr>
-                    <tr>
-                        <td>12/05/2021</td>
-                        <td>Viviana Pedrero</td>
-                        <td>comentario 2 blablablablablalbalba</td>
-                    </tr>
-                    <tr>
-                        <td>12/05/2021</td>
-                        <td>Viviana Pedrero</td>
-                        <td>asignado a Raquel</td>
-                    </tr>
-                </tbody>
-            </table>
-
-            <div class="row justify-content-center ">
-                <div class="col-6 p-2 m-2">
-                    {{-- ESTE FORM/BOTÒN DEBERIA SER VISIBLE SÒLO SI EL USUARIO ASIGNADO ES EL USUARIO LOGUEADO --}}
-                    <form action="{{ route('hojaResumen.store') }}" method="POST" autocomplete="off" enctype="multipart/form-data">
-                        @csrf
-                        {{-- aca voy a recibir el $idSolicitud , por ahora utilizo un input , luego este $idSolicitud estara en un campo oculto --}}
-                        <input type="hidden" id="idSolicitud" name="idSolicitud" value="{{ $solicitud->idSolicitud }}">
-                        <input type="submit" class="botonFormulario" value="comenzar trámite">
-                    </form>
-                </div>
-            </div>
-        </div> {{-- Fin div Actividad --}}
-
-                                        <tr>
-                                            <td class="p-2">12/05/2021</td>
-                                            <td class="p-2">Viviana Pedrero</td>
-                                            <td class="p-2">asignado a Raquel sdhakshaksdas
-                                                dbahsbdhamsbdasbdjasbdajsdbaksdhakhs
-                                                dbahmsdbahmsdbahmsbdamsbdamhsbdahsbfkhasbfhasfbmahsfbamsfbamhsbfmhasfaf
-                                            </td>
-                                        </tr>
-
-                                        <tr>
-                                            <td class="p-2">12/05/2021</td>
-                                            <td class="p-2">Viviana Pedrero</td>
-                                            <td class="p-2">asignado a Raquel sdhakshaksdas
-                                                dbahsbdhamsbdasbdjasbdajsdbaksdhakhs
-                                                dbahmsdbahmsdbahmsbdamsbdamhsbdahsbfkhasbfhasfbmahsfbamsfbamhsbfmhasfaf
-                                            </td>
-                                        </tr>
-                                    </tbody>
-                                </table>
-                            {{-- boton de agregar comentario --}}
-                            <div class="row justify-content-center">
-                                <div class="col-12 mt-2 p-2 ">
-=======
                         {{-- Comienzo div Actividad (mostrar como acordeón) --}}
                         <div class="row d-flex justify-content-center">
                             <div class="col-12  p-2">
                                 <div class="accordion" id="acordeonComentarios">
                                     <div class="accordion-item mt-4">
->>>>>>> 728c1c66b02d389d62bb0ba4debe35f820fd08b5
 
                                         <button
                                             class="accordion-button collapsed justify-content-center botonAcordeonComentarios"

@@ -34,7 +34,7 @@ class mailPetrel extends Mailable
         $datosMail->Legajo = $solicitud->legajo;
         $datosMail->Carrera = $solicitud->carrera->carrera;
         $datosMail->UniversidadDestino = $solicitud->universidad_destino;
-        $datosMail->NombreUserU = $solicitud->usuarioAdministrativo->nombre;
+        //$datosMail->NombreUserU = $solicitud->usuarioAdministrativo->nombre;
 
         // Se genera una nueva instancia de Usuario para obtener su correo electrónico
         $destinatario = new Usuario;
@@ -42,7 +42,7 @@ class mailPetrel extends Mailable
         $datosMail->correoUsuario = $destinatario->email;
 
         $destinatarioAdministracion = new Usuario;
-        $destinatarioAdministracion = Usuario::findOrFail($solicitud->id_user_u);
+        $destinatarioAdministracion = Usuario::find($solicitud->id_user_u);
         $datosMail->correoUserU = $destinatarioAdministracion->email;
         //print($datosMail);
         //return view('emails/solicitud_iniciada', compact('datosMail'));

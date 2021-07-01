@@ -149,9 +149,6 @@ Route::get('archivos/{id}/confirmarContrasenia', [Archivo::class, 'confirmarCont
 // Rutas para el envío de Mails
 Route::get('solicitud_iniciada/{idSolicitud}', [mailPetrelController::class, 'enviarMailSolicitudIniciada']);
 Route::get('finalizacion/{idSolicitud}', [mailPetrelController::class, 'enviarMailSolicitudFinalizada']);
-<<<<<<< HEAD
 
 Route::resource('solicitud', SolicitudCertProgController::class);
 Route::post('comentario', [ComentarioController::class, 'store'])->name('comentario.store');
-=======
->>>>>>> 728c1c66b02d389d62bb0ba4debe35f820fd08b5
