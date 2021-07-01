@@ -2,8 +2,6 @@
 @section('cuerpo')
     @php($titulo = 'Ver detalles solicitud - Petrel')@endphp
     @include('estructura/header')
-    <a href="{{route('solicitud.santiago',[1,8])}}">email santiago</a>
-
     <main class="p-2" id="cuerpo">
         {{-- Inicio main cuerpo --}}
         {{-- ---------------- ESTE ES EL SHOW DE ESTUDIANTE -------------------------------------- --}}
