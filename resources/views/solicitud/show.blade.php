@@ -68,7 +68,7 @@
                 <a href="{{ url()->previous() }}" class="lead"><i class="fas fa-chevron-left me-2"></i>Atrás</a>
             </div>
             {{-- inicion mostrar solicitud --}}
-            <div class="container-fluid p-1 mx-auto">
+            <div class="container-fluid p-1 mx-auto my-5">
                 <div class="row d-flex justify-content-center">
                     <div class="col-md-8 col-12">
                         <div class="card card-form bg-light">
@@ -668,6 +668,18 @@
             <div class="container-fluid p-1 mx-auto my-5">
                 <div class="row d-flex justify-content-center">
                     <div class="col-md-8 col-12">
+                        <div class="alert alert-success alert-dismissible fade show align-items-center mt-3 p-3">
+                            <i class='fas fa-check-circle mx-2'></i>{{ session('mensaje') }}
+                            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            @endif
+            {{-- inicion mostrar solicitud --}}
+            <div class="container-fluid p-1 mx-auto my-5">
+                <div class="row d-flex justify-content-center">
+                    <div class="col-md-8 col-12">
                         <div class="card card-form bg-light">
                             <div class="card-header p-1 bg-light cell mb-3">
                                 <h2 class="text-center fw-bold">Detalles de Solicitud
@@ -969,10 +981,6 @@
                                                                 <button type="submit" class="btn botonFormulario"
                                                                     id="modal_sesion_submit">Confirmar</button>
                                                             </div>
-                                                        </div>
-                                                        <div class="modal-footer">
-                                                            <button type="submit" class="btn botonFormulario"
-                                                                id="modal_sesion_submit">Confirmar</button>
                                                         </div>
                                                     </div>
                                                 </div>
