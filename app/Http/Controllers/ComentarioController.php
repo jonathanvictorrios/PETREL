@@ -12,9 +12,11 @@ class ComentarioController extends Controller
     
     public function store(Request $request)
     {
+
+        ($request->idUsuario ==null)?$idUsuario = 2:$idUsuario=$request->idUsuario;
         $comentarioNuevo = new Comentario;
         $comentarioNuevo->descripcion = $request->mensaje;
-        $comentarioNuevo->id_usuario = $request->idUsuario;
+        $comentarioNuevo->id_usuario = $idUsuario;
         $comentarioNuevo->id_solicitud = $request->idSolicitud;
         $comentarioNuevo->save();
         return back();

@@ -512,7 +512,7 @@
 
 
     {{-- Tabla Solicitudes - Año --}}
-    <div id="nav-tabs-solicitud" class="container shadow-lg my-5 bg-light rounded">
+    {{-- <div id="nav-tabs-solicitud" class="container shadow-lg my-5 bg-light rounded">
         <!-- Lista de Usuarios -->
         <div class="container px-md-5 px-3 py-5">
             <div class="row justify-content-center">
@@ -582,12 +582,12 @@
                 </div>
             </div>--}}
             <!-- Fin Tabla Lista Usuarios -->
-        </div>
-    </div>
+        {{-- </div>
+    </div> --}}
     {{-- Fin Tabla Solicitudes - Año --}}
 
     {{-- Tabla Solicitudes - Carrera --}}
-    <div id="nav-tabs-solicitud" class="container shadow-lg my-5 bg-light rounded">
+    {{-- <div id="nav-tabs-solicitud" class="container shadow-lg my-5 bg-light rounded">
         <!-- Lista de Usuarios -->
         <div class="container px-md-5 px-3 py-5">
             <div class="row justify-content-center">
@@ -644,11 +644,11 @@
             </div>
             <!-- Fin Tabla Lista Usuarios -->
         </div>
-    </div>
+    </div> --}}
     {{-- Fin Tabla Solicitudes - Carrera --}}
 
     {{-- Tabla Solicitudes - Programa --}}
-    <div id="nav-tabs-solicitud" class="container shadow-lg my-5 bg-light rounded">
+    {{-- <div id="nav-tabs-solicitud" class="container shadow-lg my-5 bg-light rounded">
         <!-- Lista de Usuarios -->
         <div class="container px-md-5 px-3 py-5">
             <div class="row justify-content-center">
@@ -708,7 +708,7 @@
             </div>
             <!-- Fin Tabla Lista Usuarios -->
         </div>
-    </div>
+    </div> --}}
     {{-- Fin Tabla Solicitudes - Programa --}}
 </main>
 

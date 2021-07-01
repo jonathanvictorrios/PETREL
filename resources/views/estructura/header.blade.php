@@ -19,6 +19,7 @@
                     <ul class="dropdown-menu" aria-labelledby="MenuUsuario">
                         <li><a class="dropdown-item" href="/perfil">Mi perfil</a></li>
                         <li><a class="dropdown-item" href="/home#pregfrecuentes">Ayuda</a></li>
+                        <li><a class="dropdown-item" href="/solicitud">Solicitudes</a></li>
                         <li><a class="dropdown-item" href="#">Cerrar sesión</a></li>
                     </ul>
                 </li>

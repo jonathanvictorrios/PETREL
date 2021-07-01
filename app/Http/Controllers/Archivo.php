@@ -181,7 +181,7 @@ class Archivo extends Controller
             /* $mensaje = 'ha ocurrido un error'; */
         /* } */
 
-        return redirect()->route('solicitud.index')->with('mensaje', $mensaje);
+        return redirect()->route('solicitud.show',['solicitud'=>$objSolicitud])->with('mensaje', $mensaje);
     }
 
     /**

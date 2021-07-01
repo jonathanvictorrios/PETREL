@@ -18,14 +18,14 @@ class UsuarioSeeder extends Seeder
             'nombre'=>'Jona',
             'apellido'=>'Rios',
             'dni'=>33123123,
-            'email'=>'jona@gmail.com',
+            'email'=>'franco.rodriguez@est.fi.uncoma.edu.ar',
             'password'=>'petrel2021'
         ]);
         DB::table('usuario')->insert([
             'nombre'=>'Viviana',
             'apellido'=>'Pedrero',
             'dni'=>12332112,
-            'email'=>'viviana.pedrero@fi.uncoma.edu.ar',
+            'email'=>'franco.rodriguez@est.fi.uncoma.edu.ar',
             'password'=>'petrel2021'
         ]);
         DB::table('usuario')->insert([
@@ -46,28 +46,28 @@ class UsuarioSeeder extends Seeder
             'nombre'=>'Ezequiel',
             'apellido'=>'Vera',
             'dni'=>98798798,
-            'email'=>'ezequielVera@hotmail.com',
+            'email'=>'franco.rodriguez@est.fi.uncoma.edu.ar',
             'password'=>'contrasenia123'
         ]);
         DB::table('usuario')->insert([
             'nombre'=>'Natalia',
             'apellido'=>'Baeza',
             'dni'=>40123123,
-            'email'=>'nataliaBaeza@hotmail.com',
+            'email'=>'franco.rodriguez@est.fi.uncoma.edu.ar',
             'password'=>'contrasenia123'
         ]);
         DB::table('usuario')->insert([
             'nombre'=>'Maximiliano',
             'apellido'=>'Villalba',
             'dni'=>45645645,
-            'email'=>'maxivillalba@hotmail.com',
+            'email'=>'mfranco.rodriguez@est.fi.uncoma.edu.ar',
             'password'=>'contrasenia123'
         ]);
         DB::table('usuario')->insert([
             'nombre'=>'Santiago',
             'apellido'=>'Briceño',
             'dni'=>45645645,
-            'email'=>'santiagobriseño@fi.uncoma.edu.ar',
+            'email'=>'franco.rodriguez@est.fi.uncoma.edu.ar',
             'password'=>'contrasenia123'
         ]);
     }

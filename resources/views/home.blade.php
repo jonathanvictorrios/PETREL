@@ -109,7 +109,7 @@
 <section id="p-frecuentes">
     <div class="row p-2 bg-light">
         <a name="pregfrecuentes"></a>
-        <div class="col col-lg-6 col-sm-12">
+        <div class="col-lg-6 col-sm-12">
             <div class="accordion accordion-flush p-5" id="acordeon1">
                 <div class="accordion-item row mb-1">
                     <div class="col-10">
@@ -126,10 +126,7 @@
                     </div>
                     <div id="flush-collapseOne" class="accordion-collapse collapse" aria-labelledby="flush-headingOne"
                         data-bs-parent="#acordeon1">
-                        <div class="accordion-body">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Architecto
-                            error labore, delectus iste culpa iusto neque sequi aliquam nobis, aspernatur ratione
-                            voluptatem
-                            illo rem eius ipsam? Fuga dolore quia ducimus.
+                        <div class="accordion-body">El certificado de materias o programa es ...
                         </div>
                     </div>
                 </div>
@@ -153,10 +150,9 @@
                     </div>
                     <div id="flush-collapseTwo" class="accordion-collapse collapse" aria-labelledby="flush-headingTwo"
                         data-bs-parent="#acordeon2">
-                        <div class="accordion-body">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Architecto
-                            error labore, delectus iste culpa iusto neque sequi aliquam nobis, aspernatur ratione
-                            voluptatem
-                            illo rem eius ipsam? Fuga dolore quia ducimus.
+                        <div class="accordion-body">Para iniciar el trámite, es necesario que seas o hayas sido un estudiante de la universidad,
+                         registrarte en Petrel y aguardar el email de confirmación de que has sido dado de alta como usuario de la plataforma.
+                        
                         </div>
                     </div>
                 </div>
@@ -236,8 +232,6 @@
             $("#answer4, #answer44").click(function(){
              $("#answer44").find('i').toggleClass("fas fa-plus-square fas fa-minus-square");
             });
-           
-
         });
     </script>
 </section>

@@ -38,13 +38,8 @@ class HojaResumenController extends Controller
         $objSolicitud = SolicitudCertProg::find($request->idSolicitud);
         $objSolicitud->id_user_u = 2;
         $objSolicitud->save();
-        $objEstado = new Estado();
-        $objEstado->id_solicitud = $objSolicitud->id_solicitud;
-        $objEstado->id_estado_descripcion=3;
-        $objEstado->id_usuario=2;
-        $objEstado->created_at = date('Y-m-d H:i:s');
-        $objEstado->updated_at = date('Y-m-d H:i:s');
-        $objEstado->save();
+        $objSolicituCont = new SolicitudCertProgController();
+        $objSolicituCont->listoParaFirmarDptoAlumno($request->idSolicitud,2);
         return view('rendimientoAcademico.create')->with('solicitud', $objSolicitud);
     }
 
@@ -53,6 +48,8 @@ class HojaResumenController extends Controller
     {
         $idSolicitud = $request->idSolicitud;
         $objSolicitud = SolicitudCertProg::find($idSolicitud);
+        $objSolicitud->id_user_u = 8;
+        $objSolicitud->save();
         $objHojaResumen = HojaResumen::where('id_solicitud',$idSolicitud)->get()[0];//$objSolicitud->hoja_resumen;
 
         $arregloRendimiento = json_decode(file_get_contents(storage_path('/app/').'id-solicitud-'.$idSolicitud.'/rendimientoAcademico'.$idSolicitud.'.json'),true);
@@ -77,12 +74,10 @@ class HojaResumenController extends Controller
         Storage::put('id-solicitud-' . $idSolicitud . '/notaDptoAlumno' . $idSolicitud . '.pdf', $objPDF->output());
         $this->realizarUnion($idSolicitud);
 
-        $estado=new Estado();
-            $estado->id_solicitud = $idSolicitud;
-            $estado->id_estado_descripcion = 5;
-            $estado->id_usuario = $objSolicitud->usuarioEstudiante->id_usuario;
-            $estado->save();
-        return Storage::download('id-solicitud-'.$idSolicitud.'/hojaUnida'.$idSolicitud.'.pdf','HojaResumen-'.$objSolicitud->id_solicitud.'-Firmada.pdf');
+        $objSolicituCont = new SolicitudCertProgController();
+        $objSolicituCont->listoParaFirmarSantiago($idSolicitud,8);
+        return redirect()->route('solicitud.show',['solicitud'=>$objSolicitud])->with('mensaje', 'Hoja resumen firmada');
+        //return Storage::download('id-solicitud-'.$idSolicitud.'/hojaUnida'.$idSolicitud.'.pdf','HojaResumen-'.$objSolicitud->id_solicitud.'-Firmada.pdf');
     }
 
     public static function realizarUnion($idSolicitud)

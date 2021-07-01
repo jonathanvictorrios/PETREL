@@ -60,15 +60,10 @@ class NotaDptoAlumController extends Controller
         $hojaResumen->save();
 
         $objSolicitud=SolicitudCertProg::find($request->id_solicitud);
-        $estado=new Estado();
-        $estado->id_solicitud = $request->id_solicitud;
-        $estado->id_estado_descripcion = 4;
-        $estado->id_usuario = $objSolicitud->id_user_u;
-        $estado->save();
-
         $objSolicitud->id_user_u=3;
         $objSolicitud->save();
-
+        $objSolicituController = new SolicitudCertProgController();
+        $objSolicituController->listoParaFirmarSecretariaAcademica($request->id_solicitud,3);
         # Retorno resultado
         return $objPDF->download("nota-generada-$request->id_solicitud.pdf");
     }

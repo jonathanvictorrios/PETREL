@@ -48,17 +48,16 @@ class mailPetrelController extends Controller
 
     $datosMail = $correo->datosMail;
   //  print($solicitud);
-    $destinatarioAdministracion = Usuario::find(7);//EL ID de SANTIAGO
+    $destinatarioAdministracion = Usuario::find(8);//EL ID de SANTIAGO
     //print($destinatarioAdministracion->email);
     //print($datosMail->correoUsuario);    
     $datosMail->correoUsuario = $destinatarioAdministracion->email;
     
     $datosMail = $correo->datosMail;
     $datosMail->Nombre=$destinatarioAdministracion->nombre;
-    $correo->subject = "Solicitud de trámite iniciada";
+    $correo->subject = "Solicitud lista para firmar";
     $correo->vista = "emails.aviso_revision";
-    //dd($datosMail);
-    print($datosMail->correoUsuario);
+    //print($datosMail->correoUsuario);
     Mail::to($datosMail->correoUsuario)->send($correo);
     //return ('Correo enviado');
     //return back()->with('mensaje','Correo enviado con éxito');
