@@ -193,7 +193,7 @@ class SolicitudCertProgController extends Controller
         $solicitud->save();
 
         $solicitudes = SolicitudCertProg::all();
-        return view('solicitud.index', compact('solicitudes'));
+        return back();
 
     }
 
