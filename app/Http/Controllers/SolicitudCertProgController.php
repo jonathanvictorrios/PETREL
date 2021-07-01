@@ -235,6 +235,9 @@ class SolicitudCertProgController extends Controller
         $estadoController->cambiarEstado($solicitud,$usuarioAdministrativo,$estadoDescripcion);
 
         $solicitud->save();
+        $controlMail = new mailPetrelController;
+        $controlMail->enviarMailSolicitudFirma($solicitud->id_solicitud);
+
 
     }
     public function terminar($idSolicitud,$idUsuarioAdministrativo)

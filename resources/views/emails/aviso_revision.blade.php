@@ -48,9 +48,6 @@
                         Podés consultar el estado de la solicitud cuando lo desees y descargar tu certificación de
                         programas desde el botón de abajo.
                     </p>
-                    <p>
-                        En caso de que encuentres algún problema con tu solicitud, por favor envianos un correo a <a href="mailto:dpto.alumnos@fi.uncoma.edu.ar">dpto.alumnos@fi.uncoma.edu.ar</a>.
-                    </p>
                     <p>Atentamente,</p>
                     <div class="column">
                         {{-- la imagen se carga desde un servidor externo a modo de prueba para que llegue correctamente al mail --}}
