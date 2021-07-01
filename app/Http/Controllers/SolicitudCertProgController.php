@@ -109,7 +109,7 @@ class SolicitudCertProgController extends Controller
 
         $solicitudes=SolicitudCertProg::all();//NECESITO RECUPERAR TODAS LAS SOLICITUDES PORQUE VUELVO EL RETORNO A LA VISTA.
 
-        return view('solicitud.index',compact('solicitudes'));
+        return view('solicitud.index',compact('solicitudes'))->with('mensaje','Se ingresó la solicitud con éxito.');
     }
 
     /**

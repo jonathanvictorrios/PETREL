@@ -14,7 +14,7 @@
 
         <header>
             <p style="text-align: center;">
-                <img height="80px" width="100%" src={{ asset('img/logoteSecretariaAcademica.png') }} alt="logo-unco">
+                <img height="80px" width="100%" src={{ asset('img/portada_nota.svg') }} alt="logo-unco">
             </p>
             <p style="text-align: center;">
                 Dirección General de Administración Académica
@@ -24,8 +24,8 @@
 
         <main>
         <div class="form-group m-1">
-                <a class="btn botonFormulario2" data-bs-toggle="collapse" href="#footer_editor1" role="button" aria-expanded="false" aria-controls="footer_editor1">
-                    Editar sub-encabezado <i class="fas fa-angle-down" aria-hidden="true" id="answer1"></i>
+                <a id="answer1" class="btn botonFormulario2" data-bs-toggle="collapse" href="#footer_editor1" role="button" aria-expanded="false" aria-controls="footer_editor1">
+                    Editar sub-encabezado <i class="fas fa-angle-down" aria-hidden="true" id="answer11"></i>
                 </a>
             
           <div class="collapse m-1" id="footer_editor1">
@@ -41,8 +41,8 @@
         </div>
     </div>    
       <div class="form-group m-1">
-                <a class="btn botonFormulario2" data-bs-toggle="collapse" href="#footer_editor2" role="button" aria-expanded="false" aria-controls="footer_editor2">
-                    Editar econtenido principal  <i class="fas fa-angle-up" aria-hidden="true" id="answer2"></i>
+                <a id="answer2" class="btn botonFormulario2" data-bs-toggle="collapse" href="#footer_editor2" role="button" aria-expanded="false" aria-controls="footer_editor2">
+                    Editar econtenido principal  <i class="fas fa-angle-up" aria-hidden="true" id="answer22"></i>
                 </a>
             
           <div class="collapse show m-1" id="footer_editor2">
@@ -61,8 +61,8 @@
         </main>
 
         <div class="form-group m-1">
-            <a class="btn botonFormulario2" data-bs-toggle="collapse" href="#footer_editor3" role="button" aria-expanded="false" aria-controls="footer_editor3">
-                Editar pie de página  <i class="fas fa-angle-down" aria-hidden="true" id="answer3"></i>
+            <a id="answer3" class="btn botonFormulario2" data-bs-toggle="collapse" href="#footer_editor3" role="button" aria-expanded="false" aria-controls="footer_editor3">
+                Editar pie de página  <i class="fas fa-angle-down" aria-hidden="true" id="answer33"></i>
             </a>
         </div>
         <div class="collapse m-1" id="footer_editor3">
@@ -99,14 +99,14 @@
 </script>
 {{-- para que las flechitas de los botones cambien al expandir el acordeòn --}}
 <script>
-    $("#answer1").click(function() {
-        $(this).toggleClass("fas fa-angle-down fas fa-angle-up");
+    $("#answer1, #answer11").click(function() {
+        $("#answer11").toggleClass("fas fa-angle-down fas fa-angle-up");
     });
-    $("#answer2").click(function() {
-        $(this).toggleClass("fas fa-angle-up fas fa-angle-down");
+    $("#answer2, #answer22").click(function() {
+        $("#answer22").toggleClass("fas fa-angle-up fas fa-angle-down");
     });
-    $("#answer3").click(function() {
-        $(this).toggleClass("fas fa-angle-down fas fa-angle-up");
+    $("#answer3, #answer33").click(function() {
+        $("#answer33").toggleClass("fas fa-angle-down fas fa-angle-up");
         
     });
    

@@ -50,7 +50,7 @@ class NotificacionController extends Controller
     public function show($id)
     {
         $Notificaciones = Notificacion::findOrFail($id);
-        return view ('notificacion.index',compact('Notificaciones'))->with('Mensaje','El ID seleccionado no existe en la base de datos.');
+        return view ('notificacion.index',compact('Notificaciones'))->with('mensaje','El ID seleccionado no existe en la base de datos.');
     }
 
     /**

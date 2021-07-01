@@ -13,12 +13,13 @@
         <div class="row d-flex justify-content-center">
             <div class="col-xl-6 col-lg-6 col-md-12 col-12">
                 <div class="card card-form">
-                    <div class="row tittle border-bottom p-2">
+                    <div class="row border-bottom p-2">
                         <h2 class="col text-center fw-bold">Nueva Carpeta Año</h2>
                     </div>
-                    <form name=formCarpeta id=formCarpeta class="form-card" action="{{ route('anio.store') }}" method="POST" autocomplete="off" novalidate>
+                    <form name="formCarpeta" id="formCarpeta" class="form-card" action="{{ route('anio.store') }}" method="POST" autocomplete="off" novalidate>
                         @csrf
-                        @if ($errors->any()) {{-- Valida en servidor y regresa mostrando los siguientes errores --}}
+                        @if ($errors->any()) 
+                        {{-- Valida en servidor y regresa mostrando los siguientes errores --}}
                         <div class="alert alert-danger alert-dismissible fade show d-flex align-items-center m-3 p-3">
                             <i class='fas fa-times-circle mx-2'></i>
                             <h5>Revisa los siguientes datos e inténtalo nuevamente</h5>
@@ -48,4 +49,5 @@
             </div>
         </div>
     </div>
+</main>
 @endsection

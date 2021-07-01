@@ -2,7 +2,7 @@
 
 @section('cuerpo')
 @php($titulo = 'Modificar usuario - Petrel')@endphp
-
+{{-- este modificar es para que utilice el usuario root --}}
 @include('estructura/header')
 <main class="p-2" id="cuerpo"> {{-- Inicio main cuerpo --}}
     <div class="container mt-3">
