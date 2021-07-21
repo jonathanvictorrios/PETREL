@@ -29,6 +29,15 @@ class CreateNewUser implements CreatesNewUsers
             'terms' => Jetstream::hasTermsAndPrivacyPolicyFeature() ? ['required', 'accepted'] : '',
         ])->validate();
 
+        /*return User::create([
+            'name' => $input['name'],
+            'lastname' => $input['lastname'],
+            'dni' => $input['dni'],
+            'email' => $input['email'],
+            'password' => Hash::make($input['password']),
+            'role_id' => $input['role_id'],
+        ]);*/
+
         return User::create([
             'name' => $input['name'],
             'lastname' => $input['lastname'],
@@ -37,5 +46,6 @@ class CreateNewUser implements CreatesNewUsers
             'password' => Hash::make($input['password']),
             'role_id' => 6 // Al registrarse inicia como invitado (no tiene rol ni permiso)
         ]);
-    }
-}
+
+    }//crate
+}//class

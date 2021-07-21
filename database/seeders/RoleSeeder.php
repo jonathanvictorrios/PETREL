@@ -8,6 +8,7 @@ use Illuminate\Support\Facades\DB;
 class RoleSeeder extends Seeder
 {
     public function run (){
+        
         DB::table('roles')->insert([
             'name' => 'Admin',
         ]);
@@ -29,5 +30,7 @@ class RoleSeeder extends Seeder
         DB::table('roles')->insert([
             'name' => 'Invitado',
         ]);
-    }
-}
+     
+
+    }//function
+}//clase
