@@ -13,7 +13,7 @@ class CreateTableSolicitudCertProg extends Migration
      */
     public function up()
     {
-        Schema::create('solicitud_cert_prog', function (Blueprint $table) {
+      Schema::create('solicitud_cert_prog', function (Blueprint $table) {
             $table->id('id_solicitud');
             $table->unsignedBigInteger('id_usuario_estudiante');
             $table->unsignedBigInteger('id_user_u')->nullable();
@@ -35,6 +35,6 @@ class CreateTableSolicitudCertProg extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('solicitud_cert_prog');
+       Schema::dropIfExists('solicitud_cert_prog');
     }
 }

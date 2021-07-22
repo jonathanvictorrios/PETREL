@@ -14,8 +14,8 @@ class EstadoSeeder extends Seeder
      */
     public function run()
     {
-        DB::table('estado')->insert([
-            //'id_usuario'=>1,
+       DB::table('estado')->insert([
+            'id_usuario'=>1,
             'id_solicitud'=>1,
             'id_estado_descripcion'=>1,
             'id_usuario'=>null,

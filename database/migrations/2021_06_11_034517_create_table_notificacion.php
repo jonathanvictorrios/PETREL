@@ -15,8 +15,9 @@ class CreateTableNotificacion extends Migration
     {
         Schema::create('notificacion', function (Blueprint $table) {
             $table->id('id_notificacion');
-            $table->unsignedBigInteger('id_estado');
-            $table->foreign('id_estado')->references('id_estado')->on('estado');
+            //Foranea comentada porque vincula una tabla comentada.
+            // $table->unsignedBigInteger('id_estado');
+            //$table->foreign('id_estado')->references('id_estado')->on('estado');
             $table->text('mensaje');
             $table->boolean('leida');
             $table->timestamps();
