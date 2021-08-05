@@ -15,7 +15,7 @@ class SolicitudCertProgSeeder extends Seeder
     public function run()
     {
         //descomentar el primero de prueba al ejecutar los seed
-        DB::table('solicitud_cert_prog')->insert([
+        /*DB::table('solicitud_cert_prog')->insert([
             'id_usuario_estudiante'=>1,
             'id_carrera'=>1,
             'legajo'=>'FAI-1111',

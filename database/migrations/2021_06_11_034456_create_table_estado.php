@@ -13,13 +13,13 @@ class CreateTableEstado extends Migration
      */
     public function up()
     {
-        // Schema::create('estado', function (Blueprint $table) {
-        //     $table->id('id_estado');
-        //     $table->string('descripcion');
-        //     $table->unsignedBigInteger('id_solicitud');
-        //     $table->foreign('id_solicitud')->references('id_solicitud')->on('solicitud_cert_prog');
-        //     $table->timestamps();
-        // });
+         Schema::create('estado', function (Blueprint $table) {
+             $table->id('id_estado');
+             $table->string('descripcion'); //este es un id_estado_descripcion
+             $table->unsignedBigInteger('id_solicitud');
+             $table->foreign('id_solicitud')->references('id_solicitud')->on('solicitud_cert_prog');
+             $table->timestamps();
+         });
     }
 
     /**
@@ -29,6 +29,6 @@ class CreateTableEstado extends Migration
      */
     public function down()
     {
-        // Schema::dropIfExists('estado');
+         Schema::dropIfExists('estado');
     }
 }

@@ -46,11 +46,14 @@ class SolicitudCertProgController extends Controller
     public function store(Request $request)
     {
         $solicitud = new SolicitudCertProg;
-        $usuarioEstudiante = Usuario::find(1); //ACA TENGO QUE PASAR EL ID DEL USUARIO LOGUEADO
-
+        //ACA TENGO QUE PASAR EL ID DEL USUARIO LOGUEADO
+        //$usuarioEstudiante = Usuario::find(1); 
+        $usuarioEstudiante = auth()->id();
+        
         if(isset($usuarioEstudiante))
         {
-            $solicitud->id_usuario_estudiante=$usuarioEstudiante->id_usuario;
+            //$solicitud->id_usuario_estudiante = $usuarioEstudiante->id_usuario;
+            $solicitud->id_usuario_estudiante = $usuarioEstudiante;
         }
         else{
             return back()->with('error','Necesita estar Logueado para Ingresar una Nueva Solicitud');
@@ -89,24 +92,23 @@ class SolicitudCertProgController extends Controller
 
         $solicitud->id_carrera=$request->carrera; //CAMBIAR POR SELECT DE DEL FORM
 
-
         ///   $solicitud->usuarioEstudiante=$usuarioEstudiante; //asignamos el usuario a la solicitud
-
         $solicitud->updated_at = null;
         $solicitud->save();
 
+        //crea un nuevo estado.
         $estado = new Estado;
-        $estadoDescripcion = EstadoDescripcion::find(1);
-
+        $estadoDescripcion = EstadoDescripcion::find();
         $estado->id_solicitud = $solicitud->id_solicitud;
         $estado->id_estado_descripcion = $estadoDescripcion->id_estado_descripcion;
-        $estado->id_usuario = null;
-        $estado->updated_at = null;
+        //estban en null--------------------------------
+        $estado->id_usuario = $usuarioEstudiante; //verificar que no era null para todos.
+        $estado->updated_at = "";
+        //-----------------------------------------------
         $estado->save();
 
         $controlMail = new mailPetrelController;
         $controlMail->enviarMailSolicitudIniciada($solicitud->id_solicitud);
-
         $solicitudes=SolicitudCertProg::all();//NECESITO RECUPERAR TODAS LAS SOLICITUDES PORQUE VUELVO EL RETORNO A LA VISTA.
 
         return view('solicitud.index',compact('solicitudes'))->with('mensaje','Se ingresó la solicitud con éxito.');
@@ -176,7 +178,7 @@ class SolicitudCertProgController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function asignar($idSolicitud, Request $request)
-    {
+    {/*
 
         $solicitud = SolicitudCertProg::findOrFail($idSolicitud);
 
@@ -184,6 +186,7 @@ class SolicitudCertProgController extends Controller
 
         //$nuevoEstado = new Estado;
         $estadoController= new EstadoController;
+        //EstadoDescripcion::find()
         $estadoDescripcion = EstadoDescripcion::find(2);
 
         $estadoController->cambiarEstado($solicitud,$usuarioAdministrativo,$estadoDescripcion);
@@ -193,7 +196,7 @@ class SolicitudCertProgController extends Controller
         $solicitud->save();
 
         $solicitudes = SolicitudCertProg::all();
-        return back();
+        return back();*/
 
     }
 

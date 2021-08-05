@@ -5,7 +5,7 @@
 
 <main class="p-2" id="cuerpo">
 
-    {{-- Tabla Solicitudes - Estudiante @can('realizaSolicitud') --}}
+    {{-- Tabla Solicitudes - Estudiante --}}
     <div id="nav-tabs-solicitud" class="container shadow-lg my-5 bg-light rounded">
 
         @if (session('mensaje') ) {{-- Mensaje final luego de submit --}}
@@ -58,6 +58,8 @@
                                     </thead>
                                     <tbody>
                                         @foreach($solicitudes as $solicitud)
+                                        
+                                        <!------esto esta mal desarrollado por un tema con la tabla estados----------->
                                         @if($solicitud->estados->last()->estado_descripcion->descripcion!='Terminado')
                                         <tr>
                                             <th scope="row">{{$solicitud->id_solicitud}}</th>
@@ -117,8 +119,10 @@
             </div>
         </div>
     </div>
-    {{-- Fin Tabla Solicitudes - Estudiante @endcan --}}
+    {{-- Fin Tabla Solicitudes --}}
 
+
+    <!------------------------------------------------------------------------------------------>
 
     {{-- Tabla Solicitudes - Dto Alumnos --}}
     <div id="nav-tabs-solicitud" class="container shadow-lg my-5 bg-light rounded">
