@@ -38,7 +38,7 @@ Route::view('/home', 'home');
 //Admin
 // Route::redirect('/', 'admin');
 Route::resource('permissions', PermissionController::class);
-Route::view('/permisos', '/admin/permissions');
+Route::view('/permisos', '/admin/permissions/create');
 // Auth::routes(['register' => false]);
 /* Route::group(['middleware' => ['auth'], 'prefix' => 'admin', 'as' => 'admin.'], function () {
     // Route::get('/home', 'HomeController@index')->name('home');

@@ -25,7 +25,7 @@ class DatabaseSeeder extends Seeder
             CarpetaAnioSeeder::class,
             CarpetaCarreraSeeder::class,
             ProgramaDriveSeeder::class,
-            //RoleSeeder::class
+            RoleSeeder::class //agregado
         ]);
     }
 }

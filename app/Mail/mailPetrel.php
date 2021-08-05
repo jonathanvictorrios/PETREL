@@ -7,7 +7,8 @@ use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Mail\Mailable;
 use Illuminate\Queue\SerializesModels;
 use App\Models\SolicitudCertProg;
-use App\Models\Usuario;
+//use App\Models\Usuario;
+use App\Models\User;
 
 class mailPetrel extends Mailable
 {
@@ -37,8 +38,8 @@ class mailPetrel extends Mailable
         //$datosMail->NombreUserU = $solicitud->usuarioAdministrativo->nombre;
 
         // Se genera una nueva instancia de Usuario para obtener su correo electrÃ³nico
-        $destinatario = new Usuario;
-        $destinatario = Usuario::findOrFail($solicitud->id_usuario_estudiante);
+        $destinatario = new Users; //new Usuario lo saque
+        $destinatario = Users::findOrFail($solicitud->id_usuario_estudiante); //si falla lo cmento
         $datosMail->correoUsuario = $destinatario->email;
 
         //print($datosMail);

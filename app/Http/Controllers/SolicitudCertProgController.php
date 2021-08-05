@@ -98,18 +98,22 @@ class SolicitudCertProgController extends Controller
 
         //crea un nuevo estado.
         $estado = new Estado;
-        $estadoDescripcion = EstadoDescripcion::find();
+        $estadoDescripcion = EstadoDescripcion::find(1);
+
+        $estado->descripcion = $estadoDescripcion->id_estado_descripcion;
         $estado->id_solicitud = $solicitud->id_solicitud;
-        $estado->id_estado_descripcion = $estadoDescripcion->id_estado_descripcion;
-        //estban en null--------------------------------
-        $estado->id_usuario = $usuarioEstudiante; //verificar que no era null para todos.
-        $estado->updated_at = "";
-        //-----------------------------------------------
+        //$estado->id_estado_descripcion = $estadoDescripcion->id_estado_descripcion;
+        //$estado->id_usuario = null; //$usuarioEstudiante
+        //$estado->updated_at = null;
+        
         $estado->save();
 
+        //---------mail estoy acaaaaa
+        
         $controlMail = new mailPetrelController;
         $controlMail->enviarMailSolicitudIniciada($solicitud->id_solicitud);
         $solicitudes=SolicitudCertProg::all();//NECESITO RECUPERAR TODAS LAS SOLICITUDES PORQUE VUELVO EL RETORNO A LA VISTA.
+        
 
         return view('solicitud.index',compact('solicitudes'))->with('mensaje','Se ingresó la solicitud con éxito.');
     }
