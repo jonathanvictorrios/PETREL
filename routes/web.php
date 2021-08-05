@@ -61,6 +61,7 @@ Route::view('/crearcarrera', '/carpetaCarrera/create')->middleware('can:carpetaC
 //programa
 Route::view('/crearprograma', '/programaDrive/create')->middleware('can:programaDrive.create');
 Route::view('/modificarprograma', '/programaDrive/edit')->middleware('can:programaDrive.edit');
+
 //-Desde el controlador---------------------------------------------------------
 Route::get('solicitud/{idSolicitud}/asignar', [SolicitudCertProgController::class, 'asignar'])->name('solicitud.asignar');
 Route::get('solicitud/{idSolicitud}/listoFirmaDptoAlumno/{idAdministrativo}', [SolicitudCertProgController::class, 'listoParaFirmarDptoAlumno'])->name('solicitud.listoFirmaDptoAlumno');
@@ -68,9 +69,6 @@ Route::get('solicitud/{idSolicitud}/listoFirmaSecretariaAcademica/{idAdministrat
 Route::get('solicitud/{idSolicitud}/listoFirmaSantiago/{idAdministrativo}', [SolicitudCertProgController::class, 'listoParaFirmarSantiago'])->name('solicitud.listoFirmaSantiago');
 Route::get('solicitud/{idSolicitud}/terminar/{idAdministrativo}', [SolicitudCertProgController::class, 'terminar'])->name('solicitud.terminar');
 //---------------------------------------------------------------------------------------------
-
-// CRUD:
-
 
 //***********    H    O    J    A         R    E    S    U    M    E    N    ********/
 

@@ -5,6 +5,7 @@
 
     <main class="p-2" id="cuerpo">
         {{-- Inicio main cuerpo --}}
+        @can('solicitud.show.estudiante')
         {{-- ---------------- ESTE ES EL SHOW DE ESTUDIANTE -------------------------------------- --}}
         {{-- <div class="container">
                     <a href="{{ route('solicitud.index' }}" class="lead"><i class="fas fa-chevron-left me-2"></i>Atrás</a>
@@ -63,7 +64,9 @@
                     </div> --}}
         {{-- </div> --}}
         @if ($solicitud->estados->last()->estado_descripcion->descripcion == 'Iniciado' || $solicitud->estados->last()->estado_descripcion->descripcion == 'Aguarda Firma Departamento Alumnos' || $solicitud->estados->last()->estado_descripcion->descripcion == 'Asignado')
-            {{-- ---------------- ESTE ES EL SHOW DE ADMINISTRATIVO DEPTO ALUMNOS -------------------------------------- --}}
+        @endcan
+        @can('solicitud.show.dtoalumnos')   
+        {{-- ---------------- ESTE ES EL SHOW DE ADMINISTRATIVO DEPTO ALUMNOS -------------------------------------- --}}
             <div class="container">
                 <a href="{{ url()->previous() }}" class="lead"><i class="fas fa-chevron-left me-2"></i>Atrás</a>
             </div>
@@ -293,6 +296,8 @@
                     </div>
                 </div>
             </div>
+            @endcan
+            @can('solicitud.show.secretaria')
             {{-- ---------------- ESTE ES EL SHOW DE SECRETARIA -------------------------------------- --}}
         @elseif($solicitud->estados->last()->estado_descripcion->descripcion=='Aguarda Firma Secretaría Académica')
             <div class="container">
@@ -523,7 +528,9 @@
                 </div>
             </div>
         @elseif($solicitud->estados->last()->estado_descripcion->descripcion=='Aguarda Firma Dir. Académica Central' || $solicitud->estados->last()->estado_descripcion->descripcion=='Terminado')
-            {{-- ---------------- ESTE ES EL SHOW DE SANTIAGO -------------------------------------- --}}
+        @endcan
+        @can('solicitud.show.santiago')  
+        {{-- ---------------- ESTE ES EL SHOW DE SANTIAGO -------------------------------------- --}}
             <div class="container">
                 <a href="{{ url()->previous() }}" class="lead"><i class="fas fa-chevron-left me-2"></i>Atrás</a>
             </div>
@@ -806,5 +813,6 @@
                 </div>
             </div>
         @endif
+        @endcan
     </main> {{-- Fin main cuerpo --}}
 @endsection

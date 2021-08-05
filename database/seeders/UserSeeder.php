@@ -25,8 +25,8 @@ class UserSeeder extends Seeder
             'dni'=>11222333,
             'email'=>'administrador@gmail.com',
             'password'=>'petrel'
-        ]);//->assignRole([$role1])
-
+        ])->assignRole([$role1]);
+         /*
         //administrativo
         DB::table('users')->insert([
             'name'=>'administrativo',
@@ -34,7 +34,7 @@ class UserSeeder extends Seeder
             'dni'=>33222111,
             'email'=>'administrativo@gmail.com',
             'password'=>'petrel'
-        ]);//assignRole([$role2]);
+        ])->assignRole([$role2]);
        
         //solicitante
         DB::table('users')->insert([
@@ -43,8 +43,8 @@ class UserSeeder extends Seeder
             'dni'=>11222333,
             'email'=>'solicitante@fi.uncoma.edu.ar',
             'password'=>'petrel'
-        ]);//->assignRole([$role3]);
-
+        ])->assignRole([$role3]);
+*/
       
     }//function
 }//class

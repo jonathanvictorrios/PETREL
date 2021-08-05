@@ -5,7 +5,7 @@
 
 <main class="p-2" id="cuerpo">
 
-@can('solicitud.tabla.estudiante')
+
     {{-- Tabla Solicitudes - Estudiante --}}
     <div id="nav-tabs-solicitud" class="container shadow-lg my-5 bg-light rounded">
 
@@ -60,8 +60,8 @@
                                     <tbody>
                                         @foreach($solicitudes as $solicitud)
                                         
-                                        <!------esto esta mal desarrollado por un tema con la tabla estados----------->
-                                        @if($solicitud->estados->last()->estado_descripcion->descripcion!='Terminado')
+                                        <!------------------------------------------------------------------>
+                                        
                                         <tr>
                                             <th scope="row">{{$solicitud->id_solicitud}}</th>
                                             <td>{{$solicitud->usuarioEstudiante->apellido}}, {{$solicitud->usuarioEstudiante->nombre}}</td>
@@ -71,7 +71,7 @@
                                             <td><a href="{{route('solicitud.show',$solicitud->id_solicitud)}}">Ver Más</a>
                                             </td>
                                         </tr>
-                                        @endif
+                                    
                                         @endforeach
                                     </tbody>
                                 </table>
@@ -98,7 +98,7 @@
                                     </thead>
                                     <tbody>
                                         @foreach($solicitudes as $solicitud)
-                                        @if($solicitud->estados->last()->estado_descripcion->descripcion=='Terminado')
+                                   
                                         <tr>
                                             <th scope="row">{{$solicitud->id_solicitud}}</th>
                                             <td>{{$solicitud->usuarioEstudiante->apellido}}, {{$solicitud->usuarioEstudiante->nombre}}</td>
@@ -108,7 +108,7 @@
                                             <td><a href="{{route('solicitud.show',$solicitud->id_solicitud)}}">Ver Más</a>
                                             </td>
                                         </tr>
-                                        @endif
+                                    
                                         @endforeach
                                     </tbody>
                                 </table>
@@ -121,7 +121,7 @@
         </div>
     </div>
     {{-- Fin Tabla Solicitudes --}}
-    @endcan
+    
 
 
     <!------------------------------------------------------------------------------------------>

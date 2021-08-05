@@ -16,10 +16,10 @@ class SolicitudCertProgController extends Controller
 {
     
     public function __construct(){
-        $this->middleware('can:solicitud.index')->only('index');
-        $this->middleware('can:solicitud.asignar')->only('asignar');
-        $this->middleware('can:solicitud.create')->only('create'); ///crearsolicitud
-        $this->middleware('can:solicitud.show')->only('show'); ///versolicitud
+       // $this->middleware('can:solicitud.index')->only('index');
+       // $this->middleware('can:solicitud.asignar')->only('asignar');
+        //$this->middleware('can:solicitud.create')->only('create'); ///crearsolicitud
+       // $this->middleware('can:solicitud.show')->only('show'); ///versolicitud
     }
 
 
@@ -112,13 +112,14 @@ class SolicitudCertProgController extends Controller
         
         $estado->save();
 
-        //---------mail estoy acaaaaa
+        //---------mail 
         
         $controlMail = new mailPetrelController;
         $controlMail->enviarMailSolicitudIniciada($solicitud->id_solicitud);
         $solicitudes=SolicitudCertProg::all();//NECESITO RECUPERAR TODAS LAS SOLICITUDES PORQUE VUELVO EL RETORNO A LA VISTA.
         
 
+        //return view('solicitud.index',compact('solicitudes'));
         return view('solicitud.index',compact('solicitudes'))->with('mensaje','Se ingresó la solicitud con éxito.');
     }
 
@@ -145,40 +146,6 @@ class SolicitudCertProgController extends Controller
     }
 
     /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, $id)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy($id)
-    {
-        //
-    }
-
-    /**
      * Asigna una solicitud
      *
      * @param  int  $idSolicitud
@@ -186,14 +153,14 @@ class SolicitudCertProgController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function asignar($idSolicitud, Request $request)
-    {/*
+    {
 
         $solicitud = SolicitudCertProg::findOrFail($idSolicitud);
 
         $usuarioAdministrativo = Usuario::findOrFail($request->usuarioAdministrativo);
 
         //$nuevoEstado = new Estado;
-        $estadoController= new EstadoController;
+        $estadoController= new Estado; //decia EstadoController
         //EstadoDescripcion::find()
         $estadoDescripcion = EstadoDescripcion::find(2);
 
@@ -204,7 +171,7 @@ class SolicitudCertProgController extends Controller
         $solicitud->save();
 
         $solicitudes = SolicitudCertProg::all();
-        return back();*/
+        return back();
 
     }
 
