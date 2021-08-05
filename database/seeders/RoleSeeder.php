@@ -59,8 +59,9 @@ class RoleSeeder extends Seeder
         Permission::create(['name' => 'carpetaAnio.create']);
         Permission::create(['name' => 'carpetaAnio.index']);
         Permission::create(['name' => 'carpetaAnio.edit']);
-
+    */
         //tablas de index solicitud.
+        /*
         Permission::create(['name' => 'solicitud.tabla.estudiante']); //de tablas
         Permission::create(['name' => 'solicitud.tabla.dtoalumnos']); //de tablas
         Permission::create(['name' => 'solicitud.tabla.administracion']); //de tablas
@@ -75,8 +76,8 @@ class RoleSeeder extends Seeder
         Permission::create(['name' => 'solicitud.show.dtoalumnos']);
         Permission::create(['name' => 'solicitud.show.administracion']);
         Permission::create(['name' => 'solicitud.show.santiago']);
-        
         */
+    
 
     }
 }

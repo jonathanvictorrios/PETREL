@@ -46,8 +46,8 @@ Route::view('/modificarusuario', '/usuario/modificar')->middleware('can:usuario.
 
 //---------------------solicitudes-------------------------
 Route::view('/crearsolicitud', '/solicitud/create');
-Route::view('/versolicitud', '/solicitud/show');
-Route::view('/solicitud', '/solicitud/index');
+Route::view('/versolicitud', '/solicitud/show')->middleware('can:solicitud.show'); //solicitud.index
+Route::view('/solicitud', '/solicitud/index')->middleware('can:solicitud.index'); 
 Route::view('/asignarsolicitud', '/solicitud/asignar');
 //-----------------controler de solicitud------------------
 
