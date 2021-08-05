@@ -29,7 +29,7 @@
                             </li>
                             <li class="nav-item">
 
-                                <a class="nav-link" href="registro">Registrarse</a>
+                                <a class="nav-link" href="{{ route('register') }}">Registrarse</a> <!--href="registro""-->
 
                             </li>
                         </ul>

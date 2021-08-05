@@ -7,10 +7,10 @@
                 <div class="flex-shrink-0 flex items-center">
                     <a href="{{ route('dashboard') }}">
                         <!-- <x-jet-application-mark class="block h-9 w-auto" /> -->
-                        <div class="navbar-brand bg-brand rounded-3 p-2 h-100" id=logoHeader title="Volver al inicio">
+           <!-- <div class="navbar-brand bg-brand rounded-3 p-2 h-100" id=logoHeader title="Volver al inicio">
                 <img src="{{ asset('img/logo_petrel-02.png') }}" alt="Icono Petrel" class=img-fluid>
                 <span class="text-light">Petrel</span>
-            </div>
+                </div>-->
                     </a>
                 </div>
 
@@ -102,11 +102,11 @@
                         <x-slot name="content">
                             <!-- Account Management -->
                             <div class="block px-4 py-2 text-xs text-gray-400">
-                                {{ __('Manage Account') }}
+                                {{ __('Administrar cuenta') }} <!------Manage Account--------->
                             </div>
 
                             <x-jet-dropdown-link href="{{ route('profile.show') }}">
-                                {{ __('Profile') }}
+                                {{ __('Perfil') }}  <!------------profile------------------->
                             </x-jet-dropdown-link>
 
                             @if (Laravel\Jetstream\Jetstream::hasApiFeatures())
@@ -124,7 +124,7 @@
                                 <x-jet-dropdown-link href="{{ route('logout') }}"
                                          onclick="event.preventDefault();
                                                 this.closest('form').submit();">
-                                    {{ __('Log Out') }}
+                                    {{ __('Cerrar sesion') }}  <!---------Log out---------->
                                 </x-jet-dropdown-link>
                             </form>
                         </x-slot>
