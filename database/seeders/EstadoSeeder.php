@@ -14,7 +14,7 @@ class EstadoSeeder extends Seeder
      */
     public function run()
     {
-       DB::table('estado')->insert([
+      /* DB::table('estado')->insert([
             'id_usuario'=>1,
             'id_solicitud'=>1,
             'id_estado_descripcion'=>1,
@@ -44,6 +44,6 @@ class EstadoSeeder extends Seeder
             'id_estado_descripcion'=>1,
             'id_usuario'=>null,
             'created_at'=> Carbon::now()->format('Y-m-d H:i:s')
-        ]);
+        ]);*/
     }
 }

@@ -3,8 +3,8 @@
 namespace Database\Seeders;
 
 use Illuminate\Database\Seeder;
-use Spatie\Permission\Models\Role;
-use Spatie\Permission\Models\Permission;
+//use Spatie\Permission\Models\Role;
+//use Spatie\Permission\Models\Permission;
 use Illuminate\Support\Facades\DB;
 
 class PermissionSeeder extends Seeder
@@ -17,7 +17,7 @@ class PermissionSeeder extends Seeder
     public function run()
     {
         //root
-        DB::table('permissions')->insert([
+       /* DB::table('permissions')->insert([
             'name' => 'users_manage',
         ]);
         DB::table('permissions')->insert([
@@ -73,6 +73,6 @@ class PermissionSeeder extends Seeder
         ]);
         DB::table('permissions')->insert([
             'name' => 'firmarSolicitud',
-        ]);
+        ]);*/
     }
 }

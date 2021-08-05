@@ -4,7 +4,8 @@ namespace Database\Seeders;
 
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
-
+//use Spatie\Permission\Models\Role; 
+//use Spatie\Permission\Models\Permission;  
 
 class UserSeeder extends Seeder
 {
@@ -17,25 +18,26 @@ class UserSeeder extends Seeder
     public function run()
     {
         DB::table('users')->insert([
-            'name'=>'manu',
-            'lastname'=>'el',
-            'dni'=>12123123,
-            'email'=>'papanoel@gmail.com',
-            'password'=>'petrel2021'
-        ]);
+            'name'=>'admin',
+            'lastname'=>'ad',
+            'dni'=>11222333,
+            'email'=>'admin@gmail.com',
+            'password'=>'petrel'
+        ]);//->assignRole('$role1');
         DB::table('users')->insert([
-            'name'=>'Lisan',
-            'lastname'=>'dro',
-            'dni'=>11123123,
-            'email'=>'unadmin@fi.uncoma.edu.ar',
-            'password'=>'petrel2021'
-        ]);
+            'name'=>'solicitante',
+            'lastname'=>'sol',
+            'dni'=>11222333,
+            'email'=>'solicitante@fi.uncoma.edu.ar',
+            'password'=>'petrel'
+        ]);//->assignRole('solicitante');
         DB::table('users')->insert([
-            'name'=>'Luis',
-            'lastname'=>'Miguel',
-            'dni'=>13123123,
-            'email'=>'estudiante@hotmail.com',
-            'password'=>'petrel2021'
-        ]);
+            'name'=>'usuario',
+            'lastname'=>'us',
+            'dni'=>11222333,
+            'email'=>'us2@hotmail.com',
+            'password'=>'petrel'
+        ]);//->assignRole('usuario');
+      
     }
 }

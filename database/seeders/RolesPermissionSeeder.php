@@ -9,6 +9,8 @@ use Illuminate\Support\Facades\DB;
 class RolesPermissionSeeder extends Seeder
 {
     public function run (){
+
+/*
         // Root Permissions
         DB::table('role_permission')->insert([
             'role_id' => 1,
@@ -94,7 +96,7 @@ class RolesPermissionSeeder extends Seeder
             'role_id' => 2,
             'permission_id' => 18,
         ]);
-
+*/
         
     }
 }

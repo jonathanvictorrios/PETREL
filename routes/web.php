@@ -56,8 +56,13 @@ Route::view('/perfil', '/usuario/perfil');
 //nuevas rutas de vistas (lara)
 // Route::view('/crearusuario', '/usuario/create');
 // Route::view('/verusuario', '/usuario/show');
-Route::view('/modificarusuario', '/usuario/modificar');
-// Route::view('/borrarusuario', '/usuario/borrar');
+
+//----------------Ejemplo de permiso-----------------
+//Route::view('/borrarusuario', '/usuario/borrar');
+Route::view('/borrarusuario', '/usuario/borrar')->middleware('can:usuario.borrar'); //admin.permission.destroy
+Route::view('/modificarusuario', '/usuario/modificar')->middleware('can:usuario.modificar'); ////admin.permission.destroy
+//--------------------------------------------------
+
 //anio
 // Route::view('/crearanio', '/carpetaAnio/create');
 // Route::view('/modificaranio', '/carpetaAnio/edit');
