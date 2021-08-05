@@ -14,11 +14,15 @@ use App\Models\HojaResumen;
 
 class SolicitudCertProgController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+    
+    public function __construct(){
+        $this->middleware('can:solicitud.index')->only('index');
+        $this->middleware('can:solicitud.asignar')->only('asignar');
+        $this->middleware('can:solicitud.create')->only('create'); ///crearsolicitud
+        $this->middleware('can:solicitud.show')->only('show'); ///versolicitud
+    }
+
+
     public function index()
     {
         $solicitudes = SolicitudCertProg::all();

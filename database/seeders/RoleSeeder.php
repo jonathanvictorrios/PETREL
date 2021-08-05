@@ -55,8 +55,12 @@ class RoleSeeder extends Seeder
 
        //otros permisos de las vistas - chequear a quien corresponden en especifico.
        /*
-       Permission::create(['name' => 'admin.archivos.create'])->assignRole([$role1]);
-       Permission::create(['name' => 'admin.archivos.index'])->assignRole([$role1]);
+        Permission::create(['name' => 'carpetaAnio.ListarCarreras']);
+        Permission::create(['name' => 'carpetaAnio.create']);
+        Permission::create(['name' => 'carpetaAnio.index']);
+        Permission::create(['name' => 'carpetaAnio.edit']);
+
+        
        */
 
     }

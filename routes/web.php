@@ -35,63 +35,33 @@ use App\Http\Controllers\Admin\UserController;
 // Vistas configuradas:
 Route::redirect('/', '/home');
 Route::view('/home', 'home');
-
-//Admin------------------------------------------------------------------
-Route::resource('/users', UserController::class);
-// ----------------------------------------------------------------------
-
-
-
-//comentada Route::redirect('/', 'admin');
-//comentada Route::resource('permissions', PermissionController::class);
-//comentada Route::view('/permisos', '/admin/permissions/create');
-// Auth::routes(['register' => false]);
-/* Route::group(['middleware' => ['auth'], 'prefix' => 'admin', 'as' => 'admin.'], function () {
-    // Route::get('/home', 'HomeController@index')->name('home');
-    
-    /* Route::delete('permissions_mass_destroy', 'Admin\PermissionsController@massDestroy')->name('permissions.mass_destroy');
-    Route::resource('roles', '');
-    Route::delete('roles_mass_destroy', 'Admin\RolesController@massDestroy')->name('roles.mass_destroy');
-    Route::resource('users', 'Admin\UsersController');
-    Route::delete('users_mass_destroy', 'Admin\UsersController@massDestroy')->name('users.mass_destroy'); 
-}); */
-//usuario
-
 Route::view('/registro', '/usuario/registro');
 Route::view('/perfil', '/usuario/perfil');
-//nuevas rutas de vistas (lara)
-// Route::view('/crearusuario', '/usuario/create');
-// Route::view('/verusuario', '/usuario/show');
 
-//----------------Ejemplo de permiso-----------------
-//Route::view('/borrarusuario', '/usuario/borrar');
+//nuevas rutas de vistas (lara) --pasr al controler
+Route::view('/crearusuario', '/usuario/create')->middleware('can:usuario.create');
+Route::view('/verusuario', '/usuario/show')->middleware('can:usuario.show');
 Route::view('/borrarusuario', '/usuario/borrar')->middleware('can:usuario.borrar'); //admin.permission.destroy
 Route::view('/modificarusuario', '/usuario/modificar')->middleware('can:usuario.modificar'); ////admin.permission.destroy
-//--------------------------------------------------
-
-//anio
-// Route::view('/crearanio', '/carpetaAnio/create');
-// Route::view('/modificaranio', '/carpetaAnio/edit');
-//carrera
-// Route::view('/crearcarrera', '/carpetaCarrera/create');
-// Route::view('/modificarcarrera', '/carpetaCarrera/edit');
-//programa
-// Route::view('/crearprograma', '/programaDrive/create');
-// Route::view('/modificarprograma', '/programaDrive/edit');
-///fin de nuevas rutas lara
 
 //---------------------solicitudes-------------------------
 Route::view('/crearsolicitud', '/solicitud/create');
 Route::view('/versolicitud', '/solicitud/show');
+Route::view('/solicitud', '/solicitud/index');
+Route::view('/asignarsolicitud', '/solicitud/asignar');
+//-----------------controler de solicitud------------------
+
 //anio
-Route::view('/crearanio', '/carpetaAnio/create');
-Route::view('/modificaranio', '/carpetaAnio/edit');
+Route::view('/crearanio', '/carpetaAnio/create')->middleware('can:carpetaAnio.create');
+Route::view('/modificaranio', '/carpetaAnio/edit')->middleware('can:carpetaAnio.create');
 //carrera
-Route::view('/crearcarrera', '/carpetaCarrera/create');
-Route::view('/modificarcarrera', '/carpetaCarrera/edit');
+Route::view('/crearcarrera', '/carpetaCarrera/create')->middleware('can:carpetaCarrera.create');
+//Route::view('/modificarcarrera', '/carpetaCarrera/edit');
+
 //programa
-Route::view('/crearprograma', '/programaDrive/create');
-Route::view('/modificarprograma', '/programaDrive/edit');
+Route::view('/crearprograma', '/programaDrive/create')->middleware('can:programaDrive.create');
+Route::view('/modificarprograma', '/programaDrive/edit')->middleware('can:programaDrive.edit');
+//-Desde el controlador---------------------------------------------------------
 Route::get('solicitud/{idSolicitud}/asignar', [SolicitudCertProgController::class, 'asignar'])->name('solicitud.asignar');
 Route::get('solicitud/{idSolicitud}/listoFirmaDptoAlumno/{idAdministrativo}', [SolicitudCertProgController::class, 'listoParaFirmarDptoAlumno'])->name('solicitud.listoFirmaDptoAlumno');
 Route::get('solicitud/{idSolicitud}/listoFirmaSecretariaAcademica/{idAdministrativo}', [SolicitudCertProgController::class, 'listoParaFirmarSecretariaAcademica'])->name('solicitud.listoFirmaSecretariaAcademica');

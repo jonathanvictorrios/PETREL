@@ -10,12 +10,11 @@ use Illuminate\Support\Facades\Storage;
 
 class CarpetaCarreraController extends Controller
 {
-    /**
-     * verificamos la existencia de la carpeta año y luego
-     * damos la posibilidad de crear y guardar en la base de datos
-     * @param Request $request
-     * @return view carpetaCarrera.show|index
-     */
+    
+    public function __construct(){
+        $this->middleware('can:carpetaCarrera.listarProgramas')->only('listarProgramas');
+    }
+
     public function store(Request $request)
     {
         $carrera = Carrera::find($request->idCarrera);
