@@ -15,11 +15,12 @@ use App\Http\Controllers\SolicitudCertProgController;
 use App\Http\Controllers\ComentarioController;
 use App\Http\Controllers\NotaAdminCentralController;
 use App\Http\Controllers\HojaResumenFinalController;
-// de prueba
 use App\Http\Controllers\PruebaSolicitudController;
-
 use App\Mail\mailPetrel;
 use App\Mail\mailPetrelFinalizacion;
+//en singular
+use App\Http\Controllers\Admin\UserController;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -35,10 +36,15 @@ use App\Mail\mailPetrelFinalizacion;
 Route::redirect('/', '/home');
 Route::view('/home', 'home');
 
-//Admin
-// Route::redirect('/', 'admin');
-Route::resource('permissions', PermissionController::class);
-Route::view('/permisos', '/admin/permissions/create');
+//Admin------------------------------------------------------------------
+Route::resource('/users', UserController::class);
+// ----------------------------------------------------------------------
+
+
+
+//comentada Route::redirect('/', 'admin');
+//comentada Route::resource('permissions', PermissionController::class);
+//comentada Route::view('/permisos', '/admin/permissions/create');
 // Auth::routes(['register' => false]);
 /* Route::group(['middleware' => ['auth'], 'prefix' => 'admin', 'as' => 'admin.'], function () {
     // Route::get('/home', 'HomeController@index')->name('home');

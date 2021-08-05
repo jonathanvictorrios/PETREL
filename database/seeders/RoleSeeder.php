@@ -19,11 +19,11 @@ class RoleSeeder extends Seeder
         //roles
         $role1 = Role::create(['name' => 'administrador del sistema']); //quien asigna roles a los users
         $role2 = Role::create(['name' => 'administrativo']);
-        $role1 = Role::create(['name' => 'solicitante']);
+        $role3 = Role::create(['name' => 'solicitante']);
 
 
         //permiso solicitante
-        Permission::create(['name' => 'solicitud.asignar'])->syncRoles([$role1, $role2, $role3]);
+        Permission::create(['name' => 'solicitud.asignar'])->syncRoles([$role1, $role2]);
         Permission::create(['name' => 'solicitud.create'])->syncRoles([$role1, $role2, $role3]);
         Permission::create(['name' => 'solicitud.index'])->syncRoles([$role1, $role2, $role3]);
         Permission::create(['name' => 'solicitud.show'])->syncRoles([$role1, $role2, $role3]);
@@ -58,5 +58,6 @@ class RoleSeeder extends Seeder
        Permission::create(['name' => 'admin.archivos.create'])->assignRole([$role1]);
        Permission::create(['name' => 'admin.archivos.index'])->assignRole([$role1]);
        */
+
     }
 }

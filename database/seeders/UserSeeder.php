@@ -2,10 +2,11 @@
 
 namespace Database\Seeders;
 
+use App\Models\User;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
-//use Spatie\Permission\Models\Role; 
-//use Spatie\Permission\Models\Permission;  
+use Spatie\Permission\Models\Role; 
+use Spatie\Permission\Models\Permission;  
 
 class UserSeeder extends Seeder
 {
@@ -17,27 +18,33 @@ class UserSeeder extends Seeder
 
     public function run()
     {
+        //administrador
         DB::table('users')->insert([
-            'name'=>'admin',
+            'name'=>'administrador',
             'lastname'=>'ad',
             'dni'=>11222333,
-            'email'=>'admin@gmail.com',
+            'email'=>'administrador@gmail.com',
             'password'=>'petrel'
-        ]);//->assignRole('$role1');
+        ]);//->assignRole([$role1])
+
+        //administrativo
+        DB::table('users')->insert([
+            'name'=>'administrativo',
+            'lastname'=>'sec',
+            'dni'=>33222111,
+            'email'=>'administrativo@gmail.com',
+            'password'=>'petrel'
+        ]);//assignRole([$role2]);
+       
+        //solicitante
         DB::table('users')->insert([
             'name'=>'solicitante',
             'lastname'=>'sol',
             'dni'=>11222333,
             'email'=>'solicitante@fi.uncoma.edu.ar',
             'password'=>'petrel'
-        ]);//->assignRole('solicitante');
-        DB::table('users')->insert([
-            'name'=>'usuario',
-            'lastname'=>'us',
-            'dni'=>11222333,
-            'email'=>'us2@hotmail.com',
-            'password'=>'petrel'
-        ]);//->assignRole('usuario');
+        ]);//->assignRole([$role3]);
+
       
-    }
-}
+    }//function
+}//class

@@ -14,13 +14,14 @@ use Spatie\Permission\Traits\HasRoles; //agregado
 
 class User extends Authenticatable
 {
+    use HasRoles;//agregado
     use HasApiTokens;
     use HasFactory;
     use HasProfilePhoto;
     use HasTeams;
     use Notifiable;
     use TwoFactorAuthenticatable;
-    use HasRoles;//agregado
+    
 
     /**
      * The attributes that are mass assignable.
