@@ -73,7 +73,8 @@ Route::view('/modificarusuario', '/usuario/modificar')->middleware('can:usuario.
 // Route::view('/crearprograma', '/programaDrive/create');
 // Route::view('/modificarprograma', '/programaDrive/edit');
 ///fin de nuevas rutas lara
-//solicitudes
+
+//---------------------solicitudes-------------------------
 Route::view('/crearsolicitud', '/solicitud/create');
 Route::view('/versolicitud', '/solicitud/show');
 //anio
@@ -90,7 +91,7 @@ Route::get('solicitud/{idSolicitud}/listoFirmaDptoAlumno/{idAdministrativo}', [S
 Route::get('solicitud/{idSolicitud}/listoFirmaSecretariaAcademica/{idAdministrativo}', [SolicitudCertProgController::class, 'listoParaFirmarSecretariaAcademica'])->name('solicitud.listoFirmaSecretariaAcademica');
 Route::get('solicitud/{idSolicitud}/listoFirmaSantiago/{idAdministrativo}', [SolicitudCertProgController::class, 'listoParaFirmarSantiago'])->name('solicitud.listoFirmaSantiago');
 Route::get('solicitud/{idSolicitud}/terminar/{idAdministrativo}', [SolicitudCertProgController::class, 'terminar'])->name('solicitud.terminar');
-
+//---------------------------------------------------------------------------------------------
 
 // CRUD:
 

@@ -59,39 +59,6 @@
                     <div class="modal-body">
                     @include('auth.login')
                         @yield('logform')
-                        <!-- <div class="container-fluid px-1 py-5 mx-auto">
-                            <div class="row d-flex justify-content-center">
-                                <div class="col">
-                                    <div class="card card-form">
-                                        <form class="">
-                                            <div class="row justify-content-between text-left">
-                                                <div class="form-group col-12 flex-column d-flex py-3">
-                                                    <label class="form-control-label px-3 py-2">Email</label>
-                                                    <input class="border-0 cell" type="text" id="email" name="email"
-                                                        placeholder="Ingrese su email">
-                                                </div>
-                                            </div>
-                                            <div class="row justify-content-between text-left">
-                                                <div class="form-group col-12 flex-column d-flex py-3">
-                                                    <label class="form-control-label px-3 py-2">Contraseña</label>
-                                                    <input class="border-0 cell" type="text" id="password"
-                                                        name="password" placeholder="Ingrese su contraseña">
-                                                </div>
-                                            </div>
-                                            <div class="row justify-content-between text-left py-3">
-                                                <p><a href="">¿Olvidó su contraseña?</a></p>
-                                            </div>
-                                            <div class="row justify-content-center text-center py-4">
-                                                <div class="form-group col-sm-6">
-                                                    <button id="boton" name="boton" type="submit"
-                                                        class="botonFormulario">Ingresar</button>
-                                                </div>
-                                            </div>
-                                        </form>
-                                    </div>
-                                </div>
-                            </div>
-                        </div> -->
                     </div>
 
                 </div>

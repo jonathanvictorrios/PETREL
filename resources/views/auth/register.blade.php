@@ -57,14 +57,16 @@
             @endif
 
             <div class="flex items-center justify-end mt-4">
-                <a class="underline text-sm text-gray-600 hover:text-gray-900" href="{{ route('login') }}"> <!--no funciona el home-->
+               <a class="underline text-sm text-gray-600 hover:text-gray-900" href="{{ route('login') }}"> 
                     {{ __('¿Estas registrado?') }}
                 </a>
 
-                <x-jet-button class="ml-4">
+                <x-jet-button class="ml-4" > 
                     {{ __('Regristrar') }}
                 </x-jet-button>
             </div>
         </form>
+        
+
     </x-jet-authentication-card>
 </x-guest-layout>
