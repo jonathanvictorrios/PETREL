@@ -7,11 +7,12 @@
             <!-- Inicio encabezado -->
             <div class="container-fluid">
                 <!-- Comienzo contenedor -->
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#MenuSuperior"
+             
+               <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#MenuSuperior"
                     aria-controls="MenuSuperior" aria-expanded="false" aria-label="Menú superior">
                     <span class="navbar-toggler-icon"></span>
                 </button> <!-- Fin botón desplegable en pantallas chicas-->
-
+            
                 <div class="collapse navbar-collapse justify-content-end" id="MenuSuperior">
                     <!-- Comienzo contenido menú -->
 

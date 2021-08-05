@@ -5,6 +5,7 @@
 
 <main class="p-2" id="cuerpo">
 
+@can('solicitud.tabla.estudiante')
     {{-- Tabla Solicitudes - Estudiante --}}
     <div id="nav-tabs-solicitud" class="container shadow-lg my-5 bg-light rounded">
 
@@ -120,10 +121,11 @@
         </div>
     </div>
     {{-- Fin Tabla Solicitudes --}}
+    @endcan
 
 
     <!------------------------------------------------------------------------------------------>
-
+    @can('solicitud.tabla.dtoAlumnos')
     {{-- Tabla Solicitudes - Dto Alumnos --}}
     <div id="nav-tabs-solicitud" class="container shadow-lg my-5 bg-light rounded">
         <!-- Solicitudes -->
@@ -241,8 +243,8 @@
         </div>
     </div>
     {{-- Fin Tabla Solicitudes - Dto Alumnos --}}
-
-
+@endcan
+@can('solicitud.tabla.administracion')
     {{-- Tabla Solicitudes - Administración --}}
     {{--<div id="nav-tabs-solicitud" class="container shadow-lg my-5 bg-light rounded">
   <!-- Solicitudes -->
@@ -310,8 +312,8 @@
     </div>
     </div>--}}
     {{-- Fin Tabla Solicitudes - Administración --}}
-
-
+@endcan
+@can('solicitud.tabla.santiago')
     {{-- Tabla Solicitudes - Santiago --}}
     <div id="nav-tabs-solicitud" class="container shadow-lg my-5 bg-light rounded">
         <!-- Solicitudes -->
@@ -426,8 +428,8 @@
         </div>
     </div>
     {{-- Fin Tabla Solicitudes - Santiago --}}
-
-
+@endcan
+@can('solicitud.tabla.root')
     {{-- Tabla Solicitudes - Root --}}
     <div id="nav-tabs-solicitud" class="container shadow-lg my-5 bg-light rounded">
         <!-- Lista de Usuarios -->
@@ -513,8 +515,8 @@
         </div>
     </div>
     {{-- Fin Tabla Solicitudes - Root --}}
-
-
+@endcan
+@can('solicitud.tabla.anio')
     {{-- Tabla Solicitudes - Año --}}
     <div id="nav-tabs-solicitud" class="container shadow-lg my-5 bg-light rounded">
         <!-- Lista de Usuarios -->
@@ -585,7 +587,8 @@
         {{-- </div>
     </div> --}}
     {{-- Fin Tabla Solicitudes - Año --}}
-
+@endcan
+@can('solicitud.tabla.carrera')
     {{-- Tabla Solicitudes - Carrera --}}
     {{-- <div id="nav-tabs-solicitud" class="container shadow-lg my-5 bg-light rounded">
         <!-- Lista de Usuarios -->
@@ -646,6 +649,8 @@
         </div>
     </div> --}}
     {{-- Fin Tabla Solicitudes - Carrera --}}
+@endcan
+@can('solicitud.tabla.programa')
 
     {{-- Tabla Solicitudes - Programa --}}
     {{-- <div id="nav-tabs-solicitud" class="container shadow-lg my-5 bg-light rounded">
@@ -710,6 +715,7 @@
         </div>
     </div> --}}
     {{-- Fin Tabla Solicitudes - Programa --}}
+@endcan
 </main>
 
 @endsection
