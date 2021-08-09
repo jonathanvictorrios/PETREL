@@ -16,10 +16,9 @@ class SolicitudCertProgController extends Controller
 {
     
     public function __construct(){
-       // $this->middleware('can:solicitud.index')->only('index');
-       // $this->middleware('can:solicitud.asignar')->only('asignar');
-        //$this->middleware('can:solicitud.create')->only('create'); ///crearsolicitud
-       // $this->middleware('can:solicitud.show')->only('show'); ///versolicitud
+       $this->middleware('can:solicitud.index')->only('solicitud.index');
+       $this->middleware('can:solicitud.asignar')->only('solicitud.asignar');
+       $this->middleware('can:solicitud.show')->only('solicitud.show'); ///versolicitud
     }
 
 

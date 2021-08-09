@@ -11,10 +11,11 @@ class CarpetaAnioController extends Controller
 {
     
     public function __construct(){
-        $this->middleware('can:carpetaAnio.index')->only('index');
-        $this->middleware('can:carpetaAnio.listarCarreras')->only('listarCarreras');
-        //$this->middleware('can:carpetaAnio.create')->only('create'); 
-        $this->middleware('can:carpetaAnio.edit')->only('edit'); 
+        $this->middleware('can:carpetaAnio.index')->only('carpetaAnio.index');
+        $this->middleware('can:carpetaAnio.listarCarreras')->only('carpetaAnio.listarCarreras');
+        //$this->middleware('can:carpetaAnio.create')->only('carpetaAnio.create'); 
+        $this->middleware('can:carpetaAnio.edit')->only('carpetaAnio.edit'); 
+       // $this->middleware('can:carpetaAnio.listarCarrera')->only('carpetaAnio.listarCarrera'); 
     }
 
 

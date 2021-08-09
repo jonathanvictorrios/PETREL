@@ -20,12 +20,12 @@ class UserSeeder extends Seeder
     {
         //administrador
         DB::table('users')->insert([
-            'name'=>'administrador',
+            'name'=>'administrador1',
             'lastname'=>'ad',
             'dni'=>11222333,
-            'email'=>'administrador@gmail.com',
+            'email'=>'administrador1@gmail.com',
             'password'=>'petrel'
-        ])->assignRole([$role1]);
+        ]);//->assignRole([$role1]);
          /*
         //administrativo
         DB::table('users')->insert([

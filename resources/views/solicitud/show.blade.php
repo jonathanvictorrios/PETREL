@@ -5,6 +5,7 @@
 
     <main class="p-2" id="cuerpo">
         {{-- Inicio main cuerpo --}}
+        
         @can('solicitud.show.estudiante')
         {{-- ---------------- ESTE ES EL SHOW DE ESTUDIANTE -------------------------------------- --}}
         {{-- <div class="container">
