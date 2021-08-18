@@ -19,12 +19,13 @@ class DatabaseSeeder extends Seeder
             UnidadAcademicaSeeder::class,
             CarreraSeeder::class,
             EstadoDescripcionSeeder::class,
-            UsuarioSeeder::class,
-            SolicitudCertProgSeeder::class,
+            UserSeeder::class,
+            //SolicitudCertProgSeeder::class,
             EstadoSeeder::class,
             CarpetaAnioSeeder::class,
             CarpetaCarreraSeeder::class,
             ProgramaDriveSeeder::class,
+            RoleSeeder::class //agregado
         ]);
     }
 }

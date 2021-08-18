@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\SolicitudCertProg;
 use App\Models\UnidadAcademica;
-use App\Models\Usuario;
+use App\Models\User;
 use App\Models\Carrera;
 use App\Models\Estado;
 use App\Models\EstadoDescripcion;
@@ -14,11 +14,14 @@ use App\Models\HojaResumen;
 
 class SolicitudCertProgController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+    
+    public function __construct(){
+       $this->middleware('can:solicitud.index')->only('solicitud.index');
+       $this->middleware('can:solicitud.asignar')->only('solicitud.asignar');
+       $this->middleware('can:solicitud.show')->only('solicitud.show'); ///versolicitud
+    }
+
+
     public function index()
     {
         $solicitudes = SolicitudCertProg::all();
@@ -46,11 +49,14 @@ class SolicitudCertProgController extends Controller
     public function store(Request $request)
     {
         $solicitud = new SolicitudCertProg;
-        $usuarioEstudiante = Usuario::find(1); //ACA TENGO QUE PASAR EL ID DEL USUARIO LOGUEADO
-
+        //ACA TENGO QUE PASAR EL ID DEL USUARIO LOGUEADO
+        //$usuarioEstudiante = Usuario::find(1); 
+        $usuarioEstudiante = auth()->id();
+        
         if(isset($usuarioEstudiante))
         {
-            $solicitud->id_usuario_estudiante=$usuarioEstudiante->id_usuario;
+            //$solicitud->id_usuario_estudiante = $usuarioEstudiante->id_usuario;
+            $solicitud->id_usuario_estudiante = $usuarioEstudiante;
         }
         else{
             return back()->with('error','Necesita estar Logueado para Ingresar una Nueva Solicitud');
@@ -89,26 +95,30 @@ class SolicitudCertProgController extends Controller
 
         $solicitud->id_carrera=$request->carrera; //CAMBIAR POR SELECT DE DEL FORM
 
-
         ///   $solicitud->usuarioEstudiante=$usuarioEstudiante; //asignamos el usuario a la solicitud
-
         $solicitud->updated_at = null;
         $solicitud->save();
 
+        //crea un nuevo estado.
         $estado = new Estado;
         $estadoDescripcion = EstadoDescripcion::find(1);
 
+        $estado->descripcion = $estadoDescripcion->id_estado_descripcion;
         $estado->id_solicitud = $solicitud->id_solicitud;
-        $estado->id_estado_descripcion = $estadoDescripcion->id_estado_descripcion;
-        $estado->id_usuario = null;
-        $estado->updated_at = null;
+        //$estado->id_estado_descripcion = $estadoDescripcion->id_estado_descripcion;
+        //$estado->id_usuario = null; //$usuarioEstudiante
+        //$estado->updated_at = null;
+        
         $estado->save();
 
+        //---------mail 
+        
         $controlMail = new mailPetrelController;
         $controlMail->enviarMailSolicitudIniciada($solicitud->id_solicitud);
-
         $solicitudes=SolicitudCertProg::all();//NECESITO RECUPERAR TODAS LAS SOLICITUDES PORQUE VUELVO EL RETORNO A LA VISTA.
+        
 
+        //return view('solicitud.index',compact('solicitudes'));
         return view('solicitud.index',compact('solicitudes'))->with('mensaje','Se ingresó la solicitud con éxito.');
     }
 
@@ -135,40 +145,6 @@ class SolicitudCertProgController extends Controller
     }
 
     /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, $id)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy($id)
-    {
-        //
-    }
-
-    /**
      * Asigna una solicitud
      *
      * @param  int  $idSolicitud
@@ -183,7 +159,8 @@ class SolicitudCertProgController extends Controller
         $usuarioAdministrativo = Usuario::findOrFail($request->usuarioAdministrativo);
 
         //$nuevoEstado = new Estado;
-        $estadoController= new EstadoController;
+        $estadoController= new Estado; //decia EstadoController
+        //EstadoDescripcion::find()
         $estadoDescripcion = EstadoDescripcion::find(2);
 
         $estadoController->cambiarEstado($solicitud,$usuarioAdministrativo,$estadoDescripcion);
@@ -200,7 +177,7 @@ class SolicitudCertProgController extends Controller
     public function listoParaFirmarDptoAlumno($idSolicitud,$idUsuarioAdministrativo)
     {
         $solicitud = SolicitudCertProg::findOrFail($idSolicitud);
-        $usuarioAdministrativo = Usuario::findOrFail($idUsuarioAdministrativo);
+        $usuarioAdministrativo = User::findOrFail($idUsuarioAdministrativo);
 
         $estadoDescripcion = EstadoDescripcion::find(3);
         $estadoController = new EstadoController;

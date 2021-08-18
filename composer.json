@@ -18,7 +18,8 @@
         "livewire/livewire": "^2.5",
         "mouf/nodejs-installer": "^1.0",
         "nao-pon/flysystem-google-drive": "~1.1",
-        "phpoffice/phpspreadsheet": "^1.18"
+        "phpoffice/phpspreadsheet": "^1.18",
+        "spatie/laravel-permission": "^4.3"
     },
     "require-dev": {
         "facade/ignition": "^2.5",

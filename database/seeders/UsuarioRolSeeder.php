@@ -14,7 +14,7 @@ class UsuarioRolSeeder extends Seeder
      */
     public function run()
     {
-        DB::table('usuario_rol')->insert([
+     /*   DB::table('usuario_rol')->insert([
             'id_usuario' => '1',
             'id_rol' => '6',
         ]);
@@ -45,6 +45,6 @@ class UsuarioRolSeeder extends Seeder
         DB::table('usuario_rol')->insert([
             'id_usuario' => '8',
             'id_rol' => '2',
-        ]);
+        ]);*/
     }
 }

@@ -15,11 +15,12 @@ use App\Http\Controllers\SolicitudCertProgController;
 use App\Http\Controllers\ComentarioController;
 use App\Http\Controllers\NotaAdminCentralController;
 use App\Http\Controllers\HojaResumenFinalController;
-// de prueba
 use App\Http\Controllers\PruebaSolicitudController;
-
 use App\Mail\mailPetrel;
 use App\Mail\mailPetrelFinalizacion;
+//en singular
+use App\Http\Controllers\Admin\UserController;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -31,72 +32,72 @@ use App\Mail\mailPetrelFinalizacion;
 |
 */
 
-// Vistas configuradas:
+// Vistas configuradas:--------------------------------------------------------
 Route::redirect('/', '/home');
 Route::view('/home', 'home');
-//usuario
-Route::view('/registro', '/usuario/registro');
-Route::view('/perfil', '/usuario/perfil');
-//nuevas rutas de vistas (lara)
-// Route::view('/crearusuario', '/usuario/create');
-// Route::view('/verusuario', '/usuario/show');
-// Route::view('/modificarusuario', '/usuario/modificar');
-// Route::view('/borrarusuario', '/usuario/borrar');
-//anio
-// Route::view('/crearanio', '/carpetaAnio/create');
-// Route::view('/modificaranio', '/carpetaAnio/edit');
-//carrera
-// Route::view('/crearcarrera', '/carpetaCarrera/create');
-// Route::view('/modificarcarrera', '/carpetaCarrera/edit');
-//programa
-// Route::view('/crearprograma', '/programaDrive/create');
-// Route::view('/modificarprograma', '/programaDrive/edit');
-///fin de nuevas rutas lara
+//Route::view('/registro', '/usuario/registro'); //se usa el register de jetstream.
+//Route::view('/perfil', '/usuario/perfil');    //desde el menu de modificacion de jetstream.
+
+//nuevas rutas de vistas (lara) 
+Route::view('/crearusuario', '/usuario/create')->middleware('can:usuario.create');
+Route::view('/verusuario', '/usuario/show')->middleware('can:usuario.show');
+Route::view('/borrarusuario', '/usuario/borrar')->middleware('can:usuario.borrar'); 
+Route::view('/modificarusuario', '/usuario/modificar')->middleware('can:usuario.modificar'); 
+
 //solicitudes
 Route::view('/crearsolicitud', '/solicitud/create');
-Route::view('/versolicitud', '/solicitud/show');
+Route::view('/versolicitud', '/solicitud/show')->middleware('can:solicitud.show'); 
+Route::view('/solicitud', '/solicitud/index')->middleware('can:solicitud.index'); //------------------------------ 
+Route::view('/asignarsolicitud', '/solicitud/asignar')->middleware('can:solicitud.asignar'); 
+
 //anio
-Route::view('/crearanio', '/carpetaAnio/create');
-Route::view('/modificaranio', '/carpetaAnio/edit');
+Route::view('/crearanio', '/carpetaAnio/create')->middleware('can:carpetaAnio.create');
+Route::view('/modificaranio', '/carpetaAnio/edit')->middleware('can:carpetaAnio.edit');
+
 //carrera
-Route::view('/crearcarrera', '/carpetaCarrera/create');
-Route::view('/modificarcarrera', '/carpetaCarrera/edit');
+Route::view('/crearcarrera', '/carpetaCarrera/create')->middleware('can:carpetaCarrera.create');
+//Route::view('/modificarcarrera', '/carpetaCarrera/edit'); no existe
+
 //programa
-Route::view('/crearprograma', '/programaDrive/create');
-Route::view('/modificarprograma', '/programaDrive/edit');
-Route::get('solicitud/{idSolicitud}/asignar', [SolicitudCertProgController::class, 'asignar'])->name('solicitud.asignar');
-Route::get('solicitud/{idSolicitud}/listoFirmaDptoAlumno/{idAdministrativo}', [SolicitudCertProgController::class, 'listoParaFirmarDptoAlumno'])->name('solicitud.listoFirmaDptoAlumno');
-Route::get('solicitud/{idSolicitud}/listoFirmaSecretariaAcademica/{idAdministrativo}', [SolicitudCertProgController::class, 'listoParaFirmarSecretariaAcademica'])->name('solicitud.listoFirmaSecretariaAcademica');
-Route::get('solicitud/{idSolicitud}/listoFirmaSantiago/{idAdministrativo}', [SolicitudCertProgController::class, 'listoParaFirmarSantiago'])->name('solicitud.listoFirmaSantiago');
-Route::get('solicitud/{idSolicitud}/terminar/{idAdministrativo}', [SolicitudCertProgController::class, 'terminar'])->name('solicitud.terminar');
+Route::view('/crearprograma', '/programaDrive/create')->middleware('can:programaDrive.create');
+Route::view('/modificarprograma', '/programaDrive/edit')->middleware('can:programaDrive.edit');
 
 
-// CRUD:
-
+//solicitud - asignar/firma/temrinar //puse el middleware antes del name.
+Route::get('solicitud/{idSolicitud}/asignar', [SolicitudCertProgController::class, 'asignar'])->middleware('can:solicitud.asignar')->name('solicitud.asignar');
+Route::get('solicitud/{idSolicitud}/listoFirmaDptoAlumno/{idAdministrativo}', [SolicitudCertProgController::class, 'listoParaFirmarDptoAlumno'])->middleware('can:solicitud.firma.dtoalumno')->name('solicitud.listoFirmaDptoAlumno');
+Route::get('solicitud/{idSolicitud}/listoFirmaSecretariaAcademica/{idAdministrativo}', [SolicitudCertProgController::class, 'listoParaFirmarSecretariaAcademica'])->middleware('can:solicitud.firma.secretaria')->name('solicitud.listoFirmaSecretariaAcademica');
+Route::get('solicitud/{idSolicitud}/listoFirmaSantiago/{idAdministrativo}', [SolicitudCertProgController::class, 'listoParaFirmarSantiago'])->middleware('can:solicitud.firma.santiago')->name('solicitud.listoFirmaSantiago');
+Route::get('solicitud/{idSolicitud}/terminar/{idAdministrativo}', [SolicitudCertProgController::class, 'terminar'])->middleware('can:solicitud.terminar')->name('solicitud.terminar');
 
 //***********    H    O    J    A         R    E    S    U    M    E    N    ********/
 
-//CARPETAS DE LOS AÑOS
-Route::resource('carpeta/anio', CarpetaAnioController::class);
-Route::get('buscarCarreras/{anio}', [CarpetaAnioController::class, 'buscarCarreras'])->name('buscarCarreras');
-Route::get('crearCarpetaCarrera/{idCarpetaAnio}', [CarpetaAnioController::class, 'crearCarpetaCarrera'])->name('crearCarpetaCarrera');
+//CARPETAS DE LOS AÑOS 
+Route::resource('carpeta/anio', CarpetaAnioController::class); // -- en el controlador.
+Route::get('buscarCarreras/{anio}', [CarpetaAnioController::class, 'buscarCarreras'])->middleware('can:carpetaAnio.listarCarreras')->name('buscarCarreras');
+Route::get('crearCarpetaCarrera/{idCarpetaAnio}', [CarpetaAnioController::class, 'crearCarpetaCarrera'])->middleware('can:carpetaAnio.listarCarreras')->name('crearCarpetaCarrera'); //carpetaAnio.create
 
 //CARPETAS DE LAS CARRERAS
 Route::resource('carpeta/carrera', CarpetaCarreraController::class);
-Route::get('verProgramas/{carrera}', [CarpetaCarreraController::class, 'verProgramas'])->name('verProgramas');
-Route::get('agregarPrograma/{idCarpetaCarrera}', [CarpetaCarreraController::class, 'agregarPrograma'])->name('agregarPrograma');
+Route::get('verProgramas/{carrera}', [CarpetaCarreraController::class, 'verProgramas'])->middleware('can:carpetaCarrera.listarProgramas')->name('verProgramas');
+Route::get('agregarPrograma/{idCarpetaCarrera}', [CarpetaCarreraController::class, 'agregarPrograma'])->middleware('can:carpetaCarrera.agregarPrograma')->name('agregarPrograma'); 
 
 //CRUD DE LAS CARPETAS AÑOS, CARPETAS CARRERAS Y PROGRAMAS EN DRIVE
 Route::resource('programaDrive', ProgramaDriveController::class);
-Route::get('buscarProgramas/{idSolicitud}', [ProgramaDriveController::class, 'buscarProgramas'])->name('buscarProgramas');
+Route::get('buscarProgramas/{idSolicitud}', [ProgramaDriveController::class, 'buscarProgramas'])->middleware('can:programaDrive.buscarPrograma')->name('buscarProgramas');
 
 //RENDIMIENTO ACADEMICO
 Route::resource('rendimientoAcademico', RendimientoAcademicoController::class);
-Route::post('convertirExcel', [RendimientoAcademicoController::class, 'convertirExcel'])->name('convertirExcel');
+Route::post('convertirExcel', [RendimientoAcademicoController::class, 'convertirExcel'])->middleware('can:rendimientoAcademico.exportarPdf')->name('convertirExcel');
 
 //PROGRAMA LOCAL ES UN PDF RESULTANTE DE LA UNION DE LOS PROGRAMAS EN DRIVE
 Route::resource('programaLocal', ProgramaLocalController::class);
-Route::post('descargarProgramas', [ProgramaLocalController::class, 'descargarProgramas'])->name('descargarProgramas');
+Route::post('descargarProgramas', [ProgramaLocalController::class, 'descargarProgramas'])->middleware('programaLocal.descargarProgramas')->name('descargarProgramas');
+
+//-------------------------------------------------------------------------------------------------------
+//-------------------------------permisos asignados arriba ----------------------------------------------
+//-------------------------------------------------------------------------------------------------------
+//->middleware('')
 
 //HOJA RESUMEN CREADA EN EL MOMENTO QUE INICIA DEPARTAMENTO DE ALUMNOS
 Route::resource('hojaResumen',HojaResumenController::class);
@@ -121,10 +122,21 @@ Route::get('archivos/{id}/comment', [Archivo::class, 'cargarComentario'])->name(
 Route::resource('archivos', Archivo::class);
 Route::get('verHojaResumen/{id}',[Archivo::class,'downloadHojaResumen'])->name('verHojaResumen');
 
-// NOTA CREADA POR SANTIAGO EN ADMINISTRACION CENTRAL
-Route::resource('nota_admin_central', NotaAdminCentralController::class);
-Route::post('crear-nota-central', [NotaAdminCentralController::class, 'crearNotaAdminCentral'])->name('crear-nota-central');
-Route::post('descargar-nota-central', [NotaAdminCentralController::class, 'descargarPdf'])->name('descargar-nota-central');
+Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
+    return view('dashboard');
+})->name('dashboard');
+
+Route::get('archivos/{id}/confirmarContrasenia', [Archivo::class, 'confirmarContrasenia'])->name('archivos.confirmarContrasenia');
+
+//Rutas mariela 
+
+// rutas de nota admin central y hoja final
+
+Route::resource('nota_admin_central', 'App\Http\Controllers\NotaAdminCentralController');
+
+Route::post('crear-nota-central', [NotaAdminCentralController::class,'crearNotaAdminCentral'])->name('crear-nota-central'); 
+
+Route::post('descargar-nota-central', [NotaAdminCentralController::class,'descargarPdf'])->name('descargar-nota-central'); 
 
 //HOJA RESUMEN FINAL PERTENECE A LA HOJA RESUMEN CREADA A  PARTIR DE SANTIAGO
 Route::resource('hojaResumenFinal', HojaResumenFinalController::class);

@@ -55,11 +55,19 @@
                             <input type="text" id="email" class="border-0" value="" disabled>
                         </div>
                     </div>
+
+
+                         <!-----------Ejemplo de boton que solo se muestra al rol usuario con permido 'usuario.borrar'-------------->
+                    @can('admin.permission.destroy') <!--cambio de usuario.borrar a admin.permission.destroy-->
                     <div class="row justify-content-center text-center py-4">
                         <div class="form-group col col-sm-6">
                             <button id="boton" name="boton" type="submit" class="botonFormulario">Borrar</button>
                         </div>
                     </div>
+                    @endcan
+                     <!------------------------->
+
+
                 </div>
             </div>
         </div>

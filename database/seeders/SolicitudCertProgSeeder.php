@@ -14,13 +14,14 @@ class SolicitudCertProgSeeder extends Seeder
      */
     public function run()
     {
-        DB::table('solicitud_cert_prog')->insert([
+        //descomentar el primero de prueba al ejecutar los seed
+        /*DB::table('solicitud_cert_prog')->insert([
             'id_usuario_estudiante'=>1,
             'id_carrera'=>1,
             'legajo'=>'FAI-1111',
             'universidad_destino'=>'new york university',
             'extranjero'=>true
-        ]);
+        ]);/*
         DB::table('solicitud_cert_prog')->insert([
             'id_usuario_estudiante'=>4,
             'id_carrera'=>1,
@@ -48,6 +49,6 @@ class SolicitudCertProgSeeder extends Seeder
             'legajo'=>'FAI-5555',
             'universidad_destino'=>'universidad siglo 21',
             'extranjero'=>false
-        ]);
+        ]);*/
     }
 }

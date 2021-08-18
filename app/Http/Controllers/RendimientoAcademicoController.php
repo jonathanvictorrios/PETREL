@@ -13,6 +13,14 @@ use PDF;
 
 class RendimientoAcademicoController extends Controller
 {
+
+    public function __construct(){
+        $this->middleware('can:rendimientoAcademico.create')->only('rendimientoAcademico.create');
+        $this->middleware('can:rendimientoAcademico.exportarPdf')->only('rendimientoAcademico.exportarPdf');
+        $this->middleware('can:rendimientoAcademico.show')->only('rendimientoAcademico.show');
+    }
+
+
     /**
      * se realiza la confirmacion de generar el pdf del rendimiento academico
      * y lo guardamos en storage/app junto a la base de datos

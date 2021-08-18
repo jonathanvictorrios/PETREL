@@ -14,7 +14,7 @@ class UsuarioSeeder extends Seeder
      */
     public function run()
     {
-        DB::table('usuario')->insert([
+       /* DB::table('usuario')->insert([
             'nombre'=>'Jona',
             'apellido'=>'Rios',
             'dni'=>33123123,
@@ -69,6 +69,6 @@ class UsuarioSeeder extends Seeder
             'dni'=>45645645,
             'email'=>'franco.rodriguez@est.fi.uncoma.edu.ar',
             'password'=>'contrasenia123'
-        ]);
+        ]);*/
     }
 }

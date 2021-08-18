@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use App\Mail\mailPetrel;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Http\Request;
-use App\Models\Usuario;
+use App\Models\User;
 use App\Models\SolicitudCertProg;
 
 
@@ -45,10 +45,10 @@ class mailPetrelController extends Controller
     // $correo debe inicializarse con el $idSolicitud como variable
     // $idSolicitud = 3; // hardcodeado para testing
     $correo = new mailPetrel($idSolicitud);
-
     $datosMail = $correo->datosMail;
   //  print($solicitud);
-    $destinatarioAdministracion = Usuario::find(8);//EL ID de SANTIAGO
+
+    $destinatarioAdministracion = User::find(2);//EL ID de SANTIAGO por defecto. Esto se tiene que camnbiar.
     //print($destinatarioAdministracion->email);
     //print($datosMail->correoUsuario);    
     $datosMail->correoUsuario = $destinatarioAdministracion->email;

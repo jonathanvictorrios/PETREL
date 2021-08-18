@@ -9,10 +9,16 @@ use Illuminate\Support\Facades\Storage;
 
 class CarpetaAnioController extends Controller
 {
-    /**
-     * realizamos la vista de las carpetas años que existen
-     * @return view carpetaAnio.index
-     */
+    
+    public function __construct(){
+        $this->middleware('can:carpetaAnio.index')->only('carpetaAnio.index');
+        $this->middleware('can:carpetaAnio.listarCarreras')->only('carpetaAnio.listarCarreras');
+        //$this->middleware('can:carpetaAnio.create')->only('carpetaAnio.create'); 
+        $this->middleware('can:carpetaAnio.edit')->only('carpetaAnio.edit'); 
+       // $this->middleware('can:carpetaAnio.listarCarrera')->only('carpetaAnio.listarCarrera'); 
+    }
+
+
     public function index()
     {
         $carpetaAnio = CarpetaAnio::orderByDesc('numero_anio')->get();

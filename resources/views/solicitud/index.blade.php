@@ -5,7 +5,8 @@
 
 <main class="p-2" id="cuerpo">
 
-    {{-- Tabla Solicitudes - Estudiante @can('realizaSolicitud') --}}
+
+    {{-- Tabla Solicitudes - Estudiante --}}
     <div id="nav-tabs-solicitud" class="container shadow-lg my-5 bg-light rounded">
 
         @if (session('mensaje') ) {{-- Mensaje final luego de submit --}}
@@ -58,7 +59,9 @@
                                     </thead>
                                     <tbody>
                                         @foreach($solicitudes as $solicitud)
-                                        @if($solicitud->estados->last()->estado_descripcion->descripcion!='Terminado')
+                                        
+                                        <!------------------------------------------------------------------>
+                                        
                                         <tr>
                                             <th scope="row">{{$solicitud->id_solicitud}}</th>
                                             <td>{{$solicitud->usuarioEstudiante->apellido}}, {{$solicitud->usuarioEstudiante->nombre}}</td>
@@ -68,7 +71,7 @@
                                             <td><a href="{{route('solicitud.show',$solicitud->id_solicitud)}}">Ver Más</a>
                                             </td>
                                         </tr>
-                                        @endif
+                                    
                                         @endforeach
                                     </tbody>
                                 </table>
@@ -95,7 +98,7 @@
                                     </thead>
                                     <tbody>
                                         @foreach($solicitudes as $solicitud)
-                                        @if($solicitud->estados->last()->estado_descripcion->descripcion=='Terminado')
+                                   
                                         <tr>
                                             <th scope="row">{{$solicitud->id_solicitud}}</th>
                                             <td>{{$solicitud->usuarioEstudiante->apellido}}, {{$solicitud->usuarioEstudiante->nombre}}</td>
@@ -105,7 +108,7 @@
                                             <td><a href="{{route('solicitud.show',$solicitud->id_solicitud)}}">Ver Más</a>
                                             </td>
                                         </tr>
-                                        @endif
+                                    
                                         @endforeach
                                     </tbody>
                                 </table>
@@ -117,9 +120,12 @@
             </div>
         </div>
     </div>
-    {{-- Fin Tabla Solicitudes - Estudiante @endcan --}}
+    {{-- Fin Tabla Solicitudes --}}
+  
 
 
+    <!------------------------------------------------------------------------------------------>
+    @can('solicitud.tabla.dtoAlumnos')
     {{-- Tabla Solicitudes - Dto Alumnos --}}
     <div id="nav-tabs-solicitud" class="container shadow-lg my-5 bg-light rounded">
         <!-- Solicitudes -->
@@ -237,8 +243,8 @@
         </div>
     </div>
     {{-- Fin Tabla Solicitudes - Dto Alumnos --}}
-
-
+@endcan
+@can('solicitud.tabla.administracion')
     {{-- Tabla Solicitudes - Administración --}}
     {{--<div id="nav-tabs-solicitud" class="container shadow-lg my-5 bg-light rounded">
   <!-- Solicitudes -->
@@ -306,8 +312,8 @@
     </div>
     </div>--}}
     {{-- Fin Tabla Solicitudes - Administración --}}
-
-
+@endcan
+@can('solicitud.tabla.santiago')
     {{-- Tabla Solicitudes - Santiago --}}
     <div id="nav-tabs-solicitud" class="container shadow-lg my-5 bg-light rounded">
         <!-- Solicitudes -->
@@ -422,8 +428,8 @@
         </div>
     </div>
     {{-- Fin Tabla Solicitudes - Santiago --}}
-
-
+@endcan
+@can('solicitud.tabla.root')
     {{-- Tabla Solicitudes - Root --}}
     <div id="nav-tabs-solicitud" class="container shadow-lg my-5 bg-light rounded">
         <!-- Lista de Usuarios -->
@@ -509,10 +515,10 @@
         </div>
     </div>
     {{-- Fin Tabla Solicitudes - Root --}}
-
-
+@endcan
+@can('solicitud.tabla.anio')
     {{-- Tabla Solicitudes - Año --}}
-    {{-- <div id="nav-tabs-solicitud" class="container shadow-lg my-5 bg-light rounded">
+    <div id="nav-tabs-solicitud" class="container shadow-lg my-5 bg-light rounded">
         <!-- Lista de Usuarios -->
         <div class="container px-md-5 px-3 py-5">
             <div class="row justify-content-center">
@@ -564,13 +570,9 @@
                                     @if($solicitud->hoja_resumen_final != null)
                                     @if($solicitud->hoja_resumen_final->url_hoja_unida_final != null && $solicitud->UltimoEstado == 'Aguarda Firma Santiago')
                                     <tr>
-                                        <th>{{$solicitud->idSolicitud}}</th>
-                                        <td>{{$solicitud->UltimoEstado}}</td>
-                                        <td>{{$solicitud->Fecha}}</td>
-                                        <td>{{$solicitud->FechaUltimoEstado}}</td>
-                                        <td>{{$solicitud->UsuarioEstudiante}}</td>
-                                        <td><a href="{{route('solicitud.show',$solicitud->idSolicitud)}}">Ver Más</a>
-                                        </td>
+                                        <th scope="row">{{$solicitud->Anio}}</th>
+                                        <th>{{$solicitud->Carrera}}</th>
+                                        <td><a href="{{route('solicitud.show',$solicitud->idSolicitud)}}">Modificar</a></td>
                                     </tr>
                                     @endif
                                     @endif
@@ -585,7 +587,8 @@
         {{-- </div>
     </div> --}}
     {{-- Fin Tabla Solicitudes - Año --}}
-
+@endcan
+@can('solicitud.tabla.carrera')
     {{-- Tabla Solicitudes - Carrera --}}
     {{-- <div id="nav-tabs-solicitud" class="container shadow-lg my-5 bg-light rounded">
         <!-- Lista de Usuarios -->
@@ -646,6 +649,8 @@
         </div>
     </div> --}}
     {{-- Fin Tabla Solicitudes - Carrera --}}
+@endcan
+@can('solicitud.tabla.programa')
 
     {{-- Tabla Solicitudes - Programa --}}
     {{-- <div id="nav-tabs-solicitud" class="container shadow-lg my-5 bg-light rounded">
@@ -710,6 +715,7 @@
         </div>
     </div> --}}
     {{-- Fin Tabla Solicitudes - Programa --}}
+@endcan
 </main>
 
 @endsection

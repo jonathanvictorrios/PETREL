@@ -1,5 +1,6 @@
 <x-guest-layout>
     <x-jet-authentication-card>
+        @section('logform')
         <x-slot name="logo">
         <img src="{{ asset('img/vector_petrel.svg') }}" alt="Logo Petrel" width="60">
         </x-slot>
@@ -31,7 +32,10 @@
                     <span class="ml-2 text-sm text-gray-600">{{ __('Remember me') }}</span>
                 </label>
             </div>
-
+            <div class="flex items-center justify-end mt-4">
+                    <a class="underline text-sm text-gray-600 hover:text-gray-900" href="{{ route('register') }}">
+                        {{ __('registro') }} 
+                    </a>
             <div class="flex items-center justify-end mt-4">
                 @if (Route::has('password.request'))
                     <a class="underline text-sm text-gray-600 hover:text-gray-900" href="{{ route('password.request') }}">
@@ -44,5 +48,6 @@
                 </x-jet-button>
             </div>
         </form>
-    </x-jet-authentication-card>
-</x-guest-layout>
+        @endsection
+</x-jet-authentication-card>
+</x-guest-layout> 
