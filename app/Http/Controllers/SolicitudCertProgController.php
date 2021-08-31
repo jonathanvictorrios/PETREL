@@ -50,13 +50,16 @@ class SolicitudCertProgController extends Controller
     {
         $solicitud = new SolicitudCertProg;
         //ACA TENGO QUE PASAR EL ID DEL USUARIO LOGUEADO
-        //$usuarioEstudiante = Usuario::find(1); 
-        $usuarioEstudiante = auth()->id();
+        $idusuarioEstudiante = auth()->id();
         
+        $usuarioEstudiante = User::find($idusuarioEstudiante);
+        //print("---------"); 
+        //var_dump($usuarioEstudiante);
+        //print("---------");
         if(isset($usuarioEstudiante))
         {
-            //$solicitud->id_usuario_estudiante = $usuarioEstudiante->id_usuario;
-            $solicitud->id_usuario_estudiante = $usuarioEstudiante;
+            $solicitud->id_usuario_estudiante = $usuarioEstudiante->id;
+            //$solicitud->id_usuario_estudiante = $usuarioEstudiante;
         }
         else{
             return back()->with('error','Necesita estar Logueado para Ingresar una Nueva Solicitud');
@@ -95,10 +98,13 @@ class SolicitudCertProgController extends Controller
 
         $solicitud->id_carrera=$request->carrera; //CAMBIAR POR SELECT DE DEL FORM
 
-        ///   $solicitud->usuarioEstudiante=$usuarioEstudiante; //asignamos el usuario a la solicitud
+        //$solicitud->usuarioEstudiante=$usuarioEstudiante; //asignamos el usuario a la solicitud
         $solicitud->updated_at = null;
+        //print("=======");
+        //var_dump($solicitud);
+        //print("=======");
         $solicitud->save();
-
+        
         //crea un nuevo estado.
         $estado = new Estado;
         $estadoDescripcion = EstadoDescripcion::find(1);

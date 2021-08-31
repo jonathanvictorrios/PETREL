@@ -15,11 +15,17 @@ class mailPetrelController extends Controller
     public function enviarMailSolicitudIniciada($idSolicitud) 
     {
     // $correo debe inicializarse con el $idSolicitud como variable
-    // $idSolicitud = 3; // hardcodeado para testing
+    //$idSolicitud = 2; // hardcodeado para testing
+    
     $correo = new mailPetrel($idSolicitud);
     $datosMail = $correo->datosMail;
     $correo->subject = "Solicitud de trámite iniciada";
     $correo->vista = "emails.solicitud_iniciada";
+    //print("................");
+    //var_dump($datosMail);
+    //print("AAAAAAAAAAAA");
+    //var_dump($correo);
+    //print("................");
     //dd($datosMail);
     Mail::to($datosMail->correoUsuario)->send($correo);
     //return ('Correo enviado');

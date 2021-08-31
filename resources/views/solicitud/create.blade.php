@@ -105,12 +105,12 @@
                             </div>
                         </div>
 
-                        @can('solicitud.create')<div class="row justify-content-center text-center py-4">
+                        <div class="row justify-content-center text-center py-4">
                             <div class="form-group col col-sm-6">
                                 <button id="boton" name="boton" type="submit" class="botonFormulario">Enviar</button>
                             </div>
                         </div>
-                        @endcan
+                        
                     </form>
                 </div>
             </div>

@@ -64,7 +64,7 @@
                                         
                                         <tr>
                                             <th scope="row">{{$solicitud->id_solicitud}}</th>
-                                            <td>{{$solicitud->usuarioEstudiante->apellido}}, {{$solicitud->usuarioEstudiante->nombre}}</td>
+                                            <td>{{$solicitud->usuarioEstudiante->lastname}}, {{$solicitud->usuarioEstudiante->name}}</td>
                                             <td>{{$solicitud->legajo}}</td>
                                             <td>{{$solicitud->carrera->carrera}}</td>
                                             <td>{{$solicitud->carrera->unidad_academica->unidad_academica}}</td>
@@ -368,7 +368,7 @@
                                     </thead>
                                     <tbody>
                                         @foreach($solicitudes as $solicitud)
-                                        @if($solicitud->estados->last()->estado_descripcion->descripcion!='Terminado')
+                                        <!--@if($solicitud->estados->last()->estado_descripcion->descripcion!='Terminado')-->
                                         <tr>
                                             <th>{{$solicitud->id_solicitud}}</th>
                                             <td>{{$solicitud->estados->last()->estado_descripcion->descripcion}}</td>
@@ -378,7 +378,7 @@
                                             <td><a href="{{route('solicitud.show',$solicitud->id_solicitud)}}">Ver Más</a>
                                             </td>
                                         </tr>
-                                        @endif
+                                        <!--@endif-->
                                         @endforeach
                                     </tbody>
                                 </table>
